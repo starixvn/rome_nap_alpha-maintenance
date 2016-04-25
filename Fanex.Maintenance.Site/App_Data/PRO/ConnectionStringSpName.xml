@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Functions>
+    <Function Name="Site">
+        <Setting Key="ConnectionString_Site_GetAll" SpName="Site_GetAll" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" >
+            <Mapping DataField="ModifierUserId" ObjectProperty="Id" />
+            <Mapping DataField="ModifierUsername" ObjectProperty="Name" />
+        </Setting>
+        <Setting Key="ConnectionString_Site_GetByAlias" SpName="Site_GetByAlias" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+        <Setting Key="ConnectionString_Site_GetById" SpName="Site_GetById" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+        <Setting Key="ConnectionString_Site_Insert" SpName="Site_Insert" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+        <Setting Key="ConnectionString_Site_Update" SpName="Site_Update" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+        <Setting Key="ConnectionString_Site_UpdateStatus" SpName="Site_UpdateStatus" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+        <Setting Key="ConnectionString_Site_GetByDbServer" SpName="Site_GetByDbServer" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+        <Setting Key="ConnectionString_Site_GetByConnection" SpName="Site_GetByConnection" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" >
+            <Mapping DataField="ModifierUserId" ObjectProperty="Id" />
+            <Mapping DataField="ModifierUsername" ObjectProperty="Name" />
+        </Setting>
+    </Function>
+    <Function Name="ConnectionString">
+        <Setting Key="ConnectionString_Connection_GetAll" SpName="Connection_GetAll" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" >
+            <Mapping DataField="CreatorId" ObjectProperty="Id" />
+            <Mapping DataField="CreatorUsername" ObjectProperty="Name" />
+            <Mapping DataField="ModifierId" ObjectProperty="Id" />
+            <Mapping DataField="ModifierUsername" ObjectProperty="Name" />
+            <Mapping DataField="DbServerId" ObjectProperty="Id" />
+            <Mapping DataField="ServerName" ObjectProperty="Name" />
+            <Mapping DataField="DatabaseId" ObjectProperty="Id" />
+            <Mapping DataField="DatabaseName" ObjectProperty="Name" />
+        </Setting>
+        <Setting Key="ConnectionString_Connection_UpdateStatus" SpName="Connection_UpdateStatus" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+        <Setting Key="ConnectionString_Connection_Insert" SpName="Connection_Insert" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+        <Setting Key="ConnectionString_Connection_Update" SpName="Connection_Update" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+        <Setting Key="ConnectionString_Connection_SwitchDbServer" SpName="Connection_SwitchDbServer" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+        <Setting Key="ConnectionString_Connection_AssignSite" SpName="Connection_AssignSite" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+        <Setting Key="ConnectionString_Connection_RemoveSite" SpName="Connection_RemoveSite" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+        <Setting Key="ConnectionString_Connection_GetById" SpName="Connection_GetById" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" >
+            <Mapping DataField="CreatorId" ObjectProperty="Id" />
+            <Mapping DataField="CreatorUsername" ObjectProperty="Name" />
+            <Mapping DataField="ModifierId" ObjectProperty="Id" />
+            <Mapping DataField="ModifierUsername" ObjectProperty="Name" />
+            <Mapping DataField="DbServerId" ObjectProperty="Id" />
+            <Mapping DataField="ServerName" ObjectProperty="Name" />
+            <Mapping DataField="DatabaseId" ObjectProperty="Id" />
+            <Mapping DataField="DatabaseName" ObjectProperty="Name" />
+        </Setting>
+        <Setting Key="ConnectionString_Connection_GetBySiteId" SpName="Connection_GetBySiteId" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" >
+            <Mapping DataField="CreatorId" ObjectProperty="Id" />
+            <Mapping DataField="CreatorUsername" ObjectProperty="Name" />
+            <Mapping DataField="ModifierId" ObjectProperty="Id" />
+            <Mapping DataField="ModifierUsername" ObjectProperty="Name" />
+            <Mapping DataField="DbServerId" ObjectProperty="Id" />
+            <Mapping DataField="ServerName" ObjectProperty="Name" />
+            <Mapping DataField="DatabaseId" ObjectProperty="Id" />
+            <Mapping DataField="DatabaseName" ObjectProperty="Name" />
+        </Setting>
+    </Function>
+    <Function Name="DatabaseServer">
+        <Setting Key="ConnectionString_DatabaseServer_GetAll" SpName="DatabaseServer_GetAll" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" >
+            <Mapping DataField="ModifierId" ObjectProperty="Id" />
+            <Mapping DataField="ModifierUsername" ObjectProperty="Name" />
+        </Setting>
+        <Setting Key="ConnectionString_DatabaseServer_GetHasDatabase" SpName="DatabaseServer_GetHasDatabase" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" >
+            <Mapping DataField="ModifierId" ObjectProperty="Id" />
+            <Mapping DataField="ModifierUsername" ObjectProperty="Name" />
+        </Setting>
+        <Setting Key="ConnectionString_DatabaseServer_Insert" SpName="DatabaseServer_Insert" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+        <Setting Key="ConnectionString_DatabaseServer_Update" SpName="DatabaseServer_Update" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+        <Setting Key="ConnectionString_DatabaseServer_UpdateStatus" SpName="DatabaseServer_UpdateStatus" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+        <Setting Key="ConnectionString_DatabaseServer_GetById" SpName="DatabaseServer_GetById" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+    </Function>
+    <Function Name="Database">
+        <Setting Key="ConnectionString_Database_GetAll" SpName="Database_GetAll" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" >
+            <Mapping DataField="DbServerId" ObjectProperty="Id" />
+            <Mapping DataField="DbServerName" ObjectProperty="Name" />
+            <Mapping DataField="ModifierId" ObjectProperty="Id" />
+            <Mapping DataField="Username" ObjectProperty="Name" />
+            <Mapping DataField="CreatorId" ObjectProperty="Id" />
+        </Setting>
+        <Setting Key="ConnectionString_Database_Get" SpName="Database_Get" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" >
+            <Mapping DataField="DatabaseId" ObjectProperty="Id" />
+            <Mapping DataField="DatabaseName" ObjectProperty="Name" />
+            <Mapping DataField="ModifierId" ObjectProperty="Id" />
+            <Mapping DataField="Username" ObjectProperty="Name" />
+            <Mapping DataField="CreatorId" ObjectProperty="Id" />
+        </Setting>
+        <Setting Key="ConnectionString_Database_GetByDbServerId" SpName="Database_GetByDbServerId" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" >
+            <Mapping DataField="ModifierId" ObjectProperty="Id" />
+            <Mapping DataField="Username" ObjectProperty="Name" />
+        </Setting>
+        <Setting Key="ConnectionString_Database_Update" SpName="Database_Update" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+        <Setting Key="ConnectionString_Database_UpdateStatus" SpName="Database_UpdateStatus" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+        <Setting Key="ConnectionString_Database_Insert" SpName="Database_Insert" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+    </Function>
+    <Function Name="LogExecSp">
+        <Setting Key="ConnectionString_LogExecSp_Search" SpName="LogExecSp_Search" DbName="DBCONN.bodb_ConnectionString.bodbInternalNet" />
+    </Function>
+</Functions>
