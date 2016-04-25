@@ -11,26 +11,4 @@
         <Setting Key="Logging_InsertMachine" SpName="Acc_AppLog_MachineIns" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
         <Setting Key="Logging_UpdateMachine" SpName="Acc_AppLog_MachineUpd" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
     </Function>
-    <Function Name="Licensee">
-        <Setting Key="Lrf_SelBalanceUpDay" SpName="Lrf_SelBalanceUpDay" DbName="DBEXT.bodb02.bodbLicenseeNet" />
-        <Setting Key="GET_DepositDataToValidate_SumWL" SpName="GET_DepositDataToValidate_SumWL" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-        <Setting Key="GET_DepositDataToValidate_SumWLOld" SpName="GET_DepositDataToValidate_SumWLOld" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-        <Setting Key="GET_DepositDataToValidate_LicenseeWL" SpName="GET_DepositDataToValidate_LicenseeWL" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-        <Setting Key="GET_DepositDataToValidate_Betting" SpName="GET_DepositDataToValidate_Betting" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-        <Setting Key="GET_DepositDataToValidate_DW" SpName="GET_DepositDataToValidate_DW" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-        <Setting Key="GET_CreditDataToValidate_Betting" SpName="GET_CreditDataToValidate_Betting" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-        <Setting Key="GET_CreditDataToValidate_DW" SpName="GET_CreditDataToValidate_DW" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-        <Setting Key="Lrf_DomainSel" SpName="Lrf_DomainSel" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-        <Setting Key="Lrf_ActiveDomainUpd" SpName="Lrf_ActiveDomainUpd" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-    </Function>
-    <Function Name="DataValidation">
-      <Setting Key="GET_DepositDataToValidate_SumWL" SpName="GET_DepositDataToValidate_SumWL" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-      <Setting Key="GET_DepositDataToValidate_SumWLOld" SpName="GET_DepositDataToValidate_SumWLOld" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-      <Setting Key="GET_DepositDataToValidate_LicenseeWL" SpName="GET_DepositDataToValidate_LicenseeWL" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-      <Setting Key="GET_DepositDataToValidate_Betting" SpName="GET_DepositDataToValidate_Betting" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-      <Setting Key="GET_DepositDataToValidate_DW" SpName="GET_DepositDataToValidate_DW" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-      <Setting Key="Get_CreditDataToValidate_Betting" SpName="Get_CreditDataToValidate_Betting" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-      <Setting Key="GET_CreditDataToValidate_DW" SpName="GET_CreditDataToValidate_DW" DbName="DBLIC.bodb_Licensee.bodbLicenseeNet" />
-      <Setting Key="Lrf_SelBalanceUpDay" SpName="Lrf_SelBalanceUpDay" DbName="DBEXT.bodb02.bodbLicenseeNet" />
-    </Function>
 </Functions>

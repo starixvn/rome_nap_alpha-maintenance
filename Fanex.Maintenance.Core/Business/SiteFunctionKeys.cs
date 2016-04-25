@@ -8,7 +8,7 @@
 // </summary>
 //
 // <history>
-// Lasted generated date: 8/20/2015 10:59:17 AM
+// Lasted generated date: 4/25/2016 4:15:51 PM
 // </history>
 using System.Diagnostics.CodeAnalysis;
 
@@ -21,98 +21,26 @@ public static class SiteFunctionKeys
 {
     public const string Administration = "Administration";
 
-    public const string ApplicationManagement = "ApplicationManagement";
-
     public const string AssignFunctionToGroup = "AssignFunctionToGroup";
 
     public const string AssignFunctionToUser = "AssignFunctionToUser";
 
     public const string AssignSiteToUser = "AssignSiteToUser";
 
-    public const string ComposeEmail = "ComposeEmail";
-
-    public const string ConnectionManagement = "ConnectionManagement";
-
-    public const string ConnectionStringLog = "ConnectionStringLog";
-
-    public const string DatabaseReport = "DatabaseReport";
-
-    public const string DatabaseServer = "DatabaseServer";
-
-    public const string DataIntegrity = "DataIntegrity";
-
-    public const string EncryptApplicationEmail = "EncryptApplicationEmail";
-
-    public const string LicenseeSetting = "LicenseeSetting";
-
     public const string LogManagement = "LogManagement";
-
-    public const string LrfDomain = "LrfDomain";
-
-    public const string MailFunction = "MailFunction";
-
-    public const string MailService = "MailService";
-
-    public const string MailStation = "MailStation";
-
-    public const string ManageConnection = "ManageConnection";
-
-    public const string ManageDatabase = "ManageDatabase";
-
-    public const string ManageDatabaseServer = "ManageDatabaseServer";
 
     public const string ManageFunction = "ManageFunction";
 
     public const string ManageGroup = "ManageGroup";
 
-    public const string ManageMail = "ManageMail";
-
-    public const string ManageMailGroup = "ManageMailGroup";
-
     public const string ManageMenu = "ManageMenu";
-
-    public const string ManageRecipient = "ManageRecipient";
-
-    public const string ManageReport = "ManageReport";
 
     public const string ManageServers = "ManageServers";
 
-    public const string ManageSite = "ManageSite";
-
     public const string ManageUser = "ManageUser";
-
-    public const string MonitorServers = "MonitorServers";
-
-    public const string Report = "Report";
-
-    public const string ResendMail = "ResendMail";
-
-    public const string ServiceMonitoring = "ServiceMonitoring";
-
-    public const string SmtpServers = "SmtpServers";
-
-    public const string SqlJobs = "SqlJobs";
-
-    public const string SqlLogs = "SqlLogs";
-
-    public const string SqlSchedules = "SqlSchedules";
-
-    public const string SwitchConnection = "SwitchConnection";
 
     public const string SystemConfiguration = "SystemConfiguration";
 
-    public const string UserOnline = "UserOnline";
-
-    public const string UserOnlineChart = "UserOnlineChart";
-
-    public const string UserOnlineDaily = "UserOnlineDaily";
-
-    public const string ViewAccountingReportMail = "ViewAccountingReportMail";
-
     public const string ViewLog = "ViewLog";
-
-    public const string ViewMailDetails = "ViewMailDetails";
-
-    public const string ViewMailReport = "ViewMailReport";
 
 }

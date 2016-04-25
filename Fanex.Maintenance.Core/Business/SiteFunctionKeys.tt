@@ -32,7 +32,7 @@ public static class SiteFunctionKeys
 <#
     SqlConnection conn = new SqlConnection(connectionString);
 
-    string command = string.Format("SELECT DISTINCT FunctionKey FROM [Functions] WHERE SiteId = 12");
+    string command = string.Format("SELECT DISTINCT FunctionKey FROM [Functions] WHERE SiteId = 98");
 
     SqlCommand comm = new SqlCommand(command, conn);
 

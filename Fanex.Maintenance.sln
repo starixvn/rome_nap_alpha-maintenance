@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2010
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Maintenance.Site", "Fanex.Maintenance.Site\Fanex.Maintenance.Site.csproj", "{D4312B0D-CC74-4AA1-979A-AF26702808A1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Maintenance.Core", "Fanex.Maintenance.Core\Fanex.Maintenance.Core.csproj", "{60BC3FA8-DF7C-4024-B469-4ED110420143}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0CF3D4F1-7F6A-4D7E-936C-4991B2BF3451}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Maintenance.Repository", "Fanex.Maintenance.Repository\Fanex.Maintenance.Repository.csproj", "{8858DC31-A292-4388-8E07-9B2E345A3FE6}"
 EndProject
@@ -13,16 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Maintenance.Service",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Maintenance.Controller", "Fanex.Maintenance.Controller\Fanex.Maintenance.Controller.csproj", "{E7173CDD-8ECB-4FB6-B585-41BFE941745E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Maintenance.ViewModel", "Fanex.Maintenance.ViewModel\Fanex.Maintenance.ViewModel.csproj", "{1D88837B-951F-4411-ABD9-69FCA5B52C5A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeAnalysis", "CodeAnalysis", "{9295C957-AF58-481F-B1FB-A826E3F066E8}"
 	ProjectSection(SolutionItems) = preProject
 		CodeAnalysis\CodeAnalysisConfiguration.xml = CodeAnalysis\CodeAnalysisConfiguration.xml
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.ServiceManagement", "Fanex.ServiceManagement\Fanex.ServiceManagement.csproj", "{1F903078-36B9-40AE-9FF2-67F7DC5E058B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.MailDelivery.MailStation", "Fanex.MailDelivery.MailStation\Fanex.MailDelivery.MailStation.csproj", "{108C1D8A-CAE1-46DA-B951-60E1FC67EF12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -84,36 +78,6 @@ Global
 		{E7173CDD-8ECB-4FB6-B585-41BFE941745E}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{E7173CDD-8ECB-4FB6-B585-41BFE941745E}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
 		{E7173CDD-8ECB-4FB6-B585-41BFE941745E}.Release|x86.ActiveCfg = Release|Any CPU
-		{1D88837B-951F-4411-ABD9-69FCA5B52C5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1D88837B-951F-4411-ABD9-69FCA5B52C5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1D88837B-951F-4411-ABD9-69FCA5B52C5A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{1D88837B-951F-4411-ABD9-69FCA5B52C5A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{1D88837B-951F-4411-ABD9-69FCA5B52C5A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{1D88837B-951F-4411-ABD9-69FCA5B52C5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1D88837B-951F-4411-ABD9-69FCA5B52C5A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1D88837B-951F-4411-ABD9-69FCA5B52C5A}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{1D88837B-951F-4411-ABD9-69FCA5B52C5A}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
-		{1D88837B-951F-4411-ABD9-69FCA5B52C5A}.Release|x86.ActiveCfg = Release|Any CPU
-		{1F903078-36B9-40AE-9FF2-67F7DC5E058B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1F903078-36B9-40AE-9FF2-67F7DC5E058B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1F903078-36B9-40AE-9FF2-67F7DC5E058B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{1F903078-36B9-40AE-9FF2-67F7DC5E058B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{1F903078-36B9-40AE-9FF2-67F7DC5E058B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{1F903078-36B9-40AE-9FF2-67F7DC5E058B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1F903078-36B9-40AE-9FF2-67F7DC5E058B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1F903078-36B9-40AE-9FF2-67F7DC5E058B}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{1F903078-36B9-40AE-9FF2-67F7DC5E058B}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
-		{1F903078-36B9-40AE-9FF2-67F7DC5E058B}.Release|x86.ActiveCfg = Release|Any CPU
-		{108C1D8A-CAE1-46DA-B951-60E1FC67EF12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{108C1D8A-CAE1-46DA-B951-60E1FC67EF12}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{108C1D8A-CAE1-46DA-B951-60E1FC67EF12}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{108C1D8A-CAE1-46DA-B951-60E1FC67EF12}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{108C1D8A-CAE1-46DA-B951-60E1FC67EF12}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{108C1D8A-CAE1-46DA-B951-60E1FC67EF12}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{108C1D8A-CAE1-46DA-B951-60E1FC67EF12}.Release|Any CPU.Build.0 = Release|Any CPU
-		{108C1D8A-CAE1-46DA-B951-60E1FC67EF12}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{108C1D8A-CAE1-46DA-B951-60E1FC67EF12}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{108C1D8A-CAE1-46DA-B951-60E1FC67EF12}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

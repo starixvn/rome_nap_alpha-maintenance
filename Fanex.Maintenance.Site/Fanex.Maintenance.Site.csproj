@@ -237,7 +237,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\BundleExtensions.cs" />
-    <Compile Include="Areas\MailStation\MailStationAreaRegistration.cs" />
     <Compile Include="Areas\UserLogin\Controllers\BaseController.cs" />
     <Compile Include="Areas\UserLogin\Controllers\CommonController.cs" />
     <Compile Include="Areas\UserLogin\Controllers\LoginController.cs" />
@@ -252,68 +251,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Content Include="App_Data\SIT\ConnectionStringSpName.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="App_Data\SIT\DBMMS.bodb_MMS.bodbAdminNet.xml">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="App_Data\SIT\mSiteSpNames.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="App_Data\SIT\NAPCommonSpNames.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="App_Data\LOCAL\ConnectionStringSpName.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="App_Data\LOCAL\DBMMS.bodb_MMS.bodbAdminNet.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Data\LOCAL\mSiteSpNames.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="App_Data\LOCAL\NAPCommonSpNames.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="App_Data\PRO\ConnectionStringSpName.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="App_Data\PRO\DBMMS.bodb_MMS.bodbAdminNet.xml">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="App_Data\PRO\mSiteSpNames.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="App_Data\PRO\NAPCommonSpNames.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="App_Data\UAT\ConnectionStringSpName.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="App_Data\UAT\DBMMS.bodb_MMS.bodbAdminNet.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Data\UAT\mSiteSpNames.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="App_Data\UAT\NAPCommonSpNames.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Areas\MailStation\MailGroup\CreateMailGroup\Scripts\CreateMailGroup.js" />
-    <Content Include="Areas\MailStation\MailGroup\ManageMailGroup\Scripts\ManageMailGroup.js" />
-    <Content Include="Areas\MailStation\MailGroup\ManageMailGroup\Styles\Images\trigger.png" />
-    <Content Include="Areas\MailStation\MailGroup\UpdateMailGroup\Scripts\UpdateMailGroup.js" />
-    <Content Include="Areas\MailStation\ManageMail\CreateMail\Scripts\CreateMailController.js" />
-    <Content Include="Areas\MailStation\ManageMail\ManageMail\Scripts\MailManageController.js" />
-    <Content Include="Areas\MailStation\ManageMail\ManageMail\Styles\Images\trigger.png" />
-    <Content Include="Areas\MailStation\ManageMail\UpdateMail\Scripts\UpdateMailController.js" />
-    <Content Include="Areas\MailStation\ManageRecipient\CreateRecipient\Scripts\CreateRecipientController.js" />
-    <Content Include="Areas\MailStation\ManageRecipient\ManageRecipient\Scripts\ManageRecipientController.js" />
-    <Content Include="Areas\MailStation\ManageRecipient\UpdateRecipient\Scripts\UpdateRecipientController.js" />
-    <Content Include="Areas\MailStation\Report\MailDetail\Scripts\MailDetailController.js" />
-    <Content Include="Areas\MailStation\Report\MailLog\Scripts\MailLogController.js" />
-    <Content Include="Areas\MailStation\Report\MailReport\Scripts\MailReportController.js" />
     <Content Include="Areas\UserLogin\scripts\lib\jquery-1.8.0.min.js" />
     <Content Include="Areas\UserLogin\scripts\lib\msgbox\images\alert.png" />
     <Content Include="Areas\UserLogin\scripts\lib\msgbox\images\btn-close.png" />
@@ -345,12 +294,6 @@
     <Content Include="images\sprite_v.png" />
     <Content Include="images\Stop.png" />
     <Content Include="images\Stop_disable.png" />
-    <Content Include="scripts\Connection\Connection.js" />
-    <Content Include="scripts\Connection\ChangeConnection.js" />
-    <Content Include="scripts\Connection\AliasDatabase.js" />
-    <Content Include="scripts\Connection\Log.js" />
-    <Content Include="scripts\Connection\Database.js" />
-    <Content Include="scripts\Connection\Site.js" />
     <Content Include="scripts\lib\ContextMenu\ContextMenuController.js" />
     <Content Include="scripts\lib\Countdown\CountdownController.js" />
     <Content Include="scripts\lib\Countdown\Images\countdownCheck.png" />
@@ -424,11 +367,6 @@
     <Content Include="scripts\lib\XMLEditor\js\ext\jquery.js" />
     <Content Include="scripts\lib\XMLEditor\js\loc\xmlEditor.js" />
     <Content Include="scripts\Logs\Index.js" />
-    <Content Include="scripts\Mail\AddMailSettingPopUp.js" />
-    <Content Include="scripts\Mail\AddMailFunction.js" />
-    <Content Include="scripts\Mail\AddMailConfigPopUp.js" />
-    <Content Include="scripts\Mail\AddMailConfig.js" />
-    <Content Include="scripts\Mail\MailList.js" />
     <Content Include="scripts\Maintenance.js" />
     <Content Include="scripts\lib\Fanex.Grid\Fanex.Grid.Convert.js" />
     <Content Include="scripts\lib\Fanex.Grid\Fanex.Grid.css" />
@@ -474,7 +412,6 @@
     <Content Include="scripts\lib\Select2\select2.css" />
     <Content Include="scripts\lib\Select2\select2.js" />
     <Content Include="scripts\lib\Select2\select2.png" />
-    <Content Include="scripts\ServiceMonitoring\ServiceMonitoring.js" />
     <Content Include="scripts\ShareScripts\SharedScriptManager.js" />
     <Content Include="themes\assets\css\font-awesome-ie7.css" />
     <Content Include="themes\assets\css\font-awesome.css" />
@@ -702,67 +639,17 @@
     <Content Include="themes\manage\themes.less" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Log\Index.cshtml" />
-    <Content Include="Views\Mail\MailList.cshtml" />
-    <Content Include="Views\Mail\MailSetting.cshtml" />
-    <Content Include="Views\Mail\AddMailSetting.cshtml" />
-    <Content Include="Views\Mail\EditMailSetting.cshtml" />
-    <Content Include="Views\Mail\MailConfig.cshtml" />
-    <Content Include="Views\Mail\AddMailConfig.cshtml" />
-    <Content Include="Views\Mail\EditMailConfig.cshtml" />
-    <Content Include="Views\Mail\MailFunction.cshtml" />
-    <Content Include="Views\Mail\AddMailFunction.cshtml" />
-    <Content Include="Views\Mail\EditMailFunction.cshtml" />
-    <Content Include="Views\Mail\AddMailConfigPopUp.cshtml" />
-    <Content Include="Views\Mail\AddMailSettingPopUp.cshtml" />
-    <Content Include="Views\Mail\GetMessage.cshtml" />
-    <Content Include="Views\DatabaseReport\DataIntegrity.cshtml" />
     <Content Include="WebConnectionString.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\ConnectionString\Connection.cshtml" />
-    <Content Include="Views\ConnectionString\CreateConnection.cshtml" />
-    <Content Include="Views\ConnectionString\Site.cshtml" />
-    <Content Include="Views\ConnectionString\CreateSite.cshtml" />
-    <Content Include="Views\ConnectionString\EditSite.cshtml" />
-    <Content Include="Views\ConnectionString\DatabaseServer.cshtml" />
-    <Content Include="Views\ConnectionString\CreateDatabaseServer.cshtml" />
-    <Content Include="Views\ConnectionString\EditDatabaseServer.cshtml" />
     <Content Include="Views\CommonError\Error.cshtml" />
     <Content Include="Views\CommonError\NotFound.cshtml" />
-    <Content Include="Views\ConnectionString\Log.cshtml" />
-    <Content Include="Views\Mail\GetError.cshtml" />
     <Content Include="Views\Machine\Index.cshtml" />
     <Content Include="Views\Machine\EditMachine.cshtml" />
     <Content Include="Views\Machine\InsertMachine.cshtml" />
     <Content Include="themes\manage\RefreshCountDown.less" />
-    <Content Include="Views\LicenseeSetting\LrfDomain.cshtml" />
-    <Content Include="Views\ConnectionString\Database.cshtml" />
-    <Content Include="Views\ConnectionString\CreateDatabase.cshtml" />
-    <Content Include="Views\ConnectionString\EditDatabase.cshtml" />
-    <Content Include="Views\ConnectionString\EditConnection.cshtml" />
-    <Content Include="Views\ConnectionString\SwitchConnection.cshtml" />
-    <Content Include="Views\ConnectionString\ConnectionAssignSite.cshtml" />
-    <Content Include="Views\ConnectionString\LogAction\LogAction102.cshtml" />
-    <Content Include="Views\ConnectionString\LogAction\LogAction101.cshtml" />
-    <Content Include="Views\ConnectionString\LogAction\LogAction100.cshtml" />
-    <Content Include="Views\ConnectionString\LogAction\LogAction200.cshtml" />
-    <Content Include="Views\ConnectionString\LogAction\LogAction202.cshtml" />
-    <Content Include="Views\ConnectionString\LogAction\LogAction201.cshtml" />
-    <Content Include="Views\ConnectionString\LogAction\LogAction300.cshtml" />
-    <Content Include="Views\ConnectionString\LogAction\LogAction301.cshtml" />
-    <Content Include="Views\ConnectionString\LogAction\LogAction302.cshtml" />
-    <Content Include="Views\ConnectionString\LogAction\LogAction400.cshtml" />
-    <Content Include="Views\ConnectionString\LogAction\LogAction401.cshtml" />
-    <Content Include="Views\ConnectionString\LogAction\LogAction402.cshtml" />
-    <Content Include="Views\ConnectionString\LogAction\LogAction403.cshtml" />
-    <Content Include="Views\ConnectionString\LogAction\LogAction404.cshtml" />
-    <Content Include="Views\ConnectionString\LogAction\LogAction405.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Fanex.MailDelivery.MailStation\Fanex.MailDelivery.MailStation.csproj">
-      <Project>{108C1D8A-CAE1-46DA-B951-60E1FC67EF12}</Project>
-      <Name>Fanex.MailDelivery.MailStation</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Fanex.Maintenance.Controller\Fanex.Maintenance.Controller.csproj">
       <Project>{E7173CDD-8ECB-4FB6-B585-41BFE941745E}</Project>
       <Name>Fanex.Maintenance.Controller</Name>
@@ -771,16 +658,9 @@
       <Project>{60BC3FA8-DF7C-4024-B469-4ED110420143}</Project>
       <Name>Fanex.Maintenance.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Fanex.Maintenance.ViewModel\Fanex.Maintenance.ViewModel.csproj">
-      <Project>{1D88837B-951F-4411-ABD9-69FCA5B52C5A}</Project>
-      <Name>Fanex.Maintenance.ViewModel</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Menu.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\ConnectionString\GetConnectionBySite.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="themes\grid.less" />
@@ -789,44 +669,8 @@
     <Content Include="themes\manage\report\dataintegry.less" />
     <Content Include="themes\select-site.less" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Content Include="Views\Mail\ComposeEmail.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ServiceMonitoringCache\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\ServiceMonitoring\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\ServiceMonitoring\XMLEditor.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Areas\MailStation\MailGroup\CreateMailGroup\Index.cshtml" />
-    <Content Include="Areas\MailStation\MailGroup\CreateMailGroup\Styles\CreateMailGroup.less" />
-    <Content Include="Areas\MailStation\MailGroup\ManageMailGroup\Index.cshtml" />
-    <Content Include="Areas\MailStation\MailGroup\ManageMailGroup\Styles\ManageMailGroup.less" />
-    <Content Include="Areas\MailStation\MailGroup\UpdateMailGroup\Index.cshtml" />
-    <Content Include="Areas\MailStation\MailGroup\UpdateMailGroup\Styles\UpdateMailGroup.less" />
-    <Content Include="Areas\MailStation\ManageMail\CreateMail\Index.cshtml" />
-    <Content Include="Areas\MailStation\ManageMail\CreateMail\Styles\CreateMail.less" />
-    <Content Include="Areas\MailStation\ManageMail\ManageMail\Index.cshtml" />
-    <Content Include="Areas\MailStation\ManageMail\ManageMail\Styles\ManageMail.less" />
-    <Content Include="Areas\MailStation\ManageMail\UpdateMail\Index.cshtml" />
-    <Content Include="Areas\MailStation\ManageMail\UpdateMail\Styles\UpdateMail.less" />
-    <Content Include="Areas\MailStation\ManageRecipient\CreateRecipient\Index.cshtml" />
-    <Content Include="Areas\MailStation\ManageRecipient\CreateRecipient\Styles\CreateRecipient.less" />
-    <Content Include="Areas\MailStation\ManageRecipient\ManageRecipient\Index.cshtml" />
-    <Content Include="Areas\MailStation\ManageRecipient\ManageRecipient\Styles\ManageRecipient.less" />
-    <Content Include="Areas\MailStation\ManageRecipient\UpdateRecipient\Index.cshtml" />
-    <Content Include="Areas\MailStation\ManageRecipient\UpdateRecipient\Styles\UpdateRecipient.less" />
-    <Content Include="Areas\MailStation\Report\MailDetail\Index.cshtml" />
-    <Content Include="Areas\MailStation\Report\MailDetail\Styles\MailDetail.less" />
-    <Content Include="Areas\MailStation\Report\MailLog\Index.cshtml" />
-    <Content Include="Areas\MailStation\Report\MailLog\Styles\MailLog.less" />
-    <Content Include="Areas\MailStation\Report\MailReport\Index.cshtml" />
-    <Content Include="Areas\MailStation\Report\MailReport\Styles\MailReport.less" />
-    <Content Include="Areas\MailStation\Web.config" />
     <Content Include="Web.local.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
