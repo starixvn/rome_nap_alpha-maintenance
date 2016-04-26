@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Maintenance.Site", "Fanex.Maintenance.Site\Fanex.Maintenance.Site.csproj", "{D4312B0D-CC74-4AA1-979A-AF26702808A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.Maintenance.Site", "Alpha.Maintenance.Site\Alpha.Maintenance.Site.csproj", "{D4312B0D-CC74-4AA1-979A-AF26702808A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Maintenance.Core", "Fanex.Maintenance.Core\Fanex.Maintenance.Core.csproj", "{60BC3FA8-DF7C-4024-B469-4ED110420143}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.Maintenance.Core", "Alpha.Maintenance.Core\Alpha.Maintenance.Core.csproj", "{60BC3FA8-DF7C-4024-B469-4ED110420143}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Maintenance.Repository", "Fanex.Maintenance.Repository\Fanex.Maintenance.Repository.csproj", "{8858DC31-A292-4388-8E07-9B2E345A3FE6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.Maintenance.Repository", "Alpha.Maintenance.Repository\Alpha.Maintenance.Repository.csproj", "{8858DC31-A292-4388-8E07-9B2E345A3FE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Maintenance.Service", "Fanex.Maintenance.Service\Fanex.Maintenance.Service.csproj", "{6F5C23B0-7EB0-4020-9664-5F904BB99BBC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.Maintenance.Service", "Alpha.Maintenance.Service\Alpha.Maintenance.Service.csproj", "{6F5C23B0-7EB0-4020-9664-5F904BB99BBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fanex.Maintenance.Controller", "Fanex.Maintenance.Controller\Fanex.Maintenance.Controller.csproj", "{E7173CDD-8ECB-4FB6-B585-41BFE941745E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.Maintenance.Controller", "Alpha.Maintenance.Controller\Alpha.Maintenance.Controller.csproj", "{E7173CDD-8ECB-4FB6-B585-41BFE941745E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeAnalysis", "CodeAnalysis", "{9295C957-AF58-481F-B1FB-A826E3F066E8}"
 	ProjectSection(SolutionItems) = preProject
