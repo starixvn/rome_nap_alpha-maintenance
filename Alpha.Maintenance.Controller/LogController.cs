@@ -40,6 +40,7 @@ namespace Alpha.Maintenance.Controller
         /// Log Category Service.
         /// </summary>
         private readonly LogCategoryService _categoryService;
+        private int _selectedCategoryId;
 
         #endregion Member
 
@@ -75,7 +76,7 @@ namespace Alpha.Maintenance.Controller
 
             var criteria = new GetLogCriteria
             {
-                CategoryId = 0,
+                CategoryId = _selectedCategoryId,
                 MachineId = 0,
                 IsProduction = null,
                 IsMonitored = null,
@@ -375,11 +376,16 @@ namespace Alpha.Maintenance.Controller
             List<SelectListItem> listCategory = _categoryService.GetAll().Select(c => new SelectListItem
             {
                 Text = c.CategoryName,
-                Value = c.CategoryID.ToString(),
-                Selected = c.CategoryName.ToLower().Contains("alpha-789y-af")
+                Value = c.CategoryID.ToString()
             }).ToList();
             listCategory.Insert(0, defaultSelection);
             ViewBag.ListCategory = listCategory;
+
+            var specialCategory = listCategory.Where(category => category.Text.ToLower().Contains("alpha-789y-af")).FirstOrDefault();
+            if (specialCategory != null)
+            {
+                _selectedCategoryId = int.Parse(specialCategory.Value);
+            }
         }
 
         #endregion Private
