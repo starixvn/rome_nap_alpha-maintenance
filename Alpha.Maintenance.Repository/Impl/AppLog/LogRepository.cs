@@ -11,9 +11,9 @@ namespace Alpha.Maintenance.Repository.Impl.AppLog
 {
     using System;
     using System.Collections.Generic;
-    using Fanex.Data;
     using Alpha.Maintenance.Core.Model;
     using Alpha.Maintenance.Repository.Criteria.Log;
+    using Fanex.Data;
 
     /// <summary>
     /// Log repository.
@@ -30,15 +30,15 @@ namespace Alpha.Maintenance.Repository.Impl.AppLog
             using (var db = new ObjectDb(criteria.GetSettingKey()))
             {
                 var param = criteria.GetSpParams();
-                
+
                 var list = db.Query<Log, LogCategory, Machine, Log>(
                     (l, c, m) =>
                     {
                         l.Category = c;
                         l.Machine = m;
                         return l;
-                    }, 
-                    "CategoryID,MachineId", 
+                    },
+                    "CategoryID,MachineId",
                     param);
 
                 criteria.TotalRows = Convert.ToInt32(param["totalrows"]);

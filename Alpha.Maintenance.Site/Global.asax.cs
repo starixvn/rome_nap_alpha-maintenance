@@ -15,9 +15,9 @@ namespace Alpha.Maintenance.Site
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
+    using Alpha.Maintenance.Site.App_Start;
     using Fanex.Data.Configuration;
     using Fanex.Logging;
-    using Alpha.Maintenance.Site.App_Start;
 
     /// <summary>
     /// Note: For instructions on enabling IIS6 or IIS7 classic mode, visit http://go.microsoft.com/?LinkId=9394801 .
@@ -30,7 +30,7 @@ namespace Alpha.Maintenance.Site
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            
+
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

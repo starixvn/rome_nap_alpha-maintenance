@@ -10,9 +10,10 @@
 namespace Alpha.Maintenance.Service.Impl.AppLog
 {
     using System.Collections.Generic;
-    using Fanex.Data.Repository;
+    using System.Linq;
     using Alpha.Maintenance.Core.Model;
     using Alpha.Maintenance.Repository.Criteria.Log;
+    using Fanex.Data.Repository;
 
     /// <summary>
     /// Log category service.
@@ -41,8 +42,17 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
         public IEnumerable<LogCategory> GetAll()
         {
             var criteria = new GetAllCategoryCriteria();
+            var categories = _categoryRepository.Fetch(criteria);
 
-            return _categoryRepository.Fetch(criteria);
+            return categories.OrderBy(logCategory =>
+            {
+                if (logCategory.CategoryName.ToLower().StartsWith("alpha-"))
+                {
+                    return 0;
+                }
+
+                return 1;
+            });
         }
     }
 }

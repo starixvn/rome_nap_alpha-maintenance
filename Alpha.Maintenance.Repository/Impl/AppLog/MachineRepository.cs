@@ -10,10 +10,10 @@
 namespace Alpha.Maintenance.Repository.Impl.AppLog
 {
     using System.Collections;
-    using Fanex.Data;
     using Alpha.Maintenance.Core.Model;
     using Alpha.Maintenance.Repository.Criteria.Log;
     using Alpha.Maintenance.Repository.Criteria.Misc;
+    using Fanex.Data;
     using Fanex.NAP.Core.Command;
 
     /// <summary>
