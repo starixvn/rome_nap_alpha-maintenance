@@ -368,14 +368,15 @@ namespace Alpha.Maintenance.Controller
             {
                 Text = ViewResource.All,
                 Value = "0",
-                Selected = true
+                Selected = false
             };
 
             // Get Category from DB
             List<SelectListItem> listCategory = _categoryService.GetAll().Select(c => new SelectListItem
             {
                 Text = c.CategoryName,
-                Value = c.CategoryID.ToString()
+                Value = c.CategoryID.ToString(),
+                Selected = c.CategoryName.ToLower().Contains("alpha-789y-af")
             }).ToList();
             listCategory.Insert(0, defaultSelection);
             ViewBag.ListCategory = listCategory;
