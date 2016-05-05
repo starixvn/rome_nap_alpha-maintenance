@@ -1,0 +1,79 @@
+﻿@import "../abstracts/variables";
+
+.side-nav {
+    width: 252px;
+    box-shadow: none;
+
+    .brand-logo {
+        padding-left: 2rem !important;
+
+        img {
+            vertical-align: middle;
+        }
+
+        .logo {
+            padding-left: 10px;
+        }
+    }
+
+    &.fixed {
+        .collapsible-header {
+            background: $white;
+            padding: 0 2rem;
+            min-height: 4.8rem;
+            line-height: 4.8rem;
+            text-transform: uppercase;
+
+            &:hover {
+                background: none;
+            }
+        }
+
+        .collapsible-body {
+            padding: 0 20px;
+
+            li {
+                border-bottom: 1px solid #dfe8f1;
+                padding-left: 16px;
+                line-height: 42px;
+
+                a {
+                    display: inline-block;
+                    padding-left: 15px;
+                    vertical-align: middle;
+                    height: 42px;
+                    line-height: 42px;
+                    color: #6b7a99;
+
+                    &:hover {
+                        color: $blue-dark;
+                    }
+                }
+
+                img {
+                    vertical-align: middle;
+                }
+
+                &.active {
+                    background: $white;
+
+                    a {
+                        color: $blue-dark;
+                        font-weight: 500;
+                    }
+                }
+
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+
+    a {
+        font-size: 1.3rem;
+        &:hover {
+            background: none;
+        }
+    }
+}

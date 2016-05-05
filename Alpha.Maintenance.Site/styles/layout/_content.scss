@@ -1,0 +1,99 @@
+﻿@import "../abstracts/variables";
+
+.page-title {
+    padding: 0 3rem;
+    margin-bottom: 2rem;
+
+    .title {
+        font-size: 16px;
+        color: $blue-dark;
+        text-transform: uppercase;
+        margin: 0;
+        padding-top: 2rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .sub-title {
+        font-size: 1.2rem;
+    }
+}
+
+.page-form {
+    margin: 0 1.5rem;
+    padding-top: 1.5rem;
+    background: $white;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+
+    .row {
+        margin-bottom: 12px;
+        .col {
+            padding: 0 1.5rem;
+        }
+    }
+
+    .input-field {
+        font-size: 1.3rem;
+
+        label {
+            left: 1.5rem;
+            font-size: 1.2rem;
+            color: #808080;
+        }
+
+        input[type=text] {
+            height: 3.5rem;
+            line-height: 3.5rem;
+            border-color: #ccc;
+            font-size: 1.3rem;
+            color: $black;
+
+            &:focus:not([readonly]) {
+                border-color: $blue-light;
+                + label {
+                    color: $blue-light;
+                }
+            }
+        }
+
+        ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: $black;
+        }
+
+        &.input {
+            label {
+                top: 14px;
+            }
+        }
+
+        .icon {
+            position: absolute;
+            right: 15px;
+            top: 8px;
+        }
+    }
+
+    .dropdown-content {
+        margin-top: 5px;
+    }
+
+    .dropdown-content li > {
+        a, span {
+            font-size: 1.3rem;
+            color: $black;
+        }
+    }
+
+    .select-wrapper {
+        input.select-dropdown {
+            height: 3.5rem;
+            line-height: 3.5rem;
+            border-color: #ccc;
+            font-size: 1.3rem;
+            color: $black;
+        }
+
+        span.caret {
+            color: $blue-light;
+        }
+    }
+}

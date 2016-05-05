@@ -1,0 +1,48 @@
+﻿@import "../abstracts/variables";
+
+.logo {
+    background: $blue;
+}
+
+header {
+    nav {
+        background: $blue-dark;
+        // height: 78px;
+        //line-height: 78px;
+        box-shadow: none;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .navbar-fixed {
+        //height: 78px;
+    }
+}
+
+.nav-wrapper {
+    padding-left: 252px;
+
+    .breadcrumb {
+        font-size: 13px;
+        padding-left: 3rem;
+        color: $white;
+
+        .active {
+            color: $yellow;
+        }
+    }
+
+    .profile {
+        padding-right: 2.5rem;
+
+        > * {
+            vertical-align: middle;
+            padding-left: 15px;
+            cursor: pointer;
+        }
+    }
+
+    @media only screen and (max-width: 992px) {
+        padding-left: 25px;
+    }
+}

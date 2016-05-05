@@ -5,17 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var hasEditRight = (bool)ViewBag.HasEdit;
 }
-@section Head {
-    @Styles.Render("~/css/manage")
-}
 @section Headline {
-    <h1>
-        <span class="title">@ViewResource.AppLogs_MangeMachines</span>
-        @if (hasEditRight)
-        { 
-            @Html.ActionLink("+ Create New", "InsertMachine", "Machine", new { @class = "lnk" })
-        }
-    </h1>
+    <h4 class="title">@ViewResource.AppLogs_MangeMachines</h4>
+    @if (hasEditRight)
+    {
+        @Html.ActionLink("+ Create New", "InsertMachine", "Machine", new { @class = "lnk" })
+    }
 }
 @using (Html.BeginForm())
 {
@@ -52,7 +47,7 @@
                 @ViewResource.IsProduction
             </th>
             @if (hasEditRight)
-            { 
+            {
                 <th>
                     @ViewResource.Edit
                 </th>
@@ -69,37 +64,41 @@
                 {
                     string row_class = i % 2 == 0 ? "alt" : string.Empty;
 
-            <tr class="@row_class">
-                <td class="align-center">@i
-                </td>
-                <td>@machine.MachineName
-                </td>
-                <td class="align-center">@machine.MachineIP
+                    <tr class="@row_class">
+                        <td class="align-center">
+                            @i
+                    </td>
+                    <td>
+                        @machine.MachineName
                 </td>
                 <td class="align-center">
-                    GMT (@(machine.TimeZone > 0 ? "+" + machine.TimeZone : machine.TimeZone.ToString()))
-                </td>
-                <td>@(machine.IsProduction ? Html.Raw("<span class='btn-check'/>") : Html.Raw(string.Empty))
-                </td>
-                @if (hasEditRight)
-                { 
-                    <td class="align-center">
-                        <div class="action-wrp">
-                            @Html.ActionLink("Machine", "EditMachine", new { id = machine.MachineId }, new { @class = "btn-edit" })
-                        </div>
-                    </td>
-                }
-            </tr>
-                i++;
+                    @machine.MachineIP
+            </td>
+            <td class="align-center">
+                GMT (@(machine.TimeZone > 0 ? "+" + machine.TimeZone : machine.TimeZone.ToString()))
+            </td>
+            <td>
+                @(machine.IsProduction ? Html.Raw("<span class='btn-check'/>") : Html.Raw(string.Empty))
+        </td>
+        @if (hasEditRight)
+        {
+            <td class="align-center">
+                <div class="action-wrp">
+                    @Html.ActionLink("Machine", "EditMachine", new { id = machine.MachineId }, new { @class = "btn-edit" })
+                </div>
+            </td>
+        }
+    </tr>
+                    i++;
                 }
             }
             else
             {
-            <tr>
-                <td colspan="5">
-                    @ViewResource.NoInformationAvailable
-                </td>
-            </tr>
+                <tr>
+                    <td colspan="5">
+                        @ViewResource.NoInformationAvailable
+                    </td>
+                </tr>
             }
         }
     </tbody>

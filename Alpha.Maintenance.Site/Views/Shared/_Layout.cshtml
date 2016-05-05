@@ -4,44 +4,68 @@
 <!--[if (IE 8)&!(IEMobile)]><html class="no-js ie8 oldie" lang="en"><![endif]-->
 <!--[if (IE 9)&!(IEMobile)]><html class="no-js ie9" lang="en"><![endif]-->
 <!--[if (gt IE 9)|(gt IEMobile 7)]><!-->
-<html lang="en" class="linen" ng-app="app">
+<html lang="en" ng-app="app">
 <!--<![endif]-->
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>@ViewBag.Title</title>
-    <meta http-equiv="cleartype" content="on" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    @Styles.Render("~/css/common")
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="~/styles/main.min.css" rel="stylesheet" />
+
     @RenderSection("Head", false)
 </head>
 <body>
     <header>
-        <div class="logo">
-            <a href="~/?ref=logo">Alpha - mSite</a>
-        </div>
-        @Html.Action("_Menu", new RouteValueDictionary(new { controller = "Home", area = "" }))
-        <div class="user-info">
-            <div class="greeting">
-                <h2>
-                    Howdy, @HttpContext.Current.User.Identity.Name</h2>
-                <ul>
-                    <li>@Html.ActionLink("Sign Out", "LogOut", "Login", new { Area = "UserLogin" }, new { })</li>
-                </ul>
+
+        <div class="navbar-fixed">
+            <div class="container left">
+                <a href="#" data-activates="nav-mobile" class="button-collapse top-nav waves-effect circle hide-on-large-only"><i class="material-icons">reorder</i></a>
             </div>
+            <nav class="nav-wrapper">
+                <div class="breadcrumb left"><span>Home / App logs / </span><span class="active">View logs</span></div>
+                <div class="right profile">
+                    <span>Howdy, @HttpContext.Current.User.Identity.Name</span>
+                    <img src="images/ic-setting.png" />
+                    <img src="images/ic-logout.png" />
+                    @Html.ActionLink("Sign Out", "LogOut", "Login", new { Area = "UserLogin" }, new { })
+                </div>
+            </nav>
         </div>
+
+        <ul id="nav-mobile" class="side-nav fixed">
+            <li class="logo">
+                <a id="logo-container" href="http://materializecss.com/" class="brand-logo">
+                    <span><img src="images/logo2.png" /> </span>
+                    <span class="logo"><img src="images/logo.png" /></span>
+                </a>
+            </li>
+            <li class="no-padding">
+                @Html.Action("_Menu", new RouteValueDictionary(new { controller = "Home", area = "" }))
+            </li>
+        </ul>
     </header>
-    <section id="headline">
-        @RenderSection("Headline", false)
-    </section>
-    @RenderSection("FilterBar", false)
-    <section id="body">
-        <div class="content">
-            @RenderSection("LeftMenu", false)
-            @RenderBody()
+
+    <main>
+        <div class="page-title">
+            @RenderSection("Headline", false)
         </div>
-    </section>
+
+        <div class="page-form">
+
+            @RenderSection("FilterBar", false)
+
+            @RenderBody()
+        
+        </div>
+    </main>
+
+
     <div id="dialog-message">
     </div>
     <div id="dialog-popup">
@@ -51,8 +75,13 @@
     </script>
 </body>
 </html>
+
 @Html.Hidden("NapAdminRoot", Url.Content("~/"))
-@Scripts.Render("~/scripts/common")
+
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
 @if (ViewBag.ViewFlags != null && ViewBag.ViewFlags.IsReCheckin)
 {
     @Scripts.Render("~/scripts/recheckin")

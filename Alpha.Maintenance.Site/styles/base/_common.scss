@@ -1,0 +1,28 @@
+﻿@import "../abstracts/variables";
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background: #f5f7fa;
+    font-size: 1.3em;
+    color: $gray;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    padding-left: 252px;
+    width: 100%;
+    height: 100%;
+}
+
+@media only screen and (max-width: 992px) {
+    header, main, footer {
+        padding-left: 0;
+    }
+}

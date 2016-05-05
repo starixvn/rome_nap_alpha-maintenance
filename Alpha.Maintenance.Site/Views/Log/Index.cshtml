@@ -6,22 +6,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     IEnumerable<Log> listLog = (IEnumerable<Log>)ViewBag.ListLog;    
 }
-@section Head {
-    @Styles.Render("~/css/log")
-}
-@section Headline {
-    <h1>
-        <span class="title">@ViewBag.Title</span>
-        @if (Model.HasEdit)
-        {
-            <a href="#" id="btnRemoveLog" class="lnk">Remove (Before date @DateTime.Now.AddDays(-5).ToShortDateString())
-            </a>
-        }
 
-        <a href="http://58.86.55.10/mSite/Log" class="lnk" target="_blank">
-            Go to mSite
+@section Headline {
+
+    <h4 class="title">@ViewBag.Title</h4>
+    @if (Model.HasEdit)
+    {
+        <a href="#" id="btnRemoveLog" class="sub-title">
+            Remove (Before date @DateTime.Now.AddDays(-5).ToShortDateString())
         </a>
-    </h1>
+    }
 }
 @using (Html.BeginForm())
 {  
@@ -119,5 +113,7 @@
 @Html.Hidden("imagePath", (string)@Url.Content("~/images/calendar.gif"))
 @Html.Hidden("HasEdit", Model.HasEdit ? 1 : 0)
 @section Foot {
+    @Scripts.Render("~/scripts/common")
+
     @Scripts.Render("~/scripts/log")
 }

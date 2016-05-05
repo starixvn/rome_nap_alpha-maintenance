@@ -413,6 +413,12 @@
     <Content Include="scripts\lib\Select2\select2.js" />
     <Content Include="scripts\lib\Select2\select2.png" />
     <Content Include="scripts\ShareScripts\SharedScriptManager.js" />
+    <Content Include="styles\main.css">
+      <DependentUpon>main.scss</DependentUpon>
+    </Content>
+    <Content Include="styles\main.min.css">
+      <DependentUpon>main.css</DependentUpon>
+    </Content>
     <Content Include="themes\assets\css\font-awesome-ie7.css" />
     <Content Include="themes\assets\css\font-awesome.css" />
     <Content Include="themes\assets\css\prettify.css" />
@@ -708,6 +714,10 @@
       <DependentUpon>WebConnectionString.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="scripts\lib\Fanex.Grid\Fanex.Grid.less" />
     <Content Include="scripts\lib\InputCombobox\colors.less" />
     <Content Include="scripts\lib\InputCombobox\common.less" />
@@ -716,7 +726,13 @@
     <Content Include="scripts\lib\InputCombobox\jquery.combobox-ext.less" />
     <Content Include="themes\shared\contextmenu.less" />
     <Content Include="themes\shared\formedit.less" />
-    <Content Include="Views\Shared\_LayoutWithTimer.cshtml" />
+    <Content Include="styles\main.scss" />
+    <Content Include="styles\abstracts\_variables.scss" />
+    <Content Include="styles\base\_common.scss" />
+    <Content Include="styles\components\_button.scss" />
+    <Content Include="styles\layout\_content.scss" />
+    <Content Include="styles\layout\_header.scss" />
+    <Content Include="styles\layout\_sideNav.scss" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
