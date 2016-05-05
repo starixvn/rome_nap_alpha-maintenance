@@ -330,7 +330,7 @@ var Logs = (function ($) {
             Logs.getMachines(0);
             Logs.ddlCategory.select2();
             Logs.btnRemoveLog.bind("click", Logs.removeLog);
-            Logs.btnSubmit.live('click', function () {
+            Logs.btnSubmit.on('click', function () {
                 Logs.generateData(50, 0);
             });
             Logs.dpkFrom.datepicker({
@@ -430,7 +430,7 @@ $(document).ready(function () {
     Logs.bindEventHandlers();
     Logs.initFreeHeader();
 
-    $('.logMessage').live('click', function () {
+    $('.logMessage').on('click', function () {
         var logId = $(this).attr("logid");
         $.ajax({
             url: NAP.resolveClientUrl("Log/GetLogMessage"),
@@ -455,26 +455,26 @@ $(document).ready(function () {
         });
     });
 
-    $('.category-filter').live('click', function () {
+    $('.category-filter').on('click', function () {
         var categoryId = $(this).attr('data-categoryid');
         $('#CategoryId').select2('val', categoryId);
         $('#submit').click();
     });
 
-    $('.machine-filter').live('click', function () {
+    $('.machine-filter').on('click', function () {
         var machineId = $(this).attr('data-machineid');
         $('#MachineId').select2('val', machineId);
         $('#submit').click();
     });
 
-    $('.machinetype-filter').live('click', function () {
+    $('.machinetype-filter').on('click', function () {
         var isProduction = $(this).attr('data-machinetype');
         var val = isProduction === "true" ? "Production" : "UAT";
         $('#MachineId').select2('val', val);
         $('#submit').click();
     });
 
-    $('.severity-filter').live('click', function () {
+    $('.severity-filter').on('click', function () {
         var severity = $(this).text();
         $('#Severity').val(severity);
         $('#submit').click();
