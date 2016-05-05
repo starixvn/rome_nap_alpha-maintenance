@@ -109,8 +109,16 @@
 @Html.Hidden("imagePath", (string)@Url.Content("~/images/ic-calendar.png"))
 @Html.Hidden("HasEdit", Model.HasEdit ? 1 : 0)
 @section Foot {
-    @Scripts.Render("~/scripts/common")
-    @Scripts.Render("~/scripts/log")
+    @*@Scripts.Render("~/scripts/common")
+    @Scripts.Render("~/scripts/log")*@
+<script src="~/scripts/lib/msgbox/msgbox-0.0.1.js"></script>
+<script src="~/scripts/Maintenance.js"></script>
+<script src="~/scripts/lib/Fanex.Grid/Fanex.Grid.js"></script>
+<script src="~/scripts/lib/Fanex.Grid/Fanex.Pagination.js"></script>
+<script src="~/scripts/lib/jquery.cookie.js"></script>
+<script src="~/scripts/lib/Momentjs/moment.min.js"></script>
+<script src="~/scripts/lib/Select2/select2.js"></script>
+<script src="~/scripts/Logs/Index.js"></script>
 }
 
 

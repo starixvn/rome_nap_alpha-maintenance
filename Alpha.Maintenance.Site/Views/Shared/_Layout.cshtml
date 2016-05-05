@@ -86,9 +86,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 <script src="~/scripts/init.js"></script>
 
+@RenderSection("Foot", false)
+@RenderSection("scripts", false)
+
+
 @if (ViewBag.ViewFlags != null && ViewBag.ViewFlags.IsReCheckin)
 {
     @Scripts.Render("~/scripts/recheckin")
 }
-@RenderSection("Foot", false)
-@RenderSection("scripts", false)

@@ -14,7 +14,7 @@
 
     var str_msgbox = 'msgbox',
         str_msgboxOverlay = 'MsgBoxOverlay',
-        agentLtIe9 = $.browser.msie && parseInt($.browser.version, 10) < 9,
+        agentLtIe9 = $.browser && $.browser.msie && parseInt($.browser.version, 10) < 9,
         W = $(window),
         D = $(document),
         M = function (target, options) { // MsgBox Class.
