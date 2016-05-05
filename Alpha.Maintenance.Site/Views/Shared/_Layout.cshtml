@@ -34,9 +34,8 @@
                     <span>Howdy, @HttpContext.Current.User.Identity.Name</span>
                     @*<img src="images/ic-setting.png" />
                     <img src="images/ic-logout.png" />*@
-                    <i class="icon-settings"></i>
-                    <i class="icon-login"></i>
-                    @Html.ActionLink("Sign Out", "LogOut", "Login", new { Area = "UserLogin" }, new { })
+                    @*<i class="icon-settings"></i>*@                    
+                    <a class="icon-login" href="~/UserLogin/Login/LogOut"></a>
                 </div>
             </nav>
         </div>

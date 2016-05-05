@@ -189,6 +189,9 @@ header nav {
 .ui-datepicker {
   background: #fff; }
 
+.icon-login {
+  font-size: 20px; }
+
 .table {
   padding: 0 15px; }
   .table td, .table th {
@@ -197,4 +200,32 @@ header nav {
   .table thead th {
     background: #476bb7;
     color: #fff; }
+
+.message {
+  cursor: pointer;
+  display: block;
+  word-wrap: break-word;
+  max-height: 60px;
+  max-width: 735px;
+  min-height: 60px; }
+
+.hiden {
+  display: none;
+  width: 640px; }
+
+#dialog-popup {
+  background: #fff; }
+
+#pagination {
+  padding: 0 15px; }
+
+.numberlist ul > li {
+  display: inline-block;
+  padding: 5px; }
+
+#itemperpage, .itemperpage, .numberlist {
+  display: inline-block; }
+
+.detailtext {
+  float: right; }
 
