@@ -319,6 +319,7 @@
     <Content Include="scripts\lib\Fanex.Grid\moment.min.js" />
     <Content Include="scripts\lib\Fanex.Grid\numeral.min.js" />
     <Content Include="scripts\lib\InputCombobox\jquery.combobox-ext.js" />
+    <Content Include="scripts\lib\jquery-ui.min.js" />
     <Content Include="scripts\lib\jquery.blockUI.js" />
     <Content Include="scripts\lib\chosen\chosen-sprite.png" />
     <Content Include="scripts\lib\chosen\chosen.css" />
