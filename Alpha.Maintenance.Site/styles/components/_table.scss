@@ -1,0 +1,18 @@
+﻿@import "../abstracts/variables";
+
+.table {
+    padding: 0 15px;
+
+    td, th {
+        border-radius: 0;
+        padding: 10px 8px;
+    }
+
+    thead {
+        th {
+            background: $blue;
+            color: $white;
+            
+        }
+    }
+}

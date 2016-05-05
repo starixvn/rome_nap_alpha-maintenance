@@ -12,94 +12,96 @@
         @Html.ActionLink("+ Create New", "InsertMachine", "Machine", new { @class = "lnk" })
     }
 }
-@using (Html.BeginForm())
-{
+@using (Html.BeginForm()){
     <section id="filter-bar">
-        <div class="filter-form">
-            <div class="lbl-field width-auto">
+        <div class="row">
+            <div class="input-field col l2 m3 s6">
+                @Html.DropDownList("MachineType", (List<SelectListItem>)ViewBag.MachineTypes, new { @class = "js-select" })
                 @Html.Label(ViewResource.MachineType)
             </div>
-            <div class="edit-field">
-                @Html.DropDownList("MachineType", (List<SelectListItem>)ViewBag.MachineTypes)
-            </div>
-            <div class="submit">
-                <input type="submit" value="@ViewResource.Submit" />
-            </div>
+            <div class="col l2 m3 s6 button-block">
+                <a class="waves-effect waves-light btn btn-primary"><input type="submit" value="@ViewResource.Submit" /></a>
+            </div>            
         </div>
     </section>
 }
-<table class="grid" style="width: 96.8%">
-    <thead>
-        <tr>
-            <th>
-                #
-            </th>
-            <th>
-                @ViewResource.Machine_Name
-            </th>
-            <th class="width-100">
-                @ViewResource.Machine_IP
-            </th>
-            <th class="width-100">
-                @ViewResource.TimeZone
-            </th>
-            <th class="width-100">
-                @ViewResource.IsProduction
-            </th>
-            @if (hasEditRight)
-            {
-                <th>
-                    @ViewResource.Edit
-                </th>
-            }
-        </tr>
-    </thead>
-    <tbody>
-        @{
-            int i = 1;
-            IEnumerable<Machine> machineList = ViewBag.Machines as IEnumerable<Machine>;
-            if (!ReferenceEquals(machineList, null))
-            {
-                foreach (Machine machine in machineList)
-                {
-                    string row_class = i % 2 == 0 ? "alt" : string.Empty;
 
-                    <tr class="@row_class">
-                        <td class="align-center">
-                            @i
-                    </td>
-                    <td>
-                        @machine.MachineName
-                </td>
-                <td class="align-center">
-                    @machine.MachineIP
-            </td>
-            <td class="align-center">
-                GMT (@(machine.TimeZone > 0 ? "+" + machine.TimeZone : machine.TimeZone.ToString()))
-            </td>
-            <td>
-                @(machine.IsProduction ? Html.Raw("<span class='btn-check'/>") : Html.Raw(string.Empty))
-        </td>
-        @if (hasEditRight)
-        {
-            <td class="align-center">
-                <div class="action-wrp">
-                    @Html.ActionLink("Machine", "EditMachine", new { id = machine.MachineId }, new { @class = "btn-edit" })
-                </div>
-            </td>
-        }
-    </tr>
-                    i++;
+<div class="table">
+    <table class="grid">
+        <thead>
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                    @ViewResource.Machine_Name
+                </th>
+                <th class="width-100">
+                    @ViewResource.Machine_IP
+                </th>
+                <th class="width-100">
+                    @ViewResource.TimeZone
+                </th>
+                <th class="width-100">
+                    @ViewResource.IsProduction
+                </th>
+                @if (hasEditRight)
+            {
+                    <th>
+                        @ViewResource.Edit
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 1;
+                IEnumerable<Machine> machineList = ViewBag.Machines as IEnumerable<Machine>;
+                if (!ReferenceEquals(machineList, null))
+                {
+                    foreach (Machine machine in machineList)
+                    {
+                        string row_class = i % 2 == 0 ? "alt" : string.Empty;
+
+                        <tr class="@row_class">
+                            <td class="align-center">
+                                @i
+                            </td>
+                            <td>
+                                @machine.MachineName
+                            </td>
+                            <td class="align-center">
+                                @machine.MachineIP
+                            </td>
+                            <td class="align-center">
+                                GMT (@(machine.TimeZone > 0 ? "+" + machine.TimeZone : machine.TimeZone.ToString()))
+                            </td>
+                            <td>
+                                @(machine.IsProduction ? Html.Raw("<span class='btn-check'/>") : Html.Raw(string.Empty))
+                            </td>
+                            @if (hasEditRight)
+                            {
+                                <td class="align-center">
+                                    <div class="action-wrp">
+                                        @Html.ActionLink("Machine", "EditMachine", new { id = machine.MachineId }, new { @class = "btn-edit" })
+                                    </div>
+                                </td>
+                            }
+                        </tr>
+                        i++;
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5">
+                            @ViewResource.NoInformationAvailable
+                        </td>
+                    </tr>
                 }
             }
-            else
-            {
-                <tr>
-                    <td colspan="5">
-                        @ViewResource.NoInformationAvailable
-                    </td>
-                </tr>
-            }
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
+
+

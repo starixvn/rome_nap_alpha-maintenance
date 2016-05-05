@@ -89,6 +89,10 @@ main {
       padding: 0 1.5rem; }
   .page-form .input-field {
     font-size: 1.3rem; }
+    .page-form .input-field .lbl-field {
+      width: 3rem; }
+    .page-form .input-field .width-large {
+      width: 20rem; }
     .page-form .input-field label {
       left: 1.5rem;
       font-size: 1.2rem;
@@ -144,6 +148,8 @@ header nav {
   .nav-wrapper .profile {
     padding-right: 2.5rem; }
     .nav-wrapper .profile > * {
+      display: inline-block;
+      height: inherit;
       vertical-align: middle;
       padding-left: 15px;
       cursor: pointer; }
@@ -173,4 +179,22 @@ header nav {
   @media only screen and (min-width: 601px) {
     .button-collapse .material-icons {
       line-height: 64px; } }
+
+.ui-datepicker-trigger {
+  position: absolute;
+  top: 7px;
+  right: 15px;
+  cursor: pointer; }
+
+.ui-datepicker {
+  background: #fff; }
+
+.table {
+  padding: 0 15px; }
+  .table td, .table th {
+    border-radius: 0;
+    padding: 10px 8px; }
+  .table thead th {
+    background: #476bb7;
+    color: #fff; }
 

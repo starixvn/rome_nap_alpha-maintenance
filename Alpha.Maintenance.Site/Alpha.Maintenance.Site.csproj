@@ -289,10 +289,10 @@
     <Content Include="images\calendar.gif" />
     <Content Include="images\ic-calendar.png" />
     <Content Include="images\ic-logout.png" />
-    <Content Include="images\ic-servers.png" />
+    <Content Include="images\menu-manage_servers.png" />
     <Content Include="images\ic-service.png" />
     <Content Include="images\ic-setting.png" />
-    <Content Include="images\ic-viewlogs.png" />
+    <Content Include="images\menu-view_logs.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\logo2.png" />
     <Content Include="images\Play.png" />
@@ -302,6 +302,7 @@
     <Content Include="images\sprite_v.png" />
     <Content Include="images\Stop.png" />
     <Content Include="images\Stop_disable.png" />
+    <Content Include="scripts\init.js" />
     <Content Include="scripts\lib\ContextMenu\ContextMenuController.js" />
     <Content Include="scripts\lib\Countdown\CountdownController.js" />
     <Content Include="scripts\lib\Countdown\Images\countdownCheck.png" />
@@ -318,6 +319,7 @@
     <Content Include="scripts\lib\Fanex.Grid\moment.min.js" />
     <Content Include="scripts\lib\Fanex.Grid\numeral.min.js" />
     <Content Include="scripts\lib\InputCombobox\jquery.combobox-ext.js" />
+    <Content Include="scripts\lib\jquery-2.1.1.min.js" />
     <Content Include="scripts\lib\jquery.blockUI.js" />
     <Content Include="scripts\lib\chosen\chosen-sprite.png" />
     <Content Include="scripts\lib\chosen\chosen.css" />
