@@ -746,6 +746,7 @@
     <Content Include="styles\layout\_sideNav.scss" />
     <Content Include="styles\vendors\icon\selection.json" />
     <Content Include="styles\components\_table.scss" />
+    <Content Include="styles\components\_pagination.scss" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
