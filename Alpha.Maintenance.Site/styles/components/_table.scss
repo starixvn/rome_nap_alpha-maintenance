@@ -5,14 +5,14 @@
 
     td, th {
         border-radius: 0;
-        padding: 10px 8px;
+        padding: 8px 12px;
     }
 
     thead {
         th {
             background: $blue;
             color: $white;
-            padding: 15px;
+            padding: 10px 12px;
         }
     }
 
@@ -27,10 +27,8 @@
 .message {
     cursor: pointer;
     display: block;
-    word-wrap: break-word;
-    max-height: 60px;
-    max-width: 735px;
-    min-height: 60px;
+    word-wrap: break-word;   
+    max-width: 735px;    
 }
 
 .hiden {

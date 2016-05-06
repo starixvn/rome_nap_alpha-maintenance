@@ -11,13 +11,13 @@
 }
 
 @section Headline {
-    <h4 class="title">@ViewBag.Title</h4>
+    @*<h4 class="title">@ViewBag.Title</h4>
     @if (Model.HasEdit)
     {
         <a href="#" id="btnRemoveLog" class="sub-title">
             Remove (Before date @DateTime.Now.AddDays(-5).ToShortDateString())
         </a>
-    }
+    }*@
 }
 @using (Html.BeginForm())
 {
@@ -62,8 +62,9 @@
                     @Html.DropDownListFor(m => m.IsMonitored, (List<SelectListItem>)ViewBag.LogStatus, new { @class = "js-select" })
                     @Html.LabelFor(m => m.IsMonitored, ViewResource.Status)
                 </div>
-                <div class="col l2 m3 s6 button-block">
+                <div class="col button-block">
                     <input class="waves-effect waves-light btn btn-primary" type="button" value="@ViewResource.Submit" id="submit" />
+                    <a class="waves-effect btn-flat">Remove (Before date 5/1/2016)</a>
                 </div>
             </div>
         </div>

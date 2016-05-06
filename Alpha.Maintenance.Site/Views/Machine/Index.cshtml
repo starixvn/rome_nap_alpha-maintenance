@@ -6,11 +6,11 @@
     var hasEditRight = (bool)ViewBag.HasEdit;
 }
 @section Headline {
-    <h4 class="title">@ViewResource.AppLogs_MangeMachines</h4>
+    @*<h4 class="title">@ViewResource.AppLogs_MangeMachines</h4>
     @if (hasEditRight)
     {
         @Html.ActionLink("+ Create New", "InsertMachine", "Machine", new { @class = "lnk" })
-    }
+    }*@
 }
 @using (Html.BeginForm()){
     <section id="filter-bar">
@@ -21,6 +21,7 @@
             </div>
             <div class="col l2 m3 s6 button-block">
                 <a class="waves-effect waves-light btn btn-primary"><input type="submit" value="@ViewResource.Submit" /></a>
+                <a class="waves-effect btn-flat">Create New</a>
             </div>            
         </div>
     </section>
