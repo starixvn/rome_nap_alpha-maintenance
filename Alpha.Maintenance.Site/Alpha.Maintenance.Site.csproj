@@ -299,6 +299,7 @@
     <Content Include="images\Play_disable.png" />
     <Content Include="images\ReRun.png" />
     <Content Include="images\ReRun_disable.png" />
+    <Content Include="images\select2.png" />
     <Content Include="images\sprite_v.png" />
     <Content Include="images\Stop.png" />
     <Content Include="images\Stop_disable.png" />
@@ -748,6 +749,7 @@
     <Content Include="styles\vendors\icon\selection.json" />
     <Content Include="styles\components\_table.scss" />
     <Content Include="styles\components\_pagination.scss" />
+    <Content Include="styles\vendors\_select2.scss" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

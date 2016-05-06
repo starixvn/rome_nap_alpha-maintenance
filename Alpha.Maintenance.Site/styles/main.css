@@ -68,6 +68,9 @@ body {
 a {
   color: #024ee5; }
 
+.align-center {
+  text-align: center; }
+
 main {
   padding-left: 252px;
   width: 100%;
@@ -233,7 +236,8 @@ header nav {
   height: 32px;
   line-height: 32px;
   text-transform: none;
-  color: #024ee5; }
+  color: #024ee5;
+  text-decoration: underline; }
 
 .button-block {
   margin-top: 1rem; }
@@ -314,6 +318,11 @@ header nav {
 
 #itemperpage, .itemperpage, .numberlist {
   display: inline-block; }
+
+#itemperpage {
+  border: none;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.04), 0 3px 1px -2px rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  outline: none; }
 
 .itemperpage {
   margin-right: 10px; }
