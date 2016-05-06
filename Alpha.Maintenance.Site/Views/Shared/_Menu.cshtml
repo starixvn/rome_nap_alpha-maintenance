@@ -18,7 +18,7 @@
                     <ul>
                         @foreach (var subMenuItem in lvl1MenuItemList)
                         {
-                            <li mid="@subMenuItem.Id" class="active">
+                            <li mid="@subMenuItem.Id">
                                 <img src="~/images/menu-@(subMenuItem.Name.ToLower().Replace(" ", "_")).png" />
                                 <a href="@Url.Content(subMenuItem.ValidUrl)">@subMenuItem.Name</a>
                             </li>

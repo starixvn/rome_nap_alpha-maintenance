@@ -1,4 +1,59 @@
-﻿html {
+﻿.select2-container .select2-choice {
+  height: 3.5rem !important;
+  border: none !important;
+  border-bottom: 1px solid #ccc !important;
+  background: none !important;
+  border-radius: 0 !important;
+  line-height: 3.5rem !important;
+  margin-top: 1px;
+  padding: 0 !important;
+  outline: none; }
+  .select2-container .select2-choice .select2-arrow {
+    border-left: none !important;
+    border-radius: 0 !important;
+    background: none !important; }
+
+.select2-container.select2-container-active .select2-choice {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important; }
+
+.select2-drop {
+  border: none !important; }
+
+.select2-search {
+  padding: 0 !important;
+  position: relative; }
+  .select2-search input {
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    background: none !important;
+    min-height: 3.5rem !important;
+    line-height: 3.5rem;
+    padding-left: 15px !important; }
+    .select2-search input:focus:not([readonly]) {
+      border-color: #476bb7;
+      box-shadow: 0 1px 0 0 #476bb7; }
+  .select2-search:after {
+    font-family: mSite;
+    content: "\e905";
+    font-size: 20px;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    color: #4060a4; }
+
+.select2-results {
+  padding: 0 !important;
+  margin: 0 !important;
+  max-height: 294px !important; }
+  .select2-results .select2-result-label {
+    padding: 15px !important; }
+  .select2-results .select2-highlighted {
+    background: #e1e1e1 !important;
+    color: inherit !important; }
+
+html {
   font-size: 62.5%; }
 
 body {
@@ -80,7 +135,7 @@ main {
 
 .page-form {
   margin: 0 1.5rem;
-  padding-top: 1.5rem;
+  padding: 1.5rem 0;
   background: #fff;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
   .page-form .row {
@@ -92,11 +147,14 @@ main {
     .page-form .input-field .lbl-field {
       width: 3rem; }
     .page-form .input-field .width-large {
-      width: 20rem; }
+      width: 100%; }
     .page-form .input-field label {
       left: 1.5rem;
       font-size: 1.2rem;
       color: #808080; }
+      .page-form .input-field label.active {
+        transform: none;
+        top: -14px; }
     .page-form .input-field input[type=text] {
       height: 3.5rem;
       line-height: 3.5rem;
@@ -161,6 +219,12 @@ header nav {
   background: #fed720; }
   .btn-primary:hover {
     background: #fcdf59; }
+  .btn-primary.waves-input-wrapper {
+    padding: 0;
+    font-family: Roboto !important; }
+    .btn-primary.waves-input-wrapper input {
+      padding: 0 2rem;
+      outline: none; }
 
 .button-block {
   margin-top: 1rem; }
@@ -199,7 +263,11 @@ header nav {
     padding: 10px 8px; }
   .table thead th {
     background: #476bb7;
-    color: #fff; }
+    color: #fff;
+    padding: 15px; }
+  .table tbody tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    color: #262626; }
 
 .message {
   cursor: pointer;
@@ -217,15 +285,36 @@ header nav {
   background: #fff; }
 
 #pagination {
-  padding: 0 15px; }
+  padding: 12px 15px;
+  color: #262626; }
 
-.numberlist ul > li {
-  display: inline-block;
-  padding: 5px; }
+.numberlist {
+  margin-left: 15px; }
+  .numberlist ul > li {
+    margin-right: 5px;
+    display: inline-block; }
+    .numberlist ul > li a, .numberlist ul > li span {
+      padding: 8px 12px;
+      border-radius: 1px;
+      color: #212121; }
+      .numberlist ul > li a.current, .numberlist ul > li a.next, .numberlist ul > li a.prev, .numberlist ul > li span.current, .numberlist ul > li span.next, .numberlist ul > li span.prev {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        background: #78828c;
+        color: #fff; }
+    .numberlist ul > li span.current.prev, .numberlist ul > li span.current.next {
+      opacity: 0.7;
+      cursor: not-allowed; }
 
 #itemperpage, .itemperpage, .numberlist {
   display: inline-block; }
 
+.itemperpage {
+  margin-right: 10px; }
+
 .detailtext {
-  float: right; }
+  float: right;
+  padding-top: 5px; }
+
+#page_menu {
+  display: none; }
 

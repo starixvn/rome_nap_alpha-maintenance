@@ -6,6 +6,16 @@
     &:hover {
         background: #fcdf59;
     }
+
+    &.waves-input-wrapper {
+        padding: 0;
+        font-family: Roboto !important;
+
+        input {
+            padding: 0 2rem;
+            outline: none;
+        }
+    }
 }
 
 .button-block {

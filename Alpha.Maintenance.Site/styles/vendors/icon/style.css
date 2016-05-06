@@ -1,9 +1,9 @@
 @font-face {
     font-family: 'mSite';
     src:
-        url('fonts/mSite.ttf?nis4al') format('truetype'),
-        url('fonts/mSite.woff?nis4al') format('woff'),
-        url('fonts/mSite.svg?nis4al#mSite') format('svg');
+        url('fonts/mSite.ttf?k2w457') format('truetype'),
+        url('fonts/mSite.woff?k2w457') format('woff'),
+        url('fonts/mSite.svg?k2w457#mSite') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -37,5 +37,8 @@
 }
 .icon-settings:before {
     content: "\e904";
+}
+.icon-magnify:before {
+    content: "\e905";
 }
 
