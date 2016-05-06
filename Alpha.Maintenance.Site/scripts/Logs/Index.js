@@ -126,7 +126,7 @@ var Logs = (function ($) {
                         $('.monitored').attr('disabled', 'disabled');
                     }
 
-                    $('#pagination').fanexPagination(result.TotalRows, {
+                    $('#pagination-1,#pagination-2').fanexPagination(result.TotalRows, {
                         itemsPerPage: pageSize,
                         startPerPage: 50,
                         itemsPerPageArray: [50, 100, 500],

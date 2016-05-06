@@ -70,7 +70,7 @@
         </div>
     </section>
     @Html.HiddenFor(m => m.Page)
-    <div id="pagination">
+    <div id="pagination-1">
     </div>
     <div class="table">
         <table class="grid persist-area">
@@ -105,6 +105,8 @@
             </thead>
             <tbody id="content"></tbody>
         </table>
+    </div>
+    <div id="pagination-2">
     </div>
 }
 @Html.Hidden("imagePath", (string)@Url.Content("~/images/ic-calendar.png"))
