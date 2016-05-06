@@ -8,6 +8,7 @@ var NAP = (function ($) {
 		NAPRoot: null,
 		dialogMsg: null,
 		dialogPopup: null,
+        modal: null,
 		headlineMsgBox: null,
 		loadingBox: null,
 		alertCallback: null,
@@ -16,6 +17,7 @@ var NAP = (function ($) {
 			NAP.NAPRoot = $('#NapAdminRoot').val();
 			NAP.dialogMsg = $('#dialog-message');
 			NAP.dialogPopup = $('#dialog-popup');
+			NAP.modal = $('#details-modal');
 		},
 		resolveClientUrl: function (relativeUrl) {
 			if (NAP.NAPRoot == null) {
@@ -99,14 +101,9 @@ var NAP = (function ($) {
 			NAP.dialogMsg.dialog('option', { title: title });
 		},
 		popup: function (title, html) {
-			NAP.dialogPopup.html(html).dialog({
-				width: 850,
-				height: 600,
-				modal: true,
-				position: ['center', 160]
-			});
-
-			NAP.dialogPopup.dialog('option', { title: title });
+		    NAP.modal.find('#modal-title').html(title);
+		    NAP.modal.find('#modal-content-data').html(html);
+		    NAP.modal.openModal();
 		},
 		closeDialog: function () {
 			NAP.dialogMsg.dialog('close');
