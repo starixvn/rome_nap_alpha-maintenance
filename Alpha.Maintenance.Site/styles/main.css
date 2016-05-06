@@ -68,8 +68,8 @@ body {
 a {
   color: #024ee5; }
 
-.align-center {
-  text-align: center; }
+.width-100 {
+  width: 150px; }
 
 main {
   padding-left: 252px;
@@ -295,7 +295,7 @@ header nav {
 #dialog-popup {
   background: #fff; }
 
-#pagination {
+#pagination-1, #pagination-2 {
   padding: 12px 15px;
   color: #262626; }
 
