@@ -34,7 +34,7 @@
                     </div>
                     <div class="calendar">
                         @*@Html.TextBox("From", Model.From.ToString("MMM dd,yyyy"), new { @autocomplete = "off" })*@
-                        <input type="date" class="datepicker" placeholder="09 May, 2016">
+                        <input type="date" name="From" id="From" class="datepicker" value="@Model.From.ToString("MMM dd,yyyy")" />
                         <span class="icon-calendar-text"></span>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="calendar">
                         @*@Html.TextBox("To", Model.To.ToString("MMM dd,yyyy"), new { @autocomplete = "off" })*@
-                        <input type="date" class="datepicker" placeholder="09 May, 2016">
+                        <input type="date" name="To" id="To" class="datepicker" value="@Model.To.ToString("MMM dd,yyyy")" />
                         <span class="icon-calendar-text"></span>
                     </div>
                 </div>

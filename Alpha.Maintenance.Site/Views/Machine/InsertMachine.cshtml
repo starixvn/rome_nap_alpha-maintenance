@@ -5,12 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     bool success = ((ViewBag.Success != null) && (ViewBag.Success.Code == 0));  
 }
-@section Head {
-    @Styles.Render("~/css/manage")
-}
 @section Headline {
+    @ViewResource.InsertMachine
     <h1>
-        <span class="title">@ViewResource.InsertMachine</span>
+        <span class="title"></span>
         @Html.ActionLink("← " + ViewResource.Back_To_List, "Index", "Machine", null, new { @class = "lnk" })
     </h1>
 }
