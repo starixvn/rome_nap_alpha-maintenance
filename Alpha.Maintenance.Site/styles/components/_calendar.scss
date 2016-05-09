@@ -5,6 +5,10 @@
     font-size: 13px;
 }
 
+.picker__input {
+    cursor: pointer;
+}
+
 .picker__date-display {
     background-color: $blue;
 }

@@ -1,21 +1,16 @@
 ﻿@import "../abstracts/variables";
 
-.btn-primary {
+.btn-primary { 
     background: $yellow;
-
     &:hover {
         background: #fcdf59;
     }
+}
 
-    &.waves-input-wrapper {
-        padding: 0;
-        font-family: Roboto !important;
-
-        input {
-            padding: 0 2rem;
-            outline: none;
-        }
-    }
+.btn-cancel {
+    background: #757575;
+    color: #fff !important;
+    margin-left: 10px;
 }
 
 .btn-flat {
@@ -35,7 +30,17 @@
     border-radius: 1px;
     box-shadow: none;
     height: 32px;
-    line-height: 32px;
+    line-height: 32px;    
+
+    &.waves-input-wrapper {
+        padding: 0;
+        font-family: Roboto !important;
+
+        input {
+            padding: 0 2rem;
+            outline: none;
+        }
+    }
 }
 
 .button-collapse {

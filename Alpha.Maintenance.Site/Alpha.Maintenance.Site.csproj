@@ -746,10 +746,11 @@
     <Content Include="styles\layout\_content.scss" />
     <Content Include="styles\layout\_header.scss" />
     <Content Include="styles\layout\_sideNav.scss" />
-    <Content Include="styles\vendors\icon\selection.json" />
     <Content Include="styles\components\_table.scss" />
     <Content Include="styles\components\_pagination.scss" />
     <Content Include="styles\vendors\_select2.scss" />
+    <Content Include="styles\components\_calendar.scss" />
+    <Content Include="styles\vendors\icon\selection.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

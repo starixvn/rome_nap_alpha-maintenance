@@ -2,5 +2,9 @@
   {
     "outputFile": "styles/main.css",
     "inputFile": "styles/main.scss"
+  },
+  {
+    "outputFile": "styles/pages/manage.css",
+    "inputFile": "styles/pages/manage.scss"
   }
 ]

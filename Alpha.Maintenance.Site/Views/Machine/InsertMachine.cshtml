@@ -3,69 +3,60 @@
 @{
     ViewBag.Title = ViewResource.InsertMachine;
     Layout = "~/Views/Shared/_Layout.cshtml";
-    bool success = ((ViewBag.Success != null) && (ViewBag.Success.Code == 0));  
+    bool success = ((ViewBag.Success != null) && (ViewBag.Success.Code == 0));
+}
+@section Head {
+    <link href="~/styles/pages/manage.min.css" rel="stylesheet" />
 }
 @section Headline {
-    @ViewResource.InsertMachine
-    <h1>
-        <span class="title"></span>
-        @Html.ActionLink("← " + ViewResource.Back_To_List, "Index", "Machine", null, new { @class = "lnk" })
-    </h1>
+    @*<h4 class="title">@ViewResource.InsertMachine</h4>*@
+    @Html.ActionLink("← " + ViewResource.Back_To_List, "Index", "Machine", null, new { @class = "waves-effect waves-light btn btn-primary" })
+
 }
 @using (Html.BeginForm())
-{
-    <div class="form">
-        <div class="form-row summary">
-            <div class="lbl-field">
-            </div>
-            <div class="edit-field">
-                @Html.ValidationSummary()
-                @Html.HiddenFor(m => m.MachineId)
-            </div>
+{    
+    <div class="row summary">
+        <div class="lbl-field">
         </div>
-        <div class="form-row">
-            <div class="lbl-field">
-                @Html.LabelFor(m => m.MachineName, ViewResource.Machine_Name)
-            </div>
-            <div class="edit-field">
-                @Html.TextBoxFor(m => m.MachineName)
-            </div>
+        <div class="edit-field">
+            @Html.ValidationSummary()
+            @Html.HiddenFor(m => m.MachineId)
         </div>
-        <div class="form-row">
-            <div class="lbl-field">
-                @Html.LabelFor(m => m.MachineIP, ViewResource.Machine_IP)
-            </div>
-            <div class="edit-field">
-                @Html.EditorFor(m => m.MachineIP)
-            </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+            @Html.LabelFor(m => m.MachineName, ViewResource.Machine_Name)
+            @Html.TextBoxFor(m => m.MachineName)
+        </div>        
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+            @Html.LabelFor(m => m.MachineIP, ViewResource.Machine_IP)
+            @Html.EditorFor(m => m.MachineIP)
+        </div>        
+    </div>
+    <div class="row">
+        <div class="input-field col s6 checkbox">
+            @*@Html.LabelFor(m => m.IsProduction, ViewResource.IsProduction)
+            @Html.EditorFor(m => m.IsProduction)*@
+            <input name="group1" type="checkbox" id="test1" />
+            <label for="test1">Is Production</label>
         </div>
-        <div class="form-row">
-            <div class="lbl-field">
-                @Html.LabelFor(m => m.IsProduction, ViewResource.IsProduction)
-            </div>
-            <div class="edit-field">
-                @Html.EditorFor(m => m.IsProduction)
-            </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+            @Html.LabelFor(m => m.TimeZone, ViewResource.TimeZone, new { @class = "active" })
+            @Html.EditorFor(m => m.TimeZone)
         </div>
-        <div class="form-row">
-            <div class="lbl-field">
-                @Html.LabelFor(m => m.TimeZone, ViewResource.TimeZone)
-            </div>
-            <div class="edit-field">
-                @Html.EditorFor(m => m.TimeZone)
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="lbl-field">
-            </div>
-            <div class="edit-field">
-                @if (!success)
+    </div>
+    <div class="row">
+        <div class="input-field col">
+            @if (!success)
                 {
-                    <input type="submit" value="@ViewResource.Save" />
-                    <input type="reset" value="@ViewResource.Cancel" />  
-                }
-            </div>
-        </div>
+                <input class="waves-effect waves-light btn btn-primary" type="submit" value="@ViewResource.Save" />
+                <input class="waves-effect waves-light btn btn-cancel" type="reset" value="@ViewResource.Cancel" />
+            }
+        </div>        
     </div>
 }
 @section Foot

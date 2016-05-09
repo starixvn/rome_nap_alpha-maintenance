@@ -80,6 +80,9 @@ main {
   header, main, footer {
     padding-left: 0; } }
 
+.link-back, .title {
+  display: inline-block; }
+
 .side-nav {
   width: 252px;
   box-shadow: none; }
@@ -127,8 +130,8 @@ main {
       background: none; }
 
 .page-title {
-  padding: 0 3rem;
-  margin-bottom: 2rem; }
+  padding: 0 1.5rem;
+  margin-top: 1.5rem; }
   .page-title .title {
     font-size: 16px;
     color: #4060a4;
@@ -140,7 +143,7 @@ main {
     font-size: 1.2rem; }
 
 .page-form {
-  margin: 0 1.5rem;
+  margin: 1.5rem;
   padding: 1.5rem 0;
   background: #fff;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
@@ -168,9 +171,13 @@ main {
       font-size: 1.3rem;
       color: #2c2c2c; }
       .page-form .input-field input[type=text]:focus:not([readonly]) {
-        border-color: #549cba; }
+        border-bottom: 1px solid #476bb7;
+        box-shadow: 0 1px 0 0 #476bb7; }
         .page-form .input-field input[type=text]:focus:not([readonly]) + label {
-          color: #549cba; }
+          color: #476bb7; }
+    .page-form .input-field input[type="checkbox"]:checked + label:before {
+      border-right: 2px solid #476bb7;
+      border-bottom: 2px solid #476bb7; }
     .page-form .input-field ::-webkit-input-placeholder {
       /* Chrome/Opera/Safari */
       color: #2c2c2c; }
@@ -188,6 +195,12 @@ main {
         top: 8px;
         font-size: 20px;
         color: #549cba; }
+    .page-form .input-field.checkbox {
+      margin-top: 0;
+      margin-bottom: 1rem; }
+      .page-form .input-field.checkbox label {
+        left: 0;
+        top: 0; }
   .page-form .dropdown-content {
     margin-top: 5px; }
   .page-form .dropdown-content li > a, .page-form .dropdown-content li > span {
@@ -239,12 +252,11 @@ header nav {
   background: #fed720; }
   .btn-primary:hover {
     background: #fcdf59; }
-  .btn-primary.waves-input-wrapper {
-    padding: 0;
-    font-family: Roboto !important; }
-    .btn-primary.waves-input-wrapper input {
-      padding: 0 2rem;
-      outline: none; }
+
+.btn-cancel {
+  background: #757575;
+  color: #fff !important;
+  margin-left: 10px; }
 
 .btn-flat {
   height: 32px;
@@ -262,6 +274,12 @@ header nav {
   box-shadow: none;
   height: 32px;
   line-height: 32px; }
+  .btn.waves-input-wrapper {
+    padding: 0;
+    font-family: Roboto !important; }
+    .btn.waves-input-wrapper input {
+      padding: 0 2rem;
+      outline: none; }
 
 .button-collapse .material-icons {
   color: #fff;
@@ -373,6 +391,9 @@ header nav {
 
 .picker__table {
   font-size: 13px; }
+
+.picker__input {
+  cursor: pointer; }
 
 .picker__date-display {
   background-color: #476bb7; }

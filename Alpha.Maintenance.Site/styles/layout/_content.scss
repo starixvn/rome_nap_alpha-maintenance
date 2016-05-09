@@ -1,8 +1,8 @@
 ﻿@import "../abstracts/variables";
 
 .page-title {
-    padding: 0 3rem;
-    margin-bottom: 2rem;
+    padding: 0 1.5rem;
+    margin-top: 1.5rem;
 
     .title {
         font-size: 16px;
@@ -19,13 +19,14 @@
 }
 
 .page-form {
-    margin: 0 1.5rem;
+    margin: 1.5rem;
     padding: 1.5rem 0;
     background: $white;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
 
     .row {
         margin-bottom: 12px;
+
         .col {
             padding: 0 1.5rem;
         }
@@ -61,11 +62,18 @@
             color: $black;
 
             &:focus:not([readonly]) {
-                border-color: $blue-light;
+                border-bottom: 1px solid $blue;
+                box-shadow: 0 1px 0 0 $blue;
+
                 + label {
-                    color: $blue-light;
+                    color: $blue;
                 }
             }
+        }
+
+        input[type="checkbox"]:checked + label:before {
+            border-right: 2px solid $blue;
+            border-bottom: 2px solid $blue;
         }
 
         ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -85,7 +93,7 @@
         }
 
         .calendar {
-            position: relative;
+            position: relative;        
 
             .icon-calendar-text {
                 position: absolute;
@@ -93,6 +101,16 @@
                 top: 8px;
                 font-size: 20px;
                 color: $blue-light;
+            }
+        }
+
+        &.checkbox {
+            margin-top: 0;
+            margin-bottom: 1rem;
+
+            label {
+                left: 0;
+                top: 0;
             }
         }
     }

@@ -68,7 +68,12 @@
                 </div>
                 <div class="col button-block">
                     <input class="waves-effect waves-light btn btn-primary" type="button" value="@ViewResource.Submit" id="submit" />
-                    <a class="waves-effect btn-flat">Remove (Before date 5/1/2016)</a>
+                    @if (Model.HasEdit)
+                    {
+                        <a href="#" id="btnRemoveLog" class="waves-effect btn-flat">
+                            Remove (Before date @DateTime.Now.AddDays(-5).ToShortDateString())
+                        </a>
+                    }
                 </div>
             </div>
         </div>
@@ -113,7 +118,7 @@
     <div id="pagination-2">
     </div>
 }
-@Html.Hidden("imagePath", (string)@Url.Content("~/images/ic-calendar.png"))
+@*@Html.Hidden("imagePath", (string)@Url.Content("~/images/ic-calendar.png"))*@
 @Html.Hidden("HasEdit", Model.HasEdit ? 1 : 0)
 @section Foot {
     @*@Scripts.Render("~/scripts/common")
