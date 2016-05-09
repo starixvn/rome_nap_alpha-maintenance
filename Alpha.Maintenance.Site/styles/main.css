@@ -69,7 +69,7 @@ a {
   color: #024ee5; }
 
 .width-100 {
-  width: 150px; }
+  width: 100px; }
 
 main {
   padding-left: 252px;
@@ -180,6 +180,14 @@ main {
       position: absolute;
       right: 15px;
       top: 8px; }
+    .page-form .input-field .calendar {
+      position: relative; }
+      .page-form .input-field .calendar .icon-calendar-text {
+        position: absolute;
+        right: -2px;
+        top: 8px;
+        font-size: 20px;
+        color: #549cba; }
   .page-form .dropdown-content {
     margin-top: 5px; }
   .page-form .dropdown-content li > a, .page-form .dropdown-content li > span {
@@ -193,6 +201,12 @@ main {
     color: #2c2c2c; }
   .page-form .select-wrapper span.caret {
     color: #549cba; }
+
+.modal {
+  background: #fff;
+  color: #2c2c2c; }
+  .modal #modal-title {
+    color: #4060a4; }
 
 .logo {
   background: #476bb7; }
@@ -269,6 +283,15 @@ header nav {
 .icon-login {
   font-size: 20px; }
 
+.icon-menu {
+  font-size: 25px;
+  color: #fff;
+  line-height: 56px;
+  padding-left: 15px; }
+  @media only screen and (min-width: 601px) {
+    .icon-menu {
+      line-height: 64px; } }
+
 .table {
   padding: 0 15px; }
   .table td, .table th {
@@ -285,8 +308,22 @@ header nav {
 .message {
   cursor: pointer;
   display: block;
-  word-wrap: break-word;
-  max-width: 735px; }
+  word-wrap: break-word; }
+  @media (min-width: 1024px) {
+    .message {
+      max-width: 225px; } }
+  @media (min-width: 1280px) {
+    .message {
+      max-width: 460px; } }
+  @media (min-width: 1360px) {
+    .message {
+      max-width: 520px; } }
+  @media (min-width: 1360px) {
+    .message {
+      max-width: 520px; } }
+  @media (min-width: 1560px) {
+    .message {
+      max-width: 735px; } }
 
 .hiden {
   display: none;
@@ -307,7 +344,7 @@ header nav {
     .numberlist ul > li a, .numberlist ul > li span {
       padding: 8px 12px;
       border-radius: 1px;
-      color: #212121; }
+      color: #262626; }
       .numberlist ul > li a.current, .numberlist ul > li a.next, .numberlist ul > li a.prev, .numberlist ul > li span.current, .numberlist ul > li span.next, .numberlist ul > li span.prev {
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
         background: #78828c;
@@ -333,4 +370,42 @@ header nav {
 
 #page_menu {
   display: none; }
+
+.picker__table {
+  font-size: 13px; }
+
+.picker__date-display {
+  background-color: #476bb7; }
+
+.picker__weekday-display {
+  font-size: inherit;
+  background-color: #4060a4; }
+
+.picker__weekday {
+  font-size: 13px; }
+
+.picker__day--infocus {
+  padding: 1.15rem 0; }
+
+.picker__day.picker__day--today {
+  color: #4060a4; }
+
+.picker__day--selected,
+.picker__day--selected:hover,
+.picker--focused .picker__day--selected {
+  background-color: rgba(71, 107, 183, 0.8); }
+
+.picker__nav--prev:hover,
+.picker__nav--next:hover {
+  background-color: rgba(71, 107, 183, 0.5); }
+
+button.picker__close, button.picker__today {
+  font-size: 12px; }
+
+button.picker__today:focus, button.picker__clear:focus, button.picker__close:focus {
+  background-color: rgba(71, 107, 183, 0.5); }
+
+@media (min-height: 28.875em) {
+  .picker__box {
+    border: none; } }
 

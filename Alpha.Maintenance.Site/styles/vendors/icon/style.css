@@ -1,9 +1,9 @@
 @font-face {
     font-family: 'mSite';
     src:
-        url('fonts/mSite.ttf?k2w457') format('truetype'),
-        url('fonts/mSite.woff?k2w457') format('woff'),
-        url('fonts/mSite.svg?k2w457#mSite') format('svg');
+        url('fonts/mSite.ttf?k1kge5') format('truetype'),
+        url('fonts/mSite.woff?k1kge5') format('woff'),
+        url('fonts/mSite.svg?k1kge5#mSite') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -40,5 +40,8 @@
 }
 .icon-magnify:before {
     content: "\e905";
+}
+.icon-menu:before {
+    content: "\e906";
 }
 

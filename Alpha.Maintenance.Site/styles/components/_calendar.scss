@@ -1,0 +1,57 @@
+﻿@import "../abstracts/variables";
+
+//-------------------CALENDAR TABLE-------------------------//
+.picker__table {
+    font-size: 13px;
+}
+
+.picker__date-display {
+    background-color: $blue;
+}
+
+.picker__weekday-display {
+    font-size: inherit;
+    background-color: $blue-dark;
+}
+
+.picker__weekday {
+    font-size: 13px;
+}
+
+.picker__day--infocus {
+    padding: 1.15rem 0;
+}
+
+
+.picker__day.picker__day--today {
+    color: $blue-dark;
+}
+
+.picker__day--selected,
+.picker__day--selected:hover,
+.picker--focused .picker__day--selected {
+    background-color: rgba(71, 107, 183, 0.8);
+}
+
+.picker__nav--prev:hover,
+.picker__nav--next:hover {
+    background-color: rgba(71, 107, 183, 0.5);
+}
+
+button {
+    &.picker__close, &.picker__today {
+        font-size: 12px;
+    }
+
+    &.picker__today:focus,
+    &.picker__clear:focus,
+    &.picker__close:focus {
+        background-color: rgba(71, 107, 183, 0.5);        
+    }
+}
+
+@media (min-height: 28.875em) {
+    .picker__box {
+        border: none;
+    }
+}

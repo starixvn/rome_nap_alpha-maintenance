@@ -19,9 +19,13 @@
                 @Html.DropDownList("MachineType", (List<SelectListItem>)ViewBag.MachineTypes, new { @class = "js-select" })
                 @Html.Label(ViewResource.MachineType)
             </div>
-            <div class="col l2 m3 s6 button-block">
+            <div class="col button-block">
                 <a class="waves-effect waves-light btn btn-primary"><input type="submit" value="@ViewResource.Submit" /></a>
-                <a class="waves-effect btn-flat">Create New</a>
+                @*<a class="waves-effect btn-flat">Create New</a>*@
+                @if (hasEditRight)
+                {
+                    @Html.ActionLink("+ Create New", "InsertMachine", "Machine", new { @class = "waves-effect btn-flat" })
+                }
             </div>            
         </div>
     </section>
