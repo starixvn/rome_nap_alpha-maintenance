@@ -1,61 +1,87 @@
 ﻿@import "../abstracts/variables";
 
-//-------------------CALENDAR TABLE-------------------------//
-.picker__table {
-    font-size: 13px;
-}
+//------------------------------ DATE PICKER --------------------------//
 
-.picker__input {
+.ui-datepicker-trigger {
+    position: absolute;
+    top: 7px;
+    right: 0;
     cursor: pointer;
 }
 
-.picker__date-display {
-    background-color: $blue;
+.ui-datepicker {
+    background: $white;
+    margin-top: 1px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
 }
 
-.picker__weekday-display {
-    font-size: inherit;
-    background-color: $blue-dark;
-}
+.ui-datepicker-header {
+    position: relative;
+    padding: 10px 0;
+    background: $blue-light;
 
-.picker__weekday {
-    font-size: 13px;
-}
-
-.picker__day--infocus {
-    padding: 1.15rem 0;
-}
-
-
-.picker__day.picker__day--today {
-    color: $blue-dark;
-}
-
-.picker__day--selected,
-.picker__day--selected:hover,
-.picker--focused .picker__day--selected {
-    background-color: rgba(71, 107, 183, 0.8);
-}
-
-.picker__nav--prev:hover,
-.picker__nav--next:hover {
-    background-color: rgba(71, 107, 183, 0.5);
-}
-
-button {
-    &.picker__close, &.picker__today {
-        font-size: 12px;
+    .ui-datepicker-prev, .ui-datepicker-next {
+        position: absolute;
+        color: $white;
+        cursor: pointer; 
     }
 
-    &.picker__today:focus,
-    &.picker__clear:focus,
-    &.picker__close:focus {
-        background-color: rgba(71, 107, 183, 0.5);        
+    .ui-datepicker-prev {
+        left: 15px;
+    }
+
+    .ui-datepicker-next {
+        right: 15px;
+    }
+
+    .ui-datepicker-title {
+        text-align: center;
+
+        .ui-datepicker-year {
+            font-weight: bold;
+            font-size: 15px;
+            color: #fff;
+        }
     }
 }
 
-@media (min-height: 28.875em) {
-    .picker__box {
-        border: none;
+.ui-datepicker-calendar {
+    thead {
+        color: $blue;
+    }
+
+    td, th {
+        padding: 5px;
+        text-align: center;
+
+        span {
+            padding: 10px;
+            display: block;
+        }
+    }
+
+    .ui-state-default {
+        color: $black;
+        padding: 10px;
+        display: block;
+    }
+
+    .ui-datepicker-week-end {
+        .ui-state-default {
+            opacity: 0.5;
+        }
+    }
+
+    .ui-datepicker-current-day {
+        .ui-state-default {
+            background: $yellow;
+        }
+    }
+
+    .ui-datepicker-today {
+        .ui-state-default {
+            font-weight: bold;
+        }
     }
 }
+

@@ -758,6 +758,7 @@
     <Content Include="styles\components\_calendar.scss" />
     <Content Include="styles\vendors\icon\selection.json" />
     <Content Include="styles\pages\manage.scss" />
+    <Content Include="styles\components\_animation.scss" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
