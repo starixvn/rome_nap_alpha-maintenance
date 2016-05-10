@@ -30,8 +30,9 @@
                         @Html.LabelFor(m => m.From, ViewResource.From, new { @class = "active" })
                     </div>
                     <div class="calendar">
-                        <input type="date" name="From" id="From" class="datepicker" value="@Model.From.ToString("MMM dd,yyyy")" />
-                        <span class="icon-calendar-text"></span>
+                        @*<input type="text" name="From" id="From" class="datepicker" value="@Model.From.ToString("MMM dd,yyyy")" />
+                        <span class="icon-calendar-text"></span>*@
+                        @Html.TextBox("From", Model.From.ToString("MMM dd,yyyy"), new { @style = "width:77px;margin-right:5px;", @autocomplete = "off" })
                     </div>
                 </div>
                 <div class="input-field col l2 m3 s6">
@@ -39,8 +40,9 @@
                         @Html.LabelFor(m => m.To, ViewResource.To, new { @class = "active" })
                     </div>
                     <div class="calendar">
-                        <input type="date" name="To" id="To" class="datepicker" value="@Model.To.ToString("MMM dd,yyyy")" />
-                        <span class="icon-calendar-text"></span>
+                        @*<input type="text" name="To" id="To" class="datepicker" value="@Model.To.ToString("MMM dd,yyyy")" />
+                        <span class="icon-calendar-text"></span>*@
+                        @Html.TextBox("To", Model.To.ToString("MMM dd,yyyy"), new { @style = "width:77px;margin-right:5px;", @autocomplete = "off" })
                     </div>
                 </div>
                 <div class="input-field col l2 m3 s6">
@@ -113,6 +115,7 @@
     <div id="pagination-2">
     </div>
 }
+@Html.Hidden("imagePath", (string)@Url.Content("~/images/calendar.gif"))
 @Html.Hidden("HasEdit", Model.HasEdit ? 1 : 0)
 @section Foot {
 <script src="~/scripts/lib/jquery-ui.min.js"></script>

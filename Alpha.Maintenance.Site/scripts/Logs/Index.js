@@ -333,6 +333,28 @@ var Logs = (function ($) {
             Logs.btnSubmit.on('click', function () {
                 Logs.generateData(50, 0);
             });
+
+            Logs.dpkFrom.datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                dateFormat: "M dd,yy",
+                showOn: "button",
+                buttonImage: $('#imagePath').val(),
+                buttonText: "From",
+                buttonImageOnly: true
+            });
+
+            Logs.dpkTo.datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                dateFormat: "M dd,yy",
+                showOn: "button",
+                buttonImage: $('#imagePath').val(),
+                buttonText: "From",
+                buttonImageOnly: true
+            });
         },
 
         initFreeHeader: function () {
@@ -368,14 +390,16 @@ var Logs = (function ($) {
                         floatingHeader = $(".floatingHeader", this);
                     if ((scrollTop > offset.top) && (scrollTop < offset.top + el.height())) {
                         floatingHeader.css({
-                            "visibility": "visible",
+                            "display": "block",
                             "left": (left - $(window).scrollLeft()),
                             "z-index": "34",
-                            "margin-left": "10px"
+                            "margin-left": "10px",
+                            "position": "fixed",
+                            "top": "63px"
                         });
                     } else {
                         floatingHeader.css({
-                            "visibility": "hidden"
+                            "display": "none"
                         });
                     }
                 });
