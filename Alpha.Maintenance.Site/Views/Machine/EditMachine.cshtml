@@ -12,10 +12,11 @@
 
 @section Headline {
     @*<span class="title">@ViewResource.EditMachine</span>*@
-    @Html.ActionLink("← " + ViewResource.Back_To_List, "Index", "Machine", null, new { @class = "waves-effect waves-light btn btn-primary" })
+    
 }
 @using (Html.BeginForm())
-{    
+{
+    @Html.ActionLink("← " + ViewResource.Back_To_List, "Index", "Machine", null, new { @class = "waves-effect waves-light link-back" })
     <div class="row summary">
         <div class="lbl-field">
         </div>
@@ -40,7 +41,7 @@
         <div class="input-field col s6 checkbox">
             @*@Html.LabelFor(m => m.IsProduction, ViewResource.IsProduction)
             @Html.EditorFor(m => m.IsProduction)*@
-            <input name="group1" type="checkbox" id="test1" checked />
+            <input class="filled-in" name="group1" type="checkbox" id="test1" checked />
             <label for="test1">Is Production</label>
         </div>
     </div>

@@ -71,10 +71,18 @@
             }
         }
 
-        input[type="checkbox"]:checked + label:before {
-            border-right: 2px solid $blue;
-            border-bottom: 2px solid $blue;
+        input[type="checkbox"].filled-in:checked + label {
+            &:before {
+                border-right: 2px solid $white;
+                border-bottom: 2px solid $white;
+            }
+
+            &:after {
+                border: 2px solid $blue;
+                background-color: $blue;
+            }
         }
+
 
         ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
             color: $black;
@@ -93,7 +101,7 @@
         }
 
         .calendar {
-            position: relative;        
+            position: relative;
 
             .icon-calendar-text {
                 position: absolute;

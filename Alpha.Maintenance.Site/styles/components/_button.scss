@@ -11,6 +11,20 @@
     background: #757575;
     color: #fff !important;
     margin-left: 10px;
+
+    &:hover {
+        background: #8f8f8f;
+    }
+}
+
+.btn-create {
+    background: #f4f4f4;    
+    margin-left: 10px;
+    border: 1px solid #dfdfdf;
+
+    &:hover {
+        background: #ebebeb;
+    }
 }
 
 .btn-flat {

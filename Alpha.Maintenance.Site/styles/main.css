@@ -80,8 +80,16 @@ main {
   header, main, footer {
     padding-left: 0; } }
 
-.link-back, .title {
-  display: inline-block; }
+.link-back {
+  display: inline-block;
+  color: #4060a4;
+  padding-left: 15px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem; }
+  .link-back:hover {
+    padding-left: 10px;
+    color: #324b7f; }
 
 .side-nav {
   width: 252px;
@@ -175,9 +183,12 @@ main {
         box-shadow: 0 1px 0 0 #476bb7; }
         .page-form .input-field input[type=text]:focus:not([readonly]) + label {
           color: #476bb7; }
-    .page-form .input-field input[type="checkbox"]:checked + label:before {
-      border-right: 2px solid #476bb7;
-      border-bottom: 2px solid #476bb7; }
+    .page-form .input-field input[type="checkbox"].filled-in:checked + label:before {
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff; }
+    .page-form .input-field input[type="checkbox"].filled-in:checked + label:after {
+      border: 2px solid #476bb7;
+      background-color: #476bb7; }
     .page-form .input-field ::-webkit-input-placeholder {
       /* Chrome/Opera/Safari */
       color: #2c2c2c; }
@@ -257,6 +268,15 @@ header nav {
   background: #757575;
   color: #fff !important;
   margin-left: 10px; }
+  .btn-cancel:hover {
+    background: #8f8f8f; }
+
+.btn-create {
+  background: #f4f4f4;
+  margin-left: 10px;
+  border: 1px solid #dfdfdf; }
+  .btn-create:hover {
+    background: #ebebeb; }
 
 .btn-flat {
   height: 32px;

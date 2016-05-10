@@ -430,6 +430,12 @@
     <Content Include="styles\main.min.css">
       <DependentUpon>main.css</DependentUpon>
     </Content>
+    <Content Include="styles\pages\manage.css">
+      <DependentUpon>manage.scss</DependentUpon>
+    </Content>
+    <Content Include="styles\pages\manage.min.css">
+      <DependentUpon>manage.css</DependentUpon>
+    </Content>
     <Content Include="styles\vendors\icon\style.css" />
     <Content Include="themes\assets\css\font-awesome-ie7.css" />
     <Content Include="themes\assets\css\font-awesome.css" />
@@ -751,6 +757,7 @@
     <Content Include="styles\vendors\_select2.scss" />
     <Content Include="styles\components\_calendar.scss" />
     <Content Include="styles\vendors\icon\selection.json" />
+    <Content Include="styles\pages\manage.scss" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

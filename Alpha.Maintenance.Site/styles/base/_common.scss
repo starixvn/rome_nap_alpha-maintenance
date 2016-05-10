@@ -35,6 +35,17 @@ main {
     }
 }
 
-.link-back, .title {
+.link-back {
     display: inline-block;
+    color: $blue-dark;
+    padding-left: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+
+    &:hover {
+        padding-left: 10px;
+        color: darken($blue-dark, 10%);        
+    }
 }
+
