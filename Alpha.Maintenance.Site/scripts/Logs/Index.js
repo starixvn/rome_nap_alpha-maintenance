@@ -434,30 +434,29 @@ $(document).ready(function () {
         });
     });
 
-    $('.category-filter').on('click', function () {
+    $('#content').on('click', '.category-filter', function () {
         var categoryId = $(this).attr('data-categoryid');
         $('#CategoryId').select2('val', categoryId);
         $('#submit').click();
     });
 
-    $('.machine-filter').on('click', function () {
+    $('#content').on('click', '.machine-filter', function () {
         var machineId = $(this).attr('data-machineid');
         $('#MachineId').select2('val', machineId);
         $('#submit').click();
     });
 
-    $('.machinetype-filter').on('click', function () {
+    $('#content').on('click', '.machinetype-filter', function () {
         var isProduction = $(this).attr('data-machinetype');
         var val = isProduction === "true" ? "Production" : "UAT";
         $('#MachineId').select2('val', val);
         $('#submit').click();
     });
 
-    $('.severity-filter').on('click', function () {
+    $('#content').on('click', '.severity-filter', function () {
         var severity = $(this).text();
-        $('#Severity').val(severity);
+        $('#Severity').val(severity).material_select('destroy');
+        $('#Severity').material_select();
         $('#submit').click();
     });
-
-//    Logs.generateData(50, 0);
 });
