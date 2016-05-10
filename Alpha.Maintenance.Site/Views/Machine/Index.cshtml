@@ -17,7 +17,7 @@
         <div class="row">
             <div class="input-field col l2 m3 s6">
                 @Html.DropDownList("MachineType", (List<SelectListItem>)ViewBag.MachineTypes, new { @class = "js-select" })
-                @Html.Label(ViewResource.MachineType)
+                @Html.Label(ViewResource.MachineType, new { @class = "active" })
             </div>
             <div class="col button-block">
                 <a class="waves-effect waves-light btn btn-primary"><input type="submit" value="@ViewResource.Submit" /></a>
