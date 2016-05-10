@@ -10,15 +10,6 @@
     <link href="~/scripts/lib/Select2/select2.css" rel="stylesheet" />
 }
 
-@section Headline {
-    @*<h4 class="title">@ViewBag.Title</h4>
-    @if (Model.HasEdit)
-    {
-        <a href="#" id="btnRemoveLog" class="sub-title">
-            Remove (Before date @DateTime.Now.AddDays(-5).ToShortDateString())
-        </a>
-    }*@
-}
 @using (Html.BeginForm())
 {
     <section id="filter-bar" style="width: 98%" ng-controller="logController">
@@ -33,7 +24,6 @@
                         @Html.LabelFor(m => m.From, ViewResource.From, new { @class = "active" })
                     </div>
                     <div class="calendar">
-                        @*@Html.TextBox("From", Model.From.ToString("MMM dd,yyyy"), new { @autocomplete = "off" })*@
                         <input type="date" name="From" id="From" class="datepicker" value="@Model.From.ToString("MMM dd,yyyy")" />
                         <span class="icon-calendar-text"></span>
                     </div>
@@ -43,7 +33,6 @@
                         @Html.LabelFor(m => m.To, ViewResource.To, new { @class = "active" })
                     </div>
                     <div class="calendar">
-                        @*@Html.TextBox("To", Model.To.ToString("MMM dd,yyyy"), new { @autocomplete = "off" })*@
                         <input type="date" name="To" id="To" class="datepicker" value="@Model.To.ToString("MMM dd,yyyy")" />
                         <span class="icon-calendar-text"></span>
                     </div>
@@ -118,15 +107,10 @@
     <div id="pagination-2">
     </div>
 }
-@*@Html.Hidden("imagePath", (string)@Url.Content("~/images/ic-calendar.png"))*@
 @Html.Hidden("HasEdit", Model.HasEdit ? 1 : 0)
 @section Foot {
-    @*@Scripts.Render("~/scripts/common")
-    @Scripts.Render("~/scripts/log")*@
-    
 <script src="~/scripts/lib/jquery-ui.min.js"></script>
 <script src="~/scripts/lib/msgbox/msgbox-0.0.1.js"></script>
-<script src="~/scripts/Maintenance.js"></script>
 <script src="~/scripts/lib/Fanex.Grid/Fanex.Grid.js"></script>
 <script src="~/scripts/lib/Fanex.Grid/Fanex.Pagination.js"></script>
 <script src="~/scripts/lib/jquery.cookie.js"></script>

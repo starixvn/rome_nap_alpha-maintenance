@@ -171,7 +171,7 @@ var Logs = (function ($) {
             if (answer) {
                 $.ajax({
                     type: "POST",
-                    url: "Log/RemoveLog",
+                    url: NAP.resolveClientUrl("Log/RemoveLog"),
                     beforeSend: function () {
                         NAP.loadingBox.show();
                     },
@@ -213,7 +213,7 @@ var Logs = (function ($) {
 
                     $.ajax({
                         type: "POST",
-                        url: "Log/MonitorLog",
+                        url: NAP.resolveClientUrl("Log/MonitorLog"),
                         data: { logId: logId, isMonitored: isMonitored },
                         beforeSend: function () {
                             NAP.loadingBox.show();
@@ -249,7 +249,7 @@ var Logs = (function ($) {
 
                     $.ajax({
                         type: "POST",
-                        url: "Log/MonitorLog",
+                        url: NAP.resolveClientUrl("Log/MonitorLog"),
                         data: { logId: logids, isMonitored: isMonitored },
                         beforeSend: function () {
                             NAP.loadingBox.show();
@@ -278,7 +278,7 @@ var Logs = (function ($) {
         getMachinesByType: function (machineType) {
             $.ajax({
                 type: "GET",
-                url: "Machine/GetMachinesByType",
+                url: NAP.resolveClientUrl("Machine/GetMachinesByType"),
                 data: { machineType: machineType },
                 beforeSend: function () {
                     NAP.loadingBox.show();

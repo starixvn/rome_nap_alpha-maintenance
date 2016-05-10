@@ -8,10 +8,7 @@
 @section Head {
     <link href="~/styles/pages/manage.min.css" rel="stylesheet" />
 }
-@section Headline {
-    @*<h4 class="title">@ViewResource.InsertMachine</h4>*@    
 
-}
 @using (Html.BeginForm())
 {
     @Html.ActionLink("←  " + ViewResource.Back_To_List, "Index", "Machine", null, new { @class = "waves-effect waves-light link-back" })
@@ -37,10 +34,8 @@
     </div>
     <div class="row">
         <div class="input-field col s4 checkbox">
-            @*@Html.LabelFor(m => m.IsProduction, ViewResource.IsProduction)
-            @Html.EditorFor(m => m.IsProduction)*@
-            <input class="filled-in" name="group1" type="checkbox" id="test1" />
-            <label for="test1">Is Production</label>
+            @Html.LabelFor(m => m.IsProduction, @ViewResource.IsProduction)
+            @Html.CheckBoxFor(m => m.IsProduction, new { @class = "filled-in" })
         </div>
     </div>
     <div class="row">

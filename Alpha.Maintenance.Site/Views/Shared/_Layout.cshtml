@@ -31,10 +31,7 @@
             <nav class="nav-wrapper">
                 <div class="breadcrumb left"><span>Home / App logs / </span><span class="active">View logs</span></div>
                 <div class="right profile">
-                    <span>Howdy, @HttpContext.Current.User.Identity.Name</span>
-                    @*<img src="images/ic-setting.png" />
-                    <img src="images/ic-logout.png" />*@
-                    @*<i class="icon-settings"></i>*@                    
+                    <span>Howdy, @HttpContext.Current.User.Identity.Name</span>                 
                     <a class="icon-login" href="~/UserLogin/Login/LogOut"></a>
                 </div>
             </nav>
@@ -87,6 +84,7 @@
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+<script src="~/scripts/Maintenance.js"></script>
 <script src="~/scripts/init.js"></script>
 
 @RenderSection("Foot", false)
@@ -95,5 +93,6 @@
 
 @if (ViewBag.ViewFlags != null && ViewBag.ViewFlags.IsReCheckin)
 {
+    <script src="~/scripts/lib/msgbox/msgbox-0.0.1.js"></script>
     @Scripts.Render("~/scripts/recheckin")
 }
