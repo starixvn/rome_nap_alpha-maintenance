@@ -58,3 +58,17 @@
 #dialog-popup {
     background: $white;
 }
+
+.severity-filter {
+    &.Information {
+        color: #0099CC;
+    }
+
+    &.Error {
+        color: #ff4444;
+    }
+
+    &.Warning {
+        color: #FF8800;
+    }
+}

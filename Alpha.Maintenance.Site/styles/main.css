@@ -276,7 +276,8 @@ header nav {
   margin-left: 10px;
   border: 1px solid #dfdfdf; }
   .btn-create:hover {
-    background: #ebebeb; }
+    background: #ebebeb;
+    border: 1px solid #ebebeb; }
 
 .btn-flat {
   height: 32px;
@@ -369,6 +370,15 @@ header nav {
 
 #dialog-popup {
   background: #fff; }
+
+.severity-filter.Information {
+  color: #0099CC; }
+
+.severity-filter.Error {
+  color: #ff4444; }
+
+.severity-filter.Warning {
+  color: #FF8800; }
 
 #pagination-1, #pagination-2 {
   padding: 12px 15px;
