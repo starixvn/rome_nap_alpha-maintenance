@@ -26,10 +26,14 @@
 
         <div class="navbar-fixed">
             <div class="container left">
-                <a href="#" data-activates="nav-mobile" class="button-collapse top-nav waves-effect circle hide-on-large-only"><span class="icon-menu"></span></a>
+                <a href="#" data-activates="nav-mobile" class="button-collapse top-nav waves-effect circle hide-on-large-only">
+                    <span class="icon-menu"></span>
+                </a>
             </div>
             <nav class="nav-wrapper">
-                <div class="breadcrumb left"><span>Home / App logs / </span><span class="active">View logs</span></div>
+                <div class="breadcrumb left">
+                    @RenderSection("Headline", false)
+                </div>
                 <div class="right profile">
                     <span>Howdy, @HttpContext.Current.User.Identity.Name</span>                 
                     <a class="icon-login" href="~/UserLogin/Login/LogOut"></a>
@@ -51,10 +55,6 @@
     </header>
 
     <main>
-        <div class="page-title">
-            @RenderSection("Headline", false)
-        </div>
-
         <div class="page-form">
 
             @RenderSection("FilterBar", false)

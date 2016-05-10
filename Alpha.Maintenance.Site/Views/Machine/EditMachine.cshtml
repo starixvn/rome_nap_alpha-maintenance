@@ -35,9 +35,11 @@
     </div>
     <div class="row">
         <div class="input-field col s6 checkbox">
-            @Html.LabelFor(m => m.IsProduction, @ViewResource.IsProduction)
-            @Html.CheckBoxFor(m => m.IsProduction, new { @class= "filled-in" })
-            
+            <input class="filled-in checkbox" id="IsProduction" name="IsProduction" type="checkbox" 
+                   @(Html.Raw(Model.IsProduction ? " checked='checked' " : string.Empty))
+                   value="true">
+            <label for="IsProduction">@ViewResource.IsProduction</label>
+            <input name="IsProduction" type="hidden" value="false">
         </div>
     </div>
     <div class="row">

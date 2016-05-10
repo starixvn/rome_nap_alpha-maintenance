@@ -6,8 +6,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     IEnumerable<Log> listLog = (IEnumerable<Log>)ViewBag.ListLog;
 }
+
 @section Head {
     <link href="~/scripts/lib/Select2/select2.css" rel="stylesheet" />
+}
+
+@section Headline {
+    <span>App logs / </span>
+    <span class="active">View logs</span>    
 }
 
 @using (Html.BeginForm())

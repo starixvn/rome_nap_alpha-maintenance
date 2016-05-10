@@ -5,6 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var hasEditRight = (bool)ViewBag.HasEdit;
 }
+
+@section Headline {
+    <span>App logs / </span>
+    <span class="active">Manage Servers</span>
+}
+
 @using (Html.BeginForm()){
     <section id="filter-bar">
         <div class="row">
