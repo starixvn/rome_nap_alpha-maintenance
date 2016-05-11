@@ -292,6 +292,7 @@
     <Content Include="Areas\UserLogin\themes\loginNew.min.css">
       <DependentUpon>loginNew.css</DependentUpon>
     </Content>
+    <Content Include="Assets\scripts\Login\index.js" />
     <Content Include="Assets\styles\main.css">
       <DependentUpon>main.scss</DependentUpon>
     </Content>
