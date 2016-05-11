@@ -393,7 +393,7 @@ var Logs = (function ($) {
                             "display": "block",
                             "left": (left - $(window).scrollLeft()),
                             "z-index": "34",
-                            "margin-left": "10px",
+                            //"margin-left": "10px",
                             "position": "fixed",
                             "top": "63px"
                         });

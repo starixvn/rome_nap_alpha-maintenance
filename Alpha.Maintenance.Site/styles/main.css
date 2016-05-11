@@ -452,7 +452,10 @@ header nav {
     padding: 10px 12px; }
   .table tbody tr {
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-    color: #262626; }
+    color: #262626;
+    transition: all 0.2s; }
+    .table tbody tr:hover {
+      background: rgba(0, 0, 0, 0.1); }
 
 .message {
   cursor: pointer;
@@ -517,7 +520,8 @@ header nav {
 #itemperpage {
   border: none;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.04), 0 3px 1px -2px rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-  outline: none; }
+  outline: none;
+  width: 60px !important; }
 
 .itemperpage {
   margin-right: 10px; }

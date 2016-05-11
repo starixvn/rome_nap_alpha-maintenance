@@ -20,6 +20,11 @@
         tr {
             border-bottom: 1px solid rgba(0,0,0,0.12);
             color: #262626;
+            transition: all 0.2s;
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.1);
+            }
         }
     }
 }
