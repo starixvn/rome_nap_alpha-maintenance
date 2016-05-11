@@ -29,29 +29,29 @@ namespace Alpha.Maintenance.Site.App_Start
             // css
             bundles.AddAndInclude(
                 "~/css/common",
-                "~/styles/vendors/icon/style.css",
-                "~/styles/main.min.css");
+                "~/Assets/styles/vendors/icon/style.css",
+                "~/Assets/styles/main.min.css");
 
             // js
             bundles.Add(new ScriptBundle("~/scripts/common").Include(
-                "~/scripts/Maintenance.js"));
+                "~/Assets/scripts/Maintenance.js"));
 
             bundles.Add(new ScriptBundle("~/scripts/recheckin").Include(
-             "~/scripts/lib/msgbox/msgbox-0.0.1.js",
-             "~/Areas/UserLogin/scripts/ReCheckIn.js"));
+             "~/Assets/scripts/lib/msgbox/msgbox-0.0.1.js",
+             "~/Assets/Areas/UserLogin/scripts/ReCheckIn.js"));
 
 
             //// Log
             bundles.AddAndInclude(
                     "~/css/select2",
-                    "~/scripts/lib/Select2/select2.css");
+                    "~/Assets/scripts/lib/Select2/select2.css");
 
             bundles.Add(new ScriptBundle("~/scripts/log-index").Include(
-               "~/scripts/lib/jquery-ui.min.js",
-               "~/scripts/lib/Fanex.Grid/Fanex.Pagination.js",
-               "~/scripts/lib/Momentjs/moment.min.js",
-               "~/scripts/lib/Select2/select2.js",
-               "~/scripts/Logs/Index.js"));
+               "~/Assets/scripts/lib/jquery-ui.min.js",
+               "~/Assets/scripts/lib/Fanex.Grid/Fanex.Pagination.js",
+               "~/Assets/scripts/lib/Momentjs/moment.min.js",
+               "~/Assets/scripts/lib/Select2/select2.js",
+               "~/Assets/scripts/Logs/Index.js"));
         }
     }
 }

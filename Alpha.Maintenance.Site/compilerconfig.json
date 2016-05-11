@@ -1,11 +1,11 @@
 ﻿[
   {
-    "outputFile": "styles/main.css",
-    "inputFile": "styles/main.scss"
+    "outputFile": "assets/styles/main.css",
+    "inputFile": "assets/styles/main.scss"
   },
   {
-    "outputFile": "styles/pages/manage.css",
-    "inputFile": "styles/pages/manage.scss"
+    "outputFile": "assets/styles/pages/manage.css",
+    "inputFile": "assets/styles/pages/manage.scss"
   },
   {
     "outputFile": "Areas/UserLogin/themes/loginNew.css",
