@@ -66,14 +66,14 @@
 
 .severity-filter {
     &.Information {
-        color: #0099CC;
+        color: $c-info;
     }
 
     &.Error {
-        color: #ff4444;
+        color: $c-danger;
     }
 
     &.Warning {
-        color: #FF8800;
+        color: $c-warning;
     }
 }

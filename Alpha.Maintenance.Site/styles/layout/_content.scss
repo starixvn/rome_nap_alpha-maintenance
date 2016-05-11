@@ -182,18 +182,18 @@
 }
 
 .err {
-    background-color: #ff4444;
-    border: solid 1px #ff4444;
+    background-color: $c-danger;
+    border: solid 1px $c-danger;
 }
 
 .warn {
-    background-color: #ffbb33;
-    border: solid 1px #ffbb33;
+    background-color: $c-warning;
+    border: solid 1px $c-warning;
 }
 
 .info {
-    background-color: #00C851;
-    border: solid 1px #00C851;
+    background-color: $c-success;
+    border: solid 1px $c-success;
 }
 
 .validation-summary-valid.success, .validation-summary-errors {

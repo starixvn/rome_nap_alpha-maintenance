@@ -490,13 +490,13 @@ header nav {
   background: #fff; }
 
 .severity-filter.Information {
-  color: #0099CC; }
+  color: #33b5e5; }
 
 .severity-filter.Error {
   color: #ff4444; }
 
 .severity-filter.Warning {
-  color: #FF8800; }
+  color: #ffbb33; }
 
 #pagination-1, #pagination-2 {
   padding: 12px 15px;
