@@ -41,45 +41,6 @@
       $('.toc-wrapper').pushpin({ top: 0 });
     }
 
-
-
-    // BuySellAds Detection
-    var $bsa = $(".buysellads"),
-        $timesToCheck = 3;
-    function checkForChanges() {
-        if (!$bsa.find('#carbonads').length) {
-          $timesToCheck -= 1;
-          if ($timesToCheck >= 0) {
-            setTimeout(checkForChanges, 500);
-          }
-          else {
-            var donateAd = $('<div id="carbonads"><span><a class="carbon-text" href="#!" onclick="document.getElementById(\'paypal-donate\').submit();"><img src="images/donate.png" /> Help support us by turning off adblock. If you still prefer to keep adblock on for this page but still want to support us, feel free to donate. Any little bit helps.</a></form></span></div>');
-
-            $bsa.append(donateAd);
-          }
-        }
-
-    }
-    checkForChanges();
-
-
-    // Github Latest Commit
-    if ($('.github-commit').length) { // Checks if widget div exists (Index only)
-      $.ajax({
-        url: "https://api.github.com/repos/dogfalo/materialize/commits/master",
-        dataType: "json",
-        success: function (data) {
-          var sha = data.sha,
-              date = jQuery.timeago(data.commit.author.date);
-          if (window_width < 1120) {
-            sha = sha.substring(0,7);
-          }
-          $('.github-commit').find('.date').html(date);
-          $('.github-commit').find('.sha').html(sha).attr('href', data.html_url);
-        }
-      });
-    }
-
     // Toggle Flow Text
     var toggleFlowTextButton = $('#flow-toggle');
     toggleFlowTextButton.click( function(){
@@ -120,16 +81,6 @@
     var indeterminateCheckbox = document.getElementById('indeterminate-checkbox');
     if (indeterminateCheckbox !== null)
       indeterminateCheckbox.indeterminate = true;
-
-
-    // Plugin initialization
-    $('.slider').slider({full_width: true});
-    $('.parallax').parallax();
-    $('.modal-trigger').leanModal();
-    $('.scrollspy').scrollSpy();
-    $('.button-collapse').sideNav({'edge': 'left'});
-    //$('.datepicker').pickadate({selectYears: 20});
-    $('.js-select').not('.disabled').material_select();
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space

@@ -167,6 +167,13 @@ $(document).ready(function () {
 		sticky: true,
 		useAnimation: false
 	});
+
+	$('.slider').slider({ full_width: true });
+	$('.parallax').parallax();
+	$('.modal-trigger').leanModal();
+	$('.scrollspy').scrollSpy();
+	$('.button-collapse').sideNav({ 'edge': 'left' });
+	$('.js-select').not('.disabled').material_select();
 });
 
 // -- Utilities -- //
