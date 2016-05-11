@@ -6,5 +6,9 @@
   {
     "outputFile": "styles/pages/manage.css",
     "inputFile": "styles/pages/manage.scss"
+  },
+  {
+    "outputFile": "Areas/UserLogin/themes/loginNew.css",
+    "inputFile": "Areas/UserLogin/themes/loginNew.scss"
   }
 ]
