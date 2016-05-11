@@ -34,10 +34,10 @@ namespace Alpha.Maintenance.Site.App_Start
 
             // js
             bundles.Add(new ScriptBundle("~/scripts/common").Include(
+                "~/Assets/scripts/lib/msgbox/msgbox-0.0.1.js",
                 "~/Assets/scripts/Maintenance.js"));
 
             bundles.Add(new ScriptBundle("~/scripts/recheckin").Include(
-             "~/Assets/scripts/lib/msgbox/msgbox-0.0.1.js",
              "~/Assets/Areas/UserLogin/scripts/ReCheckIn.js"));
 
 

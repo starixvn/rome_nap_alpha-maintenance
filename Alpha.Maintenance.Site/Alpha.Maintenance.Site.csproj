@@ -339,8 +339,6 @@
     <Content Include="Assets\scripts\lib\msgbox\images\question.png" />
     <Content Include="Assets\scripts\lib\msgbox\msgbox-0.0.1.css" />
     <Content Include="Assets\scripts\lib\msgbox\msgbox-0.0.1.js" />
-    <Content Include="Assets\scripts\lib\msgbox\msgbox-0.0.1.min.css" />
-    <Content Include="Assets\scripts\lib\msgbox\msgbox-0.0.1.min.js" />
     <Content Include="Assets\scripts\Logs\Index.js" />
     <Content Include="Assets\scripts\Maintenance.js" />
     <Content Include="Assets\scripts\lib\Fanex.Grid\Fanex.Grid.Convert.js" />
