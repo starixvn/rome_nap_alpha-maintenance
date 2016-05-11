@@ -88,6 +88,8 @@ body {
   transition: all 0.3s; }
   #username:focus, #password:focus {
     outline: none; }
+  #username label.active, #password label.active {
+    transform: translateY(-140%); }
   #username + label, #password + label {
     width: 100%;
     pointer-events: none;

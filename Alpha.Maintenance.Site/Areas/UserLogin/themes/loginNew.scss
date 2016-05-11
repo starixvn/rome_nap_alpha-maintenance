@@ -106,6 +106,10 @@ body {
         outline: none;
     }
 
+    label.active {
+        transform: translateY(-140%);
+    }
+
     + label {
         width: 100%;
         pointer-events: none;
