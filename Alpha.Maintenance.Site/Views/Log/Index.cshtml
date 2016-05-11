@@ -96,11 +96,11 @@
                         Machine
                     </th>
                     <th class="width-100">
-                        @if (Model.HasEdit)
+                        @*@if (Model.HasEdit)
                         {
                             <input type="checkbox" id="chbMonitorAll" />
-                        }
-                        <lable for="chbMonitorAll">Handled By</lable>
+                        }*@
+                        <lable for="chbMonitorAll">Messages</lable>
                     </th>
                     <th>
                         <span id="timeZone">Time (GMT @(Model.ToGMT > 0 ? "+" + Model.ToGMT.ToString() : Model.ToGMT.ToString()))</span>
