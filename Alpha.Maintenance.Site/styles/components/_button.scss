@@ -84,5 +84,17 @@
     }
 }
 
+.icon-view_logs, .icon-manage_servers {
+    font-size: 18px;
+    vertical-align: middle;
+    color: #6b7a99;
+}
 
+.btn-check {
+    &:after {
+        font-family: 'mSite';
+        content: "\e907";
+        font-size: 18px;
+    }
+}
 

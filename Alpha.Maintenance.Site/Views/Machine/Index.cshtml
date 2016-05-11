@@ -33,24 +33,24 @@
     <table class="grid">
         <thead>
             <tr>
-                <th>
+                <th class="center">
                     #
                 </th>
-                <th>
+                <th class="center">
                     @ViewResource.Machine_Name
                 </th>
-                <th>
+                <th class="center">
                     @ViewResource.Machine_IP
                 </th>
-                <th>
+                <th class="center">
                     @ViewResource.TimeZone
                 </th>
-                <th>
+                <th class="width-100 center">
                     @ViewResource.IsProduction
                 </th>
                 @if (hasEditRight)
             {
-                    <th>
+                    <th class="center">
                         @ViewResource.Edit
                     </th>
                 }
@@ -67,24 +67,24 @@
                         string row_class = i % 2 == 0 ? "alt" : string.Empty;
 
                         <tr class="@row_class">
-                            <td class="align-center">
+                            <td class="center">
                                 @i
                             </td>
-                            <td>
+                            <td class="center">
                                 @machine.MachineName
                             </td>
-                            <td class="align-center">
+                            <td class="center">
                                 @machine.MachineIP
                             </td>
-                            <td class="align-center">
+                            <td class="center">
                                 GMT (@(machine.TimeZone > 0 ? "+" + machine.TimeZone : machine.TimeZone.ToString()))
                             </td>
-                            <td>
+                            <td class="center">
                                 @(machine.IsProduction ? Html.Raw("<span class='btn-check'/>") : Html.Raw(string.Empty))
                             </td>
                             @if (hasEditRight)
                             {
-                                <td class="align-center">
+                                <td class="center">
                                     <div class="action-wrp">
                                         @Html.ActionLink("Machine", "EditMachine", new { id = machine.MachineId }, new { @class = "btn-edit" })
                                     </div>

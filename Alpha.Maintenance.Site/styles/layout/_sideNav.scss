@@ -44,10 +44,6 @@
                     height: 42px;
                     line-height: 42px;
                     color: #6b7a99;
-
-                    &:hover {
-                        color: $blue-dark;
-                    }
                 }
 
                 img {
@@ -66,12 +62,19 @@
                 &:last-child {
                     border-bottom: none;
                 }
+
+                &:hover {
+                    a, i {                       
+                        color: $blue-dark;                    
+                    }
+                }
             }
         }
     }
 
     a {
         font-size: 1.3rem;
+
         &:hover {
             background: none;
         }

@@ -10,3 +10,12 @@ $gray: #8a8a8a;
 $gray-gull: #a9b8bf;
 
 $yellow: #fed720;
+
+
+@mixin backgroundSVG($url, $width, $height) {
+    background: url($url) no-repeat;
+    -webkit-background-size: $width $height;
+    background-size: $width $height;
+    text-indent: -9999px;    
+    display: inline-block;
+}
