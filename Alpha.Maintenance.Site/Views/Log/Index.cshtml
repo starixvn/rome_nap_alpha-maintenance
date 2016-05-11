@@ -1,6 +1,8 @@
 ﻿@using Alpha.Maintenance.Repository.Criteria.Log
 @using Alpha.Maintenance.Core.Model
+
 @model GetLogCriteria
+
 @{
     ViewBag.Title = ViewResource.AppLogs_ViewLog;
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,7 +10,7 @@
 }
 
 @section Head {
-    <link href="~/scripts/lib/Select2/select2.css" rel="stylesheet" />
+    @Styles.Render("~/css/select2")
 }
 
 @section Headline {
@@ -30,8 +32,6 @@
                         @Html.LabelFor(m => m.From, ViewResource.From, new { @class = "active" })
                     </div>
                     <div class="calendar">
-                        @*<input type="text" name="From" id="From" class="datepicker" value="@Model.From.ToString("MMM dd,yyyy")" />
-                        <span class="icon-calendar-text"></span>*@
                         @Html.TextBox("From", Model.From.ToString("MMM dd,yyyy"), new { @autocomplete = "off" })
                     </div>
                 </div>
@@ -40,8 +40,6 @@
                         @Html.LabelFor(m => m.To, ViewResource.To, new { @class = "active" })
                     </div>
                     <div class="calendar">
-                        @*<input type="text" name="To" id="To" class="datepicker" value="@Model.To.ToString("MMM dd,yyyy")" />
-                        <span class="icon-calendar-text"></span>*@
                         @Html.TextBox("To", Model.To.ToString("MMM dd,yyyy"), new { @autocomplete = "off" })
                     </div>
                 </div>
@@ -115,17 +113,11 @@
     <div id="pagination-2">
     </div>
 }
-@*@Html.Hidden("imagePath", (string)@Url.Content("~/images/icons.svg#svgView(viewBox(-60, 0, 20, 22))"))*@
+
 @Html.Hidden("HasEdit", Model.HasEdit ? 1 : 0)
+
 @section Foot {
-<script src="~/scripts/lib/jquery-ui.min.js"></script>
-<script src="~/scripts/lib/msgbox/msgbox-0.0.1.js"></script>
-<script src="~/scripts/lib/Fanex.Grid/Fanex.Grid.js"></script>
-<script src="~/scripts/lib/Fanex.Grid/Fanex.Pagination.js"></script>
-<script src="~/scripts/lib/jquery.cookie.js"></script>
-<script src="~/scripts/lib/Momentjs/moment.min.js"></script>
-<script src="~/scripts/lib/Select2/select2.js"></script>
-<script src="~/scripts/Logs/Index.js"></script>
+    @Scripts.Render("~/scripts/log-index")
 }
 
 

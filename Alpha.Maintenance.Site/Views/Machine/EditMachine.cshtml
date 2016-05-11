@@ -6,10 +6,6 @@
     bool success = ((ViewBag.Success != null) && (ViewBag.Success.Code == 0));
 }
 
-@section Head {
-    <link href="~/styles/pages/manage.min.css" rel="stylesheet" />
-}
-
 @using (Html.BeginForm())
 {
     @Html.ActionLink("← " + ViewResource.Back_To_List, "Index", "Machine", null, new { @class = "waves-effect waves-light link-back" })

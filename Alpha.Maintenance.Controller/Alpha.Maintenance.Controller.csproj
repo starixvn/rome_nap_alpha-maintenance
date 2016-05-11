@@ -102,7 +102,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseController.cs" />
-    <Compile Include="CommonErrorController.cs" />
     <Compile Include="HomeController.cs" />
     <Compile Include="LogController.cs" />
     <Compile Include="MachineController.cs" />

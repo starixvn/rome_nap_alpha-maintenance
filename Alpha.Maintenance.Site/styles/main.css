@@ -461,6 +461,8 @@ header nav {
     transition: all 0.2s; }
     .table tbody tr:hover {
       background: rgba(0, 0, 0, 0.1); }
+  .table tbody td.no-data {
+    text-align: center; }
 
 .message {
   cursor: pointer;

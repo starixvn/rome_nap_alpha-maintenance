@@ -143,8 +143,8 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ONEbook.UM, Version=1.0.0.9, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ONEbook.UM.1.0.0.9\lib\net40\ONEbook.UM.dll</HintPath>
+    <Reference Include="ONEbook.UM, Version=1.0.1.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ONEbook.UM.1.0.1.5\lib\net40\ONEbook.UM.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Quartz">
@@ -289,6 +289,7 @@
     <Content Include="images\calendar.gif" />
     <Content Include="images\ic-calendar.png" />
     <Content Include="images\ic-logout.png" />
+    <Content Include="images\icons.svg" />
     <Content Include="images\menu-manage_servers.png" />
     <Content Include="images\ic-service.png" />
     <Content Include="images\ic-setting.png" />
@@ -303,13 +304,6 @@
     <Content Include="images\sprite_v.png" />
     <Content Include="images\Stop.png" />
     <Content Include="images\Stop_disable.png" />
-    <Content Include="scripts\init.js" />
-    <Content Include="scripts\lib\ContextMenu\ContextMenuController.js" />
-    <Content Include="scripts\lib\Countdown\CountdownController.js" />
-    <Content Include="scripts\lib\Countdown\Images\countdownCheck.png" />
-    <Content Include="scripts\lib\Countdown\Images\dropdown.png" />
-    <Content Include="scripts\lib\Countdown\Images\refresh.png" />
-    <Content Include="scripts\lib\custom-datepicker.js" />
     <Content Include="scripts\lib\Fanex.Grid\Language\Fanex.Gird.Lang.en-US.js" />
     <Content Include="scripts\lib\Fanex.Grid\Language\Fanex.Gird.Lang.ja-JP.js" />
     <Content Include="scripts\lib\Fanex.Grid\Language\Fanex.Gird.Lang.ko-KR.js" />
@@ -319,20 +313,7 @@
     <Content Include="scripts\lib\Fanex.Grid\Language\Fanex.Gird.Lang.zh-TW.js" />
     <Content Include="scripts\lib\Fanex.Grid\moment.min.js" />
     <Content Include="scripts\lib\Fanex.Grid\numeral.min.js" />
-    <Content Include="scripts\lib\InputCombobox\jquery.combobox-ext.js" />
     <Content Include="scripts\lib\jquery-ui.min.js" />
-    <Content Include="scripts\lib\jquery.blockUI.js" />
-    <Content Include="scripts\lib\chosen\chosen-sprite.png" />
-    <Content Include="scripts\lib\chosen\chosen.css" />
-    <Content Include="scripts\lib\chosen\chosen.jquery.js" />
-    <Content Include="scripts\lib\chosen\chosen.jquery.min.js" />
-    <Content Include="scripts\lib\chosen\chosen.proto.js" />
-    <Content Include="scripts\lib\chosen\chosen.proto.min.js" />
-    <Content Include="scripts\lib\jquery-1.8.0.min.js" />
-    <Content Include="scripts\lib\jquery-ui-1.8.23.min.js" />
-    <Content Include="scripts\lib\MagicSuggest\css\bootstrap.min.css" />
-    <Content Include="scripts\lib\MagicSuggest\css\magicsuggest-min.css" />
-    <Content Include="scripts\lib\MagicSuggest\js\magicsuggest-min.js" />
     <Content Include="scripts\lib\Momentjs\moment.js" />
     <Content Include="scripts\lib\Momentjs\moment.min.js" />
     <Content Include="scripts\lib\msgbox\images\alert.png" />
@@ -345,38 +326,6 @@
     <Content Include="scripts\lib\msgbox\msgbox-0.0.1.js" />
     <Content Include="scripts\lib\msgbox\msgbox-0.0.1.min.css" />
     <Content Include="scripts\lib\msgbox\msgbox-0.0.1.min.js" />
-    <Content Include="scripts\lib\MultipleSelect\images\BottomLine.png" />
-    <Content Include="scripts\lib\MultipleSelect\images\FirstNodeSpan.png" />
-    <Content Include="scripts\lib\MultipleSelect\images\MiddleLine.png" />
-    <Content Include="scripts\lib\MultipleSelect\images\NodeSpan.png" />
-    <Content Include="scripts\lib\MultipleSelect\images\PlusMinus.png" />
-    <Content Include="scripts\lib\MultipleSelect\images\sprites.png" />
-    <Content Include="scripts\lib\MultipleSelect\images\TopLine.png" />
-    <Content Include="scripts\lib\MultipleSelect\images\ui-icons_2e83ff_256x240-1.png" />
-    <Content Include="scripts\lib\MultipleSelect\images\ui-icons_2e83ff_256x240-2.png" />
-    <Content Include="scripts\lib\MultipleSelect\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="scripts\lib\MultipleSelect\jquery.multiselect.css" />
-    <Content Include="scripts\lib\MultipleSelect\jquery.multiselect.js" />
-    <Content Include="scripts\lib\NexCron\css\NexCron.css" />
-    <Content Include="scripts\lib\NexCron\images\calendar.gif" />
-    <Content Include="scripts\lib\NexCron\js\NexCron.js" />
-    <Content Include="scripts\lib\Popup\dialogbox.js" />
-    <Content Include="scripts\lib\tipsy\tipsy-1.0.0.css" />
-    <Content Include="scripts\lib\tipsy\tipsy-1.0.0.js" />
-    <Content Include="scripts\lib\tipsy\tipsy-1.0.0.min.css" />
-    <Content Include="scripts\lib\tipsy\tipsy-1.0.0.min.js" />
-    <Content Include="scripts\lib\XMLEditor\css\main.css" />
-    <Content Include="scripts\lib\XMLEditor\img\icons.png" />
-    <Content Include="scripts\lib\XMLEditor\img\liveXmlEdit.png" />
-    <Content Include="scripts\lib\XMLEditor\img\treeview-default-line.gif" />
-    <Content Include="scripts\lib\XMLEditor\img\treeview-default.gif" />
-    <Content Include="scripts\lib\XMLEditor\js\ext\GLR\css\GLR.messenger.css" />
-    <Content Include="scripts\lib\XMLEditor\js\ext\GLR\GLR.js" />
-    <Content Include="scripts\lib\XMLEditor\js\ext\GLR\GLR.messenger.js" />
-    <Content Include="scripts\lib\XMLEditor\js\ext\jquery-1.4.js" />
-    <Content Include="scripts\lib\XMLEditor\js\ext\jquery-color.js" />
-    <Content Include="scripts\lib\XMLEditor\js\ext\jquery.js" />
-    <Content Include="scripts\lib\XMLEditor\js\loc\xmlEditor.js" />
     <Content Include="scripts\Logs\Index.js" />
     <Content Include="scripts\Maintenance.js" />
     <Content Include="scripts\lib\Fanex.Grid\Fanex.Grid.Convert.js" />
@@ -416,14 +365,11 @@
     <Content Include="scripts\lib\Fanex.Grid\images\white-top-bottom.gif" />
     <Content Include="scripts\lib\Fanex.Grid\moment.js" />
     <Content Include="scripts\lib\Fanex.Grid\numeral.js" />
-    <Content Include="scripts\lib\jquery.cookie.js" />
-    <Content Include="scripts\lib\RefreshCountDown.js" />
     <Content Include="scripts\lib\Select2\select2-custom.css" />
     <Content Include="scripts\lib\Select2\select2-spinner.gif" />
     <Content Include="scripts\lib\Select2\select2.css" />
     <Content Include="scripts\lib\Select2\select2.js" />
     <Content Include="scripts\lib\Select2\select2.png" />
-    <Content Include="scripts\ShareScripts\SharedScriptManager.js" />
     <Content Include="styles\main.css">
       <DependentUpon>main.scss</DependentUpon>
     </Content>
@@ -437,173 +383,6 @@
       <DependentUpon>manage.css</DependentUpon>
     </Content>
     <Content Include="styles\vendors\icon\style.css" />
-    <Content Include="themes\assets\css\font-awesome-ie7.css" />
-    <Content Include="themes\assets\css\font-awesome.css" />
-    <Content Include="themes\assets\css\prettify.css" />
-    <Content Include="themes\assets\css\site.css" />
-    <Content Include="themes\assets\font\fontawesome-webfont.svg" />
-    <Content Include="themes\assets\ico\favicon.ico" />
-    <Content Include="themes\fonts.css" />
-    <Content Include="themes\jquery-ui\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="themes\jquery-ui\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
-    <Content Include="themes\jquery-ui\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
-    <Content Include="themes\jquery-ui\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="themes\jquery-ui\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
-    <Content Include="themes\jquery-ui\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
-    <Content Include="themes\jquery-ui\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="themes\jquery-ui\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
-    <Content Include="themes\jquery-ui\smoothness\images\ui-icons_222222_256x240.png" />
-    <Content Include="themes\jquery-ui\smoothness\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="themes\jquery-ui\smoothness\images\ui-icons_454545_256x240.png" />
-    <Content Include="themes\jquery-ui\smoothness\images\ui-icons_888888_256x240.png" />
-    <Content Include="themes\jquery-ui\smoothness\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="themes\jquery-ui\smoothness\jquery-ui-1.8.23.css" />
-    <Content Include="themes\jquery-ui\smoothness\jquery-ui-1.8.23.min.css" />
-    <Content Include="themes\manage\images\action-ico.png" />
-    <Content Include="themes\manage\images\ajax-loader.gif" />
-    <Content Include="themes\manage\images\breadcrumb_divider.png" />
-    <Content Include="themes\manage\images\btn_submit.png" />
-    <Content Include="themes\manage\images\btn_submit_2.png" />
-    <Content Include="themes\manage\images\btn_view_site.png" />
-    <Content Include="themes\manage\images\cancel.png" />
-    <Content Include="themes\manage\images\collapse-title.png" />
-    <Content Include="themes\manage\images\default.png" />
-    <Content Include="themes\manage\images\del-ico.png" />
-    <Content Include="themes\manage\images\duplicate.png" />
-    <Content Include="themes\manage\images\edit-ico.png" />
-    <Content Include="themes\manage\images\error.png" />
-    <Content Include="themes\manage\images\evolution_tasks.png" />
-    <Content Include="themes\manage\images\expand-title.png" />
-    <Content Include="themes\manage\images\forward-back.png" />
-    <Content Include="themes\manage\images\forward-back1.png" />
-    <Content Include="themes\manage\images\forward.png" />
-    <Content Include="themes\manage\images\forward1.png" />
-    <Content Include="themes\manage\images\gnome_system_monitor.png" />
-    <Content Include="themes\manage\images\hardwarechip.png" />
-    <Content Include="themes\manage\images\header_bg.png" />
-    <Content Include="themes\manage\images\header_shadow.png" />
-    <Content Include="themes\manage\images\icn_add_user.png" />
-    <Content Include="themes\manage\images\icn_alert_error.png" />
-    <Content Include="themes\manage\images\icn_alert_info.png" />
-    <Content Include="themes\manage\images\icn_alert_success.png" />
-    <Content Include="themes\manage\images\icn_alert_warning.png" />
-    <Content Include="themes\manage\images\icn_audio.png" />
-    <Content Include="themes\manage\images\icn_categories.png" />
-    <Content Include="themes\manage\images\icn_categories1.png" />
-    <Content Include="themes\manage\images\icn_edit.png" />
-    <Content Include="themes\manage\images\icn_edit_article.png" />
-    <Content Include="themes\manage\images\icn_edit_article1.png" />
-    <Content Include="themes\manage\images\icn_folder.png" />
-    <Content Include="themes\manage\images\icn_jump_back.png" />
-    <Content Include="themes\manage\images\icn_logout.png" />
-    <Content Include="themes\manage\images\icn_new_article.png" />
-    <Content Include="themes\manage\images\icn_photo.png" />
-    <Content Include="themes\manage\images\icn_profile.png" />
-    <Content Include="themes\manage\images\icn_search.png" />
-    <Content Include="themes\manage\images\icn_security.png" />
-    <Content Include="themes\manage\images\icn_settings.png" />
-    <Content Include="themes\manage\images\icn_tags.png" />
-    <Content Include="themes\manage\images\icn_tags1.png" />
-    <Content Include="themes\manage\images\icn_trash.png" />
-    <Content Include="themes\manage\images\icn_user.png" />
-    <Content Include="themes\manage\images\icn_video.png" />
-    <Content Include="themes\manage\images\icn_view_users.png" />
-    <Content Include="themes\manage\images\ico-relevant-mail.png" />
-    <Content Include="themes\manage\images\icon-view-log.png" />
-    <Content Include="themes\manage\images\list_information.png" />
-    <Content Include="themes\manage\images\loading-ico.gif" />
-    <Content Include="themes\manage\images\loading7.gif" />
-    <Content Include="themes\manage\images\log-ico.png" />
-    <Content Include="themes\manage\images\memory.png" />
-    <Content Include="themes\manage\images\messagebox_warning.png" />
-    <Content Include="themes\manage\images\module_footer_bg.png" />
-    <Content Include="themes\manage\images\network_server.png" />
-    <Content Include="themes\manage\images\post_message.png" />
-    <Content Include="themes\manage\images\progress.png" />
-    <Content Include="themes\manage\images\retry.png" />
-    <Content Include="themes\manage\images\schedule.png" />
-    <Content Include="themes\manage\images\secondary_bar.png" />
-    <Content Include="themes\manage\images\secondary_bar_shadow.png" />
-    <Content Include="themes\manage\images\server.png" />
-    <Content Include="themes\manage\images\sidebar.png" />
-    <Content Include="themes\manage\images\sidebar_divider.png" />
-    <Content Include="themes\manage\images\sidebar_shadow.png" />
-    <Content Include="themes\manage\images\sprites.png" />
-    <Content Include="themes\manage\images\success.png" />
-    <Content Include="themes\manage\images\table_sorter_header.png" />
-    <Content Include="themes\manage\images\tick-ico-16.png" />
-    <Content Include="themes\manage\images\warning.png" />
-    <Content Include="themes\manage\img\actions\add-user.png" />
-    <Content Include="themes\manage\img\actions\chgpwd-ico.png" />
-    <Content Include="themes\manage\img\actions\dd\action-ico.png" />
-    <Content Include="themes\manage\img\actions\dd\chgpwd-ico.png" />
-    <Content Include="themes\manage\img\actions\dd\edit-ico.png" />
-    <Content Include="themes\manage\img\actions\dd\permission-ico.png" />
-    <Content Include="themes\manage\img\actions\dd\play.png" />
-    <Content Include="themes\manage\img\actions\dd\site-ico.png" />
-    <Content Include="themes\manage\img\actions\dd\step.png" />
-    <Content Include="themes\manage\img\actions\dd\stop.png" />
-    <Content Include="themes\manage\img\actions\dd\user-info-ico.png" />
-    <Content Include="themes\manage\img\actions\dd\viewlog.png" />
-    <Content Include="themes\manage\img\actions\edit-ico.png" />
-    <Content Include="themes\manage\img\actions\permission-ico.png" />
-    <Content Include="themes\manage\img\actions\site-ico.png" />
-    <Content Include="themes\manage\img\actions\tick-ico-16.png" />
-    <Content Include="themes\manage\img\actions\user-info-ico.png" />
-    <Content Include="themes\manage\img\bg_body.png" />
-    <Content Include="themes\manage\img\bg_footer.jpg" />
-    <Content Include="themes\manage\img\bg_header.png" />
-    <Content Include="themes\manage\img\blank.png" />
-    <Content Include="themes\manage\img\btLoading.gif" />
-    <Content Include="themes\manage\img\btn-edit.png" />
-    <Content Include="themes\manage\img\btnCountDown-hover.png" />
-    <Content Include="themes\manage\img\btnCountDown.png" />
-    <Content Include="themes\manage\img\btRefresh.png" />
-    <Content Include="themes\manage\img\btRefresh_new.png" />
-    <Content Include="themes\manage\img\btRefresh_new_disabled.png" />
-    <Content Include="themes\manage\img\chosen-sprite.png" />
-    <Content Include="themes\manage\img\combo-pickr\bottom.png" />
-    <Content Include="themes\manage\img\combo-pickr\closebutton.png" />
-    <Content Include="themes\manage\img\combo-pickr\inner.png" />
-    <Content Include="themes\manage\img\combo-pickr\link-overlay.png" />
-    <Content Include="themes\manage\img\combo-pickr\mainbg.png" />
-    <Content Include="themes\manage\img\combo-pickr\openbutton.png" />
-    <Content Include="themes\manage\img\edit-ico.png" />
-    <Content Include="themes\manage\img\error.png" />
-    <Content Include="themes\manage\img\grid-view.png" />
-    <Content Include="themes\manage\img\hub.png" />
-    <Content Include="themes\manage\img\lnk-white.png" />
-    <Content Include="themes\manage\img\logo1.png" />
-    <Content Include="themes\manage\img\logo2.png" />
-    <Content Include="themes\manage\img\logo3.png" />
-    <Content Include="themes\manage\img\minus.png" />
-    <Content Include="themes\manage\img\plus.png" />
-    <Content Include="themes\manage\img\setting.png" />
-    <Content Include="themes\manage\img\sprites.png" />
-    <Content Include="themes\manage\img\table_left.jpg" />
-    <Content Include="themes\manage\img\table_left.png" />
-    <Content Include="themes\manage\img\textures\fabric.png" />
-    <Content Include="themes\manage\img\textures\grid.png" />
-    <Content Include="themes\manage\img\textures\scratches.png" />
-    <Content Include="themes\manage\img\tick-ico-16.png" />
-    <Content Include="themes\manage\img\tick.png" />
-    <Content Include="themes\manage\img\time_ico.gif" />
-    <Content Include="themes\manage\img\tree-view.png" />
-    <Content Include="themes\manage\img\ui-modal-btn.png" />
-    <Content Include="themes\manage\img\warning.png" />
-    <Content Include="themes\reset.css" />
-    <Content Include="themes\shared\Images\action-ico.png" />
-    <Content Include="themes\shared\Images\del-ico.png" />
-    <Content Include="themes\shared\Images\duplicate.png" />
-    <Content Include="themes\shared\Images\edit-ico.png" />
-    <Content Include="themes\shared\Images\ico-relevant-mail.png" />
-    <Content Include="themes\shared\Images\icon-view-log.png" />
-    <Content Include="themes\shared\Images\loading-ico.gif" />
-    <Content Include="themes\shared\Images\log-ico.png" />
-    <Content Include="themes\shared\Images\tick-ico-16.png" />
-    <Content Include="themes\shared\img\bg_header.png" />
-    <Content Include="themes\shared\img\setting.png" />
-    <Content Include="themes\style.css" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -637,40 +416,14 @@
     <Content Include="Areas\UserLogin\Views\Web.config" />
     <Content Include="Areas\UserLogin\Views\SSO\SSOIndex.cshtml" />
     <Content Include="Areas\UserLogin\Views\Common\Offline.cshtml" />
-    <Content Include="themes\assets\font\fontawesome-webfont.eot" />
-    <Content Include="themes\assets\font\fontawesome-webfont.ttf" />
-    <Content Include="themes\assets\font\fontawesome-webfont.woff" />
-    <Content Include="themes\assets\font\museo_slab_300-webfont.eot" />
-    <Content Include="themes\assets\font\museo_slab_300-webfont.ttf" />
-    <Content Include="themes\assets\font\museo_slab_500-webfont.eot" />
-    <Content Include="themes\assets\font\museo_slab_500-webfont.ttf" />
-    <Content Include="themes\assets\font\proximanova-webfont.eot" />
-    <Content Include="themes\assets\font\proximanova-webfont.ttf" />
-    <Content Include="themes\assets\less\font-awesome-ie7.less" />
-    <Content Include="themes\assets\less\font-awesome.less" />
-    <Content Include="themes\assets\less\font-site.less" />
-    <Content Include="themes\assets\less\mixins.less" />
-    <Content Include="themes\assets\less\site.less" />
-    <Content Include="themes\assets\less\variables.less" />
-    <Content Include="themes\fonts\YanoneKaffeesatz.woff" />
-    <Content Include="themes\manage\addnew.less" />
-    <Content Include="themes\manage\colors.less" />
-    <Content Include="themes\manage\common.less" />
-    <Content Include="themes\manage\grid.less" />
-    <Content Include="themes\manage\index.less" />
-    <Content Include="themes\manage\style.less" />
-    <Content Include="themes\manage\themes.less" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Log\Index.cshtml" />
     <Content Include="WebConnectionString.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\CommonError\Error.cshtml" />
-    <Content Include="Views\CommonError\NotFound.cshtml" />
     <Content Include="Views\Machine\Index.cshtml" />
     <Content Include="Views\Machine\EditMachine.cshtml" />
     <Content Include="Views\Machine\InsertMachine.cshtml" />
-    <Content Include="themes\manage\RefreshCountDown.less" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Alpha.Maintenance.Controller\Alpha.Maintenance.Controller.csproj">
@@ -686,12 +439,6 @@
     <Content Include="Views\Shared\_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="themes\grid.less" />
-    <Content Include="themes\manage\log\manage.less" />
-    <Content Include="themes\manage\manage.less" />
-    <Content Include="themes\select-site.less" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="styles\vendors\icon\fonts\" />
   </ItemGroup>
   <ItemGroup>
@@ -701,7 +448,6 @@
     <Content Include="WebConnectionString.local.config">
       <DependentUpon>WebConnectionString.config</DependentUpon>
     </Content>
-    <Content Include="scripts\lib\Countdown\CountDown.less" />
     <Content Include="Web.pro.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -738,13 +484,6 @@
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <None Include="scripts\lib\Fanex.Grid\Fanex.Grid.less" />
-    <Content Include="scripts\lib\InputCombobox\colors.less" />
-    <Content Include="scripts\lib\InputCombobox\common.less" />
-    <Content Include="scripts\lib\InputCombobox\fonts.less" />
-    <Content Include="scripts\lib\InputCombobox\fonts\YanoneKaffeesatz.woff" />
-    <Content Include="scripts\lib\InputCombobox\jquery.combobox-ext.less" />
-    <Content Include="themes\shared\contextmenu.less" />
-    <Content Include="themes\shared\formedit.less" />
     <Content Include="styles\main.scss" />
     <Content Include="styles\abstracts\_variables.scss" />
     <Content Include="styles\base\_common.scss" />

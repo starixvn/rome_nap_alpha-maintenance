@@ -1,6 +1,15 @@
 ﻿/* global NAP: false */
 
 "use strict";
+var fanexGridLanguage = {};
+fanexGridLanguage['en-US'] = {
+    noData: 'There is no data',
+    pageSize: 'Page size',
+    goToPage: 'Go To Page',
+    pagingText: 'Displaying <b>{0}</b> to <b>{1}</b> of <b>{2}</b> item(s)'
+};
+
+var fanexGridCurrentLanguage = fanexGridLanguage['en-US'];
 
 var Logs = (function ($) {
 
@@ -29,6 +38,7 @@ var Logs = (function ($) {
             Logs.hasEditRight = $('#HasEdit').val() == 1;
             Logs.ddlTimeZone = $('#ToGMT');
             Logs.lblTimeZone = $('#timeZone');
+            Logs.pagers = $('#pagination-1,#pagination-2');
         },
         generateData: function (pageSize, index) {
             var categoryId = Logs.ddlCategory.val();
@@ -82,67 +92,75 @@ var Logs = (function ($) {
                     var data = result.ListLog;
                     var count = 1;
                     $('#content').html('');
-                    $.each(data, function (key, value) {
+                    if (data.length > 0) {
+                        $.each(data, function (key, value) {
 
-                        var countMessage = "";
-                        if (value.NumMessage > 0) {
-                            countMessage = "<br/>(" + value.NumMessage + " Message)";
+                            var countMessage = "";
+                            if (value.NumMessage > 0) {
+                                countMessage = "<br/>(" + value.NumMessage + " Message)";
+                            }
+
+                            var message = Logs.replaceAll('<br>', '', value.Message).substring(0, 300);
+                            var environment = value.Machine.IsProduction ? "PRO" : "UAT";
+
+                            var convertedTimeAgo = Logs.buildLogTime(timeZoneValue, value.LogDate);
+
+                            var content = "<tr title='" + value.Message + "'><td>" +
+                                (pageSize * (index - 1) + count++) + "</td><td>" +
+                                "<div class='hiden selected-message' id='" + value.LogId + "'>" + value.FullMessage + "</div>" +
+                                "<div data-logid='" + value.LogId + "' class='message'>" + message + "</div>" + "</td><td class='align-center'>" +
+                                "<a class='category-filter' href='#' data-categoryid='" + value.Category.CategoryID + "'>" +
+                                value.Category.CategoryName + "</a></td><td class='align-center'>" +
+                                "<a class='severity-filter " + value.Severity + "' href='#'><b>" + value.Severity + "</b></a></td><td class='align-center'>" +
+                                "<a href='#' class='machinetype-filter' data-machinetype='" + value.Machine.IsProduction + "'>" + environment +
+                                "</a> \\ <a class='machine-filter' href='#' data-machineid='" + value.Machine.MachineId + "'>" +
+                                value.Machine.MachineName + (value.Machine.MachineIP ? ' - ' + value.Machine.MachineIP : '') + "</a>"
+                                + "</td><td class='align-center'>" +
+                                "<span id='monitoringUser" + value.LogId + "'>" +
+                                (value.IsMonitored ? value.MonitoringUser : "<input type='checkbox' data-logids='" +
+                                value.GroupMessageIds + "' data-logid='" + value.LogId + "' class='monitored' />") +
+                                "</span>" + countMessage + "</td>"
+                                    + "<td class='align-center' title='" + value.LogDate + "'>"
+                                        + convertedTimeAgo
+                                    + "</td>" +
+                                +"</tr>";
+
+                            $('#content').append(content);
+                        });
+
+                        $('#timeZone').html('Time (GMT' + timeZoneValue + ')');
+                        $('.message').on('click', Logs.clickMessage);
+                        $('.monitored').on('click', Logs.monitorLog);
+                        $('#chbMonitorAll').on('click', Logs.monitorAllLog);
+
+                        if (!Logs.hasEditRight) {
+                            $('.monitored').attr('disabled', 'disabled');
                         }
 
-                        var message = Logs.replaceAll('<br>', '', value.Message).substring(0, 300);
-                        var environment = value.Machine.IsProduction ? "PRO" : "UAT";
+                        Logs.pagers.show().fanexPagination(result.TotalRows, {
+                            itemsPerPage: pageSize,
+                            startPerPage: 50,
+                            itemsPerPageArray: [50, 100, 500],
+                            numDisplayEntries: 5,
+                            currentPage: index - 1,
+                            numEdgeEntries: 1,
+                            linkTo: "javascript:void(0)",
+                            prevText: "&lt;",
+                            nextText: "&gt;",
+                            ellipseText: "...",
+                            prevShowAlways: true,
+                            nextShowAlways: true,
+                            maxTtemsPerPage: 100,
+                            showDetail: true,
+                            callback: Logs.reRenderAfterPaged
+                        });
 
-                        var convertedTimeAgo = Logs.buildLogTime(timeZoneValue, value.LogDate);
-
-                        var content = "<tr title='" + value.Message + "'><td>" +
-                            (pageSize * (index - 1) + count++) + "</td><td>" +
-                            "<div class='hiden selected-message' id='" + value.LogId + "'>" + value.FullMessage + "</div>" +
-                            "<div data-logid='" + value.LogId + "' class='message'>" + message + "</div>" + "</td><td class='align-center'>" +
-                            "<a class='category-filter' href='#' data-categoryid='" + value.Category.CategoryID + "'>" +
-                            value.Category.CategoryName + "</a></td><td class='align-center'>" +
-                            "<a class='severity-filter " + value.Severity + "' href='#'><b>" + value.Severity + "</b></a></td><td class='align-center'>" +
-                            "<a href='#' class='machinetype-filter' data-machinetype='" + value.Machine.IsProduction + "'>" + environment +
-                            "</a> \\ <a class='machine-filter' href='#' data-machineid='" + value.Machine.MachineId + "'>" +
-                            value.Machine.MachineName + (value.Machine.MachineIP ? ' - ' + value.Machine.MachineIP : '') + "</a>"
-                            +"</td><td class='align-center'>" +
-                            "<span id='monitoringUser" + value.LogId + "'>" +
-                            (value.IsMonitored ? value.MonitoringUser : "<input type='checkbox' data-logids='" +
-                            value.GroupMessageIds + "' data-logid='" + value.LogId + "' class='monitored' />") +
-                            "</span>" + countMessage + "</td>"
-                                + "<td class='align-center' title='" + value.LogDate + "'>"
-                                    + convertedTimeAgo
-                                + "</td>" +
-                            +"</tr>";
-
-                        $('#content').append(content);
-                    });
-
-                    $('#timeZone').html('Time (GMT' + timeZoneValue + ')');
-                    $('.message').on('click', Logs.clickMessage);
-                    $('.monitored').on('click', Logs.monitorLog);
-                    $('#chbMonitorAll').on('click', Logs.monitorAllLog);
-
-                    if (!Logs.hasEditRight) {
-                        $('.monitored').attr('disabled', 'disabled');
                     }
-
-                    $('#pagination-1,#pagination-2').fanexPagination(result.TotalRows, {
-                        itemsPerPage: pageSize,
-                        startPerPage: 50,
-                        itemsPerPageArray: [50, 100, 500],
-                        numDisplayEntries: 5,
-                        currentPage: index - 1,
-                        numEdgeEntries: 1,
-                        linkTo: "javascript:void(0)",
-                        prevText: "&lt;",
-                        nextText: "&gt;",
-                        ellipseText: "...",
-                        prevShowAlways: true,
-                        nextShowAlways: true,
-                        maxTtemsPerPage: 100,
-                        showDetail: true,
-                        callback: Logs.reRenderAfterPaged
-                    });
+                    else
+                    {
+                        Logs.pagers.hide();
+                        $('#content').html('<tr><td colspan="7" class="no-data">There is no data</td></tr>');
+                    }
 
                     NAP.loadingBox.close();
                 },

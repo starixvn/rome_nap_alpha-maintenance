@@ -5,9 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     bool success = ((ViewBag.Success != null) && (ViewBag.Success.Code == 0));
 }
-@section Head {
-    <link href="~/styles/pages/manage.min.css" rel="stylesheet" />
-}
 
 @using (Html.BeginForm())
 {
