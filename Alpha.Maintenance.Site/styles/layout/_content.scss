@@ -155,8 +155,15 @@
     background: $white;
     color: $black;
 
+    .modal-content {
+        padding: 15px;
+    }
+
     #modal-title {
         color: $blue-dark;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid;
     }
 }
 

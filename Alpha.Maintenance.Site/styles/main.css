@@ -276,8 +276,13 @@ main {
 .modal {
   background: #fff;
   color: #2c2c2c; }
+  .modal .modal-content {
+    padding: 15px; }
   .modal #modal-title {
-    color: #4060a4; }
+    color: #4060a4;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid; }
 
 .summary {
   padding: 0 15px; }
