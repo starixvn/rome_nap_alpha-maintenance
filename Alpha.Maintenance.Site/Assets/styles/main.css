@@ -414,7 +414,8 @@ header nav {
     font-family: Roboto !important; }
     .btn.waves-input-wrapper input {
       padding: 0 2rem;
-      outline: none; }
+      outline: none;
+      height: 100%; }
 
 .button-collapse .material-icons {
   color: #fff;

@@ -108,19 +108,19 @@ var Logs = (function ($) {
                             var content = "<tr title='" + value.Message + "'><td>" +
                                 (pageSize * (index - 1) + count++) + "</td><td>" +
                                 "<div class='hiden selected-message' id='" + value.LogId + "'>" + value.FullMessage + "</div>" +
-                                "<div data-logid='" + value.LogId + "' class='message'>" + message + "</div>" + "</td><td class='center-align'>" +
+                                "<div data-logid='" + value.LogId + "' class='message'>" + message + "</div>" + "</td><td>" +
                                 "<a class='category-filter' href='#' data-categoryid='" + value.Category.CategoryID + "'>" +
-                                value.Category.CategoryName + "</a></td><td class='center-align'>" +
-                                "<a class='severity-filter " + value.Severity + "' href='#'><b>" + value.Severity + "</b></a></td><td class='center-align'>" +
+                                value.Category.CategoryName + "</a></td><td>" +
+                                "<a class='severity-filter " + value.Severity + "' href='#'><b>" + value.Severity + "</b></a></td><td>" +
                                 "<a href='#' class='machinetype-filter' data-machinetype='" + value.Machine.IsProduction + "'>" + environment +
                                 "</a> \\ <a class='machine-filter' href='#' data-machineid='" + value.Machine.MachineId + "'>" +
                                 value.Machine.MachineName + (value.Machine.MachineIP ? ' - ' + value.Machine.MachineIP : '') + "</a>"
-                                + "</td><td class='center-align'>" +
+                                + "</td><td>" +
                                 "<span id='monitoringUser" + value.LogId + "'>" +
                                 (value.IsMonitored ? value.MonitoringUser : "<input type='checkbox' data-logids='" +
                                 value.GroupMessageIds + "' data-logid='" + value.LogId + "' class='monitored' />") +
                                 "</span>" + countMessage + "</td>"
-                                    + "<td class='center-align' title='" + value.LogDate + "'>"
+                                    + "<td title='" + value.LogDate + "'>"
                                         + convertedTimeAgo
                                     + "</td>" +
                                 +"</tr>";

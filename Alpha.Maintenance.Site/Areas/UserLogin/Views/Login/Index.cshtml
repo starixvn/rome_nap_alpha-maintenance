@@ -29,22 +29,22 @@
             </div>
             <div class="header">
                 <div class="welcome">
+                    <img src="~/Areas/UserLogin/themes/img/m7_logo.png"  width="87" height="44"/>
                 </div>
-                <div class="secure">
-                </div>
+                <div class="secure"></div>
             </div>
             <div class="auth">
                 <div class="userName js-effect">
-                    <input class="textbox" type="text" id="username" name="username" autocomplete="off" />
-                    <label class="lb" for="username">User name</label>
+                    <input class="js-ip-user" type="text" id="username" name="username" autocomplete="off" />
+                    <label class="js-lb-user lb" for="username">User name</label>
                 </div>
                 <div class="password js-effect">
-                    <input class="textbox" type="password" id="password" name="password" />
-                    <label class="lb" for="password">Password</label>
+                    <input class="js-ip-pass" type="password" id="password" name="password" />
+                    <label class="js-lb-pass lb" for="password">Password</label>
                 </div>
                 <a class="btn-login">
                     <input type="submit" id="submit" value="@ViewResources.Log_In" />
-                </a>                
+                </a>       
             </div>
         </div>
     }
