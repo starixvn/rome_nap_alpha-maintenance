@@ -1,177 +1,40 @@
-﻿@-webkit-keyframes loading {
-    0%, 100% {
-        box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
-    }
-
-    12.5% {
-        box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
-    }
-
-    25% {
-        box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
-    }
-
-    37.5% {
-        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
-    }
-
-    50% {
-        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
-    }
-
-    62.5% {
-        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
-    }
-
-    75% {
-        box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
-    }
-
-    87.5% {
-        box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
-    }
-}
-
-
-@keyframes loading {
-    0%, 100% {
-        box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
-    }
-
-    12.5% {
-        box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
-    }
-
-    25% {
-        box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
-    }
-
-    37.5% {
-        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
-    }
-
-    50% {
-        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
-    }
-
-    62.5% {
-        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
-    }
-
-    75% {
-        box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
-    }
-
-    87.5% {
-        box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
-    }
-}
-
-@-webkit-keyframes load2 {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-
+﻿@keyframes rotate {
     100% {
-        -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
     }
 }
 
-@keyframes load2 {
+@keyframes dash {
     0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
+        stroke-dasharray: 1,200;
+        stroke-dashoffset: 0;
+    }
+
+    50% {
+        stroke-dasharray: 89,200;
+        stroke-dashoffset: -35px;
     }
 
     100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
+        stroke-dasharray: 89,200;
+        stroke-dashoffset: -124px;
     }
 }
 
-@keyframes ripple {
-    0% {
-        transform: scale(0);
+@keyframes color {
+    100%, 0% {
+        stroke: #fff;
     }
 
-    20% {
-        transform: scale(1);
+    40% {
+        stroke: #fff;
     }
 
-    100% {
-        opacity: 0;
-        transform: scale(1);
-    }
-}
-
-
-@-webkit-keyframes container-rotate {
-    to {
-        -webkit-transform: rotate(360deg);
-    }
-}
-
-@keyframes container-rotate {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-
-@-webkit-keyframes right-spin {
-    from {
-        -webkit-transform: rotate(-130deg);
+    66% {
+        stroke: #fff;
     }
 
-    50% {
-        -webkit-transform: rotate(5deg);
-    }
-
-    to {
-        -webkit-transform: rotate(-130deg);
-    }
-}
-
-@keyframes right-spin {
-    from {
-        transform: rotate(-130deg);
-    }
-
-    50% {
-        transform: rotate(5deg);
-    }
-
-    to {
-        transform: rotate(-130deg);
-    }
-}
-
-@-webkit-keyframes left-spin {
-    from {
-        -webkit-transform: rotate(130deg);
-    }
-
-    50% {
-        -webkit-transform: rotate(-5deg);
-    }
-
-    to {
-        -webkit-transform: rotate(130deg);
-    }
-}
-
-@keyframes left-spin {
-    from {
-        transform: rotate(130deg);
-    }
-
-    50% {
-        transform: rotate(-5deg);
-    }
-
-    to {
-        transform: rotate(130deg);
+    80%, 90% {
+        stroke: #fff;
     }
 }
