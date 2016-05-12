@@ -73,12 +73,12 @@ body {
     cursor: text;
     font-size: 1rem;
     position: absolute;
-    top: 0.4rem;
+    top: 1.2rem;
     transition: all 0.2s ease-out 0s;
     left: 0;
 
     &.active {
-        transform: translateY(-140%);
+        transform: translateY(-200%);
         font-size: 0.8rem;
     }
 }
@@ -94,7 +94,7 @@ body {
     box-sizing: content-box;
     font-size: 1rem;
     height: 3rem;
-    margin: 0 0 50px;
+    margin: 0 0 40px;
     outline: medium none;
     padding: 0;
     transition: all 0.3s ease 0s;
