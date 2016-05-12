@@ -361,7 +361,7 @@ var Logs = (function ($) {
                 buttonImage: $('#imagePath').val(),
                 buttonText: "From",
                 buttonImageOnly: true
-            });
+            }).focus(function () { $(this).datepicker('show') });
 
             Logs.dpkTo.datepicker({
                 defaultDate: "+1w",
@@ -372,7 +372,7 @@ var Logs = (function ($) {
                 buttonImage: $('#imagePath').val(),
                 buttonText: "From",
                 buttonImageOnly: true
-            });
+            }).focus(function () { $(this).datepicker('show') });
         },
 
         initFreeHeader: function () {

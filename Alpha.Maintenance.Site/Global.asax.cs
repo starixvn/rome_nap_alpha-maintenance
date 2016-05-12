@@ -11,6 +11,7 @@ namespace Alpha.Maintenance.Site
 {
     using System;
     using System.Data.SqlClient;
+    using System.Diagnostics.CodeAnalysis;
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Optimization;
@@ -43,6 +44,7 @@ namespace Alpha.Maintenance.Site
         /// </summary>
         /// <param name="sender">Event sender.</param>
         /// <param name="e">Event arguments.</param>
+        [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
         protected void Application_Error(object sender, EventArgs e)
         {
             // Logging

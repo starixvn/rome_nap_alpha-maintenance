@@ -80,7 +80,7 @@ namespace Alpha.Maintenance.Controller
                 MachineId = 0,
                 IsProduction = null,
                 IsMonitored = null,
-                From = DateTime.Now.AddHours(11),   // to GMT+7 (default)
+                From = DateTime.Now.AddDays(-1).AddHours(11),   // to GMT+7 (default)
                 To = DateTime.Now.AddHours(11),     // to GMT+7 (default)
                 Page = 0,
                 Size = 10,

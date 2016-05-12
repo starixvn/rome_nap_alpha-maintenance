@@ -40,7 +40,6 @@ namespace Alpha.Maintenance.Site.App_Start
             bundles.Add(new ScriptBundle("~/scripts/recheckin").Include(
              "~/Assets/Areas/UserLogin/scripts/ReCheckIn.js"));
 
-
             //// Log
             bundles.AddAndInclude(
                     "~/css/select2",
