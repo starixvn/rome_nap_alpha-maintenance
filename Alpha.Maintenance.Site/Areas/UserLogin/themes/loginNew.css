@@ -80,7 +80,7 @@ body {
   box-sizing: content-box;
   font-size: 1rem;
   height: 3rem;
-  margin: 0 0 30px;
+  margin: 0 0 50px;
   outline: medium none;
   padding: 0;
   transition: all 0.3s ease 0s;
@@ -106,7 +106,8 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
   -webkit-box-shadow: 0 0 0px 1000px transparent inset;
-  color: #fff !important; }
+  color: #fff !important;
+  background: transparent !important; }
 
 .ie9 #username, .ie9 #password {
   text-transform: lowercase; }

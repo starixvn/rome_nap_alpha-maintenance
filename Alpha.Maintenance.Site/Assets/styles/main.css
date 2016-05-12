@@ -91,6 +91,17 @@ main {
     padding-left: 10px;
     color: #324b7f; }
 
+.msgbox {
+  font-weight: bold;
+  color: #333;
+  border: #FFF solid 1px;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  display: none;
+  padding: 10px; }
+
 .side-nav {
   width: 252px;
   box-shadow: none; }
