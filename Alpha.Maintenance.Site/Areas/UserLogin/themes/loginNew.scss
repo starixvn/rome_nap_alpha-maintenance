@@ -75,6 +75,7 @@ body {
     position: absolute;
     top: 0.4rem;
     transition: all 0.2s ease-out 0s;
+    left: 0;
 
     &.active {
         transform: translateY(-140%);
@@ -171,8 +172,10 @@ input:-webkit-autofill:active {
         height: 100%;
         background: none;
         border: none;
-        font-size: 21px;
+        font-size: 15px;
         color: #6d92df;
+        font-family: 'Roboto', sans-serif;
+        text-transform: uppercase;
     }
 
     &:hover {
