@@ -10,6 +10,7 @@
     <meta charset="utf-8" />
     <title>@ViewResources.Log_In</title>
     <meta name="viewport" content="width=device-width" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href="~/areas/userlogin/themes/loginNew.css" rel="stylesheet" type="text/css" />
     <link href="~/Areas/UserLogin/scripts/lib/msgbox/msgbox-0.0.1.css" rel="stylesheet"
           type="text/css" />
@@ -35,14 +36,14 @@
             </div>
             <div class="auth">
                 <div class="userName js-effect">
-                    <input class="js-ip-user" type="text" id="username" name="username" autocomplete="off" />
-                    <label class="js-lb-user lb" for="username">User name</label>
+                    <input class="validate" type="text" id="username" name="username" autocomplete="off" />
+                    <label class="lb" for="username">User name</label>
                 </div>
                 <div class="password js-effect">
-                    <input class="js-ip-pass" type="password" id="password" name="password" />
-                    <label class="js-lb-pass lb" for="password">Password</label>
+                    <input class="validate" type="password" id="password" name="password" />
+                    <label class="lb" for="password">Password</label>
                 </div>
-                <a class="btn-login">
+                <a class="btn-login waves-effect waves-light btn">
                     <input type="submit" id="submit" value="@ViewResources.Log_In" />
                 </a>       
             </div>

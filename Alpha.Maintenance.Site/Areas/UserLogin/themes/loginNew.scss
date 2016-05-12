@@ -1,16 +1,9 @@
-﻿@font-face {
-    font-family: 'Abel';
-    font-style: normal;
-    font-weight: 400;
-    src: local("Abel"), local("Abel-Regular"), url(fonts/Abel.woff) format("woff");
-}
-
-html {
+﻿html {
     height: 100%;
 }
 
 body {
-    font-family: Roboto, 'Segoe UI', Tahoma, Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     background: #6d92df; /* Old browsers */
@@ -40,19 +33,18 @@ body {
 #msg {
     display: none;
     position: absolute;
-    top: -60px;
+    top: -120px;
     width: 454px;
     height: 30px;
     padding: 12px 0 4px;
     border-radius: 5px;
-    background: #CF4742;
+    background: #ff4444;
     color: #fff;
     text-align: center;
-    font-weight: bold;
 }
 
 #login-box {
-    .header {        
+    .header {
         border-radius: 5px 5px 0 0;
         padding: 0 50px;
 
@@ -60,7 +52,7 @@ body {
             text-align: center;
         }
 
-        .secure {            
+        .secure {
             width: 174px;
             height: 54px;
             display: inline-block;
@@ -76,25 +68,21 @@ body {
     }
 }
 
-/*#username, #password, #submit {
-    font-family: Abel, 'Segoe UI', Tahoma, Arial, sans-serif;
-}*/
-
 .lb {
     color: #fff;
     cursor: text;
-    font-size: 1rem;    
+    font-size: 1rem;
     position: absolute;
-    top: 0.8rem;
+    top: 0.4rem;
     transition: all 0.2s ease-out 0s;
 
     &.active {
         transform: translateY(-140%);
-        font-size: 0.8rem; 
+        font-size: 0.8rem;
     }
 }
 
-#username, #password {
+.validate {
     background-color: transparent;
     border-color: rgba(255, 255, 255, 0.5);
     border-image: none;
@@ -110,12 +98,14 @@ body {
     padding: 0;
     transition: all 0.3s ease 0s;
     width: 100%;
+    color: #fff;
+    font-family: Roboto, sans-serif;
 
     &:focus {
         outline: none;
     }
 
-    &:focus:not([readonly]) {
+    &:focus:not([readonly]), &.valid {
         border-bottom: 1px solid #fff;
         box-shadow: 0 1px 0 0 #fff;
     }
@@ -135,7 +125,8 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
-    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    color: #fff !important;
 }
 
 .ie9 {
@@ -151,7 +142,8 @@ input:-webkit-autofill:active {
 }
 
 #username.err, #password.err {
-    border-bottom: 2px solid #CF4742;
+    border-bottom: 1px solid #CF4742;
+    box-shadow: 0 1px 0 0 #CF4742;
 }
 
 .btn-login {
@@ -159,11 +151,11 @@ input:-webkit-autofill:active {
     width: 100%;
     height: 40px;
     background: #fff;
-    
     cursor: pointer;
     text-align: center;
     position: relative;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+    transition: 0.3s ease;
 
     &:disabled {
         border: solid 1px #999;
@@ -180,6 +172,10 @@ input:-webkit-autofill:active {
         border: none;
         font-size: 21px;
         color: #6d92df;
+    }
+
+    &:hover {
+        box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     }
 }
 
@@ -206,63 +202,5 @@ input:-webkit-autofill:active {
             background-color: #0c0;
             color: #fff;
         }
-    }
-}
-
-
-//--------------------RIPPLE EFFECT---------------------//
-
-button{
-  position: relative;
-  border: none;
-  outline:none;
-  cursor: pointer;
-  background: #89669b;
-  color: white;
-  padding: 18px 60px;
-  border-radius: 2px;
-  font-size: 22px;
-}
-
-.fab{
-  border-radius: 50%;
-  margin:0;
-  padding: 20px;
-}
-
-.material{
-  position:relative;
-  color:white;
-  margin: 20px auto;
-  height:400px;
-  width:500px;
-  background:#f45673;
-  
-}
-
-.ripple{
-  overflow:hidden;
-}
-
-.ripple-effect{
-  position: absolute;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  background: white;
-
-    
-  animation: ripple-animation 2s;
-}
-
-
-@keyframes ripple-animation {
-    from {
-      transform: scale(1);
-      opacity: 0.4;
-    }
-    to {
-      transform: scale(100);
-      opacity: 0;
     }
 }
