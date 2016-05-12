@@ -288,7 +288,7 @@ main {
   background: #fff;
   color: #2c2c2c; }
   .modal .modal-content {
-    padding: 15px; }
+    padding: 24px; }
   .modal #modal-title {
     color: #4060a4;
     margin-bottom: 15px;
@@ -342,7 +342,7 @@ main {
   width: 100% !important;
   height: 100% !important; }
 
-.msgbox-content {
+#msgbox2 .msgbox-content {
   color: #ffffff;
   font-size: 10px;
   margin: 30rem auto;
@@ -356,6 +356,9 @@ main {
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0); }
+
+#msgbox1 .msgbox-content {
+  color: #fff; }
 
 .logo {
   background: #476bb7; }

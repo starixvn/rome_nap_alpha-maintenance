@@ -156,7 +156,7 @@
     color: $black;
 
     .modal-content {
-        padding: 15px;
+        padding: 24px;
     }
 
     #modal-title {
@@ -243,7 +243,7 @@
     height: 100% !important;
 }
 
-.msgbox-content {
+#msgbox2 .msgbox-content {
     color: #ffffff;
     font-size: 10px;
     margin: 30rem auto;
@@ -259,3 +259,6 @@
     transform: translateZ(0);
 }
 
+#msgbox1 .msgbox-content {
+    color: $white;
+}
