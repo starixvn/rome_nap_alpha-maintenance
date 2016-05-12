@@ -292,6 +292,7 @@
     <Content Include="Areas\UserLogin\themes\loginNew.min.css">
       <DependentUpon>loginNew.css</DependentUpon>
     </Content>
+    <Content Include="Assets\scripts\Login\index.js" />
     <Content Include="Assets\styles\main.css">
       <DependentUpon>main.scss</DependentUpon>
     </Content>
@@ -403,6 +404,17 @@
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="WebConnectionString.pro.config">
+      <DependentUpon>WebConnectionString.config</DependentUpon>
+    </Content>
+    <Content Include="WebConnectionString.sit.config">
+      <DependentUpon>WebConnectionString.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WebConnectionString.uat.config">
+      <DependentUpon>WebConnectionString.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\UserLogin\Views\Common\Error.cshtml" />
@@ -425,9 +437,6 @@
     <Content Include="Areas\UserLogin\Views\Common\Offline.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Log\Index.cshtml" />
-    <Content Include="WebConnectionString.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Views\Machine\Index.cshtml" />
     <Content Include="Views\Machine\EditMachine.cshtml" />
     <Content Include="Views\Machine\InsertMachine.cshtml" />
@@ -449,18 +458,8 @@
     <Content Include="Web.local.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="WebConnectionString.local.config">
-      <DependentUpon>WebConnectionString.config</DependentUpon>
-    </Content>
     <Content Include="Web.pro.config">
       <DependentUpon>Web.config</DependentUpon>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="WebConnectionString.pro.config">
-      <DependentUpon>WebConnectionString.config</DependentUpon>
-    </Content>
-    <Content Include="WebConnectionString.uat.config">
-      <DependentUpon>WebConnectionString.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.uat.config">
@@ -473,14 +472,6 @@
     </Content>
     <Content Include="Web.sit.config">
       <DependentUpon>Web.config</DependentUpon>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="WebConnectionString.backupMNL.config">
-      <DependentUpon>WebConnectionString.config</DependentUpon>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="WebConnectionString.sit.config">
-      <DependentUpon>WebConnectionString.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Areas\UserLogin\themes\loginNew.scss" />
@@ -504,6 +495,16 @@
     <Content Include="Assets\styles\components\_animation.scss" />
     <Content Include="Assets\styles\vendors\icon\fonts\mSite.ttf" />
     <Content Include="Assets\styles\vendors\icon\fonts\mSite.woff" />
+    <Content Include="WebConnectionString.backupMNL.config">
+      <DependentUpon>WebConnectionString.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WebConnectionString.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WebConnectionString.local.config">
+      <DependentUpon>WebConnectionString.config</DependentUpon>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
