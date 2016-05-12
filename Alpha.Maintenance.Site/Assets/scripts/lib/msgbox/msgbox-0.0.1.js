@@ -128,11 +128,6 @@
                     if ($this.is(':visible')) _this.setPosition(_this.options.position[0], _this.options.position[1]);
                 });
             }
-
-//            if (_this.options.draggable) {
-//                _this.dragObject = new dragObject($this.attr('id'), $this.attr('id'));
-//                $this.css({ cursor: 'move' });
-//            }
         },
 
         show: function (msg, options) {
