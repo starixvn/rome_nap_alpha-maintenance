@@ -659,3 +659,47 @@ header nav {
 .ui-datepicker-calendar .ui-datepicker-today .ui-state-default {
   font-weight: bold; }
 
+.picker__table {
+  font-size: 13px; }
+
+.picker__date-display {
+  background-color: #476bb7; }
+
+.picker__weekday-display {
+  font-size: inherit;
+  background-color: #4060a4; }
+
+.picker__weekday {
+  font-size: 13px; }
+
+.picker__day--infocus {
+  padding: 1.15rem 0;
+  border-radius: 50%;
+  transition: 0.2s ease; }
+  .picker__day--infocus:hover {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
+
+.picker__day.picker__day--today {
+  color: #4060a4; }
+
+.picker__day--selected,
+.picker__day--selected:hover,
+.picker--focused .picker__day--selected {
+  background-color: rgba(71, 107, 183, 0.8); }
+
+.picker__nav--prev:hover,
+.picker__nav--next:hover {
+  background-color: rgba(71, 107, 183, 0.5); }
+
+button.picker__close, button.picker__today {
+  font-size: 12px; }
+
+button.picker__today:focus,
+button.picker__clear:focus,
+button.picker__close:focus {
+  background-color: rgba(71, 107, 183, 0.5); }
+
+@media (min-height: 28.875em) {
+  .picker__box {
+    border: none; } }
+
