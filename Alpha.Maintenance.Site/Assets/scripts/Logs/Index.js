@@ -387,7 +387,7 @@ var Logs = (function ($) {
                     if ((scrollTop > offset.top) && (scrollTop < offset.top + el.height())) {
                         floatingHeader.css({
                             "display": "block",
-                            "left": (left - $(window).scrollLeft()),
+                            "left": "inherit",
                             "z-index": "34",
                             //"margin-left": "10px",
                             "position": "fixed",
