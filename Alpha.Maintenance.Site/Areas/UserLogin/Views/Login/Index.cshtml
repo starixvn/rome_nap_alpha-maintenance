@@ -30,10 +30,13 @@
                 <div class="welcome">
                     <img src="~/Areas/UserLogin/themes/img/m7_logo.png"  width="87" height="44"/>
                 </div>
-                @*<div class="secure"></div>*@
-                <div class="msg-content" id="msg-content">
-                    <span id="inner-msg">@ViewBag.Message</span>
-                </div>
+                @if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+                {
+                    <div class="secure"></div>
+                    <div class="msg-content" id="msg-content">
+                        <span id="inner-msg">@ViewBag.Message</span>
+                    </div>
+                }
             </div>
             <div class="auth">
                 <div class="userName js-effect">
