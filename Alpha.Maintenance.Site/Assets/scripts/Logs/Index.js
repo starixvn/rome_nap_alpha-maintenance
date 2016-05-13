@@ -115,11 +115,7 @@ var Logs = (function ($) {
                                 "<a href='#' class='machinetype-filter' data-machinetype='" + value.Machine.IsProduction + "'>" + environment +
                                 "</a> \\ <a class='machine-filter' href='#' data-machineid='" + value.Machine.MachineId + "'>" +
                                 value.Machine.MachineName + (value.Machine.MachineIP ? ' - ' + value.Machine.MachineIP : '') + "</a>"
-                                + "</td><td>" +
-                                "<span id='monitoringUser" + value.LogId + "'>" +
-                                (value.IsMonitored ? value.MonitoringUser : "<input type='checkbox' data-logids='" +
-                                value.GroupMessageIds + "' data-logid='" + value.LogId + "' class='monitored' />") +
-                                "</span>" + countMessage + "</td>"
+                                + "</td><td>" + countMessage + "</td>"
                                     + "<td title='" + value.LogDate + "'>"
                                         + convertedTimeAgo
                                     + "</td>" +
@@ -378,7 +374,7 @@ var Logs = (function ($) {
                 var widthspace = $(".persist-area").width();
 
                 $('.floatingHeader').width(widthspace);
-                var left = $('table thead tr:first').position()["left"];
+                var left = $('#messageContainer thead tr:first').position()["left"];
                 $(".persist-area").each(function () {
                     var el = $(this),
                         offset = el.offset(),
@@ -387,7 +383,7 @@ var Logs = (function ($) {
                     if ((scrollTop > offset.top) && (scrollTop < offset.top + el.height())) {
                         floatingHeader.css({
                             "display": "block",
-                            "left": "inherit",
+                            "left": (left - $(window).scrollLeft()),
                             "z-index": "34",
                             //"margin-left": "10px",
                             "position": "fixed",
