@@ -50,7 +50,7 @@ body {
     height: 60px;
     line-height: 60px;
     transition: 0.3s ease;
-
+    color: #ffbb33;
     * {
         display: inline-block;
         vertical-align: middle;
@@ -187,6 +187,7 @@ input:-webkit-autofill:active {
         color: #6d92df;
         font-family: 'Roboto', sans-serif;
         text-transform: uppercase;
+        cursor: pointer;
     }
 
     &:hover {

@@ -244,18 +244,17 @@
 }
 
 #msgbox2 .msgbox-content {
-    position: relative;    
+    position: relative;
     width: 100px;
     margin: 200px auto 0;
-    
+
     .spinner-white-only {
         border-color: $white;
-    }    
-
-       
+    }
 }
 
-#msgbox1 .msgbox-content {
-    color: $white;
+#msgbox1 {    
+    .msgbox-content {
+        color: $white;
+    }
 }
-

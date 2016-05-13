@@ -10,7 +10,7 @@
     <meta charset="utf-8" />
     <title>@ViewResources.Log_In</title>
     <meta name="viewport" content="width=device-width" />
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>    
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href="~/Areas/UserLogin/themes/loginNew.css" rel="stylesheet" />
     <link href="~/Areas/UserLogin/scripts/lib/msgbox/msgbox-0.0.1.css" rel="stylesheet"
           type="text/css" />
@@ -25,19 +25,11 @@
     @using (Html.BeginForm())
     {
         <div id="login-box">
-            
+
             <div class="header">
                 <div class="welcome">
-                    <img src="~/Areas/UserLogin/themes/img/m7_logo.png"  width="87" height="44"/>
+                    <img src="~/Areas/UserLogin/themes/img/m7_logo.png" width="87" height="44" />
                 </div>
-                @if (!string.IsNullOrWhiteSpace(ViewBag.Message))
-                {
-                    <div class="secure"></div>
-                    <div class="msg-content" id="msg-content">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path fill="#FFFFFF" d="M13,14H11V10H13M13,18H11V16H13M1,21H23L12,2L1,21Z" /></svg>
-                        <span id="inner-msg">@ViewBag.Message</span>
-                    </div>
-                }
             </div>
             <div class="auth">
                 <div class="userName js-effect">
@@ -45,13 +37,21 @@
                     <label class="lb" for="username">User name</label>
                 </div>
                 <div class="password js-effect">
-                    <input class="validate" type="password" id="password" name="password" readonly onfocus="$(this).removeAttr('readonly');" autocomplete="off"/>
+                    <input class="validate" type="password" id="password" name="password" readonly onfocus="$(this).removeAttr('readonly');" autocomplete="off" />
                     <label class="lb" for="password">Password</label>
                 </div>
                 <a class="btn-login waves-effect waves-light btn">
                     <input type="submit" id="submit" value="@ViewResources.Log_In" />
-                </a>       
+                </a>
             </div>
+            @if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+                {
+                <div class="secure"></div>
+                <div class="msg-content" id="msg-content">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path fill="#ffbb33" d="M13,14H11V10H13M13,18H11V16H13M1,21H23L12,2L1,21Z" /></svg>
+                    <span id="inner-msg">@ViewBag.Message</span>
+                </div>
+            }
         </div>
     }
 </body>

@@ -119,7 +119,7 @@
                         var lnk = $("<span class='current'>" + (appendopts.text) + "</span>");
                     }
                     else {
-                        var lnk = $("<a>" + (appendopts.text) + "</a>")
+                        var lnk = $("<a class='waves-effect'>" + (appendopts.text) + "</a>")
 						.bind("click", getClickHandler(page_id))
 						.attr('href', opts.linkTo.replace(/__id__/, page_id));
                     }
