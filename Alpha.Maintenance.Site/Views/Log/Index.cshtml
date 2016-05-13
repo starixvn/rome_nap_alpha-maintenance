@@ -66,7 +66,7 @@
                     @if (Model.HasEdit)
                     {
                         <a href="#" id="btnRemoveLog" class="waves-effect btn btn-create">
-                            Remove (Before date @DateTime.Now.AddDays(-5).ToShortDateString())
+                            Delete log data (Before @DateTime.Now.AddDays(-5).ToString("MMM dd,yyyy"))
                         </a>
                     }
                 </div>
