@@ -15,7 +15,7 @@
 
 @section Headline {
     <span>App logs / </span>
-    <span class="active">View logs</span>    
+    <span class="active">View logs</span>
 }
 
 @using (Html.BeginForm())
@@ -28,28 +28,6 @@
                     @Html.DropDownListFor(m => m.CategoryId, (List<SelectListItem>)ViewBag.ListCategory, new { @class = "width-large" })
                 </div>
                 <div class="input-field col l2 m3 s6">
-                    <div class="lbl-field width-60">
-                        @Html.LabelFor(m => m.From, ViewResource.From, new { @class = "active" })
-                    </div>
-                    <div class="calendar">
-                        @Html.TextBox("From", Model.From.ToString("MMM dd,yyyy"), new { @autocomplete = "off" })
-                    </div>
-                </div>
-                <div class="input-field col l2 m3 s6">
-                    <div class="lbl-field width-40">
-                        @Html.LabelFor(m => m.To, ViewResource.To, new { @class = "active" })
-                    </div>
-                    <div class="calendar">
-                        @Html.TextBox("To", Model.To.ToString("MMM dd,yyyy"), new { @autocomplete = "off" })
-                    </div>
-                </div>
-                <div class="input-field col l2 m3 s6">
-                    @Html.DropDownListFor(m => m.ToGMT, (List<SelectListItem>)ViewBag.ListTimeZone, new { @class = "js-select" })
-                    @Html.LabelFor(m => m.ToGMT, ViewResource.TimeZone)
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col l2 m3 s6">
                     <select id="MachineId" name="MachineId" class="width-large"></select>
                     @Html.LabelFor(m => m.MachineId, ViewResource.Machine, new { @class = "active" })
                 </div>
@@ -60,6 +38,32 @@
                 <div class="input-field col l2 m3 s6">
                     @Html.DropDownListFor(m => m.IsMonitored, (List<SelectListItem>)ViewBag.LogStatus, new { @class = "js-select" })
                     @Html.LabelFor(m => m.IsMonitored, ViewResource.Status)
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col l2 m3 s6">
+                    <div class="lbl-field width-60">
+                        @Html.LabelFor(m => m.From, ViewResource.From, new { @class = "active" })
+                    </div>
+                    <div class="calendar">
+                        @*@Html.TextBox("From", Model.From.ToString("MMM dd,yyyy"), new { @autocomplete = "off" })*@
+                        <input type="date" name="From" id="From" class="datepicker" value="@Model.From.ToString("MMM dd,yyyy")" />
+                        @*<span class="icon-calendar-text"></span>*@
+                    </div>
+                </div>
+                <div class="input-field col l2 m3 s6">
+                    <div class="lbl-field width-40">
+                        @Html.LabelFor(m => m.To, ViewResource.To, new { @class = "active" })
+                    </div>
+                    <div class="calendar">
+                        @*@Html.TextBox("To", Model.To.ToString("MMM dd,yyyy"), new { @autocomplete = "off" })*@
+                        <input type="date" name="To" id="To" class="datepicker" value="@Model.To.ToString("MMM dd,yyyy")" />
+                        @*<span class="icon-calendar-text"></span>*@
+                    </div>
+                </div>
+                <div class="input-field col l2 m3 s6">
+                    @Html.DropDownListFor(m => m.ToGMT, (List<SelectListItem>)ViewBag.ListTimeZone, new { @class = "js-select" })
+                    @Html.LabelFor(m => m.ToGMT, ViewResource.TimeZone)
                 </div>
                 <div class="col button-block">
                     <input class="waves-effect waves-light btn btn-primary" type="button" value="@ViewResource.Submit" id="submit" />
@@ -97,9 +101,9 @@
                     </th>
                     <th class="width-100">
                         @*@if (Model.HasEdit)
-                        {
-                            <input type="checkbox" id="chbMonitorAll" />
-                        }*@
+                            {
+                                <input type="checkbox" id="chbMonitorAll" />
+                            }*@
                         <lable for="chbMonitorAll">Messages</lable>
                     </th>
                     <th class="width-200">

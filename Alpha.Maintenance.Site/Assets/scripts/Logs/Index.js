@@ -351,28 +351,6 @@ var Logs = (function ($) {
             Logs.btnSubmit.on('click', function () {
                 Logs.generateData(50, 0);
             });
-
-            Logs.dpkFrom.datepicker({
-                defaultDate: "+1w",
-                changeMonth: true,
-                numberOfMonths: 1,
-                dateFormat: "M dd,yy",
-                showOn: "button",
-                buttonImage: $('#imagePath').val(),
-                buttonText: "From",
-                buttonImageOnly: true
-            }).focus(function () { $(this).datepicker('show') });
-
-            Logs.dpkTo.datepicker({
-                defaultDate: "+1w",
-                changeMonth: true,
-                numberOfMonths: 1,
-                dateFormat: "M dd,yy",
-                showOn: "button",
-                buttonImage: $('#imagePath').val(),
-                buttonText: "From",
-                buttonImageOnly: true
-            }).focus(function () { $(this).datepicker('show') });
         },
 
         initFreeHeader: function () {

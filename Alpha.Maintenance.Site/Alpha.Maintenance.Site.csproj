@@ -328,7 +328,6 @@
     <Content Include="Assets\scripts\lib\Fanex.Grid\Language\Fanex.Gird.Lang.zh-TW.js" />
     <Content Include="Assets\scripts\lib\Fanex.Grid\moment.min.js" />
     <Content Include="Assets\scripts\lib\Fanex.Grid\numeral.min.js" />
-    <Content Include="Assets\scripts\lib\jquery-ui.min.js" />
     <Content Include="Assets\scripts\lib\Momentjs\moment.js" />
     <Content Include="Assets\scripts\lib\Momentjs\moment.min.js" />
     <Content Include="Assets\scripts\lib\msgbox\images\alert.png" />

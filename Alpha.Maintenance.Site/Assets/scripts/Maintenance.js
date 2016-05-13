@@ -173,6 +173,16 @@ $(document).ready(function () {
 	$('.modal-trigger').leanModal();
 	$('.scrollspy').scrollSpy();
 	$('.button-collapse').sideNav({ 'edge': 'left' });
+	$('.datepicker').pickadate({
+	    selectMonths: true,
+	    selectYears: 20,
+	    format: 'mmm dd,yyyy',
+	    onSet: function (event) {
+	        if (event.hasOwnProperty("select")) {
+	            $(this).trigger('close');
+	        }
+	    }
+	});
 	$('.js-select').not('.disabled').material_select();
 });
 

@@ -46,7 +46,6 @@ namespace Alpha.Maintenance.Site.App_Start
                     "~/Assets/scripts/lib/Select2/select2.css");
 
             bundles.Add(new ScriptBundle("~/scripts/log-index").Include(
-               "~/Assets/scripts/lib/jquery-ui.min.js",
                "~/Assets/scripts/lib/Fanex.Grid/Fanex.Pagination.js",
                "~/Assets/scripts/lib/Momentjs/moment.min.js",
                "~/Assets/scripts/lib/Select2/select2.js",
