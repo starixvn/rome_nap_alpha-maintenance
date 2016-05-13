@@ -144,7 +144,29 @@ input:-webkit-autofill:active {
   position: relative;
   overflow: hidden;
   outline: none !important;
-  /* remove dotted border */ }
+  /* remove dotted border */
+  /*&:after {
+        content: "";
+        background: rgba(72, 108, 184,0.3);
+        display: block;
+        position: absolute;
+        border-radius: 50%;
+        padding-top: 240%;
+        padding-left: 240%;
+        margin-top: -120%;
+        margin-left: -120%;
+        opacity: 0;
+        transition: all 1s;
+    }
+
+    &:active:after {
+        padding-top: 0;
+        padding-left: 0;
+        margin-top: 0;
+        margin-left: 0;
+        opacity: 1;
+        transition: 0s;
+    }*/ }
   .btn-login:disabled {
     border: solid 1px #999;
     background: #aaa;
@@ -163,25 +185,6 @@ input:-webkit-autofill:active {
     cursor: pointer; }
   .btn-login:hover {
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15); }
-  .btn-login:after {
-    content: "";
-    background: rgba(72, 108, 184, 0.3);
-    display: block;
-    position: absolute;
-    border-radius: 50%;
-    padding-top: 240%;
-    padding-left: 240%;
-    margin-top: -120%;
-    margin-left: -120%;
-    opacity: 0;
-    transition: all 1s; }
-  .btn-login:active:after {
-    padding-top: 0;
-    padding-left: 0;
-    margin-top: 0;
-    margin-left: 0;
-    opacity: 1;
-    transition: 0s; }
 
 /* --- NOT SUPPORTED BROWSERS --- */
 #not-supported-browser-panel {

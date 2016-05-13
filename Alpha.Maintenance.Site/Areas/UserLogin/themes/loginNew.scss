@@ -197,7 +197,7 @@ input:-webkit-autofill:active {
         box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     }
 
-    &:after {
+    /*&:after {
         content: "";
         background: rgba(72, 108, 184,0.3);
         display: block;
@@ -218,7 +218,7 @@ input:-webkit-autofill:active {
         margin-left: 0;
         opacity: 1;
         transition: 0s;
-    }
+    }*/
 }
 
 /* --- NOT SUPPORTED BROWSERS --- */
