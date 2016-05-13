@@ -97,7 +97,7 @@ var Logs = (function ($) {
 
                             var countMessage = "";
                             if (value.NumMessage > 0) {
-                                countMessage = "<br/>(" + value.NumMessage + ")";
+                                countMessage = "(" + value.NumMessage + ")";
                             }
 
                             var message = Logs.replaceAll('<br>', '', value.Message).substring(0, 300);
