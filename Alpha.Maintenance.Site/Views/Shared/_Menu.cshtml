@@ -18,7 +18,9 @@
                     <ul>
                         @foreach (var subMenuItem in lvl1MenuItemList)
                         {
-                            <li mid="@subMenuItem.Id">
+                            var isActive = HttpContext.Current.Request.Url.AbsoluteUri.ToLower().Contains(subMenuItem.Url.ToLower());
+
+                            <li mid="@subMenuItem.Id" class="@(isActive ? "active" : string.Empty)">
                                 <i class="icon-@(subMenuItem.Name.ToLower().Replace(" ", "_"))"></i>
                                 <a href="@Url.Content(subMenuItem.ValidUrl)">@subMenuItem.Name</a>
                             </li>
@@ -30,6 +32,8 @@
         }
         else
         {
+            
+
             <li mid="@menuItem.Id"><a class="collapsible-header waves-effect" href="@Url.Content(menuItem.ValidUrl)">@menuItem.Name</a></li>
         }
     }
