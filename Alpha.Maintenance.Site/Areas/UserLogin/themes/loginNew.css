@@ -50,7 +50,7 @@ body {
   height: 60px;
   line-height: 60px;
   transition: 0.3s ease;
-  color: #ffbb33; }
+  color: #fed720; }
   .msg-content * {
     display: inline-block;
     vertical-align: middle;
@@ -144,29 +144,7 @@ input:-webkit-autofill:active {
   position: relative;
   overflow: hidden;
   outline: none !important;
-  /* remove dotted border */
-  /*&:after {
-        content: "";
-        background: rgba(72, 108, 184,0.3);
-        display: block;
-        position: absolute;
-        border-radius: 50%;
-        padding-top: 240%;
-        padding-left: 240%;
-        margin-top: -120%;
-        margin-left: -120%;
-        opacity: 0;
-        transition: all 1s;
-    }
-
-    &:active:after {
-        padding-top: 0;
-        padding-left: 0;
-        margin-top: 0;
-        margin-left: 0;
-        opacity: 1;
-        transition: 0s;
-    }*/ }
+  /* remove dotted border */ }
   .btn-login:disabled {
     border: solid 1px #999;
     background: #aaa;
