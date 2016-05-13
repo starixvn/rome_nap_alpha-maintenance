@@ -10,8 +10,8 @@
     <meta charset="utf-8" />
     <title>@ViewResources.Log_In</title>
     <meta name="viewport" content="width=device-width" />
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-    <link href="~/areas/userlogin/themes/loginNew.css" rel="stylesheet" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>    
+    <link href="~/Areas/UserLogin/themes/loginNew.css" rel="stylesheet" />
     <link href="~/Areas/UserLogin/scripts/lib/msgbox/msgbox-0.0.1.css" rel="stylesheet"
           type="text/css" />
 </head>
@@ -25,14 +25,15 @@
     @using (Html.BeginForm())
     {
         <div id="login-box">
-            <div id="msg-content">
-                <span id="inner-msg">@ViewBag.Message</span>
-            </div>
+            
             <div class="header">
                 <div class="welcome">
                     <img src="~/Areas/UserLogin/themes/img/m7_logo.png"  width="87" height="44"/>
                 </div>
-                <div class="secure"></div>
+                @*<div class="secure"></div>*@
+                <div class="msg-content" id="msg-content">
+                    <span id="inner-msg">@ViewBag.Message</span>
+                </div>
             </div>
             <div class="auth">
                 <div class="userName js-effect">
