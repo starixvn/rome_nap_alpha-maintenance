@@ -37,7 +37,12 @@
     cursor: pointer;
     display: block;
     word-wrap: break-word;
-    //max-width: 735px;
+    max-width: 150px;
+
+    @media (min-width: 768px) {
+        max-width: 170px;
+    }
+
     @media (min-width: 1024px) {
         max-width: 225px;
     }

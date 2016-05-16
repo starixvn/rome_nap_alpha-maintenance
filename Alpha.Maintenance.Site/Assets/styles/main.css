@@ -110,7 +110,13 @@ main {
   width: 252px;
   box-shadow: none; }
   .side-nav .brand-logo {
-    padding-left: 2rem !important; }
+    padding-left: 2rem !important;
+    height: 56px;
+    line-height: 56px; }
+    @media only screen and (min-width: 601px) {
+      .side-nav .brand-logo {
+        height: 64px;
+        line-height: 64px; } }
     .side-nav .brand-logo img {
       vertical-align: middle; }
     .side-nav .brand-logo .logo {
@@ -405,13 +411,15 @@ header nav {
       outline: none;
       height: 100%; }
 
-.button-collapse .material-icons {
-  color: #fff;
-  line-height: 56px;
-  padding-left: 15px; }
-  @media only screen and (min-width: 601px) {
-    .button-collapse .material-icons {
-      line-height: 64px; } }
+.button-collapse {
+  position: fixed; }
+  .button-collapse .material-icons {
+    color: #fff;
+    line-height: 56px;
+    padding-left: 15px; }
+    @media only screen and (min-width: 601px) {
+      .button-collapse .material-icons {
+        line-height: 64px; } }
 
 .icon-login {
   font-size: 20px; }
@@ -456,7 +464,11 @@ header nav {
 .message {
   cursor: pointer;
   display: block;
-  word-wrap: break-word; }
+  word-wrap: break-word;
+  max-width: 150px; }
+  @media (min-width: 768px) {
+    .message {
+      max-width: 170px; } }
   @media (min-width: 1024px) {
     .message {
       max-width: 225px; } }
