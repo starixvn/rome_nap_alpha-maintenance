@@ -55,7 +55,7 @@
             }
         }
 
-        input[type=text] {
+        input[type=text], input[type=date] {
             height: 3.5rem;
             line-height: 3.5rem;
             border-color: #ccc;
@@ -146,6 +146,8 @@
 
         span.caret {
             color: #6b7a99;
+            font-size: 8px;
+            top: 14px;
         }
     }
 }
@@ -253,7 +255,7 @@
     }
 }
 
-#msgbox1 {    
+#msgbox1 {
     .msgbox-content {
         color: $white;
     }

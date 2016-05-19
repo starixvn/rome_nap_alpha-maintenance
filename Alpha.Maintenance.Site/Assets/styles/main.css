@@ -11,7 +11,11 @@
   .select2-container .select2-choice .select2-arrow {
     border-left: none !important;
     border-radius: 0 !important;
-    background: none !important; }
+    background: none !important;
+    height: 85% !important;
+    top: inherit !important;
+    bottom: 0 !important;
+    width: 12px !important; }
 
 .select2-container.select2-container-active .select2-choice {
   box-shadow: none !important;
@@ -218,16 +222,16 @@ main {
       .page-form .input-field label.active {
         transform: none;
         top: -14px; }
-    .page-form .input-field input[type=text] {
+    .page-form .input-field input[type=text], .page-form .input-field input[type=date] {
       height: 3.5rem;
       line-height: 3.5rem;
       border-color: #ccc;
       font-size: 1.3rem;
       color: #2c2c2c; }
-      .page-form .input-field input[type=text]:focus:not([readonly]) {
+      .page-form .input-field input[type=text]:focus:not([readonly]), .page-form .input-field input[type=date]:focus:not([readonly]) {
         border-bottom: 1px solid #476bb7;
         box-shadow: 0 1px 0 0 #476bb7; }
-        .page-form .input-field input[type=text]:focus:not([readonly]) + label {
+        .page-form .input-field input[type=text]:focus:not([readonly]) + label, .page-form .input-field input[type=date]:focus:not([readonly]) + label {
           color: #476bb7; }
     .page-form .input-field input[type="checkbox"].filled-in:checked + label:before {
       border-right: 2px solid #fff;
@@ -270,7 +274,9 @@ main {
     font-size: 1.3rem;
     color: #2c2c2c; }
   .page-form .select-wrapper span.caret {
-    color: #6b7a99; }
+    color: #6b7a99;
+    font-size: 8px;
+    top: 14px; }
 
 .modal {
   background: #fff;
