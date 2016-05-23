@@ -391,17 +391,29 @@
     <Content Include="Assets\styles\vendors\icon\fonts\mSite.svg" />
     <Content Include="Assets\styles\vendors\icon\style.css" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Web.backupMNL.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="Web.pro.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.sit.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
+    <Content Include="Web.uat.config">
+      <DependentUpon>Web.local.config</DependentUpon>
     </Content>
     <Content Include="WebConnectionString.pro.config">
       <DependentUpon>WebConnectionString.config</DependentUpon>
@@ -454,25 +466,6 @@
     <Content Include="Views\Shared\_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Web.local.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.pro.config">
-      <DependentUpon>Web.config</DependentUpon>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.uat.config">
-      <DependentUpon>Web.config</DependentUpon>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.backupMNL.config">
-      <DependentUpon>Web.config</DependentUpon>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.sit.config">
-      <DependentUpon>Web.config</DependentUpon>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Areas\UserLogin\themes\loginNew.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
@@ -504,6 +497,7 @@
     <Content Include="WebConnectionString.local.config">
       <DependentUpon>WebConnectionString.config</DependentUpon>
     </Content>
+    <Content Include="Web.local.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
