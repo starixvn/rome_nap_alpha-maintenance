@@ -19,6 +19,7 @@ namespace Alpha.Maintenance.Site
     using Alpha.Maintenance.Site.App_Start;
     using Fanex.Data.Configuration;
     using Fanex.Logging;
+    using ONEbook.UM.Filters;
 
     /// <summary>
     /// Note: For instructions on enabling IIS6 or IIS7 classic mode, visit http://go.microsoft.com/?LinkId=9394801 .
@@ -37,6 +38,8 @@ namespace Alpha.Maintenance.Site
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             DbSettingProviderManager.Current.Start();
+
+            GlobalFilters.Filters.Add(new CheckUMFilter());
         }
 
         /// <summary>

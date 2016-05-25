@@ -40,7 +40,7 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
         private IGroupService _groupService;
         private ISiteService _siteService;
         private ICurrentSession _currentSession;
-        private IMaintenanceService _maintenanceService;
+        private ONEbook.UM.Services.IMaintenanceService _maintenanceService;
         private ISecurityService _securityService;
 
         #endregion members
@@ -64,7 +64,7 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
             _groupService = groupService ?? new GroupService();
             _siteService = siteService ?? new SiteService();
             _currentSession = currentSession ?? new CurrentSession();
-            _maintenanceService = maintenanceService ?? new MaintenanceService();
+            _maintenanceService = maintenanceService ?? new ONEbook.UM.Services.Impl.MaintenanceService();
             _securityService = securityService ?? new SecurityService();
         }
 
@@ -230,13 +230,6 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
             if (_currentSession == null || _currentSession.OnUserId == 0)
             {
                 return Json(kickOutResult);
-            }
-
-            var isPassUM = _maintenanceService.IsPassUnderMaintenance();
-
-            if (!isPassUM)
-            {
-                return Json("-1");
             }
 
             return Json("0");

@@ -31,6 +31,11 @@ var Recheckin = (function ($) {
                     if (error.status === 500) {
                         Recheckin.headlineMsgBox.showInfo(Recheckin.kickedOutMsg, { closeBtn: false });
                     }
+
+                    if (error.status === 401
+                        && $.parseJSON(error.responseText).code === 999999) {
+                        window.location.href = Recheckin.root + "UserLogin/Common/Offline";
+                    }
                 }
             });
         },
