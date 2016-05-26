@@ -338,17 +338,17 @@ namespace Alpha.Maintenance.Controller
 
             list.Add(new SelectListItem
             {
-                Text = "GMT-4",
+                Text = "GMT-4 (Canada)",
                 Value = "-4"
             });
             list.Add(new SelectListItem
             {
-                Text = "GMT+7",
+                Text = "GMT+7 (Bangkok)",
                 Value = "7"
             });
             list.Add(new SelectListItem
             {
-                Text = "GMT+8",
+                Text = "GMT+8 (Taipei)",
                 Value = "8"
             });
 

@@ -124,7 +124,7 @@ var Logs = (function ($) {
                             $('#content').append(content);
                         });
 
-                        $('#timeZone').html('Time (GMT' + timeZoneValue + ')');
+                        $('#timeZone').html('Time ' + Logs.ddlTimeZone.find('option:selected').text());
                         $('.message').on('click', Logs.clickMessage);
                         $('.monitored').on('click', Logs.monitorLog);
                         $('#chbMonitorAll').on('click', Logs.monitorAllLog);
