@@ -46,7 +46,7 @@
                         @Html.LabelFor(m => m.From, ViewResource.From, new { @class = "active" })
                     </div>
                     <div class="calendar">
-                        <input type="date" name="From" id="From" class="datepicker" value="@Model.From.ToString("MMM dd,yyyy")" />
+                        <input type="text" name="From" id="From" class="datepicker" value="@Model.From.ToString("MMM dd,yyyy")" />
                     </div>
                 </div>
                 <div class="input-field col l2 m3 s6">
@@ -54,7 +54,7 @@
                         @Html.LabelFor(m => m.To, ViewResource.To, new { @class = "active" })
                     </div>
                     <div class="calendar">
-                        <input type="date" name="To" id="To" class="datepicker" value="@Model.To.ToString("MMM dd,yyyy")" />
+                        <input type="text" name="To" id="To" class="datepicker" value="@Model.To.ToString("MMM dd,yyyy")" />
                     </div>
                 </div>
                 <div class="input-field col l2 m3 s6">
@@ -115,5 +115,3 @@
 @section Foot {
     @Scripts.Render("~/scripts/log-index")
 }
-
-
