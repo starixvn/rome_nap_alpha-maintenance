@@ -47,7 +47,7 @@ namespace Alpha.Maintenance.Site
         /// </summary>
         /// <param name="sender">Event sender.</param>
         /// <param name="e">Event arguments.</param>
-        [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
+        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
         protected void Application_Error(object sender, EventArgs e)
         {
             // Logging
@@ -92,12 +92,9 @@ namespace Alpha.Maintenance.Site
                 // Get additional exception data
                 SqlException sqlException = ex as SqlException;
 
-                if (sqlException == null)
+                if (sqlException == null && ex.InnerException != null)
                 {
-                    if (ex.InnerException != null)
-                    {
-                        sqlException = ex.InnerException as SqlException;
-                    }
+                    sqlException = ex.InnerException as SqlException;
                 }
 
                 if (sqlException != null)

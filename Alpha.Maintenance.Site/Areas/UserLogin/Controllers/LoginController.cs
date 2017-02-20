@@ -36,12 +36,12 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
     {
         #region members
 
-        private IUserService _userService;
-        private IGroupService _groupService;
-        private ISiteService _siteService;
-        private ICurrentSession _currentSession;
-        private ONEbook.UM.Services.IMaintenanceService _maintenanceService;
-        private ISecurityService _securityService;
+        private readonly IUserService _userService;
+        private readonly IGroupService _groupService;
+        private readonly ISiteService _siteService;
+        private readonly ICurrentSession _currentSession;
+        private readonly ONEbook.UM.Services.IMaintenanceService _maintenanceService;
+        private readonly ISecurityService _securityService;
 
         #endregion members
 
@@ -101,7 +101,7 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
         /// <param name="username">Login username.</param>
         /// <param name="password">Login password.</param>
         /// <returns>Action result.</returns>
-        [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
+        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult Index(string username, string password)

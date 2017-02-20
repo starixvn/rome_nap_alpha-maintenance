@@ -31,9 +31,9 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
         #region members
 
         private readonly int _timeExipration = 30;
-        private IUserService _userService;
-        private ISecurityService _securityService;
-        private ICurrentSession _currentSession;
+        private readonly IUserService _userService;
+        private readonly ISecurityService _securityService;
+        private readonly ICurrentSession _currentSession;
 
         #endregion members
 
@@ -63,7 +63,7 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
         /// <param name="onuserId">Online user object ID.</param>
         /// <param name="time">Time value.</param>
         /// <returns>Action result.</returns>
-        [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
+        [SuppressMessage("StyleCop.CSharp.StylecopPlus.Rules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
         [AllowAnonymous]
         [HttpGet]
         public ActionResult Index(string userId, string onuserId, string time)
