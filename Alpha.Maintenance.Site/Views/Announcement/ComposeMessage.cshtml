@@ -1,0 +1,133 @@
+﻿@model Announcement
+
+@Styles.Render("~/Assets/scripts/lib/jQuery-TE.1.4.0/jquery-te-1.4.0.css")
+
+@{
+    ViewBag.Title = "Compose message";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Headline {
+    <span>Announcement / </span>
+    <span class="active">Compose message</span>
+}
+@using (Html.BeginForm())
+{
+<div>
+    <div class="row">
+        <div class="l12">
+            Display information settings
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="row">
+        <div class="col l6">
+            <div class="col l5">
+
+                    Code:<input type="text" name="" value="" />
+
+            </div>
+            <div class="col l5">
+                    Title:<input type="text" name="" value="" />
+            </div>
+            <div class="col l2">
+                <input type="checkbox" id="Active" /><label for="Active">Active</label>
+            </div>
+            <div class="col l12">
+                Content
+            </div>
+            <div class="col l12">
+                <textarea name="textarea" class="jqte-test"><b>My contents are from <u><span style="color:rgb(0, 148, 133);">TEXTAREA</span></u></b></textarea>
+            </div>
+        </div>
+        <div class="col s6 border-left">
+            <div class="col s6">
+                <input type="checkbox" id="Announcement-Popup" />
+                <label for="Announcement-Popup">Announcement Popup</label>
+            </div>
+            <div class="col s6">
+                <input type="checkbox" id="Header-Popup" />
+                <label for="Header-Popup">Header Popup</label>
+            </div>
+            <div class="col s12" style="margin-top: 10px;">
+                <div class="input-field col s6">
+                    <div class="lbl-field width-60">
+                        @*@Html.LabelFor(from, ViewResource.From, new { @class = "active" })*@
+                        <label class="active">From</label>
+                    </div>
+                    <div class="calendar">
+                        <input type="text" name="From" id="From" class="datepicker" value="@DateTime.Now.AddDays(-7).ToString("MMM dd,yyyy")" />
+                    </div>
+                </div>
+                <div class="input-field col s6">
+                    <div class="lbl-field width-40">
+                        @*@Html.LabelFor(m => m.To, ViewResource.To, new { @class = "active" })*@
+                        <label class="active">To</label>
+                    </div>
+                    <div class="calendar">
+                        <input type="text" name="To" id="To" class="datepicker" value="@DateTime.Now.ToString("MMM dd,yyyy")" />
+                    </div>
+                </div>
+            </div>
+            <div class="col s12" style="margin-top: 10px;">
+
+                <div class="input-field col s6">
+                    <select>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1"> 1</option>
+                        <option value="2"> 2</option>
+                        <option value="3"> 3</option>
+                    </select>
+                    <label>Order</label>
+                </div>
+            </div>
+
+            <div class="col s12" style="margin-top: 10px;">
+                <div class="col s12"><label>Enviroments</label></div>
+                @foreach (var enviroment in Model.Environments)
+                {
+                    <div class="col s2">
+                        <input type="checkbox" id="@enviroment" />
+                        <label for="@enviroment">@enviroment</label>
+                    </div>
+                }
+                
+            </div>
+
+            <div class="col s12" style="margin-top: 10px;">
+                <div class="s12"><label>Systems</label></div>
+                @foreach (var system in Model.Systems)
+                {
+                    <div class="col s2">
+                        <input type="checkbox" id="@system" />
+                        <label for="@system">@system</label>
+                    </div>
+                }
+
+            </div>
+            <div class="col s12" style="margin-top: 100px;">
+                <div class="col s3"><input class="btn btn-info" type="button" name="" value="NEXT" /></div>
+
+                <div class="col s9"><input class="btn btn-info" type="button" name="" value="SAVE" /></div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+@Scripts.Render("~/Assets/scripts/lib/jQuery-TE.1.4.0/jquery-te-1.4.0.min.js")
+@Scripts.Render("~/Assets/scripts/lib/Momentjs/moment.min.js")
+@Scripts.Render("~/Assets/scripts/lib/Select2/select2.js")
+@Scripts.Render("~/scripts/common")
+<script>
+    $('.jqte-test').jqte();
+
+    $(document).ready(function () {
+        $('select').material_select();
+    });
+
+</script>

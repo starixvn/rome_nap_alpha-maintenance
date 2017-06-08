@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.Web.Http;
     using Announcements.Models;
-    using Core.Model;
     using Requests;
     using Service.Impl;
     using Service.Interface;

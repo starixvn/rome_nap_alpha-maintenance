@@ -17,7 +17,7 @@ namespace Alpha.Maintenance.Site
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
-    using Alpha.Maintenance.Site.App_Start;
+    using App_Start;
     using Fanex.Data.Configuration;
     using Fanex.Logging;
     using ONEbook.UM.Filters;

@@ -2,11 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using Announcements.Models;
     using Announcements.Specs;
-    using Core.Model;
 
     public interface AnnouncementService
     {
@@ -15,5 +12,7 @@
         IEnumerable<Announcement> GetAnnouncements(DateTime date, string environment, string system);
 
         IEnumerable<ISpecification<IUser>> GetAllSpecifications();
+
+        IEnumerable<Announcement> GetAllAnnouncements();
     }
 }

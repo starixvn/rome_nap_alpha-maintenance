@@ -11,4 +11,8 @@
         <Setting Key="Logging_InsertMachine" SpName="Acc_AppLog_MachineIns" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
         <Setting Key="Logging_UpdateMachine" SpName="Acc_AppLog_MachineUpd" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
     </Function>
+
+  <Function Name="Announcements">
+    <Setting Key="Annoucements_SelectAll" SpName="Annoucements_SelectAll" DbName="bodb_Annoucements" />
+  </Function>
 </Functions>

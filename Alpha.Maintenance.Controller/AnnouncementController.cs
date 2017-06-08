@@ -1,11 +1,9 @@
 ﻿namespace Alpha.Maintenance.Controller
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using System.Web.Mvc;
-    using Alpha.Maintenance.Service.Impl;
+    using Announcements.Models;
+    using Service.Impl;
     using Service.Interface;
     using Web;
 
@@ -30,6 +28,27 @@
                 Data = announcementService.GetAllSpecifications(),
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
+        }
+
+        public ActionResult ComposeMessage()
+        {
+            var announcements = announcementService.GetAllAnnouncements();
+
+            var model = new Announcement()
+            {
+               Environments = new List<string>() { "PRO", "STAGING", "UAT" },
+               Systems = new List<string>() { "MBC", "123abc"}
+            };
+
+
+           return View(model);
+        }
+
+        public ActionResult ShowAnnouncements()
+        {
+            var announcements = announcementService.GetAllAnnouncements();
+
+            return View(announcements);
         }
     }
 }

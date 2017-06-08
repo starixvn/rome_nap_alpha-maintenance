@@ -1,0 +1,139 @@
+﻿@model IEnumerable<Announcement>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+@Styles.Render("~/css/common")
+@Styles.Render("~/css/select2")
+
+@{
+    ViewBag.Title = "Messages & Announcements Management Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Head {
+    @Styles.Render("~/css/select2")
+}
+
+@section Headline {
+    <span>Announcement / </span>
+    <span class="active">Show all</span>
+}
+
+@using (Html.BeginForm())
+{<section id="filter-bar" style="width: 98%">
+        <div class="filter-form">
+            <div class="row">
+                <div class="col l12" style="margin-top: 10px;">
+                    <div class="input-field col l3">
+                        <div class="lbl-field width-60">
+                            @*@Html.LabelFor(from, ViewResource.From, new { @class = "active" })*@
+                            <label class="active">From</label>
+                        </div>
+                        <div class="calendar">
+                            <input type="text" name="From" id="From" class="datepicker" value="@DateTime.Now.AddDays(-7).ToString("MMM dd,yyyy")" />
+                        </div>
+                    </div>
+                    <div class="input-field col l3">
+                        <div class="lbl-field width-40">
+                            @*@Html.LabelFor(m => m.To, ViewResource.To, new { @class = "active" })*@
+                            <label class="active">To</label>
+                        </div>
+                        <div class="calendar">
+                            <input type="text" name="To" id="To" class="datepicker" value="@DateTime.Now.ToString("MMM dd,yyyy")" />
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="input-field col l6">
+                            <select>
+                                <option value="" disabled selected>All</option>
+                                <option value="Pro"> Pro</option>
+                                <option value="Staging"> Staging</option>
+                                <option value="UAT"> UAT</option>
+                                <option value="Local"> Local</option>
+                            </select>
+                            <label>Enviroments</label>
+                        </div>
+                    </div>
+                    <div class="col button-block">
+                        <input class="waves-effect waves-light btn btn-primary" type="button" value="@ViewResource.Submit" id="submit" />
+                        <a href="@Url.Action("ComposeMessage", "Announcement")">
+                            <input class="waves-effect waves-light btn btn-primary" type="button" value="Add" id="add" />
+                        </a>
+                </div>           
+            </div>
+        </div>  
+         </div>
+    </section>
+
+    <div class="table">
+        <table class="grid persist-area" id="messageContainer">
+            <thead class="persist-header">
+                <tr>
+                    <th>
+                        Code
+                    </th>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Type
+                    </th>
+                    <th>
+                        Active
+                    </th>
+                    <th>
+                        Priority
+                    </th>
+                    <th>
+                        From Date
+                    </th>
+                    <th>
+                        To Date
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="content">
+                @foreach (var announcement in Model)
+                {
+                    <tr>
+                        <td>
+                           @announcement.Code
+                        </td>
+                        <td>
+                            @announcement.Title
+                        </td>
+                        <td>
+                            @announcement.AnnouncementType
+                        </td>
+                        <td>
+                            <input type="checkbox" id="@announcement.Id" checked="@announcement.IsActive"/>
+                            <label for="@announcement.Id"><!--c--></label>
+                        </td>
+                        <td>
+                            @announcement.Order
+                        </td>
+                        <td>
+                            @announcement.FromDate.ToShortDateString()
+                        </td>
+                        <td>
+                            @announcement.ToDate.ToShortDateString()
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+}
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+@Scripts.Render("~/Assets/scripts/lib/Momentjs/moment.min.js")
+@Scripts.Render("~/Assets/scripts/lib/Select2/select2.js")
+@Scripts.Render("~/scripts/common")
+<script>
+
+    $(document).ready(function () {
+        $('select').material_select();
+    });
+
+</script>

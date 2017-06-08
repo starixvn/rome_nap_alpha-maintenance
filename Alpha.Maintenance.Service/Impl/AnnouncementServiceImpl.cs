@@ -6,20 +6,25 @@
     using Announcements.Services;
     using Announcements.Specs;
     using Core.Model;
+    using Fanex.Data.Repository;
     using Interface;
+    using Repository.Criteria.Announcements;
     using Repository.Impl;
 
     public class AnnouncementServiceImpl : AnnouncementService
     {
         private readonly SpecificationFactory specificationFactory;
         private readonly AnnouncementRepository announcementRepository;
+        private readonly IDynamicRepository dynamicRepository;
 
         private readonly IDictionary<string, Func<dynamic>> getValueRangeFunction;
 
         public AnnouncementServiceImpl(
+            IDynamicRepository dynamicRepository = null,
             SpecificationFactory specificationFactory = null,
             AnnouncementRepository announcementRepository = null)
         {
+            this.dynamicRepository = dynamicRepository ?? new DynamicRepository();
             this.specificationFactory = specificationFactory ?? new SpecificationFactoryImpl();
             this.announcementRepository = announcementRepository ?? new AnnouncementRepositoryImpl();
             getValueRangeFunction = new Dictionary<string, Func<dynamic>>
@@ -82,6 +87,14 @@
                     }
                 }
             };
+        }
+
+        public IEnumerable<Announcement> GetAllAnnouncements()
+        {
+            //var announcements = dynamicRepository.Fetch<Announcement>(new GetAllAnnouncementsCriteria());
+            var announcements = announcementRepository.GetAllAnnouncements(new GetAllAnnouncementsCriteria());
+
+            return announcements;
         }
     }
 }

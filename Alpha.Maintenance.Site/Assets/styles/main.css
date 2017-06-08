@@ -110,6 +110,9 @@ main {
   display: none;
   padding: 10px; }
 
+.border-left {
+  border-left: 1px solid #e0e0e0; }
+
 .side-nav {
   width: 252px;
   box-shadow: none; }
@@ -656,9 +659,7 @@ header nav {
 button.picker__close, button.picker__today {
   font-size: 12px; }
 
-button.picker__today:focus,
-button.picker__clear:focus,
-button.picker__close:focus {
+button.picker__today:focus, button.picker__clear:focus, button.picker__close:focus {
   background-color: rgba(71, 107, 183, 0.5); }
 
 @media (min-height: 28.875em) {
