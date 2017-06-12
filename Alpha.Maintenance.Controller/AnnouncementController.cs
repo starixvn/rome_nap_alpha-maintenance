@@ -1,10 +1,13 @@
 ﻿namespace Alpha.Maintenance.Controller
 {
+    using System;
     using System.Collections.Generic;
     using System.Web.Mvc;
     using Announcements.Models;
+    using Repository.Criteria.Announcements;
     using Service.Impl;
     using Service.Interface;
+    using ViewModels;
     using Web;
 
     public class AnnouncementController : BaseController
@@ -32,23 +35,26 @@
 
         public ActionResult ComposeMessage()
         {
-            var announcements = announcementService.GetAllAnnouncements();
-
             var model = new Announcement()
             {
                Environments = new List<string>() { "PRO", "STAGING", "UAT" },
                Systems = new List<string>() { "MBC", "123abc"}
             };
 
-
            return View(model);
         }
 
-        public ActionResult ShowAnnouncements()
+        public ActionResult ShowAnnouncements(GetAnnouncementsCriteria criteria)
         {
-            var announcements = announcementService.GetAllAnnouncements();
+            var viewModel = new AnnouncementViewModel
+            {
+                FromDate = criteria.FromDate,
+                ToDate = criteria.ToDate,
+                Environment = criteria.Environment,
+                Announcements = announcementService.GetAnnouncements(criteria)
+            };
 
-            return View(announcements);
+            return View(viewModel);
         }
     }
 }

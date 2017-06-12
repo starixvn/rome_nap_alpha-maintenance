@@ -1,0 +1,12 @@
+{
+  "environments": [
+    "Local",
+    "UAT",
+    "Staging",
+    "PRO"
+  ],
+  "sites": [
+    "MBC",
+    "123abc"
+  ]
+}

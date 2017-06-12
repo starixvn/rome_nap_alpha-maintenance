@@ -193,6 +193,7 @@
       <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Threading.Tasks, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.dll</HintPath>
       <Private>True</Private>
@@ -274,6 +275,8 @@
     <Compile Include="Areas\UserLogin\Controllers\LoginController.cs" />
     <Compile Include="Areas\UserLogin\Controllers\SSOController.cs" />
     <Compile Include="Areas\UserLogin\UserLogInAreaRegistration.cs" />
+    <Compile Include="Configurations\AppSettings.cs" />
+    <Compile Include="Configurations\AnnouncementConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -325,6 +328,7 @@
     <Content Include="Areas\UserLogin\themes\loginNew.min.css">
       <DependentUpon>loginNew.css</DependentUpon>
     </Content>
+    <Content Include="Assets\scripts\Announcement\announcement.js" />
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te-1.4.0.css" />
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te-1.4.0.min.js" />
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te.png" />
@@ -336,8 +340,7 @@
       <DependentUpon>main.css</DependentUpon>
     </Content>
     <Content Include="DatabaseScripts\AnnnouncementTable.sql" />
-    <Content Include="DatabaseScripts\EnvironmentTable.sql" />
-    <Content Include="DatabaseScripts\SystemTable.sql" />
+    <Content Include="DatabaseScripts\Annoucements_Select.sql" />
     <Content Include="Global.asax" />
     <Content Include="Assets\images\calendar.gif" />
     <Content Include="Assets\images\ic-calendar.png" />
@@ -506,6 +509,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\UserLogin\themes\loginNew.scss" />
+    <Content Include="App_Data\announcement.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -564,6 +568,7 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

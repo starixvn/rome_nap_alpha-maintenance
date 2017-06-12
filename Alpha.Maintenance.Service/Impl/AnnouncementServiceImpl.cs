@@ -89,10 +89,9 @@
             };
         }
 
-        public IEnumerable<Announcement> GetAllAnnouncements()
+        public IEnumerable<Announcement> GetAnnouncements(GetAnnouncementsCriteria criteria)
         {
-            //var announcements = dynamicRepository.Fetch<Announcement>(new GetAllAnnouncementsCriteria());
-            var announcements = announcementRepository.GetAllAnnouncements(new GetAllAnnouncementsCriteria());
+            var announcements = announcementRepository.GetAnnouncements(criteria);
 
             return announcements;
         }

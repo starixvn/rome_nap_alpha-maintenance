@@ -13,7 +13,7 @@
     {
         IEnumerable<Site> GetSites();
 
-        IEnumerable<Announcement> GetAllAnnouncements(GetAllAnnouncementsCriteria criteria);
+        IEnumerable<Announcement> GetAnnouncements(GetAnnouncementsCriteria criteria);
     }
 
     public class AnnouncementRepositoryImpl : AnnouncementRepository
@@ -26,7 +26,7 @@
             };
         }
 
-        public IEnumerable<Announcement> GetAllAnnouncements(GetAllAnnouncementsCriteria criteria)
+        public IEnumerable<Announcement> GetAnnouncements(GetAnnouncementsCriteria criteria)
         {
             if (criteria == null)
             {
