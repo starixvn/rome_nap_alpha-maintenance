@@ -13,6 +13,6 @@
     </Function>
 
   <Function Name="Announcements">
-    <Setting Key="Annoucements_Select" SpName="Annoucements_Select" DbName="bodb_Annoucements" />
+    <Setting Key="Announcements_Select" SpName="Announcements_Select" DbName="bodb_Announcements" />
   </Function>
 </Functions>

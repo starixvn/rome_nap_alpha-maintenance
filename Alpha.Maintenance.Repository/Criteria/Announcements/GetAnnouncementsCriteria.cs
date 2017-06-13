@@ -13,7 +13,7 @@
 
         public override string GetSettingKey()
         {
-            return "Annoucements_Select";
+            return "Announcements_Select";
         }
 
         public override bool IsValid()

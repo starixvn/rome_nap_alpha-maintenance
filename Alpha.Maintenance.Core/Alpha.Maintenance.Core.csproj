@@ -55,6 +55,11 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnnouncementResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnnouncementResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Business\SiteFunctionKeys.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -90,6 +95,10 @@
     <Compile Include="Web\HtmlHelperExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AnnouncementResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AnnouncementResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ViewResource.Designer.cs</LastGenOutput>

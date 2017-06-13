@@ -50,6 +50,11 @@ namespace Alpha.Maintenance.Site.App_Start
                "~/Assets/scripts/lib/Momentjs/moment.min.js",
                "~/Assets/scripts/lib/Select2/select2.js",
                "~/Assets/scripts/Logs/Index.js"));
+
+            bundles.Add(new ScriptBundle("~/scripts/show-announcement").Include(
+              "~/Assets/scripts/lib/Momentjs/moment.min.js",
+              "~/Assets/scripts/lib/Select2/select2.js",
+              "~/Assets/scripts/Announcement/show-announcement.js"));
         }
     }
 }

@@ -1,9 +1,5 @@
 ﻿@model AnnouncementViewModel
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-@Styles.Render("~/css/common")
-@Styles.Render("~/css/select2")
-
 @{
     ViewBag.Title = "Messages & Announcements Management Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,8 +10,8 @@
 }
 
 @section Headline {
-    <span>Announcement / </span>
-    <span class="active">Show all</span>
+    <span>@AnnouncementResources.Announcement / </span>
+    <span class="active">@AnnouncementResources.ShowAll</span>
 }
 
 <form role="form" id="report-form" action="@Url.Action("ShowAnnouncements", "Announcement")">
@@ -42,19 +38,19 @@
                     <div class="col s3">
                         <div class="input-field col l6">
                             <select name="Environment" id="Environment">
-                                <option value="">All</option>
+                                <option value="">@AnnouncementResources.All</option>
                                 @foreach (var environment in AppSettings.AnnouncementConfig.Environments)
                                 {
                                     <option value="@environment" @(environment.Equals(Model.Environment) ? "selected" : string.Empty)>@environment</option>
                                 }
                             </select>
-                            <label>Enviroments</label> 
+                            <label>@AnnouncementResources.Environments</label> 
                         </div>
                     </div>
                     <div class="col button-block">
                         <input class="waves-effect waves-light btn btn-primary" type="submit" value="@ViewResource.Submit" id="submit" />
                         <a href="@Url.Action("ComposeMessage", "Announcement")">
-                            <input class="waves-effect waves-light btn btn-primary" type="button" value="Add" id="add" />
+                            <input class="waves-effect waves-light btn btn-primary" type="button" value="@AnnouncementResources.Add" id="add" />
                         </a>
                     </div>
                 </div>
@@ -68,31 +64,34 @@
             <thead class="persist-header">
                 <tr>
                     <th>
-                        Code
+                        @AnnouncementResources.Code
                     </th>
                     <th>
-                        Title
+                        @AnnouncementResources.Title
                     </th>
                     <th>
-                        Type
+                        @AnnouncementResources.Edit
                     </th>
                     <th>
-                        Environments
+                        @AnnouncementResources.Type
                     </th>
                     <th>
-                        Sysmtems
+                        @AnnouncementResources.Environments
                     </th>
                     <th>
-                        Active
+                        @AnnouncementResources.Sysmtems
                     </th>
                     <th>
-                        Priority
+                        @AnnouncementResources.Active
                     </th>
                     <th>
-                        From Date
+                       @AnnouncementResources.Priority
                     </th>
                     <th>
-                        To Date
+                        @AnnouncementResources.FromDate
+                    </th>
+                    <th>
+                        @AnnouncementResources.ToDate
                     </th>
                 </tr>
             </thead>
@@ -105,6 +104,11 @@
                     </td>
                     <td>
                         @announcement.Title
+                    </td>
+                    <td>
+                        <a href="">
+                            Edit
+                        </a>
                     </td>
                     <td>
                         @announcement.AnnouncementType
@@ -135,10 +139,6 @@
         </table>
     </div>
 
-    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-    @Scripts.Render("~/Assets/scripts/Announcement/announcement.js")
-    @Scripts.Render("~/Assets/scripts/lib/Momentjs/moment.min.js")
-    @Scripts.Render("~/Assets/scripts/lib/Select2/select2.js")
-    @Scripts.Render("~/scripts/common")
-  
+@section Foot {
+    @Scripts.Render("~/scripts/show-announcement")
+}

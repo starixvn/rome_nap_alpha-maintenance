@@ -43,4 +43,6 @@ public static class SiteFunctionKeys
 
     public const string ViewLog = "ViewLog";
 
+    public const string Announcement = "Announcement";
+
 }

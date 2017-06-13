@@ -1,9 +1,10 @@
 ﻿namespace Alpha.Maintenance.Controller
 {
-    using System;
     using System.Collections.Generic;
     using System.Web.Mvc;
     using Announcements.Models;
+    using Fanex.NAP.Core.Business;
+    using Fanex.NAP.Core.Web.Attribute;
     using Repository.Criteria.Announcements;
     using Service.Impl;
     using Service.Interface;
@@ -24,6 +25,21 @@
             this.announcementService = announcementService ?? new AnnouncementServiceImpl();
         }
 
+        [HttpGet]
+        //[NapAuth(FunctionKey = SiteFunctionKeys.Announcement, Policy = Constant.Policy.Read)]
+        public ActionResult ShowAnnouncements(GetAnnouncementsCriteria criteria)
+        {
+            var viewModel = new AnnouncementViewModel
+            {
+                FromDate = criteria.FromDate,
+                ToDate = criteria.ToDate,
+                Environment = criteria.Environment,
+                Announcements = announcementService.GetAnnouncements(criteria)
+            };
+
+            return View(viewModel);
+        }
+
         public JsonResult GetSpecifications()
         {
             return new JsonNetResult
@@ -42,19 +58,6 @@
             };
 
            return View(model);
-        }
-
-        public ActionResult ShowAnnouncements(GetAnnouncementsCriteria criteria)
-        {
-            var viewModel = new AnnouncementViewModel
-            {
-                FromDate = criteria.FromDate,
-                ToDate = criteria.ToDate,
-                Environment = criteria.Environment,
-                Announcements = announcementService.GetAnnouncements(criteria)
-            };
-
-            return View(viewModel);
         }
     }
 }
