@@ -340,6 +340,8 @@
       <DependentUpon>main.css</DependentUpon>
     </Content>
     <Content Include="DatabaseScripts\AnnnouncementTable.sql" />
+    <Content Include="DatabaseScripts\AutoInsertAnnouncements.sql" />
+    <Content Include="DatabaseScripts\Announcements_Insert.sql" />
     <Content Include="DatabaseScripts\Annoucements_Select.sql" />
     <Content Include="Global.asax" />
     <Content Include="Assets\images\calendar.gif" />

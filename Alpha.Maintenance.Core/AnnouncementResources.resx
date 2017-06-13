@@ -129,8 +129,20 @@
   <data name="Announcement" xml:space="preserve">
     <value>Announcement</value>
   </data>
+  <data name="AnnouncementPopup" xml:space="preserve">
+    <value>Announcement Popup</value>
+  </data>
   <data name="Code" xml:space="preserve">
     <value>Code</value>
+  </data>
+  <data name="ComposeMessage" xml:space="preserve">
+    <value>Compose message</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="DisplayInformationSettings" xml:space="preserve">
+    <value>Display information settings</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
@@ -141,8 +153,17 @@
   <data name="FromDate" xml:space="preserve">
     <value>From Date</value>
   </data>
+  <data name="HeaderPopup" xml:space="preserve">
+    <value>Header Popup</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
   <data name="Priority" xml:space="preserve">
     <value>Priority</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>SAVE</value>
   </data>
   <data name="ShowAll" xml:space="preserve">
     <value>Show all</value>
