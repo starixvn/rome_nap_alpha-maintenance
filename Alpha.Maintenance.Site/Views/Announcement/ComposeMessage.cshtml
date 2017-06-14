@@ -25,19 +25,19 @@
         <div class="row">
             <div class="col l6">
                 <div class="col l5">
-                    @AnnouncementResources.Code:<input type="text" name="" value="" />
+                    @AnnouncementResources.Code:<input type="text" name="txtcode" id="txtcode" value="@Model.Code" />
                 </div>
                 <div class="col l5">
-                    @AnnouncementResources.Title:<input type="text" name="" value="" />
+                    @AnnouncementResources.Title:<input type="text" name="txttitle" id="txttitle" value="@Model.Title" />
                 </div>
                 <div class="col l2">
-                    <input type="checkbox" id="Active" /><label for="Active">@AnnouncementResources.Active</label>
+                    <input type="checkbox" id="ChkActive" @(Model.IsActive ? "checked": string.Empty) /><label for="ChkActive">@AnnouncementResources.Active</label>
                 </div>
                 <div class="col l12">
                     @AnnouncementResources.Content
                 </div>
                 <ul id="tabs-swipe-demo" class="tabs">
-                    <li class="tab col s3"><a href="#txtarea-eng">Eng-eng</a></li>
+                    <li class="tab col s3"><a href="#txtarea-eng"></a></li>
                     <li class="tab col s3"><a class="active" href="#txtarea-cn">zh-CN</a></li>
                     <li class="tab col s3"><a href="#txtarea-tw">zh-TW</a></li>
                     <li class="tab col s3"><a href="#txtarea-ja">ja-JP</a></li>
@@ -47,25 +47,25 @@
                 </ul>
               
                 <div id="txtarea-eng" class="col l12">
-                    <textarea name="textarea" class="jqte-test"><b>My contents are from <u><span style="color:red;">Eng-eng</span></u></b></textarea>
+                    <textarea name="textarea" class="jqte-test"></textarea>
                 </div>
                 <div id="txtarea-cn" class="col l12">
-                    <textarea name="textarea" class="jqte-test"><b>My contents are from <u><span style="color:green;">zh-CN</span></u></b></textarea>
+                    <textarea name="textarea" class="jqte-test"></textarea>
                 </div>
                 <div id="txtarea-tw" class="col l12">
-                    <textarea name="textarea" class="jqte-test"><b>My contents are from <u><span style="color:blue;">zh-TW</span></u></b></textarea>
+                    <textarea name="textarea" class="jqte-test"></textarea>
                 </div>
                 <div id="txtarea-ja" class="col l12">
-                    <textarea name="textarea" class="jqte-test"><b>My contents are from <u><span style="color:red;">ja-JP</span></u></b></textarea>
+                    <textarea name="textarea" class="jqte-test"></textarea>
                 </div>
                 <div id="txtarea-ko" class="col l12">
-                    <textarea name="textarea" class="jqte-test"><b>My contents are from <u><span style="color:green;">ko-KR</span></u></b></textarea>
+                    <textarea name="textarea" class="jqte-test"></textarea>
                 </div>
                 <div id="txtarea-th" class="col l12">
-                    <textarea name="textarea" class="jqte-test"><b>My contents are from <u><span style="color:blue;">th-TH</span></u></b></textarea>
+                    <textarea name="textarea" class="jqte-test"></textarea>
                 </div>
                 <div id="txtarea-vi" class="col l12">
-                    <textarea name="textarea" class="jqte-test"><b>My contents are from <u><span style="color:blue;">vi-VN</span></u></b></textarea>
+                    <textarea name="textarea" class="jqte-test"></textarea>
                 </div>
             </div>
             <div class="col s6 border-left">
@@ -98,7 +98,6 @@
                     </div>
                 </div>
                 <div class="col s12" style="margin-top: 10px;">
-
                     <div class="input-field col s6">
                         <select>
                             <option value="" disabled selected>Choose your option</option>
@@ -134,8 +133,8 @@
 
                 </div>
                 <div class="col s12" style="margin-top: 100px;">
-                    <div class="col s2"><input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="" value="@AnnouncementResources.Next" /></div>
-                    <div class="col s10"><input class="btn btn-info  waves-effect waves-light btn btn-primary" type="Submit" name="" value="@AnnouncementResources.Save" /></div>
+                    <div class="col s2"><input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnNext" id="btnNext" value="@AnnouncementResources.Next" /></div>
+                    <div class="col s10"><input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnSave" id="btnSave" value="@AnnouncementResources.Save" /></div>
                 </div>
             </div>
         </div>
@@ -150,12 +149,5 @@
     @Scripts.Render("~/Assets/scripts/lib/Momentjs/moment.min.js")
     @Scripts.Render("~/Assets/scripts/lib/Select2/select2.js")
     @Scripts.Render("~/scripts/common")
-    <script>
-        $('.jqte-test').jqte();
 
-        $(document).ready(function () {
-            $('ul.tabs').tabs();
-            $('select').material_select();
-        });
-
-    </script>
+  @Scripts.Render("~/Assets/scripts/Announcement/compose-messages.js")

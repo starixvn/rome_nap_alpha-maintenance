@@ -40,6 +40,15 @@
             return View(viewModel);
         }
 
+        public JsonResult InsertAnnouncement(Announcement announcement)
+        {
+            return new JsonNetResult
+            {
+                Data = announcementService.InsertAnnouncements(announcement),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
+
         public JsonResult GetSpecifications()
         {
             return new JsonNetResult
@@ -51,13 +60,13 @@
 
         public ActionResult ComposeMessage()
         {
-            var model = new Announcement()
-            {
-               Environments = new List<string>() { "PRO", "STAGING", "UAT" },
-               Systems = new List<string>() { "MBC", "123abc"}
-            };
+           return View();
+        }
 
-           return View(model);
+        public ActionResult EditMessage(EditAnnouncementsCriteria criteria)
+        {
+            var announcement = announcementService.EditAnnouncement(criteria);
+            return View(announcement);
         }
     }
 }

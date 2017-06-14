@@ -2,12 +2,14 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Announcements.Models;
     using Announcements.Services;
     using Announcements.Specs;
     using Core.Model;
     using Fanex.Data.Repository;
     using Interface;
+    using Newtonsoft.Json;
     using Repository.Criteria.Announcements;
     using Repository.Impl;
 
@@ -94,6 +96,32 @@
             var announcements = announcementRepository.GetAnnouncements(criteria);
 
             return announcements;
+        }
+
+        public Result InsertAnnouncements(Announcement announcement)
+        {
+            return announcementRepository.InsertAnnouncement(
+                    new InsertAnnouncementsCriteria
+                    {
+                        Code = announcement.Code,
+                        Title = announcement.Title,
+                        IsActive = announcement.IsActive,
+                        AnnouncementType = (int)announcement.AnnouncementType,
+                        FromDate = announcement.FromDate,
+                        ToDate = announcement.ToDate,
+                        Environments = String.Join(", ", announcement.Environments.ToArray()),
+                        Systems = String.Join(", ", announcement.Systems.ToArray()),
+                        Order = announcement.Order,
+                        Contents = JsonConvert.SerializeObject(announcement.Contents),
+                        Specifications = JsonConvert.SerializeObject(announcement.Specifications)
+                    });
+        }
+
+        public Announcement EditAnnouncement(EditAnnouncementsCriteria criteria)
+        {
+            var announcement = announcementRepository.EditAnnouncement(criteria);
+
+            return announcement;
         }
     }
 }

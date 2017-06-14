@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-var Announcement = (function ($) {
+var ShowedAnnouncement = (function ($) {
     return {
         init: function () {
             $('select').material_select();
@@ -13,5 +13,5 @@ var Announcement = (function ($) {
 
 
 $(document).ready(function () {
-    Announcement.init();
+    ShowedAnnouncement.init();
 });

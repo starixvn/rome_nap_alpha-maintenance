@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using Announcements.Models;
     using Announcements.Specs;
+    using Core.Model;
     using Repository.Criteria.Announcements;
 
     public interface AnnouncementService
@@ -15,5 +16,9 @@
         IEnumerable<ISpecification<IUser>> GetAllSpecifications();
 
         IEnumerable<Announcement> GetAnnouncements(GetAnnouncementsCriteria criteria);
+
+        Result InsertAnnouncements(Announcement announcement);
+
+        Announcement EditAnnouncement(EditAnnouncementsCriteria criteria);
     }
 }
