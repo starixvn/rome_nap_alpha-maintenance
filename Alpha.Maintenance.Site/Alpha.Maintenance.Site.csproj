@@ -338,6 +338,7 @@
       <DependentUpon>main.css</DependentUpon>
     </Content>
     <Content Include="DatabaseScripts\AnnnouncementTable.sql" />
+    <Content Include="DatabaseScripts\Announcements_Update.sql" />
     <Content Include="DatabaseScripts\Announcements_Select.sql" />
     <Content Include="DatabaseScripts\AutoInsertAnnouncements.sql" />
     <Content Include="DatabaseScripts\Announcements_Insert.sql" />

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using Alpha.Announcements.Models;
 using Alpha.Maintenance.Core.Configurations;
+using Alpha.Maintenance.Core.Model;
 
 namespace Alpha.Maintenance.Controller.ViewModels
 {
@@ -34,5 +35,7 @@ namespace Alpha.Maintenance.Controller.ViewModels
         public IEnumerable<SelectListItem> Enviroments { get; set; }
 
         public IEnumerable<SelectListItem> Systems { get; set; }
+
+        public ActionType ActionType { get; set; } = ActionType.Create;
     }
 }

@@ -1,10 +1,13 @@
 ﻿namespace Alpha.Maintenance.Repository.Criteria.Announcements
 {
     using System;
+    using Core.Model;
     using Fanex.Data.Repository;
 
     public class InsertAnnouncementsCriteria : CriteriaBase
     {
+        public int Id { get; set; }
+
         public string Code { get; set; }
 
         public string Title { get; set; }
@@ -27,9 +30,12 @@
 
         public string Specifications { get; set; }
 
+        [SpParam(Ignored = true)]
+        public ActionType Action { get; set; }
+
         public override string GetSettingKey()
         {
-            return "Announcements_Insert";
+            return Action.Equals(ActionType.Create) ?  "Announcements_Insert" : "Announcements_Update";
         }
 
         public override bool IsValid()

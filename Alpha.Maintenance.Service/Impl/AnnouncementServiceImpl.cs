@@ -104,6 +104,7 @@
             return announcementRepository.InsertAnnouncement(
                     new InsertAnnouncementsCriteria
                     {
+                        Id = announcement.Id,
                         Code = announcement.Code,
                         Title = announcement.Title,
                         IsActive = announcement.IsActive,

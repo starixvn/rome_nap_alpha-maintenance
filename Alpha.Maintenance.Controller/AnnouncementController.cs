@@ -6,6 +6,7 @@
     using System.Web.Mvc;
     using Announcements.Models;
     using Core.Configurations;
+    using Core.Model;
     using Repository.Criteria.Announcements;
     using Service.Impl;
     using Service.Interface;
@@ -41,7 +42,7 @@
             return View(viewModel);
         }
 
-        public JsonResult InsertAnnouncement(Announcement announcement)
+        public JsonResult InsertAnnouncement(Announcement announcement, ActionType action)
         {
             return new JsonNetResult
             {

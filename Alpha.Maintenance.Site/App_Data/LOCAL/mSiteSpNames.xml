@@ -16,5 +16,6 @@
     <Setting Key="Announcements_Select" SpName="Announcements_Select" DbName="bodb_Announcements" />
     <Setting Key="Announcements_Insert" SpName="Announcements_Insert" DbName="bodb_Announcements" />
     <Setting Key="Announcements_SelectByCode" SpName="Announcements_SelectByCode" DbName="bodb_Announcements" />
+    <Setting Key="Announcements_Update" SpName="Announcements_Update" DbName="bodb_Announcements" />
   </Function>
 </Functions>

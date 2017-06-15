@@ -22,6 +22,7 @@
         Result InsertAnnouncement(ICriteria criteria);
 
         Announcement EditAnnouncement(EditAnnouncementsCriteria criteria);
+
     }
 
     public class AnnouncementRepositoryImpl : AnnouncementRepository

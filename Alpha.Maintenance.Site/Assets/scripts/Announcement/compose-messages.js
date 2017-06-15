@@ -27,6 +27,7 @@ var ComposedAnnouncement = (function ($) {
                 });
 
                 var announcement = {
+                    id: $('#AnnouncementId').val(),
                     code: $("#txtcode").val(),
                     title: $("#txttitle").val(),
                     isActive: $("#ChkActive").is(":checked"),
@@ -37,7 +38,8 @@ var ComposedAnnouncement = (function ($) {
                     todate: $('#ToDate').val(),
                     order: $('#group-order option:selected').val(),
                     specifications: [],
-                    systems: systems
+                    systems: systems,
+                    action: $('#actionType').val()
                 };
 
                 $.ajax({
