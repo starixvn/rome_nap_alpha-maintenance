@@ -6,6 +6,7 @@
     using Announcements.Models;
     using Announcements.Services;
     using Announcements.Specs;
+    using Core.Configurations;
     using Core.Model;
     using Fanex.Data.Repository;
     using Interface;
@@ -121,7 +122,21 @@
         {
             var announcement = announcementRepository.EditAnnouncement(criteria);
 
+            announcement.Contents = CorrectContent(announcement.Contents);
+
             return announcement;
+        }
+
+        public IEnumerable<MessageContent> CorrectContent(IEnumerable<MessageContent> contents)
+        {
+            IEnumerable<MessageContent> temp = AppSettings.AnnouncementConfig.Languages.Select(
+                language => new MessageContent
+                {
+                    LanguageKey = language,
+                    Text = contents.FirstOrDefault(content => content.LanguageKey.Equals(language, StringComparison.OrdinalIgnoreCase))?.Text
+                });
+
+            return temp;
         }
     }
 }

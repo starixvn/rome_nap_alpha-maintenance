@@ -1,4 +1,4 @@
-﻿@model Announcement
+﻿@model ComposeAnnouncementViewModel
 
 @Styles.Render("~/Assets/scripts/lib/jQuery-TE.1.4.0/jquery-te-1.4.0.css")
 
@@ -25,121 +25,107 @@
         <div class="row">
             <div class="col l6">
                 <div class="col l5">
-                    @AnnouncementResources.Code:<input type="text" name="txtcode" id="txtcode" value="@Model.Code" />
+                    @AnnouncementResources.Code:<input type="text" name="txtcode" id="txtcode" value="@Model.Announcement.Code" />
                 </div>
                 <div class="col l5">
-                    @AnnouncementResources.Title:<input type="text" name="txttitle" id="txttitle" value="@Model.Title" />
+                    @AnnouncementResources.Title:<input type="text" name="txttitle" id="txttitle" value="@Model.Announcement.Title" />
                 </div>
                 <div class="col l2">
-                    <input type="checkbox" id="ChkActive" @(Model.IsActive ? "checked": string.Empty) /><label for="ChkActive">@AnnouncementResources.Active</label>
+                    <input type="checkbox" id="ChkActive" @(Model.Announcement.IsActive ? "checked" : string.Empty) />
+                    <label class="input-field" for="ChkActive">@AnnouncementResources.Active</label>
                 </div>
                 <div class="col l12">
                     @AnnouncementResources.Content
                 </div>
                 <ul id="tabs-swipe-demo" class="tabs">
-                    <li class="tab col s3"><a href="#txtarea-eng"></a></li>
-                    <li class="tab col s3"><a class="active" href="#txtarea-cn">zh-CN</a></li>
-                    <li class="tab col s3"><a href="#txtarea-tw">zh-TW</a></li>
-                    <li class="tab col s3"><a href="#txtarea-ja">ja-JP</a></li>
-                    <li class="tab col s3"><a href="#txtarea-ko">ko-KR</a></li>
-                    <li class="tab col s3"><a href="#txtarea-th">th-TH</a></li>
-                    <li class="tab col s3"><a href="#txtarea-vi">vi-VN</a></li>
+                    @foreach (var content in Model.Announcement.Contents)
+                    {
+                        <li class="tab col s3"><a href="#div-@content.LanguageKey">@content.LanguageKey</a></li>
+                    }
                 </ul>
-              
-                <div id="txtarea-eng" class="col l12">
-                    <textarea name="textarea" class="jqte-test"></textarea>
-                </div>
-                <div id="txtarea-cn" class="col l12">
-                    <textarea name="textarea" class="jqte-test"></textarea>
-                </div>
-                <div id="txtarea-tw" class="col l12">
-                    <textarea name="textarea" class="jqte-test"></textarea>
-                </div>
-                <div id="txtarea-ja" class="col l12">
-                    <textarea name="textarea" class="jqte-test"></textarea>
-                </div>
-                <div id="txtarea-ko" class="col l12">
-                    <textarea name="textarea" class="jqte-test"></textarea>
-                </div>
-                <div id="txtarea-th" class="col l12">
-                    <textarea name="textarea" class="jqte-test"></textarea>
-                </div>
-                <div id="txtarea-vi" class="col l12">
-                    <textarea name="textarea" class="jqte-test"></textarea>
-                </div>
+
+                @foreach (var content in Model.Announcement.Contents)
+                {
+                    <div id="div-@content.LanguageKey" class="col l12">
+                        <textarea name="group-contents" id="@content.LanguageKey" class="jqte-test">@content.Text</textarea>
+                    </div>
+                }
             </div>
             <div class="col s6 border-left">
                 <div class="col s6">
-                    <input type="checkbox" id="Announcement-Popup" />
-                    <label for="Announcement-Popup">@AnnouncementResources.AnnouncementPopup</label>
+                    <input type="radio" name="group-popup" id="Announcement-Popup" value="1" @(Model.Announcement.AnnouncementType.Equals(AnnouncementType.Popup) ? "checked" : string.Empty) />
+                    <label for="Announcement-Popup" class="input-field">@AnnouncementResources.AnnouncementPopup</label>
                 </div>
                 <div class="col s6">
-                    <input type="checkbox" id="Header-Popup" />
-                    <label for="Header-Popup">@AnnouncementResources.HeaderPopup</label>
+                    <input type="radio" name="group-popup" id="Header-Popup" value="2"  @(Model.Announcement.AnnouncementType.Equals(AnnouncementType.HeaderPopup) ? "checked" : string.Empty) />
+                    <label for="Header-Popup" class="input-field">@AnnouncementResources.HeaderPopup</label>
                 </div>
                 <div class="col s12" style="margin-top: 10px;">
                     <div class="input-field col s6">
                         <div class="lbl-field width-60">
-                            @*@Html.LabelFor(from, ViewResource.From, new { @class = "active" })*@
-                            <label class="active">From</label>
+                            <label class="active">@ViewResource.From</label>
                         </div>
                         <div class="calendar">
-                            <input type="text" name="FromDate" id="FromDate" class="datepicker" value="@DateTime.Now.AddDays(-7).ToString("MMM dd,yyyy")" />
+                            <input type="text" name="FromDate" id="FromDate" class="datepicker" value="@Model.Announcement.FromDate.ToString("MMM dd,yyyy")" />
                         </div>
                     </div>
                     <div class="input-field col s6">
                         <div class="lbl-field width-40">
-                            @*@Html.LabelFor(m => m.To, ViewResource.To, new { @class = "active" })*@
-                            <label class="active">To</label>
+                            <label class="active">@ViewResource.To</label>
                         </div>
                         <div class="calendar">
-                            <input type="text" name="ToDate" id="ToDate" class="datepicker" value="@DateTime.Now.ToString("MMM dd,yyyy")" />
+                            <input type="text" name="ToDate" id="ToDate" class="datepicker" value="@Model.Announcement.ToDate.ToString("MMM dd,yyyy")" />
                         </div>
                     </div>
                 </div>
                 <div class="col s12" style="margin-top: 10px;">
                     <div class="input-field col s6">
-                        <select>
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="1"> 1</option>
-                            <option value="2"> 2</option>
-                            <option value="3"> 3</option>
+                        @* @Html.DropDownListFor(m => m.Announcement.Order, Enumerable.Range(1, 30).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString(), Selected = i.Equals(Model.Announcement.Order) }))*@
+                        <select name="order" id="group-order">
+                            <option value="">@AnnouncementResources.All</option>
+                            @for (int value = 1; value < 30; value++)
+                            {
+                                <option value="@value" @(value.Equals(Model.Announcement.Order) ? "selected" : string.Empty)>@value</option>
+                            }
                         </select>
-                        <label>Order</label>
+                        <label class="input-field" >Order</label>
                     </div>
                 </div>
 
                 <div class="col s12" style="margin-top: 10px;">
-                    <div class="col s12"><label>@AnnouncementResources.Environments</label></div>
-                   @foreach (var environment in AppSettings.AnnouncementConfig.Environments)
-                   {
+                    <div class="col s12"><label class="input-field">@AnnouncementResources.Environments</label></div>
+                    @foreach (var environment in Model.Enviroments)
+                    {
                         <div class="col s2">
-                            <input type="checkbox" id="@environment" />
-                            <label for="@environment">@environment</label>
+                            <input name="group-environments" type="checkbox" id="@environment.Text" @(environment.Selected ? "checked" : string.Empty) />
+                            <label class="input-field"  for="@environment.Text">@environment.Text</label>
                         </div>
                     }
-
                 </div>
 
                 <div class="col s12" style="margin-top: 10px;">
-                    <div class="s12"><label>@AnnouncementResources.Sysmtems</label></div>
-                  @foreach (var system in AppSettings.AnnouncementConfig.Sites)
-                  {
+                    <div class="col s12"><label class="input-field">@AnnouncementResources.Sysmtems</label></div>
+                    @foreach (var system in Model.Systems)
+                    {
                         <div class="col s2">
-                            <input type="checkbox" id="@system" />
-                            <label for="@system">@system</label>
+                            <input name="group-systems" type="checkbox" id="@system.Text" @(system.Selected ? "checked" : string.Empty) />
+                            <label class="input-field"  for="@system.Text">@system.Text</label>
                         </div>
                     }
 
                 </div>
                 <div class="col s12" style="margin-top: 100px;">
-                    <div class="col s2"><input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnNext" id="btnNext" value="@AnnouncementResources.Next" /></div>
-                    <div class="col s10"><input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnSave" id="btnSave" value="@AnnouncementResources.Save" /></div>
+                    <div class="col s2">
+                        <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnNext" id="btnNext" value="@AnnouncementResources.Next" />
+                    </div>
+                    <div class="col s10">
+                        <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnSave" id="btnSave" value="@AnnouncementResources.Save" />
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </form>
+</form>
 
 
     <script type="text/javascript" src="http://code.jquery.com/jquery.min.js" charset="utf-8"></script>

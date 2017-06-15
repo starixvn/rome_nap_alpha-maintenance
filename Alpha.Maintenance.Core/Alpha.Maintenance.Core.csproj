@@ -51,8 +51,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnnouncementResources.Designer.cs">
@@ -65,6 +67,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SiteFunctionKeys.tt</DependentUpon>
     </Compile>
+    <Compile Include="Configurations\AnnouncementConfig.cs" />
+    <Compile Include="Configurations\AppSettings.cs" />
     <Compile Include="Extension\Extension.cs" />
     <Compile Include="Helpers\PagerList.cs" />
     <Compile Include="Model\Log.cs" />

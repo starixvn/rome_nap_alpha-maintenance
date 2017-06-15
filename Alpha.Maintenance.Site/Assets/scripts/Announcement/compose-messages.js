@@ -10,23 +10,36 @@ var ComposedAnnouncement = (function ($) {
         },
         bindEvent: function ()
         {
-            var announcement = {
-                code: 125,
-                announcementType: 1,
-                contents: [{ LanguageKey: "Eng-eng", Text: "My contents are from Eng-eng" },
-                            { LanguageKey: "zh-CN", Text: "My contents are from zh-CN" },
-                            { LanguageKey: "zh-TW", Text: "My contents are from zh-TW" }],
-                Environments: ['Local', 'UAT'],
-                fromdate: '2017-06-05',
-                todate: '2017-06-16',
-                isActive: true,
-                order: 9,
-                specifications: ['dfafdagfagfsgfs', 'dfasfasfdafdaf'],
-                systems: ['MBC', '123'],
-                title: 'Example'
-            };
 
             $('#btnSave').on('click', function () {
+                var systems = $("input[name='group-systems']:checked").map(function () {
+                    return this.id;
+                }).get();
+
+                var environments = $("input[name='group-environments']:checked").map(function (index, domElement) {
+                    return this.id;
+                }).get();
+
+                var contents = [];
+
+                $("textarea").map(function (index, domElement) {
+                    contents.push({ LanguageKey: this.id, Text: $(this).val() });
+                });
+
+                var announcement = {
+                    code: $("#txtcode").val(),
+                    title: $("#txttitle").val(),
+                    isActive: $("#ChkActive").is(":checked"),
+                    announcementType: $('input[name=group-popup]:checked').val(),
+                    contents: contents,
+                    environments: environments,
+                    fromdate: $('#FromDate').val(),
+                    todate: $('#ToDate').val(),
+                    order: $('#group-order option:selected').val(),
+                    specifications: [],
+                    systems: systems
+                };
+
                 $.ajax({
                     url: NAP.resolveClientUrl("Announcement/InsertAnnouncement"),
                     type: 'POST',

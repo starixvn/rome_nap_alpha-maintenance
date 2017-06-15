@@ -1,10 +1,11 @@
 ﻿namespace Alpha.Maintenance.Controller
 {
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Web.Mvc;
     using Announcements.Models;
-    using Fanex.NAP.Core.Business;
-    using Fanex.NAP.Core.Web.Attribute;
+    using Core.Configurations;
     using Repository.Criteria.Announcements;
     using Service.Impl;
     using Service.Interface;
@@ -58,15 +59,28 @@
             };
         }
 
-        public ActionResult ComposeMessage()
+        public ActionResult ComposeMessage(EditAnnouncementsCriteria criteria)
         {
-           return View();
-        }
+            var model = criteria.Code == null ? 
+                new Announcement
+                {
+                    AnnouncementType = AnnouncementType.HeaderPopup,
+                    FromDate = DateTime.Now,
+                    ToDate = DateTime.Now,
+                    Order = 1,
+                    Environments = new List<string> {"Local"},
+                    Systems = new List<string> { "MBC" },
+                    Contents = AppSettings.AnnouncementConfig.Languages.Select(
+                            language => new MessageContent
+                            {
+                                LanguageKey = language,
+                                Text = string.Empty
+                            })
+                }
+                : announcementService.EditAnnouncement(criteria);
 
-        public ActionResult EditMessage(EditAnnouncementsCriteria criteria)
-        {
-            var announcement = announcementService.EditAnnouncement(criteria);
-            return View(announcement);
+            var viewModel = new ComposeAnnouncementViewModel(model);
+           return View(viewModel);
         }
     }
 }

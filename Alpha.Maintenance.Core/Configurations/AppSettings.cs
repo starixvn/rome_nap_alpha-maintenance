@@ -1,4 +1,4 @@
-﻿namespace Alpha.Maintenance.Site.Configurations
+﻿namespace Alpha.Maintenance.Core.Configurations
 {
     using System;
     using System.Configuration;

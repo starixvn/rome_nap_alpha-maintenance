@@ -5,11 +5,11 @@
 
     public class EditAnnouncementsCriteria : CriteriaBase
     {
-        public string Announcements_SelectByCode { get; set; }
+        public string Code { get; set; }
 
         public override string GetSettingKey()
         {
-            return "Announcements_Select";
+            return "Announcements_SelectByCode";
         }
 
         public override bool IsValid()

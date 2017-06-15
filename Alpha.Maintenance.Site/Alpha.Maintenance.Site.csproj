@@ -193,7 +193,6 @@
       <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Threading.Tasks, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.dll</HintPath>
       <Private>True</Private>
@@ -275,8 +274,6 @@
     <Compile Include="Areas\UserLogin\Controllers\LoginController.cs" />
     <Compile Include="Areas\UserLogin\Controllers\SSOController.cs" />
     <Compile Include="Areas\UserLogin\UserLogInAreaRegistration.cs" />
-    <Compile Include="Configurations\AppSettings.cs" />
-    <Compile Include="Configurations\AnnouncementConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -341,9 +338,10 @@
       <DependentUpon>main.css</DependentUpon>
     </Content>
     <Content Include="DatabaseScripts\AnnnouncementTable.sql" />
+    <Content Include="DatabaseScripts\Announcements_Select.sql" />
     <Content Include="DatabaseScripts\AutoInsertAnnouncements.sql" />
     <Content Include="DatabaseScripts\Announcements_Insert.sql" />
-    <Content Include="DatabaseScripts\Annoucements_Select.sql" />
+    <Content Include="DatabaseScripts\Announcements_SelectByCode.sql" />
     <Content Include="Global.asax" />
     <Content Include="Assets\images\calendar.gif" />
     <Content Include="Assets\images\ic-calendar.png" />

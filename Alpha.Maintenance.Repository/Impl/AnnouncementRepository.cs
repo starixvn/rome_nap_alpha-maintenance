@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Data;
+    using System.Linq;
     using Announcements.Models;
     using Announcements.Specs;
     using Core.Model;
@@ -115,17 +116,20 @@
                 AnnouncementType = (AnnouncementType)reader.ToInt("AnnouncementType"),
                 Code = reader.ToString("Code"),
                 Contents = JsonConvert.DeserializeObject<IEnumerable<MessageContent>>(reader.ToString("Contents")),
-                Environments = reader.ToString("Environments").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries),
+                Order = reader.ToInt("Order"),
+                Environments = reader.ToString("Environments").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
+                                .Select(environment => environment.Trim()),
                 Id = reader.ToInt("Id"),
                 IsActive = reader.ToBool("IsActive"),
-                Specifications = JsonConvert.DeserializeObject<IEnumerable<ISpecification<IUser>>>(reader.ToString("Specifications")),
-                Systems = reader.ToString("Systems").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries),
+                //Specifications = JsonConvert.DeserializeObject<IEnumerable<ISpecification<IUser>>>(reader.ToString("Specifications")),
+                Systems = reader.ToString("Systems").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
+                            .Select(system => system.Trim()),
                 Title = reader.ToString("Title"),
                 FromDate = reader.ToDateTime("FromDate"),
                 ToDate = reader.ToDateTime("ToDate")
             };
 
-            return announcement;
+             return announcement;
         }
     }
 }

@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Criteria\Announcements\EditAnnouncementsCriteria.cs" />
     <Compile Include="Criteria\Announcements\InsertAnnouncementsCriteria.cs" />
     <Compile Include="Criteria\Announcements\GetAnnouncementsCriteria.cs" />
     <Compile Include="Criteria\Log\GetAllCategoryCriteria.cs" />

@@ -8,5 +8,14 @@
   "sites": [
     "MBC",
     "123abc"
+  ],
+  "languages": [
+    "en-US",
+    "zh-CN",
+    "zh-TW",
+    "ja-JP",
+    "ko-KR",
+    "th-TH",
+    "vi-VN"
   ]
 }
