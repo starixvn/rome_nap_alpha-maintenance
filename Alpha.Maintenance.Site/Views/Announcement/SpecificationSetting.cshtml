@@ -1,0 +1,112 @@
+﻿@model ComposeAnnouncementViewModel
+
+@{
+    ViewBag.Title = "Compose message";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Headline {
+    <span>@AnnouncementResources.Announcement / </span>
+    <span class="active">@AnnouncementResources.ComposeMessage</span>
+}
+
+<form role="form" id="report-form" action="">
+    <div>
+        <div class="row">
+            <div class="col l2">
+            </div>
+            <div class="col l10">
+                2) Specification Setting
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="row">
+            <div class="col s12">
+                <div class="col s3">
+                    Clone Specification Setting From
+                </div>
+                <div class="col s6">
+                    <input type="text" name="txtCloneSetting" id="txtCloneSetting" value="" />
+                </div>
+                <div class="col s3">
+                    <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnClone" id="btnClone" value="Clone" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="col s6">
+                    Specification
+                </div>
+                <div class="col s6">
+                    Value
+                </div>
+            </div>
+        </div>
+        @foreach (var specification in Model.Announcement.Specifications)
+        {
+            <div class="row">
+                <div class="col s12">
+                    <div class="col s3">
+                        @specification.Name
+                    </div>
+                    <div class="input-field col s3">
+                            <select>
+                                <option value="in"> in</option>
+                                <option value="or"> or</option>
+                                <option value="and"> and</option>
+                                <option value="of"> of</option>
+                            </select>
+                            <label><!--c--></label>
+                        </div>
+                    <div class="col s3">
+                        <select multiple>
+                            @if (specification.Value != null)
+                            {
+                                foreach (var value in specification.Value)
+                                {
+                                    <option value="@value" selected> @value</option>
+                                }
+                            }
+                        </select>
+
+                    </div>
+                    <div class="col s3">
+                        <a href="">
+                            + Delete Specification
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="row">
+            <div class="col s12">
+                <a href="">
+                    + Add Specification
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="col s1">
+                    <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnNext" id="btnNext" value="@AnnouncementResources.Next" />
+                </div>
+                <div class="col s11">
+                    <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnSave" id="btnSave" value="@AnnouncementResources.Save" />
+                </div>
+                <input type="hidden" id="actionType" value="@Model.ActionType">
+                <input type="hidden" id="AnnouncementId" value="@Model.Announcement.Id">
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+@Scripts.Render("~/Assets/scripts/lib/Momentjs/moment.min.js")
+@Scripts.Render("~/Assets/scripts/lib/Select2/select2.js")
+@Scripts.Render("~/scripts/common")
+
+@Scripts.Render("~/Assets/scripts/Announcement/specification-setting.js")

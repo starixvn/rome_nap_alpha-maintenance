@@ -9,7 +9,7 @@
 
 @section Headline {
     <span>@AnnouncementResources.Announcement / </span>
-    <span class="active">>@AnnouncementResources.ComposeMessage</span>
+    <span class="active">@AnnouncementResources.ComposeMessage</span>
 }
 
 <form role="form" id="report-form" action="">
@@ -35,21 +35,26 @@
                     <label class="input-field" for="ChkActive">@AnnouncementResources.Active</label>
                 </div>
                 <div class="col l12">
+                    <div>
                     @AnnouncementResources.Content
-                </div>
-                <ul id="tabs-swipe-demo" class="tabs">
-                    @foreach (var content in Model.Announcement.Contents)
-                    {
-                        <li class="tab col s3"><a href="#div-@content.LanguageKey">@content.LanguageKey</a></li>
-                    }
-                </ul>
+                        </div>
+                    <div id="content-group" class="hiden">
+                        <ul id="tabs-swipe-demo" class="tabs">
+                            @foreach (var content in Model.Announcement.Contents)
+                            {
+                                <li class="tab col s3"><a href="#div-@content.LanguageKey">@content.LanguageKey</a></li>
+                            }
+                        </ul>
 
-                @foreach (var content in Model.Announcement.Contents)
-                {
-                    <div id="div-@content.LanguageKey" class="col l12">
-                        <textarea name="group-contents" id="@content.LanguageKey" class="jqte-test">@content.Text</textarea>
+                        @foreach (var content in Model.Announcement.Contents)
+                        {
+                            <div id="div-@content.LanguageKey" class="col l12">
+                                <textarea name="group-contents" id="@content.LanguageKey" class="jqte-test">@content.Text</textarea>
+                            </div>
+                        }
                     </div>
-                }
+                </div>
+
             </div>
             <div class="col s6 border-left">
                 <div class="col s6">
@@ -116,7 +121,9 @@
                 </div>
                 <div class="col s12" style="margin-top: 100px;">
                     <div class="col s2">
-                        <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnNext" id="btnNext" value="@AnnouncementResources.Next" />
+                        <a class="btn btn-info  waves-effect waves-light btn btn-primary"type="button" name="btnNext" id="btnNext" href="@Url.Action("SpecificationSetting", "Announcement")">
+                        @AnnouncementResources.Next
+                        </a>
                     </div>
                     <div class="col s10">
                         <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnSave" id="btnSave" value="@AnnouncementResources.Save" />

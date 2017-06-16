@@ -5,7 +5,7 @@
 
     public class EditAnnouncementsCriteria : CriteriaBase
     {
-        public string Code { get; set; }
+        public string Id { get; set; }
 
         public override string GetSettingKey()
         {

@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
+    using Announcements.Client.Helpers;
     using Announcements.Models;
     using Announcements.Specs;
     using Core.Model;
@@ -122,7 +123,9 @@
                                 .Select(environment => environment.Trim()),
                 Id = reader.ToInt("Id"),
                 IsActive = reader.ToBool("IsActive"),
-                //Specifications = JsonConvert.DeserializeObject<IEnumerable<ISpecification<IUser>>>(reader.ToString("Specifications")),
+                Specifications = JsonConvert.DeserializeObject<IEnumerable<ISpecification<IUser>>>(
+                    reader.ToString("Specifications"),
+                    new SpecificationConverter()),
                 Systems = reader.ToString("Systems").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
                             .Select(system => system.Trim()),
                 Title = reader.ToString("Title"),

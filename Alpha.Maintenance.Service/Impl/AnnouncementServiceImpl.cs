@@ -99,7 +99,7 @@
             return announcements;
         }
 
-        public Result InsertAnnouncements(Announcement announcement)
+        public Result InsertAnnouncements(Announcement announcement, string specifications)
         {
             return announcementRepository.InsertAnnouncement(
                     new InsertAnnouncementsCriteria
@@ -115,16 +115,14 @@
                         Systems = String.Join(", ", announcement.Systems.ToArray()),
                         Order = announcement.Order,
                         Contents = JsonConvert.SerializeObject(announcement.Contents),
-                        Specifications = JsonConvert.SerializeObject(announcement.Specifications)
+                        Specifications = specifications
                     });
         }
 
         public Announcement EditAnnouncement(EditAnnouncementsCriteria criteria)
         {
             var announcement = announcementRepository.EditAnnouncement(criteria);
-
             announcement.Contents = CorrectContent(announcement.Contents);
-
             return announcement;
         }
 
@@ -134,7 +132,7 @@
                 language => new MessageContent
                 {
                     LanguageKey = language,
-                    Text = contents.FirstOrDefault(content => content.LanguageKey.Equals(language, StringComparison.OrdinalIgnoreCase))?.Text
+                    Text = contents?.FirstOrDefault(content => content.LanguageKey.Equals(language, StringComparison.OrdinalIgnoreCase))?.Text
                 });
 
             return temp;
