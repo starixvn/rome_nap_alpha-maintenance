@@ -87,6 +87,7 @@
 
             return View(viewModel);
         }
+
         public ActionResult SpecificationSetting(EditAnnouncementsCriteria criteria)
         {
            var specs = @"[
@@ -152,7 +153,9 @@
                 }
                 : announcementService.EditAnnouncement(criteria);
 
-            var viewModel = new ComposeAnnouncementViewModel(model);
+            var specifications = announcementService.GetAllSpecifications();
+
+            var viewModel = new SpecificationSettingViewModel(model, specifications);
 
             return View(viewModel);
         }

@@ -171,6 +171,7 @@
     <Compile Include="MachineController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\QueryAnnouncementRequest.cs" />
+    <Compile Include="ViewModels\SpecificationSettingViewModel.cs" />
     <Compile Include="ViewModels\ComposeAnnouncementViewModel.cs" />
     <Compile Include="ViewModels\AnnouncementViewModel.cs" />
     <Compile Include="Web\HmacAuthorizationFilter.cs" />
