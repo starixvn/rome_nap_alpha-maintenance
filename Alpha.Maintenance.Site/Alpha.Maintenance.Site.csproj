@@ -560,6 +560,8 @@
     <Content Include="typings\globals\storejs\typings.json" />
     <Content Include="Views\Announcement\ShowAnnouncements.cshtml" />
     <Content Include="Views\Announcement\SpecificationSetting.cshtml" />
+    <Content Include="Views\Announcement\_DisplaySetting.cshtml" />
+    <Content Include="Views\Announcement\_SpecificationSetting.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />

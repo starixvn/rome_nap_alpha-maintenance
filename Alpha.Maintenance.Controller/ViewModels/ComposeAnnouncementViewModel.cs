@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using Alpha.Announcements.Models;
+using Alpha.Announcements.Specs;
 using Alpha.Maintenance.Core.Configurations;
 using Alpha.Maintenance.Core.Model;
 
@@ -9,7 +10,7 @@ namespace Alpha.Maintenance.Controller.ViewModels
 {
     public class ComposeAnnouncementViewModel
     {
-        public ComposeAnnouncementViewModel(Announcement announcement, ActionType actionType)
+        public ComposeAnnouncementViewModel(Announcement announcement, ActionType actionType, IEnumerable<ISpecification<IUser>> specifications)
         {
             Announcement = announcement;
 
@@ -30,6 +31,8 @@ namespace Alpha.Maintenance.Controller.ViewModels
                 });
 
             ActionType = actionType;
+
+            Specifications = specifications;
         }
 
         public Announcement Announcement { get; set; }
@@ -39,5 +42,8 @@ namespace Alpha.Maintenance.Controller.ViewModels
         public IEnumerable<SelectListItem> Systems { get; set; }
 
         public ActionType ActionType { get; set; } = ActionType.Create;
+
+        public IEnumerable<ISpecification<IUser>> Specifications { get; set; }
+
     }
 }

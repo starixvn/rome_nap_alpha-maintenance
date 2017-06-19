@@ -9,9 +9,28 @@ var ComposedAnnouncement = (function ($) {
             $('select').material_select();
             $("#content-group").removeClass("hiden");
             this.bindEvent();
+            this.toggleAddSpecsButton();
+        },
+        toggleAddSpecsButton: function()
+        {
+            $("div[id^='specification']:visible").length == $('#number-of-specifications').val() ? $(this).addClass("hiden") : $(this).removeClass("hiden");
         },
         bindEvent: function ()
         {
+            $('#add-spec').on('click', function () {
+                $("div[id^='specification']:hidden:first").removeClass("hiden");
+                this.toggleAddSpecsButton();
+                //$('div:hidden:first').removeClass("hiden");
+                //$("div[id^='specification']:visible").length == $('#number-of-specifications').val() ? $(this).addClass("hiden") : $(this).removeClass("hiden");
+                //$("div[id^='specification']:visible").length < $('#number-of-specifications').val() ? $("#add-spec").removeClass("hiden") : $("#add-spec").addClass("hiden");
+                var lengthddd = $('div:visible').length;
+                //"number-of-specifications""
+            });
+
+            $('.hidden-specification').on('click', function () {
+                $(this).parent('div').parent('div').addClass("hiden");
+                $("div[id^='specification']:visible").length < $('#number-of-specifications').val() ? $("#add-spec").removeClass("hiden") : $("#add-spec").addClass("hiden");
+            });
 
             $('#btnSave').on('click', function () {
                 var systems = $("input[name='group-systems']:checked").map(function () {

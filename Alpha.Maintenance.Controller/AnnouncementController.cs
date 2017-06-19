@@ -69,25 +69,28 @@
 
         public ActionResult ComposeMessage(EditAnnouncementsCriteria criteria)
         {
-            var model = criteria.Id == null ? 
+            var specifications = announcementService.GetAllSpecifications();
+
+            var model = criteria.Id == null ?
                 new Announcement
                 {
                     AnnouncementType = AnnouncementType.HeaderPopup,
                     FromDate = DateTime.Now,
                     ToDate = DateTime.Now,
                     Order = 1,
-                    Environments = new List<string> {"Local"},
+                    Environments = new List<string> { "Local" },
                     Systems = new List<string> { "MBC" },
                     Contents = AppSettings.AnnouncementConfig.Languages.Select(
                             language => new MessageContent
                             {
                                 LanguageKey = language,
                                 Text = string.Empty
-                            })
+                            }),
+                    Specifications = specifications
                 }
                 : announcementService.EditAnnouncement(criteria);
 
-            var viewModel = new ComposeAnnouncementViewModel(model, criteria.Id == null ? ActionType.Create : ActionType.Update );
+            var viewModel = new ComposeAnnouncementViewModel(model, criteria.Id == null ? ActionType.Create : ActionType.Update, specifications);
 
             return View(viewModel);
         }

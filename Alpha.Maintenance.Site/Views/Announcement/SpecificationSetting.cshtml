@@ -89,6 +89,7 @@
                     <div class="col s3 hidden-specification link">
                          - Delete Specification
                     </div>
+                    <input type="hidden" id="@firstSpecification.Id" value="@JsonConvert.SerializeObject(firstSpecification)">
                 </div>
             </div>
 
@@ -130,6 +131,7 @@
                     <div class="col s3 hidden-specification link">
                         - Delete Specification
                     </div>
+                    <input type="hidden" id="@specification.Id" value="@JsonConvert.SerializeObject(specification)">
                 </div>
             </div>
             }

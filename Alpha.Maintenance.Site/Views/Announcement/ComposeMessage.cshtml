@@ -12,137 +12,28 @@
     <span class="active">@AnnouncementResources.ComposeMessage</span>
 }
 
-<form role="form" id="report-form" action="">
-    <div>
-        <div class="row">
-            <div class="col l2">
-            </div>
-            <div class="col l10">
-                @AnnouncementResources.DisplayInformationSettings
-            </div>
-        </div>
-        <div class="divider"></div>
-        <div class="row">
-            <div class="col l6">
-                <div class="col l5">
-                    @AnnouncementResources.Code:<input type="text" name="txtcode" id="txtcode" value="@Model.Announcement.Code" />
-                </div>
-                <div class="col l5">
-                    @AnnouncementResources.Title:<input type="text" name="txttitle" id="txttitle" value="@Model.Announcement.Title" />
-                </div>
-                <div class="col l2">
-                    <input type="checkbox" id="ChkActive" @(Model.Announcement.IsActive ? "checked" : string.Empty) />
-                    <label class="input-field" for="ChkActive">@AnnouncementResources.Active</label>
-                </div>
-                <div class="col l12">
-                    <div>
-                    @AnnouncementResources.Content
-                        </div>
-                    <div id="content-group" class="hiden">
-                        <ul id="tabs-swipe-demo" class="tabs">
-                            @foreach (var content in Model.Announcement.Contents)
-                            {
-                                <li class="tab col s3"><a href="#div-@content.LanguageKey">@content.LanguageKey</a></li>
-                            }
-                        </ul>
 
-                        @foreach (var content in Model.Announcement.Contents)
-                        {
-                            <div id="div-@content.LanguageKey" class="col l12">
-                                <textarea name="group-contents" id="@content.LanguageKey" class="jqte-test">@content.Text</textarea>
-                            </div>
-                        }
-                    </div>
-                </div>
-
-            </div>
-            <div class="col s6 border-left">
-                <div class="col s6">
-                    <input type="radio" name="group-popup" id="Announcement-Popup" value="1" @(Model.Announcement.AnnouncementType.Equals(AnnouncementType.Popup) ? "checked" : string.Empty) />
-                    <label for="Announcement-Popup" class="input-field">@AnnouncementResources.AnnouncementPopup</label>
-                </div>
-                <div class="col s6">
-                    <input type="radio" name="group-popup" id="Header-Popup" value="2"  @(Model.Announcement.AnnouncementType.Equals(AnnouncementType.HeaderPopup) ? "checked" : string.Empty) />
-                    <label for="Header-Popup" class="input-field">@AnnouncementResources.HeaderPopup</label>
-                </div>
-                <div class="col s12" style="margin-top: 10px;">
-                    <div class="input-field col s6">
-                        <div class="lbl-field width-60">
-                            <label class="active">@ViewResource.From</label>
-                        </div>
-                        <div class="calendar">
-                            <input type="text" name="FromDate" id="FromDate" class="datepicker" value="@Model.Announcement.FromDate.ToString("MMM dd,yyyy")" />
-                        </div>
-                    </div>
-                    <div class="input-field col s6">
-                        <div class="lbl-field width-40">
-                            <label class="active">@ViewResource.To</label>
-                        </div>
-                        <div class="calendar">
-                            <input type="text" name="ToDate" id="ToDate" class="datepicker" value="@Model.Announcement.ToDate.ToString("MMM dd,yyyy")" />
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12" style="margin-top: 10px;">
-                    <div class="input-field col s6">
-                        @* @Html.DropDownListFor(m => m.Announcement.Order, Enumerable.Range(1, 30).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString(), Selected = i.Equals(Model.Announcement.Order) }))*@
-                        <select name="order" id="group-order">
-                            <option value="">@AnnouncementResources.All</option>
-                            @for (int value = 1; value < 30; value++)
-                            {
-                                <option value="@value" @(value.Equals(Model.Announcement.Order) ? "selected" : string.Empty)>@value</option>
-                            }
-                        </select>
-                        <label class="input-field" >Order</label>
-                    </div>
-                </div>
-
-                <div class="col s12" style="margin-top: 10px;">
-                    <div class="col s12"><label class="input-field">@AnnouncementResources.Environments</label></div>
-                    @foreach (var environment in Model.Enviroments)
-                    {
-                        <div class="col s2">
-                            <input name="group-environments" type="checkbox" id="@environment.Text" @(environment.Selected ? "checked" : string.Empty) />
-                            <label class="input-field"  for="@environment.Text">@environment.Text</label>
-                        </div>
-                    }
-                </div>
-
-                <div class="col s12" style="margin-top: 10px;">
-                    <div class="col s12"><label class="input-field">@AnnouncementResources.Sysmtems</label></div>
-                    @foreach (var system in Model.Systems)
-                    {
-                        <div class="col s2">
-                            <input name="group-systems" type="checkbox" id="@system.Text" @(system.Selected ? "checked" : string.Empty) />
-                            <label class="input-field"  for="@system.Text">@system.Text</label>
-                        </div>
-                    }
-
-                </div>
-                <div class="col s12" style="margin-top: 100px;">
-                    <div class="col s2">
-                        <a class="btn btn-info  waves-effect waves-light btn btn-primary"type="button" name="btnNext" id="btnNext" href="@Url.Action("SpecificationSetting", "Announcement")">
-                        @AnnouncementResources.Next
-                        </a>
-                    </div>
-                    <div class="col s10">
-                        <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnSave" id="btnSave" value="@AnnouncementResources.Save" />
-                    </div>
-                </div>
-            </div>
-            <input type="hidden" id="actionType" value="@Model.ActionType">
-            <input type="hidden" id="AnnouncementId" value="@Model.Announcement.Id">
-        </div>
+<div class="row">
+    <div class="col s6">
+        <ul class="tabs">
+            <li class="tab"><a href="#display-information-settings">1) @AnnouncementResources.DisplayInformationSettings</a></li>
+            <li class="tab"><a href="#specs-setting"> 2) Specification Setting</a></li>
+        </ul>
     </div>
-</form>
+</div>
 
+<div class="divider"></div>
 
-    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+@Html.Partial("_DisplaySetting", Model)
 
-    @Scripts.Render("~/Assets/scripts/lib/jQuery-TE.1.4.0/jquery-te-1.4.0.min.js")
-    @Scripts.Render("~/Assets/scripts/lib/Momentjs/moment.min.js")
-    @Scripts.Render("~/Assets/scripts/lib/Select2/select2.js")
-    @Scripts.Render("~/scripts/common")
+@Html.Partial("_SpecificationSetting", Model)
 
-  @Scripts.Render("~/Assets/scripts/Announcement/compose-messages.js")
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+@Scripts.Render("~/Assets/scripts/lib/jQuery-TE.1.4.0/jquery-te-1.4.0.min.js")
+@Scripts.Render("~/Assets/scripts/lib/Momentjs/moment.min.js")
+@Scripts.Render("~/Assets/scripts/lib/Select2/select2.js")
+@Scripts.Render("~/scripts/common")
+
+@Scripts.Render("~/Assets/scripts/Announcement/compose-messages.js")
