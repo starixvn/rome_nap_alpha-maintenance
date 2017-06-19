@@ -17,7 +17,7 @@
 
         IEnumerable<Announcement> GetAnnouncements(GetAnnouncementsCriteria criteria);
 
-        Result InsertAnnouncements(Announcement announcement, string specifications);
+        Result InsertAnnouncements(Announcement announcement, ActionType Action);
 
         Announcement EditAnnouncement(EditAnnouncementsCriteria criteria);
     }

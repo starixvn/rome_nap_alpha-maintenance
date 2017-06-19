@@ -99,11 +99,12 @@
             return announcements;
         }
 
-        public Result InsertAnnouncements(Announcement announcement, string specifications)
+        public Result InsertAnnouncements(Announcement announcement, ActionType Action)
         {
             return announcementRepository.InsertAnnouncement(
                     new InsertAnnouncementsCriteria
                     {
+                        Action = Action,
                         Id = announcement.Id,
                         Code = announcement.Code,
                         Title = announcement.Title,
@@ -115,7 +116,7 @@
                         Systems = String.Join(", ", announcement.Systems.ToArray()),
                         Order = announcement.Order,
                         Contents = JsonConvert.SerializeObject(announcement.Contents),
-                        Specifications = specifications
+                        Specifications = JsonConvert.SerializeObject(announcement.Specifications)
                     });
         }
 

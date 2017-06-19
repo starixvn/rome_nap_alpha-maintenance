@@ -80,18 +80,16 @@ var ComposedAnnouncement = (function ($) {
                     todate: $('#ToDate').val(),
                     order: $('#group-order option:selected').val(),
                     systems: systems,
-                    action: $('#actionType').val(),
-                    specifications: [],
-                    specs: specs
+                    specifications: []
                 };
 
                 
                 $.ajax({
                     url: NAP.resolveClientUrl("Announcement/InsertAnnouncement"),
                     type: 'POST',
-                    data: JSON.stringify(announcement),
+                    data: { "announcement": JSON.stringify(announcement), action: $('#actionType').val() },
                     dataType: 'json',
-                    contentType: "application/json; charset=utf-8",
+                    //contentType: "application/json; charset=utf-8",
                     beforeSend: function () {
                         NAP.loadingBox.show();
                     },

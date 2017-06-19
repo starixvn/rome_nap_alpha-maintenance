@@ -9,7 +9,7 @@ namespace Alpha.Maintenance.Controller.ViewModels
 {
     public class ComposeAnnouncementViewModel
     {
-        public ComposeAnnouncementViewModel(Announcement announcement)
+        public ComposeAnnouncementViewModel(Announcement announcement, ActionType actionType)
         {
             Announcement = announcement;
 
@@ -28,6 +28,8 @@ namespace Alpha.Maintenance.Controller.ViewModels
                     Value = site,
                     Selected = announcement.Systems.Contains(site)
                 });
+
+            ActionType = actionType;
         }
 
         public Announcement Announcement { get; set; }

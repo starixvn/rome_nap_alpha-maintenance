@@ -45,11 +45,15 @@
             return View(viewModel);
         }
 
-        public JsonResult InsertAnnouncement(Announcement announcement, ActionType action, string specs)
+        public JsonResult InsertAnnouncement(string announcement, ActionType action)
         {
+          var result =  JsonConvert.DeserializeObject<Announcement>(
+                    announcement,
+                    new SpecificationConverter());
+
             return new JsonNetResult
             {
-                Data = announcementService.InsertAnnouncements(announcement, specs),
+                Data = announcementService.InsertAnnouncements(result, action),
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
@@ -83,7 +87,7 @@
                 }
                 : announcementService.EditAnnouncement(criteria);
 
-            var viewModel = new ComposeAnnouncementViewModel(model);
+            var viewModel = new ComposeAnnouncementViewModel(model, criteria.Id == null ? ActionType.Create : ActionType.Update );
 
             return View(viewModel);
         }

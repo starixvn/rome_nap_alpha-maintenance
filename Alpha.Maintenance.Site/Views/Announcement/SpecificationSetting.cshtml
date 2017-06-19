@@ -1,110 +1,168 @@
 ﻿@model SpecificationSettingViewModel
 
-    @{
-        ViewBag.Title = "Compose message";
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
+@{
+    ViewBag.Title = "Compose message";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-    @section Headline {
-        <span>@AnnouncementResources.Announcement / </span>
-        <span class="active">@AnnouncementResources.ComposeMessage</span>
-    }
+@section Headline {
+    <span>@AnnouncementResources.Announcement / </span>
+    <span class="active">@AnnouncementResources.ComposeMessage</span>
+}
 
-    <form role="form" id="report-form" action="">
-        <div>
-            <div class="row">
-                <div class="col l2">
-                </div>
-                <div class="col l10">
-                    2) Specification Setting
-                </div>
+<form role="form" id="report-form" action="">
+    <div>
+        <div class="row">
+            <div class="col l2">
             </div>
-            <div class="divider"></div>
-            <div class="row">
-                <div class="col s12">
-                    <div class="col s3">
-                        Clone Specification Setting From
-                    </div>
-                    <div class="col s4">
-                        <input type="text" name="txtCloneSetting" id="txtCloneSetting" value="" />
-                    </div>
-                    <div class="col s3">
-                        <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnClone" id="btnClone" value="Clone" />
-                    </div>
-                </div>
+            <div class="col l10">
+                2) Specification Setting
             </div>
-            <div class="row">
-                <div class="col s12">
-                    <div class="col s6">
-                        Specification
-                    </div>
-                    <div class="col s6">
-                        Value
-                    </div>
+        </div>
+        <div class="divider"></div>
+        <div class="row">
+            <div class="col s12">
+                <div class="col s3">
+                    Clone Specification Setting From
                 </div>
-            </div>
-            @foreach (var specification in Model.Announcement.Specifications)
-            {
-                <div class="row">
-                    <div class="col s12">
-                        <div class="col s1">
-                           @Html.EnumDropDownList("Specification.ConjunctionOperator", specification.ConjunctionOperator)
-                        </div>
-                        <div class="col s2">
-
-                            @specification.Name
-                        </div>
-                        <div class="input-field col s2">
-                           @Html.EnumDropDownList("specification.SpecificationOperator", specification.SpecificationOperator)
-                        </div>
-                        <div class="col s3">
-                            <select multiple>
-                                @if (specification.Value != null)
-                                {
-                                    foreach (var value in specification.Value)
-                                    {
-                                        <option value="@value" selected> @value</option>
-                                    }
-                                }
-                            </select>
-
-                        </div>
-                        <div class="col s3">
-                            <a href="">
-                                + Delete Specification
-                            </a>
-                        </div>
-                    </div>
+                <div class="col s4">
+                    <input type="text" name="txtCloneSetting" id="txtCloneSetting" value="" />
                 </div>
-            }
-            <div class="row">
-                <div class="col s12">
-                    <a href="">
-                        + Add Specification
-                    </a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12">
-                    <div class="col s1">
-                        <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnNext" id="btnNext" value="@AnnouncementResources.Next" />
-                    </div>
-                    <div class="col s2">
-                        <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnSave" id="btnSave" value="@AnnouncementResources.Save" />
-                    </div>
-                    <input type="hidden" id="actionType" value="@Model.ActionType">
-                    <input type="hidden" id="AnnouncementId" value="@Model.Announcement.Id">
+                <div class="col s3">
+                    <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnClone" id="btnClone" value="Clone" />
                 </div>
             </div>
         </div>
-    </form>
+        <div class="row">
+            <div class="col s12">
+                <div class="col s1">
+                    &nbsp;
+                </div>
+                <div class="col s5">
+                    Specification
+                </div>
+                <div class="col s6">
+                    Value
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="divider col s10"></div>
+        </div>
+       
+
+        @if (Model.Announcement.Specifications.Any())
+        {
+            var firstSpecification = Model.Announcement.Specifications.First();
+            <div class="row" id="specification_@firstSpecification.Id">
+                <div class="col s12" >
+                    <div class="col s1">
+                        &nbsp;
+                    </div>
+                    <div class="col s2">
+                        @firstSpecification.Name
+                    </div>
+                    <div class="col s2">
+                        @Html.EnumDropDownList("specification.SpecificationOperator", firstSpecification.SpecificationOperator)
+                    </div>
+                    <div class="col s3">
+                        @if (firstSpecification.ValueRange == null)
+                        {
+                            <select multiple>
+                                @foreach (var value in firstSpecification.Value)
+                                {
+                                    <option value="@value" selected> @value</option>
+                                }
+                            </select>
+                        }
+                        else
+                        {
+                            <select>
+                                @foreach (var level in firstSpecification.ValueRange)
+                                {
+                                    <option value="@level.Key" selected> @level.Value</option>
+                                }
+                            </select>
+                        }
+
+                    </div>
+                    <div class="col s3 hidden-specification link">
+                         - Delete Specification
+                    </div>
+                </div>
+            </div>
+
+            foreach (var specification in Model.Announcement.Specifications.Skip(1))
+            {
+            <div class="row hiden" id="specification_@specification.Id">
+                <div class="col s12">
+                    <div class="col s1">
+                        @Html.EnumDropDownList("Specification.ConjunctionOperator", specification.ConjunctionOperator)
+                    </div>
+                    <div class="col s2">
+                        @specification.Name
+                    </div>
+                    <div class="col s2">
+                        @Html.EnumDropDownList("specification.SpecificationOperator", specification.SpecificationOperator)
+                    </div>
+                    <div class="col s3">
+                        @if (specification.ValueRange == null)
+                        {
+                            <select multiple>
+                                @foreach (var value in specification.Value)
+                                {
+                                    <option value="@value" selected> @value</option>
+                                }
+
+                            </select>
+                        }
+                        else
+                        {
+                            <select>
+                                @foreach (var level in specification.ValueRange)
+                                {
+                                    <option value="@level.Key" selected> @level.Value</option>
+                                }
+                            </select>
+                        }
+
+                    </div>
+                    <div class="col s3 hidden-specification link">
+                        - Delete Specification
+                    </div>
+                </div>
+            </div>
+            }
+        }
+        <div class="row">
+            <div class="col s12 link" id="add-spec">
+
+                    + Add Specification
+         
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="col s1">
+                    <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnNext" id="btnPrev" value="Prev" />
+                </div>
+                <div class="col s2">
+                    <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnSave" id="btnSave" value="@AnnouncementResources.Save" />
+                </div>
+                <input type="hidden" id="actionType" value="@Model.ActionType">
+                <input type="hidden" id="AnnouncementId" value="@Model.Announcement.Id">
+                <input type="hidden" id="number-of-specifications" value="@Model.Announcement.Specifications.Count()">
+            </div>
+        </div>
+    </div>
+</form>
 
 
-    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
-    @Scripts.Render("~/Assets/scripts/lib/Momentjs/moment.min.js")
-    @Scripts.Render("~/Assets/scripts/lib/Select2/select2.js")
-    @Scripts.Render("~/scripts/common")
+@Scripts.Render("~/Assets/scripts/lib/Momentjs/moment.min.js")
+@Scripts.Render("~/Assets/scripts/lib/Select2/select2.js")
+@Scripts.Render("~/scripts/common")
 
-    @Scripts.Render("~/Assets/scripts/Announcement/specification-setting.js")
+@Scripts.Render("~/Assets/scripts/Announcement/specification-setting.js")
