@@ -123,6 +123,9 @@
   <data name="Add" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="AddSpecification" xml:space="preserve">
+    <value>Add Specification</value>
+  </data>
   <data name="All" xml:space="preserve">
     <value>All</value>
   </data>
@@ -132,6 +135,12 @@
   <data name="AnnouncementPopup" xml:space="preserve">
     <value>Announcement Popup</value>
   </data>
+  <data name="Clone" xml:space="preserve">
+    <value>Clone</value>
+  </data>
+  <data name="CloneSpecification" xml:space="preserve">
+    <value>Clone Specification Setting From</value>
+  </data>
   <data name="Code" xml:space="preserve">
     <value>Code</value>
   </data>
@@ -140,6 +149,9 @@
   </data>
   <data name="Content" xml:space="preserve">
     <value>Content</value>
+  </data>
+  <data name="DeleteSpecification" xml:space="preserve">
+    <value>Delete Specification</value>
   </data>
   <data name="DisplayInformationSettings" xml:space="preserve">
     <value>Display information settings</value>
@@ -159,6 +171,9 @@
   <data name="Next" xml:space="preserve">
     <value>NEXT</value>
   </data>
+  <data name="Prev" xml:space="preserve">
+    <value>Prev</value>
+  </data>
   <data name="Priority" xml:space="preserve">
     <value>Priority</value>
   </data>
@@ -167,6 +182,9 @@
   </data>
   <data name="ShowAll" xml:space="preserve">
     <value>Show all</value>
+  </data>
+  <data name="Specification" xml:space="preserve">
+    <value>Specification</value>
   </data>
   <data name="Sysmtems" xml:space="preserve">
     <value>Sysmtems</value>
@@ -179,5 +197,8 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
   </data>
 </root>

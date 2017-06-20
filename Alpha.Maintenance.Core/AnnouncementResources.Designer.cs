@@ -79,6 +79,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Specification.
+        /// </summary>
+        public static string AddSpecification {
+            get {
+                return ResourceManager.GetString("AddSpecification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All.
         /// </summary>
         public static string All {
@@ -106,6 +115,24 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clone.
+        /// </summary>
+        public static string Clone {
+            get {
+                return ResourceManager.GetString("Clone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clone Specification Setting From.
+        /// </summary>
+        public static string CloneSpecification {
+            get {
+                return ResourceManager.GetString("CloneSpecification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Code.
         /// </summary>
         public static string Code {
@@ -129,6 +156,15 @@ namespace Alpha.Maintenance.Core {
         public static string Content {
             get {
                 return ResourceManager.GetString("Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Specification.
+        /// </summary>
+        public static string DeleteSpecification {
+            get {
+                return ResourceManager.GetString("DeleteSpecification", resourceCulture);
             }
         }
         
@@ -187,6 +223,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Prev.
+        /// </summary>
+        public static string Prev {
+            get {
+                return ResourceManager.GetString("Prev", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Priority.
         /// </summary>
         public static string Priority {
@@ -210,6 +255,24 @@ namespace Alpha.Maintenance.Core {
         public static string ShowAll {
             get {
                 return ResourceManager.GetString("ShowAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specification.
+        /// </summary>
+        public static string Specification {
+            get {
+                return ResourceManager.GetString("Specification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specification Setting.
+        /// </summary>
+        public static string SpecificationSetting {
+            get {
+                return ResourceManager.GetString("SpecificationSetting", resourceCulture);
             }
         }
         
@@ -246,6 +309,15 @@ namespace Alpha.Maintenance.Core {
         public static string Type {
             get {
                 return ResourceManager.GetString("Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        public static string Value {
+            get {
+                return ResourceManager.GetString("Value", resourceCulture);
             }
         }
     }
