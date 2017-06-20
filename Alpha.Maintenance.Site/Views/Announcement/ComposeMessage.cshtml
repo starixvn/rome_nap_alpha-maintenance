@@ -28,6 +28,9 @@
 
 @Html.Partial("_SpecificationSetting", Model)
 
+<input type="hidden" id="actionType" value="@Model.ActionType">
+<input type="hidden" id="AnnouncementId" value="@Model.Announcement.Id">
+
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 

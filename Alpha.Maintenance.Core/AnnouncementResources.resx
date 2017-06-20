@@ -186,6 +186,9 @@
   <data name="Specification" xml:space="preserve">
     <value>Specification</value>
   </data>
+  <data name="SpecificationSetting" xml:space="preserve">
+    <value>Specification Setting</value>
+  </data>
   <data name="Sysmtems" xml:space="preserve">
     <value>Sysmtems</value>
   </data>

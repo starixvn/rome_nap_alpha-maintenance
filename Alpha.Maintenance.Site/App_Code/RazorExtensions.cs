@@ -18,7 +18,7 @@
                 select new SelectListItem
                 {
                     Text = value.ToString(),
-                    Value = value.ToString(),
+                    Value = value.GetHashCode().ToString(),
                     Selected = (value.Equals(selectedValue))
                 };
 
@@ -26,6 +26,26 @@
                 name,
                 items
                 );
+        }
+
+        public static MvcHtmlString EnumDropDownList<TEnum>(this HtmlHelper htmlHelper, string name, TEnum selectedValue, IDictionary<string, object> htmlAttributes)
+        {
+            IEnumerable<TEnum> values = Enum.GetValues(typeof(TEnum))
+                .Cast<TEnum>();
+
+            IEnumerable<SelectListItem> items =
+                from value in values
+                select new SelectListItem
+                {
+                    Text = value.ToString(),
+                    Value = value.GetHashCode().ToString(),
+                    Selected = (value.Equals(selectedValue))
+                };
+
+            return htmlHelper.DropDownList(
+                name,
+                items,
+                htmlAttributes);
         }
     }
 }

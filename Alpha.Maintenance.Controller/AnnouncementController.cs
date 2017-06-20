@@ -86,7 +86,10 @@
                                 LanguageKey = language,
                                 Text = string.Empty
                             }),
-                    Specifications = specifications
+                    Specifications = new List<ISpecification<IUser>>
+                    {
+                        specifications.First()
+                    }
                 }
                 : announcementService.EditAnnouncement(criteria);
 
