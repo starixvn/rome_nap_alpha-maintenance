@@ -58,7 +58,7 @@
 
         foreach (var specification in specifications)
         {
-            <div data-jsonobject="@JsonConvert.SerializeObject(specification)" class="row @(Model.ActionType.Equals(ActionType.Create) ? "hiden" : string.Empty)" name="div-specification" id="specification_@specification.Id">
+            <div data-jsonobject="@JsonConvert.SerializeObject(specification)" class="row @(Model.ActionType.Equals(ActionType.Create) ? "hiden" : string.Empty)" name="div-specification" id="@specification.Id">
                 <div class="col s1">
                     @Html.EnumDropDownList("dll-specification-conjunctionOperator", specification.ConjunctionOperator,
                         new Dictionary<string, object>() { { "data-parentId", specification.Id } })
@@ -104,8 +104,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col s1">
-            <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnNext" id="btnPrev" value="@AnnouncementResources.Prev" />
+        <div class="col s1" name="btnPrev" id="btnPrev">
+            <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button"  value="@AnnouncementResources.Prev" />
         </div>
         <div class="col s2">
             <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnSave" id="btnSaveStep2" value="@AnnouncementResources.Save" />
