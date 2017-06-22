@@ -1,7 +1,7 @@
 ﻿@model ComposeAnnouncementViewModel
 
 @{
-    var specifications = Model.ActionType.Equals(ActionType.Create) ? Model.Specifications : Model.Announcement.Specifications;
+    var specifications = Model.Specifications;
 }
 
 <div id="specs-setting" class="row">
@@ -33,17 +33,59 @@
 
     @if (specifications.Any())
     {
-        <div class="row" id="div-choose-specification">
+        foreach (var specification in specifications)
+        {
+            var isShowSpec = Model.Announcement.Specifications.Any(existedSpec => existedSpec.Id.Equals(specification.Id));
+
+            <div data-jsonobject="@JsonConvert.SerializeObject(specification)" class="row @(isShowSpec ? string.Empty : "hiden")" name="div-specification" id="@specification.Id">
+                <div class="col s1">
+                    @Html.EnumDropDownList("dll-specification-conjunctionOperator", specification.ConjunctionOperator,
+                         new Dictionary<string, object>() { { "data-parentId", specification.Id } })
+                    &nbsp;
+                </div>
+                <div class="col s2">
+                    @specification.Name
+                </div>
+                <div class="col s2">
+                    @Html.EnumDropDownList("dll-specification-specificationOperator", specification.SpecificationOperator,
+                         new Dictionary<string, object>() { { "data-parentId", specification.Id } })
+                </div>
+                <div class="col s3">
+                    @if (specification.ValueRange == null)
+                    {
+                        <select name="dll-specification-value" multiple>
+                            @foreach (var value in specification.Value)
+                            {
+                                <option value="@value" selected> @value</option>
+                            }
+                        </select>
+                    }
+                    else
+                    {
+                        <select name="dll-specification-value">
+                            @foreach (var value in specification.ValueRange)
+                            {
+
+                                    <option value="@value" selected> @value</option>
+
+                            }
+                        </select>
+                    }
+
+                </div>
+                <div class="col s3 hidden-specification link" data-id="@specification.Id" data-name="@specification.Name">
+                    - @AnnouncementResources.DeleteSpecification
+                </div>
+            </div>
+        }
+
+
+        <div class="row @(Model.ChoosenSpecifications.Count().Equals(0)? "hiden" : string.Empty)" id="div-choose-specification">
             <div class="col s1">
                 &nbsp;
             </div>
             <div class="col s2">
-                <select name="dll-choose-specification" id="dll-choose-specification">
-                    @foreach (var spec in Model.Specifications)
-                    {
-                        <option value="@spec.Id"> @spec.Name</option>
-                    }
-                </select>
+                @Html.DropDownList("dll-choose-specification", Model.ChoosenSpecifications)
             </div>
             <div class="col s2">
                 &nbsp;
@@ -56,47 +98,6 @@
             </div>
         </div>
 
-        foreach (var specification in specifications)
-        {
-            <div data-jsonobject="@JsonConvert.SerializeObject(specification)" class="row @(Model.ActionType.Equals(ActionType.Create) ? "hiden" : string.Empty)" name="div-specification" id="@specification.Id">
-                <div class="col s1">
-                    @Html.EnumDropDownList("dll-specification-conjunctionOperator", specification.ConjunctionOperator,
-                        new Dictionary<string, object>() { { "data-parentId", specification.Id } })
-                    &nbsp;
-                </div>
-                <div class="col s2">
-                    @specification.Name
-                </div>
-                <div class="col s2">
-                    @Html.EnumDropDownList("dll-specification-specificationOperator", specification.SpecificationOperator,
-                        new Dictionary<string, object>() { { "data-parentId", specification.Id } })
-                </div>
-                <div class="col s3">
-                    @if (specification.ValueRange == null)
-                        {
-                        <select name="dll-specification-value" multiple>
-                            @foreach (var value in specification.Value)
-                                {
-                                <option value="@value" selected> @value</option>
-                                }
-                        </select>
-                        }
-                        else
-                        {
-                        <select name="dll-specification-value">
-                            @foreach (var level in specification.ValueRange)
-                                {
-                                <option value="@level" selected> @level</option>
-                                }
-                        </select>
-                        }
-
-                </div>
-                <div class="col s3 hidden-specification link" data-id="@specification.Id" data-name="@specification.Name">
-                    - @AnnouncementResources.DeleteSpecification
-                </div>
-            </div>
-        }
     }
     <div id="add-spec" class="row hiden">
         <div class="col s12 link">
@@ -105,7 +106,7 @@
     </div>
     <div class="row">
         <div class="col s1" name="btnPrev" id="btnPrev">
-            <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button"  value="@AnnouncementResources.Prev" />
+            <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" value="@AnnouncementResources.Prev" />
         </div>
         <div class="col s2">
             <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnSave" id="btnSaveStep2" value="@AnnouncementResources.Save" />

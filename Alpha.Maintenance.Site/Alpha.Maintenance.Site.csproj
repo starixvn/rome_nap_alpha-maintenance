@@ -329,7 +329,6 @@
     <Content Include="Areas\UserLogin\themes\loginNew.min.css">
       <DependentUpon>loginNew.css</DependentUpon>
     </Content>
-    <Content Include="Assets\scripts\Announcement\specification-setting.js" />
     <Content Include="Assets\scripts\Announcement\compose-messages.js" />
     <Content Include="Assets\scripts\Announcement\show-announcements.js" />
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te-1.4.0.css" />
@@ -559,7 +558,6 @@
     <Content Include="typings\globals\moment\typings.json" />
     <Content Include="typings\globals\storejs\typings.json" />
     <Content Include="Views\Announcement\ShowAnnouncements.cshtml" />
-    <Content Include="Views\Announcement\SpecificationSetting.cshtml" />
     <Content Include="Views\Announcement\_DisplaySetting.cshtml" />
     <Content Include="Views\Announcement\_SpecificationSetting.cshtml" />
   </ItemGroup>

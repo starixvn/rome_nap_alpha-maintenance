@@ -33,6 +33,16 @@ namespace Alpha.Maintenance.Controller.ViewModels
             ActionType = actionType;
 
             Specifications = specifications;
+
+            ChoosenSpecifications = Specifications.Where(spec =>
+            {
+                return !announcement.Specifications.Any(existedSpec => existedSpec.Id.Equals(spec.Id));
+            }).Select(spec => new SelectListItem
+            {
+                Text = spec.Name,
+                Value = spec.Id
+            });
+
         }
 
         public Announcement Announcement { get; set; }
@@ -40,6 +50,8 @@ namespace Alpha.Maintenance.Controller.ViewModels
         public IEnumerable<SelectListItem> Enviroments { get; set; }
 
         public IEnumerable<SelectListItem> Systems { get; set; }
+
+        public IEnumerable<SelectListItem> ChoosenSpecifications { get; set; }
 
         public ActionType ActionType { get; set; } = ActionType.Create;
 

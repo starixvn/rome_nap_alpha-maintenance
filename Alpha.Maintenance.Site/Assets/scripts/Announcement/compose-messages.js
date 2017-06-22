@@ -17,6 +17,7 @@ var ComposedAnnouncement = (function ($) {
             $('select').material_select();
             $("#content-group").removeClass("hiden");
             this.bindEvent();
+            //this.toogleAddSpecButton();
         },
 
         bindEvent: function ()
@@ -68,9 +69,6 @@ var ComposedAnnouncement = (function ($) {
 
         changeSpecPositions: function (Id)
         {
-            var $dlladdspec = $(ComposedAnnouncement.cacheDom.divChooseSpecification).closest('div');
-            $dlladdspec.insertBefore($(ComposedAnnouncement.cacheDom.btnAddSpec));
-
             var $spec = $("#" + $(Id).find('option:selected').val());
             $spec.find("#" + ComposedAnnouncement.cacheDom.dllConjunctionOperator).parent().removeClass("hiden");
 
@@ -121,12 +119,21 @@ var ComposedAnnouncement = (function ($) {
             $(ComposedAnnouncement.cacheDom.divChooseSpecification).addClass("hiden");
             $(ComposedAnnouncement.cacheDom.dllChooseSpecification).material_select('destroy');
 
-            if ($($this).data("id") != null) {
+            if ($($this).data("id") != null &&
+                $(ComposedAnnouncement.cacheDom.dllChooseSpecification + " option[value=" + $($this).data("id") + "]").length == 0) {
                 $(ComposedAnnouncement.cacheDom.dllChooseSpecification).append($('<option>', {
                     value: $($this).data("id"),
                     text: $($this).data("name")
                 }));
             }
+
+
+            //if ($($this).data("id") != null) {
+            //    $(ComposedAnnouncement.cacheDom.dllChooseSpecification).append($('<option>', {
+            //        value: $($this).data("id"),
+            //        text: $($this).data("name")
+            //    }));
+            //}
 
             $(ComposedAnnouncement.cacheDom.dllChooseSpecification).material_select();
             $($this).parent('div').addClass("hiden");
@@ -208,7 +215,7 @@ var ComposedAnnouncement = (function ($) {
         {
             var specs = [];
 
-            $("div[name='div-specification']:visible").map(function (index, domElement) {
+            $("div[name='div-specification']:not(.hiden)").map(function (index, domElement) {
                 specs.push($(this).data("jsonobject"));
             });
 
