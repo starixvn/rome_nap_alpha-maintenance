@@ -32,7 +32,10 @@
         {
             return new List<Site>
             {
-                new Site { Id = 1, Name = "Site 1" }
+                new Site { Id = 1, Name = "Site 1" },
+                new Site { Id = 2, Name = "Site 2" },
+                new Site { Id = 3, Name = "Site 3" },
+                new Site { Id = 4, Name = "Site 4" }
             };
         }
 
@@ -133,7 +136,7 @@
                 ToDate = reader.ToDateTime("ToDate")
             };
 
-             return announcement;
+            return announcement;
         }
     }
 }

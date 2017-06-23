@@ -30,9 +30,11 @@
             this.dynamicRepository = dynamicRepository ?? new DynamicRepository();
             this.specificationFactory = specificationFactory ?? new SpecificationFactoryImpl();
             this.announcementRepository = announcementRepository ?? new AnnouncementRepositoryImpl();
+
             getValueRangeFunction = new Dictionary<string, Func<dynamic>>
             {
-                [SiteSpecification.SpecificationId] = GetSites
+                [SiteSpecification.SpecificationId] = GetSites,
+                [UserLevelSpecification.SpecificationId] = GetUserLevel
                 // Add more initial data function here
             };
         }
@@ -46,11 +48,6 @@
                 if (getValueRangeFunction.ContainsKey(spec.Id))
                 {
                     spec.ValueRange = getValueRangeFunction[spec.Id]();
-                    spec.Value = new List<string>
-                    {
-                        "121212",
-                        "3434343"
-                    };
                 }
             }
 
@@ -65,6 +62,16 @@
         private dynamic GetSites()
         {
             return announcementRepository.GetSites();
+        }
+
+        private dynamic GetUserLevel()
+        {
+          return  new List<UserLevel>
+        {
+           new UserLevel(2, "Agent"),
+           new UserLevel(3, "Master"),
+           new UserLevel(4, "Super")
+        };
         }
 
         public IEnumerable<Announcement> GetAnnouncements(DateTime date, string environment, string system)

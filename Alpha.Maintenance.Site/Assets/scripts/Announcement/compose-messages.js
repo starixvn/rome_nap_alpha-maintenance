@@ -27,7 +27,7 @@ var ComposedAnnouncement = (function ($) {
             });
 
             $("SELECT[name='" + ComposedAnnouncement.cacheDom.dllSpecificationValue + "'").on('change', function () {
-                alert($(this).find('option:selected').text());
+                ComposedAnnouncement.onChangeSpecValue(this);
             });
 
             $("SELECT[name='" + ComposedAnnouncement.cacheDom.dllConjunctionOperator + "'").on('change', function () {
@@ -91,6 +91,39 @@ var ComposedAnnouncement = (function ($) {
             $firstDiv.find("#" + ComposedAnnouncement.cacheDom.dllConjunctionOperator).parent().addClass("hiden");
         },
 
+        onChangeSpecValue: function ($this) {
+            var specId = "#" + $($this).data("parentid");
+            var jsonobject = $(specId).data("jsonobject");
+
+            var selectedIds = $($this).val();
+            var selectedValues = [];
+
+            $.each(selectedIds, function (i, val) {
+                var search02 = JSON.search(jsonobject, '//*[ Id=' + val + ']');
+                if (search02.length > 0) {
+                    selectedValues.push(search02);
+                }
+            });
+
+            //var search = ComposedAnnouncement.search(jsonobject, selectedIds);
+
+            jsonobject.Value = selectedValues;
+
+            $(specId).data("jsonobject", jsonobject);
+        },
+
+        //search: function (jsonobject, valueList)
+        //{
+        //    return $.map(jsonobject.ValueRange, function (obj) {
+        //        for (var i = 0; i < valueList.length; i++)
+        //        {
+        //            if (obj.Id == valueList[i]) {
+        //                return obj;
+        //            }
+        //        }
+        //    });
+        //},
+
         onChangesConjunctionOperator: function ($this) {
             var specId = "#" + $($this).data("parentid");
             var jsonobject = $(specId).data("jsonobject");
@@ -126,14 +159,6 @@ var ComposedAnnouncement = (function ($) {
                     text: $($this).data("name")
                 }));
             }
-
-
-            //if ($($this).data("id") != null) {
-            //    $(ComposedAnnouncement.cacheDom.dllChooseSpecification).append($('<option>', {
-            //        value: $($this).data("id"),
-            //        text: $($this).data("name")
-            //    }));
-            //}
 
             $(ComposedAnnouncement.cacheDom.dllChooseSpecification).material_select();
             $($this).parent('div').addClass("hiden");
@@ -228,5 +253,37 @@ var ComposedAnnouncement = (function ($) {
 
 $(document).ready(function () {
     ComposedAnnouncement.init();
+
+    var data = [
+      { "foo": "bar", "bar": "sit" },
+      { "foo": "lorem", "bar": "ipsum" },
+      { "foo": "dolor", "bar": "amet" }
+    ];
+
+    var dasgrwt = JSON.search(data, "//*[contains(name(), 'r')]/..");
+   var fdasfrer = JSON.search(data, "//*[contains(text(), 'lo')]/..");
+
+    var obj = {
+        "car": [
+            { "id": 10, "color": "silver", "name": "Volvo" },
+            { "id": 11, "color": "red", "name": "Saab" },
+            { "id": 12, "color": "red", "name": "Peugeot" },
+            { "id": 13, "color": "yellow", "name": "Porsche" }
+        ],
+        "bike": [
+            { "id": 20, "color": "black", "name": "Cannondale" },
+            { "id": 21, "color": "red", "name": "Shimano" }
+        ]
+    },
+    search = JSON.search(obj, '//car[color="yellow"]/name');
+
+    console.log(search);
+    // ["Porsche"]
+
+    var reds = JSON.search(obj, '//*[color="red"]');
+
+    for (var i = 0; i < reds.length; i++) {
+        console.log(reds[i].name);
+    }
 });
 
