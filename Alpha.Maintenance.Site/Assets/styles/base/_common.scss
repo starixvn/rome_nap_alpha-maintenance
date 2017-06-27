@@ -68,3 +68,11 @@ main {
 .border-left{
     border-left: 1px solid #e0e0e0;
 }
+
+.jqte_editor, .jqte_source {
+    min-height: 250px !important;
+}
+
+.jqte_tool.jqte_tool_1 .jqte_tool_label {
+    height: 25px !important;
+}

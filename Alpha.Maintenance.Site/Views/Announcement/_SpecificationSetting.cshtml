@@ -59,10 +59,10 @@
                           new Dictionary<string, object>() { { "data-parentId", specification.Id } })
                 </div>
                 <div class="col s3">
-
+                    
                     @if (specification.Name.Equals("User Level"))
                     {
-                        <select name="dll-specification-value" multiple data-parentId="@specification.Id">
+                        <select name="dll-specification-value" multiple data-specificationId="@specification.Id">
                             @foreach (var userLevel in specification.ValueRange)
                             {
                                 <option value="@userLevel.Id" selected>@userLevel.Name</option>
@@ -72,12 +72,13 @@
 
                     else if (specification.Name.Equals("Sites"))
                     {
-                        <select name="dll-specification-value"  multiple data-parentId="@specification.Id">
+                        <input type="text" name="txt-specification-value" value="" data-specificationId="@specification.Id"/>
+                        @*<select name="dll-specification-value"  multiple data-parentId="@specification.Id">
                             @foreach (var site in specification.ValueRange)
                             {
                                 <option value="@site.Id" selected>@site.Name</option>
                             }
-                        </select>
+                        </select>*@
                     }
                 </div>
                 <div class="col s3 hidden-specification link" data-id="@specification.Id" data-name="@specification.Name">

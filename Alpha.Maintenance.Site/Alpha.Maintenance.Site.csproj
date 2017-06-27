@@ -329,8 +329,8 @@
     <Content Include="Areas\UserLogin\themes\loginNew.min.css">
       <DependentUpon>loginNew.css</DependentUpon>
     </Content>
-    <Content Include="Assets\scripts\Announcement\compose-messages.js" />
-    <Content Include="Assets\scripts\Announcement\show-announcements.js" />
+    <TypeScriptCompile Include="Assets\scripts\Announcement\compose-messages.ts" />
+    <TypeScriptCompile Include="Assets\scripts\Announcement\show-announcements.ts" />
     <Content Include="Assets\scripts\lib\defiant\defiant.js" />
     <Content Include="Assets\scripts\lib\defiant\ie.polyfill.js" />
     <Content Include="Assets\scripts\lib\defiant\json.js" />

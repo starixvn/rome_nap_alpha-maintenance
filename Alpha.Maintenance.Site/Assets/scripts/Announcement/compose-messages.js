@@ -1,289 +1,202 @@
-﻿"use strict";
-
-var ComposedAnnouncement = (function ($) {
-    return {
-        cacheDom: {
-            dllChooseSpecification: "#dll-choose-specification",
-            divChooseSpecification: "#div-choose-specification",
-            dllConjunctionOperator: "dll-specification-conjunctionOperator",
-            dllSpecificationOperator: "dll-specification-specificationOperator",
-            dllSpecificationValue: "dll-specification-value",
-            btnAddSpec: "#add-spec"
-        },
-
-        init: function () {
-            $('.jqte-test').jqte();
-            $('ul.tabs').tabs();
-            $('select').material_select();
-            $("#content-group").removeClass("hiden");
-            this.bindEvent();
-            //this.toogleAddSpecButton();
-        },
-
-        bindEvent: function ()
-        {
-            $(ComposedAnnouncement.cacheDom.dllChooseSpecification).on('change', function () {
-                ComposedAnnouncement.onChangeSpecOption(this);
+"use strict";
+var ComposedAnnouncement = (function () {
+    function ComposedAnnouncement($, NAP, JSON) {
+        var _this = this;
+        this.init = function () {
+            _this.$('.jqte-test').jqte();
+            _this.$('ul.tabs').tabs();
+            _this.$('select').material_select();
+            _this.$("#content-group").removeClass("hiden");
+            _this.cacheDom();
+            _this.bindEvent();
+            _this.correctFirstSpec();
+        };
+        this.cacheDom = function () {
+            _this.$dllChooseSpecification = "#dll-choose-specification";
+            _this.$divChooseSpecification = _this.$("#div-choose-specification");
+            _this.$dllConjunctionOperator = "dll-specification-conjunctionOperator";
+            _this.$dllSpecificationOperator = _this.$("SELECT[name='dll-specification-specificationOperator'");
+            _this.$dllSpecificationValue = _this.$("SELECT[name='dll-specification-value'");
+            _this.$txtSpecificationValue = _this.$("INPUT[name='txt-specification-value'");
+            _this.$btnAddSpec = _this.$("#add-spec");
+            _this.$btnSave = "INPUT[name='btnSave']";
+            _this.$hiddenSpec = _this.$('.hidden-specification');
+            _this.$btnNext = _this.$("#btnNext");
+            _this.$btnPrev = _this.$("#btnPrev");
+            _this.$specSettingTab = _this.$("#tab-specs-setting");
+            _this.$specInformationTab = _this.$("#tab-information-settings");
+            _this.$visibleSpecDivs = "div[name='div-specification']:not(.hiden)";
+            _this.$numberOfSpecs = _this.$('#number-of-specifications');
+        };
+        this.bindEvent = function () {
+            var self = _this;
+            _this.$(_this.$dllChooseSpecification).on('change', function () {
+                self.onChangeSpecOption(this);
             });
-
-            $("SELECT[name='" + ComposedAnnouncement.cacheDom.dllSpecificationValue + "'").on('change', function () {
-                ComposedAnnouncement.onChangeSpecValue(this);
+            _this.$dllSpecificationValue.on('change', function () {
+                self.onChangeSpecValueDll(this);
             });
-
-            $("SELECT[name='" + ComposedAnnouncement.cacheDom.dllConjunctionOperator + "'").on('change', function () {
-                ComposedAnnouncement.onChangesConjunctionOperator(this);
+            _this.$txtSpecificationValue.on('change', function () {
+                self.onChangeSpecValueTxt(this);
             });
-
-            $("SELECT[name='" + ComposedAnnouncement.cacheDom.dllSpecificationOperator + "'").on('change', function () {
-                ComposedAnnouncement.onChangesSpecificationOperator(this);
+            _this.$("SELECT[name='" + _this.$dllConjunctionOperator + "'").on('change', function () {
+                self.onChangesConjunctionOperator(this);
             });
-
-            $(ComposedAnnouncement.cacheDom.btnAddSpec).on('click', function () {
-                ComposedAnnouncement.addSpec(this);
+            _this.$dllSpecificationOperator.on('change', function () {
+                self.onChangesSpecificationOperator(this);
             });
-
-            $('.hidden-specification').on('click', function () {
-                ComposedAnnouncement.deleteSpec(this);
+            _this.$btnAddSpec.on('click', function () {
+                self.addSpec(this);
             });
-
-            $("INPUT[name='btnSave']").on('click', function () {
-                ComposedAnnouncement.submit();
+            _this.$hiddenSpec.on('click', function () {
+                self.deleteSpec(this);
             });
-
-            $("#btnNext").on('click', function () {
-                $("#tab-specs-setting").click();
+            _this.$(_this.$btnSave).on('click', self.submit);
+            _this.$btnNext.on('click', function () {
+                self.$specSettingTab.click();
             });
-
-            $("#btnPrev").on('click', function () {
-                $("#tab-information-settings").click();
+            _this.$btnPrev.on('click', function () {
+                self.$specInformationTab.click();
             });
-        },
-
-        onChangeSpecOption: function ($this)
-        {
-            ComposedAnnouncement.changeSpecPositions($this);
-            ComposedAnnouncement.reRenderSpecOptions($this);
-            ComposedAnnouncement.correctFirstSpec($this);
-            ComposedAnnouncement.toogleAddSpecButton();
-        },
-
-        changeSpecPositions: function (Id)
-        {
-            var $spec = $("#" + $(Id).find('option:selected').val());
-            $spec.find("#" + ComposedAnnouncement.cacheDom.dllConjunctionOperator).parent().removeClass("hiden");
-
+        };
+        this.onChangeSpecOption = function (element) {
+            _this.changeSpecPositions(element);
+            _this.reRenderSpecOptions(element);
+            _this.correctFirstSpec();
+            _this.toogleAddSpecButton();
+        };
+        this.changeSpecPositions = function (element) {
+            var $spec = _this.$("#" + _this.$(element).find('option:selected').val());
+            $spec.find("#" + _this.$dllConjunctionOperator).parent().removeClass("hiden");
             $spec.removeClass("hiden");
-            $spec.insertBefore($(ComposedAnnouncement.cacheDom.divChooseSpecification));
-            $(ComposedAnnouncement.cacheDom.divChooseSpecification).addClass("hiden");
-        },
-
-        reRenderSpecOptions: function ($this)
-        {
-            $($this).find('option:selected').remove();
-            $($this).material_select('destroy');
-            $($this).material_select();
-        },
-
-        correctFirstSpec: function()
-        {
-            var $firstDiv = $("div[name='div-specification']:visible").first();
-            $firstDiv.find("#" + ComposedAnnouncement.cacheDom.dllConjunctionOperator).find('option:selected').val(0);
-            $firstDiv.find("#" + ComposedAnnouncement.cacheDom.dllConjunctionOperator).parent().addClass("hiden");
-        },
-
-        onChangeSpecValue: function ($this) {
-            var specId = "#" + $($this).data("parentid");
-            var jsonobject = $(specId).data("jsonobject");
-
-            var selectedIds = $($this).val();
+            $spec.insertBefore(_this.$divChooseSpecification);
+            _this.$divChooseSpecification.addClass("hiden");
+        };
+        this.reRenderSpecOptions = function (element) {
+            _this.$(element).find('option:selected').remove();
+            _this.$(element).material_select('destroy');
+            _this.$(element).material_select();
+        };
+        this.correctFirstSpec = function () {
+            var $firstDiv = _this.$(_this.$visibleSpecDivs).first();
+            $firstDiv.find("#" + _this.$dllConjunctionOperator).find('option:selected').val(0);
+            $firstDiv.find("#" + _this.$dllConjunctionOperator).parent().addClass("hiden");
+        };
+        this.onChangeSpecValueTxt = function (element) {
+            var specId = _this.$(element).data("specificationId");
+            var jsonobject = _this.$("#" + specId).data("jsonobject");
+            jsonobject.values = _this.$(element).val().match(/[^,(?! )]+/g);
+            _this.$("#" + specId).data("jsonobject", jsonobject);
+        };
+        this.onChangeSpecValueDll = function (element) {
+            var specId = _this.$(element).data("specificationId");
+            var jsonobject = _this.$("#" + specId).data("jsonobject");
+            var selectedIds = _this.$(element).val();
             var selectedValues = [];
-
-            $.each(selectedIds, function (i, val) {
-                var search02 = JSON.search(jsonobject, '//*[ Id=' + val + ']');
+            _this.$.each(selectedIds, function (i, val) {
+                var search02 = this.$JSON.search(jsonobject, '//*[ Id=' + val + ']');
                 if (search02.length > 0) {
                     selectedValues.push(search02);
                 }
             });
-
-            //var search = ComposedAnnouncement.search(jsonobject, selectedIds);
-
             jsonobject.Value = selectedValues;
-
-            $(specId).data("jsonobject", jsonobject);
-        },
-
-        //search: function (jsonobject, valueList)
-        //{
-        //    return $.map(jsonobject.ValueRange, function (obj) {
-        //        for (var i = 0; i < valueList.length; i++)
-        //        {
-        //            if (obj.Id == valueList[i]) {
-        //                return obj;
-        //            }
-        //        }
-        //    });
-        //},
-
-        onChangesConjunctionOperator: function ($this) {
-            var specId = "#" + $($this).data("parentid");
-            var jsonobject = $(specId).data("jsonobject");
-
-            jsonobject.ConjunctionOperator = $($this).find('option:selected').val();
-            $(specId).data("jsonobject", jsonobject);
-        },
-
-        onChangesSpecificationOperator: function ($this)
-        {
-            var specId = "#" + $($this).data("parentid");
-            var jsonobject = $(specId).data("jsonobject");
-
-            jsonobject.SpecificationOperator = $($this).find('option:selected').val();
-            $(specId).data("jsonobject", jsonobject);
-        },
-
-        addSpec: function ($this)
-        {
-            $(ComposedAnnouncement.cacheDom.divChooseSpecification).removeClass("hiden");
-            $($this).addClass("hiden");
-        },
-
-        deleteSpec: function ($this)
-        {
-            $(ComposedAnnouncement.cacheDom.divChooseSpecification).addClass("hiden");
-            $(ComposedAnnouncement.cacheDom.dllChooseSpecification).material_select('destroy');
-
-            if ($($this).data("id") != null &&
-                $(ComposedAnnouncement.cacheDom.dllChooseSpecification + " option[value=" + $($this).data("id") + "]").length == 0) {
-                $(ComposedAnnouncement.cacheDom.dllChooseSpecification).append($('<option>', {
-                    value: $($this).data("id"),
-                    text: $($this).data("name")
+            _this.$("#" + specId).data("jsonobject", jsonobject);
+        };
+        this.onChangesConjunctionOperator = function (element) {
+            var specId = _this.$(element).data("specificationId");
+            var jsonobject = _this.$("#" + specId).data("jsonobject");
+            jsonobject.ConjunctionOperator = _this.$(element).find('option:selected').val();
+            _this.$("#" + specId).data("jsonobject", jsonobject);
+        };
+        this.onChangesSpecificationOperator = function (element) {
+            var specId = _this.$(element).data("specificationId");
+            var jsonobject = _this.$("#" + specId).data("jsonobject");
+            jsonobject.SpecificationOperator = _this.$(element).find('option:selected').val();
+            _this.$("#" + specId).data("jsonobject", jsonobject);
+        };
+        this.addSpec = function (element) {
+            _this.$divChooseSpecification.removeClass("hiden");
+            _this.$(element).addClass("hiden");
+        };
+        this.deleteSpec = function (element) {
+            _this.$divChooseSpecification.addClass("hiden");
+            _this.$(_this.$dllChooseSpecification).material_select('destroy');
+            if (_this.$(element).data("id") != null &&
+                _this.$(_this.$dllChooseSpecification + " option[value=" + _this.$(element).data("id") + "]").length == 0) {
+                _this.$(_this.$dllChooseSpecification).append(_this.$('<option>', {
+                    value: _this.$(element).data("id"),
+                    text: _this.$(element).data("name")
                 }));
             }
-
-            $(ComposedAnnouncement.cacheDom.dllChooseSpecification).material_select();
-            $($this).parent('div').addClass("hiden");
-
-            ComposedAnnouncement.correctFirstSpec($this);
-            ComposedAnnouncement.toogleAddSpecButton();
-        },
-
-        toogleAddSpecButton: function()
-        {
-            $("div[name='div-specification']:visible").length == $('#number-of-specifications').val() ? $(ComposedAnnouncement.cacheDom.btnAddSpec).addClass("hiden") : $(ComposedAnnouncement.cacheDom.btnAddSpec).removeClass("hiden");
-        },
-
-        submit: function () {
-           var announcement =  ComposedAnnouncement.getAnnouncementParam();
-            $.ajax({
-                url: NAP.resolveClientUrl("Announcement/InsertAnnouncement"),
+            _this.$(_this.$dllChooseSpecification).material_select();
+            _this.$(element).parent('div').addClass("hiden");
+            _this.correctFirstSpec();
+            _this.toogleAddSpecButton();
+        };
+        this.submit = function () {
+            var announcement = _this.getAnnouncementParam();
+            _this.$.ajax({
+                url: _this.$nap.resolveClientUrl("Announcement/InsertAnnouncement"),
                 type: 'POST',
-                data: { "announcement": JSON.stringify(announcement), action: $('#actionType').val() },
+                data: { "announcement": _this.$JSON.stringify(announcement), action: _this.$('#actionType').val() },
                 dataType: 'json',
                 beforeSend: function () {
-                    NAP.loadingBox.show();
+                    this.$nap.loadingBox.show();
                 },
                 complete: function () {
-                    NAP.loadingBox.close();
+                    this.$nap.loadingBox.close();
                 },
                 success: function (result) {
-
                 },
                 error: function (xhr, status, err) {
-                    NAP.handleAjaxError(xhr, status, err);
+                    this.$nap.handleAjaxError(xhr, status, err);
                 }
             });
-        },
-
-        getAnnouncementParam: function()
-        {
+        };
+        this.getAnnouncementParam = function () {
             return {
-                id: $('#AnnouncementId').val(),
-                code: $("#txtcode").val(),
-                title: $("#txttitle").val(),
-                isActive: $("#ChkActive").is(":checked"),
-                announcementType: $('input[name=group-popup]:checked').val(),
-                contents: ComposedAnnouncement.getContents(),
-                environments: ComposedAnnouncement.getEnvironments(),
-                fromdate: $('#FromDate').val(),
-                todate: $('#ToDate').val(),
-                order: $('#group-order option:selected').val(),
-                systems: ComposedAnnouncement.getSystems(),
-                specifications: ComposedAnnouncement.getSpecs()
+                id: _this.$('#AnnouncementId').val(),
+                code: _this.$("#txtcode").val(),
+                title: _this.$("#txttitle").val(),
+                isActive: _this.$("#ChkActive").is(":checked"),
+                announcementType: _this.$('input[name=group-popup]:checked').val(),
+                contents: _this.getContents(),
+                environments: _this.getEnvironments(),
+                fromdate: _this.$('#FromDate').val(),
+                todate: _this.$('#ToDate').val(),
+                order: _this.$('#group-order option:selected').val(),
+                systems: _this.getSystems(),
+                specifications: _this.getSpecs()
             };
-        },
-
-        getSystems: function()
-        {
-            return $("input[name='group-systems']:checked").map(function () {
-                return this.id;
-            }).get();
-        },
-
-        getEnvironments: function () {
-            return $("input[name='group-environments']:checked").map(function () {
-                return this.id;
-            }).get();
-        },
-
-        getContents: function()
-        {
+        };
+        this.toogleAddSpecButton = function () { return _this.$(_this.$visibleSpecDivs).length == _this.$(_this.$numberOfSpecs).val() ? _this.$btnAddSpec.addClass("hiden") : _this.$btnAddSpec.removeClass("hiden"); };
+        this.getSystems = function () { return _this.$("input[name='group-systems']:checked").map(function () {
+            return this.id;
+        }).get(); };
+        this.getEnvironments = function () { return _this.$("input[name='group-environments']:checked").map(function () {
+            return this.id;
+        }).get(); };
+        this.getContents = function () {
             var contents = [];
-
-            $("textarea").map(function (index, domElement) {
-                contents.push({ LanguageKey: this.id, Text: $(this).val() });
+            _this.$("textarea").map(function (index, domElement) {
+                contents.push({ LanguageKey: this.id, Text: this.$(this).val() });
             });
-
             return contents;
-        },
-
-        getSpecs: function ()
-        {
+        };
+        this.getSpecs = function () {
             var specs = [];
-
-            $("div[name='div-specification']:not(.hiden)").map(function (index, domElement) {
-                specs.push($(this).data("jsonobject"));
+            _this.$(_this.$visibleSpecDivs).map(function (index, domElement) {
+                specs.push(this.$(this).data("jsonobject"));
             });
-
             return specs;
-        }
-    
+        };
+        this.$ = $;
+        this.$nap = NAP;
+        this.$JSON = JSON;
     }
-}(jQuery));
-
-
-$(document).ready(function () {
-    ComposedAnnouncement.init();
-
-    var data = [
-      { "foo": "bar", "bar": "sit" },
-      { "foo": "lorem", "bar": "ipsum" },
-      { "foo": "dolor", "bar": "amet" }
-    ];
-
-    var dasgrwt = JSON.search(data, "//*[contains(name(), 'r')]/..");
-   var fdasfrer = JSON.search(data, "//*[contains(text(), 'lo')]/..");
-
-    var obj = {
-        "car": [
-            { "id": 10, "color": "silver", "name": "Volvo" },
-            { "id": 11, "color": "red", "name": "Saab" },
-            { "id": 12, "color": "red", "name": "Peugeot" },
-            { "id": 13, "color": "yellow", "name": "Porsche" }
-        ],
-        "bike": [
-            { "id": 20, "color": "black", "name": "Cannondale" },
-            { "id": 21, "color": "red", "name": "Shimano" }
-        ]
-    },
-    search = JSON.search(obj, '//car[color="yellow"]/name');
-
-    console.log(search);
-    // ["Porsche"]
-
-    var reds = JSON.search(obj, '//*[color="red"]');
-
-    for (var i = 0; i < reds.length; i++) {
-        console.log(reds[i].name);
-    }
+    return ComposedAnnouncement;
+}());
+var composedAnnouncement = new ComposedAnnouncement($, window.NAP, window.JSON);
+$(function () {
+    composedAnnouncement.init();
 });
-
