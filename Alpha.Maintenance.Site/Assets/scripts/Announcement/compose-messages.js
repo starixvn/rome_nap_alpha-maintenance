@@ -15,9 +15,6 @@ var ComposedAnnouncement = (function () {
             _this.$dllChooseSpecification = "#dll-choose-specification";
             _this.$divChooseSpecification = _this.$("#div-choose-specification");
             _this.$dllConjunctionOperator = "dll-specification-conjunctionOperator";
-            _this.$dllSpecificationOperator = _this.$("SELECT[name='dll-specification-specificationOperator'");
-            _this.$dllSpecificationValue = _this.$("SELECT[name='dll-specification-value'");
-            _this.$txtSpecificationValue = _this.$("INPUT[name='txt-specification-value'");
             _this.$btnAddSpec = _this.$("#add-spec");
             _this.$btnSave = "INPUT[name='btnSave']";
             _this.$hiddenSpec = _this.$('.hidden-specification');
@@ -33,25 +30,15 @@ var ComposedAnnouncement = (function () {
             _this.$(_this.$dllChooseSpecification).on('change', function () {
                 self.onChangeSpecOption(this);
             });
-            _this.$dllSpecificationValue.on('change', function () {
-                self.onChangeSpecValueDll(this);
-            });
-            _this.$txtSpecificationValue.on('change', function () {
-                self.onChangeSpecValueTxt(this);
-            });
-            _this.$("SELECT[name='" + _this.$dllConjunctionOperator + "'").on('change', function () {
-                self.onChangesConjunctionOperator(this);
-            });
-            _this.$dllSpecificationOperator.on('change', function () {
-                self.onChangesSpecificationOperator(this);
-            });
             _this.$btnAddSpec.on('click', function () {
                 self.addSpec(this);
             });
             _this.$hiddenSpec.on('click', function () {
                 self.deleteSpec(this);
             });
-            _this.$(_this.$btnSave).on('click', self.submit);
+            _this.$(_this.$btnSave).on('click', function () {
+                self.submit();
+            });
             _this.$btnNext.on('click', function () {
                 self.$specSettingTab.click();
             });
@@ -82,37 +69,14 @@ var ComposedAnnouncement = (function () {
             $firstDiv.find("#" + _this.$dllConjunctionOperator).find('option:selected').val(0);
             $firstDiv.find("#" + _this.$dllConjunctionOperator).parent().addClass("hiden");
         };
-        this.onChangeSpecValueTxt = function (element) {
-            var specId = _this.$(element).data("specificationId");
-            var jsonobject = _this.$("#" + specId).data("jsonobject");
-            jsonobject.values = _this.$(element).val().match(/[^,(?! )]+/g);
-            _this.$("#" + specId).data("jsonobject", jsonobject);
-        };
-        this.onChangeSpecValueDll = function (element) {
-            var specId = _this.$(element).data("specificationId");
-            var jsonobject = _this.$("#" + specId).data("jsonobject");
-            var selectedIds = _this.$(element).val();
-            var selectedValues = [];
-            _this.$.each(selectedIds, function (i, val) {
-                var search02 = this.$JSON.search(jsonobject, '//*[ Id=' + val + ']');
-                if (search02.length > 0) {
-                    selectedValues.push(search02);
+        this.search = function (jsonobject, valueList) {
+            return _this.$.map(jsonobject.ValueRange, function (obj) {
+                for (var i = 0; i < valueList.length; i++) {
+                    if (obj.Id == valueList[i]) {
+                        return obj;
+                    }
                 }
             });
-            jsonobject.Value = selectedValues;
-            _this.$("#" + specId).data("jsonobject", jsonobject);
-        };
-        this.onChangesConjunctionOperator = function (element) {
-            var specId = _this.$(element).data("specificationId");
-            var jsonobject = _this.$("#" + specId).data("jsonobject");
-            jsonobject.ConjunctionOperator = _this.$(element).find('option:selected').val();
-            _this.$("#" + specId).data("jsonobject", jsonobject);
-        };
-        this.onChangesSpecificationOperator = function (element) {
-            var specId = _this.$(element).data("specificationId");
-            var jsonobject = _this.$("#" + specId).data("jsonobject");
-            jsonobject.SpecificationOperator = _this.$(element).find('option:selected').val();
-            _this.$("#" + specId).data("jsonobject", jsonobject);
         };
         this.addSpec = function (element) {
             _this.$divChooseSpecification.removeClass("hiden");
@@ -154,19 +118,20 @@ var ComposedAnnouncement = (function () {
             });
         };
         this.getAnnouncementParam = function () {
+            var self = _this;
             return {
-                id: _this.$('#AnnouncementId').val(),
-                code: _this.$("#txtcode").val(),
-                title: _this.$("#txttitle").val(),
-                isActive: _this.$("#ChkActive").is(":checked"),
-                announcementType: _this.$('input[name=group-popup]:checked').val(),
-                contents: _this.getContents(),
-                environments: _this.getEnvironments(),
-                fromdate: _this.$('#FromDate').val(),
-                todate: _this.$('#ToDate').val(),
-                order: _this.$('#group-order option:selected').val(),
-                systems: _this.getSystems(),
-                specifications: _this.getSpecs()
+                id: self.$('#AnnouncementId').val(),
+                code: self.$("#txtcode").val(),
+                title: self.$("#txttitle").val(),
+                isActive: self.$("#ChkActive").is(":checked"),
+                announcementType: self.$('input[name=group-popup]:checked').val(),
+                contents: self.getContents(),
+                environments: self.getEnvironments(),
+                fromdate: self.$('#FromDate').val(),
+                todate: self.$('#ToDate').val(),
+                order: self.$('#group-order option:selected').val(),
+                systems: self.getSystems(),
+                specifications: self.getSpecs()
             };
         };
         this.toogleAddSpecButton = function () { return _this.$(_this.$visibleSpecDivs).length == _this.$(_this.$numberOfSpecs).val() ? _this.$btnAddSpec.addClass("hiden") : _this.$btnAddSpec.removeClass("hiden"); };
@@ -177,18 +142,48 @@ var ComposedAnnouncement = (function () {
             return this.id;
         }).get(); };
         this.getContents = function () {
+            var self = _this;
             var contents = [];
             _this.$("textarea").map(function (index, domElement) {
-                contents.push({ LanguageKey: this.id, Text: this.$(this).val() });
+                contents.push({ LanguageKey: this.id, Text: self.$(this).val() });
             });
             return contents;
         };
         this.getSpecs = function () {
+            var self = _this;
             var specs = [];
             _this.$(_this.$visibleSpecDivs).map(function (index, domElement) {
-                specs.push(this.$(this).data("jsonobject"));
+                var jsonObject = self.$(domElement).data("jsonobject");
+                if (self.$(domElement).find("#txt-specification-value").length > 0) {
+                    var object = self.$(domElement).find("#txt-specification-value");
+                    jsonObject.Value = self.$(object).val().match(/[^,(?! )]+/g);
+                }
+                if (self.$(domElement).find('#dll-specification-value').length > 0) {
+                    var object = self.$(domElement).find("#dll-specification-value");
+                    jsonObject.Value = self.$(object).val();
+                    var selectedIds = self.$(object).val();
+                    var selectedValues_1 = [];
+                    self.$.each(selectedIds, function (i, val) {
+                        var search = self.search(jsonObject, val);
+                        if (search.length > 0) {
+                            selectedValues_1.push(search);
+                        }
+                    });
+                    jsonObject.Value = selectedValues_1;
+                }
+                jsonObject.ConjunctionOperator = this.getConjunctionOperatorValue(domElement);
+                jsonObject.SpecificationOperator = this.getSpecificationOperatorValue(domElement);
+                specs.push(jsonObject);
             });
             return specs;
+        };
+        this.getConjunctionOperatorValue = function (domElement) {
+            var object = _this.$(domElement).find("#dll-specification-conjunctionOperator");
+            return _this.$(object).find('option:selected').val();
+        };
+        this.getSpecificationOperatorValue = function (domElement) {
+            var object = _this.$(domElement).find("#dll-specification-specificationOperator");
+            return _this.$(object).find('option:selected').val();
         };
         this.$ = $;
         this.$nap = NAP;

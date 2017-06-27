@@ -16,9 +16,6 @@ class ComposedAnnouncement {
     $dllChooseSpecification: string;
     $divChooseSpecification: JQuery;
     $dllConjunctionOperator: string;
-    $dllSpecificationOperator: JQuery;
-    $dllSpecificationValue: JQuery;
-    $txtSpecificationValue: JQuery;
     $btnAddSpec: JQuery;
     $btnSave: string;
     $hiddenSpec: JQuery;
@@ -52,9 +49,6 @@ class ComposedAnnouncement {
         this.$dllChooseSpecification = "#dll-choose-specification";
         this.$divChooseSpecification = this.$("#div-choose-specification");
         this.$dllConjunctionOperator = "dll-specification-conjunctionOperator";
-        this.$dllSpecificationOperator = this.$("SELECT[name='dll-specification-specificationOperator'");
-        this.$dllSpecificationValue = this.$("SELECT[name='dll-specification-value'");
-        this.$txtSpecificationValue = this.$("INPUT[name='txt-specification-value'");
         this.$btnAddSpec = this.$("#add-spec");
         this.$btnSave = "INPUT[name='btnSave']";
         this.$hiddenSpec = this.$('.hidden-specification');
@@ -73,22 +67,6 @@ class ComposedAnnouncement {
             self.onChangeSpecOption(this);
         });
 
-        this.$dllSpecificationValue.on('change', function () {
-            self.onChangeSpecValueDll(this);
-        });
-
-        this.$txtSpecificationValue.on('change', function () {
-            self.onChangeSpecValueTxt(this);
-        });
-
-        this.$("SELECT[name='" + this.$dllConjunctionOperator + "'").on('change', function () {
-            self.onChangesConjunctionOperator(this);
-        });
-
-        this.$dllSpecificationOperator.on('change', function () {
-            self.onChangesSpecificationOperator(this);
-        });
-
         this.$btnAddSpec.on('click', function () {
             self.addSpec(this);
         });
@@ -97,7 +75,9 @@ class ComposedAnnouncement {
             self.deleteSpec(this);
         });
 
-        this.$(this.$btnSave).on('click', self.submit);
+        this.$(this.$btnSave).on('click', function () {
+            self.submit();
+        });
 
         this.$btnNext.on('click', function () {
             self.$specSettingTab.click();
@@ -116,7 +96,7 @@ class ComposedAnnouncement {
     };
 
     changeSpecPositions = (element: any) => {
-        var $spec = this.$("#" + this.$(element).find('option:selected').val());
+        let $spec = this.$("#" + this.$(element).find('option:selected').val());
         $spec.find("#" + this.$dllConjunctionOperator).parent().removeClass("hiden");
 
         $spec.removeClass("hiden");
@@ -131,52 +111,19 @@ class ComposedAnnouncement {
     };
 
     correctFirstSpec = () => {
-        var $firstDiv = this.$(this.$visibleSpecDivs).first();
+        let $firstDiv = this.$(this.$visibleSpecDivs).first();
         $firstDiv.find("#" + this.$dllConjunctionOperator).find('option:selected').val(0);
         $firstDiv.find("#" + this.$dllConjunctionOperator).parent().addClass("hiden");
     };
 
-    onChangeSpecValueTxt = (element: any) => {
-        var specId = this.$(element).data("specificationId");
-        var jsonobject = this.$("#" + specId).data("jsonobject");
-
-        jsonobject.values = this.$(element).val().match(/[^,(?! )]+/g);
-        this.$("#" + specId).data("jsonobject", jsonobject);
-    };
-
-    onChangeSpecValueDll = (element: any) => {
-        var specId = this.$(element).data("specificationId");
-        var jsonobject = this.$("#" + specId).data("jsonobject");
-
-        var selectedIds = this.$(element).val();
-        var selectedValues = [];
-
-        this.$.each(selectedIds, function (i, val) {
-            var search02 = this.$JSON.search(jsonobject, '//*[ Id=' + val + ']');
-            if (search02.length > 0) {
-                selectedValues.push(search02);
+    search = (jsonobject: any, valueList: any) => {
+        return this.$.map(jsonobject.ValueRange, function (obj) {
+            for (let i = 0; i < valueList.length; i++) {
+                if (obj.Id == valueList[i]) {
+                    return obj;
+                }
             }
         });
-
-        jsonobject.Value = selectedValues;
-
-        this.$("#" + specId).data("jsonobject", jsonobject);
-    };
-
-    onChangesConjunctionOperator = (element: any) => {
-        var specId = this.$(element).data("specificationId");
-        var jsonobject = this.$("#" + specId).data("jsonobject");
-
-        jsonobject.ConjunctionOperator = this.$(element).find('option:selected').val();
-        this.$("#" + specId).data("jsonobject", jsonobject);
-    };
-
-    onChangesSpecificationOperator = (element: any) => {
-        var specId = this.$(element).data("specificationId");
-        var jsonobject = this.$("#" + specId).data("jsonobject");
-
-        jsonobject.SpecificationOperator = this.$(element).find('option:selected').val();
-        this.$("#" + specId).data("jsonobject", jsonobject);
     };
 
     addSpec = (element: any) => {
@@ -204,7 +151,7 @@ class ComposedAnnouncement {
     };
 
     submit = () => {
-        var announcement = this.getAnnouncementParam();
+        let announcement = this.getAnnouncementParam();
 
         this.$.ajax({
             url: this.$nap.resolveClientUrl("Announcement/InsertAnnouncement"),
@@ -227,19 +174,20 @@ class ComposedAnnouncement {
     };
 
     getAnnouncementParam = () => {
+        let self = this;
         return {
-            id: this.$('#AnnouncementId').val(),
-            code: this.$("#txtcode").val(),
-            title: this.$("#txttitle").val(),
-            isActive: this.$("#ChkActive").is(":checked"),
-            announcementType: this.$('input[name=group-popup]:checked').val(),
-            contents: this.getContents(),
-            environments: this.getEnvironments(),
-            fromdate: this.$('#FromDate').val(),
-            todate: this.$('#ToDate').val(),
-            order: this.$('#group-order option:selected').val(),
-            systems: this.getSystems(),
-            specifications: this.getSpecs()
+            id: self.$('#AnnouncementId').val(),
+            code: self.$("#txtcode").val(),
+            title: self.$("#txttitle").val(),
+            isActive: self.$("#ChkActive").is(":checked"),
+            announcementType: self.$('input[name=group-popup]:checked').val(),
+            contents: self.getContents(),
+            environments: self.getEnvironments(),
+            fromdate: self.$('#FromDate').val(),
+            todate: self.$('#ToDate').val(),
+            order: self.$('#group-order option:selected').val(),
+            systems: self.getSystems(),
+            specifications: self.getSpecs()
         };
     };
 
@@ -254,23 +202,62 @@ class ComposedAnnouncement {
     }).get();
 
     getContents = () => {
-        var contents = [];
+        let self = this;
+        let contents = [];
 
         this.$("textarea").map(function (index, domElement) {
-            contents.push({ LanguageKey: this.id, Text: this.$(this).val() });
+            contents.push({ LanguageKey: this.id, Text: self.$(this).val() });
         });
 
         return contents;
     };
 
     getSpecs = () => {
-        var specs = [];
+        let self = this;
+        let specs = [];
 
         this.$(this.$visibleSpecDivs).map(function (index, domElement) {
-            specs.push(this.$(this).data("jsonobject"));
+            let jsonObject = self.$(domElement).data("jsonobject");
+
+            if (self.$(domElement).find("#txt-specification-value").length > 0) {
+                let object = self.$(domElement).find("#txt-specification-value");
+                jsonObject.Value = self.$(object).val().match(/[^,(?! )]+/g);
+            }
+
+            if (self.$(domElement).find('#dll-specification-value').length > 0) {
+                let object = self.$(domElement).find("#dll-specification-value");
+                jsonObject.Value = self.$(object).val();
+
+                let selectedIds = self.$(object).val();
+                let selectedValues = [];
+
+                self.$.each(selectedIds, function (i, val) {
+                    let search = self.search(jsonObject, val);
+                    if (search.length > 0) {
+                        selectedValues.push(search);
+                    }
+                });
+
+                jsonObject.Value = selectedValues;
+            }
+
+            jsonObject.ConjunctionOperator = this.getConjunctionOperatorValue(domElement);
+            jsonObject.SpecificationOperator = this.getSpecificationOperatorValue(domElement);
+
+            specs.push(jsonObject);
         });
 
         return specs;
+    };
+
+    getConjunctionOperatorValue = (domElement: any) => {
+        let object = this.$(domElement).find("#dll-specification-conjunctionOperator");
+        return this.$(object).find('option:selected').val();
+    };
+
+    getSpecificationOperatorValue = (domElement: any) => {
+        let object = this.$(domElement).find("#dll-specification-specificationOperator");
+        return this.$(object).find('option:selected').val();
     };
 }
 
