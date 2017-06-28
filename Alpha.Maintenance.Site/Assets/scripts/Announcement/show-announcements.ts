@@ -12,9 +12,10 @@ class ShowedAnnouncement {
     }
 
     init = () => {
+        let self = this;
         this.$('select').material_select();
         this.$("#submit").click(function () {
-            this.$("#report-form").submit();
+            self.$("#report-form").submit();
         });
     };
 }

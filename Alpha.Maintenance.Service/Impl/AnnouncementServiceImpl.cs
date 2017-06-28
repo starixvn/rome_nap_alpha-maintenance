@@ -33,7 +33,6 @@
 
             getValueRangeFunction = new Dictionary<string, Func<dynamic>>
             {
-                [SiteSpecification.SpecificationId] = GetSites,
                 [UserLevelSpecification.SpecificationId] = GetUserLevel
                 // Add more initial data function here
             };
@@ -54,16 +53,6 @@
             return specs;
         }
 
-        public Announcement GetAnnouncement(int announcementId)
-        {
-            throw new NotImplementedException();
-        }
-
-        private dynamic GetSites()
-        {
-            return announcementRepository.GetSites();
-        }
-
         private dynamic GetUserLevel()
         {
           return  new List<UserLevel>
@@ -76,27 +65,13 @@
 
         public IEnumerable<Announcement> GetAnnouncements(DateTime date, string environment, string system)
         {
-            // Get from repository and filter
-            return new List<Announcement>
+            return GetAnnouncements(new GetAnnouncementsCriteria
             {
-                new Announcement
-                {
-                    Id = 2323,
-                    AnnouncementType = AnnouncementType.HeaderPopup,
-                    Code = "3434343",
-                    Title = "Announcement Title",
-                    IsActive = true,
-                    Specifications = GetAllSpecifications(),
-                    Contents = new List<MessageContent>
-                    {
-                        new MessageContent
-                        {
-                            LanguageKey = "en-us",
-                            Text = " asdasd asdad d asd asd"
-                        }
-                    }
-                }
-            };
+                FromDate = date,
+                ToDate= date,
+                Environment = environment,
+                System = system
+            });
         }
 
         public IEnumerable<Announcement> GetAnnouncements(GetAnnouncementsCriteria criteria)

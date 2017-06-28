@@ -10,11 +10,22 @@ namespace Alpha.Maintenance.Controller.ViewModels
 {
     public class ComposeAnnouncementViewModel
     {
-        public ComposeAnnouncementViewModel(Announcement announcement, ActionType actionType, IEnumerable<ISpecification<IUser>> specifications)
+        public ComposeAnnouncementViewModel(Announcement announcement, ActionType actionType, IEnumerable<ISpecification<IUser>> allSpecifications)
         {
             Announcement = announcement;
             ActionType = actionType;
-            Specifications = specifications;
+
+            if (Announcement.Specifications == null)
+            {
+                NotExistedSpecifications = allSpecifications;
+            }
+            else
+            {
+                NotExistedSpecifications = allSpecifications.Where(spec =>
+                {
+                    return !Announcement.Specifications.Any(existedSpec => existedSpec.Id.Equals(spec.Id));
+                }).Select(spec => spec);
+            }
         }
 
         public Announcement Announcement { get; set; }
@@ -37,7 +48,7 @@ namespace Alpha.Maintenance.Controller.ViewModels
         {
             get
             {
-                return AppSettings.AnnouncementConfig.Sites.Select(
+                return AppSettings.AnnouncementConfig.Systems.Select(
                         site => new SelectListItem
                         {
                             Text = site,
@@ -47,35 +58,8 @@ namespace Alpha.Maintenance.Controller.ViewModels
             }
         }
 
-        public IEnumerable<SelectListItem> ChoosenSpecifications
-        {
-            get
-            {
-                if (Announcement.Specifications != null)
-                {
-                    return Specifications.Where(spec =>
-                   {
-                       return !Announcement.Specifications.Any(existedSpec => existedSpec.Id.Equals(spec.Id));
-                   }).Select(spec => new SelectListItem
-                   {
-                       Text = spec.Name,
-                       Value = spec.Id
-                   });
-                }
-                else
-                {
-                    return Specifications.Select(spec => new SelectListItem
-                    {
-                        Text = spec.Name,
-                        Value = spec.Id
-                    });
-                }
-            }
-        }
+        public IEnumerable<ISpecification<IUser>> NotExistedSpecifications { get; set; }
 
         public ActionType ActionType { get; set; } = ActionType.Create;
-
-        public IEnumerable<ISpecification<IUser>> Specifications { get; set; }
-
     }
 }

@@ -331,20 +331,11 @@
     </Content>
     <TypeScriptCompile Include="Assets\scripts\Announcement\compose-messages.ts" />
     <TypeScriptCompile Include="Assets\scripts\Announcement\show-announcements.ts" />
-    <Content Include="Assets\scripts\lib\defiant\defiant.js" />
-    <Content Include="Assets\scripts\lib\defiant\ie.polyfill.js" />
-    <Content Include="Assets\scripts\lib\defiant\json.js" />
-    <Content Include="Assets\scripts\lib\defiant\json.mtrace.js" />
-    <Content Include="Assets\scripts\lib\defiant\json.search.js" />
-    <Content Include="Assets\scripts\lib\defiant\json.toXML.js" />
-    <Content Include="Assets\scripts\lib\defiant\node.select.js" />
-    <Content Include="Assets\scripts\lib\defiant\node.serialize.js" />
-    <Content Include="Assets\scripts\lib\defiant\node.toJSON.js" />
-    <Content Include="Assets\scripts\lib\defiant\string.js" />
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te-1.4.0.css" />
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te-1.4.0.min.js" />
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te.png" />
     <Content Include="Assets\scripts\Login\index.js" />
+    <Content Include="Assets\scripts\Maintenance.js" />
     <Content Include="Assets\styles\main.css">
       <DependentUpon>main.scss</DependentUpon>
     </Content>
@@ -397,7 +388,6 @@
     <Content Include="Assets\scripts\lib\msgbox\msgbox-0.0.1.css" />
     <Content Include="Assets\scripts\lib\msgbox\msgbox-0.0.1.js" />
     <Content Include="Assets\scripts\Logs\Index.js" />
-    <Content Include="Assets\scripts\Maintenance.js" />
     <Content Include="Assets\scripts\lib\Fanex.Grid\Fanex.Grid.Convert.js" />
     <Content Include="Assets\scripts\lib\Fanex.Grid\Fanex.Grid.css" />
     <Content Include="Assets\scripts\lib\Fanex.Grid\Fanex.Grid.js" />

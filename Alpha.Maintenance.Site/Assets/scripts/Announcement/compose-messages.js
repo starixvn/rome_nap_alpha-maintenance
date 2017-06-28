@@ -10,6 +10,7 @@ var ComposedAnnouncement = (function () {
             _this.cacheDom();
             _this.bindEvent();
             _this.correctFirstSpec();
+            _this.toogleSaveAndNextButton(_this.$txtcode);
         };
         this.cacheDom = function () {
             _this.$dllChooseSpecification = "#dll-choose-specification";
@@ -24,6 +25,7 @@ var ComposedAnnouncement = (function () {
             _this.$specInformationTab = _this.$("#tab-information-settings");
             _this.$visibleSpecDivs = "div[name='div-specification']:not(.hiden)";
             _this.$numberOfSpecs = _this.$('#number-of-specifications');
+            _this.$txtcode = _this.$('#txtcode');
         };
         this.bindEvent = function () {
             var self = _this;
@@ -45,6 +47,28 @@ var ComposedAnnouncement = (function () {
             _this.$btnPrev.on('click', function () {
                 self.$specInformationTab.click();
             });
+            _this.$txtcode.on('keyup', function () {
+                self.toogleSaveAndNextButton(this);
+            });
+        };
+        this.toogleSaveAndNextButton = function (element) {
+            var currentCode = _this.$(element).val().trim();
+            var originalCode = _this.$("#originalCode").val().trim();
+            if (currentCode == '' || currentCode == originalCode) {
+                _this.disableSaveAndNextButton();
+            }
+            else {
+                _this.$('.card-panel').addClass("hiden");
+                _this.enableSaveAndNextButton();
+            }
+        };
+        this.enableSaveAndNextButton = function () {
+            _this.$btnNext.prop("disabled", false).parent().removeClass("disabled");
+            _this.$(_this.$btnSave).prop("disabled", false).parent().removeClass("disabled");
+        };
+        this.disableSaveAndNextButton = function () {
+            _this.$btnNext.prop("disabled", true).parent().addClass("disabled");
+            _this.$(_this.$btnSave).prop("true", true).parent().addClass("disabled");
         };
         this.onChangeSpecOption = function (element) {
             _this.changeSpecPositions(element);
@@ -99,30 +123,49 @@ var ComposedAnnouncement = (function () {
         };
         this.submit = function () {
             var announcement = _this.getAnnouncementParam();
+            if (announcement.code != '') {
+                _this.doUpdate(announcement);
+            }
+            else {
+                _this.$('.card-panel').html("Please input annoucement code !").addClass("red red-text").removeClass('hiden');
+            }
+        };
+        this.doUpdate = function (announcement) {
+            var self = _this;
             _this.$.ajax({
-                url: _this.$nap.resolveClientUrl("Announcement/InsertAnnouncement"),
+                url: self.$nap.resolveClientUrl("Announcement/InsertAnnouncement"),
                 type: 'POST',
-                data: { "announcement": _this.$JSON.stringify(announcement), action: _this.$('#actionType').val() },
+                data: { "announcement": self.$JSON.stringify(announcement), action: self.$('#actionType').val() },
                 dataType: 'json',
                 beforeSend: function () {
-                    this.$nap.loadingBox.show();
+                    self.$nap.loadingBox.show();
                 },
                 complete: function () {
-                    this.$nap.loadingBox.close();
+                    self.$nap.loadingBox.close();
                 },
                 success: function (result) {
+                    var actionType = self.$('#actionType').val();
+                    var message = actionType == 'Create' ? 'Created successfully !' : 'Updated successfully !';
+                    self.$('.card-panel').html(message).addClass("green green-text").removeClass('red red-text hiden');
+                    setTimeout(function () {
+                        self.refreshPage(actionType, announcement.id);
+                    }, 3000);
                 },
                 error: function (xhr, status, err) {
-                    this.$nap.handleAjaxError(xhr, status, err);
+                    self.$nap.handleAjaxError(xhr, status, err);
                 }
             });
+        };
+        this.refreshPage = function (actionType, announcementId) {
+            var url = "Announcement/ComposeMessage/" + (actionType == 'Create' ? '' : announcementId);
+            window.location.href = _this.$nap.resolveClientUrl(url);
         };
         this.getAnnouncementParam = function () {
             var self = _this;
             return {
                 id: self.$('#AnnouncementId').val(),
-                code: self.$("#txtcode").val(),
-                title: self.$("#txttitle").val(),
+                code: self.$("#txtcode").val().trim(),
+                title: self.$("#txttitle").val().trim(),
                 isActive: self.$("#ChkActive").is(":checked"),
                 announcementType: self.$('input[name=group-popup]:checked').val(),
                 contents: self.getContents(),
@@ -135,12 +178,16 @@ var ComposedAnnouncement = (function () {
             };
         };
         this.toogleAddSpecButton = function () { return _this.$(_this.$visibleSpecDivs).length == _this.$(_this.$numberOfSpecs).val() ? _this.$btnAddSpec.addClass("hiden") : _this.$btnAddSpec.removeClass("hiden"); };
-        this.getSystems = function () { return _this.$("input[name='group-systems']:checked").map(function () {
-            return this.id;
-        }).get(); };
-        this.getEnvironments = function () { return _this.$("input[name='group-environments']:checked").map(function () {
-            return this.id;
-        }).get(); };
+        this.getSystems = function () {
+            return _this.$("input[name='group-systems']:checked").map(function () {
+                return this.id;
+            }).get();
+        };
+        this.getEnvironments = function () {
+            return _this.$("input[name='group-environments']:checked").map(function () {
+                return this.id;
+            }).get();
+        };
         this.getContents = function () {
             var self = _this;
             var contents = [];
@@ -155,24 +202,13 @@ var ComposedAnnouncement = (function () {
             _this.$(_this.$visibleSpecDivs).map(function (index, domElement) {
                 var jsonObject = self.$(domElement).data("jsonobject");
                 if (self.$(domElement).find("#txt-specification-value").length > 0) {
-                    var object = self.$(domElement).find("#txt-specification-value");
-                    jsonObject.Value = self.$(object).val().match(/[^,(?! )]+/g);
+                    jsonObject.Sites = self.$(domElement).find("#txt-specification-value").val().match(/(?:\\,|[^,])+/g);
                 }
                 if (self.$(domElement).find('#dll-specification-value').length > 0) {
-                    var object = self.$(domElement).find("#dll-specification-value");
-                    jsonObject.Value = self.$(object).val();
-                    var selectedIds = self.$(object).val();
-                    var selectedValues_1 = [];
-                    self.$.each(selectedIds, function (i, val) {
-                        var search = self.search(jsonObject, val);
-                        if (search.length > 0) {
-                            selectedValues_1.push(search);
-                        }
-                    });
-                    jsonObject.Value = selectedValues_1;
+                    jsonObject.Levels = self.$(domElement).find("#dll-specification-value").val();
                 }
-                jsonObject.ConjunctionOperator = this.getConjunctionOperatorValue(domElement);
-                jsonObject.SpecificationOperator = this.getSpecificationOperatorValue(domElement);
+                jsonObject.ConjunctionOperator = self.getConjunctionOperatorValue(domElement);
+                jsonObject.SpecificationOperator = self.getSpecificationOperatorValue(domElement);
                 specs.push(jsonObject);
             });
             return specs;
@@ -195,3 +231,4 @@ var composedAnnouncement = new ComposedAnnouncement($, window.NAP, window.JSON);
 $(function () {
     composedAnnouncement.init();
 });
+//# sourceMappingURL=compose-messages.js.map

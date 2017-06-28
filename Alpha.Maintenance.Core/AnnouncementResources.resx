@@ -171,6 +171,9 @@
   <data name="Next" xml:space="preserve">
     <value>NEXT</value>
   </data>
+  <data name="NoInformation" xml:space="preserve">
+    <value>There are no informations</value>
+  </data>
   <data name="Prev" xml:space="preserve">
     <value>Prev</value>
   </data>

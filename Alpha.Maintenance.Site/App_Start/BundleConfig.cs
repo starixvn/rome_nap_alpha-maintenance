@@ -56,17 +56,11 @@ namespace Alpha.Maintenance.Site.App_Start
               "~/Assets/scripts/lib/Select2/select2.js",
               "~/Assets/scripts/Announcement/show-announcements.js"));
 
-            bundles.Add(new ScriptBundle("~/scripts/defiant").Include(
-                "~/Assets/scripts/lib/defiant/defiant.js",
-              "~/Assets/scripts/lib/defiant/string.js",
-              "~/Assets/scripts/lib/defiant/ie.polyfill.js",
-              "~/Assets/scripts/lib/defiant/json.js",
-              "~/Assets/scripts/lib/defiant/json.search.js",
-              "~/Assets/scripts/lib/defiant/json.toXML.js",
-              "~/Assets/scripts/lib/defiant/node.toJSON.js",
-              "~/Assets/scripts/lib/defiant/node.serialize.js",
-              "~/Assets/scripts/lib/defiant/node.select.js"
-              ));
+            bundles.Add(new ScriptBundle("~/scripts/compose-announcement").Include(
+             "~/Assets/scripts/lib/jQuery-TE.1.4.0/jquery-te-1.4.0.min.js",
+             "~/Assets/scripts/lib/Momentjs/moment.min.js", 
+             "~/Assets/scripts/lib/Select2/select2.js",
+             "~/Assets/scripts/Announcement/compose-messages.js"));
         }
     }
 }

@@ -3,9 +3,10 @@ var ShowedAnnouncement = (function () {
     function ShowedAnnouncement($) {
         var _this = this;
         this.init = function () {
+            var self = _this;
             _this.$('select').material_select();
             _this.$("#submit").click(function () {
-                this.$("#report-form").submit();
+                self.$("#report-form").submit();
             });
         };
         this.$ = $;
@@ -16,3 +17,4 @@ var showedAnnouncement = new ShowedAnnouncement($);
 $(function () {
     showedAnnouncement.init();
 });
+//# sourceMappingURL=show-announcements.js.map

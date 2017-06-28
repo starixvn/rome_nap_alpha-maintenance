@@ -9,8 +9,8 @@
         [DataMember(Name = "environments")]
         public IEnumerable<string> Environments { get; set; }
 
-        [DataMember(Name = "sites")]
-        public IEnumerable<string> Sites { get; set; }
+        [DataMember(Name = "systems")]
+        public IEnumerable<string> Systems { get; set; }
 
         [DataMember(Name = "languages")]
         public IEnumerable<string> Languages { get; set; }

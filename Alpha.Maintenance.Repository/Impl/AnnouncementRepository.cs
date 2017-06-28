@@ -16,8 +16,6 @@
 
     public interface AnnouncementRepository
     {
-        IEnumerable<Site> GetSites();
-
         IEnumerable<Announcement> GetAnnouncements(GetAnnouncementsCriteria criteria);
 
         Result InsertAnnouncement(ICriteria criteria);
@@ -28,17 +26,6 @@
 
     public class AnnouncementRepositoryImpl : AnnouncementRepository
     {
-        public IEnumerable<Site> GetSites()
-        {
-            return new List<Site>
-            {
-                new Site { Id = 1, Name = "Site 1" },
-                new Site { Id = 2, Name = "Site 2" },
-                new Site { Id = 3, Name = "Site 3" },
-                new Site { Id = 4, Name = "Site 4" }
-            };
-        }
-
         public IEnumerable<Announcement> GetAnnouncements(GetAnnouncementsCriteria criteria)
         {
             if (criteria == null)

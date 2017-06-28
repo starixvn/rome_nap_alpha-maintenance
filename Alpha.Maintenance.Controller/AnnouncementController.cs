@@ -39,6 +39,7 @@
                 FromDate = criteria.FromDate,
                 ToDate = criteria.ToDate,
                 Environment = criteria.Environment,
+                System = criteria.System,
                 Announcements = announcementService.GetAnnouncements(criteria)
             };
 
@@ -47,7 +48,7 @@
 
         public JsonResult InsertAnnouncement(string announcement, ActionType action)
         {
-          var result =  JsonConvert.DeserializeObject<Announcement>(
+            var result =  JsonConvert.DeserializeObject<Announcement>(
                     announcement,
                     new SpecificationConverter());
 
@@ -69,7 +70,7 @@
 
         public ActionResult ComposeMessage(EditAnnouncementsCriteria criteria)
         {
-            var specifications = announcementService.GetAllSpecifications();
+            var allSpecifications = announcementService.GetAllSpecifications();
 
             var model = criteria.Id == null ?
                 new Announcement
@@ -90,7 +91,7 @@
                 }
                 : announcementService.EditAnnouncement(criteria);
 
-            var viewModel = new ComposeAnnouncementViewModel(model, criteria.Id == null ? ActionType.Create : ActionType.Update, specifications);
+            var viewModel = new ComposeAnnouncementViewModel(model, criteria.Id == null ? ActionType.Create : ActionType.Update, allSpecifications);
 
             return View(viewModel);
         }

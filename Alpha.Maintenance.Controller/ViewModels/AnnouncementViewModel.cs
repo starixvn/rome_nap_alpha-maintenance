@@ -12,6 +12,8 @@ namespace Alpha.Maintenance.Controller.ViewModels
 
         public string Environment { get; set; }
 
+        public string System { get; set; }
+
         public IEnumerable<Announcement> Announcements { get; set; }
     }
 }

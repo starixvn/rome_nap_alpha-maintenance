@@ -1,5 +1,4 @@
 ﻿"use strict";
-
 interface JQuery {
     material_select(): void;
     material_select(option: any): void;
@@ -21,6 +20,7 @@ class ComposedAnnouncement {
     $hiddenSpec: JQuery;
     $btnNext: JQuery;
     $btnPrev: JQuery;
+    $txtcode: JQuery;
     $specSettingTab: JQuery;
     $specInformationTab: JQuery;
     $visibleSpecDivs: string;
@@ -43,6 +43,7 @@ class ComposedAnnouncement {
         this.cacheDom();
         this.bindEvent();
         this.correctFirstSpec();
+        this.toogleSaveAndNextButton(this.$txtcode);
     };
 
     cacheDom = () => {
@@ -58,6 +59,7 @@ class ComposedAnnouncement {
         this.$specInformationTab = this.$("#tab-information-settings");
         this.$visibleSpecDivs = "div[name='div-specification']:not(.hiden)";
         this.$numberOfSpecs = this.$('#number-of-specifications');
+        this.$txtcode = this.$('#txtcode');
     };
 
     bindEvent = () => {
@@ -82,10 +84,37 @@ class ComposedAnnouncement {
         this.$btnNext.on('click', function () {
             self.$specSettingTab.click();
         });
-        
+
         this.$btnPrev.on('click', function () {
             self.$specInformationTab.click();
         });
+
+        this.$txtcode.on('keyup', function () {
+            self.toogleSaveAndNextButton(this);
+        });
+    };
+
+    toogleSaveAndNextButton = (element: any) => {
+        let currentCode = this.$(element).val().trim();
+        let originalCode = this.$("#originalCode").val().trim();
+
+        if (currentCode == '' || currentCode == originalCode) {
+            this.disableSaveAndNextButton();
+        }
+        else {
+            this.$('.card-panel').addClass("hiden");
+            this.enableSaveAndNextButton();
+        }
+    };
+
+    enableSaveAndNextButton = () => {
+        this.$btnNext.prop("disabled", false).parent().removeClass("disabled");
+        this.$(this.$btnSave).prop("disabled", false).parent().removeClass("disabled");
+    };
+
+    disableSaveAndNextButton = () => {
+        this.$btnNext.prop("disabled", true).parent().addClass("disabled");
+        this.$(this.$btnSave).prop("true", true).parent().addClass("disabled");
     };
 
     onChangeSpecOption = (element: any) => {
@@ -153,32 +182,52 @@ class ComposedAnnouncement {
     submit = () => {
         let announcement = this.getAnnouncementParam();
 
+        if (announcement.code != '') {
+            this.doUpdate(announcement);
+        }
+        else {
+            this.$('.card-panel').html("Please input annoucement code !").addClass("red red-text").removeClass('hiden');
+        }
+    };
+
+    doUpdate = (announcement: any) => {
+        let self = this;
         this.$.ajax({
-            url: this.$nap.resolveClientUrl("Announcement/InsertAnnouncement"),
+            url: self.$nap.resolveClientUrl("Announcement/InsertAnnouncement"),
             type: 'POST',
-            data: { "announcement": this.$JSON.stringify(announcement), action: this.$('#actionType').val() },
+            data: { "announcement": self.$JSON.stringify(announcement), action: self.$('#actionType').val() },
             dataType: 'json',
             beforeSend: function () {
-                this.$nap.loadingBox.show();
+                self.$nap.loadingBox.show();
             },
             complete: function () {
-                this.$nap.loadingBox.close();
+                self.$nap.loadingBox.close();
             },
             success: function (result) {
-
+                let actionType = self.$('#actionType').val();
+                let message = actionType == 'Create' ? 'Created successfully !' : 'Updated successfully !';
+                self.$('.card-panel').html(message).addClass("green green-text").removeClass('red red-text hiden');
+                setTimeout(() => {
+                    self.refreshPage(actionType, announcement.id);
+                }, 3000);
             },
             error: function (xhr, status, err) {
-                this.$nap.handleAjaxError(xhr, status, err);
+                self.$nap.handleAjaxError(xhr, status, err);
             }
         });
+    };
+
+    refreshPage = (actionType: string, announcementId: string) => {
+        let url = "Announcement/ComposeMessage/" + (actionType == 'Create' ? '' : announcementId);
+        window.location.href = this.$nap.resolveClientUrl(url)
     };
 
     getAnnouncementParam = () => {
         let self = this;
         return {
             id: self.$('#AnnouncementId').val(),
-            code: self.$("#txtcode").val(),
-            title: self.$("#txttitle").val(),
+            code: self.$("#txtcode").val().trim(),
+            title: self.$("#txttitle").val().trim(),
             isActive: self.$("#ChkActive").is(":checked"),
             announcementType: self.$('input[name=group-popup]:checked').val(),
             contents: self.getContents(),
@@ -193,13 +242,17 @@ class ComposedAnnouncement {
 
     toogleAddSpecButton = () => this.$(this.$visibleSpecDivs).length == this.$(this.$numberOfSpecs).val() ? this.$btnAddSpec.addClass("hiden") : this.$btnAddSpec.removeClass("hiden");
 
-    getSystems = () => this.$("input[name='group-systems']:checked").map(function () {
-        return this.id;
-    }).get();
+    getSystems = () => {
+        return this.$("input[name='group-systems']:checked").map(function () {
+            return this.id;
+        }).get();
+    };
 
-    getEnvironments = () => this.$("input[name='group-environments']:checked").map(function () {
-        return this.id;
-    }).get();
+    getEnvironments = () => {
+        return this.$("input[name='group-environments']:checked").map(function () {
+            return this.id;
+        }).get();
+    };
 
     getContents = () => {
         let self = this;
@@ -220,29 +273,15 @@ class ComposedAnnouncement {
             let jsonObject = self.$(domElement).data("jsonobject");
 
             if (self.$(domElement).find("#txt-specification-value").length > 0) {
-                let object = self.$(domElement).find("#txt-specification-value");
-                jsonObject.Value = self.$(object).val().match(/[^,(?! )]+/g);
+                jsonObject.Sites = self.$(domElement).find("#txt-specification-value").val().match(/(?:\\,|[^,])+/g);
             }
 
             if (self.$(domElement).find('#dll-specification-value').length > 0) {
-                let object = self.$(domElement).find("#dll-specification-value");
-                jsonObject.Value = self.$(object).val();
-
-                let selectedIds = self.$(object).val();
-                let selectedValues = [];
-
-                self.$.each(selectedIds, function (i, val) {
-                    let search = self.search(jsonObject, val);
-                    if (search.length > 0) {
-                        selectedValues.push(search);
-                    }
-                });
-
-                jsonObject.Value = selectedValues;
+                jsonObject.Levels = self.$(domElement).find("#dll-specification-value").val();
             }
 
-            jsonObject.ConjunctionOperator = this.getConjunctionOperatorValue(domElement);
-            jsonObject.SpecificationOperator = this.getSpecificationOperatorValue(domElement);
+            jsonObject.ConjunctionOperator = self.getConjunctionOperatorValue(domElement);
+            jsonObject.SpecificationOperator = self.getSpecificationOperatorValue(domElement);
 
             specs.push(jsonObject);
         });

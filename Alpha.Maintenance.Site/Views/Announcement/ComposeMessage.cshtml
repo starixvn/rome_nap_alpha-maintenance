@@ -12,7 +12,6 @@
     <span class="active">@AnnouncementResources.ComposeMessage</span>
 }
 
-
 <div class="row">
     <div class="col s6">
         <ul class="tabs">
@@ -23,6 +22,7 @@
 </div>
 
 <div class="divider margin-bottom-10px"></div>
+<div class="card-panel lighten-4 text-darken-4 hiden"></div>
 
 @Html.Partial("_DisplaySetting", Model)
 
@@ -30,15 +30,8 @@
 
 <input type="hidden" id="actionType" value="@Model.ActionType">
 <input type="hidden" id="AnnouncementId" value="@Model.Announcement.Id">
+<input type="hidden" id="originalCode" value="@Model.Announcement.Code">
 
-<input type="hidden" id="announcementObject" value="@JsonConvert.SerializeObject(Model)">
-
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js" charset="utf-8"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-
-@Scripts.Render("~/Assets/scripts/lib/jQuery-TE.1.4.0/jquery-te-1.4.0.min.js")
-@Scripts.Render("~/Assets/scripts/lib/Momentjs/moment.min.js")
-@Scripts.Render("~/Assets/scripts/lib/Select2/select2.js")
-@Scripts.Render("~/scripts/common")
-
-@Scripts.Render("~/Assets/scripts/Announcement/compose-messages.js")
+@section Foot {
+    @Scripts.Render("~/scripts/compose-announcement")
+}

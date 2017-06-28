@@ -7,6 +7,8 @@
     {
         public string Environment { get; set; } = string.Empty;
 
+        public string System { get; set; } = string.Empty;
+
         public DateTime FromDate { get; set; } = DateTime.Now;
 
         public DateTime ToDate { get; set; } = DateTime.Now;
