@@ -25,6 +25,9 @@ class ComposedAnnouncement {
     $specInformationTab: JQuery;
     $visibleSpecDivs: string;
     $numberOfSpecs: JQuery;
+    siteSpecificationValue: string;
+    userIdsSpecificationValue: string;
+    userLevelsSpecificationValue: string;
 
     $nap: any;
     $JSON: any;
@@ -60,6 +63,9 @@ class ComposedAnnouncement {
         this.$visibleSpecDivs = "div[name='div-specification']:not(.hiden)";
         this.$numberOfSpecs = this.$('#number-of-specifications');
         this.$txtcode = this.$('#txtcode');
+        this.userIdsSpecificationValue ='#txt-userids-pecification-value';
+        this.userLevelsSpecificationValue = '#dll-userlevel-specification-value';
+        this.siteSpecificationValue = '#txt-site-specification-value';
     };
 
     bindEvent = () => {
@@ -272,12 +278,18 @@ class ComposedAnnouncement {
         this.$(this.$visibleSpecDivs).map(function (index, domElement) {
             let jsonObject = self.$(domElement).data("jsonobject");
 
-            if (self.$(domElement).find("#txt-specification-value").length > 0) {
-                jsonObject.Sites = self.$(domElement).find("#txt-specification-value").val().match(/(?:\\,|[^,])+/g);
+            if (self.$(domElement).find(self.siteSpecificationValue).length > 0) {
+                let sites = self.$(domElement).find(self.siteSpecificationValue).val();
+                jsonObject.Sites = self.splitStringtoArray(sites);
             }
 
-            if (self.$(domElement).find('#dll-specification-value').length > 0) {
-                jsonObject.Levels = self.$(domElement).find("#dll-specification-value").val();
+            if (self.$(domElement).find(self.userIdsSpecificationValue).length > 0) {
+                let userIds = self.$(domElement).find(self.userIdsSpecificationValue).val()
+                jsonObject.UserIds = self.splitStringtoArray(userIds);
+            }
+
+            if (self.$(domElement).find(self.userLevelsSpecificationValue).length > 0) {
+                jsonObject.Levels = self.$(domElement).find(self.userLevelsSpecificationValue).val();
             }
 
             jsonObject.ConjunctionOperator = self.getConjunctionOperatorValue(domElement);
@@ -287,6 +299,10 @@ class ComposedAnnouncement {
         });
 
         return specs;
+    };
+
+    splitStringtoArray = (value: string) => {
+        return value.match(/(?:\\,|[^,])+/g);
     };
 
     getConjunctionOperatorValue = (domElement: any) => {

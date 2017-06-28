@@ -65,7 +65,6 @@
             <div class="input-field col s6">
                 @* @Html.DropDownListFor(m => m.Announcement.Order, Enumerable.Range(1, 30).Select(i => new SelectListItem { Text = i.ToString(), Value = i.ToString(), Selected = i.Equals(Model.Announcement.Order) }))*@
                 <select name="order" id="group-order">
-                    <option value="">@AnnouncementResources.All</option>
                     @for (int value = 1; value < 30; value++)
                         {
                         <option value="@value" @(value.Equals(Model.Announcement.Order) ? "selected" : string.Empty)>@value</option>

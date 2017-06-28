@@ -17,5 +17,19 @@
     "ko-KR",
     "th-TH",
     "vi-VN"
+  ],
+  "levels": [
+    {
+      "Id": 2,
+      "Name": "Agent"
+    },
+    {
+      "Id": 3,
+      "Name": "Master"
+    },
+    {
+      "Id": 4,
+      "Name": "Super"
+    }
   ]
 }

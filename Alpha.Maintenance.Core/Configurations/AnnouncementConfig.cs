@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Runtime.Serialization;
+    using Model;
 
     [DataContract]
     public class AnnouncementConfig
@@ -14,5 +15,8 @@
 
         [DataMember(Name = "languages")]
         public IEnumerable<string> Languages { get; set; }
+
+        [DataMember(Name = "levels")]
+        public IEnumerable<Specfication> Levels { get; set; }
     }
 }

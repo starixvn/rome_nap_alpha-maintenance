@@ -33,7 +33,6 @@
 
             getValueRangeFunction = new Dictionary<string, Func<dynamic>>
             {
-                [UserLevelSpecification.SpecificationId] = GetUserLevel
                 // Add more initial data function here
             };
         }
@@ -51,16 +50,6 @@
             }
 
             return specs;
-        }
-
-        private dynamic GetUserLevel()
-        {
-          return  new List<UserLevel>
-        {
-           new UserLevel(2, "Agent"),
-           new UserLevel(3, "Master"),
-           new UserLevel(4, "Super")
-        };
         }
 
         public IEnumerable<Announcement> GetAnnouncements(DateTime date, string environment, string system)

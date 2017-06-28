@@ -26,6 +26,9 @@ var ComposedAnnouncement = (function () {
             _this.$visibleSpecDivs = "div[name='div-specification']:not(.hiden)";
             _this.$numberOfSpecs = _this.$('#number-of-specifications');
             _this.$txtcode = _this.$('#txtcode');
+            _this.userIdsSpecificationValue = '#txt-userids-pecification-value';
+            _this.userLevelsSpecificationValue = '#dll-userlevel-specification-value';
+            _this.siteSpecificationValue = '#txt-site-specification-value';
         };
         this.bindEvent = function () {
             var self = _this;
@@ -201,17 +204,25 @@ var ComposedAnnouncement = (function () {
             var specs = [];
             _this.$(_this.$visibleSpecDivs).map(function (index, domElement) {
                 var jsonObject = self.$(domElement).data("jsonobject");
-                if (self.$(domElement).find("#txt-specification-value").length > 0) {
-                    jsonObject.Sites = self.$(domElement).find("#txt-specification-value").val().match(/(?:\\,|[^,])+/g);
+                if (self.$(domElement).find(self.siteSpecificationValue).length > 0) {
+                    var sites = self.$(domElement).find(self.siteSpecificationValue).val();
+                    jsonObject.Sites = self.splitStringtoArray(sites);
                 }
-                if (self.$(domElement).find('#dll-specification-value').length > 0) {
-                    jsonObject.Levels = self.$(domElement).find("#dll-specification-value").val();
+                if (self.$(domElement).find(self.userIdsSpecificationValue).length > 0) {
+                    var userIds = self.$(domElement).find(self.userIdsSpecificationValue).val();
+                    jsonObject.UserIds = self.splitStringtoArray(userIds);
+                }
+                if (self.$(domElement).find(self.userLevelsSpecificationValue).length > 0) {
+                    jsonObject.Levels = self.$(domElement).find(self.userLevelsSpecificationValue).val();
                 }
                 jsonObject.ConjunctionOperator = self.getConjunctionOperatorValue(domElement);
                 jsonObject.SpecificationOperator = self.getSpecificationOperatorValue(domElement);
                 specs.push(jsonObject);
             });
             return specs;
+        };
+        this.splitStringtoArray = function (value) {
+            return value.match(/(?:\\,|[^,])+/g);
         };
         this.getConjunctionOperatorValue = function (domElement) {
             var object = _this.$(domElement).find("#dll-specification-conjunctionOperator");
@@ -231,4 +242,3 @@ var composedAnnouncement = new ComposedAnnouncement($, window.NAP, window.JSON);
 $(function () {
     composedAnnouncement.init();
 });
-//# sourceMappingURL=compose-messages.js.map

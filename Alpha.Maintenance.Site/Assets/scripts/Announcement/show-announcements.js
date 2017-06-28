@@ -17,4 +17,3 @@ var showedAnnouncement = new ShowedAnnouncement($);
 $(function () {
     showedAnnouncement.init();
 });
-//# sourceMappingURL=show-announcements.js.map
