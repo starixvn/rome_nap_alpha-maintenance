@@ -39,8 +39,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Alpha.Announcements, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Alpha.Announcements.1.0.0.0-Renovation-02\lib\net40\Alpha.Announcements.dll</HintPath>
+    <Reference Include="Alpha.Announcements, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Alpha.Announcements.1.0.0.1-Renovation-01\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MvcPager, Version=1.5.0.28157, Culture=neutral, processorArchitecture=MSIL">

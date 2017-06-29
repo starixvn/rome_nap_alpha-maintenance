@@ -53,12 +53,13 @@
     <Reference Include="Accessibility">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Alpha.Announcements, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Alpha.Announcements.1.0.0.0-Renovation-02\lib\net40\Alpha.Announcements.dll</HintPath>
+    <Reference Include="Alpha.Announcements, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Alpha.Announcements.1.0.0.1-Renovation-01\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Alpha.Announcements.Client">
-      <HintPath>..\..\alpha-newmain\Alpha.Main.Site\Alpha.Announcements.Client\bin\Debug\Alpha.Announcements.Client.dll</HintPath>
+    <Reference Include="Alpha.Announcements.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Alpha.Announcements.Client.1.0.0.0-Renovation\lib\net40\Alpha.Announcements.Client.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
