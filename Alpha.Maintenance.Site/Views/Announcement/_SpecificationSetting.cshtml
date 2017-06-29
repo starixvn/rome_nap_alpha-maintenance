@@ -70,7 +70,6 @@
     </div>
 </div>
 
-
 @helper RenderSpecification(ISpecification<IParam> specification, bool isShowSpec = true)
 {
     <div data-jsonobject="@JsonConvert.SerializeObject(specification)" class="row @(isShowSpec ? string.Empty : "hiden")" name="div-specification" id="@specification.Id">
@@ -89,19 +88,16 @@
         <div class="col s3">
             @if (specification.Name.Equals("User Level"))
             {
-                @RenderUserLevelSpec(specification, isShowSpec);
+                @RenderSpecDll(specification, isShowSpec);
             }
 
-            else if (specification.Name.Equals("Sites"))
+            else if (specification.Name.Equals("Sites")
+                     || specification.Name.Equals("User Ids")
+                     || specification.Name.Equals("Currencies")
+                     || specification.Name.Equals("Products"))
             {
-                @RenderSitesSpec(specification, isShowSpec);
+                @RenderSpecTxt(specification, isShowSpec);
             }
-
-            else if (specification.Name.Equals("User Ids"))
-            {
-                @RenderUserIdsSpec(specification, isShowSpec);
-            }
-
         </div>
         <div class="col s3 hidden-specification link" data-id="@specification.Id" data-name="@specification.Name">
             - @AnnouncementResources.DeleteSpecification
@@ -109,9 +105,9 @@
     </div>
 }
 
-@helper RenderUserLevelSpec(ISpecification<IParam> specification, bool isShowSpec)
+@helper RenderSpecDll(ISpecification<IParam> specification, bool isShowSpec)
 {
-    <select id="dll-userlevel-specification-value" multiple data-specificationId="@specification.Id">
+    <select id="dll-specification-value" multiple data-specificationId="@specification.Id">
         @foreach (var userLevel in AppSettings.AnnouncementConfig.Levels)
         {
             <option value="@userLevel.Id" @(isShowSpec && specification.Value.Contains((byte)userLevel.Id) ? "selected" : string.Empty)>@userLevel.Name</option>
@@ -119,16 +115,9 @@
     </select>
 }
 
-@helper RenderSitesSpec(ISpecification<IParam> specification, bool isShowSpec)
+@helper RenderSpecTxt(ISpecification<IParam> specification, bool isShowSpec)
 {
-    <input type="text" id="txt-site-specification-value" 
+    <input type="text" id="txt-specification-value"
            value="@(isShowSpec ? string.Join(",", specification.Value?? string.Empty) : string.Empty)"
-            data-specificationId="@specification.Id" />
-}
-
-@helper RenderUserIdsSpec(ISpecification<IParam> specification, bool isShowSpec)
-{
-    <input type="text" id="txt-userids-pecification-value" 
-           value="@(isShowSpec ? string.Join(",", specification.Value ?? string.Empty) : string.Empty)" 
            data-specificationId="@specification.Id" />
 }

@@ -25,8 +25,7 @@ class ComposedAnnouncement {
     $specInformationTab: JQuery;
     $visibleSpecDivs: string;
     $numberOfSpecs: JQuery;
-    siteSpecificationValue: string;
-    userIdsSpecificationValue: string;
+    txtSpecificationValue: string;
     userLevelsSpecificationValue: string;
 
     $nap: any;
@@ -63,9 +62,8 @@ class ComposedAnnouncement {
         this.$visibleSpecDivs = "div[name='div-specification']:not(.hiden)";
         this.$numberOfSpecs = this.$('#number-of-specifications');
         this.$txtcode = this.$('#txtcode');
-        this.userIdsSpecificationValue ='#txt-userids-pecification-value';
-        this.userLevelsSpecificationValue = '#dll-userlevel-specification-value';
-        this.siteSpecificationValue = '#txt-site-specification-value';
+        this.userLevelsSpecificationValue = '#dll-specification-value';
+        this.txtSpecificationValue = '#txt-specification-value';
     };
 
     bindEvent = () => {
@@ -192,9 +190,11 @@ class ComposedAnnouncement {
             this.doUpdate(announcement);
         }
         else {
-            this.$('.card-panel').html("Please input annoucement code !").addClass("red red-text").removeClass('hiden');
+            this.showWarningMessage("Please input annoucement code !");
         }
     };
+
+    showWarningMessage = (message: string) => this.$('.card-panel').html(message).addClass("red red-text").removeClass('hiden');
 
     doUpdate = (announcement: any) => {
         let self = this;
@@ -278,22 +278,17 @@ class ComposedAnnouncement {
         this.$(this.$visibleSpecDivs).map(function (index, domElement) {
             let jsonObject = self.$(domElement).data("jsonobject");
 
-            if (self.$(domElement).find(self.siteSpecificationValue).length > 0) {
-                let sites = self.$(domElement).find(self.siteSpecificationValue).val();
-                jsonObject.Sites = self.splitStringtoArray(sites);
-            }
+            jsonObject.ConjunctionOperator = self.getConjunctionOperatorValue(domElement);
+            jsonObject.SpecificationOperator = self.getSpecificationOperatorValue(domElement);
 
-            if (self.$(domElement).find(self.userIdsSpecificationValue).length > 0) {
-                let userIds = self.$(domElement).find(self.userIdsSpecificationValue).val()
-                jsonObject.UserIds = self.splitStringtoArray(userIds);
+            if (self.$(domElement).find(self.txtSpecificationValue).length > 0) {
+                let sites = self.$(domElement).find(self.txtSpecificationValue).val();
+                jsonObject.Value = self.splitStringtoArray(sites);
             }
 
             if (self.$(domElement).find(self.userLevelsSpecificationValue).length > 0) {
-                jsonObject.Levels = self.$(domElement).find(self.userLevelsSpecificationValue).val();
+                jsonObject.Value = self.$(domElement).find(self.userLevelsSpecificationValue).val();
             }
-
-            jsonObject.ConjunctionOperator = self.getConjunctionOperatorValue(domElement);
-            jsonObject.SpecificationOperator = self.getSpecificationOperatorValue(domElement);
 
             specs.push(jsonObject);
         });
