@@ -11,7 +11,7 @@
     {
         IEnumerable<Announcement> GetAnnouncements(DateTime date, string environment, string system);
 
-        IEnumerable<ISpecification<IUser>> GetAllSpecifications();
+        IEnumerable<ISpecification<IParam>> GetAllSpecifications();
 
         IEnumerable<Announcement> GetAnnouncements(GetAnnouncementsCriteria criteria);
 

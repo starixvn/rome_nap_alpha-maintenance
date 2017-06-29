@@ -113,7 +113,7 @@
                                 .Select(environment => environment.Trim()),
                 Id = reader.ToInt("Id"),
                 IsActive = reader.ToBool("IsActive"),
-                Specifications = JsonConvert.DeserializeObject<IEnumerable<ISpecification<IUser>>>(
+                Specifications = JsonConvert.DeserializeObject<IEnumerable<ISpecification<IParam>>>(
                     reader.ToString("Specifications"),
                     new SpecificationConverter()),
                 Systems = reader.ToString("Systems").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)

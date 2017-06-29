@@ -87,7 +87,7 @@
                                 LanguageKey = language,
                                 Text = string.Empty
                             }),
-                    Specifications = new List<ISpecification<IUser>>()
+                    Specifications = new List<ISpecification<IParam>>()
                 } : announcementService.EditAnnouncement(criteria);
 
             var viewModel = new ComposeAnnouncementViewModel(model, criteria.Id == null ? ActionType.Create : ActionType.Update, allSpecifications);

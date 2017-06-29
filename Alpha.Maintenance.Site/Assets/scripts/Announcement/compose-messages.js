@@ -242,3 +242,4 @@ var composedAnnouncement = new ComposedAnnouncement($, window.NAP, window.JSON);
 $(function () {
     composedAnnouncement.init();
 });
+//# sourceMappingURL=compose-messages.js.map

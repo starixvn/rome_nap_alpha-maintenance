@@ -37,7 +37,7 @@
             };
         }
 
-        public IEnumerable<ISpecification<IUser>> GetAllSpecifications()
+        public IEnumerable<ISpecification<IParam>> GetAllSpecifications()
         {
             var specs = specificationFactory.LoadSpecifications();
 

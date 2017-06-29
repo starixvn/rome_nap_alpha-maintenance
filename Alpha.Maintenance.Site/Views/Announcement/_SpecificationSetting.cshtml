@@ -71,7 +71,7 @@
 </div>
 
 
-@helper RenderSpecification(ISpecification<IUser> specification, bool isShowSpec = true)
+@helper RenderSpecification(ISpecification<IParam> specification, bool isShowSpec = true)
 {
     <div data-jsonobject="@JsonConvert.SerializeObject(specification)" class="row @(isShowSpec ? string.Empty : "hiden")" name="div-specification" id="@specification.Id">
         <div class="col s1">
@@ -109,7 +109,7 @@
     </div>
 }
 
-@helper RenderUserLevelSpec(ISpecification<IUser> specification, bool isShowSpec)
+@helper RenderUserLevelSpec(ISpecification<IParam> specification, bool isShowSpec)
 {
     <select id="dll-userlevel-specification-value" multiple data-specificationId="@specification.Id">
         @foreach (var userLevel in AppSettings.AnnouncementConfig.Levels)
@@ -119,14 +119,14 @@
     </select>
 }
 
-@helper RenderSitesSpec(ISpecification<IUser> specification, bool isShowSpec)
+@helper RenderSitesSpec(ISpecification<IParam> specification, bool isShowSpec)
 {
     <input type="text" id="txt-site-specification-value" 
            value="@(isShowSpec ? string.Join(",", specification.Value?? string.Empty) : string.Empty)"
             data-specificationId="@specification.Id" />
 }
 
-@helper RenderUserIdsSpec(ISpecification<IUser> specification, bool isShowSpec)
+@helper RenderUserIdsSpec(ISpecification<IParam> specification, bool isShowSpec)
 {
     <input type="text" id="txt-userids-pecification-value" 
            value="@(isShowSpec ? string.Join(",", specification.Value ?? string.Empty) : string.Empty)" 

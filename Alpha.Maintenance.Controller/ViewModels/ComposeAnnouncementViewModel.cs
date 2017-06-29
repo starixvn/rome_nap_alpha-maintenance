@@ -10,7 +10,7 @@ namespace Alpha.Maintenance.Controller.ViewModels
 {
     public class ComposeAnnouncementViewModel
     {
-        public ComposeAnnouncementViewModel(Announcement announcement, ActionType actionType, IEnumerable<ISpecification<IUser>> allSpecifications)
+        public ComposeAnnouncementViewModel(Announcement announcement, ActionType actionType, IEnumerable<ISpecification<IParam>> allSpecifications)
         {
             Announcement = announcement;
             ActionType = actionType;
@@ -58,7 +58,7 @@ namespace Alpha.Maintenance.Controller.ViewModels
             }
         }
 
-        public IEnumerable<ISpecification<IUser>> NotExistedSpecifications { get; set; }
+        public IEnumerable<ISpecification<IParam>> NotExistedSpecifications { get; set; }
 
         public ActionType ActionType { get; set; } = ActionType.Create;
     }
