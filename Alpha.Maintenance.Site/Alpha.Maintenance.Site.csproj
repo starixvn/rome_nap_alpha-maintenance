@@ -54,7 +54,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Alpha.Announcements, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Alpha.Announcements.1.0.0.1-Renovation-01\lib\net40\Alpha.Announcements.dll</HintPath>
+      <HintPath>..\packages\Alpha.Announcements.1.0.0.1-Renovation-02\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Alpha.Announcements.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -343,6 +343,7 @@
     <Content Include="Assets\styles\main.min.css">
       <DependentUpon>main.css</DependentUpon>
     </Content>
+    <Content Include="DatabaseScripts\AnnnouncementDatabse.sql" />
     <Content Include="DatabaseScripts\AnnnouncementTable.sql" />
     <Content Include="DatabaseScripts\Announcements_Update.sql" />
     <Content Include="DatabaseScripts\Announcements_Select.sql" />

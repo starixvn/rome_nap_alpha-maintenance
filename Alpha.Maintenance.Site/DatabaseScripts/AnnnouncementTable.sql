@@ -17,7 +17,7 @@ CREATE TABLE [dbo].[Announcements](
 	[FromDate] [datetime] NOT NULL,
 	[ToDate] [datetime] NOT NULL,
 	[Environments] [nvarchar](50) NULL,
-	[Systems] [nchar](10) NULL,
+	[Systems] [nchar](20) NULL,
 	[Order] [smallint] NULL,
 	[Specifications] [nvarchar](max) NULL,
 	[Contents] [nvarchar](max) NOT NULL,
