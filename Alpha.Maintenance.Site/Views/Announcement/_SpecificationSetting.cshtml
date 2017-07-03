@@ -98,6 +98,11 @@
             {
                 @RenderSpecTxt(specification, isShowSpec);
             }
+
+            else
+            {
+                @RenderCustomSpec();
+            }
         </div>
         <div class="col s3 hidden-specification link" data-id="@specification.Id" data-name="@specification.Name">
             - @AnnouncementResources.DeleteSpecification
@@ -120,4 +125,9 @@
     <input type="text" id="txt-specification-value"
            value="@(isShowSpec ? string.Join(",", specification.Value?? string.Empty) : string.Empty)"
            data-specificationId="@specification.Id" />
+}
+
+@helper RenderCustomSpec()
+{
+    <div>&nbsp;</div>
 }
