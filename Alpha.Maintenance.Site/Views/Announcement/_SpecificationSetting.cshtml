@@ -82,8 +82,13 @@
             @specification.Name
         </div>
         <div class="col s2">
-            @Html.EnumDropDownList("dll-specification-specificationOperator", specification.SpecificationOperator,
-                          new Dictionary<string, object>() { { "data-parentId", specification.Id } })
+            @if (!specification.Name.Equals("Not Synced Casino"))
+            {
+                @Html.EnumDropDownList("dll-specification-specificationOperator", specification.SpecificationOperator,
+                                   new Dictionary<string, object>() { { "data-parentId", specification.Id } })
+            }
+
+            &nbsp;
         </div>
         <div class="col s3">
             @if (specification.Name.Equals("User Level"))

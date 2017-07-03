@@ -35,8 +35,9 @@
       <HintPath>..\packages\Alpha.Announcements.1.0.0.1-Renovation-02\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Alpha.Announcements.Client">
-      <HintPath>..\..\alpha-newmain\Alpha.Main.Site\Alpha.Announcements.Client\bin\Debug\Alpha.Announcements.Client.dll</HintPath>
+    <Reference Include="Alpha.Announcements.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Alpha.Announcements.Client.1.0.0.0-Renovation\lib\net40\Alpha.Announcements.Client.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Caching, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Caching.2.1.0\lib\net40\Fanex.Caching.dll</HintPath>
