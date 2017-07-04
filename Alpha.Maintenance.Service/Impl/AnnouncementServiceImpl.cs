@@ -8,7 +8,6 @@
     using Announcements.Specs;
     using Core.Configurations;
     using Core.Model;
-    using Fanex.Data.Repository;
     using Interface;
     using Newtonsoft.Json;
     using Repository.Criteria.Announcements;
@@ -18,16 +17,13 @@
     {
         private readonly SpecificationFactory specificationFactory;
         private readonly AnnouncementRepository announcementRepository;
-        private readonly IDynamicRepository dynamicRepository;
 
         private readonly IDictionary<string, Func<dynamic>> getValueRangeFunction;
 
         public AnnouncementServiceImpl(
-            IDynamicRepository dynamicRepository = null,
             SpecificationFactory specificationFactory = null,
             AnnouncementRepository announcementRepository = null)
         {
-            this.dynamicRepository = dynamicRepository ?? new DynamicRepository();
             this.specificationFactory = specificationFactory ?? new SpecificationFactoryImpl();
             this.announcementRepository = announcementRepository ?? new AnnouncementRepositoryImpl();
 
@@ -53,26 +49,19 @@
         }
 
         public IEnumerable<Announcement> GetAnnouncements(DateTime date, string environment, string system)
-        {
-            return GetAnnouncements(new GetAnnouncementsCriteria
-            {
-                FromDate = date,
-                ToDate= date,
-                Environment = environment,
-                System = system
-            });
-        }
+                => GetAnnouncements(new GetAnnouncementsCriteria
+                {
+                    FromDate = date,
+                    ToDate = date,
+                    Environment = environment,
+                    System = system
+                });
 
-        public IEnumerable<Announcement> GetAnnouncements(GetAnnouncementsCriteria criteria)
-        {
-            var announcements = announcementRepository.GetAnnouncements(criteria);
-
-            return announcements;
-        }
+        public IEnumerable<Announcement> GetAnnouncements(GetAnnouncementsCriteria criteria) 
+                => announcementRepository.GetAnnouncements(criteria);
 
         public Result InsertAnnouncements(Announcement announcement, ActionType Action)
-        {
-            return announcementRepository.InsertAnnouncement(
+                => announcementRepository.InsertAnnouncement(
                     new InsertAnnouncementsCriteria
                     {
                         Action = Action,
@@ -89,25 +78,21 @@
                         Contents = JsonConvert.SerializeObject(announcement.Contents),
                         Specifications = JsonConvert.SerializeObject(announcement.Specifications)
                     });
-        }
 
         public Announcement EditAnnouncement(EditAnnouncementsCriteria criteria)
         {
             var announcement = announcementRepository.EditAnnouncement(criteria);
             announcement.Contents = CorrectContent(announcement.Contents);
+
             return announcement;
         }
 
         public IEnumerable<MessageContent> CorrectContent(IEnumerable<MessageContent> contents)
-        {
-            IEnumerable<MessageContent> temp = AppSettings.AnnouncementConfig.Languages.Select(
-                language => new MessageContent
-                {
-                    LanguageKey = language,
-                    Text = contents?.FirstOrDefault(content => content.LanguageKey.Equals(language, StringComparison.OrdinalIgnoreCase))?.Text
-                });
-
-            return temp;
-        }
+                => AppSettings.AnnouncementConfig.Languages.Select(
+                        language => new MessageContent
+                        {
+                            LanguageKey = language,
+                            Text = contents?.FirstOrDefault(content => content.LanguageKey.Equals(language, StringComparison.OrdinalIgnoreCase))?.Text
+                        });
     }
 }

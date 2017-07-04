@@ -25,8 +25,6 @@
 
         [HttpPost]
         public IEnumerable<Announcement> GetAnnouncements(QueryAnnouncementRequest request)
-        {
-            return announcementService.GetAnnouncements(request.Date, request.Environment, request.System);
-        }
+                => announcementService.GetAnnouncements(request.Date, request.Environment, request.System);
     }
 }

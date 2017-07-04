@@ -102,28 +102,24 @@
         }
 
         private Announcement BuildAnnouncement(IDataReader reader)
-        {
-            var announcement = new Announcement
-            {
-                AnnouncementType = (AnnouncementType)reader.ToInt("AnnouncementType"),
-                Code = reader.ToString("Code"),
-                Contents = JsonConvert.DeserializeObject<IEnumerable<MessageContent>>(reader.ToString("Contents")),
-                Order = reader.ToInt("Order"),
-                Environments = reader.ToString("Environments").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
-                                .Select(environment => environment.Trim()),
-                Id = reader.ToInt("Id"),
-                IsActive = reader.ToBool("IsActive"),
-                Specifications = JsonConvert.DeserializeObject<IEnumerable<ISpecification<IParam>>>(
-                    reader.ToString("Specifications"),
-                    new SpecificationConverter()),
-                Systems = reader.ToString("Systems").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
-                            .Select(system => system.Trim()),
-                Title = reader.ToString("Title"),
-                FromDate = reader.ToDateTime("FromDate"),
-                ToDate = reader.ToDateTime("ToDate")
-            };
-
-            return announcement;
-        }
+                 => new Announcement
+                 {
+                     AnnouncementType = (AnnouncementType)reader.ToInt("AnnouncementType"),
+                     Code = reader.ToString("Code"),
+                     Contents = JsonConvert.DeserializeObject<IEnumerable<MessageContent>>(reader.ToString("Contents")),
+                     Order = reader.ToInt("Order"),
+                     Environments = reader.ToString("Environments").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
+                                        .Select(environment => environment.Trim()),
+                     Id = reader.ToInt("Id"),
+                     IsActive = reader.ToBool("IsActive"),
+                     Specifications = JsonConvert.DeserializeObject<IEnumerable<ISpecification<IParam>>>(
+                            reader.ToString("Specifications"),
+                            new SpecificationConverter()),
+                     Systems = reader.ToString("Systems").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
+                                    .Select(system => system.Trim()),
+                     Title = reader.ToString("Title"),
+                     FromDate = reader.ToDateTime("FromDate"),
+                     ToDate = reader.ToDateTime("ToDate")
+                 };
     }
 }

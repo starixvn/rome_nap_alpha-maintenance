@@ -1,6 +1,6 @@
 ﻿@model ComposeAnnouncementViewModel
 
-<div id="specs-setting" class="row">
+<div id="specs-setting">
     <div class="row">
         <div class="col s1">
             &nbsp;
@@ -73,15 +73,15 @@
 @helper RenderSpecification(ISpecification<IParam> specification, bool isShowSpec = true)
 {
     <div data-jsonobject="@JsonConvert.SerializeObject(specification)" class="row @(isShowSpec ? string.Empty : "hiden")" name="div-specification" id="@specification.Id">
-        <div class="col s1">
+        <div class="col s1 input-field">
             @Html.EnumDropDownList("dll-specification-conjunctionOperator", specification.ConjunctionOperator,
                           new Dictionary<string, object>() { { "data-parentId", specification.Id } })
             &nbsp;
         </div>
-        <div class="col s2">
-            @specification.Name
+        <div class="col s2 input-field">
+            <div>@specification.Name</div>
         </div>
-        <div class="col s2">
+        <div class="col s2 input-field">
             @if (!specification.Name.Equals("Not Synced Casino"))
             {
                 @Html.EnumDropDownList("dll-specification-specificationOperator", specification.SpecificationOperator,
@@ -90,7 +90,7 @@
 
             &nbsp;
         </div>
-        <div class="col s3">
+        <div class="col s3 input-field">
             @if (specification.Name.Equals("User Level"))
             {
                 @RenderSpecDll(specification, isShowSpec);
@@ -109,7 +109,7 @@
                 @RenderCustomSpec();
             }
         </div>
-        <div class="col s3 hidden-specification link" data-id="@specification.Id" data-name="@specification.Name">
+        <div class="col s3 hidden-specification link input-field" data-id="@specification.Id" data-name="@specification.Name">
             - @AnnouncementResources.DeleteSpecification
         </div>
     </div>

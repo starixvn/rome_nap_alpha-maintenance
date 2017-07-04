@@ -343,13 +343,6 @@
     <Content Include="Assets\styles\main.min.css">
       <DependentUpon>main.css</DependentUpon>
     </Content>
-    <Content Include="DatabaseScripts\AnnnouncementDatabse.sql" />
-    <Content Include="DatabaseScripts\AnnnouncementTable.sql" />
-    <Content Include="DatabaseScripts\Announcements_Update.sql" />
-    <Content Include="DatabaseScripts\Announcements_Select.sql" />
-    <Content Include="DatabaseScripts\AutoInsertAnnouncements.sql" />
-    <Content Include="DatabaseScripts\Announcements_Insert.sql" />
-    <Content Include="DatabaseScripts\Announcements_SelectByCode.sql" />
     <Content Include="Global.asax" />
     <Content Include="Assets\images\calendar.gif" />
     <Content Include="Assets\images\ic-calendar.png" />

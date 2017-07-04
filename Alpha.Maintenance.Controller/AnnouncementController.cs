@@ -33,18 +33,14 @@
         [HttpGet]
         //[NapAuth(FunctionKey = SiteFunctionKeys.Announcement, Policy = Constant.Policy.Read)]
         public ActionResult ShowAnnouncements(GetAnnouncementsCriteria criteria)
-        {
-            var viewModel = new AnnouncementViewModel
-            {
-                FromDate = criteria.FromDate,
-                ToDate = criteria.ToDate,
-                Environment = criteria.Environment,
-                System = criteria.System,
-                Announcements = announcementService.GetAnnouncements(criteria)
-            };
-
-            return View(viewModel);
-        }
+                => View(new AnnouncementViewModel
+                    {
+                        FromDate = criteria.FromDate,
+                        ToDate = criteria.ToDate,
+                        Environment = criteria.Environment,
+                        System = criteria.System,
+                        Announcements = announcementService.GetAnnouncements(criteria)
+                    });
 
         public JsonResult InsertAnnouncement(string announcement, ActionType action)
         {
@@ -60,13 +56,11 @@
         }
 
         public JsonResult GetSpecifications()
-        {
-            return new JsonNetResult
-            {
-                Data = announcementService.GetAllSpecifications(),
-                JsonRequestBehavior = JsonRequestBehavior.AllowGet
-            };
-        }
+                => new JsonNetResult
+                {
+                    Data = announcementService.GetAllSpecifications(),
+                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
+                };
 
         public ActionResult ComposeMessage(EditAnnouncementsCriteria criteria)
         {
