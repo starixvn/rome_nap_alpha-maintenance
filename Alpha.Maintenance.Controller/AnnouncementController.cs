@@ -35,7 +35,7 @@
         }
 
         [HttpGet]
-        //[NapAuth(FunctionKey = SiteFunctionKeys.Announcement, Policy = Constant.Policy.Read)]
+        [NapAuth(FunctionKey = SiteFunctionKeys.AnnouncementManagement, Policy = Constant.Policy.Read)]
         public ActionResult ShowAnnouncements(GetAnnouncementsCriteria criteria)
                 => View(new AnnouncementViewModel
                 {
@@ -47,7 +47,7 @@
                 });
 
         [HttpPost]
-        //[NapAuth(FunctionKey = SiteFunctionKeys.Announcement, Policy = Constant.Policy.Host)]
+        [NapAuth(FunctionKey = SiteFunctionKeys.AnnouncementManagement, Policy = Constant.Policy.Host)]
         public JsonResult InsertAnnouncement(string announcement, ActionType action, HttpPostedFileBase file)
         {
             var result = AssignValueOfUserIdsFileSpec(file, 
@@ -63,13 +63,8 @@
             };
         }
 
-        public JsonResult GetSpecifications()
-                => new JsonNetResult
-                {
-                    Data = announcementService.GetAllSpecifications(),
-                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
-                };
-
+        [HttpGet]
+        [NapAuth(FunctionKey = SiteFunctionKeys.AnnouncementManagement, Policy = Constant.Policy.Read)]
         public ActionResult ComposeMessage(EditAnnouncementsCriteria criteria)
         {
             var allSpecifications = announcementService.GetAllSpecifications();
@@ -104,10 +99,10 @@
             {
                 string fileString = string.Empty;
 
-                using (BinaryReader b = new BinaryReader(file.InputStream))
+                using (BinaryReader reader = new BinaryReader(file.InputStream))
                 {
-                    byte[] binData = b.ReadBytes(file.ContentLength);
-                    fileString = System.Text.Encoding.UTF8.GetString(binData);
+                    byte[] binaryData = reader.ReadBytes(file.ContentLength);
+                    fileString = System.Text.Encoding.UTF8.GetString(binaryData);
                 }
 
                 char[] delimiterChars = { ' ', ',', '.', ':', '\t' };
