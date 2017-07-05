@@ -50,25 +50,11 @@
         //[NapAuth(FunctionKey = SiteFunctionKeys.Announcement, Policy = Constant.Policy.Host)]
         public JsonResult InsertAnnouncement(string announcement, ActionType action, HttpPostedFileBase file)
         {
-            if (file != null && file.ContentLength != 0)
-            {
-                string fileString = string.Empty;
+            var result = AssignValueOfUserIdsFileSpec(file, 
+                                                    JsonConvert.DeserializeObject<Announcement>(
+                                                    announcement,
+                                                    new SpecificationConverter()));
 
-                using (BinaryReader b = new BinaryReader(file.InputStream))
-                {
-                    byte[] binData = b.ReadBytes(file.ContentLength);
-                    fileString = System.Text.Encoding.UTF8.GetString(binData);
-                }
-
-                string[] data = new string[] { };
-                char[] delimiterChars = { ' ', ',', '.', ':', '\t' };
-
-                data = fileString.Split(delimiterChars, StringSplitOptions.None);
-            }
-
-            var result = JsonConvert.DeserializeObject<Announcement>(
-                announcement,
-                new SpecificationConverter());
 
             return new JsonNetResult
             {
@@ -109,6 +95,33 @@
             var viewModel = new ComposeAnnouncementViewModel(model, criteria.Id == null ? ActionType.Create : ActionType.Update, allSpecifications);
 
             return View(viewModel);
+        }
+
+        private Announcement AssignValueOfUserIdsFileSpec(HttpPostedFileBase file, Announcement announcement)
+        {
+            string[] data = new string[] { };
+            if (file != null && file.ContentLength != 0)
+            {
+                string fileString = string.Empty;
+
+                using (BinaryReader b = new BinaryReader(file.InputStream))
+                {
+                    byte[] binData = b.ReadBytes(file.ContentLength);
+                    fileString = System.Text.Encoding.UTF8.GetString(binData);
+                }
+
+                char[] delimiterChars = { ' ', ',', '.', ':', '\t' };
+
+                data = fileString.Split(delimiterChars, StringSplitOptions.None);
+            }
+
+            announcement.Specifications.Where(spec => spec.Name.Equals("User Ids File"))
+               .Select(spec =>
+               {
+                   return new UserIdFileSpecification(data.Select(x => int.Parse(x)));
+               }).FirstOrDefault();
+
+            return announcement;
         }
     }
 }

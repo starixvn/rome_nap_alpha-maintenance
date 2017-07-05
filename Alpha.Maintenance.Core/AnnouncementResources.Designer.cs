@@ -160,6 +160,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Criteria cannot be null.
+        /// </summary>
+        public static string CriteriaCannotBeNull {
+            get {
+                return ResourceManager.GetString("CriteriaCannotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete Specification.
         /// </summary>
         public static string DeleteSpecification {
@@ -318,6 +327,15 @@ namespace Alpha.Maintenance.Core {
         public static string Type {
             get {
                 return ResourceManager.GetString("Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update successfully!.
+        /// </summary>
+        public static string UpdateSuccessfully {
+            get {
+                return ResourceManager.GetString("UpdateSuccessfully", resourceCulture);
             }
         }
         

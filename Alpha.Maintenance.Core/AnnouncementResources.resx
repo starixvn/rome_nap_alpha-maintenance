@@ -150,6 +150,9 @@
   <data name="Content" xml:space="preserve">
     <value>Content</value>
   </data>
+  <data name="CriteriaCannotBeNull" xml:space="preserve">
+    <value>Criteria cannot be null</value>
+  </data>
   <data name="DeleteSpecification" xml:space="preserve">
     <value>Delete Specification</value>
   </data>
@@ -203,6 +206,9 @@
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="UpdateSuccessfully" xml:space="preserve">
+    <value>Update successfully!</value>
   </data>
   <data name="Value" xml:space="preserve">
     <value>Value</value>

@@ -7,6 +7,7 @@
     using Announcements.Client.Helpers;
     using Announcements.Models;
     using Announcements.Specs;
+    using Core;
     using Core.Model;
     using Criteria.Announcements;
     using Fanex.Common.Extensions;
@@ -30,7 +31,7 @@
         {
             if (criteria == null)
             {
-                throw new ArgumentNullException(nameof(criteria), "Criteria cannot be null");
+                throw new ArgumentNullException(nameof(criteria), AnnouncementResources.CriteriaCannotBeNull);
             }
 
             var data = new List<Announcement>();
@@ -54,23 +55,30 @@
 
         public Result InsertAnnouncement(ICriteria criteria)
         {
-            if (criteria == null)
+            try
             {
-                throw new ArgumentNullException(nameof(criteria), "Criteria cannot be null");
+                if (criteria == null)
+                {
+                    throw new ArgumentNullException(nameof(criteria), AnnouncementResources.CriteriaCannotBeNull);
+                }
+
+                using (var db = new ObjectDb(criteria.GetSettingKey()))
+                {
+                    db.ExecuteNonQuery(criteria.GetSpParams());
+
+                    return new Result
+                    {
+                        Code = 0,
+                        Message = AnnouncementResources.UpdateSuccessfully
+                    };
+                }
             }
-
-            using (var db = new ObjectDb(criteria.GetSettingKey()))
+            catch (Exception ex)
             {
-                db.ExecuteNonQuery(criteria.GetSpParams());
-                var outputParams = db.GetOuputParams();
-                var code = 0; //(int)outputParams["errcode"];
-
                 return new Result
                 {
-                    Code = code,
-                    Message = code == 0
-                        ? "Update successfully!"
-                        : outputParams["errmsg"].ToString()
+                    Code = 100,
+                    Message = ex.Message
                 };
             }
         }
@@ -79,7 +87,7 @@
         {
             if (criteria == null)
             {
-                throw new ArgumentNullException(nameof(criteria), "Criteria cannot be null");
+                throw new ArgumentNullException(nameof(criteria), AnnouncementResources.CriteriaCannotBeNull);
             }
 
             var data = new Announcement();

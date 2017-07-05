@@ -62,7 +62,7 @@
 
         public Result InsertAnnouncements(Announcement announcement, ActionType Action)
                 => announcementRepository.InsertAnnouncement(
-                    new InsertAnnouncementsCriteria
+                    new InsertUpdateAnnouncementsCriteria
                     {
                         Action = Action,
                         Id = announcement.Id,
