@@ -21,7 +21,7 @@
 
         public string Systems { get; set; }
 
-        public int Order { get; set; }
+        public int Ordinal { get; set; }
 
         public string Contents { get; set; }
 

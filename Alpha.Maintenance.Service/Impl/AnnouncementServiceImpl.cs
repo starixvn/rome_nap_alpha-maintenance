@@ -74,7 +74,7 @@
                         ToDate = announcement.ToDate,
                         Environments = String.Join(", ", announcement.Environments.ToArray()),
                         Systems = String.Join(", ", announcement.Systems.ToArray()),
-                        Order = announcement.Order,
+                        Ordinal = announcement.Ordinal,
                         Contents = JsonConvert.SerializeObject(announcement.Contents),
                         Specifications = JsonConvert.SerializeObject(announcement.Specifications)
                     });
@@ -87,7 +87,7 @@
             return announcement;
         }
 
-        public IEnumerable<MessageContent> CorrectContent(IEnumerable<MessageContent> contents)
+        private IEnumerable<MessageContent> CorrectContent(IEnumerable<MessageContent> contents)
                 => AppSettings.AnnouncementConfig.Languages.Select(
                         language => new MessageContent
                         {

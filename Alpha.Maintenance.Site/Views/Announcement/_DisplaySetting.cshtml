@@ -14,7 +14,6 @@
                 <label class="input-field" for="ChkActive">@AnnouncementResources.Active</label>
             </div>
         </div>
-
         <div class="row hiden" id="content-group">
             <div class="col l12 input-field">
                 @AnnouncementResources.Content
@@ -35,15 +34,19 @@
         </div>
     </div>
 
-    <div class="col s6 border-left">
+    <div class="col l6 border-left">
         <div class="row">
-            <div class="col s6 input-field">
-                <input type="radio" name="group-popup" id="Announcement-Popup" value="@((int)AnnouncementType.Popup)" @(Model.Announcement.AnnouncementType.Equals(AnnouncementType.Popup) ? "checked" : string.Empty) />
-                <label for="Announcement-Popup">@AnnouncementResources.AnnouncementPopup</label>
+            <div class="col s6 input-field" style="margin-top: 0px; margin-left: 0px;">
+                <p>
+                    <input class="with-gap" type="radio" name="group-popup" id="Announcement-Popup" value="@((int)AnnouncementType.Popup)" @(Model.Announcement.AnnouncementType.Equals(AnnouncementType.Popup) ? "checked" : string.Empty) />
+                    <label for="Announcement-Popup">@AnnouncementResources.AnnouncementPopup</label>
+                </p>
             </div>
-            <div class="col s6 input-field">
-                <input type="radio" name="group-popup" id="Header-Popup" value="@((int)AnnouncementType.HeaderPopup)" @(Model.Announcement.AnnouncementType.Equals(AnnouncementType.HeaderPopup) ? "checked" : string.Empty) />
-                <label for="Header-Popup">@AnnouncementResources.HeaderPopup</label>
+            <div class="col s6 input-field" style="margin-top: 0px;">
+                <p>
+                    <input class="with-gap" type="radio" name="group-popup" id="Header-Popup" value="@((int)AnnouncementType.HeaderPopup)" @(Model.Announcement.AnnouncementType.Equals(AnnouncementType.HeaderPopup) ? "checked" : string.Empty) />
+                    <label for="Header-Popup">@AnnouncementResources.HeaderPopup</label>
+                </p>
             </div>
         </div>
         <div class="row">
@@ -62,7 +65,7 @@
                 <select name="order" id="group-order">
                     @for (int value = 1; value < 30; value++)
                     {
-                        <option value="@value" @(value.Equals(Model.Announcement.Order) ? "selected" : string.Empty)>@value</option>
+                        <option value="@value" @(value.Equals(Model.Announcement.Ordinal) ? "selected" : string.Empty)>@value</option>
                     }
                 </select>
                 <label>Order</label>

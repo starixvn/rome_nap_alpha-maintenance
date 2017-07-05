@@ -2,13 +2,17 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
+    using System.Web;
     using System.Web.Mvc;
     using Announcements.Client.Helpers;
     using Announcements.Models;
     using Announcements.Specs;
     using Core.Configurations;
     using Core.Model;
+    using Fanex.NAP.Core.Business;
+    using Fanex.NAP.Core.Web.Attribute;
     using Newtonsoft.Json;
     using Repository.Criteria.Announcements;
     using Service.Impl;
@@ -34,19 +38,37 @@
         //[NapAuth(FunctionKey = SiteFunctionKeys.Announcement, Policy = Constant.Policy.Read)]
         public ActionResult ShowAnnouncements(GetAnnouncementsCriteria criteria)
                 => View(new AnnouncementViewModel
-                    {
-                        FromDate = criteria.FromDate,
-                        ToDate = criteria.ToDate,
-                        Environment = criteria.Environment,
-                        System = criteria.System,
-                        Announcements = announcementService.GetAnnouncements(criteria)
-                    });
+                {
+                    FromDate = criteria.FromDate,
+                    ToDate = criteria.ToDate,
+                    Environment = criteria.Environment,
+                    System = criteria.System,
+                    Announcements = announcementService.GetAnnouncements(criteria)
+                });
 
-        public JsonResult InsertAnnouncement(string announcement, ActionType action)
+        [HttpPost]
+        //[NapAuth(FunctionKey = SiteFunctionKeys.Announcement, Policy = Constant.Policy.Host)]
+        public JsonResult InsertAnnouncement(string announcement, ActionType action, HttpPostedFileBase file)
         {
-            var result =  JsonConvert.DeserializeObject<Announcement>(
-                    announcement,
-                    new SpecificationConverter());
+            if (file != null && file.ContentLength != 0)
+            {
+                string fileString = string.Empty;
+
+                using (BinaryReader b = new BinaryReader(file.InputStream))
+                {
+                    byte[] binData = b.ReadBytes(file.ContentLength);
+                    fileString = System.Text.Encoding.UTF8.GetString(binData);
+                }
+
+                string[] data = new string[] { };
+                char[] delimiterChars = { ' ', ',', '.', ':', '\t' };
+
+                data = fileString.Split(delimiterChars, StringSplitOptions.None);
+            }
+
+            var result = JsonConvert.DeserializeObject<Announcement>(
+                announcement,
+                new SpecificationConverter());
 
             return new JsonNetResult
             {
@@ -72,7 +94,7 @@
                     AnnouncementType = AnnouncementType.HeaderPopup,
                     FromDate = DateTime.Now,
                     ToDate = DateTime.Now,
-                    Order = 1,
+                    Ordinal = 1,
                     Environments = new List<string> { "Local" },
                     Systems = new List<string> { "MBC" },
                     Contents = AppSettings.AnnouncementConfig.Languages.Select(

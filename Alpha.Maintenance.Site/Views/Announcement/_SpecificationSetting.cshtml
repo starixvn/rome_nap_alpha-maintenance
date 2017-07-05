@@ -36,7 +36,7 @@
             <select id="dll-choose-specification" name="dll-choose-specification">
                 @foreach (var specification in Model.NotExistedSpecifications)
                 {
-                    <option value="@specification.Id" selected>@specification.Name</option>
+                <option value="@specification.Id" selected>@specification.Name</option>
                 }
             </select>
         </div>
@@ -104,6 +104,10 @@
                 @RenderSpecTxt(specification, isShowSpec);
             }
 
+            else if (specification.Name.Equals("User Ids File"))
+            {
+                @RenderFileSpec();
+            }
             else
             {
                 @RenderCustomSpec();
@@ -135,4 +139,10 @@
 @helper RenderCustomSpec()
 {
     <div>&nbsp;</div>
+}
+
+@helper RenderFileSpec()
+{
+    <div class="line-heading">Attachment</div>
+    <div class="line-input"><input type="file" id="fileUpload" name="fileUpload" /> </div>
 }

@@ -198,11 +198,19 @@ class ComposedAnnouncement {
 
     doUpdate = (announcement: any) => {
         let self = this;
+        let file = <HTMLInputElement>this.$("#fileUpload")[0];
+        var formdata = new FormData();
+        formdata.append("file", file.files[0]);
+        formdata.append("announcement", self.$JSON.stringify(announcement));
+        formdata.append("action", self.$('#actionType').val());
+
         this.$.ajax({
             url: self.$nap.resolveClientUrl("Announcement/InsertAnnouncement"),
             type: 'POST',
-            data: { "announcement": self.$JSON.stringify(announcement), action: self.$('#actionType').val() },
             dataType: 'json',
+            data: formdata,
+            contentType: false,
+            processData: false,
             beforeSend: function () {
                 self.$nap.loadingBox.show();
             },

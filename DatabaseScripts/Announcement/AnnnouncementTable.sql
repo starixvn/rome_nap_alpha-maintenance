@@ -18,7 +18,7 @@ CREATE TABLE [dbo].[Announcements](
 	[ToDate] [datetime] NOT NULL,
 	[Environments] [nvarchar](50) NULL,
 	[Systems] [nchar](20) NULL,
-	[Order] [smallint] NULL,
+	[Ordinal] [smallint] NULL,
 	[Specifications] [nvarchar](max) NULL,
 	[Contents] [nvarchar](max) NOT NULL,
  CONSTRAINT [PK_Announcements] PRIMARY KEY CLUSTERED 

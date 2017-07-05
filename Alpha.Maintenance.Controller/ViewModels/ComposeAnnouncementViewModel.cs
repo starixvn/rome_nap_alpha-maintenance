@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using Alpha.Announcements.Models;
 using Alpha.Announcements.Specs;
@@ -61,5 +62,7 @@ namespace Alpha.Maintenance.Controller.ViewModels
         public IEnumerable<ISpecification<IParam>> NotExistedSpecifications { get; set; }
 
         public ActionType ActionType { get; set; } = ActionType.Create;
+
+        public HttpPostedFileBase MyFile { get; set; }
     }
 }

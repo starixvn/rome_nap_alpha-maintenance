@@ -107,7 +107,7 @@
                      AnnouncementType = (AnnouncementType)reader.ToInt("AnnouncementType"),
                      Code = reader.ToString("Code"),
                      Contents = JsonConvert.DeserializeObject<IEnumerable<MessageContent>>(reader.ToString("Contents")),
-                     Order = reader.ToInt("Order"),
+                     Ordinal = reader.ToInt("Ordinal"),
                      Environments = reader.ToString("Environments").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
                                         .Select(environment => environment.Trim()),
                      Id = reader.ToInt("Id"),
