@@ -13,14 +13,8 @@
 
         public DateTime ToDate { get; set; } = DateTime.Now;
 
-        public override string GetSettingKey()
-        {
-            return "Announcements_Select";
-        }
+        public override string GetSettingKey() => "Announcements_Select";
 
-        public override bool IsValid()
-        {
-            return true;
-        }
+        public override bool IsValid() => true;
     }
 }

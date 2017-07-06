@@ -17,6 +17,9 @@
         public IEnumerable<string> Languages { get; set; }
 
         [DataMember(Name = "levels")]
-        public IEnumerable<Specfication> Levels { get; set; }
+        public IEnumerable<UserLevel> Levels { get; set; }
+
+        [DataMember(Name = "specifications")]
+        public IEnumerable<string> OfferedSpecifications { get; set; }
     }
 }

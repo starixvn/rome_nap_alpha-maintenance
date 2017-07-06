@@ -7,14 +7,8 @@
     {
         public string Id { get; set; }
 
-        public override string GetSettingKey()
-        {
-            return "Announcements_SelectByCode";
-        }
+        public override string GetSettingKey() => "Announcements_SelectByCode";
 
-        public override bool IsValid()
-        {
-            return true;
-        }
+        public override bool IsValid() => true;
     }
 }

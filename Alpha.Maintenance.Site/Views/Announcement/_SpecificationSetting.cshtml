@@ -34,26 +34,12 @@
         </div>
         <div class="col s2">
             <select id="dll-choose-specification" name="dll-choose-specification">
+                <option value="" disabled selected">@AnnouncementResources.AddSpecification</option>
                 @foreach (var specification in Model.NotExistedSpecifications)
                 {
-                <option value="@specification.Id" selected>@specification.Name</option>
+                    <option value="@specification.Id">@specification.Name</option>
                 }
             </select>
-        </div>
-        <div class="col s2">
-            &nbsp;
-        </div>
-        <div class="col s3">
-            &nbsp;
-        </div>
-        <div class="col s3 hidden-specification link">
-            - @AnnouncementResources.DeleteSpecification
-        </div>
-    </div>
-
-    <div id="add-spec" class="row hiden">
-        <div class="col s12 link">
-            + @AnnouncementResources.AddSpecification
         </div>
     </div>
 
@@ -76,7 +62,6 @@
         <div class="col s1 input-field">
             @Html.EnumDropDownList("dll-specification-conjunctionOperator", specification.ConjunctionOperator,
                           new Dictionary<string, object>() { { "data-parentId", specification.Id } })
-            &nbsp;
         </div>
         <div class="col s2 input-field">
             <div>@specification.Name</div>
@@ -88,7 +73,6 @@
                                    new Dictionary<string, object>() { { "data-parentId", specification.Id } })
             }
 
-            &nbsp;
         </div>
         <div class="col s3 input-field">
             @if (specification.Name.Equals("User Level"))

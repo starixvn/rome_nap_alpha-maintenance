@@ -12,19 +12,20 @@ interface Window {
 
 class ComposedAnnouncement {
     $: JQueryStatic;
-    $dllChooseSpecification: string;
+   
     $divChooseSpecification: JQuery;
-    $dllConjunctionOperator: string;
-    $btnAddSpec: JQuery;
-    $btnSave: string;
     $hiddenSpec: JQuery;
     $btnNext: JQuery;
     $btnPrev: JQuery;
-    $txtcode: JQuery;
+    $txttitle: JQuery;
     $specSettingTab: JQuery;
     $specInformationTab: JQuery;
-    $visibleSpecDivs: string;
     $numberOfSpecs: JQuery;
+
+    dllChooseSpecification: string;
+    dllConjunctionOperator: string;
+    btnSave: string;
+    visibleSpecDivs: string;   
     txtSpecificationValue: string;
     userLevelsSpecificationValue: string;
 
@@ -45,23 +46,23 @@ class ComposedAnnouncement {
         this.cacheDom();
         this.bindEvent();
         this.correctFirstSpec();
-        this.toogleSaveAndNextButton(this.$txtcode);
     };
 
     cacheDom = () => {
-        this.$dllChooseSpecification = "#dll-choose-specification";
+       
         this.$divChooseSpecification = this.$("#div-choose-specification");
-        this.$dllConjunctionOperator = "dll-specification-conjunctionOperator";
-        this.$btnAddSpec = this.$("#add-spec");
-        this.$btnSave = "INPUT[name='btnSave']";
         this.$hiddenSpec = this.$('.hidden-specification');
         this.$btnNext = this.$("#btnNext");
         this.$btnPrev = this.$("#btnPrev");
         this.$specSettingTab = this.$("#tab-specs-setting");
         this.$specInformationTab = this.$("#tab-information-settings");
-        this.$visibleSpecDivs = "div[name='div-specification']:not(.hiden)";
         this.$numberOfSpecs = this.$('#number-of-specifications');
-        this.$txtcode = this.$('#txtcode');
+        this.$txttitle = this.$('#txtcode');
+
+        this.dllChooseSpecification = "#dll-choose-specification";
+        this.visibleSpecDivs = "div[name='div-specification']:not(.hiden)";
+        this.dllConjunctionOperator = "dll-specification-conjunctionOperator";
+        this.btnSave = "INPUT[name='btnSave']";
         this.userLevelsSpecificationValue = '#dll-specification-value';
         this.txtSpecificationValue = '#txt-specification-value';
     };
@@ -69,19 +70,15 @@ class ComposedAnnouncement {
     bindEvent = () => {
         let self = this;
 
-        this.$(this.$dllChooseSpecification).on('change', function () {
-            self.onChangeSpecOption(this);
-        });
-
-        this.$btnAddSpec.on('click', function () {
-            self.addSpec(this);
+        this.$(this.dllChooseSpecification).on('change', function () {
+            self.onChangeSpecOption();
         });
 
         this.$hiddenSpec.on('click', function () {
             self.deleteSpec(this);
         });
 
-        this.$(this.$btnSave).on('click', function () {
+        this.$(this.btnSave).on('click', function () {
             self.submit();
         });
 
@@ -93,61 +90,43 @@ class ComposedAnnouncement {
             self.$specInformationTab.click();
         });
 
-        this.$txtcode.on('keyup', function () {
-            self.toogleSaveAndNextButton(this);
+        this.$txttitle.on('keyup', function () {
+            if (self.$(this).val().trim() != '') {
+                self.$('.card-panel').addClass('hiden');
+            }
         });
     };
 
-    toogleSaveAndNextButton = (element: any) => {
-        let currentCode = this.$(element).val().trim();
-        let originalCode = this.$("#originalCode").val().trim();
-
-        if (currentCode == '' || currentCode == originalCode) {
-            this.disableSaveAndNextButton();
-        }
-        else {
-            this.$('.card-panel').addClass("hiden");
-            this.enableSaveAndNextButton();
-        }
-    };
-
-    enableSaveAndNextButton = () => {
-        this.$btnNext.prop("disabled", false).parent().removeClass("disabled");
-        this.$(this.$btnSave).prop("disabled", false).parent().removeClass("disabled");
-    };
-
-    disableSaveAndNextButton = () => {
-        this.$btnNext.prop("disabled", true).parent().addClass("disabled");
-        this.$(this.$btnSave).prop("true", true).parent().addClass("disabled");
-    };
-
-    onChangeSpecOption = (element: any) => {
-        this.changeSpecPositions(element);
-        this.reRenderSpecOptions(element);
+    onChangeSpecOption = () => {
+        this.changeSpecPositions();
+        this.reRenderSpecOptions();
         this.correctFirstSpec();
         this.toogleAddSpecButton();
     };
 
-    changeSpecPositions = (element: any) => {
-        let $spec = this.$("#" + this.$(element).find('option:selected').val());
-        $spec.find("#" + this.$dllConjunctionOperator).parent().removeClass("hiden");
+    changeSpecPositions = () => {
+        let $spec = this.$("#" + this.$(this.dllChooseSpecification).find('option:selected').val());
+        $spec.find("#" + this.dllConjunctionOperator).parent().removeClass("hiden");
 
         $spec.removeClass("hiden");
         $spec.insertBefore(this.$divChooseSpecification);
-        this.$divChooseSpecification.addClass("hiden");
     };
 
-    reRenderSpecOptions = (element: any) => {
-        this.$(element).find('option:selected').remove();
-        this.$(element).material_select('destroy');
-        this.$(element).material_select();
+    reRenderSpecOptions = () => {
+        this.$(this.dllChooseSpecification).find('option:selected').remove();
+        this.initSpecOptionsDll();
     };
 
     correctFirstSpec = () => {
-        let $firstDiv = this.$(this.$visibleSpecDivs).first();
-        $firstDiv.find("#" + this.$dllConjunctionOperator).find('option:selected').val(0);
-        $firstDiv.find("#" + this.$dllConjunctionOperator).parent().addClass("hiden");
+        let $firstDiv = this.$(this.visibleSpecDivs).first();
+        $firstDiv.find("#" + this.dllConjunctionOperator).find('option:selected').val(0);
+        $firstDiv.find("#" + this.dllConjunctionOperator).parent().addClass("hiden");
     };
+
+    initSpecOptionsDll = () => {
+        this.$(this.dllChooseSpecification).material_select('destroy');
+        this.$(this.dllChooseSpecification).val("").material_select();
+    }
 
     search = (jsonobject: any, valueList: any) => {
         return this.$.map(jsonobject.ValueRange, function (obj) {
@@ -159,24 +138,18 @@ class ComposedAnnouncement {
         });
     };
 
-    addSpec = (element: any) => {
-        this.$divChooseSpecification.removeClass("hiden");
-        this.$(element).addClass("hiden");
-    };
-
     deleteSpec = (element: any) => {
         this.$divChooseSpecification.addClass("hiden");
-        this.$(this.$dllChooseSpecification).material_select('destroy');
 
         if (this.$(element).data("id") != null &&
-            this.$(this.$dllChooseSpecification + " option[value=" + this.$(element).data("id") + "]").length == 0) {
-            this.$(this.$dllChooseSpecification).append(this.$('<option>', {
+            this.$(this.dllChooseSpecification + " option[value=" + this.$(element).data("id") + "]").length == 0) {
+            this.$(this.dllChooseSpecification).append(this.$('<option>', {
                 value: this.$(element).data("id"),
                 text: this.$(element).data("name")
             }));
         }
 
-        this.$(this.$dllChooseSpecification).material_select();
+        this.initSpecOptionsDll();
         this.$(element).parent('div').addClass("hiden");
 
         this.correctFirstSpec();
@@ -186,11 +159,11 @@ class ComposedAnnouncement {
     submit = () => {
         let announcement = this.getAnnouncementParam();
 
-        if (announcement.code != '') {
+        if (announcement.title != '') {
             this.doUpdate(announcement);
         }
         else {
-            this.showWarningMessage("Please input annoucement code !");
+            this.showWarningMessage("Please input announcement title !");
         }
     };
 
@@ -254,7 +227,7 @@ class ComposedAnnouncement {
         };
     };
 
-    toogleAddSpecButton = () => this.$(this.$visibleSpecDivs).length == this.$(this.$numberOfSpecs).val() ? this.$btnAddSpec.addClass("hiden") : this.$btnAddSpec.removeClass("hiden");
+    toogleAddSpecButton = () => this.$(this.visibleSpecDivs).length == this.$(this.$numberOfSpecs).val() ? this.$divChooseSpecification.addClass("hiden") : this.$divChooseSpecification.removeClass("hiden");
 
     getSystems = () => {
         return this.$("input[name='group-systems']:checked").map(function () {
@@ -283,7 +256,7 @@ class ComposedAnnouncement {
         let self = this;
         let specs = [];
 
-        this.$(this.$visibleSpecDivs).map(function (index, domElement) {
+        this.$(this.visibleSpecDivs).map(function (index, domElement) {
             let jsonObject = self.$(domElement).data("jsonobject");
 
             jsonObject.ConjunctionOperator = self.getConjunctionOperatorValue(domElement);

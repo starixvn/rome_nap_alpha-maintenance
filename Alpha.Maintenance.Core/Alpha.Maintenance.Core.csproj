@@ -76,7 +76,7 @@
     <Compile Include="Model\LogCategory.cs" />
     <Compile Include="Model\Machine.cs" />
     <Compile Include="Model\Result.cs" />
-    <Compile Include="Model\Specfication.cs" />
+    <Compile Include="Model\UserLevel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewResource.Designer.cs">
       <DependentUpon>ViewResource.resx</DependentUpon>

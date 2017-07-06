@@ -18,6 +18,15 @@
     "th-TH",
     "vi-VN"
   ],
+  "specifications": [
+    "Currencies",
+    "User Ids",
+    "User Level",
+    "Sites",
+    "Products",
+    "User Ids File",
+    "Not Synced Casino"
+  ],
   "levels": [
     {
       "Id": 2,

@@ -94,7 +94,6 @@
 
         private Announcement AssignValueOfUserIdsFileSpec(HttpPostedFileBase file, Announcement announcement)
         {
-            string[] data = new string[] { };
             if (file != null && file.ContentLength != 0)
             {
                 string fileString = string.Empty;
@@ -106,15 +105,13 @@
                 }
 
                 char[] delimiterChars = { ' ', ',', '.', ':', '\t' };
+                var data = fileString.Split(delimiterChars, StringSplitOptions.None).Select(x => int.Parse(x)).ToList();
 
-                data = fileString.Split(delimiterChars, StringSplitOptions.None);
+                announcement.Specifications.Where(spec => spec.Name.Equals("User Ids File")).Select(spec =>
+                {
+                    return new UserIdFileSpecification(data);
+                }).FirstOrDefault();
             }
-
-            announcement.Specifications.Where(spec => spec.Name.Equals("User Ids File"))
-               .Select(spec =>
-               {
-                   return new UserIdFileSpecification(data.Select(x => int.Parse(x)));
-               }).FirstOrDefault();
 
             return announcement;
         }

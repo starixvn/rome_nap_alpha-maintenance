@@ -35,9 +35,11 @@
 
         public IEnumerable<ISpecification<IParam>> GetAllSpecifications()
         {
-            var specs = specificationFactory.LoadSpecifications();
+            var factorySpecs = specificationFactory.LoadSpecifications();
 
-            foreach (var spec in specs)
+            var offeredSpecs = SelectOfferedSpecs(factorySpecs);
+
+            foreach (var spec in offeredSpecs)
             {
                 if (getValueRangeFunction.ContainsKey(spec.Id))
                 {
@@ -45,7 +47,7 @@
                 }
             }
 
-            return specs;
+            return offeredSpecs;
         }
 
         public IEnumerable<Announcement> GetAnnouncements(DateTime date, string environment, string system)
@@ -94,5 +96,11 @@
                             LanguageKey = language,
                             Text = contents?.FirstOrDefault(content => content.LanguageKey.Equals(language, StringComparison.OrdinalIgnoreCase))?.Text
                         });
+
+        private IEnumerable<ISpecification<IParam>> SelectOfferedSpecs(IEnumerable<ISpecification<IParam>> factorySpecs)
+                => factorySpecs.Where(spec =>
+                    {
+                        return AppSettings.AnnouncementConfig.OfferedSpecifications.Any(existedSpec => existedSpec.Equals(spec.Name));
+                    }).Select(spec => spec);
     }
 }

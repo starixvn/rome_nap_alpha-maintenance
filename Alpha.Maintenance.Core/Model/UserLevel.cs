@@ -1,6 +1,6 @@
 ﻿namespace Alpha.Maintenance.Core.Model
 {
-    public class Specfication
+    public class UserLevel
     {
         public byte Id { get; set; }
 

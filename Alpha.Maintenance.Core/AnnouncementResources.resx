@@ -157,7 +157,7 @@
     <value>Delete Specification</value>
   </data>
   <data name="DisplayInformationSettings" xml:space="preserve">
-    <value>Display information settings</value>
+    <value>Step1 - Display information settings</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
@@ -193,7 +193,7 @@
     <value>Specification</value>
   </data>
   <data name="SpecificationSetting" xml:space="preserve">
-    <value>Specification Setting</value>
+    <value>Step 2 - Specification Setting</value>
   </data>
   <data name="Sysmtems" xml:space="preserve">
     <value>Sysmtems</value>

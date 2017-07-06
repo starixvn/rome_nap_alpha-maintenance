@@ -10,37 +10,32 @@ var ComposedAnnouncement = (function () {
             _this.cacheDom();
             _this.bindEvent();
             _this.correctFirstSpec();
-            _this.toogleSaveAndNextButton(_this.$txtcode);
         };
         this.cacheDom = function () {
-            _this.$dllChooseSpecification = "#dll-choose-specification";
             _this.$divChooseSpecification = _this.$("#div-choose-specification");
-            _this.$dllConjunctionOperator = "dll-specification-conjunctionOperator";
-            _this.$btnAddSpec = _this.$("#add-spec");
-            _this.$btnSave = "INPUT[name='btnSave']";
             _this.$hiddenSpec = _this.$('.hidden-specification');
             _this.$btnNext = _this.$("#btnNext");
             _this.$btnPrev = _this.$("#btnPrev");
             _this.$specSettingTab = _this.$("#tab-specs-setting");
             _this.$specInformationTab = _this.$("#tab-information-settings");
-            _this.$visibleSpecDivs = "div[name='div-specification']:not(.hiden)";
             _this.$numberOfSpecs = _this.$('#number-of-specifications');
-            _this.$txtcode = _this.$('#txtcode');
+            _this.$txttitle = _this.$('#txtcode');
+            _this.dllChooseSpecification = "#dll-choose-specification";
+            _this.visibleSpecDivs = "div[name='div-specification']:not(.hiden)";
+            _this.dllConjunctionOperator = "dll-specification-conjunctionOperator";
+            _this.btnSave = "INPUT[name='btnSave']";
             _this.userLevelsSpecificationValue = '#dll-specification-value';
             _this.txtSpecificationValue = '#txt-specification-value';
         };
         this.bindEvent = function () {
             var self = _this;
-            _this.$(_this.$dllChooseSpecification).on('change', function () {
-                self.onChangeSpecOption(this);
-            });
-            _this.$btnAddSpec.on('click', function () {
-                self.addSpec(this);
+            _this.$(_this.dllChooseSpecification).on('change', function () {
+                self.onChangeSpecOption();
             });
             _this.$hiddenSpec.on('click', function () {
                 self.deleteSpec(this);
             });
-            _this.$(_this.$btnSave).on('click', function () {
+            _this.$(_this.btnSave).on('click', function () {
                 self.submit();
             });
             _this.$btnNext.on('click', function () {
@@ -49,51 +44,36 @@ var ComposedAnnouncement = (function () {
             _this.$btnPrev.on('click', function () {
                 self.$specInformationTab.click();
             });
-            _this.$txtcode.on('keyup', function () {
-                self.toogleSaveAndNextButton(this);
+            _this.$txttitle.on('keyup', function () {
+                if (self.$(this).val().trim() != '') {
+                    self.$('.card-panel').addClass('hiden');
+                }
             });
         };
-        this.toogleSaveAndNextButton = function (element) {
-            var currentCode = _this.$(element).val().trim();
-            var originalCode = _this.$("#originalCode").val().trim();
-            if (currentCode == '' || currentCode == originalCode) {
-                _this.disableSaveAndNextButton();
-            }
-            else {
-                _this.$('.card-panel').addClass("hiden");
-                _this.enableSaveAndNextButton();
-            }
-        };
-        this.enableSaveAndNextButton = function () {
-            _this.$btnNext.prop("disabled", false).parent().removeClass("disabled");
-            _this.$(_this.$btnSave).prop("disabled", false).parent().removeClass("disabled");
-        };
-        this.disableSaveAndNextButton = function () {
-            _this.$btnNext.prop("disabled", true).parent().addClass("disabled");
-            _this.$(_this.$btnSave).prop("true", true).parent().addClass("disabled");
-        };
-        this.onChangeSpecOption = function (element) {
-            _this.changeSpecPositions(element);
-            _this.reRenderSpecOptions(element);
+        this.onChangeSpecOption = function () {
+            _this.changeSpecPositions();
+            _this.reRenderSpecOptions();
             _this.correctFirstSpec();
             _this.toogleAddSpecButton();
         };
-        this.changeSpecPositions = function (element) {
-            var $spec = _this.$("#" + _this.$(element).find('option:selected').val());
-            $spec.find("#" + _this.$dllConjunctionOperator).parent().removeClass("hiden");
+        this.changeSpecPositions = function () {
+            var $spec = _this.$("#" + _this.$(_this.dllChooseSpecification).find('option:selected').val());
+            $spec.find("#" + _this.dllConjunctionOperator).parent().removeClass("hiden");
             $spec.removeClass("hiden");
             $spec.insertBefore(_this.$divChooseSpecification);
-            _this.$divChooseSpecification.addClass("hiden");
         };
-        this.reRenderSpecOptions = function (element) {
-            _this.$(element).find('option:selected').remove();
-            _this.$(element).material_select('destroy');
-            _this.$(element).material_select();
+        this.reRenderSpecOptions = function () {
+            _this.$(_this.dllChooseSpecification).find('option:selected').remove();
+            _this.initSpecOptionsDll();
         };
         this.correctFirstSpec = function () {
-            var $firstDiv = _this.$(_this.$visibleSpecDivs).first();
-            $firstDiv.find("#" + _this.$dllConjunctionOperator).find('option:selected').val(0);
-            $firstDiv.find("#" + _this.$dllConjunctionOperator).parent().addClass("hiden");
+            var $firstDiv = _this.$(_this.visibleSpecDivs).first();
+            $firstDiv.find("#" + _this.dllConjunctionOperator).find('option:selected').val(0);
+            $firstDiv.find("#" + _this.dllConjunctionOperator).parent().addClass("hiden");
+        };
+        this.initSpecOptionsDll = function () {
+            _this.$(_this.dllChooseSpecification).material_select('destroy');
+            _this.$(_this.dllChooseSpecification).val("").material_select();
         };
         this.search = function (jsonobject, valueList) {
             return _this.$.map(jsonobject.ValueRange, function (obj) {
@@ -104,32 +84,27 @@ var ComposedAnnouncement = (function () {
                 }
             });
         };
-        this.addSpec = function (element) {
-            _this.$divChooseSpecification.removeClass("hiden");
-            _this.$(element).addClass("hiden");
-        };
         this.deleteSpec = function (element) {
             _this.$divChooseSpecification.addClass("hiden");
-            _this.$(_this.$dllChooseSpecification).material_select('destroy');
             if (_this.$(element).data("id") != null &&
-                _this.$(_this.$dllChooseSpecification + " option[value=" + _this.$(element).data("id") + "]").length == 0) {
-                _this.$(_this.$dllChooseSpecification).append(_this.$('<option>', {
+                _this.$(_this.dllChooseSpecification + " option[value=" + _this.$(element).data("id") + "]").length == 0) {
+                _this.$(_this.dllChooseSpecification).append(_this.$('<option>', {
                     value: _this.$(element).data("id"),
                     text: _this.$(element).data("name")
                 }));
             }
-            _this.$(_this.$dllChooseSpecification).material_select();
+            _this.initSpecOptionsDll();
             _this.$(element).parent('div').addClass("hiden");
             _this.correctFirstSpec();
             _this.toogleAddSpecButton();
         };
         this.submit = function () {
             var announcement = _this.getAnnouncementParam();
-            if (announcement.code != '') {
+            if (announcement.title != '') {
                 _this.doUpdate(announcement);
             }
             else {
-                _this.showWarningMessage("Please input annoucement code !");
+                _this.showWarningMessage("Please input announcement title !");
             }
         };
         this.showWarningMessage = function (message) { return _this.$('.card-panel').html(message).addClass("red red-text").removeClass('hiden'); };
@@ -187,7 +162,7 @@ var ComposedAnnouncement = (function () {
                 specifications: self.getSpecs()
             };
         };
-        this.toogleAddSpecButton = function () { return _this.$(_this.$visibleSpecDivs).length == _this.$(_this.$numberOfSpecs).val() ? _this.$btnAddSpec.addClass("hiden") : _this.$btnAddSpec.removeClass("hiden"); };
+        this.toogleAddSpecButton = function () { return _this.$(_this.visibleSpecDivs).length == _this.$(_this.$numberOfSpecs).val() ? _this.$divChooseSpecification.addClass("hiden") : _this.$divChooseSpecification.removeClass("hiden"); };
         this.getSystems = function () {
             return _this.$("input[name='group-systems']:checked").map(function () {
                 return this.id;
@@ -209,7 +184,7 @@ var ComposedAnnouncement = (function () {
         this.getSpecs = function () {
             var self = _this;
             var specs = [];
-            _this.$(_this.$visibleSpecDivs).map(function (index, domElement) {
+            _this.$(_this.visibleSpecDivs).map(function (index, domElement) {
                 var jsonObject = self.$(domElement).data("jsonobject");
                 jsonObject.ConjunctionOperator = self.getConjunctionOperatorValue(domElement);
                 jsonObject.SpecificationOperator = self.getSpecificationOperatorValue(domElement);

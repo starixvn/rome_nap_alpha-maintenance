@@ -178,7 +178,7 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display information settings.
+        ///   Looks up a localized string similar to Step1 - Display information settings.
         /// </summary>
         public static string DisplayInformationSettings {
             get {
@@ -286,7 +286,7 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Specification Setting.
+        ///   Looks up a localized string similar to Step 2 - Specification Setting.
         /// </summary>
         public static string SpecificationSetting {
             get {

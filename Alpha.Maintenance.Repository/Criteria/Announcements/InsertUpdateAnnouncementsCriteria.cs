@@ -34,13 +34,8 @@
         public ActionType Action { get; set; }
 
         public override string GetSettingKey()
-        {
-            return Action.Equals(ActionType.Create) ?  "Announcements_Insert" : "Announcements_Update";
-        }
+            => Action.Equals(ActionType.Create) ? "Announcements_Insert" : "Announcements_Update";
 
-        public override bool IsValid()
-        {
-            return true;
-        }
+        public override bool IsValid() => true;
     }
 }
