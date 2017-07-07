@@ -23,7 +23,7 @@
     public class AnnouncementController : BaseController
     {
         private readonly AnnouncementService announcementService;
-
+       
         public AnnouncementController()
             : this(null)
         {
@@ -36,8 +36,8 @@
 
         [HttpGet]
         [NapAuth(FunctionKey = SiteFunctionKeys.AnnouncementManagement, Policy = Constant.Policy.Read)]
-        public ActionResult ShowAnnouncements(GetAnnouncementsCriteria criteria)
-                => View(new AnnouncementViewModel
+        public ActionResult ShowAnnouncements(SelectAnnouncementsCriteria criteria)
+                => View(new ManageAnnouncementsViewModel
                 {
                     FromDate = criteria.FromDate,
                     ToDate = criteria.ToDate,
@@ -55,42 +55,44 @@
                                                     announcement,
                                                     new SpecificationConverter()));
 
-
             return new JsonNetResult
             {
-                Data = announcementService.InsertAnnouncements(result, action),
+                Data = announcementService.InsertOrUpdateAnnouncement(result, action),
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
 
         [HttpGet]
         [NapAuth(FunctionKey = SiteFunctionKeys.AnnouncementManagement, Policy = Constant.Policy.Read)]
-        public ActionResult ComposeMessage(EditAnnouncementsCriteria criteria)
+        public ActionResult ComposeMessage(SelectAnnouncementByIdCriteria criteria)
         {
-            var allSpecifications = announcementService.GetAllSpecifications();
+            var allSpecifications = announcementService.GetOfferedSpecifications();
 
-            var model = criteria.Id == null ?
-                new Announcement
-                {
-                    AnnouncementType = AnnouncementType.HeaderPopup,
-                    FromDate = DateTime.Now,
-                    ToDate = DateTime.Now,
-                    Ordinal = 1,
-                    Environments = new List<string> { "Local" },
-                    Systems = new List<string> { "MBC" },
-                    Contents = AppSettings.AnnouncementConfig.Languages.Select(
-                            language => new MessageContent
-                            {
-                                LanguageKey = language,
-                                Text = string.Empty
-                            }),
-                    Specifications = new List<ISpecification<IParam>>()
-                } : announcementService.EditAnnouncement(criteria);
+            var model = criteria.Id == null ? 
+                announcementService.GetDefaultAnnouncement(AppSettings.AnnouncementConfig.Languages) : 
+                announcementService.GetAnnouncementById(criteria);
 
-            var viewModel = new ComposeAnnouncementViewModel(model, criteria.Id == null ? ActionType.Create : ActionType.Update, allSpecifications);
+            var viewModel = new ComposeAnnouncementViewModel(
+                                model, 
+                                criteria.Id == null ? ActionType.Create : ActionType.Update, 
+                                allSpecifications,
+                                BuildSelectedListByFilterFromAppSetting(model.Environments, AppSettings.AnnouncementConfig.Environments),
+                                BuildSelectedListByFilterFromAppSetting(model.Systems, AppSettings.AnnouncementConfig.Systems));
 
             return View(viewModel);
         }
+
+        private IEnumerable<SelectListItem> BuildSelectedListByFilterFromAppSetting(
+            IEnumerable<string> valueRange, 
+            IEnumerable<string> appSettingValues) 
+                => appSettingValues.Select(
+                        value => new SelectListItem
+                        {
+                            Text = value,
+                            Value = value,
+                            Selected = valueRange.Contains(value)
+                        });
+
 
         private Announcement AssignValueOfUserIdsFileSpec(HttpPostedFileBase file, Announcement announcement)
         {

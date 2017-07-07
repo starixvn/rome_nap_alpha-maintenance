@@ -3,7 +3,7 @@
     using System;
     using Fanex.Data.Repository;
 
-    public class GetAnnouncementsCriteria : CriteriaBase
+    public class SelectAnnouncementsCriteria : CriteriaBase
     {
         public string Environment { get; set; } = string.Empty;
 

@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Web.Http;
     using Announcements.Models;
+    using Repository.Criteria.Announcements;
     using Requests;
     using Service.Impl;
     using Service.Interface;
@@ -25,6 +26,12 @@
 
         [HttpPost]
         public IEnumerable<Announcement> GetAnnouncements(QueryAnnouncementRequest request)
-                => announcementService.GetAnnouncements(request.Date, request.Environment, request.System);
+                => announcementService.GetAnnouncements(new SelectAnnouncementsCriteria
+                {
+                    FromDate = request.Date,
+                    ToDate = request.Date,
+                    System = request.System,
+                    Environment = request.Environment
+                });
     }
 }

@@ -4,10 +4,10 @@
     <div class="col l6">
         <div class="row">
             <div class="col l5 input-field">
-                @AnnouncementResources.Code:<input type="text" id="txtcode" value="@Model.Announcement.Code" />
+                @AnnouncementResources.Code<input type="text" id="txtcode" value="@Model.Announcement.Code" />
             </div>
             <div class="col l5 input-field">
-                @AnnouncementResources.Title:<input type="text" id="txttitle" value="@Model.Announcement.Title" />
+                @AnnouncementResources.Title<input type="text" id="txttitle" value="@Model.Announcement.Title" />
             </div>
             <div class="col l2">
                 <input type="checkbox" id="ChkActive" @(Model.Announcement.IsActive ? "checked" : string.Empty) />
@@ -27,8 +27,9 @@
 
             @foreach (var content in Model.Announcement.Contents)
             {
-                <div id="div-@content.LanguageKey" class="col l12">
+                <div id="div-@content.LanguageKey" class="col l12 language-content">
                     <textarea name="group-contents" id="@content.LanguageKey" class="jqte-test">@content.Text</textarea>
+                    <div class="margin-top-20px input-field">@AnnouncementResources.AnnouncementUrl<input type="text" id="txtannouncement-url" value="@content.Url"/></div>
                 </div>
             }
         </div>
@@ -94,7 +95,7 @@
             }
 
         </div>
-        <div class="row margin-top-150px">
+        <div class="row margin-top-200px">
             <div class="col s2">
                 <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnNext" id="btnNext" value="@AnnouncementResources.Next" />
             </div>

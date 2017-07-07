@@ -3,7 +3,7 @@
     using System;
     using Fanex.Data.Repository;
 
-    public class EditAnnouncementsCriteria : CriteriaBase
+    public class SelectAnnouncementByIdCriteria : CriteriaBase
     {
         public string Id { get; set; }
 

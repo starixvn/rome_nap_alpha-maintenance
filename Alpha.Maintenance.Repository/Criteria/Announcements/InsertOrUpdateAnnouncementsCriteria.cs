@@ -4,7 +4,7 @@
     using Core.Model;
     using Fanex.Data.Repository;
 
-    public class InsertUpdateAnnouncementsCriteria : CriteriaBase
+    public class InsertOrUpdateAnnouncementsCriteria : CriteriaBase
     {
         public int Id { get; set; }
 

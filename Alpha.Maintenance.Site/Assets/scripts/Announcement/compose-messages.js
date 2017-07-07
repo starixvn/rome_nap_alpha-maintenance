@@ -177,10 +177,19 @@ var ComposedAnnouncement = (function () {
         this.getContents = function () {
             var self = _this;
             var contents = [];
-            _this.$("textarea").map(function (index, domElement) {
-                contents.push({ LanguageKey: this.id, Text: self.$(this).val() });
+            _this.$(".language-content").map(function (index, domElement) {
+                var contentText = self.$(this).find('textarea');
+                var contentUrl = self.$(this).find('INPUT');
+                contents.push({
+                    LanguageKey: self.$(contentText).attr('id'),
+                    Text: self.escapeHtml(self.$(contentText).val()),
+                    Url: self.$(this).find('#txtannouncement-url').val()
+                });
             });
             return contents;
+        };
+        this.escapeHtml = function (text) {
+            return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
         };
         this.getSpecs = function () {
             var self = _this;

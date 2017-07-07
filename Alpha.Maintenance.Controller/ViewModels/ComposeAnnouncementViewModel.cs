@@ -3,50 +3,38 @@ using System.Linq;
 using System.Web.Mvc;
 using Alpha.Announcements.Models;
 using Alpha.Announcements.Specs;
-using Alpha.Maintenance.Core.Configurations;
 using Alpha.Maintenance.Core.Model;
 
 namespace Alpha.Maintenance.Controller.ViewModels
 {
     public class ComposeAnnouncementViewModel
     {
-        public ComposeAnnouncementViewModel(Announcement announcement, ActionType actionType, IEnumerable<ISpecification<IParam>> allSpecifications)
+        public ComposeAnnouncementViewModel(
+            Announcement announcement, 
+            ActionType actionType, 
+            IEnumerable<ISpecification<IParam>> allSpecifications,
+            IEnumerable<SelectListItem> enviroments,
+            IEnumerable<SelectListItem> systems)
         {
             Announcement = announcement;
             ActionType = actionType;
+            Enviroments = enviroments;
+            Systems = systems;
 
-            if (Announcement.Specifications == null)
-            {
-                NotExistedSpecifications = allSpecifications;
-            }
-            else
-            {
-                NotExistedSpecifications = allSpecifications.Where(spec =>
+            NotExistedSpecifications = Announcement.Specifications == null ? 
+                allSpecifications :
+                allSpecifications.Where(spec =>
                 {
                     return !Announcement.Specifications.Any(existedSpec => existedSpec.Id.Equals(spec.Id));
-                }).Select(spec => spec);
-            }
+                });
+
         }
 
         public Announcement Announcement { get; set; }
 
-        public IEnumerable<SelectListItem> Enviroments
-                => AppSettings.AnnouncementConfig.Environments.Select(
-                      environment => new SelectListItem
-                      {
-                          Text = environment,
-                          Value = environment,
-                          Selected = Announcement.Environments.Contains(environment)
-                      });
+        public IEnumerable<SelectListItem> Enviroments{ get; set; }
 
-        public IEnumerable<SelectListItem> Systems
-             => AppSettings.AnnouncementConfig.Systems.Select(
-                        site => new SelectListItem
-                        {
-                            Text = site,
-                            Value = site,
-                            Selected = Announcement.Systems.Contains(site)
-                        });
+        public IEnumerable<SelectListItem> Systems { get; set; }
 
         public IEnumerable<ISpecification<IParam>> NotExistedSpecifications { get; set; }
 

@@ -9,14 +9,14 @@
 
     public interface AnnouncementService
     {
-        IEnumerable<Announcement> GetAnnouncements(DateTime date, string environment, string system);
+        IEnumerable<ISpecification<IParam>> GetOfferedSpecifications();
 
-        IEnumerable<ISpecification<IParam>> GetAllSpecifications();
+        IEnumerable<Announcement> GetAnnouncements(SelectAnnouncementsCriteria criteria);
 
-        IEnumerable<Announcement> GetAnnouncements(GetAnnouncementsCriteria criteria);
+        Result InsertOrUpdateAnnouncement(Announcement announcement, ActionType Action);
 
-        Result InsertAnnouncements(Announcement announcement, ActionType Action);
+        Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria);
 
-        Announcement EditAnnouncement(EditAnnouncementsCriteria criteria);
+        Announcement GetDefaultAnnouncement(IEnumerable<string> languages);
     }
 }

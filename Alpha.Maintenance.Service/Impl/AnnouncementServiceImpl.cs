@@ -3,11 +3,14 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net;
+    using System.Web;
     using Announcements.Models;
     using Announcements.Services;
     using Announcements.Specs;
     using Core.Configurations;
     using Core.Model;
+    using Fanex.Caching;
     using Interface;
     using Newtonsoft.Json;
     using Repository.Criteria.Announcements;
@@ -19,6 +22,7 @@
         private readonly AnnouncementRepository announcementRepository;
 
         private readonly IDictionary<string, Func<dynamic>> getValueRangeFunction;
+        private const string SpecificationsCacheKey = "Alpha.Maintenance.Service.Impl.AnnouncementServiceImpl.AllSpecifications";
 
         public AnnouncementServiceImpl(
             SpecificationFactory specificationFactory = null,
@@ -33,11 +37,11 @@
             };
         }
 
-        public IEnumerable<ISpecification<IParam>> GetAllSpecifications()
+        public IEnumerable<ISpecification<IParam>> GetOfferedSpecifications()
         {
-            var factorySpecs = specificationFactory.LoadSpecifications();
+            var factorySpecs = GetFactorySpecifications();
 
-            var offeredSpecs = SelectOfferedSpecs(factorySpecs);
+            var offeredSpecs = FiterOfferedSpecs(factorySpecs);
 
             foreach (var spec in offeredSpecs)
             {
@@ -50,21 +54,12 @@
             return offeredSpecs;
         }
 
-        public IEnumerable<Announcement> GetAnnouncements(DateTime date, string environment, string system)
-                => GetAnnouncements(new GetAnnouncementsCriteria
-                {
-                    FromDate = date,
-                    ToDate = date,
-                    Environment = environment,
-                    System = system
-                });
-
-        public IEnumerable<Announcement> GetAnnouncements(GetAnnouncementsCriteria criteria) 
+        public IEnumerable<Announcement> GetAnnouncements(SelectAnnouncementsCriteria criteria)
                 => announcementRepository.GetAnnouncements(criteria);
 
-        public Result InsertAnnouncements(Announcement announcement, ActionType Action)
-                => announcementRepository.InsertAnnouncement(
-                    new InsertUpdateAnnouncementsCriteria
+        public Result InsertOrUpdateAnnouncement(Announcement announcement, ActionType Action)
+                => announcementRepository.InsertorUpdateAnnouncement(
+                    new InsertOrUpdateAnnouncementsCriteria
                     {
                         Action = Action,
                         Id = announcement.Id,
@@ -77,30 +72,63 @@
                         Environments = String.Join(", ", announcement.Environments.ToArray()),
                         Systems = String.Join(", ", announcement.Systems.ToArray()),
                         Ordinal = announcement.Ordinal,
-                        Contents = JsonConvert.SerializeObject(announcement.Contents),
+                        Contents = WebUtility.HtmlEncode(JsonConvert.SerializeObject(announcement.Contents)),
                         Specifications = JsonConvert.SerializeObject(announcement.Specifications)
                     });
 
-        public Announcement EditAnnouncement(EditAnnouncementsCriteria criteria)
+        public Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria)
         {
-            var announcement = announcementRepository.EditAnnouncement(criteria);
+            var announcement = announcementRepository.GetAnnouncementById(criteria);
             announcement.Contents = CorrectContent(announcement.Contents);
 
             return announcement;
         }
 
+        public Announcement GetDefaultAnnouncement(IEnumerable<string> languages)
+           => new Announcement
+           {
+               AnnouncementType = AnnouncementType.HeaderPopup,
+               FromDate = DateTime.Now,
+               ToDate = DateTime.Now,
+               Ordinal = 1,
+               Environments = new List<string> { "Local" },
+               Systems = new List<string> { "MBC" },
+               Contents = languages.Select(language => new MessageContent
+               {
+                   LanguageKey = language,
+                   Text = string.Empty
+               }),
+               Specifications = new List<ISpecification<IParam>>()
+           };
+
         private IEnumerable<MessageContent> CorrectContent(IEnumerable<MessageContent> contents)
                 => AppSettings.AnnouncementConfig.Languages.Select(
-                        language => new MessageContent
+                        language =>
                         {
-                            LanguageKey = language,
-                            Text = contents?.FirstOrDefault(content => content.LanguageKey.Equals(language, StringComparison.OrdinalIgnoreCase))?.Text
+                            var existedContent = contents.Single(content => content.LanguageKey.Equals(language, StringComparison.OrdinalIgnoreCase));
+
+                            return existedContent ?? new MessageContent
+                            {
+                                LanguageKey = language,
+                                Text = string.Empty,
+                                Url = string.Empty,
+                                IsDisplayingByUrl = false
+                            };
                         });
 
-        private IEnumerable<ISpecification<IParam>> SelectOfferedSpecs(IEnumerable<ISpecification<IParam>> factorySpecs)
+
+        private IEnumerable<ISpecification<IParam>> FiterOfferedSpecs(IEnumerable<ISpecification<IParam>> factorySpecs)
                 => factorySpecs.Where(spec =>
                     {
                         return AppSettings.AnnouncementConfig.OfferedSpecifications.Any(existedSpec => existedSpec.Equals(spec.Name));
-                    }).Select(spec => spec);
+                    });
+
+        private IEnumerable<ISpecification<IParam>> GetFactorySpecifications()
+                => ConfiguredCacheService
+                    .GetOrSet(
+                    SpecificationsCacheKey,
+                    () => specificationFactory.LoadSpecifications(),
+                    new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromHours(24)));
+
     }
 }

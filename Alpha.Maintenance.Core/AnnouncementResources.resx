@@ -135,6 +135,9 @@
   <data name="AnnouncementPopup" xml:space="preserve">
     <value>Announcement Popup</value>
   </data>
+  <data name="AnnouncementUrl" xml:space="preserve">
+    <value>Url</value>
+  </data>
   <data name="Clone" xml:space="preserve">
     <value>Clone</value>
   </data>

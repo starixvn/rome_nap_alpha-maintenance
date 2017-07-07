@@ -4,7 +4,7 @@ using Alpha.Announcements.Models;
 
 namespace Alpha.Maintenance.Controller.ViewModels
 {
-    public class AnnouncementViewModel
+    public class ManageAnnouncementsViewModel
     {
         public DateTime FromDate { get; set; }
 

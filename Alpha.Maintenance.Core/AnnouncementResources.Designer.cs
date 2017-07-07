@@ -115,6 +115,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Url.
+        /// </summary>
+        public static string AnnouncementUrl {
+            get {
+                return ResourceManager.GetString("AnnouncementUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clone.
         /// </summary>
         public static string Clone {

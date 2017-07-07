@@ -4,6 +4,8 @@
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
+    using System.Net;
+    using System.Web;
     using Announcements.Client.Helpers;
     using Announcements.Models;
     using Announcements.Specs;
@@ -17,17 +19,17 @@
 
     public interface AnnouncementRepository
     {
-        IEnumerable<Announcement> GetAnnouncements(GetAnnouncementsCriteria criteria);
+        IEnumerable<Announcement> GetAnnouncements(SelectAnnouncementsCriteria criteria);
 
-        Result InsertAnnouncement(ICriteria criteria);
+        Result InsertorUpdateAnnouncement(ICriteria criteria);
 
-        Announcement EditAnnouncement(EditAnnouncementsCriteria criteria);
+        Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria);
 
     }
 
     public class AnnouncementRepositoryImpl : AnnouncementRepository
     {
-        public IEnumerable<Announcement> GetAnnouncements(GetAnnouncementsCriteria criteria)
+        public IEnumerable<Announcement> GetAnnouncements(SelectAnnouncementsCriteria criteria)
         {
             if (criteria == null)
             {
@@ -53,37 +55,31 @@
             return data;
         }
 
-        public Result InsertAnnouncement(ICriteria criteria)
+        public Result InsertorUpdateAnnouncement(ICriteria criteria)
         {
-            try
+            if (criteria == null)
             {
-                if (criteria == null)
-                {
-                    throw new ArgumentNullException(nameof(criteria), AnnouncementResources.CriteriaCannotBeNull);
-                }
-
-                using (var db = new ObjectDb(criteria.GetSettingKey()))
-                {
-                    db.ExecuteNonQuery(criteria.GetSpParams());
-
-                    return new Result
-                    {
-                        Code = 0,
-                        Message = AnnouncementResources.UpdateSuccessfully
-                    };
-                }
+                throw new ArgumentNullException(nameof(criteria), AnnouncementResources.CriteriaCannotBeNull);
             }
-            catch (Exception ex)
+
+            using (var db = new ObjectDb(criteria.GetSettingKey()))
             {
+                db.ExecuteNonQuery(criteria.GetSpParams());
+                var outputParams = db.GetOuputParams();
+
+                var code = (int)outputParams["errcode"];
+
                 return new Result
                 {
-                    Code = 100,
-                    Message = ex.Message
+                    Code = code,
+                    Message = code == 0
+                        ? AnnouncementResources.UpdateSuccessfully
+                        : outputParams["errmsg"].ToString()
                 };
             }
         }
 
-        public Announcement EditAnnouncement(EditAnnouncementsCriteria criteria)
+        public Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria)
         {
             if (criteria == null)
             {
@@ -114,7 +110,7 @@
                  {
                      AnnouncementType = (AnnouncementType)reader.ToInt("AnnouncementType"),
                      Code = reader.ToString("Code"),
-                     Contents = JsonConvert.DeserializeObject<IEnumerable<MessageContent>>(reader.ToString("Contents")),
+                     Contents = JsonConvert.DeserializeObject<IEnumerable<MessageContent>>(WebUtility.HtmlDecode(reader.ToString("Contents"))),
                      Ordinal = reader.ToInt("Ordinal"),
                      Environments = reader.ToString("Environments").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
                                         .Select(environment => environment.Trim()),
