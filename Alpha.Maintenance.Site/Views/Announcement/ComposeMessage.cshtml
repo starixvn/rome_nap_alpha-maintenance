@@ -24,9 +24,9 @@
 <div class="divider margin-bottom-10px"></div>
 <div class="card-panel lighten-4 text-darken-4 hiden"></div>
 
-@Html.Partial("_DisplaySetting", Model)
+@Html.Partial("DisplaySettingPartialView", Model)
 
-@Html.Partial("_SpecificationSetting", Model)
+@Html.Partial("SpecificationSettingPartialView", Model)
 
 <input type="hidden" id="actionType" value="@Model.ActionType">
 <input type="hidden" id="AnnouncementId" value="@Model.Announcement.Id">

@@ -7,7 +7,7 @@
     {
         public string Id { get; set; }
 
-        public override string GetSettingKey() => "Announcements_SelectByCode";
+        public override string GetSettingKey() => "Age_Announcements_SelectById";
 
         public override bool IsValid() => true;
     }

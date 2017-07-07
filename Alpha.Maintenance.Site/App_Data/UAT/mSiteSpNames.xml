@@ -11,4 +11,11 @@
     <Setting Key="Logging_InsertMachine" SpName="Acc_AppLog_MachineIns" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
     <Setting Key="Logging_UpdateMachine" SpName="Acc_AppLog_MachineUpd" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
   </Function>
+
+  <Function Name="Announcements">
+    <Setting Key="Age_Announcements_Select" SpName="Age_Announcements_Select" DbName="bodb_Announcements" />
+    <Setting Key="Age_Announcements_Insert" SpName="Age_Announcements_Insert" DbName="bodb_Announcements" />
+    <Setting Key="Age_Announcements_SelectById" SpName="Age_Announcements_SelectById" DbName="bodb_Announcements" />
+    <Setting Key="Age_Announcements_Update" SpName="Age_Announcements_Update" DbName="bodb_Announcements" />
+  </Function>
 </Functions>

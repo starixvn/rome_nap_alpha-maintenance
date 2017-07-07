@@ -10,6 +10,7 @@ var ComposedAnnouncement = (function () {
             _this.cacheDom();
             _this.bindEvent();
             _this.correctFirstSpec();
+            _this.initSpecOptionsDll();
         };
         this.cacheDom = function () {
             _this.$divChooseSpecification = _this.$("#div-choose-specification");

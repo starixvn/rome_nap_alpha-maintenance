@@ -46,6 +46,7 @@ class ComposedAnnouncement {
         this.cacheDom();
         this.bindEvent();
         this.correctFirstSpec();
+        this.initSpecOptionsDll();
     };
 
     cacheDom = () => {

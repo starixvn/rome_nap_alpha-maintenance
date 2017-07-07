@@ -332,9 +332,12 @@
     </Content>
     <TypeScriptCompile Include="Assets\scripts\Announcement\compose-messages.ts" />
     <TypeScriptCompile Include="Assets\scripts\Announcement\show-announcements.ts" />
+    <Content Include="Assets\scripts\lib\jquery\jquery-2.2.3.min.js" />
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te-1.4.0.css" />
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te-1.4.0.min.js" />
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te.png" />
+    <Content Include="Assets\scripts\lib\materialize\materialize.min.css" />
+    <Content Include="Assets\scripts\lib\materialize\materialize.min.js" />
     <Content Include="Assets\scripts\Login\index.js" />
     <Content Include="Assets\scripts\Maintenance.js" />
     <Content Include="Assets\styles\main.css">
@@ -553,8 +556,8 @@
     <Content Include="typings\globals\moment\typings.json" />
     <Content Include="typings\globals\storejs\typings.json" />
     <Content Include="Views\Announcement\ShowAnnouncements.cshtml" />
-    <Content Include="Views\Announcement\_DisplaySetting.cshtml" />
-    <Content Include="Views\Announcement\_SpecificationSetting.cshtml" />
+    <Content Include="Views\Announcement\DisplaySettingPartialView.cshtml" />
+    <Content Include="Views\Announcement\SpecificationSettingPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />

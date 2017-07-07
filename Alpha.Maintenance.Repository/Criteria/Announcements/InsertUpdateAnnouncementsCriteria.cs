@@ -34,7 +34,7 @@
         public ActionType Action { get; set; }
 
         public override string GetSettingKey()
-            => Action.Equals(ActionType.Create) ? "Announcements_Insert" : "Announcements_Update";
+            => Action.Equals(ActionType.Create) ? "Age_Announcements_Insert" : "Age_Announcements_Update";
 
         public override bool IsValid() => true;
     }
