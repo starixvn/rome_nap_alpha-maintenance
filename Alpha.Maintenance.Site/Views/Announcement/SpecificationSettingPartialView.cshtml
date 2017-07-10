@@ -67,7 +67,7 @@
             <div>@specification.Name</div>
         </div>
         <div class="col s2 input-field">
-            @if (!specification.Name.Equals("Not Synced Casino"))
+            @if (specification.GetType() != typeof(NotSyncedCasinoSpecification))
             {
                 @Html.EnumDropDownList("dll-specification-specificationOperator", specification.SpecificationOperator,
                                    new Dictionary<string, object>() { { "data-parentId", specification.Id } })
@@ -75,20 +75,20 @@
 
         </div>
         <div class="col s3 input-field">
-            @if (specification.Name.Equals("User Level"))
+            @if (specification.GetType() == typeof(UserLevelSpecification))
             {
                 @RenderSpecDll(specification, isShowSpec);
             }
 
-            else if (specification.Name.Equals("Sites")
-                     || specification.Name.Equals("User Ids")
-                     || specification.Name.Equals("Currencies")
-                     || specification.Name.Equals("Products"))
+            else if (specification.GetType() == typeof(SiteSpecification)
+                     || specification.GetType() == typeof(UserIdSpecification)
+                     || specification.GetType() == typeof(CurrencySpecification)
+                     || specification.GetType() == typeof(ProductSpecification))
             {
                 @RenderSpecTxt(specification, isShowSpec);
             }
 
-            else if (specification.Name.Equals("User Ids File"))
+            else if (specification.GetType() == typeof(UserIdFileSpecification))
             {
                 @RenderFileSpec();
             }

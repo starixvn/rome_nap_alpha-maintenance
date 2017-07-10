@@ -14,7 +14,7 @@
     <span class="active">@AnnouncementResources.ManageAnnouncements</span>
 }
 
-<form role="form" id="report-form" action="@Url.Action("ShowAnnouncements", "Announcement")">
+<form role="form" id="report-form" action="@Url.Action("ManageAnnouncements", "Announcement")">
     <section id="filter-bar">
         <div class="filter-form">
             <div class="row">
@@ -80,9 +80,6 @@
                     @AnnouncementResources.Title
                 </th>
                 <th>
-                    @AnnouncementResources.Edit
-                </th>
-                <th>
                     @AnnouncementResources.Type
                 </th>
                 <th>
@@ -115,11 +112,8 @@
                             @announcement.Code
                         </td>
                         <td>
-                            @announcement.Title
-                        </td>
-                        <td>
                             <a href="@Url.Action("ComposeMessage", "Announcement", new { Id = announcement.Id })">
-                                Edit
+                                @announcement.Title
                             </a>
                         </td>
                         <td>
