@@ -1,13 +1,17 @@
 ﻿"use strict";
+
 interface JQuery {
     material_select(): void;
     material_select(option: any): void;
     jqte(): void;
+    jqteVal(text: string): void;
 }
 
 interface Window {
     NAP: any;
     JSON: any;
+    utf8: any;
+    base64: any;
 }
 
 class ComposedAnnouncement {
@@ -31,15 +35,18 @@ class ComposedAnnouncement {
 
     $nap: any;
     $JSON: any;
+    $utf8: any;
+    $base64: any;
 
-    constructor($: JQueryStatic, NAP: any, JSON: any) {
+    constructor($: JQueryStatic, NAP: any, JSON: any, utf8: any, base64: any) {
         this.$ = $;
         this.$nap = NAP;
         this.$JSON = JSON;
+        this.$utf8 = utf8;
+        this.$base64 = base64;
     }
 
     init = () => {
-        this.$('.jqte-test').jqte();
         this.$('ul.tabs').tabs();
         this.$('select').material_select();
         this.$("#content-group").removeClass("hiden");
@@ -47,6 +54,7 @@ class ComposedAnnouncement {
         this.bindEvent();
         this.correctFirstSpec();
         this.initSpecOptionsDll();
+        this.$('.jqte-test').jqte();
     };
 
     cacheDom = () => {
@@ -71,6 +79,8 @@ class ComposedAnnouncement {
     bindEvent = () => {
         let self = this;
 
+        this.bindingContents();
+       
         this.$(this.dllChooseSpecification).on('change', function () {
             self.onChangeSpecOption();
         });
@@ -95,6 +105,16 @@ class ComposedAnnouncement {
             if (self.$(this).val().trim() != '') {
                 self.$('.card-panel').addClass('hiden');
             }
+        });
+    };
+
+    bindingContents = () => {
+        let self = this;
+        this.$(".language-content").map(function (index, domElement) {
+            let $textarea = self.$(this).find('textarea')
+            let contentText = $textarea.data("content");
+            let decodecontext = self.$utf8.decode(self.$base64.decode(contentText));
+            $textarea.html(decodecontext);
         });
     };
 
@@ -249,20 +269,16 @@ class ComposedAnnouncement {
         this.$(".language-content").map(function (index, domElement) {
             let contentText = self.$(this).find('textarea');
             let contentUrl = self.$(this).find('INPUT');
+
             contents.push({
                 LanguageKey: self.$(contentText).attr('id'),
-                Text: self.escapeHtml(self.$(contentText).val()),
+                Text: self.$base64.encode(self.$utf8.encode(self.$(contentText).val())),
                 Url: self.$(this).find('#txtannouncement-url').val()
-                });
+                }); 
         });
 
         return contents;
     };
-
-    escapeHtml = (text: string) => {
-        return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-    };
-
 
     getSpecs = () => {
         let self = this;
@@ -304,7 +320,7 @@ class ComposedAnnouncement {
     };
 }
 
-const composedAnnouncement = new ComposedAnnouncement($, window.NAP, window.JSON);
+const composedAnnouncement = new ComposedAnnouncement($, window.NAP, window.JSON, window.utf8, window.base64);
 
 $(() => {
     composedAnnouncement.init();

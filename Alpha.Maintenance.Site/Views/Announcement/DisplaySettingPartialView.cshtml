@@ -28,8 +28,8 @@
             @foreach (var content in Model.Announcement.Contents)
             {
                 <div id="div-@content.LanguageKey" class="col l12 language-content">
-                    <textarea name="group-contents" id="@content.LanguageKey" class="jqte-test">@content.Text</textarea>
-                    <div class="margin-top-20px input-field">@AnnouncementResources.AnnouncementUrl<input type="text" id="txtannouncement-url" value="@content.Url"/></div>
+                    <textarea name="group-contents" id="@content.LanguageKey" data-content="@content.Text" class="jqte-test"></textarea>
+                    <div class="margin-top-20px input-field">@AnnouncementResources.AnnouncementUrl<input type="text" id="txtannouncement-url"  value="@content.Url"/></div>
                 </div>
             }
         </div>
@@ -37,13 +37,13 @@
 
     <div class="col l6 border-left">
         <div class="row">
-            <div class="col s6 input-field" style="margin-top: 0px; margin-left: 0px;">
+            <div class="col s6 input-field specification-radio-margin" >
                 <p>
                     <input class="with-gap" type="radio" name="group-popup" id="Announcement-Popup" value="@((int)AnnouncementType.Popup)" @(Model.Announcement.AnnouncementType.Equals(AnnouncementType.Popup) ? "checked" : string.Empty) />
                     <label for="Announcement-Popup">@AnnouncementResources.AnnouncementPopup</label>
                 </p>
             </div>
-            <div class="col s6 input-field" style="margin-top: 0px;">
+            <div class="col s6 input-field specification-radio-margin">
                 <p>
                     <input class="with-gap" type="radio" name="group-popup" id="Header-Popup" value="@((int)AnnouncementType.HeaderPopup)" @(Model.Announcement.AnnouncementType.Equals(AnnouncementType.HeaderPopup) ? "checked" : string.Empty) />
                     <label for="Header-Popup">@AnnouncementResources.HeaderPopup</label>

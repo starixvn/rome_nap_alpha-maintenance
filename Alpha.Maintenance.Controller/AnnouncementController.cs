@@ -36,7 +36,7 @@
 
         [HttpGet]
         [NapAuth(FunctionKey = SiteFunctionKeys.AnnouncementManagement, Policy = Constant.Policy.Read)]
-        public ActionResult ShowAnnouncements(SelectAnnouncementsCriteria criteria)
+        public ActionResult ManageAnnouncements(SelectAnnouncementsCriteria criteria)
                 => View(new ManageAnnouncementsViewModel
                 {
                     FromDate = criteria.FromDate,
@@ -66,7 +66,7 @@
         [NapAuth(FunctionKey = SiteFunctionKeys.AnnouncementManagement, Policy = Constant.Policy.Read)]
         public ActionResult ComposeMessage(SelectAnnouncementByIdCriteria criteria)
         {
-            var allSpecifications = announcementService.GetOfferedSpecifications();
+            var offeredSpecifications = announcementService.GetOfferedSpecifications(AppSettings.AnnouncementConfig.OfferedSpecifications);
 
             var model = criteria.Id == null ? 
                 announcementService.GetDefaultAnnouncement(AppSettings.AnnouncementConfig.Languages) : 
@@ -75,7 +75,7 @@
             var viewModel = new ComposeAnnouncementViewModel(
                                 model, 
                                 criteria.Id == null ? ActionType.Create : ActionType.Update, 
-                                allSpecifications,
+                                offeredSpecifications,
                                 BuildSelectedListByFilterFromAppSetting(model.Environments, AppSettings.AnnouncementConfig.Environments),
                                 BuildSelectedListByFilterFromAppSetting(model.Systems, AppSettings.AnnouncementConfig.Systems));
 

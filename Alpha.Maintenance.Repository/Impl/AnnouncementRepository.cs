@@ -4,8 +4,6 @@
     using System.Collections.Generic;
     using System.Data;
     using System.Linq;
-    using System.Net;
-    using System.Web;
     using Announcements.Client.Helpers;
     using Announcements.Models;
     using Announcements.Specs;
@@ -110,7 +108,7 @@
                  {
                      AnnouncementType = (AnnouncementType)reader.ToInt("AnnouncementType"),
                      Code = reader.ToString("Code"),
-                     Contents = JsonConvert.DeserializeObject<IEnumerable<MessageContent>>(WebUtility.HtmlDecode(reader.ToString("Contents"))),
+                     Contents = JsonConvert.DeserializeObject<IEnumerable<MessageContent>>(reader.ToString("Contents")),
                      Ordinal = reader.ToInt("Ordinal"),
                      Environments = reader.ToString("Environments").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
                                         .Select(environment => environment.Trim()),

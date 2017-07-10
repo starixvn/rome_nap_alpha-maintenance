@@ -30,8 +30,7 @@ namespace Alpha.Maintenance.Site.App_Start
             bundles.AddAndInclude(
                 "~/css/common",
                 "~/Assets/styles/vendors/icon/style.css",
-                "~/Assets/styles/main.min.css",
-                "~/Assets/styles/materialize/materialize.min.css");
+                "~/Assets/styles/main.min.css");
 
             // js
             bundles.Add(new ScriptBundle("~/scripts/common").Include(
@@ -54,12 +53,14 @@ namespace Alpha.Maintenance.Site.App_Start
                "~/Assets/scripts/lib/Select2/select2.js",
                "~/Assets/scripts/Logs/Index.js"));
 
-            bundles.Add(new ScriptBundle("~/scripts/show-announcements").Include(
+            bundles.Add(new ScriptBundle("~/scripts/manage-announcements").Include(
               "~/Assets/scripts/lib/Momentjs/moment.min.js",
               "~/Assets/scripts/lib/Select2/select2.js",
-              "~/Assets/scripts/Announcement/show-announcements.js"));
+              "~/Assets/scripts/Announcement/manage-announcements.js"));
 
             bundles.Add(new ScriptBundle("~/scripts/compose-announcement").Include(
+             "~/Assets/scripts/lib/base64/base64.js",
+              "~/Assets/scripts/lib/base64/utf8.js",
              "~/Assets/scripts/lib/jQuery-TE.1.4.0/jquery-te-1.4.0.min.js",
              "~/Assets/scripts/lib/Momentjs/moment.min.js", 
              "~/Assets/scripts/lib/Select2/select2.js",

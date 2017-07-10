@@ -331,7 +331,9 @@
       <DependentUpon>loginNew.css</DependentUpon>
     </Content>
     <TypeScriptCompile Include="Assets\scripts\Announcement\compose-messages.ts" />
-    <TypeScriptCompile Include="Assets\scripts\Announcement\show-announcements.ts" />
+    <TypeScriptCompile Include="Assets\scripts\Announcement\manage-announcements.ts" />
+    <Content Include="Assets\scripts\lib\base64\base64.js" />
+    <Content Include="Assets\scripts\lib\base64\utf8.js" />
     <Content Include="Assets\scripts\lib\jquery\jquery-2.2.3.min.js" />
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te-1.4.0.css" />
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te-1.4.0.min.js" />
@@ -555,7 +557,7 @@
     <Content Include="typings\globals\jquery\typings.json" />
     <Content Include="typings\globals\moment\typings.json" />
     <Content Include="typings\globals\storejs\typings.json" />
-    <Content Include="Views\Announcement\ShowAnnouncements.cshtml" />
+    <Content Include="Views\Announcement\ManageAnnouncements.cshtml" />
     <Content Include="Views\Announcement\DisplaySettingPartialView.cshtml" />
     <Content Include="Views\Announcement\SpecificationSettingPartialView.cshtml" />
   </ItemGroup>

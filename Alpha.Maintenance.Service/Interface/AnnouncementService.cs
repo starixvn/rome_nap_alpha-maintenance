@@ -9,7 +9,7 @@
 
     public interface AnnouncementService
     {
-        IEnumerable<ISpecification<IParam>> GetOfferedSpecifications();
+        IEnumerable<ISpecification<IParam>> GetOfferedSpecifications(IEnumerable<string> offeredSpecifications);
 
         IEnumerable<Announcement> GetAnnouncements(SelectAnnouncementsCriteria criteria);
 

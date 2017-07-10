@@ -11,7 +11,7 @@
 
 @section Headline {
     <span>@AnnouncementResources.Announcement / </span>
-    <span class="active">@AnnouncementResources.ShowAll</span>
+    <span class="active">@AnnouncementResources.ManageAnnouncements</span>
 }
 
 <form role="form" id="report-form" action="@Url.Action("ShowAnnouncements", "Announcement")">
@@ -159,5 +159,5 @@
 </div>
 
 @section Foot {
-    @Scripts.Render("~/scripts/show-announcements")
+    @Scripts.Render("~/scripts/manage-announcements")
 }

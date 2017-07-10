@@ -33,6 +33,10 @@
         [SpParam(Ignored = true)]
         public ActionType Action { get; set; }
 
+        public int ErrCode { get; set; }
+
+        public string ErrMsg { get; set; }
+
         public override string GetSettingKey()
             => Action.Equals(ActionType.Create) ? "Age_Announcements_Insert" : "Age_Announcements_Update";
 

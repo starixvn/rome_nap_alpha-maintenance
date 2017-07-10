@@ -1,4 +1,4 @@
-USE [Announcement]
+USE [bodb_Message]
 GO
 /*
 	Created: 20170707@David

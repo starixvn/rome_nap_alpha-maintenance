@@ -1,9 +1,8 @@
 "use strict";
 var ComposedAnnouncement = (function () {
-    function ComposedAnnouncement($, NAP, JSON) {
+    function ComposedAnnouncement($, NAP, JSON, utf8, base64) {
         var _this = this;
         this.init = function () {
-            _this.$('.jqte-test').jqte();
             _this.$('ul.tabs').tabs();
             _this.$('select').material_select();
             _this.$("#content-group").removeClass("hiden");
@@ -11,6 +10,7 @@ var ComposedAnnouncement = (function () {
             _this.bindEvent();
             _this.correctFirstSpec();
             _this.initSpecOptionsDll();
+            _this.$('.jqte-test').jqte();
         };
         this.cacheDom = function () {
             _this.$divChooseSpecification = _this.$("#div-choose-specification");
@@ -30,6 +30,7 @@ var ComposedAnnouncement = (function () {
         };
         this.bindEvent = function () {
             var self = _this;
+            _this.bindingContents();
             _this.$(_this.dllChooseSpecification).on('change', function () {
                 self.onChangeSpecOption();
             });
@@ -49,6 +50,15 @@ var ComposedAnnouncement = (function () {
                 if (self.$(this).val().trim() != '') {
                     self.$('.card-panel').addClass('hiden');
                 }
+            });
+        };
+        this.bindingContents = function () {
+            var self = _this;
+            _this.$(".language-content").map(function (index, domElement) {
+                var $textarea = self.$(this).find('textarea');
+                var contentText = $textarea.data("content");
+                var decodecontext = self.$utf8.decode(self.$base64.decode(contentText));
+                $textarea.html(decodecontext);
             });
         };
         this.onChangeSpecOption = function () {
@@ -182,14 +192,11 @@ var ComposedAnnouncement = (function () {
                 var contentUrl = self.$(this).find('INPUT');
                 contents.push({
                     LanguageKey: self.$(contentText).attr('id'),
-                    Text: self.escapeHtml(self.$(contentText).val()),
+                    Text: self.$base64.encode(self.$utf8.encode(self.$(contentText).val())),
                     Url: self.$(this).find('#txtannouncement-url').val()
                 });
             });
             return contents;
-        };
-        this.escapeHtml = function (text) {
-            return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
         };
         this.getSpecs = function () {
             var self = _this;
@@ -223,11 +230,12 @@ var ComposedAnnouncement = (function () {
         this.$ = $;
         this.$nap = NAP;
         this.$JSON = JSON;
+        this.$utf8 = utf8;
+        this.$base64 = base64;
     }
     return ComposedAnnouncement;
 }());
-var composedAnnouncement = new ComposedAnnouncement($, window.NAP, window.JSON);
+var composedAnnouncement = new ComposedAnnouncement($, window.NAP, window.JSON, window.utf8, window.base64);
 $(function () {
     composedAnnouncement.init();
 });
-//# sourceMappingURL=compose-messages.js.map

@@ -3,8 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Net;
-    using System.Web;
     using Announcements.Models;
     using Announcements.Services;
     using Announcements.Specs;
@@ -37,11 +35,11 @@
             };
         }
 
-        public IEnumerable<ISpecification<IParam>> GetOfferedSpecifications()
+        public IEnumerable<ISpecification<IParam>> GetOfferedSpecifications(IEnumerable<string> offeredSpecifications)
         {
             var factorySpecs = GetFactorySpecifications();
 
-            var offeredSpecs = FiterOfferedSpecs(factorySpecs);
+            var offeredSpecs = FiterOfferedSpecs(factorySpecs, offeredSpecifications);
 
             foreach (var spec in offeredSpecs)
             {
@@ -72,14 +70,14 @@
                         Environments = String.Join(", ", announcement.Environments.ToArray()),
                         Systems = String.Join(", ", announcement.Systems.ToArray()),
                         Ordinal = announcement.Ordinal,
-                        Contents = WebUtility.HtmlEncode(JsonConvert.SerializeObject(announcement.Contents)),
+                        Contents = JsonConvert.SerializeObject(announcement.Contents),
                         Specifications = JsonConvert.SerializeObject(announcement.Specifications)
                     });
 
         public Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria)
         {
             var announcement = announcementRepository.GetAnnouncementById(criteria);
-            announcement.Contents = CorrectContent(announcement.Contents);
+            announcement.Contents = CorrectContent(announcement.Contents, AppSettings.AnnouncementConfig.Languages);
 
             return announcement;
         }
@@ -101,8 +99,10 @@
                Specifications = new List<ISpecification<IParam>>()
            };
 
-        private IEnumerable<MessageContent> CorrectContent(IEnumerable<MessageContent> contents)
-                => AppSettings.AnnouncementConfig.Languages.Select(
+        private IEnumerable<MessageContent> CorrectContent(
+            IEnumerable<MessageContent> contents,
+            IEnumerable<string> languages)
+                => languages.Select(
                         language =>
                         {
                             var existedContent = contents.Single(content => content.LanguageKey.Equals(language, StringComparison.OrdinalIgnoreCase));
@@ -117,10 +117,12 @@
                         });
 
 
-        private IEnumerable<ISpecification<IParam>> FiterOfferedSpecs(IEnumerable<ISpecification<IParam>> factorySpecs)
+        private IEnumerable<ISpecification<IParam>> FiterOfferedSpecs(
+            IEnumerable<ISpecification<IParam>> factorySpecs,
+            IEnumerable<string> offeredSpecifications)
                 => factorySpecs.Where(spec =>
                     {
-                        return AppSettings.AnnouncementConfig.OfferedSpecifications.Any(existedSpec => existedSpec.Equals(spec.Name));
+                        return offeredSpecifications.Any(existedSpec => existedSpec.Equals(spec.Name));
                     });
 
         private IEnumerable<ISpecification<IParam>> GetFactorySpecifications()

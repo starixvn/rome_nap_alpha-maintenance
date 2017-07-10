@@ -2,4 +2,4 @@
 $(function () {
     $('select').material_select();
 });
-//# sourceMappingURL=show-announcements.js.map
+//# sourceMappingURL=manage-announcements.js.map

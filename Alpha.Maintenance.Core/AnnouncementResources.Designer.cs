@@ -232,6 +232,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manage Announcements.
+        /// </summary>
+        public static string ManageAnnouncements {
+            get {
+                return ResourceManager.GetString("ManageAnnouncements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NEXT.
         /// </summary>
         public static string Next {
@@ -273,15 +282,6 @@ namespace Alpha.Maintenance.Core {
         public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Show all.
-        /// </summary>
-        public static string ShowAll {
-            get {
-                return ResourceManager.GetString("ShowAll", resourceCulture);
             }
         }
         
