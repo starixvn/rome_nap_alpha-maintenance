@@ -224,7 +224,7 @@ class ComposedAnnouncement {
     };
 
     refreshPage = (actionType: string, announcementId: string) => {
-        let url = "Announcement/ComposeMessage/" + (actionType == 'Create' ? '' : announcementId);
+        let url = actionType == 'Create' ? "Announcement/ManageAnnouncements" : "Announcement/ComposeMessage/" + announcementId;
         window.location.href = this.$nap.resolveClientUrl(url)
     };
 

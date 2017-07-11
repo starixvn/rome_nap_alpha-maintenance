@@ -546,7 +546,9 @@
     <Content Include="WebConnectionString.local.config">
       <DependentUpon>WebConnectionString.config</DependentUpon>
     </Content>
-    <Content Include="Web.local.config" />
+    <Content Include="Web.local.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Announcement\ComposeMessage.cshtml" />
     <Content Include="typings\globals\bootstrap\typings.json" />
     <Content Include="typings\globals\jasmine-jquery\typings.json" />

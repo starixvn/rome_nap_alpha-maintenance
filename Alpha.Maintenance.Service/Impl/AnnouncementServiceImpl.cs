@@ -85,17 +85,18 @@
         public Announcement GetDefaultAnnouncement(IEnumerable<string> languages)
            => new Announcement
            {
-               AnnouncementType = AnnouncementType.HeaderPopup,
+               AnnouncementType = AnnouncementType.Popup,
                FromDate = DateTime.Now,
                ToDate = DateTime.Now,
                Ordinal = 1,
                Environments = new List<string> { "Local" },
-               Systems = new List<string> { "MBC" },
+               Systems = new List<string> { "IBCBet" },
                Contents = languages.Select(language => new MessageContent
                {
                    LanguageKey = language,
                    Text = string.Empty
                }),
+               IsActive = true,
                Specifications = new List<ISpecification<IParam>>()
            };
 

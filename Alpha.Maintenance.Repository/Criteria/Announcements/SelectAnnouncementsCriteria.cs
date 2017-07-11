@@ -9,12 +9,12 @@
 
         public string System { get; set; } = string.Empty;
 
-        public DateTime FromDate { get; set; } = DateTime.Now;
+        public DateTime FromDate { get; set; } = DateTime.Today;
 
-        public DateTime ToDate { get; set; } = DateTime.Now;
+        public DateTime ToDate { get; set; } = DateTime.Today;
 
         public override string GetSettingKey() => "Age_Announcements_Select";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => FromDate <= ToDate;
     }
 }

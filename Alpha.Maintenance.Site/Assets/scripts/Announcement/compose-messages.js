@@ -151,7 +151,7 @@ var ComposedAnnouncement = (function () {
             });
         };
         this.refreshPage = function (actionType, announcementId) {
-            var url = "Announcement/ComposeMessage/" + (actionType == 'Create' ? '' : announcementId);
+            var url = actionType == 'Create' ? "Announcement/ManageAnnouncements" : "Announcement/ComposeMessage/" + announcementId;
             window.location.href = _this.$nap.resolveClientUrl(url);
         };
         this.getAnnouncementParam = function () {
