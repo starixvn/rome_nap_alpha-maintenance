@@ -22,7 +22,6 @@
         Result InsertorUpdateAnnouncement(ICriteria criteria);
 
         Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria);
-
     }
 
     public class AnnouncementRepositoryImpl : AnnouncementRepository

@@ -116,6 +116,7 @@
 @helper RenderSpecTxt(ISpecification<IParam> specification, bool isShowSpec)
 {
     <input type="text" id="txt-specification-value"
+           placeholder="Input Value"
            value="@(isShowSpec ? string.Join(",", specification.Value?? string.Empty) : string.Empty)"
            data-specificationId="@specification.Id" />
 }

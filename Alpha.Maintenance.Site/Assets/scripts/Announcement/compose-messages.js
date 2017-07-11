@@ -121,9 +121,7 @@ var ComposedAnnouncement = (function () {
         this.showWarningMessage = function (message) { return _this.$('.card-panel').html(message).addClass("red red-text").removeClass('hiden'); };
         this.doUpdate = function (announcement) {
             var self = _this;
-            var file = _this.$("#fileUpload")[0];
             var formdata = new FormData();
-            formdata.append("file", file.files[0]);
             formdata.append("announcement", self.$JSON.stringify(announcement));
             formdata.append("action", self.$('#actionType').val());
             _this.$.ajax({

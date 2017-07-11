@@ -192,9 +192,7 @@ class ComposedAnnouncement {
 
     doUpdate = (announcement: any) => {
         let self = this;
-        let file = <HTMLInputElement>this.$("#fileUpload")[0];
         var formdata = new FormData();
-        formdata.append("file", file.files[0]);
         formdata.append("announcement", self.$JSON.stringify(announcement));
         formdata.append("action", self.$('#actionType').val());
 

@@ -48,12 +48,11 @@
 
         [HttpPost]
         [NapAuth(FunctionKey = SiteFunctionKeys.AnnouncementManagement, Policy = Constant.Policy.Host)]
-        public JsonResult InsertAnnouncement(string announcement, ActionType action, HttpPostedFileBase file)
+        public JsonResult InsertAnnouncement(string announcement, ActionType action)
         {
-            var result = AssignValueOfUserIdsFileSpec(file, 
-                                                    JsonConvert.DeserializeObject<Announcement>(
+            var result = JsonConvert.DeserializeObject<Announcement>(
                                                     announcement,
-                                                    new SpecificationConverter()));
+                                                    new SpecificationConverter());
 
             return new JsonNetResult
             {
@@ -92,30 +91,5 @@
                             Value = value,
                             Selected = valueRange.Contains(value)
                         });
-
-
-        private Announcement AssignValueOfUserIdsFileSpec(HttpPostedFileBase file, Announcement announcement)
-        {
-            if (file != null && file.ContentLength != 0)
-            {
-                string fileString = string.Empty;
-
-                using (BinaryReader reader = new BinaryReader(file.InputStream))
-                {
-                    byte[] binaryData = reader.ReadBytes(file.ContentLength);
-                    fileString = System.Text.Encoding.UTF8.GetString(binaryData);
-                }
-
-                char[] delimiterChars = { ' ', ',', '.', ':', '\t' };
-                var data = fileString.Split(delimiterChars, StringSplitOptions.None).Select(x => int.Parse(x)).ToList();
-
-                announcement.Specifications.Where(spec => spec.Name.Equals("User Ids File")).Select(spec =>
-                {
-                    return new UserIdFileSpecification(data);
-                }).FirstOrDefault();
-            }
-
-            return announcement;
-        }
     }
 }
