@@ -11,7 +11,6 @@
     using Core.Model;
     using Criteria.Announcements;
     using Fanex.Common.Extensions;
-    using Fanex.Data;
     using Fanex.Data.Repository;
     using Newtonsoft.Json;
 
@@ -19,13 +18,17 @@
     {
         IEnumerable<Announcement> GetAnnouncements(SelectAnnouncementsCriteria criteria);
 
-        Result InsertorUpdateAnnouncement(ICriteria criteria);
+        Result InsertOrUpdateAnnouncement(ICriteria criteria);
 
         Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria);
     }
 
     public class AnnouncementRepositoryImpl : AnnouncementRepository
     {
+        public AnnouncementRepositoryImpl()
+        {
+        }
+
         public IEnumerable<Announcement> GetAnnouncements(SelectAnnouncementsCriteria criteria)
         {
             if (criteria == null)
@@ -35,7 +38,7 @@
 
             var data = new List<Announcement>();
 
-            using (var db = new ObjectDb(criteria.GetSettingKey()))
+            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
                 using (var reader = db.ExecuteReader(criteria))
                 {
@@ -52,14 +55,14 @@
             return data;
         }
 
-        public Result InsertorUpdateAnnouncement(ICriteria criteria)
+        public Result InsertOrUpdateAnnouncement(ICriteria criteria)
         {
             if (criteria == null)
             {
                 throw new ArgumentNullException(nameof(criteria), AnnouncementResources.CriteriaCannotBeNull);
             }
 
-            using (var db = new ObjectDb(criteria.GetSettingKey()))
+            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
                 db.ExecuteNonQuery(criteria.GetSpParams());
                 var outputParams = db.GetOuputParams();
@@ -85,7 +88,7 @@
 
             var data = new Announcement();
 
-            using (var db = new ObjectDb(criteria.GetSettingKey()))
+            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
                 using (var reader = db.ExecuteReader(criteria))
                 {

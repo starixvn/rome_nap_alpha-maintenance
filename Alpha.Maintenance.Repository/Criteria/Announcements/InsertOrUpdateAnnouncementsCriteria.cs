@@ -40,6 +40,6 @@
         public override string GetSettingKey()
             => Action.Equals(ActionType.Create) ? "Age_Announcements_Insert" : "Age_Announcements_Update";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => Id > 0 && FromDate <= ToDate;
     }
 }

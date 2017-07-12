@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Alpha.Announcements, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Alpha.Announcements.1.0.0.1-Renovation-03\lib\net40\Alpha.Announcements.dll</HintPath>
+      <HintPath>..\packages\Alpha.Announcements.1.0.0.1-Renovation-04\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Alpha.Announcements.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -125,13 +125,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Impl\AnnouncementServiceImpl.cs" />
+    <Compile Include="Impl\Announcements\AnnouncementServiceImpl.cs" />
     <Compile Include="Impl\AppLog\LogCategoryService.cs" />
     <Compile Include="Impl\AppLog\LogService.cs" />
     <Compile Include="Impl\AppLog\MachineService.cs" />
     <Compile Include="Interface\AppLog\ILogCategoryService.cs" />
     <Compile Include="Interface\AppLog\ILogService.cs" />
-    <Compile Include="Interface\AnnouncementService.cs" />
+    <Compile Include="Interface\Announcements\AnnouncementService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

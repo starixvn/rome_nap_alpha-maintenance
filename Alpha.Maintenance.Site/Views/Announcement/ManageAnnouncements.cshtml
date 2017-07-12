@@ -16,54 +16,52 @@
 
 <form role="form" id="report-form" action="@Url.Action("ManageAnnouncements", "Announcement")">
     <section id="filter-bar">
-        <div class="filter-form">
-            <div class="row">
-                <div class="input-field col s2">
-                    <div class="lbl-field width-60">
-                        @Html.LabelFor(m => m.FromDate, ViewResource.From, new { @class = "active" })
-                    </div>
-                    <div class="calendar">
-                        <input type="text" name="FromDate" id="FromDate" class="datepicker" value="@Model.FromDate.ToString("MMM dd,yyyy")" />
-                    </div>
+        <div class="filter-form row">
+            <div class="input-field col s2">
+                <div class="lbl-field">
+                    @Html.LabelFor(m => m.FromDate, ViewResource.From, new { @class = "active" })
                 </div>
-                <div class="input-field col s2">
-                    <div class="lbl-field width-40">
-                        @Html.LabelFor(m => m.ToDate, ViewResource.To, new { @class = "active" })
-                    </div>
-                    <div class="calendar">
-                        <input type="text" name="ToDate" id="ToDate" class="datepicker" value="@Model.ToDate.ToString("MMM dd,yyyy")" />
-                    </div>
+                <div class="calendar">
+                    <input type="text" name="FromDate" id="FromDate" class="datepicker" value="@Model.FromDate.ToString("MMM dd,yyyy")" />
                 </div>
-                <div class="col s2">
-                    <div class="input-field">
-                        <select name="Environment" id="Environment">
-                            <option value="">@AnnouncementResources.All</option>
-                            @foreach (var environment in AppSettings.AnnouncementConfig.Environments)
-                            {
-                                <option value="@environment" @(environment.Equals(Model.Environment) ? "selected" : string.Empty)>@environment</option>
-                            }
-                        </select>
-                        <label>@AnnouncementResources.Environments</label>
-                    </div>
+            </div>
+            <div class="input-field col s2">
+                <div class="lbl-field">
+                    @Html.LabelFor(m => m.ToDate, ViewResource.To, new { @class = "active" })
                 </div>
-                <div class="col s2">
-                    <div class="input-field">
-                        <select name="System" id="System">
-                            <option value="">@AnnouncementResources.All</option>
-                            @foreach (var system in AppSettings.AnnouncementConfig.Systems)
-                            {
-                                <option value="@system" @(system.Equals(Model.System) ? "selected" : string.Empty)>@system</option>
-                            }
-                        </select>
-                        <label>@AnnouncementResources.Sysmtems</label>
-                    </div>
+                <div class="calendar">
+                    <input type="text" name="ToDate" id="ToDate" class="datepicker" value="@Model.ToDate.ToString("MMM dd,yyyy")" />
                 </div>
-                <div class="col button-block">
-                    <input class="waves-effect waves-light btn btn-primary" type="submit" value="@ViewResource.Submit" id="submit" />
-                    <a href="@Url.Action("ComposeMessage", "Announcement")">
-                        <input class="waves-effect waves-light btn btn-primary" type="button" value="@AnnouncementResources.Add" id="add" />
-                    </a>
+            </div>
+            <div class="col s2">
+                <div class="input-field">
+                    <select name="Environment" id="Environment">
+                        <option value="">@AnnouncementResources.All</option>
+                        @foreach (var environment in AppSettings.AnnouncementConfig.Environments)
+                        {
+                            <option value="@environment" @(environment.Equals(Model.Environment) ? "selected" : string.Empty)>@environment</option>
+                        }
+                    </select>
+                    <label class="margin-left-minus15px">@AnnouncementResources.Environments</label>
                 </div>
+            </div>
+            <div class="col s2">
+                <div class="input-field">
+                    <select name="System" id="System">
+                        <option value="">@AnnouncementResources.All</option>
+                        @foreach (var system in AppSettings.AnnouncementConfig.Systems)
+                        {
+                            <option value="@system" @(system.Equals(Model.System) ? "selected" : string.Empty)>@system</option>
+                        }
+                    </select>
+                    <label class="margin-left-minus15px">@AnnouncementResources.Sysmtems</label>
+                </div>
+            </div>
+            <div class="col button-block">
+                <input class="waves-effect waves-light btn btn-primary" type="submit" value="@ViewResource.Submit" id="submit" />
+                <a href="@Url.Action("ComposeMessage", "Announcement")">
+                    <input class="waves-effect waves-light btn btn-primary" type="button" value="@AnnouncementResources.Add" id="add" />
+                </a>
             </div>
         </div>
     </section>
@@ -112,7 +110,9 @@
                             @announcement.Code
                         </td>
                         <td>
-                            <a href="@Url.Action("ComposeMessage", "Announcement", new { Id = announcement.Id })">
+                            <a href="@Url.Action("ComposeMessage", "Announcement", new { Id = announcement.Id })"
+                               class="tooltipped"
+                               data-tooltip="@AnnouncementResources.Edit">
                                 @announcement.Title
                             </a>
                         </td>
@@ -126,7 +126,7 @@
                             @String.Join(", ", announcement.Systems.ToArray())
                         </td>
                         <td>
-                            <input type="checkbox" id="@announcement.Id" checked="@announcement.IsActive"  disabled/>
+                            <input type="checkbox" id="@announcement.Id" checked="@announcement.IsActive" disabled />
                             <label for="@announcement.Id"><!--c--></label>
                         </td>
                         <td>
@@ -144,7 +144,7 @@
             else
             {
                 <tr>
-                    <td colspan="10" class="no-data" >@AnnouncementResources.NoInformation</td>
+                    <td colspan="10" class="no-data">@AnnouncementResources.NoInformation</td>
                 </tr>
             }
 

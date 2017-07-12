@@ -1,4 +1,4 @@
-﻿namespace Alpha.Maintenance.Service.Interface
+﻿namespace Alpha.Maintenance.Service.Interface.Announcement
 {
     using System;
     using System.Collections.Generic;
@@ -9,7 +9,7 @@
 
     public interface AnnouncementService
     {
-        IEnumerable<ISpecification<IParam>> GetOfferedSpecifications(IEnumerable<string> offeredSpecifications);
+        IEnumerable<ISpecification<IParam>> GetOfferedSpecifications();
 
         IEnumerable<Announcement> GetAnnouncements(SelectAnnouncementsCriteria criteria);
 
@@ -17,6 +17,6 @@
 
         Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria);
 
-        Announcement GetDefaultAnnouncement(IEnumerable<string> languages);
+        Announcement GetDefaultAnnouncement();
     }
 }

@@ -88,10 +88,6 @@
                 @RenderSpecTxt(specification, isShowSpec);
             }
 
-            else if (specification.GetType() == typeof(UserIdFileSpecification))
-            {
-                @RenderFileSpec();
-            }
             else
             {
                 @RenderCustomSpec();
@@ -124,10 +120,4 @@
 @helper RenderCustomSpec()
 {
     <div>&nbsp;</div>
-}
-
-@helper RenderFileSpec()
-{
-    <div class="line-heading">Attachment</div>
-    <div class="line-input"><input type="file" id="fileUpload" name="fileUpload" /> </div>
 }

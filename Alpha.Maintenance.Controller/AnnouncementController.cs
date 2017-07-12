@@ -1,18 +1,15 @@
 ﻿namespace Alpha.Maintenance.Controller
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Web.Mvc;
     using Announcements.Client.Helpers;
     using Announcements.Models;
-    using Core.Configurations;
     using Core.Model;
     using Fanex.NAP.Core.Business;
     using Fanex.NAP.Core.Web.Attribute;
     using Newtonsoft.Json;
     using Repository.Criteria.Announcements;
-    using Service.Impl;
-    using Service.Interface;
+    using Service.Impl.Announcement;
+    using Service.Interface.Announcement;
     using ViewModels;
     using Web;
 
@@ -44,7 +41,7 @@
 
         [HttpPost]
         [NapAuth(FunctionKey = SiteFunctionKeys.AnnouncementManagement, Policy = Constant.Policy.Host)]
-        public JsonResult InsertAnnouncement(string announcement, ActionType action)
+        public JsonResult InsertOrUpdateAnnouncement(string announcement, ActionType action)
         {
             var result = JsonConvert.DeserializeObject<Announcement>(
                                                     announcement,
@@ -61,31 +58,18 @@
         [NapAuth(FunctionKey = SiteFunctionKeys.AnnouncementManagement, Policy = Constant.Policy.Read)]
         public ActionResult ComposeMessage(SelectAnnouncementByIdCriteria criteria)
         {
-            var offeredSpecifications = announcementService.GetOfferedSpecifications(AppSettings.AnnouncementConfig.OfferedSpecifications);
+            var offeredSpecifications = announcementService.GetOfferedSpecifications();
 
-            var model = criteria.Id == null ? 
-                announcementService.GetDefaultAnnouncement(AppSettings.AnnouncementConfig.Languages) : 
+            var model = criteria.Id.Equals(0) ? 
+                announcementService.GetDefaultAnnouncement() : 
                 announcementService.GetAnnouncementById(criteria);
 
             var viewModel = new ComposeAnnouncementViewModel(
                                 model, 
-                                criteria.Id == null ? ActionType.Create : ActionType.Update, 
-                                offeredSpecifications,
-                                BuildSelectedListByFilterFromAppSetting(model.Environments, AppSettings.AnnouncementConfig.Environments),
-                                BuildSelectedListByFilterFromAppSetting(model.Systems, AppSettings.AnnouncementConfig.Systems));
+                                criteria.Id.Equals(0) ? ActionType.Create : ActionType.Update, 
+                                offeredSpecifications);
 
             return View(viewModel);
         }
-
-        private IEnumerable<SelectListItem> BuildSelectedListByFilterFromAppSetting(
-            IEnumerable<string> valueRange, 
-            IEnumerable<string> appSettingValues) 
-                => appSettingValues.Select(
-                        value => new SelectListItem
-                        {
-                            Text = value,
-                            Value = value,
-                            Selected = valueRange.Contains(value)
-                        });
     }
 }

@@ -5,8 +5,8 @@
     using Announcements.Models;
     using Repository.Criteria.Announcements;
     using Requests;
-    using Service.Impl;
-    using Service.Interface;
+    using Service.Impl.Announcement;
+    using Service.Interface.Announcement;
     using Web;
 
     [HmacAuthorizationFilter]

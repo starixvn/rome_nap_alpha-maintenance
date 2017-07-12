@@ -23,7 +23,7 @@ CREATE TABLE [dbo].[Announcements](
 	[FromDate] [DATETIME] NOT NULL,
 	[ToDate] [DATETIME] NOT NULL,
 	[Environments] [NVARCHAR](50) NULL,
-	[Systems] [NCHAR](20) NULL,
+	[Systems] [NVARCHAR](20) NULL,
 	[Ordinal] [SMALLINT] NULL,
 	[Specifications] [NVARCHAR](max) NULL,
 	[Contents] [NVARCHAR](max) NOT NULL,

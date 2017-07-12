@@ -5,10 +5,11 @@
 
     public class SelectAnnouncementByIdCriteria : CriteriaBase
     {
-        public string Id { get; set; }
+        public int Id { get; set; } = 0;
 
         public override string GetSettingKey() => "Age_Announcements_SelectById";
 
-        public override bool IsValid() => true;
+        public override bool IsValid() => Id > 0;
+
     }
 }

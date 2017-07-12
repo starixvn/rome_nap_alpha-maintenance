@@ -5,6 +5,7 @@
     using System.Web.Mvc;
     using Announcements.Models;
     using Announcements.Specs;
+    using Core.Configurations;
     using Core.Model;
 
     public class ComposeAnnouncementViewModel
@@ -13,13 +14,13 @@
             Announcement announcement,
             ActionType actionType,
             IEnumerable<ISpecification<IParam>> allSpecifications,
-            IEnumerable<SelectListItem> enviroments,
-            IEnumerable<SelectListItem> systems)
+            IEnumerable<SelectListItem> enviroments = null,
+            IEnumerable<SelectListItem> systems = null)
         {
             Announcement = announcement;
             ActionType = actionType;
-            Enviroments = enviroments;
-            Systems = systems;
+            Enviroments = enviroments ?? BuildSelectedList(announcement.Environments, AppSettings.AnnouncementConfig.Environments);
+            Systems = systems ?? BuildSelectedList(announcement.Systems, AppSettings.AnnouncementConfig.Systems);
             NotExistedSpecifications = FilterNotExistedSpecs(allSpecifications, Announcement.Specifications);
         }
 
@@ -41,5 +42,16 @@
                     {
                         return !existedSpecifications.Any(existedSpec => existedSpec.Id.Equals(spec.Id));
                     });
+
+        private IEnumerable<SelectListItem> BuildSelectedList(
+          IEnumerable<string> valueRange,
+          IEnumerable<string> values)
+              => values.Select(
+                      value => new SelectListItem
+                      {
+                          Text = value,
+                          Value = value,
+                          Selected = valueRange.Contains(value)
+                      });
     }
 }

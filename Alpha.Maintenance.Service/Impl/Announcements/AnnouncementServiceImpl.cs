@@ -1,4 +1,4 @@
-﻿namespace Alpha.Maintenance.Service.Impl
+﻿namespace Alpha.Maintenance.Service.Impl.Announcement
 {
     using System;
     using System.Collections.Generic;
@@ -9,7 +9,7 @@
     using Core.Configurations;
     using Core.Model;
     using Fanex.Caching;
-    using Interface;
+    using Interface.Announcement;
     using Newtonsoft.Json;
     using Repository.Criteria.Announcements;
     using Repository.Impl;
@@ -22,12 +22,28 @@
         private readonly IDictionary<string, Func<dynamic>> getValueRangeFunction;
         private const string SpecificationsCacheKey = "Alpha.Maintenance.Service.Impl.AnnouncementServiceImpl.AllSpecifications";
 
+        private IEnumerable<string> languages { get; set; }
+        private IEnumerable<string> offeredSpecifications { get; set; }
+
         public AnnouncementServiceImpl(
             SpecificationFactory specificationFactory = null,
-            AnnouncementRepository announcementRepository = null)
+            AnnouncementRepository announcementRepository = null,
+            IEnumerable<string> languages = null,
+            IEnumerable<string> offeredSpecifications = null)
         {
             this.specificationFactory = specificationFactory ?? new SpecificationFactoryImpl();
             this.announcementRepository = announcementRepository ?? new AnnouncementRepositoryImpl();
+            this.languages = languages ?? new List<string>{
+                                                            "en-US",
+                                                            "zh-CN",
+                                                            "zh-TW",
+                                                            "ja-JP",
+                                                            "ko-KR",
+                                                            "th-TH",
+                                                            "vi-VN"
+                                                        };
+
+            this.offeredSpecifications = offeredSpecifications ?? AppSettings.AnnouncementConfig.OfferedSpecifications;
 
             getValueRangeFunction = new Dictionary<string, Func<dynamic>>
             {
@@ -35,7 +51,7 @@
             };
         }
 
-        public IEnumerable<ISpecification<IParam>> GetOfferedSpecifications(IEnumerable<string> offeredSpecifications)
+        public IEnumerable<ISpecification<IParam>> GetOfferedSpecifications()
         {
             var factorySpecs = GetFactorySpecifications();
 
@@ -56,7 +72,7 @@
                 => announcementRepository.GetAnnouncements(criteria);
 
         public Result InsertOrUpdateAnnouncement(Announcement announcement, ActionType Action)
-                => announcementRepository.InsertorUpdateAnnouncement(
+                => announcementRepository.InsertOrUpdateAnnouncement(
                     new InsertOrUpdateAnnouncementsCriteria
                     {
                         Action = Action,
@@ -77,12 +93,12 @@
         public Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria)
         {
             var announcement = announcementRepository.GetAnnouncementById(criteria);
-            announcement.Contents = CorrectContent(announcement.Contents, AppSettings.AnnouncementConfig.Languages);
+            announcement.Contents = CorrectContent(announcement.Contents, languages);
 
             return announcement;
         }
 
-        public Announcement GetDefaultAnnouncement(IEnumerable<string> languages)
+        public Announcement GetDefaultAnnouncement()
            => new Announcement
            {
                AnnouncementType = AnnouncementType.Popup,
@@ -92,15 +108,15 @@
                Environments = new List<string> { "Local" },
                Systems = new List<string> { "IBCBet" },
                Contents = languages.Select(language => new MessageContent
-               {
-                   LanguageKey = language,
-                   Text = string.Empty
-               }),
+                           {
+                               LanguageKey = language,
+                               Text = string.Empty
+                           }),
                IsActive = true,
                Specifications = new List<ISpecification<IParam>>()
            };
 
-        private IEnumerable<MessageContent> CorrectContent(
+        internal virtual IEnumerable<MessageContent> CorrectContent(
             IEnumerable<MessageContent> contents,
             IEnumerable<string> languages)
                 => languages.Select(

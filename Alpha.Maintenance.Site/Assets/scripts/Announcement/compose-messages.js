@@ -125,7 +125,7 @@ var ComposedAnnouncement = (function () {
             formdata.append("announcement", self.$JSON.stringify(announcement));
             formdata.append("action", self.$('#actionType').val());
             _this.$.ajax({
-                url: self.$nap.resolveClientUrl("Announcement/InsertAnnouncement"),
+                url: self.$nap.resolveClientUrl("Announcement/InsertOrUpdateAnnouncement"),
                 type: 'POST',
                 dataType: 'json',
                 data: formdata,
