@@ -125,10 +125,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Impl\Announcements\BaseAnnouncementServiceImpl.cs" />
     <Compile Include="Impl\Announcements\AnnouncementServiceImpl.cs" />
     <Compile Include="Impl\AppLog\LogCategoryService.cs" />
     <Compile Include="Impl\AppLog\LogService.cs" />
     <Compile Include="Impl\AppLog\MachineService.cs" />
+    <Compile Include="Interface\Announcements\BaseAnnouncementService.cs" />
     <Compile Include="Interface\AppLog\ILogCategoryService.cs" />
     <Compile Include="Interface\AppLog\ILogService.cs" />
     <Compile Include="Interface\Announcements\AnnouncementService.cs" />

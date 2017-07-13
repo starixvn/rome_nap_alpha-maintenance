@@ -8,7 +8,6 @@
     using Announcements.Specs;
     using Core.Configurations;
     using Core.Model;
-    using Fanex.Caching;
     using Interface.Announcement;
     using Newtonsoft.Json;
     using Repository.Criteria.Announcements;
@@ -16,23 +15,25 @@
 
     public class AnnouncementServiceImpl : AnnouncementService
     {
-        private readonly SpecificationFactory specificationFactory;
+        private readonly BaseAnnouncementService internalAnnouncementService;
         private readonly AnnouncementRepository announcementRepository;
 
         private readonly IDictionary<string, Func<dynamic>> getValueRangeFunction;
-        private const string SpecificationsCacheKey = "Alpha.Maintenance.Service.Impl.AnnouncementServiceImpl.AllSpecifications";
 
         private IEnumerable<string> languages { get; set; }
+
         private IEnumerable<string> offeredSpecifications { get; set; }
 
         public AnnouncementServiceImpl(
             SpecificationFactory specificationFactory = null,
             AnnouncementRepository announcementRepository = null,
+            BaseAnnouncementService internalAnnouncementService = null,
             IEnumerable<string> languages = null,
             IEnumerable<string> offeredSpecifications = null)
         {
-            this.specificationFactory = specificationFactory ?? new SpecificationFactoryImpl();
             this.announcementRepository = announcementRepository ?? new AnnouncementRepositoryImpl();
+            this.internalAnnouncementService = internalAnnouncementService ?? new BaseAnnouncementServiceImpl(specificationFactory);
+
             this.languages = languages ?? new List<string>{
                                                             "en-US",
                                                             "zh-CN",
@@ -53,9 +54,9 @@
 
         public IEnumerable<ISpecification<IParam>> GetOfferedSpecifications()
         {
-            var factorySpecs = GetFactorySpecifications();
+            var factorySpecs = internalAnnouncementService.GetFactorySpecifications();
 
-            var offeredSpecs = FiterOfferedSpecs(factorySpecs, offeredSpecifications);
+            var offeredSpecs = internalAnnouncementService.FiterOfferedSpecs(factorySpecs, offeredSpecifications);
 
             foreach (var spec in offeredSpecs)
             {
@@ -93,7 +94,7 @@
         public Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria)
         {
             var announcement = announcementRepository.GetAnnouncementById(criteria);
-            announcement.Contents = CorrectContent(announcement.Contents, languages);
+            announcement.Contents = internalAnnouncementService.CorrectContent(announcement.Contents, languages);
 
             return announcement;
         }
@@ -115,39 +116,5 @@
                IsActive = true,
                Specifications = new List<ISpecification<IParam>>()
            };
-
-        internal virtual IEnumerable<MessageContent> CorrectContent(
-            IEnumerable<MessageContent> contents,
-            IEnumerable<string> languages)
-                => languages.Select(
-                        language =>
-                        {
-                            var existedContent = contents.Single(content => content.LanguageKey.Equals(language, StringComparison.OrdinalIgnoreCase));
-
-                            return existedContent ?? new MessageContent
-                            {
-                                LanguageKey = language,
-                                Text = string.Empty,
-                                Url = string.Empty,
-                                IsDisplayingByUrl = false
-                            };
-                        });
-
-
-        private IEnumerable<ISpecification<IParam>> FiterOfferedSpecs(
-            IEnumerable<ISpecification<IParam>> factorySpecs,
-            IEnumerable<string> offeredSpecifications)
-                => factorySpecs.Where(spec =>
-                    {
-                        return offeredSpecifications.Any(existedSpec => existedSpec.Equals(spec.Name));
-                    });
-
-        private IEnumerable<ISpecification<IParam>> GetFactorySpecifications()
-                => ConfiguredCacheService
-                    .GetOrSet(
-                    SpecificationsCacheKey,
-                    () => specificationFactory.LoadSpecifications(),
-                    new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromHours(24)));
-
     }
 }

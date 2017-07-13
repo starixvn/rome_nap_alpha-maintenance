@@ -8,8 +8,7 @@
     using Announcements.Services;
     using Announcements.Specs;
     using Core.Model;
-    using Fixtures;
-    using KellermanSoftware.CompareNetObjects;
+    using Interface.Announcement;
     using Newtonsoft.Json;
     using NSubstitute;
     using NUnit.Framework;
@@ -22,22 +21,22 @@
     {
         private SpecificationFactory specificationFactory;
         private AnnouncementRepository announcementRepository;
+
         private AnnouncementServiceImpl announcementServiceImpl;
-        private ObjectDbFixture objectDbFixture;
-        private CompareLogic compareLogic;
-        private AnyValueCreatorFixture anyValueCreatorFixture;
-        private Announcement announcementSample;
+        private BaseAnnouncementService baseAnnouncementService;
+       
         private IEnumerable<string> languages;
         private IEnumerable<string> offeredSpecifications;
+        private Announcement announcementSample;
 
         [SetUp]
         public void SetUp()
         {
             specificationFactory = Substitute.For<SpecificationFactory>();
             announcementRepository = Substitute.For<AnnouncementRepository>();
-            compareLogic = new CompareLogic();
-            objectDbFixture = new ObjectDbFixture();
-            anyValueCreatorFixture = new AnyValueCreatorFixture();
+            announcementRepository = Substitute.For<AnnouncementRepository>();
+            baseAnnouncementService = Substitute.For<BaseAnnouncementService>();
+
             announcementSample = BuildAnnouncementSample();
             languages = new List<string>{
                                             "en-US",
@@ -60,7 +59,8 @@
 
             announcementServiceImpl = new AnnouncementServiceImpl(
                                                 specificationFactory, 
-                                                announcementRepository, 
+                                                announcementRepository,
+                                                baseAnnouncementService,
                                                 languages,
                                                 offeredSpecifications);
         }
@@ -85,6 +85,7 @@
             var selectAnnouncementByIdCriteria = new SelectAnnouncementByIdCriteria();
             announcementRepository.GetAnnouncementById(Arg.Any<SelectAnnouncementByIdCriteria>()).Returns(announcementSample);
 
+            // Act
             announcementServiceImpl.GetAnnouncementById(selectAnnouncementByIdCriteria);
 
             // Assert
@@ -95,20 +96,15 @@
         public void GetAnnouncementById_CallCorrectContentFunction()
         {
             // Arrange
-            var announcementServiceImplSubstitute = Substitute.For<AnnouncementServiceImpl>(
-                                                specificationFactory,
-                                                announcementRepository,
-                                                languages,
-                                                offeredSpecifications);
-
             var selectAnnouncementByIdCriteria = new SelectAnnouncementByIdCriteria();
             announcementRepository.GetAnnouncementById(Arg.Any<SelectAnnouncementByIdCriteria>())
                                    .Returns(announcementSample);
 
-            announcementServiceImplSubstitute.GetAnnouncementById(selectAnnouncementByIdCriteria);
+            // Act
+            announcementServiceImpl.GetAnnouncementById(selectAnnouncementByIdCriteria);
 
             // Assert
-            announcementServiceImplSubstitute.Received().CorrectContent(
+            baseAnnouncementService.Received().CorrectContent(
                 Arg.Any<IEnumerable<MessageContent>>(),
                 Arg.Any<IEnumerable<string>>());
         }
