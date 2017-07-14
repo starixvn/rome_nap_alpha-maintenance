@@ -38,7 +38,7 @@
             baseAnnouncementService = Substitute.For<BaseAnnouncementService>();
 
             announcementSample = BuildAnnouncementSample();
-            languages = new List<string>{
+            languages = new List<string> {
                                             "en-US",
                                             "zh-CN",
                                             "zh-TW",
@@ -48,7 +48,7 @@
                                             "vi-VN"
                                         };
 
-            offeredSpecifications = new List<string>{
+            offeredSpecifications = new List<string> {
                                                         "Currencies",
                                                         "User Ids",
                                                         "User Level",

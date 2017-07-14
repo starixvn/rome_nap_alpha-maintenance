@@ -31,7 +31,8 @@
                     FromDate = request.Date,
                     ToDate = request.Date,
                     System = request.System,
-                    Environment = request.Environment
+                    Environment = request.Environment,
+                    IsActive = true
                 });
     }
 }

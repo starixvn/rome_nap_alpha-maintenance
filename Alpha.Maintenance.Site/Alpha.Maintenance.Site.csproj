@@ -30,7 +30,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.0</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -330,8 +330,10 @@
     <Content Include="Areas\UserLogin\themes\loginNew.min.css">
       <DependentUpon>loginNew.css</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="Assets\scripts\Announcement\compose-messages.ts" />
-    <TypeScriptCompile Include="Assets\scripts\Announcement\manage-announcements.ts" />
+    <Content Include="Assets\bundles\compose-messages.js" />
+    <Content Include="Assets\bundles\compose-messages.min.js">
+      <DependentUpon>compose-messages.js</DependentUpon>
+    </Content>
     <Content Include="Assets\scripts\lib\base64\base64.js" />
     <Content Include="Assets\scripts\lib\base64\utf8.js" />
     <Content Include="Assets\scripts\lib\jquery\jquery-2.2.3.min.js" />
@@ -516,6 +518,7 @@
   <ItemGroup>
     <Content Include="Areas\UserLogin\themes\loginNew.scss" />
     <Content Include="App_Data\announcement.json" />
+    <Content Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -564,6 +567,8 @@
     <Content Include="Views\Announcement\SpecificationSettingPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Assets\scripts\Announcement\compose-messages.ts" />
+    <TypeScriptCompile Include="Assets\scripts\Announcement\manage-announcements.ts" />
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\jasmine-jquery\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\jasmine\index.d.ts" />

@@ -13,6 +13,8 @@
 
         public DateTime ToDate { get; set; } = DateTime.Today;
 
+        public bool? IsActive { get; set; } = null;
+
         public override string GetSettingKey() => "Age_Announcements_Select";
 
         public override bool IsValid() => FromDate <= ToDate;

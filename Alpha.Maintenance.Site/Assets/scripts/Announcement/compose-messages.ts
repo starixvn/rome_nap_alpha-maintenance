@@ -113,7 +113,7 @@ class ComposedAnnouncement {
         this.$(".language-content").map(function (index, domElement) {
             let $textarea = self.$(this).find('textarea')
             let contentText = $textarea.data("content");
-            let decodecontext = self.$utf8.decode(self.$base64.decode(contentText));
+            let decodecontext = contentText;
             $textarea.html(decodecontext);
         });
     };
@@ -270,7 +270,7 @@ class ComposedAnnouncement {
 
             contents.push({
                 LanguageKey: self.$(contentText).attr('id'),
-                Text: self.$base64.encode(self.$utf8.encode(self.$(contentText).val())),
+                Text: self.$(contentText).val(),
                 Url: self.$(this).find('#txtannouncement-url').val()
                 }); 
         });

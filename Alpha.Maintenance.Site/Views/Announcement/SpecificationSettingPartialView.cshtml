@@ -102,9 +102,17 @@
 @helper RenderSpecDll(ISpecification<IParam> specification, bool isShowSpec)
 {
     <select id="dll-specification-value" multiple data-specificationId="@specification.Id">
+        @if(specification.Value == null)
+        {
+
+        }
+
         @foreach (var userLevel in AppSettings.AnnouncementConfig.Levels)
         {
-            <option value="@userLevel.Id" @(isShowSpec && specification.Value.Contains((byte)userLevel.Id) ? "selected" : string.Empty)>@userLevel.Name</option>
+            <option value="@userLevel.Id"
+                    @(isShowSpec && specification.Value != null && specification.Value.Contains((byte)userLevel.Id) ? "selected" : string.Empty)>
+                @userLevel.Name
+            </option>
         }
     </select>
 }

@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
     using Announcements.Models;
     using Announcements.Services;
     using Announcements.Specs;
@@ -73,7 +74,11 @@
                 => announcementRepository.GetAnnouncements(criteria);
 
         public Result InsertOrUpdateAnnouncement(Announcement announcement, ActionType Action)
-                => announcementRepository.InsertOrUpdateAnnouncement(
+        {
+            var contentsBytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(announcement.Contents));
+            var encodedContents = Convert.ToBase64String(contentsBytes);
+
+            return announcementRepository.InsertOrUpdateAnnouncement(
                     new InsertOrUpdateAnnouncementsCriteria
                     {
                         Action = Action,
@@ -87,9 +92,10 @@
                         Environments = String.Join(", ", announcement.Environments.ToArray()),
                         Systems = String.Join(", ", announcement.Systems.ToArray()),
                         Ordinal = announcement.Ordinal,
-                        Contents = JsonConvert.SerializeObject(announcement.Contents),
+                        Contents = encodedContents,
                         Specifications = JsonConvert.SerializeObject(announcement.Specifications)
                     });
+        }
 
         public Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria)
         {

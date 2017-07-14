@@ -64,7 +64,7 @@ namespace Alpha.Maintenance.Site.App_Start
              "~/Assets/scripts/lib/jQuery-TE.1.4.0/jquery-te-1.4.0.min.js",
              "~/Assets/scripts/lib/Momentjs/moment.min.js", 
              "~/Assets/scripts/lib/Select2/select2.js",
-             "~/Assets/scripts/Announcement/compose-messages.js"));
+             "~/Assets/bundles/compose-messages.js"));
         }
     }
 }

@@ -1,0 +1,8 @@
+[
+  {
+    "outputFileName": "Assets/bundles/compose-messages.js",
+    "inputFiles": [
+      "Assets/scripts/Announcement/compose-messages.js"
+    ]
+  }
+]

@@ -41,15 +41,15 @@
 
         [HttpPost]
         [NapAuth(FunctionKey = SiteFunctionKeys.AnnouncementManagement, Policy = Constant.Policy.Host)]
-        public JsonResult InsertOrUpdateAnnouncement(string announcement, ActionType action)
+        public JsonResult InsertOrUpdateAnnouncement(InsertAnnouncementViewModel insertAnnouncementViewModel)
         {
             var result = JsonConvert.DeserializeObject<Announcement>(
-                                                    announcement,
+                                                    insertAnnouncementViewModel.Announcement,
                                                     new SpecificationConverter());
 
             return new JsonNetResult
             {
-                Data = announcementService.InsertOrUpdateAnnouncement(result, action),
+                Data = announcementService.InsertOrUpdateAnnouncement(result, insertAnnouncementViewModel.Action),
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
