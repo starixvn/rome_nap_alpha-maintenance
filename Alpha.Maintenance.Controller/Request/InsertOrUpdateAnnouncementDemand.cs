@@ -1,9 +1,9 @@
-﻿namespace Alpha.Maintenance.Controller.ViewModels
+﻿namespace Alpha.Maintenance.Controller.Request
 {
     using System.Web.Mvc;
     using Core.Model;
 
-    public class InsertAnnouncementViewModel
+    public class InsertOrUpdateAnnouncementDemand
     {
         [AllowHtml]
         public string Announcement { get; set; }

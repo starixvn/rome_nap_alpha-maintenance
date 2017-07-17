@@ -1,14 +1,18 @@
 ﻿@model ComposeAnnouncementViewModel
 
+@{ 
+    var maxOrder = 30;
+}
+
 <div id="display-information-settings" class="row">
     <div class="col l6">
         <div class="row">
-            <div class="col l5 input-field">
-                @AnnouncementResources.Code<input type="text" id="txtcode" value="@Model.Announcement.Code" />
-            </div>
-            <div class="col l5 input-field">
+            <div class="col l7 input-field">
                 @AnnouncementResources.Title<input type="text" id="txttitle" value="@Model.Announcement.Title" />
             </div>
+            <div class="col l3 input-field">
+                @AnnouncementResources.Code<input type="text" id="txtcode" value="@Model.Announcement.Code" />
+            </div>      
             <div class="col l2">
                 <input type="checkbox" id="ChkActive" @(Model.Announcement.IsActive ? "checked" : string.Empty) />
                 <label class="input-field" for="ChkActive">@AnnouncementResources.Active</label>
@@ -21,14 +25,14 @@
             <ul class="tabs">
                 @foreach (var content in Model.Announcement.Contents)
                 {
-                    <li class="tab col s3"><a href="#div-@content.LanguageKey">@content.LanguageKey</a></li>
+                    <li class="tab col s3 language-tab"><a href="#div-@content.LanguageKey">@content.LanguageKey</a></li>
                 }
             </ul>
 
             @foreach (var content in Model.Announcement.Contents)
             {
                 <div id="div-@content.LanguageKey" class="col l12 language-content">
-                    <textarea name="group-contents" id="@content.LanguageKey" data-content="@content.Text" class="jqte-test"></textarea>
+                    <textarea name="group-contents" id="@content.LanguageKey" class="jqte-test">@content.Text</textarea>
                     <div class="margin-top-20px input-field">@AnnouncementResources.AnnouncementUrl<input type="text" id="txtannouncement-url"  value="@content.Url"/></div>
                 </div>
             }
@@ -63,7 +67,7 @@
         <div class="row">
             <div class="input-field col s6">
                 <select name="order" id="group-order">
-                    @for (int value = 1; value < 30; value++)
+                    @for (int value = 1; value < maxOrder; value++)
                     {
                         <option value="@value" @(value.Equals(Model.Announcement.Ordinal) ? "selected" : string.Empty)>@value</option>
                     }
@@ -74,22 +78,24 @@
 
         <div class="row">
             <div class="col s12"><label class="input-field">@AnnouncementResources.Environments</label></div>
-            @foreach (var environment in Model.Enviroments)
+            @foreach (var environment in AppSettings.AnnouncementConfig.Environments)
             {
                 <div class="col s2">
-                    <input name="group-environments" type="checkbox" id="@environment.Text" @(environment.Selected ? "checked" : string.Empty) />
-                    <label class="input-field" for="@environment.Text">@environment.Text</label>
+                    <input name="group-environments" type="checkbox" id="@environment" 
+                           @(Model.Announcement.Environments.Contains(environment) ? "checked" : string.Empty) />
+                    <label class="input-field" for="@environment">@environment</label>
                 </div>
             }
         </div>
 
         <div class="row">
             <div class="col s12"><label class="input-field">@AnnouncementResources.Sysmtems</label></div>
-            @foreach (var system in Model.Systems)
+            @foreach (var system in AppSettings.AnnouncementConfig.Systems)
             {
                 <div class="col s2">
-                    <input name="group-systems" type="checkbox" id="@system.Text" @(system.Selected ? "checked" : string.Empty) />
-                    <label class="input-field" for="@system.Text">@system.Text</label>
+                    <input name="group-systems" type="checkbox" id="@system" 
+                           @(Model.Announcement.Systems.Contains(system) ? "checked" : string.Empty) />
+                    <label class="input-field" for="@system">@system</label>
                 </div>
             }
 

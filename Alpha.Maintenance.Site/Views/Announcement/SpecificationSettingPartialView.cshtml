@@ -102,17 +102,15 @@
 @helper RenderSpecDll(ISpecification<IParam> specification, bool isShowSpec)
 {
     <select id="dll-specification-value" multiple data-specificationId="@specification.Id">
-        @if(specification.Value == null)
-        {
-
-        }
-
         @foreach (var userLevel in AppSettings.AnnouncementConfig.Levels)
         {
+            if (specification.Value == null)
+            {
+                specification = new UserLevelSpecification(new List<byte> { 2 });
+            }
+
             <option value="@userLevel.Id"
-                    @(isShowSpec && specification.Value != null && specification.Value.Contains((byte)userLevel.Id) ? "selected" : string.Empty)>
-                @userLevel.Name
-            </option>
+            @(specification.Value.Contains((byte)userLevel.Id) ? "selected" : string.Empty)>@userLevel.Name</option>
         }
     </select>
 }
@@ -120,7 +118,7 @@
 @helper RenderSpecTxt(ISpecification<IParam> specification, bool isShowSpec)
 {
     <input type="text" id="txt-specification-value"
-           placeholder="Input Value"
+           placeholder="@AnnouncementResources.InputValue"
            value="@(isShowSpec ? string.Join(",", specification.Value?? string.Empty) : string.Empty)"
            data-specificationId="@specification.Id" />
 }

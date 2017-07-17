@@ -6,6 +6,7 @@ var ComposedAnnouncement = (function () {
             _this.$('ul.tabs').tabs();
             _this.$('select').material_select();
             _this.$("#content-group").removeClass("hiden");
+            _this.$(".language-tab").first().find("a").click();
             _this.cacheDom();
             _this.bindEvent();
             _this.correctFirstSpec();
@@ -30,7 +31,6 @@ var ComposedAnnouncement = (function () {
         };
         this.bindEvent = function () {
             var self = _this;
-            _this.bindingContents();
             _this.$(_this.dllChooseSpecification).on('change', function () {
                 self.onChangeSpecOption();
             });
@@ -50,15 +50,6 @@ var ComposedAnnouncement = (function () {
                 if (self.$(this).val().trim() != '') {
                     self.$('.card-panel').addClass('hiden');
                 }
-            });
-        };
-        this.bindingContents = function () {
-            var self = _this;
-            _this.$(".language-content").map(function (index, domElement) {
-                var $textarea = self.$(this).find('textarea');
-                var contentText = $textarea.data("content");
-                var decodecontext = contentText;
-                $textarea.html(decodecontext);
             });
         };
         this.onChangeSpecOption = function () {

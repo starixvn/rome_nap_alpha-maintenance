@@ -232,6 +232,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Input Value.
+        /// </summary>
+        public static string InputValue {
+            get {
+                return ResourceManager.GetString("InputValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Manage Announcements.
         /// </summary>
         public static string ManageAnnouncements {

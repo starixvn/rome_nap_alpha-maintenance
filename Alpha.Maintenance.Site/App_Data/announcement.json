@@ -9,15 +9,6 @@
     "IBCBet",
     "789"
   ],
-  "languages": [
-    "en-US",
-    "zh-CN",
-    "zh-TW",
-    "ja-JP",
-    "ko-KR",
-    "th-TH",
-    "vi-VN"
-  ],
   "specifications": [
     "Currencies",
     "User Ids",

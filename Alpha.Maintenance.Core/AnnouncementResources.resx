@@ -174,6 +174,9 @@
   <data name="HeaderPopup" xml:space="preserve">
     <value>Header Popup</value>
   </data>
+  <data name="InputValue" xml:space="preserve">
+    <value>Input Value</value>
+  </data>
   <data name="ManageAnnouncements" xml:space="preserve">
     <value>Manage Announcements</value>
   </data>

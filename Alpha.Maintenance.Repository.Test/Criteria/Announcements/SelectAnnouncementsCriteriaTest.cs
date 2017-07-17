@@ -8,7 +8,7 @@
     public class SelectAnnouncementsCriteriaTest
     {
         [Test]
-        public void GetSettingKey_ActionIsCreateAlways_ReturnsCorrectSettingKey()
+        public void GetSettingKey_ActionIsSelectAlways_ReturnsCorrectSettingKey()
         {
             // Arrange
             var selectAnnouncementsCriteriaTest = new SelectAnnouncementsCriteria();

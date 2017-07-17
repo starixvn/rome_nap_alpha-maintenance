@@ -72,31 +72,31 @@
         <thead class="persist-header">
             <tr>
                 <th>
-                    @AnnouncementResources.Code
-                </th>
-                <th>
                     @AnnouncementResources.Title
                 </th>
                 <th>
-                    @AnnouncementResources.Type
-                </th>
-                <th>
-                    @AnnouncementResources.Environments
-                </th>
-                <th>
-                    @AnnouncementResources.Sysmtems
+                    @AnnouncementResources.Code
                 </th>
                 <th>
                     @AnnouncementResources.Active
-                </th>
-                <th>
-                    @AnnouncementResources.Priority
                 </th>
                 <th>
                     @AnnouncementResources.FromDate
                 </th>
                 <th>
                     @AnnouncementResources.ToDate
+                </th>
+                <th>
+                    @AnnouncementResources.Environments
+                </th>
+                <th>
+                    @AnnouncementResources.Sysmtems
+                </th> 
+                <th>
+                    @AnnouncementResources.Priority
+                </th>
+                <th>
+                    @AnnouncementResources.Type
                 </th>
             </tr>
         </thead>
@@ -107,9 +107,6 @@
                 {
                     <tr>
                         <td>
-                            @announcement.Code
-                        </td>
-                        <td>
                             <a href="@Url.Action("ComposeMessage", "Announcement", new { Id = announcement.Id })"
                                class="tooltipped"
                                data-tooltip="@AnnouncementResources.Edit">
@@ -117,7 +114,17 @@
                             </a>
                         </td>
                         <td>
-                            @announcement.AnnouncementType
+                            @announcement.Code
+                        </td>
+                        <td>
+                            <input type="checkbox" id="@announcement.Id" checked="@announcement.IsActive" disabled />
+                            <label for="@announcement.Id"><!--c--></label>
+                        </td>
+                        <td>
+                            @announcement.FromDate.ToShortDateString()
+                        </td>
+                        <td>
+                            @announcement.ToDate.ToShortDateString()
                         </td>
                         <td>
                             @String.Join(", ", announcement.Environments.ToArray())
@@ -126,17 +133,10 @@
                             @String.Join(", ", announcement.Systems.ToArray())
                         </td>
                         <td>
-                            <input type="checkbox" id="@announcement.Id" checked="@announcement.IsActive" disabled />
-                            <label for="@announcement.Id"><!--c--></label>
-                        </td>
-                        <td>
                             @announcement.Ordinal
                         </td>
                         <td>
-                            @announcement.FromDate.ToShortDateString()
-                        </td>
-                        <td>
-                            @announcement.ToDate.ToShortDateString()
+                            @announcement.AnnouncementType
                         </td>
                     </tr>
                 }

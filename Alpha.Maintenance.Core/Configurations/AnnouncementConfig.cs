@@ -13,9 +13,6 @@
         [DataMember(Name = "systems")]
         public IEnumerable<string> Systems { get; set; }
 
-        [DataMember(Name = "languages")]
-        public IEnumerable<string> Languages { get; set; }
-
         [DataMember(Name = "levels")]
         public IEnumerable<UserLevel> Levels { get; set; }
 

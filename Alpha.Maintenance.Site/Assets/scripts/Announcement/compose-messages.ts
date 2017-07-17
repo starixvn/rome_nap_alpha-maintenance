@@ -50,6 +50,7 @@ class ComposedAnnouncement {
         this.$('ul.tabs').tabs();
         this.$('select').material_select();
         this.$("#content-group").removeClass("hiden");
+        this.$(".language-tab").first().find("a").click();
         this.cacheDom();
         this.bindEvent();
         this.correctFirstSpec();
@@ -78,8 +79,6 @@ class ComposedAnnouncement {
 
     bindEvent = () => {
         let self = this;
-
-        this.bindingContents();
        
         this.$(this.dllChooseSpecification).on('change', function () {
             self.onChangeSpecOption();
@@ -105,16 +104,6 @@ class ComposedAnnouncement {
             if (self.$(this).val().trim() != '') {
                 self.$('.card-panel').addClass('hiden');
             }
-        });
-    };
-
-    bindingContents = () => {
-        let self = this;
-        this.$(".language-content").map(function (index, domElement) {
-            let $textarea = self.$(this).find('textarea')
-            let contentText = $textarea.data("content");
-            let decodecontext = contentText;
-            $textarea.html(decodecontext);
         });
     };
 

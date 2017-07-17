@@ -16,7 +16,7 @@
 
     public class AnnouncementServiceImpl : AnnouncementService
     {
-        private readonly BaseAnnouncementService internalAnnouncementService;
+        private readonly BaseAnnouncementService baseAnnouncementService;
         private readonly AnnouncementRepository announcementRepository;
 
         private readonly IDictionary<string, Func<dynamic>> getValueRangeFunction;
@@ -25,24 +25,29 @@
 
         private IEnumerable<string> offeredSpecifications { get; set; }
 
+        public AnnouncementServiceImpl()
+            : this(null, null, null, null, null)
+        {
+        }
+
         public AnnouncementServiceImpl(
             SpecificationFactory specificationFactory = null,
             AnnouncementRepository announcementRepository = null,
-            BaseAnnouncementService internalAnnouncementService = null,
+            BaseAnnouncementService baseAnnouncementService = null,
             IEnumerable<string> languages = null,
             IEnumerable<string> offeredSpecifications = null)
         {
             this.announcementRepository = announcementRepository ?? new AnnouncementRepositoryImpl();
-            this.internalAnnouncementService = internalAnnouncementService ?? new BaseAnnouncementServiceImpl(specificationFactory);
+            this.baseAnnouncementService = baseAnnouncementService ?? new BaseAnnouncementServiceImpl(specificationFactory);
 
             this.languages = languages ?? new List<string>{
                                                             "en-US",
+                                                            "vi-VN",
+                                                            "th-TH",
                                                             "zh-CN",
                                                             "zh-TW",
-                                                            "ja-JP",
                                                             "ko-KR",
-                                                            "th-TH",
-                                                            "vi-VN"
+                                                            "ja-JP"
                                                         };
 
             this.offeredSpecifications = offeredSpecifications ?? AppSettings.AnnouncementConfig.OfferedSpecifications;
@@ -55,9 +60,9 @@
 
         public IEnumerable<ISpecification<IParam>> GetOfferedSpecifications()
         {
-            var factorySpecs = internalAnnouncementService.GetFactorySpecifications();
+            var factorySpecs = baseAnnouncementService.GetFactorySpecifications();
 
-            var offeredSpecs = internalAnnouncementService.FiterOfferedSpecs(factorySpecs, offeredSpecifications);
+            var offeredSpecs = baseAnnouncementService.FiterOfferedSpecs(factorySpecs, offeredSpecifications);
 
             foreach (var spec in offeredSpecs)
             {
@@ -100,7 +105,7 @@
         public Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria)
         {
             var announcement = announcementRepository.GetAnnouncementById(criteria);
-            announcement.Contents = internalAnnouncementService.CorrectContent(announcement.Contents, languages);
+            announcement.Contents = baseAnnouncementService.CorrectContent(announcement.Contents, languages);
 
             return announcement;
         }

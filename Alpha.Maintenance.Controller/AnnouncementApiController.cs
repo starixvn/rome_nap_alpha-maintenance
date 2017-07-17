@@ -1,10 +1,10 @@
 ﻿namespace Alpha.Maintenance.Controller
 {
+    using System;
     using System.Collections.Generic;
     using System.Web.Http;
     using Announcements.Models;
     using Repository.Criteria.Announcements;
-    using Requests;
     using Service.Impl.Announcement;
     using Service.Interface.Announcement;
     using Web;
@@ -25,13 +25,13 @@
         }
 
         [HttpPost]
-        public IEnumerable<Announcement> GetAnnouncements(QueryAnnouncementRequest request)
+        public IEnumerable<Announcement> GetAnnouncements(string environment, string system)
                 => announcementService.GetAnnouncements(new SelectAnnouncementsCriteria
                 {
-                    FromDate = request.Date,
-                    ToDate = request.Date,
-                    System = request.System,
-                    Environment = request.Environment,
+                    FromDate = DateTime.Today,
+                    ToDate = DateTime.Today,
+                    System = system,
+                    Environment = environment,
                     IsActive = true
                 });
     }

@@ -5,9 +5,13 @@
     using Announcements.Models;
     using Core.Model;
     using Fanex.NAP.Core.Business;
+    using Fanex.NAP.Core.Service.Interface;
     using Fanex.NAP.Core.Web.Attribute;
+    using Fanex.NAP.Core.Web.Context;
+    using Fanex.NAP.Core.Web.Session;
     using Newtonsoft.Json;
     using Repository.Criteria.Announcements;
+    using Request;
     using Service.Impl.Announcement;
     using Service.Interface.Announcement;
     using ViewModels;
@@ -16,13 +20,27 @@
     public class AnnouncementController : BaseController
     {
         private readonly AnnouncementService announcementService;
-       
+
         public AnnouncementController()
-            : this(null)
+            : this(null, null, null, null, null, null, null, null)
         {
         }
 
-        public AnnouncementController(AnnouncementService announcementService)
+        public AnnouncementController(AnnouncementService announcementService,
+            ICurrentContext currentContext,
+            ICurrentSession currentSession,
+            IUserService userService, 
+            bool? enableReCheckIn,
+            int? showLogTimeZone, 
+            bool? issiteLogin, 
+            int? siteId)
+            : base(currentContext, 
+                  currentSession, 
+                  userService, 
+                  enableReCheckIn, 
+                  showLogTimeZone, 
+                  issiteLogin, 
+                  siteId)
         {
             this.announcementService = announcementService ?? new AnnouncementServiceImpl();
         }
@@ -41,15 +59,15 @@
 
         [HttpPost]
         [NapAuth(FunctionKey = SiteFunctionKeys.AnnouncementManagement, Policy = Constant.Policy.Host)]
-        public JsonResult InsertOrUpdateAnnouncement(InsertAnnouncementViewModel insertAnnouncementViewModel)
+        public JsonResult InsertOrUpdateAnnouncement(InsertOrUpdateAnnouncementDemand demand)
         {
             var result = JsonConvert.DeserializeObject<Announcement>(
-                                                    insertAnnouncementViewModel.Announcement,
+                                                    demand.Announcement,
                                                     new SpecificationConverter());
 
             return new JsonNetResult
             {
-                Data = announcementService.InsertOrUpdateAnnouncement(result, insertAnnouncementViewModel.Action),
+                Data = announcementService.InsertOrUpdateAnnouncement(result, demand.Action),
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
@@ -64,12 +82,10 @@
                 announcementService.GetDefaultAnnouncement() : 
                 announcementService.GetAnnouncementById(criteria);
 
-            var viewModel = new ComposeAnnouncementViewModel(
-                                model, 
-                                criteria.Id.Equals(0) ? ActionType.Create : ActionType.Update, 
-                                offeredSpecifications);
-
-            return View(viewModel);
+            return View(new ComposeAnnouncementViewModel(
+                                model,
+                                criteria.Id.Equals(0) ? ActionType.Create : ActionType.Update,
+                                offeredSpecifications));
         }
     }
 }
