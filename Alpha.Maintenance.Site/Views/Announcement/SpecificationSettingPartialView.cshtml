@@ -45,10 +45,10 @@
 
     <div class="row">
         <div class="col s1" name="btnPrev" id="btnPrev">
-            <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" value="@AnnouncementResources.Prev" />
+            <input class="btn btn-info  waves-effect waves-light btn btn-create" type="button" value="@AnnouncementResources.Prev" />
         </div>
         <div class="col s2">
-            <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnSave" id="btnSaveStep2" value="@AnnouncementResources.Save" />
+            <a class="btn btn-info  waves-effect waves-light btn btn-primary modal-trigger" href="#cofirmMessages">@AnnouncementResources.Save</a>
         </div>
         <input type="hidden" id="actionType" value="@Model.ActionType">
         <input type="hidden" id="AnnouncementId" value="@Model.Announcement.Id">

@@ -60,7 +60,7 @@
             <div class="col button-block">
                 <input class="waves-effect waves-light btn btn-primary" type="submit" value="@ViewResource.Submit" id="submit" />
                 <a href="@Url.Action("ComposeMessage", "Announcement")">
-                    <input class="waves-effect waves-light btn btn-primary" type="button" value="@AnnouncementResources.Add" id="add" />
+                    <input class="waves-effect waves-light btn btn-create" type="button" value="@AnnouncementResources.Add" id="add" />
                 </a>
             </div>
         </div>
@@ -153,5 +153,5 @@
 </div>
 
 @section Foot {
-    @Scripts.Render("~/scripts/manage-announcements")
+    @Scripts.Render("~/Assets/bundles/manage-announcements.js")
 }

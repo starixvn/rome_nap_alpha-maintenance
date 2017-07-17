@@ -150,6 +150,9 @@
   <data name="ComposeMessage" xml:space="preserve">
     <value>Compose message</value>
   </data>
+  <data name="ConfirmMessage" xml:space="preserve">
+    <value>Are you sure you want to save this announcement ?</value>
+  </data>
   <data name="Content" xml:space="preserve">
     <value>Content</value>
   </data>
@@ -182,6 +185,9 @@
   </data>
   <data name="Next" xml:space="preserve">
     <value>NEXT</value>
+  </data>
+  <data name="NO" xml:space="preserve">
+    <value>NO</value>
   </data>
   <data name="NoInformation" xml:space="preserve">
     <value>There are no informations</value>
@@ -218,5 +224,8 @@
   </data>
   <data name="Value" xml:space="preserve">
     <value>Value</value>
+  </data>
+  <data name="YES" xml:space="preserve">
+    <value>YES</value>
   </data>
 </root>

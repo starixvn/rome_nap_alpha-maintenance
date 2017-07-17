@@ -331,11 +331,10 @@
       <DependentUpon>loginNew.css</DependentUpon>
     </Content>
     <Content Include="Assets\bundles\compose-messages.js" />
-    <Content Include="Assets\bundles\compose-messages.min.js">
-      <DependentUpon>compose-messages.js</DependentUpon>
+    <Content Include="Assets\bundles\manage-announcements.js" />
+    <Content Include="Assets\bundles\manage-announcements.min.js">
+      <DependentUpon>manage-announcements.js</DependentUpon>
     </Content>
-    <Content Include="Assets\scripts\lib\base64\base64.js" />
-    <Content Include="Assets\scripts\lib\base64\utf8.js" />
     <Content Include="Assets\scripts\lib\jquery\jquery-2.2.3.min.js" />
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te.min.css" />
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te-1.4.0.min.js" />

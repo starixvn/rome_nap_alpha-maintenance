@@ -31,6 +31,17 @@
 <input type="hidden" id="actionType" value="@Model.ActionType">
 <input type="hidden" id="AnnouncementId" value="@Model.Announcement.Id">
 
+<div id="cofirmMessages" class="modal">
+    <div class="modal-content">
+        <h4>@AnnouncementResources.ConfirmMessage</h4>
+    </div>
+    <div class="modal-footer row">
+        <div class="col s10 "><a id="disagree" class="waves-effect waves-light btn btn-info btn-create modal-action modal-close">@AnnouncementResources.NO</a></div>
+        <div class="col s2"><a id="agree" class="waves-effect waves-light btn btn-info btn-primary modal-action modal-close">@AnnouncementResources.YES</a></div>
+        
+    </div>
+</div>
+
 @section Foot {
-    @Scripts.Render("~/scripts/compose-announcement")
+    @Scripts.Render("~/Assets/bundles/compose-messages.js")
 }

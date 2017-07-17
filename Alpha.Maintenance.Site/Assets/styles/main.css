@@ -144,6 +144,12 @@ main {
 .tabs .indicator {
   background-color: #4060a4 !important; }
 
+.modal {
+  width: 30% !important; }
+
+.font-size-15px {
+  font-size: 15px; }
+
 .side-nav {
   width: 252px;
   box-shadow: none; }

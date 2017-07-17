@@ -1,7 +1,7 @@
 ﻿@model ComposeAnnouncementViewModel
 
 @{ 
-    var maxOrder = 30;
+    var maxOrder = 31;
 }
 
 <div id="display-information-settings" class="row">
@@ -102,10 +102,10 @@
         </div>
         <div class="row margin-top-200px">
             <div class="col s2">
-                <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnNext" id="btnNext" value="@AnnouncementResources.Next" />
+                <input class="btn btn-info  waves-effect waves-light btn btn-create" type="button" name="btnNext" id="btnNext" value="@AnnouncementResources.Next" />
             </div>
             <div class="col s10">
-                <input class="btn btn-info  waves-effect waves-light btn btn-primary" type="button" name="btnSave" id="btnSaveStep1" value="@AnnouncementResources.Save" />
+                <a class="btn btn-info  waves-effect waves-light btn btn-primary modal-trigger" href="#cofirmMessages">@AnnouncementResources.Save</a>
             </div>
         </div>
     </div>

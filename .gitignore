@@ -29,5 +29,13 @@ _ReSharper*/
 $tf*/
 .vs/config/applicationhost.config
 
+*.min.js
+bundles
+*.css
+*.js.map
+
+*/**/bundles/**/*.js
+*/**/assets/scripts/**/*.js
+
 /packages/*
 .vs/*

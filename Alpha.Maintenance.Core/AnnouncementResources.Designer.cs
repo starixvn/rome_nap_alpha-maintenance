@@ -160,6 +160,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to save this announcement ?.
+        /// </summary>
+        public static string ConfirmMessage {
+            get {
+                return ResourceManager.GetString("ConfirmMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Content.
         /// </summary>
         public static string Content {
@@ -255,6 +264,15 @@ namespace Alpha.Maintenance.Core {
         public static string Next {
             get {
                 return ResourceManager.GetString("Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NO.
+        /// </summary>
+        public static string NO {
+            get {
+                return ResourceManager.GetString("NO", resourceCulture);
             }
         }
         
@@ -363,6 +381,15 @@ namespace Alpha.Maintenance.Core {
         public static string Value {
             get {
                 return ResourceManager.GetString("Value", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to YES.
+        /// </summary>
+        public static string YES {
+            get {
+                return ResourceManager.GetString("YES", resourceCulture);
             }
         }
     }

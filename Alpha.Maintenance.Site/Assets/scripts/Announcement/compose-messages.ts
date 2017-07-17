@@ -5,13 +5,13 @@ interface JQuery {
     material_select(option: any): void;
     jqte(): void;
     jqteVal(text: string): void;
+    modal(): void;
+    closeModal(): void; 
 }
 
 interface Window {
     NAP: any;
     JSON: any;
-    utf8: any;
-    base64: any;
 }
 
 class ComposedAnnouncement {
@@ -25,25 +25,25 @@ class ComposedAnnouncement {
     $specSettingTab: JQuery;
     $specInformationTab: JQuery;
     $numberOfSpecs: JQuery;
+    $btnAgree: JQuery;
+    $confirmMessage: JQuery;
 
     dllChooseSpecification: string;
-    dllConjunctionOperator: string;
-    btnSave: string;
+    dllConjunctionOperator: string; 
     visibleSpecDivs: string;   
     txtSpecificationValue: string;
     userLevelsSpecificationValue: string;
+    warningMessage: string;
+    createSuccessMessage: string;
+    updateSuccessMessage: string;
 
     $nap: any;
     $JSON: any;
-    $utf8: any;
-    $base64: any;
 
-    constructor($: JQueryStatic, NAP: any, JSON: any, utf8: any, base64: any) {
+    constructor($: JQueryStatic, NAP: any, JSON: any) {
         this.$ = $;
         this.$nap = NAP;
         this.$JSON = JSON;
-        this.$utf8 = utf8;
-        this.$base64 = base64;
     }
 
     init = () => {
@@ -56,6 +56,7 @@ class ComposedAnnouncement {
         this.correctFirstSpec();
         this.initSpecOptionsDll();
         this.$('.jqte-test').jqte();
+        this.$('.modal').modal();
     };
 
     cacheDom = () => {
@@ -68,13 +69,18 @@ class ComposedAnnouncement {
         this.$specInformationTab = this.$("#tab-information-settings");
         this.$numberOfSpecs = this.$('#number-of-specifications');
         this.$txttitle = this.$('#txtcode');
+        this.$btnAgree = this.$("#agree");
+        this.$confirmMessage = this.$("#cofirmMessages");
 
         this.dllChooseSpecification = "#dll-choose-specification";
         this.visibleSpecDivs = "div[name='div-specification']:not(.hiden)";
         this.dllConjunctionOperator = "dll-specification-conjunctionOperator";
-        this.btnSave = "INPUT[name='btnSave']";
         this.userLevelsSpecificationValue = '#dll-specification-value';
         this.txtSpecificationValue = '#txt-specification-value';
+
+        this.warningMessage = "Please input announcement title !";
+        this.createSuccessMessage = "Created successfully !";
+        this.updateSuccessMessage = "Updated successfully !";
     };
 
     bindEvent = () => {
@@ -88,7 +94,8 @@ class ComposedAnnouncement {
             self.deleteSpec(this);
         });
 
-        this.$(this.btnSave).on('click', function () {
+        this.$(this.$btnAgree).on('click', function () {
+            self.$(self.$confirmMessage).closeModal();
             self.submit();
         });
 
@@ -173,7 +180,7 @@ class ComposedAnnouncement {
             this.doUpdate(announcement);
         }
         else {
-            this.showWarningMessage("Please input announcement title !");
+            this.showWarningMessage(this.warningMessage);
         }
     };
 
@@ -200,7 +207,7 @@ class ComposedAnnouncement {
             },
             success: function (result) {
                 let actionType = self.$('#actionType').val();
-                let message = actionType == 'Create' ? 'Created successfully !' : 'Updated successfully !';
+                let message = actionType == 'Create' ? self.createSuccessMessage : self.updateSuccessMessage;
                 self.$('.card-panel').html(message).addClass("green green-text").removeClass('red red-text hiden');
                 setTimeout(() => {
                     self.refreshPage(actionType, announcement.id);
@@ -274,8 +281,8 @@ class ComposedAnnouncement {
         this.$(this.visibleSpecDivs).map(function (index, domElement) {
             let jsonObject = self.$(domElement).data("jsonobject");
 
-            jsonObject.ConjunctionOperator = self.getConjunctionOperatorValue(domElement);
-            jsonObject.SpecificationOperator = self.getSpecificationOperatorValue(domElement);
+            jsonObject.ConjunctionOperator = self.getOperatorValueById(domElement, "#dll-specification-conjunctionOperator");
+            jsonObject.SpecificationOperator = self.getOperatorValueById(domElement, "#dll-specification-specificationOperator");
 
             if (self.$(domElement).find(self.txtSpecificationValue).length > 0) {
                 let sites = self.$(domElement).find(self.txtSpecificationValue).val();
@@ -296,18 +303,13 @@ class ComposedAnnouncement {
         return value.match(/(?:\\,|[^,])+/g);
     };
 
-    getConjunctionOperatorValue = (domElement: any) => {
-        let object = this.$(domElement).find("#dll-specification-conjunctionOperator");
-        return this.$(object).find('option:selected').val();
-    };
-
-    getSpecificationOperatorValue = (domElement: any) => {
-        let object = this.$(domElement).find("#dll-specification-specificationOperator");
-        return this.$(object).find('option:selected').val();
+    getOperatorValueById = (domElement: any, id: string) => {
+        let operator = this.$(domElement).find(id);
+        return this.$(operator).find('option:selected').val();
     };
 }
 
-const composedAnnouncement = new ComposedAnnouncement($, window.NAP, window.JSON, window.utf8, window.base64);
+const composedAnnouncement = new ComposedAnnouncement($, window.NAP, window.JSON);
 
 $(() => {
     composedAnnouncement.init();
