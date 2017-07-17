@@ -328,12 +328,27 @@
       <DependentUpon>loginNew.scss</DependentUpon>
     </Content>
     <Content Include="Areas\UserLogin\themes\loginNew.min.css">
-      <DependentUpon>loginNew.css</DependentUpon>
+      <DependentUpon>loginNew.scss</DependentUpon>
     </Content>
     <Content Include="Assets\bundles\compose-messages.js" />
+    <Content Include="Assets\bundles\compose-messages.min.js">
+      <DependentUpon>compose-messages.js</DependentUpon>
+    </Content>
     <Content Include="Assets\bundles\manage-announcements.js" />
     <Content Include="Assets\bundles\manage-announcements.min.js">
       <DependentUpon>manage-announcements.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\scripts\Announcement\compose-messages.js">
+      <DependentUpon>compose-messages.ts</DependentUpon>
+    </Content>
+    <Content Include="Assets\scripts\Announcement\compose-messages.js.map">
+      <DependentUpon>compose-messages.ts</DependentUpon>
+    </Content>
+    <Content Include="Assets\scripts\Announcement\manage-announcements.js">
+      <DependentUpon>manage-announcements.ts</DependentUpon>
+    </Content>
+    <Content Include="Assets\scripts\Announcement\manage-announcements.js.map">
+      <DependentUpon>manage-announcements.ts</DependentUpon>
     </Content>
     <Content Include="Assets\scripts\lib\jquery\jquery-2.2.3.min.js" />
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te.min.css" />
@@ -347,7 +362,7 @@
       <DependentUpon>main.scss</DependentUpon>
     </Content>
     <Content Include="Assets\styles\main.min.css">
-      <DependentUpon>main.css</DependentUpon>
+      <DependentUpon>main.scss</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
     <Content Include="Assets\images\calendar.gif" />
@@ -431,12 +446,6 @@
     <Content Include="Assets\scripts\lib\Select2\select2.css" />
     <Content Include="Assets\scripts\lib\Select2\select2.js" />
     <Content Include="Assets\scripts\lib\Select2\select2.png" />
-    <Content Include="Assets\styles\pages\manage.css">
-      <DependentUpon>manage.scss</DependentUpon>
-    </Content>
-    <Content Include="Assets\styles\pages\manage.min.css">
-      <DependentUpon>manage.css</DependentUpon>
-    </Content>
     <Content Include="Assets\styles\vendors\icon\fonts\mSite.svg" />
     <Content Include="Assets\styles\vendors\icon\style.css" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -564,6 +573,7 @@
     <Content Include="Views\Announcement\ManageAnnouncements.cshtml" />
     <Content Include="Views\Announcement\DisplaySettingPartialView.cshtml" />
     <Content Include="Views\Announcement\SpecificationSettingPartialView.cshtml" />
+    <None Include="Properties\PublishProfiles\sfgs.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\scripts\Announcement\compose-messages.ts" />
@@ -618,4 +628,14 @@
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
     <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+      cd $(ProjectDir)
+      cd ..
+      cd build
+      BuildTask.Release
+      if not exist "$(WebProjectOutputDir)\bin\Roslyn" md "$(WebProjectOutputDir)\bin\Roslyn"
+      start /MIN xcopy /s /y /R "$(OutDir)roslyn\*.*" "$(WebProjectOutputDir)\bin\Roslyn"
+</PostBuildEvent>
+  </PropertyGroup>
 </Project>
