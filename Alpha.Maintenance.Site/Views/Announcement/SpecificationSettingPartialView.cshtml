@@ -67,7 +67,8 @@
             <div>@specification.Name</div>
         </div>
         <div class="col s2 input-field">
-            @if (specification.GetType() != typeof(NotSyncedCasinoSpecification))
+            @if (specification.GetType() != typeof(NotSyncedCasinoSpecification)
+              && specification.GetType() != typeof(EnableYesterdayTransferSpecification))
             {
                 @Html.EnumDropDownList("dll-specification-specificationOperator", specification.SpecificationOperator,
                                    new Dictionary<string, object>() { { "data-parentId", specification.Id } })
@@ -110,7 +111,9 @@
             }
 
             <option value="@userLevel.Id"
-            @(specification.Value.Contains((byte)userLevel.Id) ? "selected" : string.Empty)>@userLevel.Name</option>
+                    @(specification.Value.Contains((byte)userLevel.Id) ? "selected" : string.Empty)>
+                @userLevel.Name
+                </option>
         }
     </select>
 }

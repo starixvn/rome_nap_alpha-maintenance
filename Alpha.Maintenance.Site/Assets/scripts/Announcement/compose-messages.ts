@@ -6,7 +6,9 @@ interface JQuery {
     jqte(): void;
     jqteVal(text: string): void;
     modal(): void;
-    closeModal(): void; 
+    closeModal(): void;
+    sort(option: any): void;
+    remove(): void;
 }
 
 interface Window {
@@ -141,6 +143,15 @@ class ComposedAnnouncement {
     };
 
     initSpecOptionsDll = () => {
+        let self = this;
+        var options = this.$(this.dllChooseSpecification + " option"); 
+        options.detach().sort(function (a, b) {
+            var at = self.$(a).text();
+            var bt = self.$(b).text();
+            return (at > bt) ? 1 : ((at < bt) ? -1 : 0);
+        });
+        options.appendTo(this.dllChooseSpecification);         
+
         this.$(this.dllChooseSpecification).material_select('destroy');
         this.$(this.dllChooseSpecification).val("").material_select();
     }

@@ -124,7 +124,7 @@
                                LanguageKey = language,
                                Text = string.Empty
                            }),
-               IsActive = true,
+               IsActive = false,
                Specifications = new List<ISpecification<IParam>>()
            };
     }
