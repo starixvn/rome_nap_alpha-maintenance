@@ -1,0 +1,33 @@
+{
+  "environments": [
+    "Staging",
+    "PRO"
+  ],
+  "systems": [
+    "IBCBet",
+    "789"
+  ],
+  "specifications": [
+    "Currencies",
+    "User Ids",
+    "User Level",
+    "Sites",
+    "Products",
+    "Not Synced Casino",
+    "Enable Yesterday Transfer"
+  ],
+  "levels": [
+    {
+      "Id": 2,
+      "Name": "Agent"
+    },
+    {
+      "Id": 3,
+      "Name": "Master"
+    },
+    {
+      "Id": 4,
+      "Name": "Super"
+    }
+  ]
+}

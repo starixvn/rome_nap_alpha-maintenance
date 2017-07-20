@@ -78,6 +78,9 @@
                     @AnnouncementResources.Code
                 </th>
                 <th>
+                    @AnnouncementResources.Priority
+                </th>
+                <th>
                     @AnnouncementResources.Active
                 </th>
                 <th>
@@ -92,9 +95,6 @@
                 <th>
                     @AnnouncementResources.Sysmtems
                 </th> 
-                <th>
-                    @AnnouncementResources.Priority
-                </th>
                 <th>
                     @AnnouncementResources.Type
                 </th>
@@ -117,6 +117,9 @@
                             @announcement.Code
                         </td>
                         <td>
+                            @announcement.Ordinal
+                        </td>
+                        <td>
                             <input type="checkbox" id="@announcement.Id" checked="@announcement.IsActive" disabled />
                             <label for="@announcement.Id"><!--c--></label>
                         </td>
@@ -131,9 +134,6 @@
                         </td>
                         <td>
                             @String.Join(", ", announcement.Systems.ToArray())
-                        </td>
-                        <td>
-                            @announcement.Ordinal
                         </td>
                         <td>
                             @announcement.AnnouncementType

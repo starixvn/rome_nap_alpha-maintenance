@@ -76,7 +76,7 @@
         }
 
         public IEnumerable<Announcement> GetAnnouncements(SelectAnnouncementsCriteria criteria)
-                => announcementRepository.GetAnnouncements(criteria);
+                => announcementRepository.GetAnnouncements(criteria).OrderBy(announcement => announcement.Ordinal);
 
         public Result InsertOrUpdateAnnouncement(Announcement announcement, ActionType Action)
         {

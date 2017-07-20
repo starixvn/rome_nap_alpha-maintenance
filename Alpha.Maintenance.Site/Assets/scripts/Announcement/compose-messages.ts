@@ -247,7 +247,7 @@ class ComposedAnnouncement {
             environments: self.getEnvironments(),
             fromdate: self.$('#FromDate').val(),
             todate: self.$('#ToDate').val(),
-            order: self.$('#group-order option:selected').val(),
+            ordinal: self.$('#group-order option:selected').val(),
             systems: self.getSystems(),
             specifications: self.getSpecs()
         };
