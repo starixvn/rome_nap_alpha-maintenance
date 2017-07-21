@@ -4,7 +4,6 @@
     using Announcements.Models;
     using Announcements.Specs;
     using Controller;
-    using Core.Model;
     using Fanex.NAP.Core.Service.Interface;
     using Fanex.NAP.Core.Web.Context;
     using Fanex.NAP.Core.Web.Session;
@@ -169,7 +168,7 @@
         }
 
         [Test]
-        public void ComposeMessage_ActionIsCreate_CallGGetAnnouncementByIdService()
+        public void ComposeMessage_ActionIsCreate_CallGetAnnouncementByIdService()
         {
             // Arrange
             var selectAnnouncementByIdCriteria = new SelectAnnouncementByIdCriteria

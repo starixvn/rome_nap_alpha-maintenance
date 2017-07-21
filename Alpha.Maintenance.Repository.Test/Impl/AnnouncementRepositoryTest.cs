@@ -142,6 +142,7 @@
                 Title = "07032017 - Example",
                 IsActive = false,
                 AnnouncementType = AnnouncementType.HeaderPopup,
+                CreatedDate = new DateTime(2017, 6, 3),
                 FromDate = new DateTime(2017, 6, 3),
                 ToDate = new DateTime(2017, 7, 20),
                 Ordinal = 4,

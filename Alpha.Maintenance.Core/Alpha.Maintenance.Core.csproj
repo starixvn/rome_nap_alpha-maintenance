@@ -40,7 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Alpha.Announcements, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Alpha.Announcements.1.0.0.1-Renovation-05\lib\net40\Alpha.Announcements.dll</HintPath>
+      <HintPath>..\packages\Alpha.Announcements.1.0.0.1-Renovation-06\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MvcPager, Version=1.5.0.28157, Culture=neutral, processorArchitecture=MSIL">
@@ -71,7 +71,6 @@
     <Compile Include="Configurations\AppSettings.cs" />
     <Compile Include="Extension\Extension.cs" />
     <Compile Include="Helpers\PagerList.cs" />
-    <Compile Include="Model\ActionType.cs" />
     <Compile Include="Model\Log.cs" />
     <Compile Include="Model\LogCategory.cs" />
     <Compile Include="Model\Machine.cs" />

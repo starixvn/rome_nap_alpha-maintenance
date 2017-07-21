@@ -5,6 +5,7 @@
     using Announcements.Models;
     using Announcements.Specs;
     using Core.Model;
+    using Repository.Criteria.Announcements;
 
     public class ComposeAnnouncementViewModel
     {

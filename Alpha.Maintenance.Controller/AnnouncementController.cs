@@ -3,7 +3,6 @@
     using System.Web.Mvc;
     using Announcements.Client.Helpers;
     using Announcements.Models;
-    using Core.Model;
     using Fanex.NAP.Core.Business;
     using Fanex.NAP.Core.Service.Interface;
     using Fanex.NAP.Core.Web.Attribute;

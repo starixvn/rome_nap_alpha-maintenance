@@ -178,6 +178,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Created Date.
+        /// </summary>
+        public static string CreatedDate {
+            get {
+                return ResourceManager.GetString("CreatedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Criteria cannot be null.
         /// </summary>
         public static string CriteriaCannotBeNull {
@@ -219,6 +228,15 @@ namespace Alpha.Maintenance.Core {
         public static string Environments {
             get {
                 return ResourceManager.GetString("Environments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filter By.
+        /// </summary>
+        public static string FilterBy {
+            get {
+                return ResourceManager.GetString("FilterBy", resourceCulture);
             }
         }
         
@@ -331,11 +349,11 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sysmtems.
+        ///   Looks up a localized string similar to Systems.
         /// </summary>
-        public static string Sysmtems {
+        public static string Systems {
             get {
-                return ResourceManager.GetString("Sysmtems", resourceCulture);
+                return ResourceManager.GetString("Systems", resourceCulture);
             }
         }
         

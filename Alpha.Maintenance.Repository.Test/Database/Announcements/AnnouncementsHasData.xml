@@ -6,6 +6,7 @@
     <Title>07032017 - Example</Title>
     <IsActive>False</IsActive>
     <AnnouncementType>2</AnnouncementType>
+    <CreatedDate>2017-06-03</CreatedDate>
     <FromDate>2017-06-03</FromDate>
     <ToDate>2017-07-20</ToDate>
     <Environments>Local, UAT, Staging</Environments>

@@ -17,7 +17,7 @@
 
     public interface AnnouncementRepository
     {
-        IEnumerable<Announcement> GetAnnouncements(SelectAnnouncementsCriteria criteria);
+        IEnumerable<Announcement> GetAnnouncements(ICriteria criteria);
 
         Result InsertOrUpdateAnnouncement(ICriteria criteria);
 
@@ -30,7 +30,7 @@
         {
         }
 
-        public IEnumerable<Announcement> GetAnnouncements(SelectAnnouncementsCriteria criteria)
+        public IEnumerable<Announcement> GetAnnouncements(ICriteria criteria)
         {
             if (criteria == null)
             {
@@ -115,6 +115,7 @@
             {
                 AnnouncementType = (AnnouncementType)reader.ToInt("AnnouncementType"),
                 Code = reader.ToString("Code"),
+                CreatedDate = reader.ToDateTime("CreatedDate"),
                 Contents = JsonConvert.DeserializeObject<IEnumerable<MessageContent>>(plainText),
                 Ordinal = reader.ToInt("Ordinal"),
                 Environments = reader.ToString("Environments").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)

@@ -7,12 +7,15 @@
     [TestFixture]
     public class SelectAnnouncementsCriteriaTest
     {
-        [Test]
-        public void GetSettingKey_ActionIsSelectAlways_ReturnsCorrectSettingKey()
+        [TestCase(FilterBy.ExpiredDate, "Age_Announcements_Select")]
+        [TestCase(FilterBy.CreatedDate, "Age_Announcements_SelectByCreatedDate")]
+        public void GetSettingKey_ManageTypeIsValid_ReturnsCorrectSettingKey(
+            FilterBy manageType,
+            string expectedSettingKey)
         {
             // Arrange
             var selectAnnouncementsCriteriaTest = new SelectAnnouncementsCriteria();
-            var expectedSettingKey = "Age_Announcements_Select";
+            selectAnnouncementsCriteriaTest.FilterBy = manageType;
 
             // Act
             var actualSettingKey = selectAnnouncementsCriteriaTest.GetSettingKey();

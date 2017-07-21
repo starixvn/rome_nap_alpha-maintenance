@@ -1,8 +1,13 @@
 ﻿namespace Alpha.Maintenance.Repository.Criteria.Announcements
 {
     using System;
-    using Core.Model;
     using Fanex.Data.Repository;
+
+    public enum ActionType
+    {
+        Create = 1,
+        Update = 2
+    }
 
     public class InsertOrUpdateAnnouncementsCriteria : CriteriaBase
     {

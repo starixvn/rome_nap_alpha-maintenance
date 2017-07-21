@@ -111,9 +111,7 @@
             }
 
             <option value="@userLevel.Id"
-                    @(specification.Value.Contains((byte)userLevel.Id) ? "selected" : string.Empty)>
-                @userLevel.Name
-                </option>
+                    @(specification.Value.Contains((byte)userLevel.Id) ? "selected" : string.Empty)>@userLevel.Name</option>
         }
     </select>
 }

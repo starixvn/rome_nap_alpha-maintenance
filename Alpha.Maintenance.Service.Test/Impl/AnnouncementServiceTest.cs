@@ -6,7 +6,6 @@
     using Announcements.Models;
     using Announcements.Services;
     using Announcements.Specs;
-    using Core.Model;
     using Interface.Announcement;
     using KellermanSoftware.CompareNetObjects;
     using NSubstitute;

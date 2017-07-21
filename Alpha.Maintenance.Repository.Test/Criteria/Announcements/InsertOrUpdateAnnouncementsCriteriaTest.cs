@@ -1,20 +1,21 @@
 ﻿namespace Alpha.Maintenance.Repository.Test.Announcements
 {
-    using Criteria.Announcements;
-    using Core.Model;
-    using NUnit.Framework;
     using System;
+    using Criteria.Announcements;
+    using NUnit.Framework;
 
     [TestFixture]
     public class InsertOrUpdateAnnouncementsCriteriaTest
     {
-        [Test]
-        public void GetSettingKey_ActionIsCreateAlways_ReturnsCorrectSettingKey()
+        [TestCase(ActionType.Create, "Age_Announcements_Insert")]
+        [TestCase(ActionType.Update, "Age_Announcements_Update")]
+        public void GetSettingKey_ActionIsValid_ReturnsCorrectSettingKey(
+            ActionType actionType,
+            string expectedSettingKey)
         {
             // Arrange
             var insertOrUpdateAnnouncementsCriteria = new InsertOrUpdateAnnouncementsCriteria();
-            insertOrUpdateAnnouncementsCriteria.Action = ActionType.Create;
-            var expectedSettingKey = "Age_Announcements_Insert";
+            insertOrUpdateAnnouncementsCriteria.Action = actionType;
 
             // Act
             var actualSettingKey = insertOrUpdateAnnouncementsCriteria.GetSettingKey();
@@ -24,22 +25,7 @@
         }
 
         [Test]
-        public void GetSettingKey_ActionIsUpdateAlways_ReturnsCorrectSettingKey()
-        {
-            // Arrange
-            var insertOrUpdateAnnouncementsCriteria = new InsertOrUpdateAnnouncementsCriteria();
-            insertOrUpdateAnnouncementsCriteria.Action = ActionType.Update;
-            var expectedSettingKey = "Age_Announcements_Update";
-
-            // Act
-            var actualSettingKey = insertOrUpdateAnnouncementsCriteria.GetSettingKey();
-
-            // Assert
-            Assert.AreEqual(expectedSettingKey, actualSettingKey);
-        }
-
-        [Test]
-        public void IsValid_InvalidAnnoucementId_ReturnsFalse()
+        public void IsValid_AnnoucementIdLessThanZero_ReturnsFalse()
         {
             // Arrange
             var insertOrUpdateAnnouncementsCriteria = new InsertOrUpdateAnnouncementsCriteria();
@@ -53,7 +39,7 @@
         }
 
         [Test]
-        public void IsValid_InvalidAnnoucementId_ReturnsTrue()
+        public void IsValid_AnnoucementIdGreaterThanOrEqualZero_ReturnsTrue()
         {
             // Arrange
             var insertOrUpdateAnnouncementsCriteria = new InsertOrUpdateAnnouncementsCriteria();

@@ -1,6 +1,5 @@
 ﻿namespace Alpha.Maintenance.Repository.Criteria.Announcements
 {
-    using System;
     using Fanex.Data.Repository;
 
     public class SelectAnnouncementByIdCriteria : CriteriaBase
@@ -10,6 +9,5 @@
         public override string GetSettingKey() => "Age_Announcements_SelectById";
 
         public override bool IsValid() => Id > 0;
-
     }
 }

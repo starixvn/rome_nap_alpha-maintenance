@@ -32,7 +32,8 @@
                     ToDate = DateTime.Today,
                     System = system,
                     Environment = environment,
-                    IsActive = true
+                    IsActive = true,
+                    FilterBy = FilterBy.ExpiredDate
                 });
     }
 }

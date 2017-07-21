@@ -22,7 +22,7 @@
         }
 
         [Test]
-        public void IsValid_InvalidAnnoucementId_ReturnsFalse()
+        public void IsValid_AnnoucementIdLessThanZero_ReturnsFalse()
         {
             // Arrange
             var selectAnnouncementByIdCriteria = new SelectAnnouncementByIdCriteria();
@@ -36,7 +36,7 @@
         }
 
         [Test]
-        public void IsValid_ValidAnnoucementId_ReturnsTrue()
+        public void IsValid_AnnoucementIdGreaterThanOrEqualZero_ReturnsTrue()
         {
             // Arrange
             var selectAnnouncementByIdCriteria = new SelectAnnouncementByIdCriteria();

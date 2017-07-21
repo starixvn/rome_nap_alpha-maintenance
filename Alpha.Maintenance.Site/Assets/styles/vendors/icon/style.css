@@ -29,13 +29,13 @@
 .icon-view_logs:before {
     content: "\e901";
 }
-.icon-manage_servers:before {
+.icon-manage_servers:before, .icon-manage_messages:before {
     content: "\e902";
 }
 .icon-login:before {
     content: "\e903";
 }
-.icon-settings:before {
+.icon-settings:before, .icon-add_messages:before {
     content: "\e904";
 }
 .icon-magnify:before {

@@ -18,6 +18,10 @@
     <section id="filter-bar">
         <div class="filter-form row">
             <div class="input-field col s2">
+                @Html.EnumDropDownList("FilterBy", Model.FilterBy)
+                <label>@AnnouncementResources.FilterBy</label>
+            </div>
+            <div class="input-field col s2">
                 <div class="lbl-field">
                     @Html.LabelFor(m => m.FromDate, ViewResource.From, new { @class = "active" })
                 </div>
@@ -33,29 +37,25 @@
                     <input type="text" name="ToDate" id="ToDate" class="datepicker" value="@Model.ToDate.ToString("MMM dd,yyyy")" />
                 </div>
             </div>
-            <div class="col s2">
-                <div class="input-field">
-                    <select name="Environment" id="Environment">
-                        <option value="">@AnnouncementResources.All</option>
-                        @foreach (var environment in AppSettings.AnnouncementConfig.Environments)
-                        {
-                            <option value="@environment" @(environment.Equals(Model.Environment) ? "selected" : string.Empty)>@environment</option>
-                        }
-                    </select>
-                    <label class="margin-left-minus15px">@AnnouncementResources.Environments</label>
-                </div>
+            <div class="col s2 input-field">
+                <select name="Environment" id="Environment">
+                    <option value="">@AnnouncementResources.All</option>
+                    @foreach (var environment in AppSettings.AnnouncementConfig.Environments)
+                    {
+                        <option value="@environment" @(environment.Equals(Model.Environment) ? "selected" : string.Empty)>@environment</option>
+                    }
+                </select>
+                <label>@AnnouncementResources.Environments</label>
             </div>
-            <div class="col s2">
-                <div class="input-field">
-                    <select name="System" id="System">
-                        <option value="">@AnnouncementResources.All</option>
-                        @foreach (var system in AppSettings.AnnouncementConfig.Systems)
-                        {
-                            <option value="@system" @(system.Equals(Model.System) ? "selected" : string.Empty)>@system</option>
-                        }
-                    </select>
-                    <label class="margin-left-minus15px">@AnnouncementResources.Sysmtems</label>
-                </div>
+            <div class="col s2 input-field">
+                <select name="System" id="System">
+                    <option value="">@AnnouncementResources.All</option>
+                    @foreach (var system in AppSettings.AnnouncementConfig.Systems)
+                    {
+                        <option value="@system" @(system.Equals(Model.System) ? "selected" : string.Empty)>@system</option>
+                    }
+                </select>
+                <label>@AnnouncementResources.Systems</label>
             </div>
             <div class="col button-block">
                 <input class="waves-effect waves-light btn btn-primary" type="submit" value="@ViewResource.Submit" id="submit" />
@@ -78,6 +78,9 @@
                     @AnnouncementResources.Code
                 </th>
                 <th>
+                    @AnnouncementResources.CreatedDate
+                </th>
+                <th>
                     @AnnouncementResources.Priority
                 </th>
                 <th>
@@ -93,8 +96,8 @@
                     @AnnouncementResources.Environments
                 </th>
                 <th>
-                    @AnnouncementResources.Sysmtems
-                </th> 
+                    @AnnouncementResources.Systems
+                </th>
                 <th>
                     @AnnouncementResources.Type
                 </th>
@@ -115,6 +118,9 @@
                         </td>
                         <td>
                             @announcement.Code
+                        </td>
+                        <td>
+                            @announcement.CreatedDate.ToShortDateString()
                         </td>
                         <td>
                             @announcement.Ordinal

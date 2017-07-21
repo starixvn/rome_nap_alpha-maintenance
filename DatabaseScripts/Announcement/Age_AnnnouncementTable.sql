@@ -25,14 +25,20 @@ CREATE TABLE [dbo].[Announcements](
 	[Environments] [NVARCHAR](50) NULL,
 	[Systems] [NVARCHAR](20) NULL,
 	[Ordinal] [SMALLINT] NULL,
-	[Specifications] [NVARCHAR](max) NULL,
-	[Contents] [NVARCHAR](max) NOT NULL,
+	[Specifications] [NVARCHAR](MAX) NULL,
+	[Contents] [NTEXT] NOT NULL,
+	[CreatedDate] [DATETIME] NOT NULL DEFAULT CAST(GETDATE() AS DATE),
+	[CreatorId] [INT] NULL,
+	[CreatorName] [NVARCHAR](50) NULL,
+	[UpdateTime] [DATETIME] NULL,
+	[UpdatorId] [INT] NULL,
+	[UpdatorName] [NVARCHAR](50) NULL,
+
  CONSTRAINT [PK_Announcements] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-
 GO
 
 

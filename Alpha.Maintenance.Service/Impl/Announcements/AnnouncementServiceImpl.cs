@@ -9,6 +9,7 @@
     using Announcements.Specs;
     using Core.Configurations;
     using Core.Model;
+    using Fanex.Data.Repository;
     using Interface.Announcement;
     using Newtonsoft.Json;
     using Repository.Criteria.Announcements;
@@ -43,9 +44,9 @@
             this.languages = languages ?? new List<string>{
                                                             "en-US",
                                                             "vi-VN",
-                                                            "th-TH",
                                                             "zh-CN",
                                                             "zh-TW",
+                                                            "th-TH",
                                                             "ko-KR",
                                                             "ja-JP"
                                                         };
@@ -75,7 +76,7 @@
             return offeredSpecs;
         }
 
-        public IEnumerable<Announcement> GetAnnouncements(SelectAnnouncementsCriteria criteria)
+        public IEnumerable<Announcement> GetAnnouncements(ICriteria criteria)
                 => announcementRepository.GetAnnouncements(criteria).OrderBy(announcement => announcement.Ordinal);
 
         public Result InsertOrUpdateAnnouncement(Announcement announcement, ActionType Action)
