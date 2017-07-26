@@ -36,8 +36,6 @@ class ComposedAnnouncement {
     txtSpecificationValue: string;
     userLevelsSpecificationValue: string;
     warningMessage: string;
-    createSuccessMessage: string;
-    updateSuccessMessage: string;
 
     $nap: any;
     $JSON: any;
@@ -81,8 +79,6 @@ class ComposedAnnouncement {
         this.txtSpecificationValue = '#txt-specification-value';
 
         this.warningMessage = "Please input announcement title !";
-        this.createSuccessMessage = "Created successfully !";
-        this.updateSuccessMessage = "Updated successfully !";
     };
 
     bindEvent = () => {
@@ -204,7 +200,7 @@ class ComposedAnnouncement {
         formdata.append("action", self.$('#actionType').val());
 
         this.$.ajax({
-            url: self.$nap.resolveClientUrl("Announcement/InsertOrUpdateAnnouncement"),
+            url: self.$nap.resolveClientUrl("Announcement/SaveAnnouncement"),
             type: 'POST',
             dataType: 'json',
             data: formdata,
@@ -217,12 +213,16 @@ class ComposedAnnouncement {
                 self.$nap.loadingBox.close();
             },
             success: function (result) {
-                let actionType = self.$('#actionType').val();
-                let message = actionType == 'Create' ? self.createSuccessMessage : self.updateSuccessMessage;
-                self.$('.card-panel').html(message).addClass("green green-text").removeClass('red red-text hiden');
-                setTimeout(() => {
-                    self.refreshPage(actionType, announcement.id);
-                }, 3000);
+                if (result.Code > 0) {
+                    self.$('.card-panel').html(result.Message).addClass("red red-text").removeClass('green green-text hiden');
+                }
+                else {
+                    let actionType = self.$('#actionType').val();
+                    self.$('.card-panel').html(result.Message).addClass("green green-text").removeClass('red red-text hiden');
+                    setTimeout(() => {
+                        self.refreshPage(actionType, announcement.id);
+                    }, 3000);
+                }
             },
             error: function (xhr, status, err) {
                 self.$nap.handleAjaxError(xhr, status, err);

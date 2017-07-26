@@ -6,6 +6,7 @@
     using Announcements.Models;
     using Announcements.Services;
     using Announcements.Specs;
+    using Fanex.Data.Repository;
     using Interface.Announcement;
     using KellermanSoftware.CompareNetObjects;
     using NSubstitute;
@@ -49,7 +50,7 @@
             announcementSample = BuildAnnouncementSample();
 
             announcementServiceImpl = new AnnouncementServiceImpl(
-                                                specificationFactory, 
+                                                specificationFactory,
                                                 announcementRepository,
                                                 baseAnnouncementService,
                                                 languages,
@@ -125,13 +126,25 @@
         }
 
         [Test]
-        public void InsertOrUpdateAnnouncement_CallInsertOrUpdateAnnouncementRepository()
+        public void UpdateAnnouncement_CallSaveAnnouncementRepository()
         {
             // Arrange && Act
-            announcementServiceImpl.InsertOrUpdateAnnouncement(announcementSample, ActionType.Update);
+            var criteria = new UpdateAnnouncementsCriteria();
+            announcementServiceImpl.UpdateAnnouncement(criteria);
 
             // Assert
-            announcementRepository.Received().InsertOrUpdateAnnouncement(Arg.Any<InsertOrUpdateAnnouncementsCriteria>());
+            announcementRepository.Received().SaveAnnouncement(Arg.Any<UpdateAnnouncementsCriteria>());
+        }
+
+        [Test]
+        public void InsertAnnouncement_CallSaveAnnouncementRepository()
+        {
+            // Arrange && Act
+            var criteria = new InsertAnnouncementsCriteria();
+            announcementServiceImpl.InsertAnnouncement(criteria);
+
+            // Assert
+            announcementRepository.Received().SaveAnnouncement(Arg.Any<ICriteria>());
         }
 
         [Test]

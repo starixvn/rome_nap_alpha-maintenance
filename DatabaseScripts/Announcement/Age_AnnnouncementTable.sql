@@ -27,12 +27,12 @@ CREATE TABLE [dbo].[Announcements](
 	[Ordinal] [SMALLINT] NULL,
 	[Specifications] [NVARCHAR](MAX) NULL,
 	[Contents] [NTEXT] NOT NULL,
-	[CreatedDate] [DATETIME] NOT NULL DEFAULT CAST(GETDATE() AS DATE),
+	[CreatedDate] [DATETIME] NOT NULL,
 	[CreatorId] [INT] NULL,
 	[CreatorName] [NVARCHAR](50) NULL,
-	[UpdateTime] [DATETIME] NULL,
-	[UpdatorId] [INT] NULL,
-	[UpdatorName] [NVARCHAR](50) NULL,
+	[LastEditDate] [DATETIME] NULL,
+	[LastEditorId] [INT] NULL,
+	[LastEditorName] [NVARCHAR](50) NULL,
 
  CONSTRAINT [PK_Announcements] PRIMARY KEY CLUSTERED 
 (

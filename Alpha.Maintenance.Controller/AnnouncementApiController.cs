@@ -1,9 +1,9 @@
 ﻿namespace Alpha.Maintenance.Controller
 {
-    using System;
     using System.Collections.Generic;
     using System.Web.Http;
     using Announcements.Models;
+    using Core;
     using Repository.Criteria.Announcements;
     using Service.Impl.Announcement;
     using Service.Interface.Announcement;
@@ -28,8 +28,8 @@
         public IEnumerable<Announcement> GetAnnouncements(string environment, string system)
                 => announcementService.GetAnnouncements(new SelectAnnouncementsCriteria
                 {
-                    FromDate = DateTime.Today,
-                    ToDate = DateTime.Today,
+                    FromDate = SystemTime.Today,
+                    ToDate = SystemTime.Today,
                     System = system,
                     Environment = environment,
                     IsActive = true,

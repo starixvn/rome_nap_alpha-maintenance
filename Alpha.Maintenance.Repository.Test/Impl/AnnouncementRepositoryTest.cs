@@ -85,9 +85,9 @@
         }
 
         [Test]
-        public void InsertorUpdateAnnouncement_CriteriaIsNull_ThrowArgumentOutOfRangeException()
+        public void SaveAnnouncement_CriteriaIsNull_ThrowArgumentOutOfRangeException()
         {
-            Assert.Throws<ArgumentNullException>(() => announcementRepository.InsertOrUpdateAnnouncement(null));
+            Assert.Throws<ArgumentNullException>(() => announcementRepository.SaveAnnouncement(null));
         }
 
         private Announcement BuildAnnouncement()

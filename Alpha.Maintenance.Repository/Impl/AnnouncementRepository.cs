@@ -19,7 +19,7 @@
     {
         IEnumerable<Announcement> GetAnnouncements(ICriteria criteria);
 
-        Result InsertOrUpdateAnnouncement(ICriteria criteria);
+        Result SaveAnnouncement(ICriteria criteria);
 
         Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria);
     }
@@ -56,26 +56,37 @@
             return data;
         }
 
-        public Result InsertOrUpdateAnnouncement(ICriteria criteria)
+        public Result SaveAnnouncement(ICriteria criteria)
         {
             if (criteria == null)
             {
                 throw new ArgumentNullException(nameof(criteria), AnnouncementResources.CriteriaCannotBeNull);
             }
 
-            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
+            try
             {
-                db.ExecuteNonQuery(criteria.GetSpParams());
-                var outputParams = db.GetOuputParams();
+                using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
+                {
+                    db.ExecuteNonQuery(criteria.GetSpParams());
+                    var outputParams = db.GetOuputParams();
 
-                var code = (int)outputParams["errcode"];
+                    var code = (int)outputParams["errcode"];
 
+                    return new Result
+                    {
+                        Code = code,
+                        Message = code == 0
+                            ? AnnouncementResources.SaveSuccessfully
+                            : outputParams["errmsg"].ToString()
+                    };
+                }
+            }
+            catch(Exception excecption)
+            {
                 return new Result
                 {
-                    Code = code,
-                    Message = code == 0
-                        ? AnnouncementResources.UpdateSuccessfully
-                        : outputParams["errmsg"].ToString()
+                    Code = 101,
+                    Message = AnnouncementResources.SaveFailed
                 };
             }
         }

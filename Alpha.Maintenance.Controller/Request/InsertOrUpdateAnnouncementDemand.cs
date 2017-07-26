@@ -3,7 +3,7 @@
     using System.Web.Mvc;
     using Repository.Criteria.Announcements;
 
-    public class InsertOrUpdateAnnouncementDemand
+    public class SaveAnnouncementDemand
     {
         [AllowHtml]
        public string Announcement { get; set; }

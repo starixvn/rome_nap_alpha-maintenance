@@ -124,7 +124,7 @@
     <value>Add</value>
   </data>
   <data name="AddSpecification" xml:space="preserve">
-    <value>Add Specification</value>
+    <value>Add Rule</value>
   </data>
   <data name="All" xml:space="preserve">
     <value>All</value>
@@ -142,7 +142,7 @@
     <value>Clone</value>
   </data>
   <data name="CloneSpecification" xml:space="preserve">
-    <value>Clone Specification Setting From</value>
+    <value>Clone Rule Setting From</value>
   </data>
   <data name="Code" xml:space="preserve">
     <value>Code</value>
@@ -160,10 +160,10 @@
     <value>Criteria cannot be null</value>
   </data>
   <data name="DeleteSpecification" xml:space="preserve">
-    <value>Delete Specification</value>
+    <value>Delete Rule</value>
   </data>
   <data name="DisplayInformationSettings" xml:space="preserve">
-    <value>Step1 - Display information settings</value>
+    <value>Step 1 - Informations</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
@@ -202,10 +202,10 @@
     <value>SAVE</value>
   </data>
   <data name="Specification" xml:space="preserve">
-    <value>Specification</value>
+    <value>Rule</value>
   </data>
   <data name="SpecificationSetting" xml:space="preserve">
-    <value>Step 2 - Specification Setting</value>
+    <value>Step 2 - Rules</value>
   </data>
   <data name="Systems" xml:space="preserve">
     <value>Systems</value>
@@ -219,8 +219,8 @@
   <data name="Type" xml:space="preserve">
     <value>Type</value>
   </data>
-  <data name="UpdateSuccessfully" xml:space="preserve">
-    <value>Update successfully!</value>
+  <data name="SaveSuccessfully" xml:space="preserve">
+    <value>Save announcement successfully!</value>
   </data>
   <data name="Value" xml:space="preserve">
     <value>Value</value>
@@ -233,5 +233,8 @@
   </data>
   <data name="FilterBy" xml:space="preserve">
     <value>Filter By</value>
+  </data>
+  <data name="SaveFailed" xml:space="preserve">
+    <value>Save announcement failed!</value>
   </data>
 </root>

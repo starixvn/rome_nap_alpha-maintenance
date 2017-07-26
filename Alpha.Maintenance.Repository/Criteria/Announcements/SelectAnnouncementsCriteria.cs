@@ -2,6 +2,7 @@
 {
     using System;
     using System.ComponentModel;
+    using Core;
     using Fanex.Data.Repository;
 
     public enum FilterBy
@@ -19,9 +20,9 @@
 
         public string System { get; set; } = string.Empty;
 
-        public DateTime FromDate { get; set; } = DateTime.Today;
+        public DateTime FromDate { get; set; } = SystemTime.Today;
 
-        public DateTime ToDate { get; set; } = DateTime.Today;
+        public DateTime ToDate { get; set; } = SystemTime.Today;
 
         public bool? IsActive { get; set; } = null;
 

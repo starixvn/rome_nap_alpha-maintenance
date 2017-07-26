@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using Announcements.Models;
     using Announcements.Services;
     using Announcements.Specs;
@@ -11,7 +10,6 @@
     using Core.Model;
     using Fanex.Data.Repository;
     using Interface.Announcement;
-    using Newtonsoft.Json;
     using Repository.Criteria.Announcements;
     using Repository.Impl;
 
@@ -79,29 +77,11 @@
         public IEnumerable<Announcement> GetAnnouncements(ICriteria criteria)
                 => announcementRepository.GetAnnouncements(criteria).OrderBy(announcement => announcement.Ordinal);
 
-        public Result InsertOrUpdateAnnouncement(Announcement announcement, ActionType Action)
-        {
-            var contentsBytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(announcement.Contents));
-            var encodedContents = Convert.ToBase64String(contentsBytes);
+        public Result InsertAnnouncement(ICriteria criteria)
+            => announcementRepository.SaveAnnouncement(criteria);
 
-            return announcementRepository.InsertOrUpdateAnnouncement(
-                    new InsertOrUpdateAnnouncementsCriteria
-                    {
-                        Action = Action,
-                        Id = announcement.Id,
-                        Code = announcement.Code,
-                        Title = announcement.Title,
-                        IsActive = announcement.IsActive,
-                        AnnouncementType = (int)announcement.AnnouncementType,
-                        FromDate = announcement.FromDate,
-                        ToDate = announcement.ToDate,
-                        Environments = String.Join(", ", announcement.Environments.ToArray()),
-                        Systems = String.Join(", ", announcement.Systems.ToArray()),
-                        Ordinal = announcement.Ordinal,
-                        Contents = encodedContents,
-                        Specifications = JsonConvert.SerializeObject(announcement.Specifications)
-                    });
-        }
+        public Result UpdateAnnouncement(ICriteria criteria)
+            => announcementRepository.SaveAnnouncement(criteria);
 
         public Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria)
         {

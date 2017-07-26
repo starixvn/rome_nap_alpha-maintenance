@@ -78,12 +78,6 @@
                     @AnnouncementResources.Code
                 </th>
                 <th>
-                    @AnnouncementResources.CreatedDate
-                </th>
-                <th>
-                    @AnnouncementResources.Priority
-                </th>
-                <th>
                     @AnnouncementResources.Active
                 </th>
                 <th>
@@ -93,6 +87,9 @@
                     @AnnouncementResources.ToDate
                 </th>
                 <th>
+                    @AnnouncementResources.Priority
+                </th>
+                <th>
                     @AnnouncementResources.Environments
                 </th>
                 <th>
@@ -100,6 +97,9 @@
                 </th>
                 <th>
                     @AnnouncementResources.Type
+                </th>
+                <th>
+                    @AnnouncementResources.CreatedDate
                 </th>
             </tr>
         </thead>
@@ -118,13 +118,7 @@
                         </td>
                         <td>
                             @announcement.Code
-                        </td>
-                        <td>
-                            @announcement.CreatedDate.ToShortDateString()
-                        </td>
-                        <td>
-                            @announcement.Ordinal
-                        </td>
+                        </td>  
                         <td>
                             <input type="checkbox" id="@announcement.Id" checked="@announcement.IsActive" disabled />
                             <label for="@announcement.Id"><!--c--></label>
@@ -136,6 +130,9 @@
                             @announcement.ToDate.ToShortDateString()
                         </td>
                         <td>
+                            @announcement.Ordinal
+                        </td>
+                        <td>
                             @String.Join(", ", announcement.Environments.ToArray())
                         </td>
                         <td>
@@ -143,6 +140,9 @@
                         </td>
                         <td>
                             @announcement.AnnouncementType
+                        </td>
+                        <td>
+                            @announcement.CreatedDate.ToShortDateString()
                         </td>
                     </tr>
                 }

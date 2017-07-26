@@ -88,8 +88,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Criteria\Announcements\InsertAnnouncementsCriteria.cs" />
     <Compile Include="Criteria\Announcements\SelectAnnouncementByIdCriteria.cs" />
-    <Compile Include="Criteria\Announcements\InsertOrUpdateAnnouncementsCriteria.cs" />
+    <Compile Include="Criteria\Announcements\SaveAnnouncementsCriteria.cs" />
+    <Compile Include="Criteria\Announcements\UpdateAnnouncementsCriteria.cs" />
     <Compile Include="Criteria\Announcements\SelectAnnouncementsCriteria.cs" />
     <Compile Include="Criteria\Log\GetAllCategoryCriteria.cs" />
     <Compile Include="Criteria\Log\GetAllMachinesCriteria.cs" />

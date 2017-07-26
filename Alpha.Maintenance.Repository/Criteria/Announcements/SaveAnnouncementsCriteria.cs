@@ -9,7 +9,7 @@
         Update = 2
     }
 
-    public class InsertOrUpdateAnnouncementsCriteria : CriteriaBase
+    public class SaveAnnouncementsCriteria : CriteriaBase
     {
         public int Id { get; set; }
 
@@ -35,15 +35,9 @@
 
         public string Specifications { get; set; }
 
-        [SpParam(Ignored = true)]
-        public ActionType Action { get; set; }
-
         public int ErrCode { get; set; }
 
         public string ErrMsg { get; set; }
-
-        public override string GetSettingKey()
-            => Action.Equals(ActionType.Create) ? "Age_Announcements_Insert" : "Age_Announcements_Update";
 
         public override bool IsValid() => Id > 0 && FromDate <= ToDate;
     }

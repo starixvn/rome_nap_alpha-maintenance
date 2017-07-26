@@ -79,7 +79,7 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add Specification.
+        ///   Looks up a localized string similar to Add Rule.
         /// </summary>
         public static string AddSpecification {
             get {
@@ -133,7 +133,7 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Clone Specification Setting From.
+        ///   Looks up a localized string similar to Clone Rule Setting From.
         /// </summary>
         public static string CloneSpecification {
             get {
@@ -196,7 +196,7 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete Specification.
+        ///   Looks up a localized string similar to Delete Rule.
         /// </summary>
         public static string DeleteSpecification {
             get {
@@ -205,7 +205,7 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Step1 - Display information settings.
+        ///   Looks up a localized string similar to Step 1 - Informations.
         /// </summary>
         public static string DisplayInformationSettings {
             get {
@@ -331,7 +331,25 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Specification.
+        ///   Looks up a localized string similar to Save announcement failed!.
+        /// </summary>
+        public static string SaveFailed {
+            get {
+                return ResourceManager.GetString("SaveFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save announcement successfully!.
+        /// </summary>
+        public static string SaveSuccessfully {
+            get {
+                return ResourceManager.GetString("SaveSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rule.
         /// </summary>
         public static string Specification {
             get {
@@ -340,7 +358,7 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Step 2 - Specification Setting.
+        ///   Looks up a localized string similar to Step 2 - Rules.
         /// </summary>
         public static string SpecificationSetting {
             get {
@@ -381,15 +399,6 @@ namespace Alpha.Maintenance.Core {
         public static string Type {
             get {
                 return ResourceManager.GetString("Type", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Update successfully!.
-        /// </summary>
-        public static string UpdateSuccessfully {
-            get {
-                return ResourceManager.GetString("UpdateSuccessfully", resourceCulture);
             }
         }
         

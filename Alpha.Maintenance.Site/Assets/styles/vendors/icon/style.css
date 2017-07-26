@@ -35,9 +35,14 @@
 .icon-login:before {
     content: "\e903";
 }
-.icon-settings:before, .icon-add_messages:before {
+.icon-settings:before {
     content: "\e904";
 }
+
+.icon-add_message:before{
+    content: "\e90f";
+}
+
 .icon-magnify:before {
     content: "\e905";
 }
