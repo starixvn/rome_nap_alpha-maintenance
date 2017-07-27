@@ -20,7 +20,7 @@
 
         public string System { get; set; } = string.Empty;
 
-        public DateTime FromDate { get; set; } = SystemTime.Today;
+        public DateTime FromDate { get; set; } = SystemTime.Today.AddDays(-7);
 
         public DateTime ToDate { get; set; } = SystemTime.Today;
 

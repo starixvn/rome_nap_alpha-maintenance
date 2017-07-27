@@ -268,7 +268,7 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manage Announcements.
+        ///   Looks up a localized string similar to Manage Messages.
         /// </summary>
         public static string ManageAnnouncements {
             get {

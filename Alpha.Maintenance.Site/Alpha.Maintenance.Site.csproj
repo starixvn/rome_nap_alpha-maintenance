@@ -364,6 +364,7 @@
     <Content Include="Assets\styles\main.min.css">
       <DependentUpon>main.scss</DependentUpon>
     </Content>
+    <Content Include="Assets\styles\vendors\icon\fonts\mSite.svg" />
     <Content Include="Global.asax" />
     <Content Include="Assets\images\calendar.gif" />
     <Content Include="Assets\images\ic-calendar.png" />
@@ -446,7 +447,6 @@
     <Content Include="Assets\scripts\lib\Select2\select2.css" />
     <Content Include="Assets\scripts\lib\Select2\select2.js" />
     <Content Include="Assets\scripts\lib\Select2\select2.png" />
-    <Content Include="Assets\styles\vendors\icon\fonts\mSite.svg" />
     <Content Include="Assets\styles\vendors\icon\style.css" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Web.backupMNL.config">
@@ -527,6 +527,9 @@
     <Content Include="Areas\UserLogin\themes\loginNew.scss" />
     <Content Include="App_Data\announcement.json" />
     <Content Include="bundleconfig.json" />
+    <Content Include="Assets\styles\vendors\icon\fonts\mSite.eot" />
+    <Content Include="Assets\styles\vendors\icon\fonts\mSite.ttf" />
+    <Content Include="Assets\styles\vendors\icon\fonts\mSite.woff" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -545,8 +548,6 @@
     <Content Include="Assets\styles\components\_calendar.scss" />
     <Content Include="Assets\styles\pages\manage.scss" />
     <Content Include="Assets\styles\components\_animation.scss" />
-    <Content Include="Assets\styles\vendors\icon\fonts\mSite.ttf" />
-    <Content Include="Assets\styles\vendors\icon\fonts\mSite.woff" />
     <Content Include="WebConnectionString.backupMNL.config">
       <DependentUpon>WebConnectionString.config</DependentUpon>
       <SubType>Designer</SubType>

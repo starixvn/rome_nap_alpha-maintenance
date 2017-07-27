@@ -10,11 +10,11 @@
     "789"
   ],
   "specifications": [
-    "Currencies",
+    "Currency Ids",
     "User Ids",
     "User Level",
-    "Sites",
-    "Products",
+    "Site Names",
+    "Product Ids",
     "Not Synced Casino",
     "Enable Yesterday Transfer"
   ],

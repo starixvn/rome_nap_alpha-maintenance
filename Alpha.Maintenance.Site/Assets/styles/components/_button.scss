@@ -86,7 +86,7 @@
     }
 }
 
-.icon-view_logs, .icon-manage_servers, .icon-manage_messages {
+.icon-view_logs, .icon-manage_servers, .icon-manage_messages, .icon-add_message {
     font-size: 18px;
     vertical-align: middle;
     color: #6b7a99;
@@ -95,7 +95,7 @@
 .btn-check {
     &:after {
         font-family: 'mSite';
-        content: "\e907";
+        content: "\e908";
         font-size: 18px;
     }
 }
