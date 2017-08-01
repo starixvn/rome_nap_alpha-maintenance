@@ -205,7 +205,7 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Step 1 - Informations.
+        ///   Looks up a localized string similar to Step 1 - Information.
         /// </summary>
         public static string DisplayInformationSettings {
             get {
@@ -313,7 +313,7 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Priority.
+        ///   Looks up a localized string similar to Order.
         /// </summary>
         public static string Priority {
             get {

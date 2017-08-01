@@ -29,7 +29,8 @@
         {
         }
 
-        public AnnouncementController(AnnouncementService announcementService,
+        public AnnouncementController(
+            AnnouncementService announcementService,
             ICurrentContext currentContext,
             ICurrentSession currentSession,
             IUserService userService,

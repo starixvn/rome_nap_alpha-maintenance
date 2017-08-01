@@ -163,7 +163,7 @@
     <value>Delete Rule</value>
   </data>
   <data name="DisplayInformationSettings" xml:space="preserve">
-    <value>Step 1 - Informations</value>
+    <value>Step 1 - Information</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
@@ -196,7 +196,7 @@
     <value>Prev</value>
   </data>
   <data name="Priority" xml:space="preserve">
-    <value>Priority</value>
+    <value>Order</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>SAVE</value>
