@@ -81,12 +81,12 @@
                     };
                 }
             }
-            catch(Exception excecption)
+            catch(Exception exception)
             {
                 return new Result
                 {
                     Code = 101,
-                    Message = AnnouncementResources.SaveFailed
+                    Message = exception.Message
                 };
             }
         }

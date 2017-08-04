@@ -1,6 +1,6 @@
 ﻿@model ComposeAnnouncementViewModel
 
-@{ 
+@{
     var maxOrder = 31;
 }
 
@@ -8,11 +8,13 @@
     <div class="col l7">
         <div class="row">
             <div class="col l7 input-field">
-                @AnnouncementResources.Title<input type="text" id="txttitle" value="@Model.Announcement.Title" />
+                <input type="text" id="txttitle" class="validate" required="" aria-required="true" value="@Model.Announcement.Title" />
+                <label for="txttitle">@AnnouncementResources.Title<span style="color:red" class="">*</span></label>
             </div>
             <div class="col l3 input-field">
-                @AnnouncementResources.Code<input type="text" id="txtcode" value="@Model.Announcement.Code" />
-            </div>      
+                <input type="text" id="txtcode" value="@Model.Announcement.Code" />
+                <label for="txtcode">@AnnouncementResources.Code</label>
+            </div>
             <div class="col l2">
                 <input type="checkbox" id="ChkActive" @(Model.Announcement.IsActive ? "checked" : string.Empty) />
                 <label class="input-field" for="ChkActive">@AnnouncementResources.Active</label>
@@ -33,7 +35,7 @@
             {
                 <div id="div-@content.LanguageKey" class="col l12 language-content">
                     <textarea name="group-contents" id="@content.LanguageKey" class="jqte-test">@content.Text</textarea>
-                    <div class="margin-top-20px input-field">@AnnouncementResources.AnnouncementUrl<input type="text" id="txtannouncement-url"  value="@content.Url"/></div>
+                    <div class="margin-top-20px input-field">@AnnouncementResources.AnnouncementUrl<input type="text" id="txtannouncement-url" value="@content.Url" /></div>
                 </div>
             }
         </div>
@@ -41,7 +43,7 @@
 
     <div class="col l5 border-left">
         <div class="row">
-            <div class="col s6 input-field specification-radio-margin" >
+            <div class="col s6 input-field specification-radio-margin">
                 <p>
                     <input class="with-gap" type="radio" name="group-popup" id="Announcement-Popup" value="@((int)AnnouncementType.Popup)" @(Model.Announcement.AnnouncementType.Equals(AnnouncementType.Popup) ? "checked" : string.Empty) />
                     <label for="Announcement-Popup">@AnnouncementResources.AnnouncementPopup</label>
@@ -72,7 +74,7 @@
                         <option value="@value" @(value.Equals(Model.Announcement.Ordinal) ? "selected" : string.Empty)>@value</option>
                     }
                 </select>
-                <label>Order</label>
+                <label>@AnnouncementResources.Priority</label>
             </div>
         </div>
 
@@ -81,7 +83,7 @@
             @foreach (var environment in AppSettings.AnnouncementConfig.Environments)
             {
                 <div class="col s2">
-                    <input name="group-environments" type="checkbox" id="@environment" 
+                    <input name="group-environments" type="checkbox" id="@environment"
                            @(Model.Announcement.Environments.Contains(environment) ? "checked" : string.Empty) />
                     <label class="input-field" for="@environment">@environment</label>
                 </div>
@@ -93,7 +95,7 @@
             @foreach (var system in AppSettings.AnnouncementConfig.Systems)
             {
                 <div class="col s2">
-                    <input name="group-systems" type="checkbox" id="@system" 
+                    <input name="group-systems" type="checkbox" id="@system"
                            @(Model.Announcement.Systems.Contains(system) ? "checked" : string.Empty) />
                     <label class="input-field" for="@system">@system</label>
                 </div>
@@ -101,11 +103,14 @@
 
         </div>
         <div class="row margin-top-200px">
-            <div class="col s2">
-                <input class="btn btn-info  waves-effect waves-light btn btn-create" type="button" name="btnNext" id="btnNext" value="@AnnouncementResources.Next" />
-            </div>
-            <div class="col s10">
-                <a class="btn btn-info  waves-effect waves-light btn btn-primary modal-trigger" href="#cofirmMessages">@AnnouncementResources.Save</a>
+            <div class="col s12">
+                <a class="btn btn-info  waves-effect waves-light btn btn-primary btnNext">@AnnouncementResources.Next</a>
+                <a class="btn btn-info  waves-effect waves-light btn btn-primary modal-trigger margin-left-30px btnSave" href="#cofirmMessages">@AnnouncementResources.Save</a>
+
+                @if (Model.ActionType.Equals(ActionType.Update))
+                {
+                    <a class="btn btn-info  waves-effect waves-light btn btn-primary modal-trigger margin-left-30px btnCopy" href="#cofirmMessages">@AnnouncementResources.MakeACopy</a>
+                }
             </div>
         </div>
     </div>

@@ -237,4 +237,7 @@
   <data name="SaveFailed" xml:space="preserve">
     <value>Save announcement failed!</value>
   </data>
+  <data name="MakeACopy" xml:space="preserve">
+    <value>Make a copy</value>
+  </data>
 </root>

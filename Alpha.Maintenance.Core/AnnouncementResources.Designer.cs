@@ -268,6 +268,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Make a copy.
+        /// </summary>
+        public static string MakeACopy {
+            get {
+                return ResourceManager.GetString("MakeACopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Manage Messages.
         /// </summary>
         public static string ManageAnnouncements {

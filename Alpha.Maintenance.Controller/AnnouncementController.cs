@@ -1,11 +1,6 @@
 ﻿namespace Alpha.Maintenance.Controller
 {
-    using System;
-    using System.Linq;
-    using System.Text;
     using System.Web.Mvc;
-    using Announcements.Client.Helpers;
-    using Announcements.Models;
     using Core;
     using Fanex.NAP.Core.Business;
     using Fanex.NAP.Core.Service.Interface;
@@ -36,14 +31,14 @@
             IUserService userService,
             bool? enableReCheckIn,
             int? showLogTimeZone,
-            bool? issiteLogin,
+            bool? isSiteLogin,
             int? siteId)
             : base(currentContext,
                   currentSession,
                   userService,
                   enableReCheckIn,
                   showLogTimeZone,
-                  issiteLogin,
+                  isSiteLogin,
                   siteId)
         {
             this.announcementService = announcementService ?? new AnnouncementServiceImpl();
@@ -79,61 +74,54 @@
 
         [HttpPost]
         [NapAuth(FunctionKey = SiteFunctionKeys.AnnouncementManagement, Policy = Constant.Policy.Host)]
-        public JsonResult SaveAnnouncement(SaveAnnouncementDemand demand)
-        {
-            var announcement = JsonConvert.DeserializeObject<Announcement>(
-                                                    demand.Announcement,
-                                                    new SpecificationConverter());
-
-            var contentsBytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(announcement.Contents));
-            var encodedContents = Convert.ToBase64String(contentsBytes);
-
-            var systems = String.Join(", ", announcement.Systems.ToArray());
-            var environments = String.Join(", ", announcement.Environments.ToArray());
-
-            var data = demand.Action.Equals(ActionType.Update) ?
-               announcementService.UpdateAnnouncement(new UpdateAnnouncementsCriteria
-               {
-                   Id = announcement.Id,
-                   Code = announcement.Code,
-                   Title = announcement.Title,
-                   IsActive = announcement.IsActive,
-                   AnnouncementType = (int)announcement.AnnouncementType,
-                   FromDate = announcement.FromDate,
-                   ToDate = announcement.ToDate,
-                   Environments = environments,
-                   Systems = systems,
-                   Ordinal = announcement.Ordinal,
-                   Contents = encodedContents,
-                   Specifications = JsonConvert.SerializeObject(announcement.Specifications),
-                   LastEditDate = SystemTime.Today,
-                   LastEditorId = CurrentSession.UserId,
-                   LastEditorName = CurrentSession.Username
-               }) :
-                 announcementService.InsertAnnouncement(new InsertAnnouncementsCriteria
-                 {
-                     Id = announcement.Id,
-                     Code = announcement.Code,
-                     Title = announcement.Title,
-                     IsActive = announcement.IsActive,
-                     AnnouncementType = (int)announcement.AnnouncementType,
-                     CreatedDate = SystemTime.Today,
-                     FromDate = announcement.FromDate,
-                     ToDate = announcement.ToDate,
-                     Environments = environments,
-                     Systems = systems,
-                     Ordinal = announcement.Ordinal,
-                     Contents = encodedContents,
-                     Specifications = JsonConvert.SerializeObject(announcement.Specifications),
-                     CreatorId = CurrentSession.UserId,
-                     CreatorName = CurrentSession.Username
-                 });
-
-            return new JsonNetResult
+        public JsonResult InsertAnnouncement(SaveAnnouncementDemand demand)
+            => new JsonNetResult
             {
-                Data = data,
+                Data = announcementService.InsertAnnouncement(new InsertAnnouncementsCriteria
+                {
+                    Code = demand.DeserializeAnnouncement.Code,
+                    Title = demand.IsCopy ? $"Copy of {demand.DeserializeAnnouncement.Title}"
+                                            : demand.DeserializeAnnouncement.Title,
+                    IsActive = demand.DeserializeAnnouncement.IsActive,
+                    AnnouncementType = (int)demand.DeserializeAnnouncement.AnnouncementType,
+                    CreatedDate = SystemTime.Today,
+                    FromDate = demand.DeserializeAnnouncement.FromDate,
+                    ToDate = demand.DeserializeAnnouncement.ToDate,
+                    Environments = demand.Environments,
+                    Systems = demand.Systems,
+                    Ordinal = demand.DeserializeAnnouncement.Ordinal,
+                    Contents = demand.EncodedContents,
+                    Specifications = JsonConvert.SerializeObject(demand.DeserializeAnnouncement.Specifications),
+                    CreatorId = CurrentSession.UserId,
+                    CreatorName = CurrentSession.Username
+                }),
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
-        }
+
+        [HttpPost]
+        [NapAuth(FunctionKey = SiteFunctionKeys.AnnouncementManagement, Policy = Constant.Policy.Host)]
+        public JsonResult UpdateAnnouncement(SaveAnnouncementDemand demand)
+              => new JsonNetResult
+              {
+                  Data = announcementService.UpdateAnnouncement(new UpdateAnnouncementsCriteria
+                  {
+                      Id = demand.DeserializeAnnouncement.Id,
+                      Code = demand.DeserializeAnnouncement.Code,
+                      Title = demand.DeserializeAnnouncement.Title,
+                      IsActive = demand.DeserializeAnnouncement.IsActive,
+                      AnnouncementType = (int)demand.DeserializeAnnouncement.AnnouncementType,
+                      FromDate = demand.DeserializeAnnouncement.FromDate,
+                      ToDate = demand.DeserializeAnnouncement.ToDate,
+                      Environments = demand.Environments,
+                      Systems = demand.Systems,
+                      Ordinal = demand.DeserializeAnnouncement.Ordinal,
+                      Contents = demand.EncodedContents,
+                      Specifications = JsonConvert.SerializeObject(demand.DeserializeAnnouncement.Specifications),
+                      LastEditDate = SystemTime.Today,
+                      LastEditorId = CurrentSession.UserId,
+                      LastEditorName = CurrentSession.Username
+                  }),
+                  JsonRequestBehavior = JsonRequestBehavior.AllowGet
+              };
     }
 }

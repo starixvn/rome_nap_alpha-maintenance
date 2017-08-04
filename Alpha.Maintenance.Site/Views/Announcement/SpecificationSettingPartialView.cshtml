@@ -44,15 +44,16 @@
     </div>
 
     <div class="row">
-        <div class="col s1" name="btnPrev" id="btnPrev">
-            <input class="btn btn-info  waves-effect waves-light btn btn-create" type="button" value="@AnnouncementResources.Prev" />
+        <div class="col s12">
+            <a class="btn btn-info waves-effect waves-light btn btn-primary margin-left-30px btnPrev">@AnnouncementResources.Prev</a>
+            <a class="btn btn-info waves-effect waves-light btn btn-primary modal-trigger margin-left-30px btnSave" href="#cofirmMessages">@AnnouncementResources.Save</a>
+            @if (Model.ActionType.Equals(ActionType.Update))
+            {
+                <a class="btn btn-info waves-effect waves-light btn btn-primary modal-trigger margin-left-30px btnCopy" href="#cofirmMessages">@AnnouncementResources.MakeACopy</a>
+            }
+
+            <input type="hidden" id="number-of-specifications" value="@(Model.NotExistedSpecifications.Count() + Model.Announcement.Specifications.Count())">
         </div>
-        <div class="col s2">
-            <a class="btn btn-info  waves-effect waves-light btn btn-primary modal-trigger" href="#cofirmMessages">@AnnouncementResources.Save</a>
-        </div>
-        <input type="hidden" id="actionType" value="@Model.ActionType">
-        <input type="hidden" id="AnnouncementId" value="@Model.Announcement.Id">
-        <input type="hidden" id="number-of-specifications" value="@(Model.NotExistedSpecifications.Count() + Model.Announcement.Specifications.Count())">
     </div>
 </div>
 
@@ -68,7 +69,7 @@
         </div>
         <div class="col s2 input-field">
             @if (specification.GetType() != typeof(NotSyncedCasinoSpecification)
-              && specification.GetType() != typeof(EnableYesterdayTransferSpecification))
+&& specification.GetType() != typeof(EnableYesterdayTransferSpecification))
             {
                 @Html.EnumDropDownList("dll-specification-specificationOperator", specification.SpecificationOperator,
                                    new Dictionary<string, object>() { { "data-parentId", specification.Id } })

@@ -23,6 +23,8 @@ class ComposedAnnouncement {
     $hiddenSpec: JQuery;
     $btnNext: JQuery;
     $btnPrev: JQuery;
+    $btnSave: JQuery;
+    $btnCopy: JQuery;
     $txttitle: JQuery;
     $specSettingTab: JQuery;
     $specInformationTab: JQuery;
@@ -36,6 +38,15 @@ class ComposedAnnouncement {
     txtSpecificationValue: string;
     userLevelsSpecificationValue: string;
     warningMessage: string;
+    actionType: string;
+
+    manageAnnoucementUrl: string;
+    composeAnnouncementUrl: string;
+    insertAnnouncementUrl: string;
+    updateAnnoucementUrl: string;
+
+    confirmSaveAnnouncementContent: string;
+    confirmMakeACopyAnnouncementContent: string;
 
     $nap: any;
     $JSON: any;
@@ -56,19 +67,19 @@ class ComposedAnnouncement {
         this.correctFirstSpec();
         this.initSpecOptionsDll();
         this.$('.jqte-test').jqte();
-        this.$('.modal').modal();
     };
 
     cacheDom = () => {
-       
         this.$divChooseSpecification = this.$("#div-choose-specification");
         this.$hiddenSpec = this.$('.hidden-specification');
-        this.$btnNext = this.$("#btnNext");
-        this.$btnPrev = this.$("#btnPrev");
+        this.$btnNext = this.$(".btnNext");
+        this.$btnPrev = this.$(".btnPrev");
+        this.$btnSave = this.$(".btnSave");
+        this.$btnCopy = this.$(".btnCopy");
         this.$specSettingTab = this.$("#tab-specs-setting");
         this.$specInformationTab = this.$("#tab-information-settings");
         this.$numberOfSpecs = this.$('#number-of-specifications');
-        this.$txttitle = this.$('#txtcode');
+        this.$txttitle = this.$('#txttitle');
         this.$btnAgree = this.$("#agree");
         this.$confirmMessage = this.$("#cofirmMessages");
 
@@ -77,13 +88,37 @@ class ComposedAnnouncement {
         this.dllConjunctionOperator = "dll-specification-conjunctionOperator";
         this.userLevelsSpecificationValue = '#dll-specification-value';
         this.txtSpecificationValue = '#txt-specification-value';
+        this.actionType = this.$('#actionType').val();
 
+        this.manageAnnoucementUrl = "Announcement/ManageAnnouncements";
+        this.composeAnnouncementUrl = "Announcement/ComposeMessage";
+        this.insertAnnouncementUrl = "Announcement/InsertAnnouncement";
+        this.updateAnnoucementUrl = "Announcement/UpdateAnnouncement";
+
+        this.confirmMakeACopyAnnouncementContent = "Are you sure you want to make a copy of this announcement ?";
+        this.confirmSaveAnnouncementContent = "Are you sure you want to save this announcement ?";
         this.warningMessage = "Please input announcement title !";
     };
 
     bindEvent = () => {
         let self = this;
-       
+
+        this.$btnNext.on('click', function () {
+            self.$specSettingTab.click();
+        });
+
+        this.$btnPrev.on('click', function () {
+            self.$specInformationTab.click();
+        });
+
+        this.$(this.$btnCopy).on('click', function () {
+            self.btnCopyClickOn();
+        });
+
+        this.$(this.$btnSave).on('click', function () {
+            self.btnSaveClickOn();
+        });
+
         this.$(this.dllChooseSpecification).on('change', function () {
             self.onChangeSpecOption();
         });
@@ -97,19 +132,24 @@ class ComposedAnnouncement {
             self.submit();
         });
 
-        this.$btnNext.on('click', function () {
-            self.$specSettingTab.click();
-        });
-
-        this.$btnPrev.on('click', function () {
-            self.$specInformationTab.click();
-        });
-
         this.$txttitle.on('keyup', function () {
             if (self.$(this).val().trim() != '') {
                 self.$('.card-panel').addClass('hiden');
             }
         });
+    };
+
+    btnCopyClickOn = () => {
+        this.$("#announcementUrl").val(this.insertAnnouncementUrl);
+        this.$("#cofirmMessages-content").html(this.confirmMakeACopyAnnouncementContent);
+        this.$("#isCopy").val("true");
+    };
+
+    btnSaveClickOn = () => {
+        let url = this.actionType == "Create" ? this.insertAnnouncementUrl : this.updateAnnoucementUrl;
+        this.$("#announcementUrl").val(url);
+        this.$("#cofirmMessages-content").html(this.confirmSaveAnnouncementContent);
+        this.$("#isCopy").val("false");
     };
 
     onChangeSpecOption = () => {
@@ -182,13 +222,7 @@ class ComposedAnnouncement {
 
     submit = () => {
         let announcement = this.getAnnouncementParam();
-
-        if (announcement.title != '') {
-            this.doUpdate(announcement);
-        }
-        else {
-            this.showWarningMessage(this.warningMessage);
-        }
+        this.getAnnouncementParam().title != '' ? this.doUpdate(announcement) : this.showWarningMessage(this.warningMessage);
     };
 
     showWarningMessage = (message: string) => this.$('.card-panel').html(message).addClass("red red-text").removeClass('hiden');
@@ -197,10 +231,11 @@ class ComposedAnnouncement {
         let self = this;
         var formdata = new FormData();
         formdata.append("announcement", self.$JSON.stringify(announcement));
-        formdata.append("action", self.$('#actionType').val());
+        formdata.append("isCopy", self.$("#isCopy").val());
+        let url = self.$("#announcementUrl").val();
 
         this.$.ajax({
-            url: self.$nap.resolveClientUrl("Announcement/SaveAnnouncement"),
+            url: self.$nap.resolveClientUrl(url),
             type: 'POST',
             dataType: 'json',
             data: formdata,
@@ -213,16 +248,7 @@ class ComposedAnnouncement {
                 self.$nap.loadingBox.close();
             },
             success: function (result) {
-                if (result.Code > 0) {
-                    self.$('.card-panel').html(result.Message).addClass("red red-text").removeClass('green green-text hiden');
-                }
-                else {
-                    let actionType = self.$('#actionType').val();
-                    self.$('.card-panel').html(result.Message).addClass("green green-text").removeClass('red red-text hiden');
-                    setTimeout(() => {
-                        self.refreshPage(actionType, announcement.id);
-                    }, 3000);
-                }
+                self.onSuccess(result, url, announcement.id);
             },
             error: function (xhr, status, err) {
                 self.$nap.handleAjaxError(xhr, status, err);
@@ -230,15 +256,24 @@ class ComposedAnnouncement {
         });
     };
 
-    refreshPage = (actionType: string, announcementId: string) => {
-        let url = actionType == 'Create' ? "Announcement/ManageAnnouncements" : "Announcement/ComposeMessage/" + announcementId;
-        window.location.href = this.$nap.resolveClientUrl(url)
+    onSuccess = (result: any, url: string, announcementId: string) => {
+        let self = this;
+        if (result.Code > 0) {
+            this.$('.card-panel').html(result.Message).addClass("red red-text").removeClass('green green-text hiden');
+        }
+        else {
+            this.$('.card-panel').html(result.Message).addClass("green green-text").removeClass('red red-text hiden');
+            setTimeout(() => {
+                let url = self.insertAnnouncementUrl ? this.manageAnnoucementUrl : `${this.composeAnnouncementUrl}/${announcementId}`;
+                window.location.href = this.$nap.resolveClientUrl(url)
+            }, 3000);
+        }
     };
 
     getAnnouncementParam = () => {
         let self = this;
         return {
-            id: self.$('#AnnouncementId').val(),
+            id: self.$('#announcementId').val(),
             code: self.$("#txtcode").val().trim(),
             title: self.$("#txttitle").val().trim(),
             isActive: self.$("#ChkActive").is(":checked"),

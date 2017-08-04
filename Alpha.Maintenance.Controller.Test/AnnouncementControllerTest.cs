@@ -135,36 +135,34 @@
         }
 
         [Test]
-        public void SaveAnnouncement_ActionIsCreate_CallInsertAnnouncementService()
+        public void InsertAnnouncement_Always_CallInsertAnnouncementService()
         {
             // Arrange
 
             var saveAnnouncementDemand = new SaveAnnouncementDemand
             {
-                Announcement = announcementJson,
-                Action = ActionType.Create
+                Announcement = announcementJson
             };
 
             // Act
-            announcementController.SaveAnnouncement(saveAnnouncementDemand);
+            announcementController.InsertAnnouncement(saveAnnouncementDemand);
 
             // Assert
             announcementService.Received().InsertAnnouncement(Arg.Any<InsertAnnouncementsCriteria>());
         }
 
         [Test]
-        public void SaveAnnouncement_ActionIsUpdate_CallUpdateAnnouncementService()
+        public void UpdateAnnouncement_Always_CallUpdateAnnouncementService()
         {
             // Arrange
 
             var saveAnnouncementDemand = new SaveAnnouncementDemand
             {
-                Announcement = announcementJson,
-                Action = ActionType.Update
+                Announcement = announcementJson
             };
 
             // Act
-            announcementController.SaveAnnouncement(saveAnnouncementDemand);
+            announcementController.UpdateAnnouncement(saveAnnouncementDemand);
 
             // Assert
             announcementService.Received().UpdateAnnouncement(Arg.Any<UpdateAnnouncementsCriteria>());

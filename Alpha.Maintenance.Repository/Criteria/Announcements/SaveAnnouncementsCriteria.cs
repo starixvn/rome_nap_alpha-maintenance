@@ -11,8 +11,6 @@
 
     public class SaveAnnouncementsCriteria : CriteriaBase
     {
-        public int Id { get; set; }
-
         public string Code { get; set; }
 
         public string Title { get; set; }
@@ -39,6 +37,6 @@
 
         public string ErrMsg { get; set; }
 
-        public override bool IsValid() => Id > 0 && FromDate <= ToDate;
+        public override bool IsValid() => FromDate <= ToDate;
     }
 }

@@ -4,6 +4,8 @@
 
     public class UpdateAnnouncementsCriteria : SaveAnnouncementsCriteria
     {
+        public int Id { get; set; }
+
         public int LastEditorId { get; set; }
 
         public string LastEditorName { get; set; }
@@ -11,5 +13,7 @@
         public DateTime LastEditDate { get; set; }
 
         public override string GetSettingKey() => "Age_Announcements_Update";
+
+        public override bool IsValid() => base.IsValid() && Id > 0;
     }
 }

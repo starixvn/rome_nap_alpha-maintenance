@@ -21,25 +21,10 @@
         }
 
         [Test]
-        public void IsValid_AnnoucementIdLessThanZero_ReturnsFalse()
+        public void IsValid_Always_ReturnsTrue()
         {
             // Arrange
             var insertAnnouncementsCriteria = new InsertAnnouncementsCriteria();
-            insertAnnouncementsCriteria.Id = -1;
-
-            // Act
-            var actualIsValid = insertAnnouncementsCriteria.IsValid();
-
-            // Assert
-            Assert.IsFalse(actualIsValid);
-        }
-
-        [Test]
-        public void IsValid_AnnoucementIdGreaterThanOrEqualZero_ReturnsTrue()
-        {
-            // Arrange
-            var insertAnnouncementsCriteria = new InsertAnnouncementsCriteria();
-            insertAnnouncementsCriteria.Id = 12;
 
             // Act
             var actualIsValid = insertAnnouncementsCriteria.IsValid();
@@ -53,7 +38,6 @@
         {
             // Arrange
             var insertAnnouncementsCriteria = new InsertAnnouncementsCriteria();
-            insertAnnouncementsCriteria.Id = 12;
             insertAnnouncementsCriteria.FromDate = new DateTime(2017, 6, 18);
             insertAnnouncementsCriteria.ToDate = new DateTime(2017, 6, 17);
 
@@ -69,7 +53,6 @@
         {
             // Arrange
             var insertAnnouncementsCriteria = new InsertAnnouncementsCriteria();
-            insertAnnouncementsCriteria.Id = 12;
             insertAnnouncementsCriteria.ToDate = new DateTime(2017, 6, 18);
             insertAnnouncementsCriteria.FromDate = new DateTime(2017, 6, 17);
 
