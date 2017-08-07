@@ -1,7 +1,7 @@
 ﻿@model ComposeAnnouncementViewModel
 
 @{
-    var maxOrder = 31;
+    var maxOrder = 30;
 }
 
 <div id="display-information-settings" class="row">
@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col l7 input-field">
                 <input type="text" id="txttitle" class="validate" required="" aria-required="true" value="@Model.Announcement.Title" />
-                <label for="txttitle">@AnnouncementResources.Title<span style="color:red" class="">*</span></label>
+                <label for="txttitle">@AnnouncementResources.Title <span class="red-text">*</span></label>
             </div>
             <div class="col l3 input-field">
                 <input type="text" id="txtcode" value="@Model.Announcement.Code" />
@@ -69,7 +69,7 @@
         <div class="row">
             <div class="input-field col s6">
                 <select name="order" id="group-order">
-                    @for (int value = 1; value < maxOrder; value++)
+                    @for (int value = 1; value <= maxOrder; value++)
                     {
                         <option value="@value" @(value.Equals(Model.Announcement.Ordinal) ? "selected" : string.Empty)>@value</option>
                     }

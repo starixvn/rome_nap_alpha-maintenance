@@ -106,7 +106,7 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Announcement Popup.
+        ///   Looks up a localized string similar to Popup.
         /// </summary>
         public static string AnnouncementPopup {
             get {
@@ -151,7 +151,7 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Compose message.
+        ///   Looks up a localized string similar to Compose Announcement.
         /// </summary>
         public static string ComposeMessage {
             get {
@@ -277,7 +277,7 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Manage Messages.
+        ///   Looks up a localized string similar to Manage Announcements.
         /// </summary>
         public static string ManageAnnouncements {
             get {

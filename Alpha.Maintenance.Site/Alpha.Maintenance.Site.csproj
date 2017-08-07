@@ -54,7 +54,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Alpha.Announcements, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Alpha.Announcements.1.0.0.1-Renovation-06\lib\net40\Alpha.Announcements.dll</HintPath>
+      <HintPath>..\packages\Alpha.Announcements.1.0.0.1-Renovation-07\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Alpha.Announcements.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -364,7 +364,11 @@
     <Content Include="Assets\styles\main.min.css">
       <DependentUpon>main.scss</DependentUpon>
     </Content>
+    <Content Include="Assets\styles\vendors\icon\demo-files\demo.css" />
+    <Content Include="Assets\styles\vendors\icon\demo-files\demo.js" />
+    <Content Include="Assets\styles\vendors\icon\demo.html" />
     <Content Include="Assets\styles\vendors\icon\fonts\mSite.svg" />
+    <Content Include="Assets\styles\vendors\icon\Read Me.txt" />
     <Content Include="Global.asax" />
     <Content Include="Assets\images\calendar.gif" />
     <Content Include="Assets\images\ic-calendar.png" />
@@ -530,6 +534,7 @@
     <Content Include="Assets\styles\vendors\icon\fonts\mSite.eot" />
     <Content Include="Assets\styles\vendors\icon\fonts\mSite.ttf" />
     <Content Include="Assets\styles\vendors\icon\fonts\mSite.woff" />
+    <Content Include="Assets\styles\vendors\icon\selection.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

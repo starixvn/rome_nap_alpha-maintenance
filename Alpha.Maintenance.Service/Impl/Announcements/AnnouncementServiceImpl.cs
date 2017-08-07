@@ -20,6 +20,8 @@
 
         private readonly IDictionary<string, Func<dynamic>> getValueRangeFunction;
 
+        private readonly int DefaultAnnoucementOrdinal = 30;
+
         private IEnumerable<string> languages { get; set; }
 
         private IEnumerable<string> offeredSpecifications { get; set; }
@@ -75,7 +77,9 @@
         }
 
         public IEnumerable<Announcement> GetAnnouncements(ICriteria criteria)
-                => announcementRepository.GetAnnouncements(criteria).OrderBy(announcement => announcement.Ordinal);
+                => announcementRepository.GetAnnouncements(criteria)
+                .OrderBy(announcement => announcement.Ordinal)
+                .ThenBy(announcement => announcement.CreatedDate);
 
         public Result InsertAnnouncement(ICriteria criteria)
             => announcementRepository.SaveAnnouncement(criteria);
@@ -97,7 +101,7 @@
                AnnouncementType = AnnouncementType.Popup,
                FromDate = DateTime.Now,
                ToDate = DateTime.Now,
-               Ordinal = 1,
+               Ordinal = DefaultAnnoucementOrdinal,
                Environments = new List<string> { "Local" },
                Systems = new List<string> { "IBCBet" },
                Contents = languages.Select(language => new MessageContent

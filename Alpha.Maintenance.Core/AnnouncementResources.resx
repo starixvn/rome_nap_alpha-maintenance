@@ -133,7 +133,7 @@
     <value>Announcement</value>
   </data>
   <data name="AnnouncementPopup" xml:space="preserve">
-    <value>Announcement Popup</value>
+    <value>Popup</value>
   </data>
   <data name="AnnouncementUrl" xml:space="preserve">
     <value>Url</value>
@@ -148,7 +148,7 @@
     <value>Code</value>
   </data>
   <data name="ComposeMessage" xml:space="preserve">
-    <value>Compose message</value>
+    <value>Compose Announcement</value>
   </data>
   <data name="ConfirmMessage" xml:space="preserve">
     <value>Are you sure you want to save this announcement ?</value>
@@ -181,7 +181,7 @@
     <value>Input Value</value>
   </data>
   <data name="ManageAnnouncements" xml:space="preserve">
-    <value>Manage Messages</value>
+    <value>Manage Announcements</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>NEXT</value>

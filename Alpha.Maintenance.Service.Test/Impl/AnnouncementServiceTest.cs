@@ -164,7 +164,7 @@
                 AnnouncementType = AnnouncementType.Popup,
                 FromDate = DateTime.Now,
                 ToDate = DateTime.Now,
-                Ordinal = 1,
+                Ordinal = 30,
                 Environments = new List<string> { "Local" },
                 Systems = new List<string> { "IBCBet" },
                 Contents = languages.Select(language => new MessageContent
