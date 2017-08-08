@@ -9,12 +9,12 @@
     "789"
   ],
   "specifications": [
-    "Currencies",
+    "Currency Ids",
     "User Ids",
     "User Level",
-    "Sites",
-    "Products",
-    "Not Synced Casino",
+    "Site Names",
+    "Product Ids",
+    "Not Synced RNG Casino",
     "Enable Yesterday Transfer"
   ],
   "levels": [

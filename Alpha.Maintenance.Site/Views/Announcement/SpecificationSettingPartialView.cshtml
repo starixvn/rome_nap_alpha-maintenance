@@ -1,6 +1,6 @@
 ﻿@model ComposeAnnouncementViewModel
 
-<div id="specs-setting">
+<div id="specs-setting" class="hiden">
     <div class="row">
         <div class="col s1">
             &nbsp;
@@ -61,15 +61,16 @@
 {
     <div data-jsonobject="@JsonConvert.SerializeObject(specification)" class="row @(isShowSpec ? string.Empty : "hiden")" name="div-specification" id="@specification.Id">
         <div class="col s1 input-field">
-            @Html.EnumDropDownList("dll-specification-conjunctionOperator", specification.ConjunctionOperator,
-                          new Dictionary<string, object>() { { "data-parentId", specification.Id } })
+            <div id="dll-specification-conjunctionOperator">
+                @ConjunctionOperator.And
+            </div>
         </div>
         <div class="col s2 input-field">
             <div>@specification.Name</div>
         </div>
         <div class="col s2 input-field">
-            @if (specification.GetType() != typeof(NotSyncedCasinoSpecification)
-&& specification.GetType() != typeof(EnableYesterdayTransferSpecification))
+            @if (specification.GetType() != typeof(NotSyncedRNGCasinoSpecification)
+                && specification.GetType() != typeof(EnableYesterdayTransferSpecification))
             {
                 @Html.EnumDropDownList("dll-specification-specificationOperator", specification.SpecificationOperator,
                                    new Dictionary<string, object>() { { "data-parentId", specification.Id } })

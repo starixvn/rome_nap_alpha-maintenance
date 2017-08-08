@@ -77,9 +77,13 @@
         }
 
         public IEnumerable<Announcement> GetAnnouncements(ICriteria criteria)
-                => announcementRepository.GetAnnouncements(criteria)
+        {
+            var result = announcementRepository.GetAnnouncements(criteria)
                 .OrderBy(announcement => announcement.Ordinal)
                 .ThenBy(announcement => announcement.CreatedDate);
+
+            return result;
+        }
 
         public Result InsertAnnouncement(ICriteria criteria)
             => announcementRepository.SaveAnnouncement(criteria);

@@ -39,6 +39,7 @@ class ComposedAnnouncement {
     userLevelsSpecificationValue: string;
     warningMessage: string;
     actionType: string;
+    defaultConjunction: number;
 
     manageAnnoucementUrl: string;
     composeAnnouncementUrl: string;
@@ -61,6 +62,7 @@ class ComposedAnnouncement {
         this.$('ul.tabs').tabs();
         this.$('select').material_select();
         this.$("#content-group").removeClass("hiden");
+        this.$("#specs-setting").removeClass("hiden");
         this.$(".language-tab").first().find("a").click();
         this.cacheDom();
         this.bindEvent();
@@ -85,10 +87,11 @@ class ComposedAnnouncement {
 
         this.dllChooseSpecification = "#dll-choose-specification";
         this.visibleSpecDivs = "div[name='div-specification']:not(.hiden)";
-        this.dllConjunctionOperator = "dll-specification-conjunctionOperator";
+        this.dllConjunctionOperator = "#dll-specification-conjunctionOperator";
         this.userLevelsSpecificationValue = '#dll-specification-value';
         this.txtSpecificationValue = '#txt-specification-value';
         this.actionType = this.$('#actionType').val();
+        this.defaultConjunction = 1;
 
         this.manageAnnoucementUrl = "Announcement/ManageAnnouncements";
         this.composeAnnouncementUrl = "Announcement/ComposeMessage";
@@ -161,8 +164,7 @@ class ComposedAnnouncement {
 
     changeSpecPositions = () => {
         let $spec = this.$("#" + this.$(this.dllChooseSpecification).find('option:selected').val());
-        $spec.find("#" + this.dllConjunctionOperator).parent().removeClass("hiden");
-
+        $spec.find(this.dllConjunctionOperator).removeClass("hiden");
         $spec.removeClass("hiden");
         $spec.insertBefore(this.$divChooseSpecification);
     };
@@ -174,8 +176,7 @@ class ComposedAnnouncement {
 
     correctFirstSpec = () => {
         let $firstDiv = this.$(this.visibleSpecDivs).first();
-        $firstDiv.find("#" + this.dllConjunctionOperator).find('option:selected').val(0);
-        $firstDiv.find("#" + this.dllConjunctionOperator).parent().addClass("hiden");
+        $firstDiv.find(this.dllConjunctionOperator).addClass("hiden");
     };
 
     initSpecOptionsDll = () => {
@@ -222,7 +223,7 @@ class ComposedAnnouncement {
 
     submit = () => {
         let announcement = this.getAnnouncementParam();
-        this.getAnnouncementParam().title != '' ? this.doUpdate(announcement) : this.showWarningMessage(this.warningMessage);
+        announcement.title != '' ? this.doUpdate(announcement) : this.showWarningMessage(this.warningMessage);
     };
 
     showWarningMessage = (message: string) => this.$('.card-panel').html(message).addClass("red red-text").removeClass('hiden');
@@ -327,7 +328,7 @@ class ComposedAnnouncement {
         this.$(this.visibleSpecDivs).map(function (index, domElement) {
             let jsonObject = self.$(domElement).data("jsonobject");
 
-            jsonObject.ConjunctionOperator = self.getOperatorValueById(domElement, "#dll-specification-conjunctionOperator");
+            jsonObject.ConjunctionOperator = self.defaultConjunction;
             jsonObject.SpecificationOperator = self.getOperatorValueById(domElement, "#dll-specification-specificationOperator");
 
             if (self.$(domElement).find(self.txtSpecificationValue).length > 0) {
