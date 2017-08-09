@@ -259,7 +259,7 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Input Value.
+        ///   Looks up a localized string similar to Please Input Value.
         /// </summary>
         public static string InputValue {
             get {

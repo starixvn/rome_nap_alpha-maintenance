@@ -46,10 +46,10 @@
     <div class="row">
         <div class="col s12">
             <a class="btn btn-info waves-effect waves-light btn btn-primary margin-left-30px btnPrev">@AnnouncementResources.Prev</a>
-            <a class="btn btn-info waves-effect waves-light btn btn-primary modal-trigger margin-left-30px btnSave" href="#cofirmMessages">@AnnouncementResources.Save</a>
+            <a class="btn btn-info waves-effect waves-light btn btn-primary margin-left-30px btnSave">@AnnouncementResources.Save</a>
             @if (Model.ActionType.Equals(ActionType.Update))
             {
-                <a class="btn btn-info waves-effect waves-light btn btn-primary modal-trigger margin-left-30px btnCopy" href="#cofirmMessages">@AnnouncementResources.MakeACopy</a>
+                <a class="btn btn-info waves-effect waves-light btn btn-primary margin-left-30px btnCopy">@AnnouncementResources.MakeACopy</a>
             }
 
             <input type="hidden" id="number-of-specifications" value="@(Model.NotExistedSpecifications.Count() + Model.Announcement.Specifications.Count())">
@@ -104,7 +104,7 @@
 
 @helper RenderSpecDll(ISpecification<IParam> specification, bool isShowSpec)
 {
-    <select id="dll-specification-value" multiple data-specificationId="@specification.Id">
+    <select id="dll-specification-value" name="dll-specification-value" multiple data-specificationId="@specification.Id">
         @foreach (var userLevel in AppSettings.AnnouncementConfig.Levels)
         {
             if (specification.Value == null)
@@ -121,6 +121,7 @@
 @helper RenderSpecTxt(ISpecification<IParam> specification, bool isShowSpec)
 {
     <input type="text" id="txt-specification-value"
+           name="txt-specification-value"
            placeholder="@AnnouncementResources.InputValue"
            value="@(isShowSpec ? string.Join(",", specification.Value?? string.Empty) : string.Empty)"
            data-specificationId="@specification.Id" />

@@ -9,6 +9,8 @@ interface JQuery {
     closeModal(): void;
     sort(option: any): void;
     remove(): void;
+    validate(): void;
+    openModal(): void;
 }
 
 interface Window {
@@ -37,7 +39,7 @@ class ComposedAnnouncement {
     visibleSpecDivs: string;   
     txtSpecificationValue: string;
     userLevelsSpecificationValue: string;
-    warningMessage: string;
+    warningTilteMessage: string;
     actionType: string;
     defaultConjunction: number;
 
@@ -48,6 +50,7 @@ class ComposedAnnouncement {
 
     confirmSaveAnnouncementContent: string;
     confirmMakeACopyAnnouncementContent: string;
+    fillOutAllSpecsInput: string;
 
     $nap: any;
     $JSON: any;
@@ -100,7 +103,8 @@ class ComposedAnnouncement {
 
         this.confirmMakeACopyAnnouncementContent = "Are you sure you want to make a copy of this announcement ?";
         this.confirmSaveAnnouncementContent = "Are you sure you want to save this announcement ?";
-        this.warningMessage = "Please input announcement title !";
+        this.warningTilteMessage = "Please input announcement title !";
+        this.fillOutAllSpecsInput = "You must fill out all fields before submit.";
     };
 
     bindEvent = () => {
@@ -115,11 +119,17 @@ class ComposedAnnouncement {
         });
 
         this.$(this.$btnCopy).on('click', function () {
-            self.btnCopyClickOn();
+            if (self.validateSpecificationInput()) {
+                self.$(self.$confirmMessage).openModal();
+                self.btnCopyClickOn();
+            }
         });
 
         this.$(this.$btnSave).on('click', function () {
-            self.btnSaveClickOn();
+            if (self.validateTitle() && self.validateSpecificationInput()) {
+                self.$(self.$confirmMessage).openModal();
+                self.btnSaveClickOn();
+            }
         });
 
         this.$(this.dllChooseSpecification).on('change', function () {
@@ -136,23 +146,70 @@ class ComposedAnnouncement {
         });
 
         this.$txttitle.on('keyup', function () {
-            if (self.$(this).val().trim() != '') {
-                self.$('.card-panel').addClass('hiden');
+            self.validateTitle();
+        });
+
+        this.$("input[name='txt-specification-value']").on('keyup', function () {
+            self.validateSpecificationInput();
+        });
+
+        this.$("select[name='dll-specification-value']").on('change', function () {
+            self.validateSpecificationInput();
+        });
+    };
+
+    hideError = () => this.$('.card-panel').addClass('hiden');
+
+    showWarningMessage = (message: string) => this.$('.card-panel').html(message).addClass("red red-text").removeClass('hiden');
+
+    validateSpecificationInput = () => {
+        let self = this;
+        let $empty = this.$(this.visibleSpecDivs).filter(function () {
+            if (self.$(this).find(self.txtSpecificationValue).length > 0) {
+                return self.$(this).find(self.txtSpecificationValue).val() === "";
+            }
+
+            if (self.$(this).find(self.userLevelsSpecificationValue).length > 0) {
+                return self.$(this).find(self.userLevelsSpecificationValue).val() == null;
             }
         });
+
+        if ($empty.length) {
+            this.showWarningMessage(this.fillOutAllSpecsInput);
+            this.$specSettingTab.click();
+            return false;
+        }
+        else {
+            this.hideError();
+            return true;
+        };
+    };
+
+    validateTitle = () => {
+        let title = this.$("#txttitle").val().trim();
+        if (title === "")
+        {
+            this.showWarningMessage(this.warningTilteMessage);
+            this.$specInformationTab.click();
+            return false;
+        }
+        else {
+            this.hideError();
+            return true;
+        }
     };
 
     btnCopyClickOn = () => {
         this.$("#announcementUrl").val(this.insertAnnouncementUrl);
-        this.$("#cofirmMessages-content").html(this.confirmMakeACopyAnnouncementContent);
         this.$("#isCopy").val("true");
+        this.$("#cofirmMessages-content").html(this.confirmMakeACopyAnnouncementContent);
     };
 
     btnSaveClickOn = () => {
         let url = this.actionType == "Create" ? this.insertAnnouncementUrl : this.updateAnnoucementUrl;
         this.$("#announcementUrl").val(url);
-        this.$("#cofirmMessages-content").html(this.confirmSaveAnnouncementContent);
         this.$("#isCopy").val("false");
+        this.$("#cofirmMessages-content").html(this.confirmSaveAnnouncementContent);
     };
 
     onChangeSpecOption = () => {
@@ -223,12 +280,6 @@ class ComposedAnnouncement {
 
     submit = () => {
         let announcement = this.getAnnouncementParam();
-        announcement.title != '' ? this.doUpdate(announcement) : this.showWarningMessage(this.warningMessage);
-    };
-
-    showWarningMessage = (message: string) => this.$('.card-panel').html(message).addClass("red red-text").removeClass('hiden');
-
-    doUpdate = (announcement: any) => {
         let self = this;
         var formdata = new FormData();
         formdata.append("announcement", self.$JSON.stringify(announcement));
@@ -242,9 +293,7 @@ class ComposedAnnouncement {
             data: formdata,
             contentType: false,
             processData: false,
-            beforeSend: function () {
-                self.$nap.loadingBox.show();
-            },
+            beforeSend: function () {},
             complete: function () {
                 self.$nap.loadingBox.close();
             },
@@ -332,8 +381,8 @@ class ComposedAnnouncement {
             jsonObject.SpecificationOperator = self.getOperatorValueById(domElement, "#dll-specification-specificationOperator");
 
             if (self.$(domElement).find(self.txtSpecificationValue).length > 0) {
-                let sites = self.$(domElement).find(self.txtSpecificationValue).val();
-                jsonObject.Value = self.splitStringtoArray(sites);
+                let values = self.$(domElement).find(self.txtSpecificationValue).val();
+                jsonObject.Value = self.splitStringtoArray(values);
             }
 
             if (self.$(domElement).find(self.userLevelsSpecificationValue).length > 0) {
