@@ -135,7 +135,7 @@
         }
 
         [Test]
-        public void InsertAnnouncement_Always_CallInsertAnnouncementService()
+        public void InsertAnnouncement_Always_CallSaveAnnouncementService()
         {
             // Arrange
 
@@ -148,11 +148,11 @@
             announcementController.InsertAnnouncement(saveAnnouncementDemand);
 
             // Assert
-            announcementService.Received().InsertAnnouncement(Arg.Any<InsertAnnouncementsCriteria>());
+            announcementService.Received().SaveAnnouncement(Arg.Any<InsertAnnouncementsCriteria>());
         }
 
         [Test]
-        public void UpdateAnnouncement_Always_CallUpdateAnnouncementService()
+        public void UpdateAnnouncement_Always_CallSaveAnnouncementService()
         {
             // Arrange
 
@@ -165,7 +165,7 @@
             announcementController.UpdateAnnouncement(saveAnnouncementDemand);
 
             // Assert
-            announcementService.Received().UpdateAnnouncement(Arg.Any<UpdateAnnouncementsCriteria>());
+            announcementService.Received().SaveAnnouncement(Arg.Any<UpdateAnnouncementsCriteria>());
         }
 
         [Test]

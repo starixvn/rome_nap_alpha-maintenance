@@ -28,9 +28,6 @@
             IEnumerable<ISpecification<IParam>> allSpecifications,
             IEnumerable<ISpecification<IParam>> existedSpecifications)
             => existedSpecifications == null ? allSpecifications :
-                 allSpecifications.Where(spec =>
-                    {
-                        return !existedSpecifications.Any(existedSpec => existedSpec.Id.Equals(spec.Id));
-                    });
+                allSpecifications.Where(spec => !existedSpecifications.Any(existedSpec => existedSpec.Id.Equals(spec.Id)));
     }
 }

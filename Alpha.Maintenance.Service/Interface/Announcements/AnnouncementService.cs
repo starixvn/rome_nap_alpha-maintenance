@@ -13,9 +13,8 @@
 
         IEnumerable<Announcement> GetAnnouncements(ICriteria criteria);
 
-        Result InsertAnnouncement(ICriteria criteria);
+        Result SaveAnnouncement(ICriteria criteria);
 
-        Result UpdateAnnouncement(ICriteria criteria);
         Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria);
 
         Announcement GetDefaultAnnouncement();

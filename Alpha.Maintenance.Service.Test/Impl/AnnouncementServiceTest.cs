@@ -126,22 +126,11 @@
         }
 
         [Test]
-        public void UpdateAnnouncement_CallSaveAnnouncementRepository()
-        {
-            // Arrange && Act
-            var criteria = new UpdateAnnouncementsCriteria();
-            announcementServiceImpl.UpdateAnnouncement(criteria);
-
-            // Assert
-            announcementRepository.Received().SaveAnnouncement(Arg.Any<UpdateAnnouncementsCriteria>());
-        }
-
-        [Test]
-        public void InsertAnnouncement_CallSaveAnnouncementRepository()
+        public void SaveAnnouncement_CallSaveAnnouncementRepository()
         {
             // Arrange && Act
             var criteria = new InsertAnnouncementsCriteria();
-            announcementServiceImpl.InsertAnnouncement(criteria);
+            announcementServiceImpl.SaveAnnouncement(criteria);
 
             // Assert
             announcementRepository.Received().SaveAnnouncement(Arg.Any<ICriteria>());

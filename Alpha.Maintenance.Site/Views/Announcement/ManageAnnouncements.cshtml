@@ -124,10 +124,10 @@
                             <label for="@announcement.Id"><!--c--></label>
                         </td>
                         <td>
-                            @announcement.FromDate.ToShortDateString()
+                            @announcement.FromDate.ToString("MMM dd, yyyy")
                         </td>
                         <td>
-                            @announcement.ToDate.ToShortDateString()
+                            @announcement.ToDate.ToString("MMM dd, yyyy")
                         </td>
                         <td>
                             @announcement.Ordinal
@@ -142,7 +142,7 @@
                             @announcement.AnnouncementType
                         </td>
                         <td>
-                            @announcement.CreatedDate.ToShortDateString()
+                            @announcement.CreatedDate.ToString("MMM dd, yyyy")
                         </td>
                     </tr>
                 }

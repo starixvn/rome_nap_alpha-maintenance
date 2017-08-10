@@ -1,6 +1,5 @@
 ﻿namespace Alpha.Maintenance.Core.Configurations
 {
-    using System;
     using System.Configuration;
     using System.IO;
     using System.Runtime.Serialization.Json;
@@ -39,7 +38,7 @@
                 }
                 else
                 {
-                    throw new FileNotFoundException("Cannot find security code json file");
+                    throw new FileNotFoundException("Cannot find announcement json file");
                 }
             }
         }

@@ -6,6 +6,7 @@
     using Announcements.Models;
     using Announcements.Services;
     using Announcements.Specs;
+    using Core;
     using Core.Configurations;
     using Core.Model;
     using Fanex.Data.Repository;
@@ -22,9 +23,9 @@
 
         private readonly int DefaultAnnoucementOrdinal = 30;
 
-        private IEnumerable<string> languages { get; set; }
+        private readonly IEnumerable<string> languages;
 
-        private IEnumerable<string> offeredSpecifications { get; set; }
+        private readonly IEnumerable<string> offeredSpecifications;
 
         public AnnouncementServiceImpl()
             : this(null, null, null, null, null)
@@ -77,18 +78,11 @@
         }
 
         public IEnumerable<Announcement> GetAnnouncements(ICriteria criteria)
-        {
-            var result = announcementRepository.GetAnnouncements(criteria)
+            => announcementRepository.GetAnnouncements(criteria)
                 .OrderBy(announcement => announcement.Ordinal)
                 .ThenBy(announcement => announcement.CreatedDate);
 
-            return result;
-        }
-
-        public Result InsertAnnouncement(ICriteria criteria)
-            => announcementRepository.SaveAnnouncement(criteria);
-
-        public Result UpdateAnnouncement(ICriteria criteria)
+        public Result SaveAnnouncement(ICriteria criteria)
             => announcementRepository.SaveAnnouncement(criteria);
 
         public Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria)
@@ -103,11 +97,11 @@
            => new Announcement
            {
                AnnouncementType = AnnouncementType.Popup,
-               FromDate = DateTime.Now,
-               ToDate = DateTime.Now,
+               FromDate = SystemTime.Today,
+               ToDate = SystemTime.Today,
                Ordinal = DefaultAnnoucementOrdinal,
-               Environments = new List<string> { "Local" },
-               Systems = new List<string> { "IBCBet" },
+               Environments = new List<string> { AppSettings.AnnouncementConfig.Environments.FirstOrDefault() },
+               Systems = new List<string> { AppSettings.AnnouncementConfig.Systems.FirstOrDefault() },
                Contents = languages.Select(language => new MessageContent
                            {
                                LanguageKey = language,

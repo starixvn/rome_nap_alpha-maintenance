@@ -77,7 +77,7 @@
         public JsonResult InsertAnnouncement(SaveAnnouncementDemand demand)
             => new JsonNetResult
             {
-                Data = announcementService.InsertAnnouncement(new InsertAnnouncementsCriteria
+                Data = announcementService.SaveAnnouncement(new InsertAnnouncementsCriteria
                 {
                     Code = demand.DeserializeAnnouncement.Code,
                     Title = demand.IsCopy ? $"Copy of {demand.DeserializeAnnouncement.Title}"
@@ -103,7 +103,7 @@
         public JsonResult UpdateAnnouncement(SaveAnnouncementDemand demand)
               => new JsonNetResult
               {
-                  Data = announcementService.UpdateAnnouncement(new UpdateAnnouncementsCriteria
+                  Data = announcementService.SaveAnnouncement(new UpdateAnnouncementsCriteria
                   {
                       Id = demand.DeserializeAnnouncement.Id,
                       Code = demand.DeserializeAnnouncement.Code,
