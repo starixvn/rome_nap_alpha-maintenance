@@ -44,11 +44,12 @@
                 => factorySpecs.Where(spec => offeredSpecifications.Any(existedSpec => existedSpec.Equals(spec.Name)));
 
         public IEnumerable<ISpecification<IParam>> GetFactorySpecifications()
-                => ConfiguredCacheService
-                    .GetOrSet(
-                    SpecificationsCacheKey,
-                    () => specificationFactory.LoadSpecifications(),
-                    new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromHours(SpecificationFactoryCacheTime)));
+                => specificationFactory.LoadSpecifications();
+            //ConfiguredCacheService
+            //        .GetOrSet(
+            //        SpecificationsCacheKey,
+            //        () => specificationFactory.LoadSpecifications(),
+            //        new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromHours(SpecificationFactoryCacheTime)));
 
     }
 }

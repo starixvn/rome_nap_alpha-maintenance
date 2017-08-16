@@ -59,6 +59,16 @@
 
 @helper RenderSpecification(ISpecification<IParam> specification, bool isShowSpec = true)
 {
+    var txtSpecsDictionary = new List<Type>()
+        {
+            typeof(SiteSpecification),
+            typeof(UserIdSpecification),
+            typeof(CurrencySpecification),
+            typeof(ProductSpecification),
+            typeof(UplineIdsSpecification)
+        };
+
+
     <div data-jsonobject="@JsonConvert.SerializeObject(specification)" class="row @(isShowSpec ? string.Empty : "hiden")" name="div-specification" id="@specification.Id">
         <div class="col s1 input-field">
             <div id="dll-specification-conjunctionOperator">
@@ -75,7 +85,6 @@
                 @Html.EnumDropDownList("dll-specification-specificationOperator", specification.SpecificationOperator,
                                    new Dictionary<string, object>() { { "data-parentId", specification.Id } })
             }
-
         </div>
         <div class="col s3 input-field">
             @if (specification.GetType() == typeof(UserLevelSpecification))
@@ -83,10 +92,7 @@
                 @RenderSpecDll(specification, isShowSpec);
             }
 
-            else if (specification.GetType() == typeof(SiteSpecification)
-                     || specification.GetType() == typeof(UserIdSpecification)
-                     || specification.GetType() == typeof(CurrencySpecification)
-                     || specification.GetType() == typeof(ProductSpecification))
+            else if (txtSpecsDictionary.Contains(specification.GetType()))
             {
                 @RenderSpecTxt(specification, isShowSpec);
             }
@@ -104,16 +110,16 @@
 
 @helper RenderSpecDll(ISpecification<IParam> specification, bool isShowSpec)
 {
+    if (specification.Value == null && specification.GetType() == typeof(UserLevelSpecification))
+    {
+        specification = new UserLevelSpecification(new List<byte> { 2 });
+    }
+
     <select id="dll-specification-value" name="dll-specification-value" multiple data-specificationId="@specification.Id">
         @foreach (var userLevel in AppSettings.AnnouncementConfig.Levels)
         {
-            if (specification.Value == null)
-            {
-                specification = new UserLevelSpecification(new List<byte> { 2 });
-            }
-
-            <option value="@userLevel.Id"
-                    @(specification.Value.Contains((byte)userLevel.Id) ? "selected" : string.Empty)>@userLevel.Name</option>
+            var selected = specification.Value.Contains((byte)userLevel.Id) ? "selected" : string.Empty;
+            <option value="@userLevel.Id" @selected>@userLevel.Name</option>
         }
     </select>
 }

@@ -32,11 +32,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Alpha.Announcements, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Alpha.Announcements.1.0.0.1-Renovation-09\lib\net40\Alpha.Announcements.dll</HintPath>
+      <HintPath>..\packages\Alpha.Announcements.1.0.0.1-Renovation-11\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Alpha.Announcements.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Alpha.Announcements.Client.1.0.0.0-Renovation\lib\net40\Alpha.Announcements.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Alpha.Announcements.UplineIdRule, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Alpha.Announcements.UplineIdRule.1.0.0.1-UplineIdRule-03\lib\net40\Alpha.Announcements.UplineIdRule.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Common, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
