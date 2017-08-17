@@ -33,8 +33,8 @@
             announcementService = Substitute.For<AnnouncementService>();
             announcementJson = @"{  
                                    'id':'32',
-                                   'code':'17072017-david',
-                                   'title':'17072017-david',
+                                   'code':'23333',
+                                   'title':'xxx',
                                    'isActive':true,
                                    'announcementType':'1',
                                    'contents':[  

@@ -27,6 +27,10 @@
 
         private readonly IEnumerable<string> offeredSpecifications;
 
+        private readonly IEnumerable<string> environments;
+
+        private readonly IEnumerable<string> systems;
+
         public AnnouncementServiceImpl()
             : this(null, null, null, null, null)
         {
@@ -37,7 +41,9 @@
             AnnouncementRepository announcementRepository = null,
             BaseAnnouncementService baseAnnouncementService = null,
             IEnumerable<string> languages = null,
-            IEnumerable<string> offeredSpecifications = null)
+            IEnumerable<string> offeredSpecifications = null,
+            IEnumerable<string> environments = null,
+            IEnumerable<string> systems = null)
         {
             this.announcementRepository = announcementRepository ?? new AnnouncementRepositoryImpl();
             this.baseAnnouncementService = baseAnnouncementService ?? new BaseAnnouncementServiceImpl(specificationFactory);
@@ -53,6 +59,8 @@
                                                         };
 
             this.offeredSpecifications = offeredSpecifications ?? AppSettings.AnnouncementConfig.OfferedSpecifications;
+            this.environments = environments ?? AppSettings.AnnouncementConfig.Environments;
+            this.systems = systems ?? AppSettings.AnnouncementConfig.Systems;
 
             getValueRangeFunction = new Dictionary<string, Func<dynamic>>
             {
@@ -100,8 +108,8 @@
                FromDate = SystemTime.Today,
                ToDate = SystemTime.Today,
                Ordinal = DefaultAnnoucementOrdinal,
-               Environments = new List<string> { AppSettings.AnnouncementConfig.Environments.FirstOrDefault() },
-               Systems = new List<string> { AppSettings.AnnouncementConfig.Systems.FirstOrDefault() },
+               Environments = environments,
+               Systems = systems,
                Contents = languages.Select(language => new MessageContent
                            {
                                LanguageKey = language,

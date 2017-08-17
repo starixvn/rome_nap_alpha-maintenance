@@ -6,6 +6,8 @@
     using Announcements.Models;
     using Announcements.Services;
     using Announcements.Specs;
+    using Constants;
+    using Core;
     using Fanex.Data.Repository;
     using Interface.Announcement;
     using KellermanSoftware.CompareNetObjects;
@@ -27,6 +29,8 @@
 
         private Announcement announcementSample;
         private IEnumerable<string> languages;
+        private IEnumerable<string> environments;
+        private IEnumerable<string> systems;
 
         [SetUp]
         public void SetUp()
@@ -36,6 +40,7 @@
             announcementRepository = Substitute.For<AnnouncementRepository>();
             baseAnnouncementService = Substitute.For<BaseAnnouncementService>();
             compareLogic = new CompareLogic();
+            SystemTime.Today = DefaultVariables.CurrentDate;
 
             languages = new List<string> {
                                             "en-US",
@@ -47,6 +52,15 @@
                                             "ja-JP"
                                         };
 
+            environments = new List<string> {
+                                            "Local"
+                                        };
+
+
+            systems = new List<string> {
+                                            "IBCBet"
+                                        };
+
             announcementSample = BuildAnnouncementSample();
 
             announcementServiceImpl = new AnnouncementServiceImpl(
@@ -54,7 +68,9 @@
                                                 announcementRepository,
                                                 baseAnnouncementService,
                                                 languages,
-                                                new List<string>());
+                                                new List<string>(),
+                                                environments,
+                                                systems);
         }
 
         [Test]
@@ -151,8 +167,8 @@
             => new Announcement
             {
                 AnnouncementType = AnnouncementType.Popup,
-                FromDate = DateTime.Now,
-                ToDate = DateTime.Now,
+                FromDate = SystemTime.Today,
+                ToDate = SystemTime.Today,
                 Ordinal = 30,
                 Environments = new List<string> { "Local" },
                 Systems = new List<string> { "IBCBet" },

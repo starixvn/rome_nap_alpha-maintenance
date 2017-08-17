@@ -13,7 +13,7 @@
     {
         private const string SpecificationsCacheKey = "Alpha.Maintenance.Service.Impl.AnnouncementServiceImpl.AllSpecifications";
         private readonly SpecificationFactory specificationFactory;
-        private readonly int SpecificationFactoryCacheTime = 1;
+        private const int SpecificationFactoryCacheTime = 1;
 
         public BaseAnnouncementServiceImpl(SpecificationFactory specificationFactory = null)
         {
@@ -44,12 +44,11 @@
                 => factorySpecs.Where(spec => offeredSpecifications.Any(existedSpec => existedSpec.Equals(spec.Name)));
 
         public IEnumerable<ISpecification<IParam>> GetFactorySpecifications()
-                => specificationFactory.LoadSpecifications();
-            //ConfiguredCacheService
-            //        .GetOrSet(
-            //        SpecificationsCacheKey,
-            //        () => specificationFactory.LoadSpecifications(),
-            //        new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromHours(SpecificationFactoryCacheTime)));
+            => ConfiguredCacheService
+                    .GetOrSet(
+                    SpecificationsCacheKey,
+                    () => specificationFactory.LoadSpecifications(),
+                    new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromHours(SpecificationFactoryCacheTime)));
 
     }
 }
