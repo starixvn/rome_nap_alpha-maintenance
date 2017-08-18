@@ -139,10 +139,7 @@
         {
             // Arrange
 
-            var saveAnnouncementDemand = new SaveAnnouncementDemand
-            {
-                Announcement = announcementJson
-            };
+            var saveAnnouncementDemand = new SaveAnnouncementDemand(announcementJson);
 
             // Act
             announcementController.InsertAnnouncement(saveAnnouncementDemand);
@@ -156,11 +153,7 @@
         {
             // Arrange
 
-            var saveAnnouncementDemand = new SaveAnnouncementDemand
-            {
-                Announcement = announcementJson
-            };
-
+            var saveAnnouncementDemand = new SaveAnnouncementDemand(announcementJson);
             // Act
             announcementController.UpdateAnnouncement(saveAnnouncementDemand);
 

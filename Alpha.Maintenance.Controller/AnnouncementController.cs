@@ -1,13 +1,19 @@
 ﻿namespace Alpha.Maintenance.Controller
 {
+    using System.IO;
+    using System.Text;
+    using System.Web;
     using System.Web.Mvc;
+    using Announcements.Models;
     using Core;
+    using Core.Model;
     using Fanex.NAP.Core.Business;
     using Fanex.NAP.Core.Service.Interface;
     using Fanex.NAP.Core.Web.Attribute;
     using Fanex.NAP.Core.Web.Context;
     using Fanex.NAP.Core.Web.Session;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Bson;
     using Repository.Criteria.Announcements;
     using Request;
     using Service.Impl.Announcement;
@@ -87,7 +93,7 @@
                     CreatedDate = SystemTime.Today,
                     FromDate = demand.DeserializeAnnouncement.FromDate,
                     ToDate = demand.DeserializeAnnouncement.ToDate,
-                    Environments = demand.Environments,
+                    Environments = demand.IsCopy ? string.Empty : demand.Environments,
                     Systems = demand.Systems,
                     Ordinal = demand.DeserializeAnnouncement.Ordinal,
                     Contents = demand.EncodedContents,
@@ -108,7 +114,7 @@
                       Id = demand.DeserializeAnnouncement.Id,
                       Code = demand.DeserializeAnnouncement.Code,
                       Title = demand.DeserializeAnnouncement.Title,
-                      IsActive = demand.DeserializeAnnouncement.IsActive,
+                      IsActive = false,
                       AnnouncementType = (int)demand.DeserializeAnnouncement.AnnouncementType,
                       FromDate = demand.DeserializeAnnouncement.FromDate,
                       ToDate = demand.DeserializeAnnouncement.ToDate,
@@ -123,5 +129,52 @@
                   }),
                   JsonRequestBehavior = JsonRequestBehavior.AllowGet
               };
+
+        [HttpGet]
+        [NapAuth(FunctionKey = SiteFunctionKeys.AnnouncementManagement, Policy = Constant.Policy.Host)]
+        public FileStreamResult Export(SelectAnnouncementByIdCriteria criteria)
+        {
+            var model = announcementService.GetAnnouncementById(criteria);
+            var byteArray = Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(model));
+            var stream = new MemoryStream(byteArray);
+
+            return File(stream, "text/plain", $"{model.Title}.txt");
+        }
+
+        [HttpPost]
+        [NapAuth(FunctionKey = SiteFunctionKeys.AnnouncementManagement, Policy = Constant.Policy.Host)]
+        public JsonResult Import(HttpPostedFileBase file)
+        {
+            string announcement = string.Empty;
+            using (BinaryReader b = new BinaryReader(file.InputStream))
+            {
+                byte[] binData = b.ReadBytes(file.ContentLength);
+                announcement = Encoding.UTF8.GetString(binData);
+            }
+
+            var demand = new SaveAnnouncementDemand(announcement);
+
+            return new JsonNetResult
+            {
+                Data = announcementService.SaveAnnouncement(new InsertAnnouncementsCriteria
+                {
+                    Code = demand.DeserializeAnnouncement.Code,
+                    Title = $"Import of {demand.DeserializeAnnouncement.Title}",
+                    IsActive = false,
+                    AnnouncementType = (int)demand.DeserializeAnnouncement.AnnouncementType,
+                    CreatedDate = SystemTime.Today,
+                    FromDate = demand.DeserializeAnnouncement.FromDate,
+                    ToDate = demand.DeserializeAnnouncement.ToDate,
+                    Environments = string.Empty,
+                    Systems = demand.Systems,
+                    Ordinal = demand.DeserializeAnnouncement.Ordinal,
+                    Contents = demand.EncodedContents,
+                    Specifications = JsonConvert.SerializeObject(demand.DeserializeAnnouncement.Specifications),
+                    CreatorId = CurrentSession.UserId,
+                    CreatorName = CurrentSession.Username
+                }),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
     }
 }

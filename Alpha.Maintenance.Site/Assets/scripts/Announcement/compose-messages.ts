@@ -11,6 +11,7 @@ interface JQuery {
     remove(): void;
     validate(): void;
     openModal(): void;
+    dropify(): void;
 }
 
 interface Window {
@@ -40,6 +41,7 @@ class ComposedAnnouncement {
     txtSpecificationValue: string;
     userLevelsSpecificationValue: string;
     warningTilteMessage: string;
+    saveAnnouncementFailedMessage: string;
     actionType: string;
     defaultConjunction: number;
 
@@ -105,6 +107,7 @@ class ComposedAnnouncement {
         this.confirmSaveAnnouncementContent = "Are you sure you want to save this announcement ?";
         this.warningTilteMessage = "Please input announcement title !";
         this.fillOutAllSpecsInput = "You must fill out all fields before submit.";
+        this.saveAnnouncementFailedMessage = "Save announcements failed."
     };
 
     bindEvent = () => {
@@ -302,6 +305,7 @@ class ComposedAnnouncement {
             },
             error: function (xhr, status, err) {
                 self.$nap.handleAjaxError(xhr, status, err);
+                self.$('.card-panel').html(self.saveAnnouncementFailedMessage).addClass("red red-text").removeClass('green green-text hiden');
             }
         });
     };

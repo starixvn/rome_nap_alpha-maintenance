@@ -1,9 +1,6 @@
 {
   "environments": [
-    "Local",
-    "UAT",
-    "Staging",
-    "PRO"
+    "Local"
   ],
   "systems": [
     "IBCBet",

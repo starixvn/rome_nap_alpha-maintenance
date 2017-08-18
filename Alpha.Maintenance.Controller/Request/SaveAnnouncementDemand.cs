@@ -10,6 +10,16 @@
 
     public class SaveAnnouncementDemand
     {
+        public SaveAnnouncementDemand()
+            : this(null)
+        {
+        }
+
+        public SaveAnnouncementDemand(string announcement)
+        {
+            Announcement = announcement;
+        }
+
         [AllowHtml]
         public string Announcement { get; set; }
 

@@ -124,6 +124,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clone.
         /// </summary>
         public static string Clone {
@@ -214,6 +223,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download.
+        /// </summary>
+        public static string Download {
+            get {
+                return ResourceManager.GetString("Download", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         public static string Edit {
@@ -255,6 +273,24 @@ namespace Alpha.Maintenance.Core {
         public static string HeaderPopup {
             get {
                 return ResourceManager.GetString("HeaderPopup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import.
+        /// </summary>
+        public static string Import {
+            get {
+                return ResourceManager.GetString("Import", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import Announcement.
+        /// </summary>
+        public static string ImportAnnouncememt {
+            get {
+                return ResourceManager.GetString("ImportAnnouncememt", resourceCulture);
             }
         }
         
@@ -372,6 +408,15 @@ namespace Alpha.Maintenance.Core {
         public static string SpecificationSetting {
             get {
                 return ResourceManager.GetString("SpecificationSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        public static string Submit {
+            get {
+                return ResourceManager.GetString("Submit", resourceCulture);
             }
         }
         
