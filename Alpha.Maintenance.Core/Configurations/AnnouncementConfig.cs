@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using System.Runtime.Serialization;
-    using Model;
 
     [DataContract]
     public class AnnouncementConfig
@@ -12,9 +11,6 @@
 
         [DataMember(Name = "systems")]
         public IEnumerable<string> Systems { get; set; }
-
-        [DataMember(Name = "levels")]
-        public IEnumerable<UserLevel> Levels { get; set; }
 
         [DataMember(Name = "specifications")]
         public IEnumerable<string> OfferedSpecifications { get; set; }

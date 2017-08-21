@@ -2,8 +2,14 @@
 {
     public class UserLevel
     {
-        public byte Id { get; set; }
+        public UserLevel(byte id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
 
-        public string Name { get; set; }
+        public byte Id { get;}
+
+        public string Name { get;}
     }
 }

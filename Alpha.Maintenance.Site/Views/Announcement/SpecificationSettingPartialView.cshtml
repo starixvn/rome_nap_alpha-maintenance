@@ -116,7 +116,7 @@
     }
 
     <select id="dll-specification-value" name="dll-specification-value" multiple data-specificationId="@specification.Id">
-        @foreach (var userLevel in AppSettings.AnnouncementConfig.Levels)
+        @foreach (var userLevel in Model.UserLevels)
         {
             var selected = specification.Value.Contains((byte)userLevel.Id) ? "selected" : string.Empty;
             <option value="@userLevel.Id" @selected>@userLevel.Name</option>

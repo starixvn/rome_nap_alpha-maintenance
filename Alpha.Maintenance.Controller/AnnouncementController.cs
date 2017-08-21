@@ -4,16 +4,13 @@
     using System.Text;
     using System.Web;
     using System.Web.Mvc;
-    using Announcements.Models;
     using Core;
-    using Core.Model;
     using Fanex.NAP.Core.Business;
     using Fanex.NAP.Core.Service.Interface;
     using Fanex.NAP.Core.Web.Attribute;
     using Fanex.NAP.Core.Web.Context;
     using Fanex.NAP.Core.Web.Session;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Bson;
     using Repository.Criteria.Announcements;
     using Request;
     using Service.Impl.Announcement;
@@ -24,6 +21,8 @@
     public class AnnouncementController : BaseController
     {
         private readonly AnnouncementService announcementService;
+        private readonly bool preventedActive = false;
+        private readonly string emptyEnvironments = string.Empty;
 
         public AnnouncementController()
             : this(null, null, null, null, null, null, null, null)
@@ -88,12 +87,12 @@
                     Code = demand.DeserializeAnnouncement.Code,
                     Title = demand.IsCopy ? $"Copy of {demand.DeserializeAnnouncement.Title}"
                                             : demand.DeserializeAnnouncement.Title,
-                    IsActive = demand.DeserializeAnnouncement.IsActive,
+                    IsActive = demand.IsCopy ? preventedActive : demand.DeserializeAnnouncement.IsActive,
                     AnnouncementType = (int)demand.DeserializeAnnouncement.AnnouncementType,
                     CreatedDate = SystemTime.Today,
                     FromDate = demand.DeserializeAnnouncement.FromDate,
                     ToDate = demand.DeserializeAnnouncement.ToDate,
-                    Environments = demand.IsCopy ? string.Empty : demand.Environments,
+                    Environments = demand.IsCopy ? emptyEnvironments : demand.Environments,
                     Systems = demand.Systems,
                     Ordinal = demand.DeserializeAnnouncement.Ordinal,
                     Contents = demand.EncodedContents,
@@ -114,7 +113,7 @@
                       Id = demand.DeserializeAnnouncement.Id,
                       Code = demand.DeserializeAnnouncement.Code,
                       Title = demand.DeserializeAnnouncement.Title,
-                      IsActive = false,
+                      IsActive = demand.DeserializeAnnouncement.IsActive,
                       AnnouncementType = (int)demand.DeserializeAnnouncement.AnnouncementType,
                       FromDate = demand.DeserializeAnnouncement.FromDate,
                       ToDate = demand.DeserializeAnnouncement.ToDate,
@@ -135,7 +134,7 @@
         public FileStreamResult Export(SelectAnnouncementByIdCriteria criteria)
         {
             var model = announcementService.GetAnnouncementById(criteria);
-            var byteArray = Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(model));
+            var byteArray = Encoding.Unicode.GetBytes(JsonConvert.SerializeObject(model));
             var stream = new MemoryStream(byteArray);
 
             return File(stream, "text/plain", $"{model.Title}.txt");
@@ -149,7 +148,7 @@
             using (BinaryReader b = new BinaryReader(file.InputStream))
             {
                 byte[] binData = b.ReadBytes(file.ContentLength);
-                announcement = Encoding.UTF8.GetString(binData);
+                announcement = Encoding.Unicode.GetString(binData);
             }
 
             var demand = new SaveAnnouncementDemand(announcement);
@@ -160,12 +159,12 @@
                 {
                     Code = demand.DeserializeAnnouncement.Code,
                     Title = $"Import of {demand.DeserializeAnnouncement.Title}",
-                    IsActive = false,
+                    IsActive = preventedActive,
                     AnnouncementType = (int)demand.DeserializeAnnouncement.AnnouncementType,
                     CreatedDate = SystemTime.Today,
                     FromDate = demand.DeserializeAnnouncement.FromDate,
                     ToDate = demand.DeserializeAnnouncement.ToDate,
-                    Environments = string.Empty,
+                    Environments = emptyEnvironments,
                     Systems = demand.Systems,
                     Ordinal = demand.DeserializeAnnouncement.Ordinal,
                     Contents = demand.EncodedContents,

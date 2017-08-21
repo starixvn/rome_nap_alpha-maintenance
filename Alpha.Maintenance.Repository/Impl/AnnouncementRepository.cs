@@ -126,7 +126,6 @@
             {
                 AnnouncementType = (AnnouncementType)reader.ToInt("AnnouncementType"),
                 Code = reader.ToString("Code"),
-                CreatedDate = reader.ToDateTime("CreatedDate"),
                 Contents = JsonConvert.DeserializeObject<IEnumerable<MessageContent>>(plainText),
                 Ordinal = reader.ToInt("Ordinal"),
                 Environments = reader.ToString("Environments").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
@@ -140,7 +139,13 @@
                                     .Select(system => system.Trim()),
                 Title = reader.ToString("Title"),
                 FromDate = reader.ToDateTime("FromDate"),
-                ToDate = reader.ToDateTime("ToDate")
+                ToDate = reader.ToDateTime("ToDate"),
+                CreatedDate = reader.ToDateTime("CreatedDate"),
+                CreatorId = reader.ToInt("CreatorId"),
+                CreatorName = reader.ToString("CreatorName"),
+                LastEditDate = reader.ToDateTime("LastEditDate"),
+                LastEditorId = reader.ToInt("LastEditorId"),
+                LastEditorName = reader.ToString("LastEditorName")
             };
         }
     }

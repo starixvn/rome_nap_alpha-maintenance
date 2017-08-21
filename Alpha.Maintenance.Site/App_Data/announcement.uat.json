@@ -16,19 +16,5 @@
     "Product Ids",
     "Not Synced RNG Casino",
     "Enable Yesterday Transfer"
-  ],
-  "levels": [
-    {
-      "Id": 2,
-      "Name": "Agent"
-    },
-    {
-      "Id": 3,
-      "Name": "Master"
-    },
-    {
-      "Id": 4,
-      "Name": "Super"
-    }
   ]
 }

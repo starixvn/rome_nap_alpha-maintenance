@@ -142,7 +142,6 @@
                 Title = "07032017 - Example",
                 IsActive = false,
                 AnnouncementType = AnnouncementType.HeaderPopup,
-                CreatedDate = new DateTime(2017, 6, 3),
                 FromDate = new DateTime(2017, 6, 3),
                 ToDate = new DateTime(2017, 7, 20),
                 Ordinal = 4,
@@ -155,7 +154,13 @@
                 Contents = JsonConvert.DeserializeObject<IEnumerable<MessageContent>>(plainText),
                 Specifications = JsonConvert.DeserializeObject<IEnumerable<ISpecification<IParam>>>(
                            specs,
-                            new SpecificationConverter())
+                            new SpecificationConverter()),
+                CreatedDate = new DateTime(2017, 6, 3),
+                CreatorName = "user",
+                CreatorId = 12,
+                LastEditDate = new DateTime(2017, 7, 27),
+                LastEditorId = 8,
+                LastEditorName = "sa"
             };
 
             return announcement;

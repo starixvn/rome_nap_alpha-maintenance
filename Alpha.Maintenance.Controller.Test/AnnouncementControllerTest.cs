@@ -116,10 +116,8 @@
         public void ComposeMessage_ActionIsCreate_CallGetAnnouncementByIdService()
         {
             // Arrange
-            var selectAnnouncementByIdCriteria = new SelectAnnouncementByIdCriteria
-            {
-                Id = 1
-            };
+            var selectAnnouncementByIdCriteria = new SelectAnnouncementByIdCriteria();
+            selectAnnouncementByIdCriteria.Id = 1;
 
             var specs = new List<ISpecification<IParam>>();
             announcementService.GetOfferedSpecifications().Returns(specs);
@@ -165,10 +163,8 @@
         public void ComposeMessage_CallGetOfferedSpecificationsService()
         {
             // Arrange
-            var selectAnnouncementByIdCriteria = new SelectAnnouncementByIdCriteria
-            {
-                Id = 0
-            };
+            var selectAnnouncementByIdCriteria = new SelectAnnouncementByIdCriteria();
+            selectAnnouncementByIdCriteria.Id = 0;
 
             var announcement = new Announcement();
             announcementService.GetDefaultAnnouncement().Returns(announcement);
@@ -184,10 +180,8 @@
         public void ComposeMessage_ActionIsCreate_CallGetDefaultAnnouncementService()
         {
             // Arrange
-            var selectAnnouncementByIdCriteria = new SelectAnnouncementByIdCriteria
-            {
-                Id = 0
-            };
+            var selectAnnouncementByIdCriteria = new SelectAnnouncementByIdCriteria();
+            selectAnnouncementByIdCriteria.Id = 0;
 
             var announcement = new Announcement();
             announcementService.GetDefaultAnnouncement().Returns(announcement);

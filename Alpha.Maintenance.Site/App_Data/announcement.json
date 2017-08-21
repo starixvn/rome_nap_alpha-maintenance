@@ -15,19 +15,5 @@
     "Not Synced RNG Casino",
     "Enable Yesterday Transfer",
     "Upline Ids"
-  ],
-  "levels": [
-    {
-      "Id": 2,
-      "Name": "Agent"
-    },
-    {
-      "Id": 3,
-      "Name": "Master"
-    },
-    {
-      "Id": 4,
-      "Name": "Super"
-    }
   ]
 }
