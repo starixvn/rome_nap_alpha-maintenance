@@ -143,8 +143,8 @@
                 CreatedDate = reader.ToDateTime("CreatedDate"),
                 CreatorId = reader.ToInt("CreatorId"),
                 CreatorName = reader.ToString("CreatorName"),
-                LastEditDate = reader.ToDateTime("LastEditDate"),
-                LastEditorId = reader.ToInt("LastEditorId"),
+                LastEditDate = reader.IsDBNull("LastEditDate") ? (DateTime?)null : reader.ToDateTime("LastEditDate"),
+                LastEditorId = reader.IsDBNull("LastEditorId") ? (int?)null : reader.ToInt("LastEditorId"),
                 LastEditorName = reader.ToString("LastEditorName")
             };
         }

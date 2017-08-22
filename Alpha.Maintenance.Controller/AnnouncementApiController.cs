@@ -26,14 +26,18 @@
 
         [HttpPost]
         public IEnumerable<Announcement> GetAnnouncements(string environment, string system)
-                => announcementService.GetAnnouncements(new SelectAnnouncementsCriteria
-                {
-                    FromDate = SystemTime.Today,
-                    ToDate = SystemTime.Today,
-                    System = system,
-                    Environment = environment,
-                    IsActive = true,
-                    FilterBy = FilterBy.ExpiredDate
-                });
+        {
+           var result = announcementService.GetAnnouncements(new SelectAnnouncementsCriteria
+            {
+                FromDate = SystemTime.Today,
+                ToDate = SystemTime.Today,
+                System = system,
+                Environment = environment,
+                IsActive = true,
+                FilterBy = FilterBy.ExpiredDate
+            });
+
+            return result;
+        }
     }
 }

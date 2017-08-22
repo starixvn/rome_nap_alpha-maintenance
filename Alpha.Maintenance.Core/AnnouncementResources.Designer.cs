@@ -205,7 +205,7 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete Rule.
+        ///   Looks up a localized string similar to Remove Rule.
         /// </summary>
         public static string DeleteSpecification {
             get {

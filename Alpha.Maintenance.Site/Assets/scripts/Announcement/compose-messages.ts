@@ -279,6 +279,7 @@ class ComposedAnnouncement {
 
         this.correctFirstSpec();
         this.toogleAddSpecButton();
+        this.validateSpecificationInput();
     };
 
     submit = () => {
@@ -391,6 +392,10 @@ class ComposedAnnouncement {
 
             if (self.$(domElement).find(self.userLevelsSpecificationValue).length > 0) {
                 jsonObject.Value = self.$(domElement).find(self.userLevelsSpecificationValue).val();
+            }
+
+            if (self.$(domElement).find(".checkbox").length > 0) {
+                jsonObject.Value = self.$(domElement).find(".checkbox").prop("checked");
             }
 
             specs.push(jsonObject);

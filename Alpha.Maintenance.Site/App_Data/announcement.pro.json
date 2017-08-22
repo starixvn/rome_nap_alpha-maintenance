@@ -8,13 +8,6 @@
     "IBCBet",
     "789"
   ],
-   "specifications": [
-    "Currency Ids",
-    "User Ids",
-    "User Level",
-    "Site Names",
-    "Product Ids",
-    "Not Synced RNG Casino",
-    "Enable Yesterday Transfer"
+  "ExcludedSpecifications": [
   ]
 }

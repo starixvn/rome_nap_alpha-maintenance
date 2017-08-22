@@ -86,8 +86,16 @@
     }
 }
 
-.icon-view_logs, .icon-manage_servers, .icon-manage_announcements, .icon-add_announcement, .icon-download {
+.icon-view_logs, .icon-manage_servers, 
+.icon-manage_announcements, .icon-add_announcement, 
+.icon-download {
     font-size: 18px;
+    vertical-align: middle;
+    color: #6b7a99;
+}
+
+.icon-bin {
+    font-size: 22px;
     vertical-align: middle;
     color: #6b7a99;
 }

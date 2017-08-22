@@ -59,7 +59,7 @@
 
 @helper RenderSpecification(ISpecification<IParam> specification, bool isShowSpec = true)
 {
-    var txtSpecsDictionary = new List<Type>()
+var txtSpecsDictionary = new List<Type>()
         {
             typeof(SiteSpecification),
             typeof(UserIdSpecification),
@@ -71,22 +71,33 @@
 
     <div data-jsonobject="@JsonConvert.SerializeObject(specification)" class="row @(isShowSpec ? string.Empty : "hiden")" name="div-specification" id="@specification.Id">
         <div class="col s1 input-field">
-            <div id="dll-specification-conjunctionOperator">
-                @ConjunctionOperator.And
+            <div id="dll-specification-conjunctionOperator" class="input-field">
+               @ConjunctionOperator.And
+            </div>
+            &nbsp;
+        </div>
+        <div class="col s2 input-field">
+            <div class="input-field">@specification.Name</div>
+        </div>
+        <div class="col s2">
+            <div class="input-field">
+                @if (specification.GetType() != typeof(SyncedRnGCasinoSpecification)
+&& specification.GetType() != typeof(EnableYesterdayTransferSpecification))
+                {
+                    @Html.EnumDropDownList("dll-specification-specificationOperator", specification.SpecificationOperator,
+                            new Dictionary<string, object>() { { "data-parentId", specification.Id } })
+                }
+
+                else
+                {
+                    var checkedStatus = (specification.Value == null || !specification.Value) ? string.Empty : "checked";
+
+                    <input type="checkbox" id="@specification.GetType()" class="checkbox" @checkedStatus />
+                    <label for="@specification.GetType()">&nbsp;</label>
+                }
             </div>
         </div>
-        <div class="col s2 input-field">
-            <div>@specification.Name</div>
-        </div>
-        <div class="col s2 input-field">
-            @if (specification.GetType() != typeof(NotSyncedRNGCasinoSpecification)
-                && specification.GetType() != typeof(EnableYesterdayTransferSpecification))
-            {
-                @Html.EnumDropDownList("dll-specification-specificationOperator", specification.SpecificationOperator,
-                                   new Dictionary<string, object>() { { "data-parentId", specification.Id } })
-            }
-        </div>
-        <div class="col s3 input-field">
+        <div class="col s4">
             @if (specification.GetType() == typeof(UserLevelSpecification))
             {
                 @RenderSpecDll(specification, isShowSpec);
@@ -102,35 +113,41 @@
                 @RenderCustomSpec();
             }
         </div>
-        <div class="col s3 hidden-specification link input-field" data-id="@specification.Id" data-name="@specification.Name">
-            - @AnnouncementResources.DeleteSpecification
+        <div class="col s3 hidden-specification link" data-id="@specification.Id" data-name="@specification.Name">
+            <div class="input-field">
+                <a class="tooltipped icon-bin"
+                   data-tooltip="@AnnouncementResources.DeleteSpecification"></a>
+            </div>
         </div>
     </div>
 }
 
 @helper RenderSpecDll(ISpecification<IParam> specification, bool isShowSpec)
 {
-    if (specification.Value == null && specification.GetType() == typeof(UserLevelSpecification))
-    {
-        specification = new UserLevelSpecification(new List<byte> { 2 });
-    }
-
-    <select id="dll-specification-value" name="dll-specification-value" multiple data-specificationId="@specification.Id">
-        @foreach (var userLevel in Model.UserLevels)
-        {
-            var selected = specification.Value.Contains((byte)userLevel.Id) ? "selected" : string.Empty;
-            <option value="@userLevel.Id" @selected>@userLevel.Name</option>
-        }
-    </select>
+if (specification.Value == null && specification.GetType() == typeof(UserLevelSpecification))
+{
+    specification = new UserLevelSpecification(new List<byte> { 2 });
+}
+    <div class="input-field">
+        <select id="dll-specification-value" name="dll-specification-value" multiple data-specificationId="@specification.Id">
+            @foreach (var userLevel in Model.UserLevels)
+            {
+                var selected = specification.Value.Contains((byte)userLevel.Id) ? "selected" : string.Empty;
+                <option value="@userLevel.Id" @selected>@userLevel.Name</option>
+            }
+        </select>
+    </div>
 }
 
 @helper RenderSpecTxt(ISpecification<IParam> specification, bool isShowSpec)
 {
-    <input type="text" id="txt-specification-value"
-           name="txt-specification-value"
-           placeholder="@AnnouncementResources.InputValue"
-           value="@(isShowSpec ? string.Join(",", specification.Value?? string.Empty) : string.Empty)"
-           data-specificationId="@specification.Id" />
+    <div class="input-field">
+        <input type="text" id="txt-specification-value"
+               name="txt-specification-value"
+               placeholder="@AnnouncementResources.InputValue"
+               value="@(isShowSpec ? string.Join(",", specification.Value?? string.Empty) : string.Empty)"
+               data-specificationId="@specification.Id" />
+    </div>
 }
 
 @helper RenderCustomSpec()

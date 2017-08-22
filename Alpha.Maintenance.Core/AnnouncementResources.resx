@@ -160,7 +160,7 @@
     <value>Criteria cannot be null</value>
   </data>
   <data name="DeleteSpecification" xml:space="preserve">
-    <value>Delete Rule</value>
+    <value>Remove Rule</value>
   </data>
   <data name="DisplayInformationSettings" xml:space="preserve">
     <value>Step 1 - Information</value>

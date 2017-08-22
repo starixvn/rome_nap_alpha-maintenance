@@ -25,7 +25,7 @@
 
         private readonly IEnumerable<string> languages;
 
-        private readonly IEnumerable<string> offeredSpecifications;
+        private readonly IEnumerable<string> excludedSpecifications;
 
         private readonly IEnumerable<string> environments;
 
@@ -41,7 +41,7 @@
             AnnouncementRepository announcementRepository = null,
             BaseAnnouncementService baseAnnouncementService = null,
             IEnumerable<string> languages = null,
-            IEnumerable<string> offeredSpecifications = null,
+            IEnumerable<string> excludedSpecifications = null,
             IEnumerable<string> environments = null,
             IEnumerable<string> systems = null)
         {
@@ -58,7 +58,7 @@
                                                             "ja-JP"
                                                         };
 
-            this.offeredSpecifications = offeredSpecifications ?? AppSettings.AnnouncementConfig.OfferedSpecifications;
+            this.excludedSpecifications = excludedSpecifications ?? AppSettings.AnnouncementConfig.ExcludedSpecifications;
             this.environments = environments ?? AppSettings.AnnouncementConfig.Environments;
             this.systems = systems ?? AppSettings.AnnouncementConfig.Systems;
 
@@ -72,7 +72,7 @@
         {
             var factorySpecs = baseAnnouncementService.GetFactorySpecifications();
 
-            var offeredSpecs = baseAnnouncementService.FiterOfferedSpecs(factorySpecs, offeredSpecifications);
+            var offeredSpecs = baseAnnouncementService.FiterOfferedSpecs(factorySpecs, excludedSpecifications);
 
             foreach (var spec in offeredSpecs)
             {

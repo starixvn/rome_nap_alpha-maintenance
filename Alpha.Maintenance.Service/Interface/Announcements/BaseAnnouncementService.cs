@@ -12,7 +12,7 @@
 
         IEnumerable<ISpecification<IParam>> FiterOfferedSpecs(
             IEnumerable<ISpecification<IParam>> factorySpecs,
-            IEnumerable<string> offeredSpecifications);
+            IEnumerable<string> excludedSpecifications);
 
         IEnumerable<ISpecification<IParam>> GetFactorySpecifications();
     }

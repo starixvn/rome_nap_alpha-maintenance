@@ -12,7 +12,7 @@
         [DataMember(Name = "systems")]
         public IEnumerable<string> Systems { get; set; }
 
-        [DataMember(Name = "specifications")]
-        public IEnumerable<string> OfferedSpecifications { get; set; }
+        [DataMember(Name = "ExcludedSpecifications")]
+        public IEnumerable<string> ExcludedSpecifications { get; set; }
     }
 }
