@@ -32,11 +32,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Alpha.Announcements, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Alpha.Announcements.1.0.0.1-Renovation-12\lib\net40\Alpha.Announcements.dll</HintPath>
+      <HintPath>..\packages\Alpha.Announcements.1.0.0.1\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Alpha.Announcements.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Alpha.Announcements.Client.1.0.0.0-Renovation\lib\net40\Alpha.Announcements.Client.dll</HintPath>
+      <HintPath>..\packages\Alpha.Announcements.Client.1.0.0.0\lib\net40\Alpha.Announcements.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Caching, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
