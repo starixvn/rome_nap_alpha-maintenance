@@ -4,8 +4,8 @@
     using System.Linq;
     using System.Text;
     using System.Web.Mvc;
-    using Announcements.Client.Helpers;
     using Announcements.Models;
+    using Core.Helpers;
     using Newtonsoft.Json;
 
     public class SaveAnnouncementDemand

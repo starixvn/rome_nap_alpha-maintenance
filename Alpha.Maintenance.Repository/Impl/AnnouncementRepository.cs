@@ -5,10 +5,10 @@
     using System.Data;
     using System.Linq;
     using System.Text;
-    using Announcements.Client.Helpers;
     using Announcements.Models;
     using Announcements.Specs;
     using Core;
+    using Core.Helpers;
     using Core.Model;
     using Criteria.Announcements;
     using Fanex.Common.Extensions;

@@ -87,19 +87,25 @@
 
         public IEnumerable<Announcement> GetAnnouncements(ICriteria criteria)
             => announcementRepository.GetAnnouncements(criteria)
+                .Select(announcement =>
+                {
+                    announcement.Specifications = baseAnnouncementService.FiterOfferedSpecs(announcement.Specifications, excludedSpecifications);
+                    return announcement;
+                })
                 .OrderBy(announcement => announcement.Ordinal)
                 .ThenBy(announcement => announcement.CreatedDate);
-
-        public Result SaveAnnouncement(ICriteria criteria)
-            => announcementRepository.SaveAnnouncement(criteria);
 
         public Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria)
         {
             var announcement = announcementRepository.GetAnnouncementById(criteria);
             announcement.Contents = baseAnnouncementService.CorrectContent(announcement.Contents, languages);
+            announcement.Specifications = baseAnnouncementService.FiterOfferedSpecs(announcement.Specifications, excludedSpecifications);
 
             return announcement;
         }
+
+        public Result SaveAnnouncement(ICriteria criteria)
+            => announcementRepository.SaveAnnouncement(criteria);
 
         public Announcement GetDefaultAnnouncement()
            => new Announcement

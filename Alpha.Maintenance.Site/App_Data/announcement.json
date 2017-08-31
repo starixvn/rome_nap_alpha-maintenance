@@ -4,8 +4,9 @@
   ],
   "systems": [
     "IBCBet",
-    "789"
+    "789Y"
   ],
   "ExcludedSpecifications": [
+    "Upline Ids"
   ]
 }

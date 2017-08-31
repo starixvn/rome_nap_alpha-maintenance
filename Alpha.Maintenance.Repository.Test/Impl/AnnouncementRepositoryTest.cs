@@ -4,9 +4,9 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using Alpha.Announcements.Client.Helpers;
     using Alpha.Announcements.Models;
     using Alpha.Announcements.Specs;
+    using Core.Helpers;
     using Criteria.Announcements;
     using Database.Announcements;
     using Fixtures;
