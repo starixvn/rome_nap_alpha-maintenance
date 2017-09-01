@@ -40,6 +40,7 @@ namespace Alpha.Maintenance.Controller
         /// Log Category Service.
         /// </summary>
         private readonly LogCategoryService _categoryService;
+
         private int _selectedCategoryId;
 
         #endregion Member
@@ -381,7 +382,7 @@ namespace Alpha.Maintenance.Controller
             listCategory.Insert(0, defaultSelection);
             ViewBag.ListCategory = listCategory;
 
-            var specialCategory = listCategory.Where(category => category.Text.ToLower().Contains("alpha-789y-af")).FirstOrDefault();
+            var specialCategory = listCategory.FirstOrDefault(category => category.Text.ToLower().Contains("alpha-789y-af"));
             if (specialCategory != null)
             {
                 _selectedCategoryId = int.Parse(specialCategory.Value);

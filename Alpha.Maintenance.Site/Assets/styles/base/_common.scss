@@ -64,3 +64,79 @@ main {
 	display: none;
 	padding: 10px;
 }
+
+.margin-bottom-10px{
+    margin-bottom: 10px;
+}
+
+.margin-top-200px{
+    margin-top: 200px;
+}
+
+.margin-top-20px{
+    margin-top: 20px;
+}
+
+.margin-left-30px{
+    margin-left: 30px;
+}
+
+.margin-left-15px{
+    margin-left: 15px;
+}
+
+.specification-radio-margin{
+    margin-bottom: 15px;
+    margin-left: -15px !important;
+}
+
+.border-left{
+    border-left: 1px solid #e0e0e0;
+}
+
+.jqte_editor, .jqte_source {
+    min-height: 250px !important;
+}
+
+.jqte_tool.jqte_tool_1 .jqte_tool_label {
+    height: 25px !important;
+}
+
+.jqte
+{
+    margin-top: 5px !important;
+}
+
+.tabs .tab a {
+    color: #4060a4 !important;
+}
+
+.tabs .indicator {
+    background-color: #4060a4 !important;
+}
+
+.modal { width: 30% !important ; }
+
+::-webkit-input-placeholder {
+    color: #FF0000;
+    opacity: 0.4 !important; /* for older chrome versions. may no longer apply. */
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: #FF0000;
+    opacity: 0.4 !important;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    color: #FF0000;
+    opacity: 0.4 !important;
+}
+
+:-ms-input-placeholder {  
+   color: #FF0000;
+   opacity: 0.4 !important;
+}
+
+.text-align-center{
+    text-align: center;
+}

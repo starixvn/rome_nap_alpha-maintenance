@@ -1,0 +1,12 @@
+{
+  "environments": [
+    "Local"
+  ],
+  "systems": [
+    "IBCBet",
+    "789Y"
+  ],
+  "ExcludedSpecifications": [
+    "Upline Ids"
+  ]
+}

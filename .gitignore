@@ -22,12 +22,21 @@ Thumbs.db
 *.lib
 *.sbr
 obj/
+build
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
 *.vssscc
 $tf*/
 .vs/config/applicationhost.config
+  
+*.min.js
+bundles
+*.css
+*.js.map
+
+*/**/bundles/**/*.js
+*/**/assets/scripts/**/*.js
 
 /packages/*
 .vs/*

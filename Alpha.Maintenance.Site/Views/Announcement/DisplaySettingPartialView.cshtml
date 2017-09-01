@@ -1,0 +1,117 @@
+﻿@model ComposeAnnouncementViewModel
+
+@{
+    var maxOrder = 30;
+}
+
+<div id="display-information-settings" class="row">
+    <div class="col l7">
+        <div class="row">
+            <div class="col l7 input-field">
+                <input type="text" id="txttitle" class="validate" required="" aria-required="true" value="@Model.Announcement.Title" />
+                <label for="txttitle">@AnnouncementResources.Title <span class="red-text">*</span></label>
+            </div>
+            <div class="col l3 input-field">
+                <input type="text" id="txtcode" value="@Model.Announcement.Code" />
+                <label for="txtcode">@AnnouncementResources.Code</label>
+            </div>
+            <div class="col l2">
+                <input type="checkbox" id="ChkActive" @(Model.Announcement.IsActive ? "checked" : string.Empty) />
+                <label class="input-field" for="ChkActive">@AnnouncementResources.Active</label>
+            </div>
+        </div>
+        <div class="row hiden" id="content-group">
+            <div class="col l12 input-field">
+                @AnnouncementResources.Content
+            </div>
+            <ul class="tabs">
+                @foreach (var content in Model.Announcement.Contents)
+                {
+                    <li class="tab col s3 language-tab"><a href="#div-@content.LanguageKey">@content.LanguageKey</a></li>
+                }
+            </ul>
+
+            @foreach (var content in Model.Announcement.Contents)
+            {
+                <div id="div-@content.LanguageKey" class="col l12 language-content">
+                    <textarea name="group-contents" id="@content.LanguageKey" class="jqte-test">@content.Text</textarea>
+                    <div class="margin-top-20px input-field">@AnnouncementResources.AnnouncementUrl<input type="text" id="txtannouncement-url" value="@content.Url" /></div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col l5 border-left">
+        <div class="row">
+            <div class="col s6 input-field specification-radio-margin">
+                <p>
+                    <input class="with-gap" type="radio" name="group-popup" id="Announcement-Popup" value="@((int)AnnouncementType.Popup)" @(Model.Announcement.AnnouncementType.Equals(AnnouncementType.Popup) ? "checked" : string.Empty) />
+                    <label for="Announcement-Popup">@AnnouncementResources.AnnouncementPopup</label>
+                </p>
+            </div>
+            <div class="col s6 input-field specification-radio-margin">
+                <p>
+                    <input class="with-gap" type="radio" name="group-popup" id="Header-Popup" value="@((int)AnnouncementType.HeaderPopup)" @(Model.Announcement.AnnouncementType.Equals(AnnouncementType.HeaderPopup) ? "checked" : string.Empty) />
+                    <label for="Header-Popup">@AnnouncementResources.HeaderPopup</label>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <label class="active">@ViewResource.From</label>
+                <input type="text" name="FromDate" id="FromDate" class="datepicker" value="@Model.Announcement.FromDate.ToString("MMM dd,yyyy")" />
+            </div>
+            <div class="input-field col s6">
+                <label class="active">@ViewResource.To</label>
+                <input type="text" name="ToDate" id="ToDate" class="datepicker" value="@Model.Announcement.ToDate.ToString("MMM dd,yyyy")" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <select name="order" id="group-order">
+                    @for (int value = 1; value <= maxOrder; value++)
+                    {
+                        <option value="@value" @(value.Equals(Model.Announcement.Ordinal) ? "selected" : string.Empty)>@value</option>
+                    }
+                </select>
+                <label>@AnnouncementResources.Priority</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12"><label class="input-field">@AnnouncementResources.Environments</label></div>
+            @foreach (var environment in AppSettings.AnnouncementConfig.Environments)
+            {
+                <div class="col s2">
+                    <input name="group-environments" type="checkbox" id="@environment"
+                           @(Model.Announcement.Environments.Contains(environment) ? "checked" : string.Empty) />
+                    <label class="input-field" for="@environment">@environment</label>
+                </div>
+            }
+        </div>
+
+        <div class="row">
+            <div class="col s12"><label class="input-field">@AnnouncementResources.Systems</label></div>
+            @foreach (var system in AppSettings.AnnouncementConfig.Systems)
+            {
+                <div class="col s2">
+                    <input name="group-systems" type="checkbox" id="@system"
+                           @(Model.Announcement.Systems.Contains(system) ? "checked" : string.Empty) />
+                    <label class="input-field" for="@system">@system</label>
+                </div>
+            }
+
+        </div>
+        <div class="row margin-top-200px">
+            <div class="col s12">
+                <a class="btn btn-info  waves-effect waves-light btn btn-primary btnNext">@AnnouncementResources.Next</a>
+                <a class="btn btn-info  waves-effect waves-light btn btn-primary margin-left-30px btnSave">@AnnouncementResources.Save</a>
+
+                @if (Model.ActionType.Equals(ActionType.Update))
+                {
+                    <a class="btn btn-info  waves-effect waves-light btn btn-primary margin-left-30px btnCopy">@AnnouncementResources.MakeACopy</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>

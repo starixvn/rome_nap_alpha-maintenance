@@ -1,0 +1,187 @@
+﻿@model ManageAnnouncementsViewModel
+
+@{
+    ViewBag.Title = "Messages & Announcements Management Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Head {
+    @Styles.Render("~/css/select2")
+    @Styles.Render("~/Assets/scripts/lib/dropify/dropify.min.CSS")
+}
+
+@section Headline {
+    <span>@AnnouncementResources.Announcement / </span>
+    <span class="active">@AnnouncementResources.ManageAnnouncements</span>
+}
+
+<form role="form" id="report-form" action="@Url.Action("ManageAnnouncements", "Announcement")">
+    <section id="filter-bar">
+        <div class="filter-form row">
+            <div class="input-field col s2">
+                @Html.EnumDropDownList("FilterBy", Model.FilterBy)
+                <label>@AnnouncementResources.FilterBy</label>
+            </div>
+            <div class="input-field col s2">
+                <div class="lbl-field">
+                    @Html.LabelFor(m => m.FromDate, ViewResource.From, new { @class = "active" })
+                </div>
+                <div class="calendar">
+                    <input type="text" name="FromDate" id="FromDate" class="datepicker" value="@Model.FromDate.ToString("MMM dd,yyyy")" />
+                </div>
+            </div>
+            <div class="input-field col s2">
+                <div class="lbl-field">
+                    @Html.LabelFor(m => m.ToDate, ViewResource.To, new { @class = "active" })
+                </div>
+                <div class="calendar">
+                    <input type="text" name="ToDate" id="ToDate" class="datepicker" value="@Model.ToDate.ToString("MMM dd,yyyy")" />
+                </div>
+            </div>
+            <div class="col s2 input-field">
+                <select name="Environment" id="Environment">
+                    <option value="">@AnnouncementResources.All</option>
+                    @foreach (var environment in AppSettings.AnnouncementConfig.Environments)
+                    {
+                        <option value="@environment" @(environment.Equals(Model.Environment) ? "selected" : string.Empty)>@environment</option>
+                    }
+                </select>
+                <label>@AnnouncementResources.Environments</label>
+            </div>
+            <div class="col s2 input-field">
+                <select name="System" id="System">
+                    <option value="">@AnnouncementResources.All</option>
+                    @foreach (var system in AppSettings.AnnouncementConfig.Systems)
+                    {
+                        <option value="@system" @(system.Equals(Model.System) ? "selected" : string.Empty)>@system</option>
+                    }
+                </select>
+                <label>@AnnouncementResources.Systems</label>
+            </div>
+            <div class="col button-block">
+                <input class="waves-effect waves-light btn btn-primary" type="submit" value="@ViewResource.Submit" id="submit" />
+                <a class="btn btn-create  waves-effect waves-light btn btn-primary btn-import">@AnnouncementResources.Import</a>
+                <a href="@Url.Action("ComposeMessage", "Announcement")">
+                    <input class="waves-effect waves-light btn btn-create" type="button" value="@AnnouncementResources.Add" id="add" />
+                </a>
+            </div>
+        </div>
+    </section>
+</form>
+
+<div class="divider margin-bottom-10px"></div>
+<div class="card-panel lighten-4 text-darken-4 hiden"></div>
+
+<div class="table">
+    <table class="grid persist-area" id="messageContainer">
+        <thead class="persist-header">
+            <tr>
+                <th>
+                    @AnnouncementResources.Title
+                </th>
+                <th>
+                    @AnnouncementResources.Code
+                </th>
+                <th>
+                    @AnnouncementResources.Active
+                </th>
+                <th>
+                    @AnnouncementResources.FromDate
+                </th>
+                <th>
+                    @AnnouncementResources.ToDate
+                </th>
+                <th>
+                    @AnnouncementResources.Priority
+                </th>
+                <th>
+                    @AnnouncementResources.Environments
+                </th>
+                <th>
+                    @AnnouncementResources.Systems
+                </th>
+                <th>
+                    @AnnouncementResources.Type
+                </th>
+                <th>
+                    @AnnouncementResources.CreatedDate
+                </th>
+                <th class="text-align-center">
+                    @AnnouncementResources.Download
+                </th>
+            </tr>
+        </thead>
+        <tbody id="content">
+            @if (Model.Announcements.Any())
+            {
+                foreach (var announcement in Model.Announcements)
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("ComposeMessage", "Announcement", new { Id = announcement.Id })"
+                               class="tooltipped"
+                               data-tooltip="@AnnouncementResources.Edit">
+                                @announcement.Title
+                            </a>
+                        </td>
+                        <td>
+                            @announcement.Code
+                        </td>  
+                        <td>
+                            <input type="checkbox" id="@announcement.Id" checked="@announcement.IsActive" disabled />
+                            <label for="@announcement.Id"><!--c--></label>
+                        </td>
+                        <td>
+                            @announcement.FromDate.ToString("MMM dd, yyyy")
+                        </td>
+                        <td>
+                            @announcement.ToDate.ToString("MMM dd, yyyy")
+                        </td>
+                        <td>
+                            @announcement.Ordinal
+                        </td>
+                        <td>
+                            @String.Join(", ", announcement.Environments.ToArray())
+                        </td>
+                        <td>
+                            @String.Join(", ", announcement.Systems.ToArray())
+                        </td>
+                        <td>
+                            @announcement.AnnouncementType
+                        </td>
+                        <td>
+                            @announcement.CreatedDate.ToString("MMM dd, yyyy")
+                        </td>
+                        <td class="text-align-center">
+                            <a href="@Url.Action("Export", "Announcement", new { Id = announcement.Id })"
+                               class="tooltipped icon-download"
+                               data-tooltip="@AnnouncementResources.Download"></a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="10" class="no-data">@AnnouncementResources.NoInformation</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+<div id="cofirmMessages" class="modal">
+    <div class="modal-content">
+        <h4 id="cofirmMessages-content">@AnnouncementResources.ImportAnnouncememt</h4>
+        <input type="file" id="input-file-now" class="dropify" />
+    </div>
+    <div class="modal-footer row">
+        <div class="col s10"><a id="disagree" class="waves-effect waves-light btn btn-info btn-create modal-action modal-close">@AnnouncementResources.Cancel</a></div>
+        <div class="col s2"><a id="agree" class="waves-effect waves-light btn btn-info btn-primary modal-action modal-close">@AnnouncementResources.Submit</a></div>
+    </div>
+</div>
+@section Foot {
+    @Scripts.Render("~/Assets/bundles/manage-announcements.js")
+    @Scripts.Render("~/Assets/scripts/lib/dropify/dropify.min.js")
+}

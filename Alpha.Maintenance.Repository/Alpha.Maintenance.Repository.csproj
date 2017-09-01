@@ -31,8 +31,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Alpha.Announcements, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Alpha.Announcements.1.0.0.1\lib\net40\Alpha.Announcements.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Alpha.Announcements.UplineIdRule, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Alpha.Announcements.UplineIdRule.1.0.0.1\lib\net40\Alpha.Announcements.UplineIdRule.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Fanex.Common, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.Common.1.1.0.0-beta\lib\net40\Fanex.Common.dll</HintPath>
+      <HintPath>..\packages\Fanex.Common.1.1.0.1\lib\net40\Fanex.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Fanex.Data, Version=0.5.404.63, Culture=neutral, processorArchitecture=MSIL">
@@ -80,6 +88,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Criteria\Announcements\InsertAnnouncementsCriteria.cs" />
+    <Compile Include="Criteria\Announcements\SelectAnnouncementByIdCriteria.cs" />
+    <Compile Include="Criteria\Announcements\SaveAnnouncementsCriteria.cs" />
+    <Compile Include="Criteria\Announcements\UpdateAnnouncementsCriteria.cs" />
+    <Compile Include="Criteria\Announcements\SelectAnnouncementsCriteria.cs" />
     <Compile Include="Criteria\Log\GetAllCategoryCriteria.cs" />
     <Compile Include="Criteria\Log\GetAllMachinesCriteria.cs" />
     <Compile Include="Criteria\Log\GetLogCriteria.cs" />
@@ -92,6 +105,8 @@
     <Compile Include="Impl\BaseRepository.cs" />
     <Compile Include="Impl\AppLog\LogRepository.cs" />
     <Compile Include="Impl\AppLog\MachineRepository.cs" />
+    <Compile Include="Impl\AnnouncementRepository.cs" />
+    <Compile Include="Impl\ObjectDbFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

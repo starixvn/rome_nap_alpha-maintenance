@@ -1,0 +1,13 @@
+{
+  "environments": [
+    "UAT",
+    "Staging",
+    "PRO"
+  ],
+  "systems": [
+    "IBCBet",
+    "789Y"
+  ],
+  "ExcludedSpecifications": [
+  ]
+}

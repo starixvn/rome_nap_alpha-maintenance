@@ -18,6 +18,7 @@ namespace Alpha.Maintenance.Controller
     using Fanex.NAP.Core.Service.Impl;
     using Fanex.NAP.Core.Service.Interface;
     using Fanex.NAP.Core.Web;
+    using Fanex.NAP.Core.Web.Context;
     using Fanex.NAP.Core.Web.Session;
 
     /// <summary>
@@ -25,27 +26,44 @@ namespace Alpha.Maintenance.Controller
     /// </summary>
     public class BaseController : Controller
     {
-        protected readonly string Environment = NapSettings.Settings.Environment;
-        protected readonly int SiteId = NapSettings.Settings.SiteId;
-        protected readonly CurrentContext CurrentContext;
-        protected readonly CurrentSession CurrentSession;
+        protected readonly string Environment;
+        protected readonly int SiteId;
+        protected readonly ICurrentContext CurrentContext;
+        protected readonly ICurrentSession CurrentSession;
         private readonly IUserService _userService;
-        private bool _issiteLogin = NapSettings.Settings.EnableDirectLogin;
+        private bool _issiteLogin;
         private int _showLogTimeZone = 7;
 
         public BaseController()
+            : this(null, null, null, null, null, null, null)
         {
-            CurrentContext = new CurrentContext();
-            CurrentSession = new CurrentSession();
+        }
+
+        public BaseController(
+            ICurrentContext currentContext,
+            ICurrentSession currentSession,
+            IUserService userService,
+            bool? enableReCheckIn,
+            int? showLogTimeZone,
+            bool?  issiteLogin,
+            int? siteId,
+            string environment = "")
+        {
+            CurrentContext = currentContext?? new CurrentContext();
+            CurrentSession = currentSession?? new CurrentSession();
 
             ViewFlags = new ViewFlags
             {
-                IsReCheckin = NapSettings.Settings.EnableReCheckIn
+                IsReCheckin = enableReCheckIn?? NapSettings.Settings.EnableReCheckIn
             };
 
-            _userService = new UserService();
+            _userService = userService?? new UserService();
 
-            _showLogTimeZone = Convert.ToInt32(ConfigurationManager.AppSettings["GMTShowLog"]);
+            _showLogTimeZone = showLogTimeZone?? Convert.ToInt32(ConfigurationManager.AppSettings["GMTShowLog"]);
+
+            _issiteLogin = issiteLogin?? NapSettings.Settings.EnableDirectLogin;
+            SiteId = siteId?? NapSettings.Settings.SiteId;
+            Environment = string.IsNullOrEmpty(environment) ? NapSettings.Settings.Environment : environment;
         }
 
         /// <summary>

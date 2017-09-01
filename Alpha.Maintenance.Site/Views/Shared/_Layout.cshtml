@@ -15,7 +15,6 @@
     <title>@ViewBag.Title</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-
     @Styles.Render("~/css/common")
 
     @RenderSection("Head", false)
@@ -76,10 +75,6 @@
 </html>
 
 @Html.Hidden("NapAdminRoot", Url.Content("~/"))
-
-
-<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
 @Scripts.Render("~/scripts/common")
 

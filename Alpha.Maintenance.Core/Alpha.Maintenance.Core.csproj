@@ -39,28 +39,50 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Alpha.Announcements, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Alpha.Announcements.1.0.0.1\lib\net40\Alpha.Announcements.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MvcPager, Version=1.5.0.28157, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MvcPager.1.5.0.28157\lib\net40\MvcPager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnnouncementResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnnouncementResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Business\SiteFunctionKeys.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SiteFunctionKeys.tt</DependentUpon>
     </Compile>
+    <Compile Include="Configurations\AnnouncementConfig.cs" />
+    <Compile Include="Configurations\AppSettings.cs" />
     <Compile Include="Extension\Extension.cs" />
+    <Compile Include="Helpers\JsonCreationConverter.cs" />
     <Compile Include="Helpers\PagerList.cs" />
+    <Compile Include="Helpers\SpecificationConverter.cs" />
+    <Compile Include="Helpers\SystemTime.cs" />
     <Compile Include="Model\Log.cs" />
     <Compile Include="Model\LogCategory.cs" />
     <Compile Include="Model\Machine.cs" />
+    <Compile Include="Model\Result.cs" />
+    <Compile Include="Model\UserLevel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewResource.Designer.cs">
       <DependentUpon>ViewResource.resx</DependentUpon>
@@ -84,6 +106,10 @@
     <Compile Include="Web\HtmlHelperExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AnnouncementResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AnnouncementResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ViewResource.Designer.cs</LastGenOutput>

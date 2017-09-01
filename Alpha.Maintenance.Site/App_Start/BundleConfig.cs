@@ -34,6 +34,8 @@ namespace Alpha.Maintenance.Site.App_Start
 
             // js
             bundles.Add(new ScriptBundle("~/scripts/common").Include(
+                "~/Assets/scripts/lib/jquery/jquery-2.2.3.min.js",
+                "~/Assets/scripts/lib/materialize/materialize.min.js",
                 "~/Assets/scripts/lib/msgbox/msgbox-0.0.1.js",
                 "~/Assets/scripts/Maintenance.js"));
 
