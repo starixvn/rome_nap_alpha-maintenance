@@ -31,6 +31,7 @@
         private IEnumerable<string> languages;
         private IEnumerable<string> environments;
         private IEnumerable<string> systems;
+        private bool getAnnouncementsByJson;
 
         [SetUp]
         public void SetUp()
@@ -61,6 +62,8 @@
                                             "IBCBet"
                                         };
 
+            getAnnouncementsByJson = false;
+
             announcementSample = BuildAnnouncementSample();
 
             announcementServiceImpl = new AnnouncementServiceImpl(
@@ -70,7 +73,8 @@
                                                 languages,
                                                 new List<string>(),
                                                 environments,
-                                                systems);
+                                                systems,
+                                                getAnnouncementsByJson);
         }
 
         [Test]

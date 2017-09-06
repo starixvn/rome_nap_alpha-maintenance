@@ -14,5 +14,8 @@
 
         [DataMember(Name = "ExcludedSpecifications")]
         public IEnumerable<string> ExcludedSpecifications { get; set; }
+
+        [DataMember(Name = "GetAnnouncementsByJson")]
+        public bool? GetAnnouncementsByJson { get; set; }
     }
 }

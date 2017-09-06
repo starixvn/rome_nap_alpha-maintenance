@@ -1,0 +1,1130 @@
+[
+  {
+    "AnnouncementType": 1,
+    "Code": "8102702",
+    "Contents": [
+      {
+        "LanguageKey": "en-US",
+        "Text": "<p>Dear valued agents,</p><p>We are pleased to announce the upcoming product ‘Lottery’ will be launched soon.</p><p>This product will be enabled for Super, Master and Agent by default.</p><p>The PT and Bet Limit settings will be copied from Keno and available for configuration from 07/09/2017.</p><p>Thank you</p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "vi-VN",
+        "Text": "<p>Kính gửi quý khách hàng,</p><p>Chúng tôi trân trọng thông báo, sản phẩm 'Lottery' sẽ sớm được ra mắt.</p><p>Sản phẩm này mặc định sẽ được kích hoạt cho Super, Master và Agent.</p><p>Thiết lập PT và Giới hạn cược sẽ được sao chép từ Keno và có thể được chỉnh sửa từ ngày 07/09/2017.</p><p>Trân Trọng</p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-CN",
+        "Text": "<p>尊敬的代理们，</p><p>我们很开心的宣布\"彩票\"这项新产品即将上线。</p><p>此产品将会默认开启至超级总代、总代理和代理。</p><p>占成数和投注设置将会复制快乐彩的设定，并可以在 07/09/2017 进行配置。</p><p>谢谢</p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-TW",
+        "Text": "<p>尊敬的代理們，</p><p>我們很開心的宣佈\"彩票\"這項新產品即將上線。</p><p>此產品將會默認開啟至超級總代、總代理和代理。</p><p>占成數和投註設置將會復制快樂彩的設定，並可以在 07/09/2017&nbsp;進行配置。</p><p>謝謝</p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "th-TH",
+        "Text": "<p>เรียนเอเจนต์ทุกท่าน</p><p>เรามีความยินดีที่จะแจ้งว่า ผลิตภัณฑ์ใหม่ 'ล็อตเตอรี่' จะเปิดตัวในเร็วๆ นี้</p><p>ผลิตภัณฑ์นี้จะเปิดใช้งานโดยค่าเริ่มต้นสำหรับซุปเปอร์ มาสเตอร์และตัวแทน</p><p>ค่าความเสี่ยงและค่าเดิมพันจะถูกคัดลอกมาจากคีโน และสามารถกำหนดการตั้งค่าตั้งแต่วันที 07/09/2017</p><p>ขอบคุณค่ะ</p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ko-KR",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ja-JP",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      }
+    ],
+    "Id": 25,
+    "IsActive": true,
+    "Specifications": [
+      {
+        "Value": [
+          "033333",
+          "JPNIBC",
+          "611111",
+          "722222",
+          "766666",
+          "789y",
+          "7aa666",
+          "BEST-ODDS",
+          "XYZbet"
+        ],
+        "Id": "6edc73e0-aa87-4757-96e7-e5ffea0ce06a",
+        "Name": "Site Names",
+        "Combinable": true,
+        "TypeName": "Alpha.Announcements.Specs.SiteSpecification, Alpha.Announcements, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null",
+        "ConjunctionOperator": 1,
+        "SpecificationOperator": 1,
+        "ValueRange": null
+      }
+    ],
+    "Title": "Lottery - Batch 2",
+    "Environments": [
+      "UAT",
+      "Staging",
+      "PRO"
+    ],
+    "Systems": [
+      "IBCBet",
+      "789Y"
+    ],
+    "Ordinal": 25,
+    "FromDate": "2017-08-29T00:00:00",
+    "ToDate": "2017-09-21T00:00:00",
+    "CreatedDate": "2017-08-30T00:00:00",
+    "CreatorId": 15471129,
+    "CreatorName": "starix9",
+    "LastEditDate": "2017-08-30T00:00:00",
+    "LastEditorId": 15471129,
+    "LastEditorName": "starix9"
+  },
+  {
+    "AnnouncementType": 1,
+    "Code": "810270201",
+    "Contents": [
+      {
+        "LanguageKey": "en-US",
+        "Text": "<p>Dear valued agents,</p><p>We are pleased to announce the upcoming product ‘Lottery’ will be launched soon.</p><p>This product will be enabled for Super, Master and Agent by default.</p><p>The PT and Bet Limit settings will be copied from Keno and available for configuration from 07/09/2017.</p><p>Thank you</p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "vi-VN",
+        "Text": "<p>Kính gửi quý khách hàng,</p><p>Chúng tôi trân trọng thông báo, sản phẩm 'Lottery' sẽ sớm được ra mắt.</p><p>Sản phẩm này mặc định sẽ được kích hoạt cho Super, Master và Agent.</p><p>Thiết lập PT và Giới hạn cược sẽ được sao chép từ Keno và có thể được chỉnh sửa từ ngày 07/09/2017.</p><p>Trân Trọng</p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-CN",
+        "Text": "<p>尊敬的代理们，</p><p>我们很开心的宣布\"彩票\"这项新产品即将上线。</p><p>此产品将会默认开启至超级总代、总代理和代理。</p><p>占成数和投注设置将会复制快乐彩的设定，并可以在 07/09/2017 进行配置。</p><p>谢谢</p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-TW",
+        "Text": "<p>尊敬的代理們，</p><p>我們很開心的宣佈\"彩票\"這項新產品即將上線。</p><p>此產品將會默認開啟至超級總代、總代理和代理。</p><p>占成數和投註設置將會復制快樂彩的設定，並可以在 07/09/2017&nbsp;進行配置。</p><p>謝謝</p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "th-TH",
+        "Text": "<p>เรียนเอเจนต์ทุกท่าน</p><p>เรามีความยินดีที่จะแจ้งว่า ผลิตภัณฑ์ใหม่ 'ล็อตเตอรี่' จะเปิดตัวในเร็วๆ นี้</p><p>ผลิตภัณฑ์นี้จะเปิดใช้งานโดยค่าเริ่มต้นสำหรับซุปเปอร์ มาสเตอร์และตัวแทน</p><p>ค่าความเสี่ยงและค่าเดิมพันจะถูกคัดลอกมาจากคีโน และสามารถกำหนดการตั้งค่าตั้งแต่วันที 07/09/2017</p><p>ขอบคุณค่ะ</p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ko-KR",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ja-JP",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      }
+    ],
+    "Id": 26,
+    "IsActive": true,
+    "Specifications": [
+      {
+        "Value": [
+          9819161,
+          7541840,
+          7233831,
+          451674,
+          381028,
+          395855,
+          396490,
+          396515,
+          396559,
+          396908,
+          398409,
+          405518,
+          405531,
+          405541,
+          405545,
+          405552,
+          409193,
+          409194,
+          409196,
+          409197,
+          409603,
+          409606,
+          409614,
+          347103,
+          138763,
+          501298,
+          867728,
+          873736,
+          873740,
+          873742,
+          873751,
+          873754,
+          881667,
+          883355,
+          893848,
+          895815,
+          899937,
+          899943,
+          900151,
+          937670,
+          939191,
+          939197,
+          939643,
+          981097,
+          828113,
+          835772,
+          836486,
+          836497,
+          854036,
+          787301
+        ],
+        "Id": "6b965250-1c50-49f3-865d-a6f8582bda44",
+        "Name": "Upline Ids",
+        "Combinable": true,
+        "TypeName": "Alpha.Announcements.UplineIds.Specs.UplineIdsSpecification, Alpha.Announcements.UplineIdRule, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null",
+        "ConjunctionOperator": 1,
+        "SpecificationOperator": 1,
+        "ValueRange": null
+      }
+    ],
+    "Title": "Lottery - Batch 2 - 1",
+    "Environments": [
+      "UAT",
+      "Staging"
+    ],
+    "Systems": [
+      "IBCBet",
+      "789Y"
+    ],
+    "Ordinal": 25,
+    "FromDate": "2017-09-07T00:00:00",
+    "ToDate": "2017-09-21T00:00:00",
+    "CreatedDate": "2017-08-30T00:00:00",
+    "CreatorId": 15471129,
+    "CreatorName": "starix9",
+    "LastEditDate": "2017-08-30T00:00:00",
+    "LastEditorId": 15471129,
+    "LastEditorName": "starix9"
+  },
+  {
+    "AnnouncementType": 1,
+    "Code": "8102701",
+    "Contents": [
+      {
+        "LanguageKey": "en-US",
+        "Text": " <p>Dear valued agents,</p>      <p>        We are pleased to announce the upcoming product ‘Lottery’ will be launched soon.      </p>      <p>        This product will be enabled for Super, Master and Agent by default.      </p>      <p>        The PT and Bet Limit settings will be copied from Keno and available for configuration from 24/08/2017.      </p>      <p>        Thank you      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "vi-VN",
+        "Text": "<p>        Kính gửi quý khách hàng,      </p>      <p>        Chúng tôi trân trọng thông báo, sản phẩm 'Lottery' sẽ sớm được ra mắt.      </p>      <p>        Sản phẩm này mặc định sẽ được kích hoạt cho Super, Master và Agent.      </p>      <p>        Thiết lập PT và Giới hạn cược sẽ được sao chép từ Keno và có thể được chỉnh sửa từ ngày 24/08/2017.      </p>      <p>        Trân Trọng      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-CN",
+        "Text": "<p>尊敬的代理们，</p>      <p>        我们很开心的宣布\"彩票\"这项新产品即将上线。      </p>      <p>        此产品将会默认开启至超级总代、总代理和代理。      </p>      <p>        占成数和投注设置将会复制快乐彩的设定，并可以在 24/08/2017 进行配置。      </p>      <p>        谢谢      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-TW",
+        "Text": "<p>尊敬的代理們，</p>      <p>        我們很開心的宣佈\"彩票\"這項新產品即將上線。      </p>      <p>        此產品將會默認開啟至超級總代、總代理和代理。      </p>      <p>        占成數和投註設置將會復制快樂彩的設定，並可以在 24/08/2017 進行配置。      </p>      <p>        謝謝      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "th-TH",
+        "Text": "  <p>        เรียนเอเจนต์ทุกท่าน      </p>      <p>        เรามีความยินดีที่จะแจ้งว่า ผลิตภัณฑ์ใหม่ 'ล็อตเตอรี่' จะเปิดตัวในเร็วๆ นี้      </p>      <p>        ผลิตภัณฑ์นี้จะเปิดใช้งานโดยค่าเริ่มต้นสำหรับซุปเปอร์ มาสเตอร์และตัวแทน      </p>      <p>        ค่าความเสี่ยงและค่าเดิมพันจะถูกคัดลอกมาจากคีโน และสามารถกำหนดการตั้งค่าตั้งแต่วันที 24/08/2017      </p>      <p>        ขอบคุณค่ะ      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ko-KR",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ja-JP",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      }
+    ],
+    "Id": 22,
+    "IsActive": true,
+    "Specifications": [
+      {
+        "Value": [
+          "755555",
+          "Indo",
+          "KORIBC",
+          "733333",
+          "222223",
+          "222225",
+          "222227"
+        ],
+        "Id": "6edc73e0-aa87-4757-96e7-e5ffea0ce06a",
+        "Name": "Site Names",
+        "Combinable": true,
+        "TypeName": "Alpha.Announcements.Specs.SiteSpecification, Alpha.Announcements, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null",
+        "ConjunctionOperator": 1,
+        "SpecificationOperator": 1,
+        "ValueRange": null
+      },
+      {
+        "Value": [
+          4204225,
+          6032879,
+          450036,
+          877004,
+          3589744,
+          1266057,
+          900371,
+          896708,
+          913628,
+          1229724,
+          1229754,
+          1229808,
+          1229814,
+          1338545,
+          1755660,
+          1775757,
+          1776435,
+          1776525,
+          2075752
+        ],
+        "Id": "6b965250-1c50-49f3-865d-a6f8582bda44",
+        "Name": "Upline Ids",
+        "Combinable": true,
+        "TypeName": "Alpha.Announcements.UplineIds.Specs.UplineIdsSpecification, Alpha.Announcements.UplineIdRule, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null",
+        "ConjunctionOperator": 1,
+        "SpecificationOperator": 2,
+        "ValueRange": null
+      }
+    ],
+    "Title": "Lottery - I7",
+    "Environments": [
+      "UAT",
+      "Staging"
+    ],
+    "Systems": [
+      "789Y"
+    ],
+    "Ordinal": 27,
+    "FromDate": "2017-07-01T00:00:00",
+    "ToDate": "2017-09-07T00:00:00",
+    "CreatedDate": "2017-08-28T00:00:00",
+    "CreatorId": 16649198,
+    "CreatorName": "starix36",
+    "LastEditDate": "2017-08-30T00:00:00",
+    "LastEditorId": 15471129,
+    "LastEditorName": "starix9"
+  },
+  {
+    "AnnouncementType": 1,
+    "Code": "8102701",
+    "Contents": [
+      {
+        "LanguageKey": "en-US",
+        "Text": " <p>Dear valued agents,</p>      <p>        We are pleased to announce the upcoming product ‘Lottery’ will be launched soon.      </p>      <p>        This product will be enabled for Super, Master and Agent by default.      </p>      <p>        The PT and Bet Limit settings will be copied from Keno and available for configuration from 24/08/2017.      </p>      <p>        Thank you      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "vi-VN",
+        "Text": "<p>        Kính gửi quý khách hàng,      </p>      <p>        Chúng tôi trân trọng thông báo, sản phẩm 'Lottery' sẽ sớm được ra mắt.      </p>      <p>        Sản phẩm này mặc định sẽ được kích hoạt cho Super, Master và Agent.      </p>      <p>        Thiết lập PT và Giới hạn cược sẽ được sao chép từ Keno và có thể được chỉnh sửa từ ngày 24/08/2017.      </p>      <p>        Trân Trọng      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-CN",
+        "Text": "<p>尊敬的代理们，</p>      <p>        我们很开心的宣布\"彩票\"这项新产品即将上线。      </p>      <p>        此产品将会默认开启至超级总代、总代理和代理。      </p>      <p>        占成数和投注设置将会复制快乐彩的设定，并可以在 24/08/2017 进行配置。      </p>      <p>        谢谢      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-TW",
+        "Text": " <p>尊敬的代理們，</p>      <p>        我們很開心的宣佈\"彩票\"這項新產品即將上線。      </p>      <p>        此產品將會默認開啟至超級總代、總代理和代理。      </p>      <p>        占成數和投註設置將會復制快樂彩的設定，並可以在 24/08/2017 進行配置。      </p>      <p>        謝謝      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "th-TH",
+        "Text": " <p>        เรียนเอเจนต์ทุกท่าน      </p>      <p>        เรามีความยินดีที่จะแจ้งว่า ผลิตภัณฑ์ใหม่ 'ล็อตเตอรี่' จะเปิดตัวในเร็วๆ นี้      </p>      <p>        ผลิตภัณฑ์นี้จะเปิดใช้งานโดยค่าเริ่มต้นสำหรับซุปเปอร์ มาสเตอร์และตัวแทน      </p>      <p>        ค่าความเสี่ยงและค่าเดิมพันจะถูกคัดลอกมาจากคีโน และสามารถกำหนดการตั้งค่าตั้งแต่วันที 24/08/2017      </p>      <p>        ขอบคุณค่ะ      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ko-KR",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ja-JP",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      }
+    ],
+    "Id": 21,
+    "IsActive": true,
+    "Specifications": [
+      {
+        "Value": [
+          4204225,
+          6032879,
+          450036,
+          877004,
+          3589744,
+          1266057,
+          900371,
+          896708,
+          913628,
+          1229724,
+          1229754,
+          1229808,
+          1229814,
+          1338545,
+          1755660,
+          1775757,
+          1776435,
+          1776525,
+          2075752
+        ],
+        "Id": "6b965250-1c50-49f3-865d-a6f8582bda44",
+        "Name": "Upline Ids",
+        "Combinable": true,
+        "TypeName": "Alpha.Announcements.UplineIds.Specs.UplineIdsSpecification, Alpha.Announcements.UplineIdRule, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null",
+        "ConjunctionOperator": 1,
+        "SpecificationOperator": 2,
+        "ValueRange": null
+      },
+      {
+        "Value": [
+          "755555",
+          "Indo",
+          "KORIBC",
+          "733333",
+          "222223",
+          "222225",
+          "222227"
+        ],
+        "Id": "6edc73e0-aa87-4757-96e7-e5ffea0ce06a",
+        "Name": "Site Names",
+        "Combinable": true,
+        "TypeName": "Alpha.Announcements.Specs.SiteSpecification, Alpha.Announcements, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null",
+        "ConjunctionOperator": 1,
+        "SpecificationOperator": 1,
+        "ValueRange": null
+      }
+    ],
+    "Title": "Lottery - I1",
+    "Environments": [
+      "UAT",
+      "Staging"
+    ],
+    "Systems": [
+      "IBCBet"
+    ],
+    "Ordinal": 27,
+    "FromDate": "2017-07-01T00:00:00",
+    "ToDate": "2017-09-07T00:00:00",
+    "CreatedDate": "2017-08-28T00:00:00",
+    "CreatorId": 16649198,
+    "CreatorName": "starix36",
+    "LastEditDate": "2017-08-30T00:00:00",
+    "LastEditorId": 15471129,
+    "LastEditorName": "starix9"
+  },
+  {
+    "AnnouncementType": 1,
+    "Code": "810270201",
+    "Contents": [
+      {
+        "LanguageKey": "en-US",
+        "Text": "<p>Dear valued agents,</p><p>We are pleased to announce the upcoming product ‘Lottery’ will be launched soon.</p><p>This product will be enabled for Super, Master and Agent by default.</p><p>The PT and Bet Limit settings will be copied from Keno and available for configuration from 07/09/2017.</p><p>Thank you</p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "vi-VN",
+        "Text": "<p>Kính gửi quý khách hàng,</p><p>Chúng tôi trân trọng thông báo, sản phẩm 'Lottery' sẽ sớm được ra mắt.</p><p>Sản phẩm này mặc định sẽ được kích hoạt cho Super, Master và Agent.</p><p>Thiết lập PT và Giới hạn cược sẽ được sao chép từ Keno và có thể được chỉnh sửa từ ngày 07/09/2017.</p><p>Trân Trọng</p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-CN",
+        "Text": "<p>尊敬的代理们，</p><p>我们很开心的宣布\"彩票\"这项新产品即将上线。</p><p>此产品将会默认开启至超级总代、总代理和代理。</p><p>占成数和投注设置将会复制快乐彩的设定，并可以在 07/09/2017 进行配置。</p><p>谢谢</p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-TW",
+        "Text": "<p>尊敬的代理們，</p><p>我們很開心的宣佈\"彩票\"這項新產品即將上線。</p><p>此產品將會默認開啟至超級總代、總代理和代理。</p><p>占成數和投註設置將會復制快樂彩的設定，並可以在 07/09/2017&nbsp;進行配置。</p><p>謝謝</p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "th-TH",
+        "Text": "<p>เรียนเอเจนต์ทุกท่าน</p><p>เรามีความยินดีที่จะแจ้งว่า ผลิตภัณฑ์ใหม่ 'ล็อตเตอรี่' จะเปิดตัวในเร็วๆ นี้</p><p>ผลิตภัณฑ์นี้จะเปิดใช้งานโดยค่าเริ่มต้นสำหรับซุปเปอร์ มาสเตอร์และตัวแทน</p><p>ค่าความเสี่ยงและค่าเดิมพันจะถูกคัดลอกมาจากคีโน และสามารถกำหนดการตั้งค่าตั้งแต่วันที 07/09/2017</p><p>ขอบคุณค่ะ</p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ko-KR",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ja-JP",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      }
+    ],
+    "Id": 27,
+    "IsActive": true,
+    "Specifications": [
+      {
+        "Value": [
+          1773828,
+          1773829,
+          1773830,
+          1773853,
+          1773854,
+          1773855,
+          1773868,
+          1773869,
+          1773870,
+          1773884,
+          1773885,
+          1773886,
+          1776375,
+          1776399,
+          1776442,
+          1776497,
+          1776546,
+          1776559,
+          15795948,
+          19948644,
+          1229726,
+          1229727,
+          1229756,
+          1229757,
+          1229810,
+          1229811,
+          1229816,
+          1229817,
+          2075754,
+          19882555,
+          2224785,
+          2224786,
+          2224787,
+          1310064,
+          1310079,
+          1310106,
+          1310109,
+          1790851,
+          1790852,
+          1790853,
+          1790863,
+          1790864,
+          1790865,
+          1790875,
+          1790876,
+          1790877,
+          1790889,
+          1790890,
+          1790891
+        ],
+        "Id": "66f31c82-6eb1-4296-98e6-7dc593e80b1d",
+        "Name": "User Ids",
+        "Combinable": true,
+        "TypeName": "Alpha.Announcements.Specs.UserIdSpecification, Alpha.Announcements, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null",
+        "ConjunctionOperator": 1,
+        "SpecificationOperator": 1,
+        "ValueRange": null
+      }
+    ],
+    "Title": "Lottery - Batch 2 - 2",
+    "Environments": [
+      "UAT",
+      "Staging"
+    ],
+    "Systems": [
+      "IBCBet",
+      "789Y"
+    ],
+    "Ordinal": 25,
+    "FromDate": "2017-09-07T00:00:00",
+    "ToDate": "2017-09-21T00:00:00",
+    "CreatedDate": "2017-08-30T00:00:00",
+    "CreatorId": 15471129,
+    "CreatorName": "starix9",
+    "LastEditDate": "2017-08-30T00:00:00",
+    "LastEditorId": 15471129,
+    "LastEditorName": "starix9"
+  },
+  {
+    "AnnouncementType": 1,
+    "Code": "7842401",
+    "Contents": [
+      {
+        "LanguageKey": "en-US",
+        "Text": "<p>Dear valued agents,</p>      <p>We are pleased to announce the upcoming RNG Tablet games will be launched soon.<br></p>      <p>        The settings of RNG Tablet games will follow the settings of RNG Mobile games, no configuration is needed.      </p>      <p>        Thank you      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "vi-VN",
+        "Text": " <p>        Kính gửi quý khách hàng,      </p>      <p>Chúng tôi trân trọng thông báo những trò chơi RNG Tablet sẽ sớm được ra mắt.<br></p>      <p>        Thiết lập của RNG Tablet sẽ theo thiết lập của RNG Mobile. Quý khách không cần phải cấu hình lại.      </p>      <p>        Trân Trọng      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-CN",
+        "Text": "<p>尊敬的代理们，</p>      <p>我们很开心的宣布\"娱乐城的平板计算器游戏\"这项新产品即将上线。<br></p>      <p>        娱乐城平板游戏设定将跟随娱乐城手机版设定，不需要配置。      </p>      <p>        谢谢      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-TW",
+        "Text": " <p>尊敬的代理們，</p>      <p>我們很開心的宣佈\"娛樂城的平板計算機遊戲\"這項新產品即將上線。<br></p>      <p>        娛樂城平板遊戲設定將跟隨娛樂城手機版設定，不需要配置。      </p>      <p>        謝謝      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "th-TH",
+        "Text": " <p>        เรียนเอเจนต์ทุกท่าน      </p>      <p>เรามีความยินดีที่จะแจ้งว่า เกมส์ใหม่สำหรับคาสิโนแท็บเล็ต จะเ<br></p>      <p>        การตั้งค่าของเกมส์คาสิโนแท็บเล็ตจะเป็นไปตามการตั้งค่าของเกมส์คาสิโนมือถือ โดยไม่จำเป็นต้องกำหนดค่าใดๆ      </p>      <p>        ขอบคุณค่ะ      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ko-KR",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ja-JP",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      }
+    ],
+    "Id": 24,
+    "IsActive": true,
+    "Specifications": [
+      {
+        "Value": true,
+        "Id": "ede728e2-f48b-4f2c-80fd-1ff5954b3bdb",
+        "Name": "Synced RnG Casino",
+        "Combinable": true,
+        "TypeName": "Alpha.Announcements.Specs.SyncedRnGCasinoSpecification, Alpha.Announcements, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null",
+        "ConjunctionOperator": 1,
+        "SpecificationOperator": 0,
+        "ValueRange": null
+      }
+    ],
+    "Title": "RNG Casino - Add new tablet games - I1",
+    "Environments": [
+      "UAT",
+      "Staging"
+    ],
+    "Systems": [
+      "IBCBet"
+    ],
+    "Ordinal": 28,
+    "FromDate": "2017-07-01T00:00:00",
+    "ToDate": "2017-09-07T00:00:00",
+    "CreatedDate": "2017-08-28T00:00:00",
+    "CreatorId": 16649198,
+    "CreatorName": "starix36",
+    "LastEditDate": "2017-08-30T00:00:00",
+    "LastEditorId": 15471129,
+    "LastEditorName": "starix9"
+  },
+  {
+    "AnnouncementType": 1,
+    "Code": "7842401",
+    "Contents": [
+      {
+        "LanguageKey": "en-US",
+        "Text": " <p>Dear valued agents,</p>      <p>        We are pleased to announce the upcoming RNG Tablet games will be launched soon.      </p>      <p>        The settings of RNG Tablet games will follow the settings of RNG Mobile games, no configuration is needed.      </p>      <p>        Thank you      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "vi-VN",
+        "Text": "<p>        Kính gửi quý khách hàng,      </p>      <p>        Chúng tôi trân trọng thông báo những trò chơi RNG Tablet sẽ sớm được ra mắt.      </p>      <p>        Thiết lập của RNG Tablet sẽ theo thiết lập của RNG Mobile. Quý khách không cần phải cấu hình lại.      </p>      <p>        Trân Trọng      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-CN",
+        "Text": " <p>尊敬的代理们，</p>      <p>        我们很开心的宣布\"娱乐城的平板计算器游戏\"这项新产品即将上线。      </p>      <p>        娱乐城平板游戏设定将跟随娱乐城手机版设定，不需要配置。      </p>      <p>        谢谢      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-TW",
+        "Text": "<p>尊敬的代理們，</p>      <p>        我們很開心的宣佈\"娛樂城的平板計算機遊戲\"這項新產品即將上線。      </p>      <p>        娛樂城平板遊戲設定將跟隨娛樂城手機版設定，不需要配置。      </p>      <p>        謝謝      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "th-TH",
+        "Text": "<p>        เรียนเอเจนต์ทุกท่าน      </p>      <p>        เรามีความยินดีที่จะแจ้งว่า เกมส์ใหม่สำหรับคาสิโนแท็บเล็ต จะเ      </p>      <p>        การตั้งค่าของเกมส์คาสิโนแท็บเล็ตจะเป็นไปตามการตั้งค่าของเกมส์คาสิโนมือถือ โดยไม่จำเป็นต้องกำหนดค่าใดๆ      </p>      <p>        ขอบคุณค่ะ      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ko-KR",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ja-JP",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      }
+    ],
+    "Id": 23,
+    "IsActive": true,
+    "Specifications": [
+      {
+        "Value": true,
+        "Id": "ede728e2-f48b-4f2c-80fd-1ff5954b3bdb",
+        "Name": "Synced RnG Casino",
+        "Combinable": true,
+        "TypeName": "Alpha.Announcements.Specs.SyncedRnGCasinoSpecification, Alpha.Announcements, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null",
+        "ConjunctionOperator": 1,
+        "SpecificationOperator": 0,
+        "ValueRange": null
+      }
+    ],
+    "Title": "RNG Casino - Add new tablet games  - I7",
+    "Environments": [
+      "UAT",
+      "Staging"
+    ],
+    "Systems": [
+      "789Y"
+    ],
+    "Ordinal": 28,
+    "FromDate": "2017-07-01T00:00:00",
+    "ToDate": "2017-09-07T00:00:00",
+    "CreatedDate": "2017-08-28T00:00:00",
+    "CreatorId": 16649198,
+    "CreatorName": "starix36",
+    "LastEditDate": "2017-08-30T00:00:00",
+    "LastEditorId": 15471129,
+    "LastEditorName": "starix9"
+  },
+  {
+    "AnnouncementType": 1,
+    "Code": "7833902",
+    "Contents": [
+      {
+        "LanguageKey": "en-US",
+        "Text": " <p>Dear valued agents,</p>      <p>        We are pleased to announce the upcoming new sport types named 'Virtual Soccer League', 'Virtual Soccer Nation' and bet type 'Virtual Sports Parlay' under Virtual Sports product will be launched soon.      </p>      <p>        All settings will be configured as follows:      </p>      <p>        - PT Setting of 'Virtual Soccer League' and 'Virtual Soccer Nation' will be copied from 'Virtual Soccer'.<br>        - PT Setting of Virtual Sports Parlay will follow its respective sport type.<br>        - Bet Setting of 'Virtual Soccer League' , 'Virtual Soccer Nation' and 'Virtual Sports Parlay' will be copied from 'Virtual Soccer'.      </p>      <p>        All settings will be available for configuration since 17/08/2017.      </p>      <p>        Thank you      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "vi-VN",
+        "Text": "  <p>        Kính gửi quý khách hàng,      </p>      <p>        Chúng tôi trân trọng thông báo, trò chơi 'Virtual Soccer League', 'Virtual Soccer Nation' và loại cược 'Virtual Sports Parlay' của sản phẩm Virtual Sports sẽ sớm được ra mắt.      </p>      <p>        Tất cả các thiết lập sẽ được cấu hình như sau:      </p>      <p>        - Thiết lập cho PT của 'Virtual Soccer League' và 'Virtual Soccer Nation' sẽ được sao chép từ 'Virtual Soccer'.<br>        - Thiết lập PT của 'Virtual Sports Parlay' sẽ được sao chép từ trò chơi tương ứng.<br>        - Thiết lập Giới hạn cược của 'Virtual Soccer League' , 'Virtual Soccer Nation' và 'Virtual Sports Parlay' sẽ được sao chép từ 'Virtual Soccer'.      </p>      <p>        Quý khách có thể chỉnh sửa những thiết lập này vào ngày 17/8/2017.      </p>      <p>        Trân Trọng      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-CN",
+        "Text": " <p>尊敬的代理们，</p>      <p>        在此宣布虚拟运动的新项目类别——“虚拟足球联赛”“虚拟足球国家”以及投注类别\"虚拟运动混合过关\"即将隆重推出。      </p>      <p>        所有设定将配置如下:      </p>      <p>        - “虚拟足球联赛”以及“虚拟足球国家”的占成设定将会复制现有的“虚拟足球”设定。<br>        - 过关的占成数将遵循其各自的项目类别。<br>        - “虚拟足球联赛”“虚拟足球国家”以及\"虚拟运动混合过关\"的投注设定将会复制现有的“虚拟足球”设定。      </p>      <p>        所有的设置可以在 17/08/2017 进行配置。      </p>      <p>        谢谢      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-TW",
+        "Text": " <p>尊敬的代理們，</p>      <p>        在此宣布虛擬運動的新項目類別——“虛擬足球聯賽”“虛擬足球國家”以及投注類別\"虛擬運動混合過關\"即將隆重推出。      </p>      <p>        所有設定將配置如下:      </p>      <p>        - “虛擬足球聯賽”以及“虛擬足球國家”的占成設定將會復制現有的“虛擬足球”設定。<br>        - 過關的占成數將遵循其各自的項目類別。<br>        - “虛擬足球聯賽”“虛擬足球國家”以及\"虛擬運動混合過關\"的投註設定將會復制現有的“虛擬足球”設定。      </p>      <p>        所有的设置可以在 17/08/2017 进行配置。      </p>      <p>        謝謝      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "th-TH",
+        "Text": " <p>        เรียนเอเจนต์ทุกท่าน      </p>      <p>        เรามีความยินดีที่จะประกาศ ในเร็วๆนี้จะมีการเปิดตัวประเภทกีฬาใหม่ที่มีชื่อว่า 'ฟุตบอลลีกอนิเมชั่น' 'ฟุตบอลเนชั่น\" และ ประเภทการเดิมพัน 'กีฬาจำลองบอลชุด\" ภายใต้ผลิตภัณฑ์ กีฬาจำลอง      </p>      <p>        การตั้งค่าทั้งหมดจะถูกกำหนดค่าดังต่อไปนี้      </p>      <p>        - ค่าความเสี่ยงของ 'ฟุตบอลลีกอนิเมชั่น' และ 'ฟุตบอลเนชั่น\"จะคัดลอกจาก 'ฟุตบอลอนิเมชั่น'<br>        - การตั้งค่าความเสี่ยงของกีฬาบอลชุดจะเป็นไปตามชนิดกีฬาตามลำดับ<br>        - ค่าเดิมพัน 'ฟุตบอลลีกอนิเมชั่น' ,'ฟุตบอลเนชั่น\" และ 'กีฬาจำลองบอลชุด\" จะคัดลอกจาก 'ฟุตบอลอนิเมชั่น'      </p>      <p>        สามารถทำการตั้งค่าทั้งหมดตั้งแต่วันที่ 17/08/2017      </p>      <p>        ขอบคุณค่ะ      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ko-KR",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ja-JP",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      }
+    ],
+    "Id": 20,
+    "IsActive": true,
+    "Specifications": [
+      {
+        "Value": [
+          "755555",
+          "Koribc",
+          "Indo",
+          "733333"
+        ],
+        "Id": "6edc73e0-aa87-4757-96e7-e5ffea0ce06a",
+        "Name": "Site Names",
+        "Combinable": true,
+        "TypeName": "Alpha.Announcements.Specs.SiteSpecification, Alpha.Announcements, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null",
+        "ConjunctionOperator": 1,
+        "SpecificationOperator": 2,
+        "ValueRange": null
+      },
+      {
+        "Value": [
+          5
+        ],
+        "Id": "e4fe1443-c8d0-4e63-a355-08661859295e",
+        "Name": "Product Ids",
+        "Combinable": true,
+        "TypeName": "Alpha.Announcements.Specs.ProductSpecification, Alpha.Announcements, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null",
+        "ConjunctionOperator": 1,
+        "SpecificationOperator": 1,
+        "ValueRange": null
+      }
+    ],
+    "Title": "Betradar Virtual Sport Batch 2 - I7",
+    "Environments": [
+      "UAT",
+      "Staging"
+    ],
+    "Systems": [
+      "789Y"
+    ],
+    "Ordinal": 29,
+    "FromDate": "2017-07-01T00:00:00",
+    "ToDate": "2017-09-30T00:00:00",
+    "CreatedDate": "2017-08-28T00:00:00",
+    "CreatorId": 16649198,
+    "CreatorName": "starix36",
+    "LastEditDate": "2017-09-01T00:00:00",
+    "LastEditorId": 15471129,
+    "LastEditorName": "starix9"
+  },
+  {
+    "AnnouncementType": 1,
+    "Code": "7833902",
+    "Contents": [
+      {
+        "LanguageKey": "en-US",
+        "Text": " <p>Dear valued agents,</p>      <p>        We are pleased to announce the upcoming new sport types named 'Virtual Soccer League', 'Virtual Soccer Nation' and bet type 'Virtual Sports Parlay' under Virtual Sports product will be launched soon.      </p>      <p>        All settings will be configured as follows:      </p>      <p>        - PT Setting of 'Virtual Soccer League' and 'Virtual Soccer Nation' will be copied from 'Virtual Soccer'.<br>        - PT Setting of Virtual Sports Parlay will follow its respective sport type.<br>        - Bet Setting of 'Virtual Soccer League' , 'Virtual Soccer Nation' and 'Virtual Sports Parlay' will be copied from 'Virtual Soccer'.      </p>      <p>        All settings will be available for configuration since 17/08/2017.      </p>      <p>        Thank you      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "vi-VN",
+        "Text": " <p>        Kính gửi quý khách hàng,      </p>      <p>        Chúng tôi trân trọng thông báo, trò chơi 'Virtual Soccer League', 'Virtual Soccer Nation' và loại cược 'Virtual Sports Parlay' của sản phẩm Virtual Sports sẽ sớm được ra mắt.      </p>      <p>        Tất cả các thiết lập sẽ được cấu hình như sau:      </p>      <p>        - Thiết lập cho PT của 'Virtual Soccer League' và 'Virtual Soccer Nation' sẽ được sao chép từ 'Virtual Soccer'.<br>        - Thiết lập PT của 'Virtual Sports Parlay' sẽ được sao chép từ trò chơi tương ứng.<br>        - Thiết lập Giới hạn cược của 'Virtual Soccer League' , 'Virtual Soccer Nation' và 'Virtual Sports Parlay' sẽ được sao chép từ 'Virtual Soccer'.      </p>      <p>        Quý khách có thể chỉnh sửa những thiết lập này vào ngày 17/8/2017.      </p>      <p>        Trân Trọng      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-CN",
+        "Text": " <p>尊敬的代理们，</p>      <p>        在此宣布虚拟运动的新项目类别——“虚拟足球联赛”“虚拟足球国家”以及投注类别\"虚拟运动混合过关\"即将隆重推出。      </p>      <p>        所有设定将配置如下:      </p>      <p>        - “虚拟足球联赛”以及“虚拟足球国家”的占成设定将会复制现有的“虚拟足球”设定。<br>        - 过关的占成数将遵循其各自的项目类别。<br>        - “虚拟足球联赛”“虚拟足球国家”以及\"虚拟运动混合过关\"的投注设定将会复制现有的“虚拟足球”设定。      </p>      <p>        所有的设置可以在 17/08/2017 进行配置。      </p>      <p>        谢谢      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-TW",
+        "Text": " <p>尊敬的代理們，</p>      <p>        在此宣布虛擬運動的新項目類別——“虛擬足球聯賽”“虛擬足球國家”以及投注類別\"虛擬運動混合過關\"即將隆重推出。      </p>      <p>        所有設定將配置如下:      </p>      <p>        - “虛擬足球聯賽”以及“虛擬足球國家”的占成設定將會復制現有的“虛擬足球”設定。<br>        - 過關的占成數將遵循其各自的項目類別。<br>        - “虛擬足球聯賽”“虛擬足球國家”以及\"虛擬運動混合過關\"的投註設定將會復制現有的“虛擬足球”設定。      </p>      <p>        所有的设置可以在 17/08/2017 进行配置。      </p>      <p>        謝謝      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "th-TH",
+        "Text": "  <p>        เรียนเอเจนต์ทุกท่าน      </p>      <p>        เรามีความยินดีที่จะประกาศ ในเร็วๆนี้จะมีการเปิดตัวประเภทกีฬาใหม่ที่มีชื่อว่า 'ฟุตบอลลีกอนิเมชั่น' 'ฟุตบอลเนชั่น\" และ ประเภทการเดิมพัน 'กีฬาจำลองบอลชุด\" ภายใต้ผลิตภัณฑ์ กีฬาจำลอง      </p>      <p>        การตั้งค่าทั้งหมดจะถูกกำหนดค่าดังต่อไปนี้      </p>      <p>        - ค่าความเสี่ยงของ 'ฟุตบอลลีกอนิเมชั่น' และ 'ฟุตบอลเนชั่น\"จะคัดลอกจาก 'ฟุตบอลอนิเมชั่น'<br>        - การตั้งค่าความเสี่ยงของกีฬาบอลชุดจะเป็นไปตามชนิดกีฬาตามลำดับ<br>        - ค่าเดิมพัน 'ฟุตบอลลีกอนิเมชั่น' ,'ฟุตบอลเนชั่น\" และ 'กีฬาจำลองบอลชุด\" จะคัดลอกจาก 'ฟุตบอลอนิเมชั่น'      </p>      <p>        สามารถทำการตั้งค่าทั้งหมดตั้งแต่วันที่ 17/08/2017      </p>      <p>        ขอบคุณค่ะ      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ko-KR",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ja-JP",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      }
+    ],
+    "Id": 19,
+    "IsActive": true,
+    "Specifications": [
+      {
+        "Value": [
+          "755555",
+          "Koribc",
+          "Indo",
+          "733333"
+        ],
+        "Id": "6edc73e0-aa87-4757-96e7-e5ffea0ce06a",
+        "Name": "Site Names",
+        "Combinable": true,
+        "TypeName": "Alpha.Announcements.Specs.SiteSpecification, Alpha.Announcements, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null",
+        "ConjunctionOperator": 1,
+        "SpecificationOperator": 2,
+        "ValueRange": null
+      },
+      {
+        "Value": [
+          5
+        ],
+        "Id": "e4fe1443-c8d0-4e63-a355-08661859295e",
+        "Name": "Product Ids",
+        "Combinable": true,
+        "TypeName": "Alpha.Announcements.Specs.ProductSpecification, Alpha.Announcements, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null",
+        "ConjunctionOperator": 1,
+        "SpecificationOperator": 1,
+        "ValueRange": null
+      }
+    ],
+    "Title": "Betradar Virtual Sport Batch 2 - I1",
+    "Environments": [
+      "UAT",
+      "Staging"
+    ],
+    "Systems": [
+      "IBCBet"
+    ],
+    "Ordinal": 29,
+    "FromDate": "2017-07-01T00:00:00",
+    "ToDate": "2017-09-30T00:00:00",
+    "CreatedDate": "2017-08-28T00:00:00",
+    "CreatorId": 16649198,
+    "CreatorName": "starix36",
+    "LastEditDate": "2017-09-01T00:00:00",
+    "LastEditorId": 15471129,
+    "LastEditorName": "starix9"
+  },
+  {
+    "AnnouncementType": 1,
+    "Code": "7833901",
+    "Contents": [
+      {
+        "LanguageKey": "en-US",
+        "Text": "   <p>Dear valued agents,</p>      <p>We are pleased to announce the upcoming new sport types named 'Virtual Soccer League', 'Virtual Soccer Nation' and bet type 'Virtual Sports Parlay' under Virtual Sports product with effect from 25/08/2017.</p>      <p>        All settings will be configured as follows:      </p>      <p>        - PT Setting of 'Virtual Soccer League' and 'Virtual Soccer Nation' will be copied from 'Virtual Soccer'.<br>        - PT Setting of Virtual Sports Parlay will follow its respective sport type.<br>        - Bet Setting of 'Virtual Soccer League' , 'Virtual Soccer Nation' and 'Virtual Sports Parlay' will be copied from 'Virtual Soccer'.      </p>      <p>        All settings will be available for configuration since 17/08/2017.      </p>      <p>        Thank you      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "vi-VN",
+        "Text": "  <p>        Kính gửi quý khách hàng,      </p>      <p>        Chúng tôi trân trọng thông báo, kể từ ngày 25/08/2017, trò chơi 'Virtual Soccer League', 'Virtual Soccer Nation' và loại cược 'Virtual Sports Parlay' của sản phẩm Virtual Sports sẽ ra mắt.      </p>      <p>        Tất cả các thiết lập sẽ được cấu hình như sau:      </p>      <p>        - Thiết lập cho PT của 'Virtual Soccer League' và 'Virtual Soccer Nation' sẽ được sao chép từ 'Virtual Soccer'.<br>        - Thiết lập PT của 'Virtual Sports Parlay' sẽ được sao chép từ trò chơi tương ứng.<br>        - Thiết lập Giới hạn cược của 'Virtual Soccer League' , 'Virtual Soccer Nation' và 'Virtual Sports Parlay' sẽ được sao chép từ 'Virtual Soccer'.      </p>      <p>        Quý khách có thể chỉnh sửa những thiết lập này vào ngày 17/8/2017.      </p>      <p>        Trân Trọng      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-CN",
+        "Text": " <p>尊敬的代理们，</p>      <p>在此宣布虚拟运动的新项目类别——“虚拟足球联赛”“虚拟足球国家”以及投注类别\"虚拟运动混合过关\"将于 25/08/2017&nbsp;隆重推出。 &nbsp;</p>      <p>        所有设定将配置如下:      </p>      <p>        - “虚拟足球联赛”以及“虚拟足球国家”的占成设定将会复制现有的“虚拟足球”设定。<br>        - 过关的占成数将遵循其各自的项目类别。<br>        - “虚拟足球联赛”“虚拟足球国家”以及\"虚拟运动混合过关\"的投注设定将会复制现有的“虚拟足球”设定。      </p>      <p>        所有的设置可以在 17/08/2017 进行配置。      </p>      <p>        谢谢      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-TW",
+        "Text": "<p>尊敬的代理們，</p>      <p>在此宣布虛擬運動的新項目類別——“虛擬足球聯賽”“虛擬足球國家”以及投注類別\"虛擬運動混合過關\"將於 25/08/2017&nbsp;隆重推出。</p>      <p>        所有設定將配置如下:      </p>      <p>        - “虛擬足球聯賽”以及“虛擬足球國家”的占成設定將會復制現有的“虛擬足球”設定。<br>        - 過關的占成數將遵循其各自的項目類別。<br>        - “虛擬足球聯賽”“虛擬足球國家”以及\"虛擬運動混合過關\"的投註設定將會復制現有的“虛擬足球”設定。      </p>      <p>        所有的设置可以在 17/08/2017 进行配置。      </p>      <p>        謝謝      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "th-TH",
+        "Text": "  <p>        เรียนเอเจนต์ทุกท่าน      </p>เรามีความยินดีที่จะประกาศเปิดตัวประเภทกีฬาใหม่ที่มีชื่อว่า 'ฟุตบอลลีกอนิเมชั่น' 'ฟุตบอลเนชั่น\" และ ประเภทการเดิมพัน 'กีฬาจำลองบอลชุด\" ภายใต้ผลิตภัณฑ์ กีฬาจำลอง โดยมีผลตั้งแต่ 25/08/2017<br>การตั้งค่าทั้งหมดจะถูกกำหนดค่าดังต่อไปนี้            <p>        - ค่าความเสี่ยงของ 'ฟุตบอลลีกอนิเมชั่น' และ 'ฟุตบอลเนชั่น\"จะคัดลอกจาก 'ฟุตบอลอนิเมชั่น'<br>        - การตั้งค่าความเสี่ยงของกีฬาบอลชุดจะเป็นไปตามชนิดกีฬาตามลำดับ<br>        - ค่าเดิมพัน 'ฟุตบอลลีกอนิเมชั่น' ,'ฟุตบอลเนชั่น\" และ 'กีฬาจำลองบอลชุด\" จะคัดลอกจาก 'ฟุตบอลอนิเมชั่น'      </p>      <p>        สามารถทำการตั้งค่าทั้งหมดตั้งแต่วันที่ 17/08/2017      </p>      <p>        ขอบคุณค่ะ      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ko-KR",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ja-JP",
+        "Text": "  <p><br></p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      }
+    ],
+    "Id": 17,
+    "IsActive": true,
+    "Specifications": [
+      {
+        "Value": [
+          "755555",
+          "Koribc",
+          "Indo",
+          "733333"
+        ],
+        "Id": "6edc73e0-aa87-4757-96e7-e5ffea0ce06a",
+        "Name": "Site Names",
+        "Combinable": true,
+        "TypeName": "Alpha.Announcements.Specs.SiteSpecification, Alpha.Announcements, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null",
+        "ConjunctionOperator": 1,
+        "SpecificationOperator": 1,
+        "ValueRange": null
+      },
+      {
+        "Value": [
+          5
+        ],
+        "Id": "e4fe1443-c8d0-4e63-a355-08661859295e",
+        "Name": "Product Ids",
+        "Combinable": true,
+        "TypeName": "Alpha.Announcements.Specs.ProductSpecification, Alpha.Announcements, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null",
+        "ConjunctionOperator": 1,
+        "SpecificationOperator": 1,
+        "ValueRange": null
+      }
+    ],
+    "Title": "Betradar Virtual Sport Batch 1 - I1",
+    "Environments": [
+      "UAT",
+      "Staging"
+    ],
+    "Systems": [
+      "IBCBet"
+    ],
+    "Ordinal": 30,
+    "FromDate": "2017-07-01T00:00:00",
+    "ToDate": "2017-09-30T00:00:00",
+    "CreatedDate": "2017-08-28T00:00:00",
+    "CreatorId": 16649198,
+    "CreatorName": "starix36",
+    "LastEditDate": "2017-09-01T00:00:00",
+    "LastEditorId": 15471129,
+    "LastEditorName": "starix9"
+  },
+  {
+    "AnnouncementType": 1,
+    "Code": "7833901",
+    "Contents": [
+      {
+        "LanguageKey": "en-US",
+        "Text": "<p>Dear valued agents,</p>      <p>We are pleased to announce the upcoming new sport types named 'Virtual Soccer League', 'Virtual Soccer Nation' and bet type 'Virtual Sports Parlay' under Virtual Sports product will be launched soon.<br></p>      <p>        All settings will be configured as follows:      </p>      <p>        - PT Setting of 'Virtual Soccer League' and 'Virtual Soccer Nation' will be copied from 'Virtual Soccer'.<br>        - PT Setting of Virtual Sports Parlay will follow its respective sport type.<br>        - Bet Setting of 'Virtual Soccer League' , 'Virtual Soccer Nation' and 'Virtual Sports Parlay' will be copied from 'Virtual Soccer'.      </p>      <p>        All settings will be available for configuration since 17/08/2017.      </p>      <p>        Thank you      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "vi-VN",
+        "Text": " <p>        Kính gửi quý khách hàng,      </p>      <p>Chúng tôi trân trọng thông báo, trò chơi 'Virtual Soccer League', 'Virtual Soccer Nation' và loại cược 'Virtual Sports Parlay' của sản phẩm Virtual Sports sẽ sớm được ra mắt.<br></p>      <p>        Tất cả các thiết lập sẽ được cấu hình như sau:      </p>      <p>        - Thiết lập cho PT của 'Virtual Soccer League' và 'Virtual Soccer Nation' sẽ được sao chép từ 'Virtual Soccer'.<br>        - Thiết lập PT của 'Virtual Sports Parlay' sẽ được sao chép từ trò chơi tương ứng.<br>        - Thiết lập Giới hạn cược của 'Virtual Soccer League' , 'Virtual Soccer Nation' và 'Virtual Sports Parlay' sẽ được sao chép từ 'Virtual Soccer'.      </p>      <p>        Quý khách có thể chỉnh sửa những thiết lập này vào ngày 17/8/2017.      </p>      <p>        Trân Trọng      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-CN",
+        "Text": "   <p>尊敬的代理们，</p>      <p>在此宣布虚拟运动的新项目类别——“虚拟足球联赛”“虚拟足球国家”以及投注类别\"虚拟运动混合过关\"即将隆重推出。<br></p>      <p>        所有设定将配置如下:      </p>      <p>        - “虚拟足球联赛”以及“虚拟足球国家”的占成设定将会复制现有的“虚拟足球”设定。<br>        - 过关的占成数将遵循其各自的项目类别。<br>        - “虚拟足球联赛”“虚拟足球国家”以及\"虚拟运动混合过关\"的投注设定将会复制现有的“虚拟足球”设定。      </p>      <p>        所有的设置可以在 17/08/2017 进行配置。      </p>      <p>        谢谢      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "zh-TW",
+        "Text": " <p>尊敬的代理們，</p>      <p>在此宣布虛擬運動的新項目類別——“虛擬足球聯賽”“虛擬足球國家”以及投注類別\"虛擬運動混合過關\"即將隆重推出。<br></p>      <p>        所有設定將配置如下:      </p>      <p>        - “虛擬足球聯賽”以及“虛擬足球國家”的占成設定將會復制現有的“虛擬足球”設定。<br>        - 過關的占成數將遵循其各自的項目類別。<br>        - “虛擬足球聯賽”“虛擬足球國家”以及\"虛擬運動混合過關\"的投註設定將會復制現有的“虛擬足球”設定。      </p>      <p>        所有的设置可以在 17/08/2017 进行配置。      </p>      <p>        謝謝      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "th-TH",
+        "Text": "  <p>        เรียนเอเจนต์ทุกท่าน      </p>      <p>เรามีความยินดีที่จะประกาศ ในเร็วๆนี้จะมีการเปิดตัวประเภทกีฬาใหม่ที่มีชื่อว่า 'ฟุตบอลลีกอนิเมชั่น' 'ฟุตบอลเนชั่น\" และ ประเภทการเดิมพัน 'กีฬาจำลองบอลชุด\" ภายใต้ผลิตภัณฑ์ กีฬาจำลอง<br></p>      <p>        การตั้งค่าทั้งหมดจะถูกกำหนดค่าดังต่อไปนี้      </p>      <p>        - ค่าความเสี่ยงของ 'ฟุตบอลลีกอนิเมชั่น' และ 'ฟุตบอลเนชั่น\"จะคัดลอกจาก 'ฟุตบอลอนิเมชั่น'<br>        - การตั้งค่าความเสี่ยงของกีฬาบอลชุดจะเป็นไปตามชนิดกีฬาตามลำดับ<br>        - ค่าเดิมพัน 'ฟุตบอลลีกอนิเมชั่น' ,'ฟุตบอลเนชั่น\" และ 'กีฬาจำลองบอลชุด\" จะคัดลอกจาก 'ฟุตบอลอนิเมชั่น'      </p>      <p>        สามารถทำการตั้งค่าทั้งหมดตั้งแต่วันที่ 17/08/2017      </p>      <p>        ขอบคุณค่ะ      </p>",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ko-KR",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      },
+      {
+        "LanguageKey": "ja-JP",
+        "Text": "",
+        "IsDisplayingByUrl": false,
+        "Url": ""
+      }
+    ],
+    "Id": 18,
+    "IsActive": true,
+    "Specifications": [
+      {
+        "Value": [
+          "755555",
+          "Koribc",
+          "Indo",
+          "733333"
+        ],
+        "Id": "6edc73e0-aa87-4757-96e7-e5ffea0ce06a",
+        "Name": "Site Names",
+        "Combinable": true,
+        "TypeName": "Alpha.Announcements.Specs.SiteSpecification, Alpha.Announcements, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null",
+        "ConjunctionOperator": 1,
+        "SpecificationOperator": 1,
+        "ValueRange": null
+      },
+      {
+        "Value": [
+          5
+        ],
+        "Id": "e4fe1443-c8d0-4e63-a355-08661859295e",
+        "Name": "Product Ids",
+        "Combinable": true,
+        "TypeName": "Alpha.Announcements.Specs.ProductSpecification, Alpha.Announcements, Version=1.0.0.1, Culture=neutral, PublicKeyToken=null",
+        "ConjunctionOperator": 1,
+        "SpecificationOperator": 1,
+        "ValueRange": null
+      }
+    ],
+    "Title": "Betradar Virtual Sport Batch 1 - I7",
+    "Environments": [
+      "UAT",
+      "Staging"
+    ],
+    "Systems": [
+      "789Y"
+    ],
+    "Ordinal": 30,
+    "FromDate": "2017-07-01T00:00:00",
+    "ToDate": "2017-09-30T00:00:00",
+    "CreatedDate": "2017-08-28T00:00:00",
+    "CreatorId": 16649198,
+    "CreatorName": "starix36",
+    "LastEditDate": "2017-09-01T00:00:00",
+    "LastEditorId": 15471129,
+    "LastEditorName": "starix9"
+  }
+]
