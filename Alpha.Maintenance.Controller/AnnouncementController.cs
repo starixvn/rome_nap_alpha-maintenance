@@ -1,10 +1,16 @@
 ﻿namespace Alpha.Maintenance.Controller
 {
+    using System;
+    using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Text;
     using System.Web;
     using System.Web.Mvc;
+    using Announcements.Models;
     using Core;
+    using Core.Helpers;
+    using Core.Model;
     using Fanex.NAP.Core.Business;
     using Fanex.NAP.Core.Service.Interface;
     using Fanex.NAP.Core.Web.Attribute;
@@ -131,49 +137,67 @@
 
         [HttpGet]
         [NapAuth(FunctionKey = SiteFunctionKeys.AnnouncementManagement, Policy = Constant.Policy.Host)]
-        public FileStreamResult Export(SelectAnnouncementByIdCriteria criteria)
+        public FileStreamResult ExportAnAnnouncement(SelectAnnouncementByIdCriteria criteria)
         {
             var model = announcementService.GetAnnouncementById(criteria);
-            var byteArray = Encoding.Unicode.GetBytes(JsonConvert.SerializeObject(model));
-            var stream = new MemoryStream(byteArray);
-
-            return File(stream, "text/plain", $"{model.Title}.txt");
+            return ExportToTxtFile(new List<Announcement> { model }, $"{model.Title}.txt");
         }
+
+        [HttpGet]
+        [NapAuth(FunctionKey = SiteFunctionKeys.AnnouncementManagement, Policy = Constant.Policy.Host)]
+        public FileStreamResult ExportAllAnnouncements(SelectAnnouncementsCriteria criteria)
+            => ExportToTxtFile(announcementService.GetAnnouncements(criteria), "announcements.txt");
 
         [HttpPost]
         [NapAuth(FunctionKey = SiteFunctionKeys.AnnouncementManagement, Policy = Constant.Policy.Host)]
         public JsonResult Import(HttpPostedFileBase file)
         {
-            string announcement = string.Empty;
+            string announcementsJson = string.Empty;
             using (BinaryReader b = new BinaryReader(file.InputStream))
             {
                 byte[] binData = b.ReadBytes(file.ContentLength);
-                announcement = Encoding.Unicode.GetString(binData);
+                announcementsJson = Encoding.Unicode.GetString(binData);
             }
 
-            var demand = new SaveAnnouncementDemand(announcement);
+            var announcements = JsonConvert.DeserializeObject<List<Announcement>>(announcementsJson, new SpecificationConverter());
 
-            return new JsonNetResult
+            var resuts = new List<Result>();
+
+            foreach(var announcement in announcements)
             {
-                Data = announcementService.SaveAnnouncement(new InsertAnnouncementsCriteria
+                resuts.Add(announcementService.SaveAnnouncement(new InsertAnnouncementsCriteria
                 {
-                    Code = demand.DeserializeAnnouncement.Code,
-                    Title = $"Import of {demand.DeserializeAnnouncement.Title}",
+                    Code = announcement.Code,
+                    Title = $"Import of {announcement.Title}",
                     IsActive = preventedActive,
-                    AnnouncementType = (int)demand.DeserializeAnnouncement.AnnouncementType,
+                    AnnouncementType = (int)announcement.AnnouncementType,
                     CreatedDate = SystemTime.Today,
-                    FromDate = demand.DeserializeAnnouncement.FromDate,
-                    ToDate = demand.DeserializeAnnouncement.ToDate,
+                    FromDate = announcement.FromDate,
+                    ToDate = announcement.ToDate,
                     Environments = emptyEnvironments,
-                    Systems = demand.Systems,
-                    Ordinal = demand.DeserializeAnnouncement.Ordinal,
-                    Contents = demand.EncodedContents,
-                    Specifications = JsonConvert.SerializeObject(demand.DeserializeAnnouncement.Specifications),
+                    Systems = String.Join(", ", announcement.Systems.ToArray()),
+                    Ordinal = announcement.Ordinal,
+                    Contents = Convert.ToBase64String(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(announcement.Contents))),
+                    Specifications = JsonConvert.SerializeObject(announcement.Specifications),
                     CreatorId = CurrentSession.UserId,
                     CreatorName = CurrentSession.Username
-                }),
+                }));
+
+            }
+           
+            return new JsonNetResult
+            {
+                Data = resuts,
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
+        }
+
+        private FileStreamResult ExportToTxtFile(IEnumerable<Announcement> announcements, string fileName)
+        {
+            var byteArray = Encoding.Unicode.GetBytes(JsonConvert.SerializeObject(announcements));
+            var stream = new MemoryStream(byteArray);
+
+            return File(stream, "text/plain", fileName);
         }
     }
 }

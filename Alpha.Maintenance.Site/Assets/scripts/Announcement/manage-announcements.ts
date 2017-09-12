@@ -37,6 +37,13 @@ class ManagesAnnouncements {
              self.$("#cofirmMessages").openModal();
          });
 
+         this.$("#btn-submit").on('click', function () {
+             self.$('#announcements-form').attr('action', self.$("#manage-announcements-url").val()).submit();
+         });
+         this.$("#btn-exportAll").on('click', function () {
+             self.$('#announcements-form').attr('action', self.$("#export-all-announcements-url").val()).submit();
+         });
+
          this.$("#agree").on('click', function () {
              self.$("#cofirmMessages").closeModal();
              self.importAnnoucement();
@@ -60,8 +67,16 @@ class ManagesAnnouncements {
              complete: function () {
                  self.$nap.loadingBox.close();
              },
-             success: function (result) {
-                 self.onSuccess(result.Code);
+             success: function (results) {
+                 for (var result in results)
+                 {
+                     if (results.Code > 0)
+                     {
+                         self.onSuccess(results.Code);
+                         return;
+                     }
+                 }
+                 self.onSuccess();
              },
              error: function (xhr, status, err) {
                  self.$nap.handleAjaxError(xhr, status, err);
@@ -70,13 +85,13 @@ class ManagesAnnouncements {
          });
      };
 
-     onSuccess = (code: number) => {
+     onSuccess = (code: number = 0) => {
          let self = this;
          if (code > 0) {
              this.$('.card-panel').html("Import announcement failed. Please check your file!").addClass("red red-text").removeClass('green green-text hiden');
          }
          else {
-             this.$('.card-panel').html("Import announcement successfully!").addClass("green green-text").removeClass('red red-text hiden');
+             this.$('.card-panel').html("Import announcements successfully!").addClass("green green-text").removeClass('red red-text hiden');
              setTimeout(() => {
                  window.location.href = this.$nap.resolveClientUrl("Announcement/ManageAnnouncements")
              }, 3000);

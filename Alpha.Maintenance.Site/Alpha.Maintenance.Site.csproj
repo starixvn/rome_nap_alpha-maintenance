@@ -291,11 +291,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Content Include="App_Data\announcement.pro.json">
-      <DependentUpon>announcement.json</DependentUpon>
+    <Content Include="App_Data\announcementConfig.pro.json">
+      <DependentUpon>announcementConfig.json</DependentUpon>
     </Content>
-    <Content Include="App_Data\announcement.uat.json">
-      <DependentUpon>announcement.json</DependentUpon>
+    <Content Include="App_Data\announcementConfig.uat.json">
+      <DependentUpon>announcementConfig.json</DependentUpon>
     </Content>
     <Content Include="App_Data\SIT\mSiteSpNames.xml">
       <SubType>Designer</SubType>
@@ -534,12 +534,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\UserLogin\themes\loginNew.scss" />
-    <Content Include="App_Data\announcement.json" />
+    <Content Include="App_Data\announcementConfig.json" />
     <Content Include="bundleconfig.json" />
     <Content Include="Assets\styles\vendors\icon\fonts\mSite.eot" />
     <Content Include="Assets\styles\vendors\icon\fonts\mSite.ttf" />
     <Content Include="Assets\styles\vendors\icon\fonts\mSite.woff" />
     <Content Include="Assets\styles\vendors\icon\selection.json" />
+    <Content Include="App_Data\announcementData.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

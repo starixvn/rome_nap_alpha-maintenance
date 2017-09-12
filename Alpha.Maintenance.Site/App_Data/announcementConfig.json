@@ -8,5 +8,6 @@
   ],
   "ExcludedSpecifications": [
     "Upline Ids"
-  ]
+  ],
+  "GetAnnouncementsByJson": 0
 }

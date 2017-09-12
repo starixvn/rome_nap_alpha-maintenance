@@ -12,7 +12,7 @@
         IEnumerable<ISpecification<IParam>> GetOfferedSpecifications();
 
         IEnumerable<Announcement> GetAnnouncements(ICriteria criteria);
-
+        
         Result SaveAnnouncement(ICriteria criteria);
 
         Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria);

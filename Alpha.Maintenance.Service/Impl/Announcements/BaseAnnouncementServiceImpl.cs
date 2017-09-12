@@ -13,7 +13,7 @@
     {
         private const string SpecificationsCacheKey = "Alpha.Maintenance.Service.Impl.AnnouncementServiceImpl.AllSpecifications";
         private readonly SpecificationFactory specificationFactory;
-        private const int SpecificationFactoryCacheTime = 1;
+        private const int SpecificationFactoryCacheTime = 3;
 
         public BaseAnnouncementServiceImpl(SpecificationFactory specificationFactory = null)
         {
@@ -48,7 +48,7 @@
                     .GetOrSet(
                     SpecificationsCacheKey,
                     () => specificationFactory.LoadSpecifications(),
-                    new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromHours(SpecificationFactoryCacheTime)));
+                    new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(SpecificationFactoryCacheTime)));
 
     }
 }

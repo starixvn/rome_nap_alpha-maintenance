@@ -15,7 +15,7 @@
     <span class="active">@AnnouncementResources.ManageAnnouncements</span>
 }
 
-<form role="form" id="report-form" action="@Url.Action("ManageAnnouncements", "Announcement")">
+<form role="form" id="announcements-form" action="">
     <section id="filter-bar">
         <div class="filter-form row">
             <div class="input-field col s2">
@@ -59,7 +59,8 @@
                 <label>@AnnouncementResources.Systems</label>
             </div>
             <div class="col button-block">
-                <input class="waves-effect waves-light btn btn-primary" type="submit" value="@ViewResource.Submit" id="submit" />
+                <input class="waves-effect waves-light btn btn-primary" type="submit" value="@ViewResource.Submit" id="btn-submit" />
+                <input class="waves-effect waves-light btn btn-create" type="submit" value="Export" id="btn-exportAll" />
                 <a class="btn btn-create  waves-effect waves-light btn btn-primary btn-import">@AnnouncementResources.Import</a>
                 <a href="@Url.Action("ComposeMessage", "Announcement")">
                     <input class="waves-effect waves-light btn btn-create" type="button" value="@AnnouncementResources.Add" id="add" />
@@ -68,6 +69,8 @@
         </div>
     </section>
 </form>
+<input id="manage-announcements-url" type="hidden" value="@Url.Action("ManageAnnouncements", "Announcement")">
+<input id="export-all-announcements-url" type="hidden" value="@Url.Action("ExportAllAnnouncements", "Announcement")">
 
 <div class="divider margin-bottom-10px"></div>
 <div class="card-panel lighten-4 text-darken-4 hiden"></div>
@@ -153,7 +156,7 @@
                             @announcement.CreatedDate.ToString("MMM dd, yyyy")
                         </td>
                         <td class="text-align-center">
-                            <a href="@Url.Action("Export", "Announcement", new { Id = announcement.Id })"
+                            <a href="@Url.Action("ExportAnAnnouncement", "Announcement", new { Id = announcement.Id })"
                                class="tooltipped icon-download"
                                data-tooltip="@AnnouncementResources.Download"></a>
                         </td>
