@@ -48,7 +48,7 @@
                     .GetOrSet(
                     SpecificationsCacheKey,
                     () => specificationFactory.LoadSpecifications(),
-                    new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(SpecificationFactoryCacheTime)));
+                    new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(SpecificationFactoryCacheTime)));
 
     }
 }

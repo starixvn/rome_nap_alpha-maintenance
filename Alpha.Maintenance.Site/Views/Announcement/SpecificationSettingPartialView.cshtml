@@ -45,17 +45,17 @@
 
     <div class="row">
         <div class="col s7">&nbsp;</div>
-            <div class="col s5">
-                <a class="btn btn-info waves-effect waves-light btn btn-primary margin-left-30px btnPrev">@AnnouncementResources.Prev</a>
-                <a class="btn btn-info waves-effect waves-light btn btn-primary margin-left-30px btnSave">@AnnouncementResources.Save</a>
-                @if (Model.ActionType.Equals(ActionType.Update))
+        <div class="col s5">
+            <a class="btn btn-info waves-effect waves-light btn btn-primary margin-left-30px btnPrev">@AnnouncementResources.Prev</a>
+            <a class="btn btn-info waves-effect waves-light btn btn-primary margin-left-30px btnSave">@AnnouncementResources.Save</a>
+            @if (Model.ActionType.Equals(ActionType.Update))
             {
-                    <a class="btn btn-info waves-effect waves-light btn btn-primary margin-left-30px btnCopy">@AnnouncementResources.MakeACopy</a>
-                }
+                <a class="btn btn-info waves-effect waves-light btn btn-primary margin-left-30px btnCopy">@AnnouncementResources.MakeACopy</a>
+            }
 
-                <input type="hidden" id="number-of-specifications" value="@(Model.NotExistedSpecifications.Count() + Model.Announcement.Specifications.Count())">
-            </div>
+            <input type="hidden" id="number-of-specifications" value="@(Model.NotExistedSpecifications.Count() + Model.Announcement.Specifications.Count())">
         </div>
+    </div>
 </div>
 
 @helper RenderSpecification(ISpecification<IParam> specification, bool isShowSpec = true)
@@ -73,7 +73,7 @@ var txtSpecsDictionary = new List<Type>()
     <div data-jsonobject="@JsonConvert.SerializeObject(specification)" class="row @(isShowSpec ? string.Empty : "hiden")" name="div-specification" id="@specification.Id">
         <div class="col s2 input-field text-align-center">
             <div id="dll-specification-conjunctionOperator" class="input-field">
-               @ConjunctionOperator.And
+                @ConjunctionOperator.And
             </div>
             &nbsp;
         </div>
@@ -82,16 +82,20 @@ var txtSpecsDictionary = new List<Type>()
         </div>
         <div class="col s2">
             <div class="input-field">
-                @if (specification.GetType() != typeof(SyncedRnGCasinoSpecification) && specification.GetType() != typeof(EnableYesterdayTransferSpecification))
-                {
-                    @Html.EnumDropDownList("dll-specification-specificationOperator", specification.SpecificationOperator,
-                            new Dictionary<string, object>() { { "data-parentId", specification.Id }, { "class", "margin-left-15px" } })
-                }
-                else
+                @if (specification.GetType() == typeof(SyncedRnGCasinoSpecification) || specification.GetType() == typeof(EnableYesterdayTransferSpecification))
                 {
                     var checkedStatus = (specification.Value == null || !specification.Value) ? string.Empty : "checked";
                     <input type="checkbox" id="@specification.GetType()" class="checkbox" @checkedStatus />
                     <label for="@specification.GetType()">&nbsp;</label>
+                }
+                else if (specification.GetType() == typeof(UnsynchronizedSettingSpecification))
+                {
+                    <div>&nbsp;</div>
+                }
+                else
+                {
+                    @Html.EnumDropDownList("dll-specification-specificationOperator", specification.SpecificationOperator,
+                            new Dictionary<string, object>() { { "data-parentId", specification.Id }, { "class", "margin-left-15px" } })
                 }
             </div>
         </div>

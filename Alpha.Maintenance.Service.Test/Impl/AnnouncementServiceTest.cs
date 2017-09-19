@@ -53,15 +53,6 @@
                                             "ja-JP"
                                         };
 
-            environments = new List<string> {
-                                            "Local"
-                                        };
-
-
-            systems = new List<string> {
-                                            "IBCBet"
-                                        };
-
             getAnnouncementsByJson = false;
 
             announcementSample = BuildAnnouncementSample();
@@ -72,8 +63,6 @@
                                                 baseAnnouncementService,
                                                 languages,
                                                 new List<string>(),
-                                                environments,
-                                                systems,
                                                 getAnnouncementsByJson);
         }
 
@@ -174,8 +163,8 @@
                 FromDate = SystemTime.Today,
                 ToDate = SystemTime.Today,
                 Ordinal = 30,
-                Environments = new List<string> { "Local" },
-                Systems = new List<string> { "IBCBet" },
+                Environments = Enumerable.Empty<string>(),
+                Systems = Enumerable.Empty<string>(),
                 Contents = languages.Select(language => new MessageContent
                 {
                     LanguageKey = language,
