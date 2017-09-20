@@ -41,7 +41,7 @@
         public IEnumerable<ISpecification<IParam>> FiterOfferedSpecs(
             IEnumerable<ISpecification<IParam>> factorySpecs,
             IEnumerable<string> excludedSpecifications)
-                => factorySpecs.Where(spec => !excludedSpecifications.Any(existedSpec => existedSpec.Equals(spec.Name)));
+                => factorySpecs.Where(spec => (spec != null && !excludedSpecifications.Any(existedSpec => existedSpec.Equals(spec.Name))));
 
         public IEnumerable<ISpecification<IParam>> GetFactorySpecifications()
             => ConfiguredCacheService

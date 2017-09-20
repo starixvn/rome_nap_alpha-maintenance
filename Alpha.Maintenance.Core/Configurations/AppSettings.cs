@@ -18,7 +18,7 @@
         {
             get
             {
-                return ConfigurationManager.AppSettings["Announcement:ConfigFilePath"] ?? "~/App_Data/announcement.json";
+                return ConfigurationManager.AppSettings["Announcement:ConfigFilePath"] ?? "~/App_Data/announcementConfig.json";
             }
         }
 
