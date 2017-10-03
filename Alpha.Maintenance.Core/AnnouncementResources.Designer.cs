@@ -288,9 +288,9 @@ namespace Alpha.Maintenance.Core {
         /// <summary>
         ///   Looks up a localized string similar to Import Announcements.
         /// </summary>
-        public static string ImportAnnouncememt {
+        public static string ImportAnnouncememts {
             get {
-                return ResourceManager.GetString("ImportAnnouncememt", resourceCulture);
+                return ResourceManager.GetString("ImportAnnouncememts", resourceCulture);
             }
         }
         
