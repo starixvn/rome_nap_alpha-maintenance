@@ -29,7 +29,7 @@ _ReSharper*/
 *.vssscc
 $tf*/
 .vs/config/applicationhost.config
-  
+build/*.log
 *.min.js
 bundles
 *.css
