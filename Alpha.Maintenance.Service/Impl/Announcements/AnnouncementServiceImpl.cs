@@ -23,19 +23,11 @@
         private readonly AnnouncementRepository announcementRepository;
 
         private readonly IDictionary<string, Func<dynamic>> getValueRangeFunction;
-
         private readonly int DefaultAnnoucementOrdinal = 30;
-
         private readonly string JsonPath = "App_Data\\announcementData.json";
 
         private readonly IEnumerable<string> languages;
-
         private readonly IEnumerable<string> excludedSpecifications;
-
-        private readonly IEnumerable<string> environments;
-
-        private readonly IEnumerable<string> systems;
-
         private readonly bool? getAnnouncementsByJson;
 
         public AnnouncementServiceImpl()
@@ -49,8 +41,6 @@
             BaseAnnouncementService baseAnnouncementService = null,
             IEnumerable<string> languages = null,
             IEnumerable<string> excludedSpecifications = null,
-            IEnumerable<string> environments = null,
-            IEnumerable<string> systems = null,
             bool? getAnnouncementsByJson = null)
         {
             this.announcementRepository = announcementRepository ?? new AnnouncementRepositoryImpl();
@@ -67,8 +57,6 @@
                                                         };
 
             this.excludedSpecifications = excludedSpecifications ?? AppSettings.AnnouncementConfig.ExcludedSpecifications;
-            this.environments = environments ?? AppSettings.AnnouncementConfig.Environments;
-            this.systems = systems ?? AppSettings.AnnouncementConfig.Systems;
             this.getAnnouncementsByJson = getAnnouncementsByJson == null ?
                 AppSettings.AnnouncementConfig.GetAnnouncementsByJson : getAnnouncementsByJson;
 
@@ -128,8 +116,8 @@
                FromDate = SystemTime.Today,
                ToDate = SystemTime.Today,
                Ordinal = DefaultAnnoucementOrdinal,
-               Environments = environments,
-               Systems = systems,
+               Environments = Enumerable.Empty<string>(),
+               Systems = Enumerable.Empty<string>(),
                Contents = languages.Select(language => new MessageContent
                            {
                                LanguageKey = language,
@@ -143,8 +131,7 @@
         {
             using (StreamReader reader = new StreamReader(Path.Combine(AppDomain.CurrentDomain.BaseDirectory.ToString(), JsonPath)))
             {
-                string json = reader.ReadToEnd();
-                return JsonConvert.DeserializeObject<List<Announcement>>(json, new SpecificationConverter());
+                return JsonConvert.DeserializeObject<List<Announcement>>(reader.ReadToEnd(), new SpecificationConverter());
             }
         }
     }
