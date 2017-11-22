@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "IP Information";
+}
+@section Headline{
+    <span class="active">IP information</span>
+}
+<form role="form" id="search-form" action="">
+    <section id="filter-bar">
+        <div class="filter-form row">
+            <div class="input-field col l3">
+                <input type="text" id="txtip" class="validate" required="" aria-required="true" value="" />
+                <label class="active">@ViewResource.IPAddress <span class="red-text">*</span></label>
+            </div>
+            <div class="col button-block">
+                <input class="waves-effect waves-light btn btn-primary" type="button" value="@ViewResource.Submit" id="btnSubmit" />
+            </div>
+        </div>
+    </section>
+</form>
+<div class="table">
+    <table class="grid persist-area" id="messageContainer">
+        <thead class="persist-header">
+            <tr>
+                <th>@ViewResource.Data_Source</th>
+                <th>@ViewResource.CountryCode</th>
+                <th>@ViewResource.CountryName</th>
+                <th>@ViewResource.Region</th>
+                <th>@ViewResource.City</th>
+            </tr>
+        </thead>
+        <tbody id="content"></tbody>
+    </table>
+</div>
+@section scripts {
+    @Scripts.Render("~/Assets/bundles/IPInfo/index.js")
+}

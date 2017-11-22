@@ -858,4 +858,19 @@
   <data name="Machine_IP" xml:space="preserve">
     <value>Machine IP</value>
   </data>
+  <data name="IPAddress" xml:space="preserve">
+    <value>IP Address</value>
+  </data>
+  <data name="CountryCode" xml:space="preserve">
+    <value>Country Code</value>
+  </data>
+  <data name="CountryName" xml:space="preserve">
+    <value>Country Name</value>
+  </data>
+  <data name="Region" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
 </root>
