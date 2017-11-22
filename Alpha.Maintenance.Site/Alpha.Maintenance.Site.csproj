@@ -280,6 +280,10 @@
     <Content Include="App_Code\RazorExtensions.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\BundleExtensions.cs" />
+    <Compile Include="Areas\DatabaseProfiler\Controllers\TracedLogController.cs" />
+    <Compile Include="Areas\DatabaseProfiler\DatabaseProfilerAreaRegistration.cs" />
+    <Compile Include="Areas\DatabaseProfiler\Models\Server.cs" />
+    <Compile Include="Areas\DatabaseProfiler\Models\Site.cs" />
     <Compile Include="Areas\UserLogin\Controllers\BaseController.cs" />
     <Compile Include="Areas\UserLogin\Controllers\CommonController.cs" />
     <Compile Include="Areas\UserLogin\Controllers\LoginController.cs" />
@@ -301,6 +305,18 @@
     <Content Include="App_Data\announcementConfig.uat.json">
       <DependentUpon>announcementConfig.json</DependentUpon>
     </Content>
+    <Content Include="App_Data\LOCAL\DBServerList.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\PRO\DBServerList.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\Sites.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\SIT\DBServerList.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Data\SIT\mSiteSpNames.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -310,9 +326,13 @@
     <Content Include="App_Data\PRO\mSiteSpNames.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="App_Data\UAT\DBServerList.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Data\UAT\mSiteSpNames.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Areas\DatabaseProfiler\scripts\Index.js" />
     <Content Include="Areas\UserLogin\scripts\lib\jquery-1.8.0.min.js" />
     <Content Include="Areas\UserLogin\scripts\lib\msgbox\images\alert.png" />
     <Content Include="Areas\UserLogin\scripts\lib\msgbox\images\btn-close.png" />
@@ -532,6 +552,10 @@
       <Project>{60BC3FA8-DF7C-4024-B469-4ED110420143}</Project>
       <Name>Alpha.Maintenance.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Alpha.Maintenance.Service\Alpha.Maintenance.Service.csproj">
+      <Project>{6f5c23b0-7eb0-4020-9664-5f904bb99bbc}</Project>
+      <Name>Alpha.Maintenance.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_Menu.cshtml" />
@@ -545,6 +569,11 @@
     <Content Include="Assets\styles\vendors\icon\fonts\mSite.woff" />
     <Content Include="Assets\styles\vendors\icon\selection.json" />
     <Content Include="App_Data\announcementData.json" />
+    <Content Include="Areas\DatabaseProfiler\Views\TracedLog\Index.cshtml" />
+    <Content Include="Areas\DatabaseProfiler\Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\DatabaseProfiler\Views\TracedLog\Logs.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -608,7 +637,9 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\DatabaseProfiler\themes\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

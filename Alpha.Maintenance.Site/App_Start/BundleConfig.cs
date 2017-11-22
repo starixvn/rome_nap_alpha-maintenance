@@ -52,6 +52,14 @@ namespace Alpha.Maintenance.Site.App_Start
                "~/Assets/scripts/lib/Momentjs/moment.min.js",
                "~/Assets/scripts/lib/Select2/select2.js",
                "~/Assets/scripts/Logs/Index.js"));
+
+            //// Database Profiler
+            bundles.Add(new ScriptBundle("~/scripts/databaseprofiler-index").Include(
+               "~/Assets/scripts/lib/Fanex.Grid/Fanex.Pagination.js",
+               "~/Assets/scripts/lib/Momentjs/moment.min.js",
+               "~/Assets/scripts/lib/Select2/select2.js",
+               "~/Areas/DatabaseProfiler/scripts/Index.js"));
+
         }
     }
 }

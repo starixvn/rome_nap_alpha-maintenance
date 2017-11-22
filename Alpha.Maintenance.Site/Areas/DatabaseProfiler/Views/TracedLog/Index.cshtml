@@ -1,0 +1,108 @@
+﻿@using System.Web.Optimization
+@model Alpha.Maintenance.Core.Model.DBProfilerModel
+
+@{
+    ViewBag.Title = "Database Profiler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Head {
+    @Styles.Render("~/css/select2")
+}
+
+@section Headline {
+    <span>App logs / </span>
+    <span class="active">Traced Log</span>
+}
+
+@using (Html.BeginForm())
+{
+    <section id="filter-bar" style="width: 98%">
+        <div class="filter-form">
+            <div class="row">
+                <div class="input-field col l2 m3 s6">
+                    @Html.LabelFor(m => m.Server, "Server", new { @class = "active" })
+                    @Html.DropDownListFor(m => m.Server, (List<SelectListItem>)ViewBag.ListServer, new { @class = "js-select" })
+                </div>
+                <div class="input-field col l2 m3 s6">
+                    @Html.LabelFor(m => m.Site, "Site", new { @class = "active" })
+                    @Html.DropDownListFor(m => m.Site, (List<SelectListItem>)ViewBag.ListSite, new { @class = "js-select" })
+                </div>
+                <div class="input-field col l2 m3 s6">
+                    @Html.LabelFor(m => m.TraceTimer, "Trace Timer", new { @class = "active" })
+                    @Html.TextBoxFor(m => m.TraceTimer, new { @class = "width-large", @Value = "30" })
+                </div>
+                <div class="input-field col l2 m3 s6">
+                    <input class="filled-in checkbox" id="TraceStartEvents" name="TraceStartEvents" type="checkbox">
+                    <label for="TraceStartEvents">Include Starting Events</label>
+                    <input name="TraceStartEvents" type="hidden" value="false">                
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col l2 m3 s6">
+                    @Html.LabelFor(m => m.TextDataLike, "Text Like", new { @class = "active" })
+                    @Html.TextBoxFor(m => m.TextDataLike, new { @class = "width-large" })
+                </div>
+                <div class="input-field col l2 m3 s6">
+                    @Html.LabelFor(m => m.TextDataLike2, "Text Like 2", new { @class = "active" })
+                    @Html.TextBoxFor(m => m.TextDataLike2, new { @class = "width-large" })
+                </div>
+                <div class="input-field col l2 m3 s6">
+                    @Html.LabelFor(m => m.TextDataLike3, "Text Like 3", new { @class = "active" })
+                    @Html.TextBoxFor(m => m.TextDataLike3, new { @class = "width-large" })
+                </div>
+                <div class="input-field col l2 m3 s6">
+                    <input class="waves-effect waves-light btn btn-primary" type="button" value="Submit" id="submit" />
+                </div>
+            </div>
+        </div>
+    </section>  
+    <div class="table">
+        <table class="grid persist-area">
+            <thead class="persist-header">
+                <tr>
+                    <th>
+                        Event
+                    </th>
+                    <th>
+                        SPID
+                    </th>
+                    <th>
+                        TextData
+                    </th>
+                    <th>
+                        Login Name
+                    </th>
+                    <th>
+                        DB Name
+                    </th>
+                    <th>
+                        Reads
+                    </th>
+                    <th>
+                        Writes
+                    </th>
+                    <th>
+                        CPU
+                    </th>
+                    <th>
+                        Duration(s)
+                    </th>
+                    <th>
+                        Start Time
+                    </th>
+                    <th>
+                        End Time
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="content">
+                
+            </tbody>
+        </table>
+    </div>
+}
+
+@section Foot {
+    @Scripts.Render("~/scripts/databaseprofiler-index")
+}

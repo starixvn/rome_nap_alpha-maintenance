@@ -22,6 +22,22 @@
             }
         }
 
+        public static string XMLServerListFilePath
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["DBProfiler:ServerConfigFilePath"] ?? "~/App_Data/LOCAL/DBServerList.xml";
+            }
+        }
+
+        public static string XMLSiteListFilePath
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["DBProfiler:SiteConfigFilePath"] ?? "~/App_Data/Sites.xml";
+            }
+        }
+
         private static void LoadAnnouncementConfig()
         {
             if (HttpContext.Current != null
