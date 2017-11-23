@@ -9,7 +9,7 @@
     <section id="filter-bar">
         <div class="filter-form row">
             <div class="input-field col l3">
-                <input type="text" id="txtip" class="validate" required="" aria-required="true" value="" />
+                <input type="text" id="txtIP" class="validate" required="" aria-required="true" value="" />
                 <label class="active">@ViewResource.IPAddress <span class="red-text">*</span></label>
             </div>
             <div class="col button-block">
@@ -22,6 +22,7 @@
     <table class="grid persist-area" id="messageContainer">
         <thead class="persist-header">
             <tr>
+                <th>@ViewResource.IPAddress</th>
                 <th>@ViewResource.Data_Source</th>
                 <th>@ViewResource.CountryCode</th>
                 <th>@ViewResource.CountryName</th>

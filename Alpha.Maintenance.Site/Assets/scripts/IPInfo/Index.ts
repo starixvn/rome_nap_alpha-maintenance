@@ -10,7 +10,7 @@ class IPInformation {
     $NAP: any;
     $JSON: any;
 
-    $ip: JQuery;
+    $txtIP: JQuery;
     $btnSubmit: JQuery;
     $contentTable: JQuery;
 
@@ -21,7 +21,7 @@ class IPInformation {
     }
 
     init = () => {
-        this.$ip = this.$('#txtip');
+        this.$txtIP = this.$('#txtIP');
         this.$btnSubmit = this.$('#btnSubmit');
         this.$contentTable = this.$('#content');
 
@@ -33,10 +33,11 @@ class IPInformation {
     }
 
     generateData = () => {
+        let ip = this.$txtIP.val();
         this.$.ajax({
-            url: this.$NAP.resolveClientUrl("IPInformation/Index"),
-            data: { ip: this.$ip.val() },
-            type: 'POST',
+            url: this.$NAP.resolveClientUrl("IPInformation/GetIPInfoFromDB"),
+            data: { ip: ip },
+            type: 'GET',
             dataType: 'json',
             cache: false,
             beforeSend: () => {
@@ -52,12 +53,54 @@ class IPInformation {
                 this.$contentTable.html('');
 
                 if (data) {
-                    var content = "<tr><td>IP Database</td><td>" + data.CountryCode + "</td><td>" +
+                    var content = "<tr><td>" + ip + "</td><td>" +
+                        data.DataSource + "</td><td>" +
+                        data.CountryCode + "</td><td>" +
                         data.CountryName + "</td><td>" +
                         data.Region + "</td><td>" +
-                        data.City + "</td></tr>"
+                        data.City + "</td></tr>";
 
                     this.$contentTable.append(content);
+                }
+
+                this.getIPInfoFromAPIs(ip);
+                this.$NAP.loadingBox.close();
+            },
+            error: (xhr: JQueryXHR, status: string, err: string) => {
+                this.$NAP.handleAjaxError(xhr, status, err);
+            }
+        });
+    };
+
+    getIPInfoFromAPIs = (ip: string) => {
+        this.$.ajax({
+            url: this.$NAP.resolveClientUrl("IPInformation/GetIPInfoFromAPIs"),
+            data: { ip: ip },
+            type: 'GET',
+            dataType: 'json',
+            cache: false,
+            beforeSend: () => {
+                this.$NAP.loadingBox.show();
+            },
+            complete: () => {
+                this.$NAP.loadingBox.close();
+            },
+            success: (result: any) => {
+                this.$NAP.loadingBox.show();
+
+                var data = result.ListIPInfo;
+
+                if (data.length > 0) {
+                    this.$.each(data, (key, value) => {
+                        var content = "<tr><td>" + ip + "</td><td>" +
+                            value.DataSource + "</td><td>" +
+                            value.CountryCode + "</td><td>" +
+                            value.CountryName + "</td><td>" +
+                            value.Region + "</td><td>" +
+                            value.City + "</td></tr>";
+
+                        this.$contentTable.append(content);
+                    });
                 }
 
                 this.$NAP.loadingBox.close();
@@ -66,7 +109,7 @@ class IPInformation {
                 this.$NAP.handleAjaxError(xhr, status, err);
             }
         });
-    };
+    }
 }
 
 const ipInformation = new IPInformation($, window.NAP, window.JSON);

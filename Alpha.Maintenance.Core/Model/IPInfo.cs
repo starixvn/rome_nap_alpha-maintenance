@@ -3,16 +3,20 @@
     public class IPInfo
     {
         public IPInfo(
+            string dataSource,
             string countryCode,
             string countryName,
             string region,
             string city)
         {
+            DataSource = dataSource;
             CountryCode = countryCode;
             CountryName = countryName;
             Region = region;
             City = city;
         }
+
+        public string DataSource { get; }
 
         public string CountryCode { get; }
 

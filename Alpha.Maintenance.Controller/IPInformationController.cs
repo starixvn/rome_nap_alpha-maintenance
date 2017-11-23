@@ -25,10 +25,14 @@
         [NapAuth(FunctionKey = SiteFunctionKeys.IPInformation, Policy = Constant.Policy.Read)]
         public ActionResult Index() => View();
 
-        [HttpPost]
+        [HttpGet]
         [NapAuth(FunctionKey = SiteFunctionKeys.IPInformation, Policy = Constant.Policy.Read)]
-        public ActionResult Index(string ip)
-            => Json(new { IPInfo = ipInformationService.GetIPInformation(ip) });
+        public ActionResult GetIPInfoFromDB(string ip)
+            => Json(new { IPInfo = ipInformationService.GetIPInfoFromDB(ip) }, JsonRequestBehavior.AllowGet);
 
+        [HttpGet]
+        [NapAuth(FunctionKey = SiteFunctionKeys.IPInformation, Policy = Constant.Policy.Read)]
+        public ActionResult GetIPInfoFromAPIs(string ip)
+            => Json(new { ListIPInfo = ipInformationService.GetIPInfoFromAPIs(ip) }, JsonRequestBehavior.AllowGet);
     }
 }

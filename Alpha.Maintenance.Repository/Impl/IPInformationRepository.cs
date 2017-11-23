@@ -6,24 +6,29 @@ namespace Alpha.Maintenance.Repository.Impl
 {
     public interface IPInformationRepository
     {
-        IPInfo GetIPInformation(GetIPInformationCriteria criteria);
+        IPInfo GetIPInfo(GetIPInformationCriteria criteria);
     }
 
     public class IPInformationRepositoryImpl : IPInformationRepository
     {
-        public IPInfo GetIPInformation(GetIPInformationCriteria criteria)
+        public IPInfo GetIPInfo(GetIPInformationCriteria criteria)
         {
             using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
             {
                 using (var reader = db.ExecuteReader(criteria))
                 {
-                    if (reader != null && reader.Read())
+                    while (reader != null)
                     {
-                        return new IPInfo(
-                            countryCode: !Convert.IsDBNull(reader["countrySHORT"]) ? Convert.ToString(reader["countrySHORT"]) : string.Empty,
-                            countryName: !Convert.IsDBNull(reader["countryLONG"]) ? Convert.ToString(reader["countryLONG"]) : string.Empty,
-                            region: !Convert.IsDBNull(reader["ipRegion"]) ? Convert.ToString(reader["ipRegion"]) : string.Empty,
-                            city: !Convert.IsDBNull(reader["ipCity"]) ? Convert.ToString(reader["ipCity"]) : string.Empty);
+                        if (reader.Read())
+                        {
+                            return new IPInfo(
+                                dataSource: "IP Database",
+                                countryCode: !Convert.IsDBNull(reader["countrySHORT"]) ? Convert.ToString(reader["countrySHORT"]) : string.Empty,
+                                countryName: !Convert.IsDBNull(reader["countryLONG"]) ? Convert.ToString(reader["countryLONG"]) : string.Empty,
+                                region: !Convert.IsDBNull(reader["ipRegion"]) ? Convert.ToString(reader["ipRegion"]) : string.Empty,
+                                city: !Convert.IsDBNull(reader["ipCity"]) ? Convert.ToString(reader["ipCity"]) : string.Empty);
+                        }
+                        reader.NextResult();
                     }
                 }
             }

@@ -1,10 +1,12 @@
-﻿
-namespace Alpha.Maintenance.Service.Interface.IPInformation
+﻿namespace Alpha.Maintenance.Service.Interface.IPInformation
 {
+    using System.Collections.Generic;
     using Core.Model;
 
     public interface IPInformationService
     {
-        IPInfo GetIPInformation(string ip);
+        IPInfo GetIPInfoFromDB(string ip);
+
+        IList<IPInfo> GetIPInfoFromAPIs(string ip);
     }
 }
