@@ -29,7 +29,11 @@ class IPInformation {
     }
 
     bindEvent = () => {
-        this.$btnSubmit.click(this.generateData);
+        this.$btnSubmit.click(() => {
+            if (this.validateIPAddress()) {
+                this.generateData();
+            }
+        });
     }
 
     generateData = () => {
@@ -110,6 +114,22 @@ class IPInformation {
             }
         });
     }
+
+    validateIPAddress = () => {
+        let ip = this.$txtIP.val().trim();
+        if (ip === "") {
+            this.showWarningMessage("Please input IP Address!");
+            return false;
+        }
+        else {
+            this.hideError();
+            return true;
+        }
+    };
+
+    showWarningMessage = (message: string) => this.$('.card-panel').html(message).addClass("red red-text").removeClass('hiden');
+
+    hideError = () => this.$('.card-panel').addClass('hiden');
 }
 
 const ipInformation = new IPInformation($, window.NAP, window.JSON);

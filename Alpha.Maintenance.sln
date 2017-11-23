@@ -20,11 +20,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeAnalysis", "CodeAnalysi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1AC42F6E-4805-4F23-BA57-30DD9DB8126E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.Maintenance.Controller.Test", "Alpha.Maintenance.Controller.Test\Alpha.Maintenance.Controller.Test.csproj", "{EF7CAAB1-D762-4C33-A342-F0C3AB18318E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unittests", "unittests", "{41D165A0-8B26-4656-A79C-F55CED52ACF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.Maintenance.Repository.Test", "Alpha.Maintenance.Repository.Test\Alpha.Maintenance.Repository.Test.csproj", "{CD068938-AA4A-4005-8385-A46F1C3533DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.Maintenance.Controller.Tests", "tests\unittests\Alpha.Maintenance.Controller.Tests\Alpha.Maintenance.Controller.Tests.csproj", "{EF7CAAB1-D762-4C33-A342-F0C3AB18318E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.Maintenance.Service.Test", "Alpha.Maintenance.Service.Test\Alpha.Maintenance.Service.Test.csproj", "{700AFB9D-FD00-4475-B874-8075FD9F4346}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.Maintenance.Repository.Tests", "tests\unittests\Alpha.Maintenance.Repository.Tests\Alpha.Maintenance.Repository.Tests.csproj", "{CD068938-AA4A-4005-8385-A46F1C3533DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alpha.Maintenance.Service.Tests", "tests\unittests\Alpha.Maintenance.Service.Tests\Alpha.Maintenance.Service.Tests.csproj", "{700AFB9D-FD00-4475-B874-8075FD9F4346}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -127,8 +129,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{EF7CAAB1-D762-4C33-A342-F0C3AB18318E} = {1AC42F6E-4805-4F23-BA57-30DD9DB8126E}
-		{CD068938-AA4A-4005-8385-A46F1C3533DA} = {1AC42F6E-4805-4F23-BA57-30DD9DB8126E}
-		{700AFB9D-FD00-4475-B874-8075FD9F4346} = {1AC42F6E-4805-4F23-BA57-30DD9DB8126E}
+		{41D165A0-8B26-4656-A79C-F55CED52ACF4} = {1AC42F6E-4805-4F23-BA57-30DD9DB8126E}
+		{EF7CAAB1-D762-4C33-A342-F0C3AB18318E} = {41D165A0-8B26-4656-A79C-F55CED52ACF4}
+		{CD068938-AA4A-4005-8385-A46F1C3533DA} = {41D165A0-8B26-4656-A79C-F55CED52ACF4}
+		{700AFB9D-FD00-4475-B874-8075FD9F4346} = {41D165A0-8B26-4656-A79C-F55CED52ACF4}
 	EndGlobalSection
 EndGlobal

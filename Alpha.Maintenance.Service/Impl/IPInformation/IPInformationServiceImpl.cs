@@ -10,7 +10,6 @@
 
     public class IPInformationServiceImpl : IPInformationService
     {
-        private const string NoInformationCharacter = "-";
         private static readonly IList<APIInfo> GeolocationAPIs = new List<APIInfo>
         {
             new APIInfo("feegeoip.net", "http://freegeoip.net/json/", "country_code", "country_name", "region_name", "city"),
@@ -41,23 +40,31 @@
             {
                 foreach (var api in GeolocationAPIs)
                 {
-                    var responseString = webClient.DownloadString(api.Link + ip);
-                    var jsonObject = JObject.Parse(responseString);
-
-                    var ipInfo = GetIPInfoFromAPI(api, jsonObject);
-                    result.Add(ipInfo);
+                    result.Add(GetIPInfoFromAPI(webClient, api, ip));
                 }
             }
 
             return result;
         }
 
-        private IPInfo GetIPInfoFromAPI(APIInfo apiInfo, JObject jsonObject)
-            => new IPInfo(
+        private static IPInfo GetIPInfoFromAPI(WebClient webClient, APIInfo apiInfo, string ip)
+        {
+            var responseString = webClient.DownloadString(apiInfo.Link + ip);
+            var jObject = JObject.Parse(responseString);
+
+            return new IPInfo(
                 dataSource: apiInfo.Name,
-                countryCode: !string.IsNullOrEmpty(jsonObject[apiInfo.CountryCodeKey]?.ToString()) ? jsonObject[apiInfo.CountryCodeKey].ToString() : NoInformationCharacter,
-                countryName: !string.IsNullOrEmpty(jsonObject[apiInfo.CountryNameKey]?.ToString()) ? jsonObject[apiInfo.CountryNameKey].ToString().ToUpperInvariant() : NoInformationCharacter,
-                region: !string.IsNullOrEmpty(jsonObject[apiInfo.RegionKey]?.ToString()) ? jsonObject[apiInfo.RegionKey].ToString().ToUpperInvariant() : NoInformationCharacter,
-                city: !string.IsNullOrEmpty(jsonObject[apiInfo.CityKey]?.ToString()) ? jsonObject[apiInfo.CityKey].ToString().ToUpperInvariant() : NoInformationCharacter);
+                countryCode: GetValueFromJson(jObject, apiInfo.CountryCodeKey),
+                countryName: GetValueFromJson(jObject, apiInfo.CountryNameKey),
+                region: GetValueFromJson(jObject, apiInfo.RegionKey),
+                city: GetValueFromJson(jObject, apiInfo.CityKey));
+        }
+
+        private static string GetValueFromJson(JObject jObject, string key)
+        {
+            var value = jObject[key]?.ToString();
+
+            return string.IsNullOrEmpty(value) ? "-" : value.ToUpperInvariant();
+        }
     }
 }
