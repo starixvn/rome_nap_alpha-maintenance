@@ -5,24 +5,22 @@
 @section Headline{
     <span class="active">IP information</span>
 }
-<div class="row">
-    <div class="col s12">
-        <div class="card-panel lighten-4 text-darken-4 hiden"></div>
-    </div>
-</div>
-<form role="form" id="search-form" action="">
-    <section id="filter-bar">
-        <div class="filter-form row">
-            <div class="input-field col l3">
-                <input type="text" id="txtIP" class="validate" required="" aria-required="true" value="" />
-                <label class="active">@ViewResource.IPAddress <span class="red-text">*</span></label>
-            </div>
-            <div class="col button-block">
-                <input class="waves-effect waves-light btn btn-primary" type="button" value="@ViewResource.Submit" id="btnSubmit" />
-            </div>
+<section id="filter-bar">
+    <div class="row">
+        <div class="col s12">
+            <div class="card-panel lighten-4 text-darken-4 hiden"></div>
         </div>
-    </section>
-</form>
+    </div>
+    <div class="filter-form row">
+        <div class="input-field col l3">
+            <input type="text" id="txtIP" class="validate" required="" aria-required="true" value="" />
+            <label class="active">@ViewResource.IPAddress <span class="red-text">*</span></label>
+        </div>
+        <div class="col button-block">
+            <input class="waves-effect waves-light btn btn-primary" type="button" value="@ViewResource.Submit" id="btnSubmit" />
+        </div>
+    </div>
+</section>
 <div class="table">
     <table class="grid persist-area" id="messageContainer">
         <thead class="persist-header">

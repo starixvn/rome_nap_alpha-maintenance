@@ -374,6 +374,7 @@
     <Content Include="Assets\bundles\manage-announcements.min.js">
       <DependentUpon>manage-announcements.js</DependentUpon>
     </Content>
+    <Content Include="Assets\images\Spin.gif" />
     <Content Include="Assets\scripts\Announcement\compose-messages.js">
       <DependentUpon>compose-messages.ts</DependentUpon>
     </Content>

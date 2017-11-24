@@ -31,12 +31,18 @@ class IPInformation {
     bindEvent = () => {
         this.$btnSubmit.click(() => {
             if (this.validateIPAddress()) {
-                this.generateData();
+                this.getIPInfoFromDb();
+            }
+        });
+
+        this.$txtIP.keyup((e: JQueryKeyEventObject) => {
+            if (this.validateIPAddress() && e.which == 13) {
+                this.$btnSubmit.trigger('click');
             }
         });
     }
 
-    generateData = () => {
+    getIPInfoFromDb = () => {
         let ip = this.$txtIP.val();
         this.$.ajax({
             url: this.$NAP.resolveClientUrl("IPInformation/GetIPInfoFromDB"),
@@ -84,30 +90,26 @@ class IPInformation {
             dataType: 'json',
             cache: false,
             beforeSend: () => {
-                this.$NAP.loadingBox.show();
-            },
-            complete: () => {
-                this.$NAP.loadingBox.close();
+                this.addWaitingRow();
             },
             success: (result: any) => {
-                this.$NAP.loadingBox.show();
 
                 var data = result.ListIPInfo;
 
                 if (data.length > 0) {
+                    let content = '';
                     this.$.each(data, (key, value) => {
-                        var content = "<tr><td>" + ip + "</td><td>" +
+                        content += "<tr><td>" + ip + "</td><td>" +
                             value.DataSource + "</td><td>" +
                             value.CountryCode + "</td><td>" +
                             value.CountryName + "</td><td>" +
                             value.Region + "</td><td>" +
                             value.City + "</td></tr>";
 
-                        this.$contentTable.append(content);
                     });
+                    this.$contentTable.append(content);
+                    this.removeWaitingRow();
                 }
-
-                this.$NAP.loadingBox.close();
             },
             error: (xhr: JQueryXHR, status: string, err: string) => {
                 this.$NAP.handleAjaxError(xhr, status, err);
@@ -130,6 +132,10 @@ class IPInformation {
     showWarningMessage = (message: string) => this.$('.card-panel').html(message).addClass("red red-text").removeClass('hiden');
 
     hideError = () => this.$('.card-panel').addClass('hiden');
+
+    addWaitingRow = () => this.$contentTable.append('<tr class="waiting-row"><td class="center" colspan="6"><img src="Assets/images/Spin.gif"></td></tr>')
+
+    removeWaitingRow = () => this.$('tr.waiting-row').remove();
 }
 
 const ipInformation = new IPInformation($, window.NAP, window.JSON);
