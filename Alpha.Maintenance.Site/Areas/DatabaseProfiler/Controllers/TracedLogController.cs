@@ -11,9 +11,12 @@ using Alpha.Maintenance.Core.Configurations;
 using Alpha.Maintenance.Core.Model;
 using Alpha.Maintenance.Service.Impl.DbProfiler;
 using Alpha.Maintenance.Site.Areas.DatabaseProfiler.Models;
+using Fanex.NAP.Core.Business;
+using Fanex.NAP.Core.Web.Attribute;
 
 namespace Alpha.Maintenance.Site.Areas.DatabaseProfiler.Controllers
 {
+    [NapSuperAuth]
     public class TracedLogController : BaseController
     {
         private readonly LogService _logService;
@@ -27,6 +30,7 @@ namespace Alpha.Maintenance.Site.Areas.DatabaseProfiler.Controllers
         }
 
         [HttpGet]
+        [NapAuth(FunctionKey = SiteFunctionKeys.DBProfiler, Policy = Constant.Policy.Read)]
         public ActionResult Index()
         {
             InitialServer();
@@ -36,6 +40,7 @@ namespace Alpha.Maintenance.Site.Areas.DatabaseProfiler.Controllers
         }
 
         [HttpPost]
+        [NapAuth(FunctionKey = SiteFunctionKeys.DBProfiler, Policy = Constant.Policy.Read)]
         public ActionResult Logs(DBProfilerModel model)
         {
             var hasError = false;
