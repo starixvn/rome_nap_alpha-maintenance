@@ -10,7 +10,7 @@ var Logs = (function ($) {
             var server = $("#Server").val();
             var site = $("#Site").val();
             var traceTimer = $("#TraceTimer").val();
-            var traceStartEvents = $("#TraceStartEvents").val();
+            var traceStartEvents = $("#TraceStartEvents").val() === "on";
             var textDataLike = $("#TextDataLike").val();
             var textDataLike2 = $("#TextDataLike2").val();
             var textDataLike3 = $("#TextDataLike3").val();
@@ -20,8 +20,7 @@ var Logs = (function ($) {
                 return;
             }
 
-            if (traceTimer > 120)
-            {
+            if (traceTimer > 120) {
                 NAP.headlineMsgBox.showInfo("Trace timer must be less than 120s", { closeBtn: false });
                 return;
             }

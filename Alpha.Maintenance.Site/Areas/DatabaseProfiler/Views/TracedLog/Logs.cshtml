@@ -18,7 +18,7 @@
             <td>@item.CPU</td>
             <td>@item.Duration</td>
             <td>@item.StartTime</td>
-            <td>@item.EndTime</td>
+            <td>@(item.EndTime == Convert.ToDateTime("1/1/0001 12:00:00 AM") ? "N/A" : item.EndTime.ToString() )</td>
         </tr>
     }
 }
