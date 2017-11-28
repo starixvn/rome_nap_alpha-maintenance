@@ -185,11 +185,11 @@ $(document).ready(function () {
 	});
 	$('.js-select').not('.disabled').material_select();
 	$('.toggle-btn').click(function () {
-        if ($('#nav-mobile').hasClass('collapse')) {
-            $('#nav-mobile').removeClass('collapse');
+        if ($('body').hasClass('collapse')) {
+            $('body').removeClass('collapse');
         }
         else {
-            $('#nav-mobile').addClass('collapse');
+            $('body').addClass('collapse');
         }
     });
 });
