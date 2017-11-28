@@ -104,7 +104,7 @@ class IPInformation {
                 if (data.length > 0) {
                     let content = '';
                     this.$.each(data, (key, value) => {
-                        content += '<tr><td>' + value.DataSource + '<a href="' + value.WebLink + '" target="_blank" class="icon-login"></a></td><td>"' +
+                        content += '<tr><td>' + value.DataSource + '<a href="' + value.WebLink + '" target="_blank" class="icon-link icon-link-variant"></a></td><td>' +
                             value.CountryCode + '</td><td>' +
                             value.CountryName + '</td><td>' +
                             value.Region + '</td><td>' +

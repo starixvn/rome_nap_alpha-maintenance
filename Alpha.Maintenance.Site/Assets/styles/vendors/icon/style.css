@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'mSite';
-  src:  url('fonts/mSite.eot?ib6uyq');
-  src:  url('fonts/mSite.eot?ib6uyq#iefix') format('embedded-opentype'),
-    url('fonts/mSite.ttf?ib6uyq') format('truetype'),
-    url('fonts/mSite.woff?ib6uyq') format('woff'),
-    url('fonts/mSite.svg?ib6uyq#mSite') format('svg');
+  src:  url('fonts/mSite.eot?x8j01o');
+  src:  url('fonts/mSite.eot?x8j01o#iefix') format('embedded-opentype'),
+    url('fonts/mSite.ttf?x8j01o') format('truetype'),
+    url('fonts/mSite.woff?x8j01o') format('woff'),
+    url('fonts/mSite.svg?x8j01o#mSite') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,7 +24,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-add_announcement:before {
+.icon-link-variant:before {
+  content: "\e90a";
+}
+.icon-chevron-up:before {
+  content: "\e90b";
+}
+.icon-add_message:before {
   content: "\e900";
 }
 .icon-calendar-text:before {
@@ -39,7 +45,7 @@
 .icon-magnify:before {
   content: "\e906";
 }
-.icon-manage_announcements:before {
+.icon-manage_messages:before {
   content: "\e909";
 }
 .icon-manage_servers:before {
@@ -53,10 +59,4 @@
 }
 .icon-view_logs:before {
   content: "\e902";
-}
-.icon-download:before {
-  content: "\e9c7";
-}
-.icon-bin:before {
-  content: "\e9ac";
 }

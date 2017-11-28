@@ -1,7 +1,8 @@
 ﻿@import "../abstracts/variables";
 
-.btn-primary { 
+.btn-primary {
     background: $yellow;
+
     &:hover {
         background: #fcdf59;
     }
@@ -18,7 +19,7 @@
 }
 
 .btn-create {
-    background: #f4f4f4;    
+    background: #f4f4f4;
     margin-left: 10px;
     border: 1px solid #dfdfdf;
 
@@ -45,7 +46,7 @@
     border-radius: 1px;
     box-shadow: none;
     height: 32px;
-    line-height: 32px;    
+    line-height: 32px;
 
     &.waves-input-wrapper {
         padding: 0;
@@ -61,6 +62,7 @@
 
 .button-collapse {
     position: fixed;
+
     .material-icons {
         color: $white;
         line-height: 56px;
@@ -81,13 +83,14 @@
     color: #fff;
     line-height: 56px;
     padding-left: 15px;
+
     @media only screen and (min-width: 601px) {
         line-height: 64px;
     }
 }
 
-.icon-view_logs, .icon-manage_servers, 
-.icon-manage_announcements, .icon-add_announcement, 
+.icon-view_logs, .icon-manage_servers,
+.icon-manage_announcements, .icon-add_announcement,
 .icon-download {
     font-size: 18px;
     vertical-align: middle;
@@ -108,3 +111,56 @@
     }
 }
 
+.icon-link {
+    display: inline-block;
+    font-size: 16px;
+    vertical-align: middle;
+    color: #2196f3;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    margin-left: 5px;
+    transition: background .2s ease-in;
+
+    &:hover {
+        background: rgba(0,0,0,.1);
+    }
+}
+
+.toggle-btn {
+    padding-right: 24px;    
+    transition: linear 0.2s;    
+
+    .lines {
+        position: relative;
+        top: -1px;
+        vertical-align: middle;
+        background: #fff;
+        width: 20px;
+        height: 2px;
+        display: inline-block;
+
+        &::after, &::before {
+            content: "";
+            background: #fff;
+            width: 20px;
+            height: 2px;
+            display: inline-block;       
+
+        }        
+
+        &::after {
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+
+        &::before {
+            position: absolute;
+            left: 0;
+            top: 5px;
+        }
+    }
+}
