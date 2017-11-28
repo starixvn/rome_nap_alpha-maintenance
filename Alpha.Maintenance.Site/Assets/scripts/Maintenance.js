@@ -184,6 +184,14 @@ $(document).ready(function () {
 	    }
 	});
 	$('.js-select').not('.disabled').material_select();
+	$('.toggle-btn').click(function () {
+        if ($('#nav-mobile').hasClass('collapse')) {
+            $('#nav-mobile').removeClass('collapse');
+        }
+        else {
+            $('#nav-mobile').addClass('collapse');
+        }
+    });
 });
 
 // -- Utilities -- //
