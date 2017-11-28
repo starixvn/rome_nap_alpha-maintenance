@@ -27,11 +27,15 @@ header {
     .breadcrumb {
         position: relative;
         font-size: 13px;
-        padding-left: 1.5rem;
+        padding-left: 3.2rem;
         color: $white;
 
         .active {
             color: $yellow;
+        }
+
+        @media only screen and (min-width: 993px) {            
+            padding-left: 1.5rem;
         }
     }
 
