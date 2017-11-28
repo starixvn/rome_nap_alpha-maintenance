@@ -141,7 +141,7 @@
         background: #fff;
         width: 18px;
         height: 2px;
-        display: inline-block;
+        display: inline-block;        
 
         &::after, &::before {
             content: "";
@@ -149,7 +149,7 @@
             width: 18px;
             height: 2px;
             display: inline-block;       
-
+            transition: all .15s ease-out;
         }        
 
         &::after {
@@ -164,6 +164,16 @@
             top: 5px;
         }
     }    
+
+    &:hover {
+        .lines:before {
+            top: 7px;
+        }
+
+        .lines:after {
+            top: -7px;
+        }
+    }
 
     @media only screen and (min-width: 993px) {
         display: inline-block;
