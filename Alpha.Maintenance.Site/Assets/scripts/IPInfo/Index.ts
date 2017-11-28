@@ -69,11 +69,11 @@ class IPInformation {
                 this.$contentTable.html('');
 
                 if (data) {
-                    var content = "<tr><td>" + data.DataSource + "</td><td>" +
-                        data.CountryCode + "</td><td>" +
-                        data.CountryName + "</td><td>" +
-                        data.Region + "</td><td>" +
-                        data.City + "</td></tr>";
+                    var content = '<tr><td>' + data.DataSource + '</td><td>' +
+                        data.CountryCode + '</td><td>' +
+                        data.CountryName + '</td><td>' +
+                        data.Region + '</td><td>' +
+                        data.City + '</td></tr>';
 
                     this.$contentTable.append(content);
                 }
@@ -104,11 +104,11 @@ class IPInformation {
                 if (data.length > 0) {
                     let content = '';
                     this.$.each(data, (key, value) => {
-                        content += "<tr><td>" + value.DataSource + "</td><td>" +
-                            value.CountryCode + "</td><td>" +
-                            value.CountryName + "</td><td>" +
-                            value.Region + "</td><td>" +
-                            value.City + "</td></tr>";
+                        content += '<tr><td>' + value.DataSource + '<a href="' + value.WebLink + '" target="_blank" class="icon-login"></a></td><td>"' +
+                            value.CountryCode + '</td><td>' +
+                            value.CountryName + '</td><td>' +
+                            value.Region + '</td><td>' +
+                            value.City + '</td></tr>';
 
                     });
                     this.$contentTable.append(content);
@@ -131,7 +131,7 @@ class IPInformation {
         }
     };
 
-    addWaitingRow = () => this.$contentTable.append('<tr class="waiting-row"><td class="center" colspan="6"><img src="Assets/images/Spin.gif"></td></tr>')
+    addWaitingRow = () => this.$contentTable.append('<tr class="waiting-row"><td class="center red-text" colspan="6">getting info from other data source ...</td></tr>')
 
     removeWaitingRow = () => this.$('tr.waiting-row').remove();
 }

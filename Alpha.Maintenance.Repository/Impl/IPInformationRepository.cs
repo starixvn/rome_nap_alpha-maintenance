@@ -23,6 +23,7 @@ namespace Alpha.Maintenance.Repository.Impl
                         {
                             return new IPInfo(
                                 dataSource: "IPDB",
+                                webLink: null,
                                 countryCode: !Convert.IsDBNull(reader["countrySHORT"]) ? Convert.ToString(reader["countrySHORT"]) : string.Empty,
                                 countryName: !Convert.IsDBNull(reader["countryLONG"]) ? Convert.ToString(reader["countryLONG"]) : string.Empty,
                                 region: !Convert.IsDBNull(reader["ipRegion"]) ? Convert.ToString(reader["ipRegion"]) : string.Empty,

@@ -12,10 +12,9 @@
     {
         private static readonly IList<APIInfo> GeolocationAPIs = new List<APIInfo>
         {
-            new APIInfo("feegeoip.net", "http://freegeoip.net/json/", "country_code", "country_name", "region_name", "city"),
-            new APIInfo("ip-api.com", "http://ip-api.com/json/", "countryCode", "country", "regionName", "city"),
-            new APIInfo("IPLocate", "https://www.iplocate.io/api/lookup/", "country_code", "country", "subdivision", "city"),
-            new APIInfo("eXTReMe-IP-Lookup.com", "https://extreme-ip-lookup.com/json/", "countryCode", "country", "region", "city")
+            new APIInfo("freegeoip.net", "http://freegeoip.net/json/", "http://freegeoip.net/?q=", "country_code", "country_name", "region_name", "city"),
+            new APIInfo("ip-api.com", "http://ip-api.com/json/", "http://ip-api.com/#", "countryCode", "country", "regionName", "city"),
+            new APIInfo("eXTReMe-IP-Lookup.com", "https://extreme-ip-lookup.com/json/", "https://extreme-ip-lookup.com/", "countryCode", "country", "region", "city")
         };
         private readonly IPInformationRepository ipInformactionRepository;
 
@@ -49,11 +48,14 @@
 
         private static IPInfo GetIPInfoFromAPI(WebClient webClient, APIInfo apiInfo, string ip)
         {
-            var responseString = webClient.DownloadString(apiInfo.Link + ip);
+            var responseString = webClient.DownloadString(apiInfo.APILink + ip);
             var jObject = JObject.Parse(responseString);
+
+            var webLink = !string.IsNullOrEmpty(apiInfo.WebLink) ? apiInfo.WebLink + ip : null;
 
             return new IPInfo(
                 dataSource: apiInfo.Name,
+                webLink: webLink,
                 countryCode: GetValueFromJson(jObject, apiInfo.CountryCodeKey),
                 countryName: GetValueFromJson(jObject, apiInfo.CountryNameKey),
                 region: GetValueFromJson(jObject, apiInfo.RegionKey),

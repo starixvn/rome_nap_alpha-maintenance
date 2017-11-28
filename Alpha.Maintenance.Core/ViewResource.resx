@@ -865,7 +865,7 @@
     <value>Country Code</value>
   </data>
   <data name="CountryName" xml:space="preserve">
-    <value>Country Name</value>
+    <value>Country</value>
   </data>
   <data name="Region" xml:space="preserve">
     <value>Region</value>

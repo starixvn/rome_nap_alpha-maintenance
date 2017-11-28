@@ -385,7 +385,7 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Country Name.
+        ///   Looks up a localized string similar to Country.
         /// </summary>
         public static string CountryName {
             get {

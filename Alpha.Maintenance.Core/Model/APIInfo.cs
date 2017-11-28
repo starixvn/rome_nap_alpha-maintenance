@@ -4,14 +4,16 @@
     {
         public APIInfo(
             string name,
-            string link,
+            string apiLink,
+            string webLink,
             string countryCodeKey,
             string countryNameKey,
             string regionKey,
             string cityKey)
         {
             Name = name;
-            Link = link;
+            APILink = apiLink;
+            WebLink = webLink;
             CountryCodeKey = countryCodeKey;
             CountryNameKey = countryNameKey;
             RegionKey = regionKey;
@@ -20,7 +22,9 @@
 
         public string Name { get; }
 
-        public string Link { get; }
+        public string APILink { get; }
+
+        public string WebLink { get; }
 
         public string CountryCodeKey { get; }
 
