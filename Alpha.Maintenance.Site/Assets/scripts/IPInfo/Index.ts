@@ -30,13 +30,19 @@ class IPInformation {
 
     bindEvent = () => {
         this.$btnSubmit.click(() => {
-            if (this.validateIPAddress()) {
-                this.getIPInfoFromDb();
+            if (!this.validateIPAddress()) {
+                return;
             }
+
+            this.getIPInfoFromDb();
         });
 
         this.$txtIP.keyup((e: JQueryKeyEventObject) => {
-            if (this.validateIPAddress() && e.which == 13) {
+            if (!this.validateIPAddress()) {
+                return;
+            }
+
+            if (e.which == 13) {
                 this.$btnSubmit.trigger('click');
             }
         });
@@ -63,8 +69,7 @@ class IPInformation {
                 this.$contentTable.html('');
 
                 if (data) {
-                    var content = "<tr><td>" + ip + "</td><td>" +
-                        data.DataSource + "</td><td>" +
+                    var content = "<tr><td>" + data.DataSource + "</td><td>" +
                         data.CountryCode + "</td><td>" +
                         data.CountryName + "</td><td>" +
                         data.Region + "</td><td>" +
@@ -99,8 +104,7 @@ class IPInformation {
                 if (data.length > 0) {
                     let content = '';
                     this.$.each(data, (key, value) => {
-                        content += "<tr><td>" + ip + "</td><td>" +
-                            value.DataSource + "</td><td>" +
+                        content += "<tr><td>" + value.DataSource + "</td><td>" +
                             value.CountryCode + "</td><td>" +
                             value.CountryName + "</td><td>" +
                             value.Region + "</td><td>" +
@@ -120,18 +124,12 @@ class IPInformation {
     validateIPAddress = () => {
         let ip = this.$txtIP.val().trim();
         if (ip === "") {
-            this.showWarningMessage("Please input IP Address!");
             return false;
         }
         else {
-            this.hideError();
             return true;
         }
     };
-
-    showWarningMessage = (message: string) => this.$('.card-panel').html(message).addClass("red red-text").removeClass('hiden');
-
-    hideError = () => this.$('.card-panel').addClass('hiden');
 
     addWaitingRow = () => this.$contentTable.append('<tr class="waiting-row"><td class="center" colspan="6"><img src="Assets/images/Spin.gif"></td></tr>')
 

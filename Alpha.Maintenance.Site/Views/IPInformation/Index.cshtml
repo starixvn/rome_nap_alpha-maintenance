@@ -6,15 +6,10 @@
     <span class="active">IP information</span>
 }
 <section id="filter-bar">
-    <div class="row">
-        <div class="col s12">
-            <div class="card-panel lighten-4 text-darken-4 hiden"></div>
-        </div>
-    </div>
     <div class="filter-form row">
         <div class="input-field col l3">
             <input type="text" id="txtIP" class="validate" required="" aria-required="true" value="" />
-            <label class="active">@ViewResource.IPAddress <span class="red-text">*</span></label>
+            <label class="active">@ViewResource.IPAddress</label>
         </div>
         <div class="col button-block">
             <input class="waves-effect waves-light btn btn-primary" type="button" value="@ViewResource.Submit" id="btnSubmit" />
@@ -25,7 +20,6 @@
     <table class="grid persist-area" id="messageContainer">
         <thead class="persist-header">
             <tr>
-                <th>@ViewResource.IPAddress</th>
                 <th>@ViewResource.Data_Source</th>
                 <th>@ViewResource.CountryCode</th>
                 <th>@ViewResource.CountryName</th>
