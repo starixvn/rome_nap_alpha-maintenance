@@ -14,25 +14,24 @@
         {
             <li mid="@menuItem.Id" class="bold">
                 <a class="collapsible-header waves-effect active">@menuItem.Name<i class="right icon-chevron-up"></i></a>
-                 <div class="collapsible-body">
+                <div class="collapsible-body">
                     <ul>
                         @foreach (var subMenuItem in lvl1MenuItemList)
                         {
                             var isActive = HttpContext.Current.Request.Url.AbsoluteUri.ToLower().Contains(subMenuItem.Url.ToLower());
 
                             <li mid="@subMenuItem.Id" class="@(isActive ? "active" : string.Empty)">
-                                <i class="icon-@(subMenuItem.Name.ToLower().Replace(" ", "_"))"></i>
                                 <a href="@Url.Content(subMenuItem.ValidUrl)">@subMenuItem.Name</a>
                             </li>
                         }
                     </ul>
                 </div>
             </li>
-            
+
         }
         else
         {
-            
+
 
             <li mid="@menuItem.Id"><a class="collapsible-header waves-effect" href="@Url.Content(menuItem.ValidUrl)">@menuItem.Name</a></li>
         }
