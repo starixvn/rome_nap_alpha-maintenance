@@ -3,6 +3,7 @@
 .side-nav {
     width: 252px;
     box-shadow: none;
+    transition: transform .3s ease;
 
     .brand-logo {
         padding-left: 2rem !important;

@@ -21,6 +21,8 @@ header {
 
 .nav-wrapper {
     padding-left: 252px;
+    will-change: padding-left;
+    transition: padding-left .3s ease;
 
     .breadcrumb {
         position: relative;
