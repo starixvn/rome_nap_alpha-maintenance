@@ -38,11 +38,9 @@
                 transform: rotate(180deg);
                 transition: transform .2s ease;
             }
-
             /*&:hover {
                 background: none;
             }*/
-
             &.active {
                 .icon-chevron-up {
                     transform: rotate(0);
@@ -54,7 +52,6 @@
             padding: 0 0 0 20px;
 
             li {
-                border-bottom: 1px solid #dfe8f1;
                 padding-left: 10px;
                 line-height: 42px;
 
