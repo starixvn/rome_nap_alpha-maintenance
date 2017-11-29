@@ -20,14 +20,14 @@
         {}
       ],
       "properties": {
-        "order": 30,
-        "id": 11,
+        "order": 231,
+        "id": 12,
         "name": "link-variant",
         "prevSize": 32,
         "code": 59658
       },
       "setIdx": 0,
-      "setId": 3,
+      "setId": 5,
       "iconIdx": 0
     },
     {
@@ -49,15 +49,73 @@
         {}
       ],
       "properties": {
-        "order": 29,
-        "id": 10,
+        "order": 230,
+        "id": 13,
         "name": "chevron-up",
         "prevSize": 32,
         "code": 59659
       },
       "setIdx": 0,
-      "setId": 3,
+      "setId": 5,
       "iconIdx": 1
+    },
+    {
+      "icon": {
+        "paths": [
+          "M213.333 853.333h597.333v-85.333h-597.333zM810.667 384h-170.667v-256h-256v256h-170.667l298.667 298.667 298.667-298.667z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "download"
+        ]
+      },
+      "attrs": [
+        {}
+      ],
+      "properties": {
+        "order": 227,
+        "id": 11,
+        "name": "download",
+        "prevSize": 32,
+        "code": 59660
+      },
+      "setIdx": 0,
+      "setId": 5,
+      "iconIdx": 2
+    },
+    {
+      "icon": {
+        "paths": [
+          "M256 810.667c0 47.128 38.205 85.333 85.333 85.333v0h341.333c47.128 0 85.333-38.205 85.333-85.333v0-512h-512v512zM360.96 506.88l60.16-60.16 90.88 90.453 90.453-90.453 60.16 60.16-90.453 90.453 90.453 90.453-60.16 60.16-90.453-90.453-90.453 90.453-60.16-60.16 90.453-90.453-90.88-90.453zM661.333 170.667l-42.667-42.667h-213.333l-42.667 42.667h-149.333v85.333h597.333v-85.333h-149.333z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "delete-forever"
+        ]
+      },
+      "attrs": [
+        {}
+      ],
+      "properties": {
+        "order": 226,
+        "id": 10,
+        "name": "bin",
+        "prevSize": 32,
+        "code": 59661
+      },
+      "setIdx": 0,
+      "setId": 5,
+      "iconIdx": 3
     },
     {
       "icon": {
@@ -80,13 +138,13 @@
       "properties": {
         "order": 216,
         "id": 0,
-        "name": "add_message",
+        "name": "add_announcement",
         "prevSize": 32,
         "code": 59648
       },
       "setIdx": 0,
-      "setId": 3,
-      "iconIdx": 2
+      "setId": 5,
+      "iconIdx": 4
     },
     {
       "icon": {
@@ -112,8 +170,8 @@
         "name": "calendar-text"
       },
       "setIdx": 0,
-      "setId": 3,
-      "iconIdx": 3
+      "setId": 5,
+      "iconIdx": 5
     },
     {
       "icon": {
@@ -139,8 +197,8 @@
         "name": "checkbox"
       },
       "setIdx": 0,
-      "setId": 3,
-      "iconIdx": 4
+      "setId": 5,
+      "iconIdx": 6
     },
     {
       "icon": {
@@ -166,8 +224,8 @@
         "name": "login"
       },
       "setIdx": 0,
-      "setId": 3,
-      "iconIdx": 5
+      "setId": 5,
+      "iconIdx": 7
     },
     {
       "icon": {
@@ -193,8 +251,8 @@
         "name": "magnify"
       },
       "setIdx": 0,
-      "setId": 3,
-      "iconIdx": 6
+      "setId": 5,
+      "iconIdx": 8
     },
     {
       "icon": {
@@ -223,13 +281,13 @@
       "properties": {
         "order": 220,
         "id": 5,
-        "name": "manage_messages",
+        "name": "manage_announcements",
         "prevSize": 32,
         "code": 59657
       },
       "setIdx": 0,
-      "setId": 3,
-      "iconIdx": 7
+      "setId": 5,
+      "iconIdx": 9
     },
     {
       "icon": {
@@ -255,8 +313,8 @@
         "name": "manage_servers"
       },
       "setIdx": 0,
-      "setId": 3,
-      "iconIdx": 8
+      "setId": 5,
+      "iconIdx": 10
     },
     {
       "icon": {
@@ -282,8 +340,8 @@
         "name": "menu"
       },
       "setIdx": 0,
-      "setId": 3,
-      "iconIdx": 9
+      "setId": 5,
+      "iconIdx": 11
     },
     {
       "icon": {
@@ -309,8 +367,8 @@
         "name": "settings"
       },
       "setIdx": 0,
-      "setId": 3,
-      "iconIdx": 10
+      "setId": 5,
+      "iconIdx": 12
     },
     {
       "icon": {
@@ -336,8 +394,8 @@
         "name": "view_logs"
       },
       "setIdx": 0,
-      "setId": 3,
-      "iconIdx": 11
+      "setId": 5,
+      "iconIdx": 13
     }
   ],
   "height": 1024,
