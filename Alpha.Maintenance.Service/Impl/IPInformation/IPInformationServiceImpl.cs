@@ -12,9 +12,9 @@
     {
         private static readonly IList<APIInfo> GeolocationAPIs = new List<APIInfo>
         {
-            new APIInfo("freegeoip.net", "http://freegeoip.net/json/", "http://freegeoip.net/?q=", "country_code", "country_name", "region_name", "city"),
-            new APIInfo("ip-api.com", "http://ip-api.com/json/", "http://ip-api.com/#", "countryCode", "country", "regionName", "city"),
-            new APIInfo("eXTReMe-IP-Lookup.com", "https://extreme-ip-lookup.com/json/", "https://extreme-ip-lookup.com/", "countryCode", "country", "region", "city")
+            new APIInfo("freegeoip.net"),
+            new APIInfo("ip-api.com"),
+            new APIInfo("eXTReMe-IP-Lookup.com")
         };
         private readonly IPInformationRepository ipInformactionRepository;
 
@@ -37,6 +37,8 @@
 
             using (var webClient = new WebClient())
             {
+                webClient.Headers[HttpRequestHeader.ContentType] = "application/json";
+
                 foreach (var api in GeolocationAPIs)
                 {
                     result.Add(GetIPInfoFromAPI(webClient, api, ip));

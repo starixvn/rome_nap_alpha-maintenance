@@ -20,10 +20,10 @@
     <Setting Key="Age_Announcements_Update" SpName="Age_Announcements_Update" DbName="DBMSG.bodb_Message.bodbAdminNet" />
   </Function>
 
-    <Function Name="DBProfiler">
-        <Setting Key="vndba_sp_trace_WebApp" SpName="vndba_sp_trace_WebApp" DbName="DBMON.MonDB.bodbAdminNet" />
-    </Function>
+  <Function Name="DBProfiler">
+    <Setting Key="vndba_sp_trace_WebApp" SpName="vndba_sp_trace_WebApp" DbName="DBMON.MonDB.bodbAdminNet" />
+  </Function>
   <Function Name="IPInformation">
-    <Setting Key="GetIPInfo_Full" SpName="GetIPInfo_Full" DbName="IPEntities" />
+    <Setting Key="Acc_GetIPInfo_Full" SpName="Acc_GetIPInfo_Full" DbName="IPEntities" />
   </Function>
 </Functions>

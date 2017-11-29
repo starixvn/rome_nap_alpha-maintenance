@@ -58,5 +58,7 @@
                 }
             }
         }
+
+        public static string GetConfigValue(string configName) => ConfigurationManager.AppSettings[configName];
     }
 }
