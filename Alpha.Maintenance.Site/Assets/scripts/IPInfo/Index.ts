@@ -90,10 +90,7 @@ class IPInformation {
             return;
         }
 
-        this.addWaitingRow();
-        let content = '';
-
-        var deferreds = [];
+        this.renderWaitingRows(apis);
 
         this.$.each(apis, (key, value) => {
             let apiInfo = value;
@@ -109,38 +106,41 @@ class IPInformation {
                     }
 
                     let webLink = apiInfo.WebLink + ip;
-                    content += '<tr>\
+                    let content = '<tr>\
                                     <td>' + apiInfo.Name + '<a href="' + webLink + '" target="_blank" class="icon-link icon-link-variant"></a></td>\
                                     <td>' + this.formatValue(result[apiInfo.CountryCodeKey]) + '</td>\
                                     <td>' + this.formatValue(result[apiInfo.CountryNameKey]) + '</td>\
                                     <td>' + this.formatValue(result[apiInfo.RegionKey]) + '</td>\
                                     <td>' + this.formatValue(result[apiInfo.CityKey]) + '</td>\
                                 </tr>';
+
+                    this.$('[class="' + apiInfo.Name + '"]').replaceWith(content);
                 }
             });
 
-            deferreds.push(ajax);
         });
+    }
 
-        this.$.when.apply(this.$, deferreds).then(() => {
-            this.removeWaitingRow();
-            this.$contentTable.append(content);
+    renderWaitingRows = (apis: any) => {
+        let content = '';
+        this.$.each(apis, (key, value) => {
+            let apiInfo = value;
+            if (apiInfo) {
+                content += '<tr class="' + apiInfo.Name + '">\
+                                <td>'+ apiInfo.Name + '<img src="Assets/images/Spin.gif"></td>\
+                                <td></td>\
+                                <td></td>\
+                                <td></td>\
+                                <td></td>\
+                            </tr>';
+            }
         });
+        this.$contentTable.append(content);
     }
 
     validateIPAddress = () => this.$txtIP.val().trim() !== "";
 
-    formatValue = (value: string) => value.trim() ? value.toUpperCase() : "-";
-
-    addWaitingRow = () => {
-        let content = '<tr class="waiting-row">\
-                            <td class="center red-text" colspan="6">Getting info from other data source ...</td>\
-                       </tr>';
-
-        this.$contentTable.append(content);
-    }
-
-    removeWaitingRow = () => this.$('tr.waiting-row').remove();
+    formatValue = (value: string) => value.trim() ? value : "-";
 }
 
 const ipInformation = new IPInformation($, window.NAP, window.JSON);
