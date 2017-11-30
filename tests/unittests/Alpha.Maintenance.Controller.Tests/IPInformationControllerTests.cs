@@ -29,23 +29,13 @@
         }
 
         [Test]
-        public void GetIPInfoFromDB_Always_CallsGetIPInfoFromDB()
+        public void GetIPInfoFromDB_Always_CallsGetIPInfo()
         {
             // Act
-            ipInformationController.GetIPInfoFromDB("127.0.0.1");
+            ipInformationController.GetIPInfo("127.0.0.1");
 
             // Assert
-            ipInformationService.Received().GetIPInfoFromDB(Arg.Is("127.0.0.1"));
-        }
-
-        [Test]
-        public void GetIPInfoFromAPIs_Always_CallsGetIPInfoFromAPIs()
-        {
-            // Act
-            ipInformationController.GetIPInfoFromAPIs("127.0.0.1");
-
-            // Assert
-            ipInformationService.Received().GetIPInfoFromAPIs(Arg.Is("127.0.0.1"));
+            ipInformationService.Received().GetIPInfo(Arg.Is("127.0.0.1"));
         }
     }
 }

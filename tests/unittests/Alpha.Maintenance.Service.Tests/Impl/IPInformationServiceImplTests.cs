@@ -27,7 +27,7 @@
             var criteria = new GetIPInformationCriteria(ip);
 
             // Act
-            ipInformationService.GetIPInfoFromDB(ip);
+            ipInformationService.GetIPInfo(ip);
 
             // Assert
             ipInformationRepository.Received().GetIPInfo(

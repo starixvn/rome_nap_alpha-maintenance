@@ -4,14 +4,12 @@
     {
         public IPInfo(
             string dataSource,
-            string webLink,
             string countryCode,
             string countryName,
             string region,
             string city)
         {
             DataSource = dataSource;
-            WebLink = webLink;
             CountryCode = countryCode;
             CountryName = countryName;
             Region = region;
@@ -19,8 +17,6 @@
         }
 
         public string DataSource { get; }
-
-        public string WebLink { get; }
 
         public string CountryCode { get; }
 

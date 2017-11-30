@@ -16,7 +16,7 @@
             var settingKey = criteria.GetSettingKey();
 
             // Assert
-            Assert.AreEqual("GetIPInfo_Full", settingKey);
+            Assert.AreEqual("Acc_GetIPInfo_Full", settingKey);
         }
 
         [TestCase(null)]

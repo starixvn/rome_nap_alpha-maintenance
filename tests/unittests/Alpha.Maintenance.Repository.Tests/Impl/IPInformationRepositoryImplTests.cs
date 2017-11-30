@@ -48,7 +48,7 @@
             IDataReader dataReader = IPInformationDatabase.IPInformation.CreateDataReader();
             objectDbFixture.ObjectDb.ExecuteReader(Arg.Any<GetIPInformationCriteria>()).Returns(dataReader);
 
-            var expectedResult = new IPInfo("IPDB", null, "VN", "VIET NAM", "HO CHI MINH", "HO CHI MINH CITY");
+            var expectedResult = new IPInfo("IPDB", "VN", "VIET NAM", "HO CHI MINH", "HO CHI MINH CITY");
 
             // Act
             var actualResult = ipInformationRepository.GetIPInfo(criteria);

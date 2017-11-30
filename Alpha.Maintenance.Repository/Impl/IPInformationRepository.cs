@@ -1,9 +1,9 @@
-﻿using System;
-using Alpha.Maintenance.Core.Model;
-using Alpha.Maintenance.Repository.Criteria.IPInformation;
-
-namespace Alpha.Maintenance.Repository.Impl
+﻿namespace Alpha.Maintenance.Repository.Impl
 {
+    using Core.Model;
+    using Criteria.IPInformation;
+    using Fanex.Common;
+
     public interface IPInformationRepository
     {
         IPInfo GetIPInfo(GetIPInformationCriteria criteria);
@@ -23,12 +23,12 @@ namespace Alpha.Maintenance.Repository.Impl
                         {
                             return new IPInfo(
                                 dataSource: "IPDB",
-                                webLink: null,
-                                countryCode: !Convert.IsDBNull(reader["countrySHORT"]) ? Convert.ToString(reader["countrySHORT"]) : string.Empty,
-                                countryName: !Convert.IsDBNull(reader["countryLONG"]) ? Convert.ToString(reader["countryLONG"]) : string.Empty,
-                                region: !Convert.IsDBNull(reader["ipRegion"]) ? Convert.ToString(reader["ipRegion"]) : string.Empty,
-                                city: !Convert.IsDBNull(reader["ipCity"]) ? Convert.ToString(reader["ipCity"]) : string.Empty);
+                                countryCode: Converter.ToString2(reader["countrySHORT"]),
+                                countryName: Converter.ToString2(reader["countryLONG"]),
+                                region: Converter.ToString2(reader["ipRegion"]),
+                                city: Converter.ToString2(reader["ipCity"]));
                         }
+
                         reader.NextResult();
                     }
                 }
