@@ -188,6 +188,7 @@
     <Compile Include="AnnouncementController.cs" />
     <Compile Include="BaseController.cs" />
     <Compile Include="HomeController.cs" />
+    <Compile Include="IPInformationController.cs" />
     <Compile Include="LogController.cs" />
     <Compile Include="MachineController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

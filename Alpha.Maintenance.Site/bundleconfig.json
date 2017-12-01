@@ -1,4 +1,5 @@
-[{
+﻿[
+  {
     "outputFileName": "Assets/bundles/manage-announcements.js",
     "inputFiles": [
       "Assets/scripts/lib/Momentjs/moment.min.js",
@@ -9,9 +10,15 @@
   {
     "outputFileName": "Assets/bundles/compose-messages.js",
     "inputFiles": [
-      "Assets/scripts/lib/Momentjs/moment.min.js", 
+      "Assets/scripts/lib/Momentjs/moment.min.js",
       "Assets/scripts/lib/Select2/select2.js",
       "Assets/scripts/Announcement/compose-messages.js"
+    ]
+  },
+  {
+    "outputFileName": "Assets/bundles/IPInfo/index.js",
+    "inputFiles": [
+      "Assets/scripts/IPInfo/index.js"
     ]
   }
 ]

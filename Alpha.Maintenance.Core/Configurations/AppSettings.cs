@@ -1,7 +1,9 @@
 ﻿namespace Alpha.Maintenance.Core.Configurations
 {
+    using System.Collections.Generic;
     using System.Configuration;
     using System.IO;
+    using System.Linq;
     using System.Runtime.Serialization.Json;
     using System.Web;
 
@@ -37,6 +39,13 @@
                 return ConfigurationManager.AppSettings["DBProfiler:SiteConfigFilePath"] ?? "~/App_Data/Sites.xml";
             }
         }
+
+        public static string GetConfigValue(string configName) => ConfigurationManager.AppSettings[configName];
+
+        public static IEnumerable<string> APINames
+            => ConfigurationManager.AppSettings.AllKeys
+            .Where(key => key.EndsWith(":ApiUrl"))
+            .Select(key => key.Substring(0, key.IndexOf(':')));
 
         private static void LoadAnnouncementConfig()
         {

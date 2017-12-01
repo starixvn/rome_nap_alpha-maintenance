@@ -102,6 +102,8 @@
     <Compile Include="Helpers\PagerList.cs" />
     <Compile Include="Helpers\SpecificationConverter.cs" />
     <Compile Include="Helpers\SystemTime.cs" />
+    <Compile Include="Model\APIInfo.cs" />
+    <Compile Include="Model\IPInfo.cs" />
     <Compile Include="Model\DBProfilerModel.cs" />
     <Compile Include="Model\DbProfilerViewModel.cs" />
     <Compile Include="Model\Log.cs" />

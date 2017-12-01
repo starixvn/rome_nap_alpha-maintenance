@@ -11,7 +11,7 @@
 }
 
 @section Headline {
-    <span>Database Profiler</span>    
+    <span class="active">Database Profiler</span>
 }
 
 @using (Html.BeginForm())
@@ -34,7 +34,7 @@
                 <div class="input-field col l2 m3 s6">
                     <input class="filled-in checkbox" id="TraceStartEvents" name="TraceStartEvents" type="checkbox">
                     <label for="TraceStartEvents">Include Starting Events</label>
-                    <input name="TraceStartEvents" type="hidden" value="false">                
+                    <input name="TraceStartEvents" type="hidden" value="false">
                 </div>
             </div>
             <div class="row">
@@ -55,7 +55,7 @@
                 </div>
             </div>
         </div>
-    </section>  
+    </section>
     <div class="table">
         <table class="grid persist-area">
             <thead class="persist-header">
@@ -95,9 +95,7 @@
                     </th>
                 </tr>
             </thead>
-            <tbody id="content">
-                
-            </tbody>
+            <tbody id="content"></tbody>
         </table>
     </div>
 }

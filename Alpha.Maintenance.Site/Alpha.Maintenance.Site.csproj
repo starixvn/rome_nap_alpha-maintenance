@@ -366,6 +366,10 @@
     <Content Include="Assets\bundles\compose-messages.min.js">
       <DependentUpon>compose-messages.js</DependentUpon>
     </Content>
+    <Content Include="Assets\bundles\IPInfo\index.js" />
+    <Content Include="Assets\bundles\IPInfo\index.min.js">
+      <DependentUpon>index.js</DependentUpon>
+    </Content>
     <Content Include="Assets\bundles\manage-announcements.js" />
     <Content Include="Assets\bundles\manage-announcements.min.js">
       <DependentUpon>manage-announcements.js</DependentUpon>
@@ -619,10 +623,12 @@
     <Content Include="Views\Announcement\DisplaySettingPartialView.cshtml" />
     <Content Include="Views\Announcement\SpecificationSettingPartialView.cshtml" />
     <None Include="Properties\PublishProfiles\sfgs.pubxml" />
+    <Content Include="Views\IPInformation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\scripts\Announcement\compose-messages.ts" />
     <TypeScriptCompile Include="Assets\scripts\Announcement\manage-announcements.ts" />
+    <TypeScriptCompile Include="Assets\scripts\IPInfo\index.ts" />
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\jasmine-jquery\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\jasmine\index.d.ts" />

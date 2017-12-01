@@ -1,7 +1,9 @@
 ﻿@import "../abstracts/variables";
+@import "../components/animation";
 
-.btn-primary { 
+.btn-primary {
     background: $yellow;
+
     &:hover {
         background: #fcdf59;
     }
@@ -18,7 +20,7 @@
 }
 
 .btn-create {
-    background: #f4f4f4;    
+    background: #f4f4f4;
     margin-left: 10px;
     border: 1px solid #dfdfdf;
 
@@ -45,7 +47,7 @@
     border-radius: 1px;
     box-shadow: none;
     height: 32px;
-    line-height: 32px;    
+    line-height: 32px;
 
     &.waves-input-wrapper {
         padding: 0;
@@ -61,6 +63,7 @@
 
 .button-collapse {
     position: fixed;
+
     .material-icons {
         color: $white;
         line-height: 56px;
@@ -81,13 +84,14 @@
     color: #fff;
     line-height: 56px;
     padding-left: 15px;
+
     @media only screen and (min-width: 601px) {
         line-height: 64px;
     }
 }
 
-.icon-view_logs, .icon-manage_servers, 
-.icon-manage_announcements, .icon-add_announcement, 
+.icon-view_logs, .icon-manage_servers,
+.icon-manage_announcements, .icon-add_announcement,
 .icon-download {
     font-size: 18px;
     vertical-align: middle;
@@ -100,6 +104,11 @@
     color: #6b7a99;
 }
 
+.icon-loading {
+    color: #024ee5;
+    animation: rotate 2s ease-in-out infinite alternate;
+}
+
 .btn-check {
     &:after {
         font-family: 'mSite';
@@ -108,3 +117,90 @@
     }
 }
 
+.icon-link {
+    display: inline-block;
+    font-size: 14px;
+    vertical-align: middle;
+    color: #2196f3;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    margin-left: 5px;
+    transition: background .2s ease-in;
+
+    &:hover {
+        background: rgba(0,0,0,.1);
+    }
+}
+
+.toggle-btn {
+    display: none;
+    padding-right: 24px;
+    transition: linear 0.2s;
+
+    .lines {
+        position: relative;
+        top: -1px;
+        vertical-align: middle;
+        background: #fff;
+        width: 18px;
+        height: 2px;
+        display: inline-block;
+
+        &::after, &::before {
+            content: "";
+            background: #fff;
+            width: 18px;
+            height: 2px;
+            display: inline-block;
+            transition: all .15s ease-out;
+        }
+
+        &::after {
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+
+        &::before {
+            position: absolute;
+            left: 0;
+            top: 5px;
+        }
+    }
+
+    &:hover {
+        .lines:before {
+            top: 7px;
+        }
+
+        .lines:after {
+            top: -7px;
+        }
+    }
+
+    @media only screen and (min-width: 993px) {
+        display: inline-block;
+    }
+}
+
+// ------------------- Loading icon ----------------- //
+
+$base-size: 14px;
+$blue: #476bb7;
+$off-blue: rgba($blue, 0.2);
+$spin-duration: 1s;
+
+.loading {
+    display: inline-block;
+    border-radius: 50%;
+    width: $base-size;
+    height: $base-size;
+    margin-left: 10px;
+    border: 2px solid $off-blue;
+    border-top-color: $blue;
+    vertical-align: middle;
+    animation: spin $spin-duration infinite linear;
+}
