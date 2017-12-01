@@ -127,7 +127,7 @@ class IPInformation {
             let apiInfo = value;
             if (apiInfo) {
                 content += '<tr class="' + apiInfo.Name + '">\
-                                <td>'+ apiInfo.Name + '<img src="Assets/images/Spin.gif"></td>\
+                                <td>'+ apiInfo.Name + '<div class="loading"></div>\
                                 <td></td>\
                                 <td></td>\
                                 <td></td>\

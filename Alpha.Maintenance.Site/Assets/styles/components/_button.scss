@@ -1,4 +1,5 @@
 ﻿@import "../abstracts/variables";
+@import "../components/animation";
 
 .btn-primary {
     background: $yellow;
@@ -103,6 +104,11 @@
     color: #6b7a99;
 }
 
+.icon-loading {
+    color: #024ee5;
+    animation: rotate 2s ease-in-out infinite alternate;
+}
+
 .btn-check {
     &:after {
         font-family: 'mSite';
@@ -179,3 +185,23 @@
         display: inline-block;
     }
 }
+
+// ------------------- Loading icon ----------------- //
+
+$base-size: 14px;
+$blue: #476bb7;
+$off-blue: rgba($blue, 0.2);
+$spin-duration: 1s;
+
+.loading {
+    display: inline-block;
+    border-radius: 50%;
+    width: $base-size;
+    height: $base-size;
+    margin-left: 5px;
+    border: 2px solid $off-blue;
+    border-top-color: $blue;
+    vertical-align: middle;
+    animation: spin $spin-duration infinite linear;  
+}
+
