@@ -137,8 +137,8 @@
 
 .toggle-btn {
     display: none;
-    padding-right: 24px;    
-    transition: linear 0.2s;    
+    padding-right: 24px;
+    transition: linear 0.2s;
 
     .lines {
         position: relative;
@@ -147,16 +147,16 @@
         background: #fff;
         width: 18px;
         height: 2px;
-        display: inline-block;        
+        display: inline-block;
 
         &::after, &::before {
             content: "";
             background: #fff;
             width: 18px;
             height: 2px;
-            display: inline-block;       
+            display: inline-block;
             transition: all .15s ease-out;
-        }        
+        }
 
         &::after {
             position: absolute;
@@ -169,7 +169,7 @@
             left: 0;
             top: 5px;
         }
-    }    
+    }
 
     &:hover {
         .lines:before {
@@ -198,10 +198,9 @@ $spin-duration: 1s;
     border-radius: 50%;
     width: $base-size;
     height: $base-size;
-    margin-left: 5px;
+    margin-left: 10px;
     border: 2px solid $off-blue;
     border-top-color: $blue;
     vertical-align: middle;
-    animation: spin $spin-duration infinite linear;  
+    animation: spin $spin-duration infinite linear;
 }
-

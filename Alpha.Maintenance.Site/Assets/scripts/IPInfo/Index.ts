@@ -127,7 +127,7 @@ class IPInformation {
             let apiInfo = value;
             if (apiInfo) {
                 content += '<tr class="' + apiInfo.Name + '">\
-                                <td>'+ apiInfo.Name + '<div class="loading"></div>\
+                                <td>' + apiInfo.Name + '<div class="loading"></div></td>\
                                 <td></td>\
                                 <td></td>\
                                 <td></td>\
@@ -140,7 +140,7 @@ class IPInformation {
 
     validateIPAddress = () => this.$txtIP.val().trim() !== "";
 
-    formatValue = (value: string) => value.trim() ? value : "-";
+    formatValue = (value: string) => (value && value.trim()) ? value : "-";
 }
 
 const ipInformation = new IPInformation($, window.NAP, window.JSON);
