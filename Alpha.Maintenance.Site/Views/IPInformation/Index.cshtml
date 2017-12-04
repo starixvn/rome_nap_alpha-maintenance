@@ -1,10 +1,13 @@
-﻿@{
+﻿@using Alpha.Maintenance.Controller.ViewModels
+@model IPInformationViewModel
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "IP Information";
 }
 @section Headline{
     <span class="active">IP information</span>
 }
+@Html.Hidden("APIInfoJson", Model.APIInfoJson)
 <section id="filter-bar">
     <div class="filter-form row">
         <div class="input-field col l2">
