@@ -13,7 +13,11 @@
         if (lvl1MenuItemList.Any())
         {
             <li mid="@menuItem.Id" class="bold">
-                <a class="collapsible-header waves-effect active">@menuItem.Name<i class="right icon-chevron-up"></i></a>
+                <a class="collapsible-header waves-effect active">
+                    <span class="menu-icon icon-view_logs" aria-hidden="true"></span>
+                    <span class="menu-title">@menuItem.Name</span>
+                    <i class="right icon-chevron-up"></i>
+                </a>
                 <div class="collapsible-body">
                     <ul>
                         @foreach (var subMenuItem in lvl1MenuItemList)
@@ -33,7 +37,12 @@
         {
 
 
-            <li mid="@menuItem.Id"><a class="collapsible-header waves-effect" href="@Url.Content(menuItem.ValidUrl)">@menuItem.Name</a></li>
+            <li mid="@menuItem.Id">
+                <a class="collapsible-header waves-effect" href="@Url.Content(menuItem.ValidUrl)">                    
+                    <span class="menu-icon icon-view_logs" aria-hidden="true"></span>
+                    <span class="menu-title">@menuItem.Name</span>                    
+                </a>
+            </li>
         }
     }
 </ul>

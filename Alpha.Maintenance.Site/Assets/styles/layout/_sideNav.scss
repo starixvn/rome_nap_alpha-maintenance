@@ -27,10 +27,19 @@
     &.fixed {
         .collapsible-header {
             background: $white;
-            padding: 0 2rem;
-            min-height: 4.8rem;
-            line-height: 4.8rem;
+            padding: 0 1.6rem;
+            min-height: 32px;
+            line-height: 32px;
             text-transform: uppercase;
+
+            &:hover {
+                 background: $blue;
+                 color: $white;
+
+                 .menu-icon {
+                     color: $white;
+                 }
+            }
 
             .icon-chevron-up {
                 margin: 0;
@@ -38,9 +47,18 @@
                 transform: rotate(180deg);
                 transition: transform .2s ease;
             }
-            /*&:hover {
-                background: none;
-            }*/
+            
+            .menu-icon {
+                vertical-align: middle;
+                margin-right: 5px;
+                transition: color .1s ease;
+            }
+
+            .menu-title {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
             &.active {
                 .icon-chevron-up {
                     transform: rotate(0);
@@ -48,21 +66,23 @@
             }
         }
 
-        .collapsible-body {
-            padding: 0 0 0 20px;
+        .collapsible-body {            
 
             li {
-                padding-left: 10px;
-                line-height: 42px;
+                //padding-left: 50px;
+                line-height: 32px;
+                transition: all .1s ease;
 
 
                 a {
                     display: inline-block;
-                    padding-left: 0;
+                    width: 100%;
+                    padding-left: 50px;
                     vertical-align: middle;
-                    height: 42px;
-                    line-height: 42px;
+                    height: 32px;
+                    line-height: 32px;
                     color: #6b7a99;
+                    transition: all .1s ease;
                 }
 
                 img {
@@ -70,10 +90,10 @@
                 }
 
                 &.active {
-                    background: $white;
+                    background: $blue;
 
                     a {
-                        color: $blue-dark;
+                        color: $white;
                         font-weight: 500;
                     }
                 }
@@ -83,8 +103,10 @@
                 }
 
                 &:hover {
+                    background: $blue;
+
                     a, i {
-                        color: $blue-dark;
+                        color: $white;
                     }
                 }
             }

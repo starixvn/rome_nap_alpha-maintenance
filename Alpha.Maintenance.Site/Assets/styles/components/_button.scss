@@ -1,11 +1,32 @@
 ﻿@import "../abstracts/variables";
 @import "../components/animation";
 
+.btn {
+    color: $white;
+    border-radius: 1px;
+    box-shadow: none;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 3px;
+
+    &.waves-input-wrapper {
+        padding: 0;
+        font-family: Roboto !important;
+
+        input {
+            padding: 0 2rem;
+            outline: none;
+            height: 100%;
+        }
+    }
+}
+
 .btn-primary {
-    background: $yellow;
+    background: $blue-dark;
+    color: #fff;
 
     &:hover {
-        background: #fcdf59;
+        background: $blue;
     }
 }
 
@@ -20,13 +41,14 @@
 }
 
 .btn-create {
-    background: #f4f4f4;
+    background-color: transparent;
     margin-left: 10px;
-    border: 1px solid #dfdfdf;
+    color: $blue-dark;
+    border: 1px solid $blue-dark;
 
     &:hover {
         background: #ebebeb;
-        border: 1px solid #ebebeb;
+        /*border: 1px solid #ebebeb;*/
     }
 }
 
@@ -42,24 +64,7 @@
     margin-top: 1rem;
 }
 
-.btn {
-    color: $black;
-    border-radius: 1px;
-    box-shadow: none;
-    height: 32px;
-    line-height: 32px;
 
-    &.waves-input-wrapper {
-        padding: 0;
-        font-family: Roboto !important;
-
-        input {
-            padding: 0 2rem;
-            outline: none;
-            height: 100%;
-        }
-    }
-}
 
 .button-collapse {
     position: fixed;
@@ -204,3 +209,4 @@ $spin-duration: 1s;
     vertical-align: middle;
     animation: spin $spin-duration infinite linear;
 }
+
