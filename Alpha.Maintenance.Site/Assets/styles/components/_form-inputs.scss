@@ -120,8 +120,8 @@ $sw-active-color: #5ba629;
 
     input[type=text], input[type=date] {
         box-sizing: border-box;
-        height: 3.5rem;
-        line-height: 3.5rem;
+        height: 3rem;
+        line-height: 3rem;
         border-color: #ccc;
         font-size: 1.3rem;
         color: $black;
@@ -206,8 +206,8 @@ $sw-active-color: #5ba629;
 
 .select-wrapper {
     input.select-dropdown {
-        height: 3.5rem;
-        line-height: 3.5rem;
+        height: 3rem;
+        line-height: 3rem;
         border-color: #ccc;
         font-size: 1.3rem;
         color: $black;
@@ -225,12 +225,105 @@ $sw-active-color: #5ba629;
     cursor: pointer;
 }
 
-.checkbox-group {
+.radio-group {
     .input-field {
         margin-top: 0;
     }
 
-    .checkbox {
+    .radio {
         display: inline-block;
+        margin-right: 15px;
+
+        label {
+            left: 0;
+            font-size: 1.3rem;
+            padding-left: 28px;
+        }
     }
 }
+
+[type="radio"] + label:before, [type="radio"] + label:after {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+[type="radio"].with-gap:checked {
+    + label {
+        &:before, &:after {
+            border-color: $blue;
+        }
+
+        &:after {
+            background-color: $blue;
+        }
+    }
+}
+
+// ----------------------- Checkbox ----------------------- //
+
+$checkbox-size: 16px;
+$color: $blue;   
+
+.checkbox {
+    input[type="checkbox"] {
+        display: block;
+        opacity: 0;
+        //height: $checkbox-size;
+        position: absolute;
+        //width: $checkbox-size;        
+
+        &:checked + label:after {
+            background-color: $color;
+            transform: scale(1);
+            height: $checkbox-size;
+            width: $checkbox-size;
+            border-radius: 3px;
+            margin-top: 0; 
+        }
+
+        &:checked + label:before {
+            border: 1px solid $blue;
+            transform: rotate(0);
+            transform-origin:center;
+            left: 0;
+            top: 0;
+            height: $checkbox-size;
+            width: $checkbox-size;
+        }
+    }    
+
+    label {
+        display: block;
+        padding-left: 25px;
+        position: relative;
+        font-size: 13px;
+        height: 20px;
+        line-height: 20px;
+        color: #535353;
+        cursor: pointer;
+
+        &:before, &:after {
+            border: 1px solid #737373;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: $checkbox-size;            
+            width: $checkbox-size;         
+            margin-top: 0;               
+        }
+
+        &:after {           
+            background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAABMSURBVAiZfc0xDkAAFIPhd2Kr1WRjcAExuIgzGUTIZ/AkImjSofnbNBAfHvzAHjOKNzhiQ42IDFXCDivaaxAJd0xYshT3QqBxqnxeHvhunpu23xnmAAAAAElFTkSuQmCC") center center no-repeat;
+            border: 0;
+            transform: scale(0);
+            transition: .2s;
+        } 
+        
+        &:before {
+            border-radius: 3px;
+            transition: none;
+        }  
+    }    
+}
+

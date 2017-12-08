@@ -19,31 +19,36 @@
             <label class="input-field" for="ChkActive"><span>@AnnouncementResources.Active</span></label>
         </div>
     </div>
-    <div class="content-group hiden" id="content-group">
-        <div class="txt-bold">@AnnouncementResources.Content</div>
-        <ul class="tabs">
-            @foreach (var content in Model.Announcement.Contents)
-            {
-                <li class="tab language-tab"><a href="#div-@content.LanguageKey">@content.LanguageKey</a></li>
-            }
-        </ul>
+    <div class="content-group hiden row" id="content-group">
+        <div class="col s12">
+            <div class="txt-bold">@AnnouncementResources.Content</div>
+            <ul class="tabs">
+                @foreach (var content in Model.Announcement.Contents)
+                {
+                    <li class="tab language-tab"><a href="#div-@content.LanguageKey">@content.LanguageKey</a></li>
+                }
+            </ul>
+        </div>       
 
         @foreach (var content in Model.Announcement.Contents)
-            {
-            <div id="div-@content.LanguageKey" class="language-content">
-                <textarea name="group-contents" id="@content.LanguageKey" class="jqte-test">@content.Text</textarea>
-                <div class="input-field">@AnnouncementResources.AnnouncementUrl<input type="text" id="txtannouncement-url" value="@content.Url" /></div>
+        {
+        <div id="div-@content.LanguageKey" class="language-content">
+            <textarea name="group-contents" id="@content.LanguageKey" class="jqte-test">@content.Text</textarea>
+            <div class="input-field col s12">                    
+                <input type="text" id="txtannouncement-url" value="@content.Url" />
+                <label for="txtannouncement-url">@AnnouncementResources.AnnouncementUrl</label>
             </div>
+        </div>
         }
     </div>
 
-    <div class="row checkbox-group">
+    <div class="row radio-group">
         <div class="input-field col s6">
-            <p class="checkbox">
+            <p class="radio">
                 <input class="with-gap" type="radio" name="group-popup" id="Announcement-Popup" value="@((int)AnnouncementType.Popup)" @(Model.Announcement.AnnouncementType.Equals(AnnouncementType.Popup) ? "checked" : string.Empty) />
                 <label for="Announcement-Popup">@AnnouncementResources.AnnouncementPopup</label>
             </p>
-            <p class="checkbox">
+            <p class="radio">
                 <input class="with-gap" type="radio" name="group-popup" id="Header-Popup" value="@((int)AnnouncementType.HeaderPopup)" @(Model.Announcement.AnnouncementType.Equals(AnnouncementType.HeaderPopup) ? "checked" : string.Empty) />
                 <label for="Header-Popup">@AnnouncementResources.HeaderPopup</label>
             </p>
@@ -70,37 +75,41 @@
     </div>
 
     <div class="row">
-        <div class="col s12"><label class="input-field">@AnnouncementResources.Environments</label></div>
+        <div class="col s12">
+            <label class="label-title">@AnnouncementResources.Environments</label>
+        </div>
         @foreach (var environment in AppSettings.AnnouncementConfig.Environments)
             {
-            <div class="col s2">
+            <div class="col s2 checkbox">
                 <input name="group-environments" type="checkbox" id="@environment"
                        @(Model.Announcement.Environments.Contains(environment) ? "checked" : string.Empty) />
-                <label class="input-field" for="@environment">@environment</label>
+                <label for="@environment">@environment</label>
             </div>
         }
     </div>
 
-    <div class="row">
-        <div class="col s12"><label class="input-field">@AnnouncementResources.Systems</label></div>
+    <div class="row systems">
+        <div class="col s12"><label class="label-title">@AnnouncementResources.Systems</label></div>
+
         @foreach (var system in AppSettings.AnnouncementConfig.Systems)
             {
-            <div class="col s2">
+            <div class="col s2 checkbox">
                 <input name="group-systems" type="checkbox" id="@system"
                        @(Model.Announcement.Systems.Contains(system) ? "checked" : string.Empty) />
-                <label class="input-field" for="@system">@system</label>
+                <label for="@system">@system</label>
             </div>
         }
 
     </div>
+
     <div class="row">
-        <div class="col s12">
+        <div class="col s12 button-group">
             <a class="btn btn-info  waves-effect waves-light btn btn-primary btnNext">@AnnouncementResources.Next</a>
-            <a class="btn btn-info  waves-effect waves-light btn btn-primary margin-left-30px btnSave">@AnnouncementResources.Save</a>
+            <a class="btn btn-info  waves-effect waves-light btn btn-primary btnSave">@AnnouncementResources.Save</a>
 
             @if (Model.ActionType.Equals(ActionType.Update))
             {
-                <a class="btn btn-info  waves-effect waves-light btn btn-primary margin-left-30px btnCopy">@AnnouncementResources.MakeACopy</a>
+                <a class="btn btn-info  waves-effect waves-light btn btn-outline btnCopy">@AnnouncementResources.MakeACopy</a>
             }
         </div>
     </div>

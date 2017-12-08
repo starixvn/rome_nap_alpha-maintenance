@@ -11,39 +11,39 @@
     <span>@AnnouncementResources.Announcement / </span>
     <span class="active">@AnnouncementResources.ComposeMessage</span>
 }
-
-<form class="compose-announcement" id="formValidate">
-    <div class="row">
-        <div class="col s10 l4">
-            <ul class="tabs">
-                <li class="tab"><a id="tab-information-settings" href="#display-information-settings">@AnnouncementResources.DisplayInformationSettings</a></li>
-                <li class="tab"><a id="tab-specs-setting" href="#specs-setting">@AnnouncementResources.SpecificationSetting</a></li>
-            </ul>
-        </div>        
-    </div>
-    <div class="divider"></div>    
-    <div class="card-panel lighten-4 text-darken-4 hiden"></div>
-
-    @Html.Partial("DisplaySettingPartialView", Model)
-
-    @Html.Partial("SpecificationSettingPartialView", Model)
-
-    <input type="hidden" id="actionType" value="@Model.ActionType">
-    <input type="hidden" id="announcementId" value="@Model.Announcement.Id">
-    <input type="hidden" id="announcementUrl" value="">
-    <input type="hidden" id="isCopy" value="false">
-
-    <div id="cofirmMessages" class="modal">
-        <div class="modal-content">
-            <h4 id="cofirmMessages-content"></h4>
+<div class="filter-form">
+    <form class="compose-announcement" id="formValidate">
+        <div class="row">
+            <div class="col s10 l4">
+                <ul class="tabs">
+                    <li class="tab"><a id="tab-information-settings" href="#display-information-settings">@AnnouncementResources.DisplayInformationSettings</a></li>
+                    <li class="tab"><a id="tab-specs-setting" href="#specs-setting">@AnnouncementResources.SpecificationSetting</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="modal-footer row">
-            <div class="col s10"><a id="disagree" class="waves-effect waves-light btn btn-info btn-create modal-action modal-close">@AnnouncementResources.NO</a></div>
-            <div class="col s2"><a id="agree" class="waves-effect waves-light btn btn-info btn-primary modal-action modal-close">@AnnouncementResources.YES</a></div>
-        </div>
-    </div>
-</form>
+        <div class="divider"></div>
+        <div class="card-panel lighten-4 text-darken-4 hiden"></div>
 
+        @Html.Partial("DisplaySettingPartialView", Model)
+
+        @Html.Partial("SpecificationSettingPartialView", Model)
+
+        <input type="hidden" id="actionType" value="@Model.ActionType">
+        <input type="hidden" id="announcementId" value="@Model.Announcement.Id">
+        <input type="hidden" id="announcementUrl" value="">
+        <input type="hidden" id="isCopy" value="false">
+
+        <div id="cofirmMessages" class="modal">
+            <div class="modal-content">
+                <h4 id="cofirmMessages-content"></h4>
+            </div>
+            <div class="modal-footer row">
+                <div class="col s10"><a id="disagree" class="waves-effect waves-light btn btn-info btn-create modal-action modal-close">@AnnouncementResources.NO</a></div>
+                <div class="col s2"><a id="agree" class="waves-effect waves-light btn btn-info btn-primary modal-action modal-close">@AnnouncementResources.YES</a></div>
+            </div>
+        </div>
+    </form>
+</div>
 @section Foot {
     @Scripts.Render("~/Assets/scripts/lib/jQuery-TE.1.4.0/jquery-te-1.4.0.min.js")
     @Scripts.Render("~/Assets/bundles/compose-messages.js")

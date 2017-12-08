@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'mSite';
-  src:  url('fonts/mSite.eot?tawe9y');
-  src:  url('fonts/mSite.eot?tawe9y#iefix') format('embedded-opentype'),
-    url('fonts/mSite.ttf?tawe9y') format('truetype'),
-    url('fonts/mSite.woff?tawe9y') format('woff'),
-    url('fonts/mSite.svg?tawe9y#mSite') format('svg');
+  src:  url('fonts/mSite.eot?7sfrl6');
+  src:  url('fonts/mSite.eot?7sfrl6#iefix') format('embedded-opentype'),
+    url('fonts/mSite.ttf?7sfrl6') format('truetype'),
+    url('fonts/mSite.woff?7sfrl6') format('woff'),
+    url('fonts/mSite.svg?7sfrl6#mSite') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-file-export:before {
+  content: "\e912";
+}
+.icon-file-import:before {
+  content: "\e913";
+}
+.icon-plus-box:before {
+  content: "\e914";
+}
+.icon-check:before {
+  content: "\e90e";
+}
 .icon-bell:before {
   content: "\e90f";
 }
