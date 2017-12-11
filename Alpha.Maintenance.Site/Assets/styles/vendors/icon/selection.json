@@ -138,7 +138,7 @@
       "properties": {
         "order": 4,
         "id": 0,
-        "name": "bell",
+        "name": "announcements",
         "prevSize": 32,
         "code": 59663
       },
@@ -167,7 +167,7 @@
       "properties": {
         "order": 3,
         "id": 1,
-        "name": "earth",
+        "name": "ip_information",
         "prevSize": 32,
         "code": 59664
       },
@@ -196,7 +196,7 @@
       "properties": {
         "order": 2,
         "id": 2,
-        "name": "webpack",
+        "name": "msite",
         "prevSize": 32,
         "code": 59665
       },
@@ -513,7 +513,7 @@
         "ligatures": "",
         "prevSize": 32,
         "code": 59651,
-        "name": "manage_servers"
+        "name": "db_profiler"
       },
       "setIdx": 0,
       "setId": 2,
@@ -594,7 +594,7 @@
         "ligatures": "",
         "prevSize": 32,
         "code": 59650,
-        "name": "view_logs"
+        "name": "app_logs"
       },
       "setIdx": 0,
       "setId": 2,

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'mSite';
-  src:  url('fonts/mSite.eot?7sfrl6');
-  src:  url('fonts/mSite.eot?7sfrl6#iefix') format('embedded-opentype'),
-    url('fonts/mSite.ttf?7sfrl6') format('truetype'),
-    url('fonts/mSite.woff?7sfrl6') format('woff'),
-    url('fonts/mSite.svg?7sfrl6#mSite') format('svg');
+  src:  url('fonts/mSite.eot?3kkqqj');
+  src:  url('fonts/mSite.eot?3kkqqj#iefix') format('embedded-opentype'),
+    url('fonts/mSite.ttf?3kkqqj') format('truetype'),
+    url('fonts/mSite.woff?3kkqqj') format('woff'),
+    url('fonts/mSite.svg?3kkqqj#mSite') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -36,13 +36,13 @@
 .icon-check:before {
   content: "\e90e";
 }
-.icon-bell:before {
+.icon-announcements:before {
   content: "\e90f";
 }
-.icon-earth:before {
+.icon-ip_information:before {
   content: "\e910";
 }
-.icon-webpack:before {
+.icon-msite:before {
   content: "\e911";
 }
 .icon-link-variant:before {
@@ -75,7 +75,7 @@
 .icon-manage_announcements:before {
   content: "\e909";
 }
-.icon-manage_servers:before {
+.icon-db_profiler:before {
   content: "\e903";
 }
 .icon-menu:before {
@@ -84,6 +84,6 @@
 .icon-settings:before {
   content: "\e905";
 }
-.icon-view_logs:before {
+.icon-app_logs:before {
   content: "\e902";
 }
