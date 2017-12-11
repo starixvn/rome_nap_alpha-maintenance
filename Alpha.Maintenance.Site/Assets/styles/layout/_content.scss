@@ -234,7 +234,7 @@
 .specs-setting {
     padding: 0 15px;
 
-    .title {        
+    .title {
         color: $white;
         background: $blue;
         margin-bottom: 0;
@@ -249,7 +249,7 @@
     }
 
     .add-rules {
-        margin: 0;               
+        margin: 0;
         border-bottom: 1px solid #cccccc;
         border-right: 1px solid #cccccc;
         border-left: 1px solid #cccccc;
@@ -261,8 +261,8 @@
         .select-dropdown {
             border-bottom: 0;
             color: $white;
-            text-align: center;    
-            margin: 0;        
+            text-align: center;
+            margin: 0;
         }
 
         .caret {
@@ -296,7 +296,7 @@
 
             &:first-child {
                 border-left: 1px solid #ccc;
-            }                        
+            }
         }
 
         .text {
@@ -313,7 +313,7 @@
         .values-block {
             display: flex;
         }
-        
+
         .operator {
             width: 100px;
             margin: 0;
@@ -322,10 +322,11 @@
             .checkbox input[type='checkbox'] + label {
                 margin: 0;
             }
-        }      
+        }
 
-        .values-input {  
+        .values-input {
             margin: 0;
+            width: -webkit-calc(100% - 100px);
             width: calc(100% - 100px);
         }
     }
@@ -364,8 +365,8 @@
         font-size: 17px;
         color: $blue;
 
-        &[data-checked="True"]{
+        &[data-checked="True"] {
             display: block;
         }
-    }    
+    }
 }
