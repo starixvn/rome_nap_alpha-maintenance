@@ -45,7 +45,7 @@ namespace Alpha.Maintenance.Site.Areas.DatabaseProfiler.Controllers
         {
             var hasError = false;
             var errorMsg = string.Empty;
-           
+
             var list = _logService
                  .With(model)
                  .GetLogs(ref hasError, ref errorMsg);
@@ -67,7 +67,7 @@ namespace Alpha.Maintenance.Site.Areas.DatabaseProfiler.Controllers
                 {
                     list.Add(new SelectListItem
                     {
-                        Text = x.Name,
+                        Text = x.Name + "(" + x.Ip + ")",
                         Value = x.Ip
                     });
                 });
