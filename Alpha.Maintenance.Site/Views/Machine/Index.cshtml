@@ -13,18 +13,20 @@
 
 @using (Html.BeginForm()){
     <section id="filter-bar">
-        <div class="row">
-            <div class="input-field col l2 m3 s6">
-                @Html.DropDownList("MachineType", (List<SelectListItem>)ViewBag.MachineTypes, new { @class = "js-select" })
-                @Html.Label(ViewResource.MachineType, new { @class = "active" })
-            </div>
-            <div class="col button-block">
-                <a class="waves-effect waves-light btn btn-primary"><input type="submit" value="@ViewResource.Submit" /></a>
-                @if (hasEditRight)
+        <div class="filter-form">
+            <div class="row">
+                <div class="input-field col l2 m3 s6">
+                    @Html.DropDownList("MachineType", (List<SelectListItem>)ViewBag.MachineTypes, new { @class = "js-select" })
+                    @Html.Label(ViewResource.MachineType, new { @class = "active" })
+                </div>
+                <div class="col button-block">
+                    <a class="waves-effect waves-light btn btn-primary"><input type="submit" value="@ViewResource.Submit" /></a>
+                    @if (hasEditRight)
                 {
-                    @Html.ActionLink("Create New", "InsertMachine", "Machine", new { @class = "waves-effect btn btn-create" })
-                }
-            </div>            
+                        @Html.ActionLink("Create New", "InsertMachine", "Machine", new { @class = "waves-effect btn btn-outline" })
+                    }
+                </div>
+            </div>
         </div>
     </section>
 }

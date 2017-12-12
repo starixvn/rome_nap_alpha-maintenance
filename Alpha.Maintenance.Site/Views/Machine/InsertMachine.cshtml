@@ -8,50 +8,52 @@
 
 @using (Html.BeginForm())
 {
-    @Html.ActionLink("←  " + ViewResource.Back_To_List, "Index", "Machine", null, new { @class = "waves-effect waves-light link-back" })
-    <div class="row summary">
-        <div class="lbl-field">
+    <div class="filter-form">
+        @Html.ActionLink("←  " + ViewResource.Back_To_List, "Index", "Machine", null, new { @class = "waves-effect waves-light link-back" })
+        <div class="row summary">
+            <div class="lbl-field">
+            </div>
+            <div class="edit-field">
+                @Html.ValidationSummary()
+                @Html.HiddenFor(m => m.MachineId)
+            </div>
         </div>
-        <div class="edit-field">
-            @Html.ValidationSummary()
-            @Html.HiddenFor(m => m.MachineId)
+        <div class="row">
+            <div class="input-field col s4">
+                @Html.LabelFor(m => m.MachineName, ViewResource.Machine_Name)
+                @Html.TextBoxFor(m => m.MachineName)
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s4">
-            @Html.LabelFor(m => m.MachineName, ViewResource.Machine_Name)
-            @Html.TextBoxFor(m => m.MachineName)
-        </div>        
-    </div>
-    <div class="row">
-        <div class="input-field col s4">
-            @Html.LabelFor(m => m.MachineIP, ViewResource.Machine_IP)
-            @Html.EditorFor(m => m.MachineIP)
-        </div>        
-    </div>
-    <div class="row">
-        <div class="input-field col s4 checkbox">
-            <input class="filled-in checkbox" id="IsProduction" name="IsProduction" type="checkbox"
-                   @(Html.Raw(Model.IsProduction ? " checked='checked' " : string.Empty))
-                   value="true">
-            <label for="IsProduction">@ViewResource.IsProduction</label>
-            <input name="IsProduction" type="hidden" value="false">
+        <div class="row">
+            <div class="input-field col s4">
+                @Html.LabelFor(m => m.MachineIP, ViewResource.Machine_IP)
+                @Html.EditorFor(m => m.MachineIP)
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s4">
-            @Html.LabelFor(m => m.TimeZone, ViewResource.TimeZone, new { @class = "active" })
-            @Html.EditorFor(m => m.TimeZone)
+        <div class="row">
+            <div class="input-field col s4 checkbox">
+                <input id="IsProduction" name="IsProduction" type="checkbox"
+                       @(Html.Raw(Model.IsProduction ? " checked='checked' " : string.Empty))
+                       value="true">
+                <label for="IsProduction">@ViewResource.IsProduction</label>
+                <input name="IsProduction" type="hidden" value="false">
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="input-field col">
-            @if (!success)
+        <div class="row">
+            <div class="input-field col s4">
+                @Html.LabelFor(m => m.TimeZone, ViewResource.TimeZone, new { @class = "active" })
+                @Html.EditorFor(m => m.TimeZone)
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col">
+                @if (!success)
                 {
-                <input class="waves-effect waves-light btn btn-primary" type="submit" value="@ViewResource.Save" />
-                <input class="waves-effect waves-light btn btn-cancel" type="reset" value="@ViewResource.Cancel" />
-            }
-        </div>        
+                    <input class="waves-effect waves-light btn btn-primary" type="submit" value="@ViewResource.Save" />
+                    <input class="waves-effect waves-light btn btn-cancel" type="reset" value="@ViewResource.Cancel" />
+                }
+            </div>
+        </div>
     </div>
 }
 @section Foot

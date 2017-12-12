@@ -5,26 +5,45 @@
 
     td, th {
         border-radius: 0;
-        padding: 8px 12px;
+        padding: 8px 6px;
     }
 
     thead {
         th {
             background: $blue;
             color: $white;
-            padding: 10px 12px;
+            padding: 10px 6px;
+            border-left: 1px solid #fff;
+            border-bottom: 1px solid #4c65b5;
+            font-weight: normal;
+
+            &:last-child {
+                border-right: 1px solid #4c65b5;
+            }
+
+            &:first-child {
+                border-left: 1px solid #4c65b5;
+            }
         }
     }
 
     tbody {
         tr {
-            border-bottom: 1px solid rgba(0,0,0,0.12);
+            border-bottom: 1px solid #d9d9d9;
             color: #262626;
             transition: all 0.2s;
 
             &:hover {
                 background: rgba(0, 0, 0, 0.1);
             }
+
+            td:last-child {
+                border-right: 1px solid #d9d9d9;
+            }
+        }
+
+        td {
+            border-left: 1px solid #d9d9d9;
         }
 
         td.no-data {

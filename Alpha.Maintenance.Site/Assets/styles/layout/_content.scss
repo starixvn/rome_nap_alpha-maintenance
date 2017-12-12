@@ -24,136 +24,15 @@
     padding: 1.5rem 0;
     background: $white;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+}
 
+.filter-form {
     .row {
         margin-bottom: 12px;
 
         .col {
             padding: 0 1.5rem;
         }
-    }
-
-    .input-field {
-        font-size: 1.3rem;
-
-        .lbl-field {
-            width: 3rem;
-        }
-
-        .width-large {
-            width: 100%;
-        }
-
-        label {
-            left: 1.5rem;
-            font-size: 1.2rem;
-            color: #808080;
-
-            &.active {
-                transform: none;
-                top: -14px;
-            }
-        }
-
-        input[type=text], input[type=date] {
-            height: 3.5rem;
-            line-height: 3.5rem;
-            border-color: #ccc;
-            font-size: 1.3rem;
-            color: $black;
-
-            &:focus:not([readonly]) {
-                border-bottom: 1px solid $blue;
-                box-shadow: 0 1px 0 0 $blue;
-
-                + label {
-                    color: $blue;
-                }
-            }
-        }
-
-        input[type="checkbox"].filled-in:checked + label {
-            &:before {
-                border-right: 2px solid $white;
-                border-bottom: 2px solid $white;
-            }
-
-            &:after {
-                border: 2px solid $blue;
-                background-color: $blue;
-            }
-        }
-
-
-        ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-            color: $black;
-        }
-
-        &.input {
-            label {
-                top: 14px;
-            }
-        }
-
-        .icon {
-            position: absolute;
-            right: 15px;
-            top: 8px;
-        }
-
-        .calendar {
-            position: relative;
-
-            .icon-calendar-text {
-                position: absolute;
-                right: -2px;
-                top: 8px;
-                font-size: 20px;
-                color: $blue-light;
-            }
-        }
-
-        &.checkbox {
-            margin-top: 0;
-            margin-bottom: 1rem;
-
-            label {
-                left: 0;
-                top: 0;
-            }
-        }
-    }
-
-    .dropdown-content {
-        margin-top: 5px;
-    }
-
-    .dropdown-content li > {
-        a, span {
-            font-size: 1.3rem;
-            color: $black;
-        }
-    }
-
-    .select-wrapper {
-        input.select-dropdown {
-            height: 3.5rem;
-            line-height: 3.5rem;
-            border-color: #ccc;
-            font-size: 1.3rem;
-            color: $black;
-        }
-
-        span.caret {
-            color: #6b7a99;
-            font-size: 8px;
-            top: 14px;
-        }
-    }
-
-    .link{
-        color:blue;
-        cursor: pointer;
     }
 }
 
@@ -263,5 +142,231 @@
 #msgbox1 {
     .msgbox-content {
         color: $white;
+    }
+}
+
+// ----------------- Compose announcement --------------//
+.compose-announcement {
+    > .row {
+        margin-bottom: 0;
+        /*> .col {
+            padding: 0;
+        }*/
+    }
+
+    .tabs {
+        height: 32px;
+
+        .tab {
+            height: 32px;
+            line-height: 32px;
+        }
+    }
+
+    .divider {
+        margin-top: 0;
+        margin-bottom: 20px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+.display-information-settings {
+    width: 100%;
+
+    @media only screen and (min-width: 993px) {
+        width: 60%;
+    }
+
+    .row {
+        margin-bottom: 0;
+    }
+
+    .label-title {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: #4c4c4c;
+    }
+
+    .radio-group {
+        margin-top: 3px;
+        margin-bottom: 15px;
+    }
+
+    .systems {
+        margin-bottom: 15px;
+        margin-top: 12px;
+    }
+}
+
+.content-group {
+    .txt-bold {
+        font-weight: bold;
+        color: #4c4c4c;
+    }
+
+    .tabs {
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .language-content {
+        input[type=text] {
+            margin-bottom: 5px;
+        }
+    }
+
+    .jqte {
+        margin-left: 15px;
+        border-color: #bbb;
+        box-shadow: none;
+        border-radius: 0;
+        margin-bottom: 15px;
+    }
+
+    .jqte_focused {
+        border-color: $blue;
+    }
+}
+
+
+.specs-setting {
+    padding: 0 15px;
+
+    .title {
+        color: $white;
+        background: $blue;
+        margin-bottom: 0;
+
+        .col {
+            padding: 10px 6px;
+
+            &:not(:last-child) {
+                border-right: 1px solid $white;
+            }
+        }
+    }
+
+    .add-rules {
+        margin: 0;
+        border-bottom: 1px solid #cccccc;
+        border-right: 1px solid #cccccc;
+        border-left: 1px solid #cccccc;
+
+        .col {
+            padding: 6px;
+        }
+
+        .select-dropdown {
+            border-bottom: 0;
+            color: $white;
+            text-align: center;
+            margin: 0;
+        }
+
+        .caret {
+            opacity: 0;
+        }
+
+        .select-wrapper {
+            width: 130px;
+            background: #5ba629;
+            border-radius: 2px;
+        }
+
+        .dropdown-content {
+            width: 200px !important;
+            top: 30px !important;
+        }
+    }
+
+    .data-rules {
+        margin: 0;
+
+        &:not(.hiden) {
+            display: flex;
+        }
+
+        .col {
+            position: relative;
+            padding: 6px;
+            border-bottom: 1px solid #cccccc;
+            border-right: 1px solid #cccccc;
+
+            &:first-child {
+                border-left: 1px solid #ccc;
+            }
+        }
+
+        .text {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #4d4d4d;
+        }
+
+        .select-dropdown, input[type="text"] {
+            margin: 0;
+        }
+
+        .values-block {
+            display: flex;
+        }
+
+        .operator {
+            width: 100px;
+            margin: 0;
+            margin-right: 16px;
+
+            .checkbox input[type='checkbox'] + label {
+                margin: 0;
+            }
+        }
+
+        .values-input {
+            margin: 0;
+            width: -webkit-calc(100% - 100px);
+            width: calc(100% - 100px);
+        }
+    }
+
+    .hidden-specification {
+        text-align: center;
+
+        .icon-bin {
+            color: $c-danger;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .button-group {
+        margin-top: 24px;
+    }
+}
+
+// ----------------------  Manage Announcements --------------- //
+.table {
+    .button-block {
+        margin-top: 0;
+        padding: 8px;
+        border-top: 1px solid #d9d9d9;
+        border-right: 1px solid #d9d9d9;
+        border-left: 1px solid #d9d9d9;
+    }
+
+    .checkbox {
+        text-align: center;
+    }
+
+    .icon-check {
+        display: none;
+        font-size: 17px;
+        color: $blue;
+
+        &[data-checked="True"] {
+            display: block;
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace Alpha.Maintenance.Controller
         /// <returns>Action result.</returns>
         public ActionResult Index()
         {
-            return Redirect("~/Log/");
+            return Redirect("~/Log");
         }
     }
 }

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'mSite';
-  src:  url('fonts/mSite.eot?inz9tp');
-  src:  url('fonts/mSite.eot?inz9tp#iefix') format('embedded-opentype'),
-    url('fonts/mSite.ttf?inz9tp') format('truetype'),
-    url('fonts/mSite.woff?inz9tp') format('woff'),
-    url('fonts/mSite.svg?inz9tp#mSite') format('svg');
+  src:  url('fonts/mSite.eot?3kkqqj');
+  src:  url('fonts/mSite.eot?3kkqqj#iefix') format('embedded-opentype'),
+    url('fonts/mSite.ttf?3kkqqj') format('truetype'),
+    url('fonts/mSite.woff?3kkqqj') format('woff'),
+    url('fonts/mSite.svg?3kkqqj#mSite') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,8 +24,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-loading:before {
+.icon-file-export:before {
+  content: "\e912";
+}
+.icon-file-import:before {
+  content: "\e913";
+}
+.icon-plus-box:before {
+  content: "\e914";
+}
+.icon-check:before {
   content: "\e90e";
+}
+.icon-announcements:before {
+  content: "\e90f";
+}
+.icon-ip_information:before {
+  content: "\e910";
+}
+.icon-msite:before {
+  content: "\e911";
 }
 .icon-link-variant:before {
   content: "\e90a";
@@ -57,7 +75,7 @@
 .icon-manage_announcements:before {
   content: "\e909";
 }
-.icon-manage_servers:before {
+.icon-db_profiler:before {
   content: "\e903";
 }
 .icon-menu:before {
@@ -66,6 +84,6 @@
 .icon-settings:before {
   content: "\e905";
 }
-.icon-view_logs:before {
+.icon-app_logs:before {
   content: "\e902";
 }

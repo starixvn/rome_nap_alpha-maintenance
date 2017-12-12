@@ -11,18 +11,17 @@
     <span>@AnnouncementResources.Announcement / </span>
     <span class="active">@AnnouncementResources.ComposeMessage</span>
 }
-<div class="row">
-    <form class="col s12" id="formValidate">
+<div class="filter-form">
+    <form class="compose-announcement" id="formValidate">
         <div class="row">
-            <div class="col s6">
+            <div class="col s10 l4">
                 <ul class="tabs">
                     <li class="tab"><a id="tab-information-settings" href="#display-information-settings">@AnnouncementResources.DisplayInformationSettings</a></li>
                     <li class="tab"><a id="tab-specs-setting" href="#specs-setting">@AnnouncementResources.SpecificationSetting</a></li>
                 </ul>
             </div>
         </div>
-
-        <div class="divider margin-bottom-10px"></div>
+        <div class="divider"></div>
         <div class="card-panel lighten-4 text-darken-4 hiden"></div>
 
         @Html.Partial("DisplaySettingPartialView", Model)

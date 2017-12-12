@@ -192,6 +192,10 @@ $(document).ready(function () {
             $('body').addClass('collapse');
         }
     });
+	$('ul.sidebar-menu a').filter(function () {
+        var url = window.location;
+        return this.href == url;
+    }).closest('.bold').addClass('menu-active');
 });
 
 // -- Utilities -- //

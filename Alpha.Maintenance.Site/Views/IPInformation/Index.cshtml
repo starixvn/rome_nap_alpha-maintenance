@@ -8,8 +8,8 @@
     <span class="active">IP information</span>
 }
 @Html.Hidden("APIInfoJson", Model.APIInfoJson)
-<section id="filter-bar">
-    <div class="filter-form row">
+<section class="filter-form" id="filter-bar">
+    <div class="row">
         <div class="input-field col l2">
             <input type="text" id="txtIP" class="validate" required="" aria-required="true" value="" />
             <label class="active">@ViewResource.IPAddress</label>

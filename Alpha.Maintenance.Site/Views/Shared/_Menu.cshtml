@@ -3,7 +3,7 @@
     var menuItemList = ViewBag.Menu != null ? ViewBag.Menu as List<MenuItem> : new List<MenuItem>();
     var lvl0MenuItemList = menuItemList.Where(m => m.Parent == null).OrderBy(m => m.DisplayOrder).ToList();
 }
-<ul class="collapsible collapsible-expandable" data-collapsible="expandable">
+<ul class="sidebar-menu collapsible collapsible-expandable" data-collapsible="expandable">
     @for (int i = 0; i < lvl0MenuItemList.Count; i++)
     {
         var menuItem = lvl0MenuItemList[i];
@@ -13,7 +13,11 @@
         if (lvl1MenuItemList.Any())
         {
             <li mid="@menuItem.Id" class="bold">
-                <a class="collapsible-header waves-effect active">@menuItem.Name<i class="right icon-chevron-up"></i></a>
+                <a class="collapsible-header waves-effect active">
+                    <span class="menu-icon icon-@(menuItem.Name.ToLower().Replace(" ", "_"))" aria-hidden="true"></span>
+                    <span class="menu-title">@menuItem.Name</span>
+                    <i class="right icon-chevron-up"></i>
+                </a>
                 <div class="collapsible-body">
                     <ul>
                         @foreach (var subMenuItem in lvl1MenuItemList)
@@ -31,9 +35,14 @@
         }
         else
         {
+            var isActive = HttpContext.Current.Request.Url.AbsoluteUri.ToLower().Contains(menuItem.Url.ToLower());
 
-
-            <li mid="@menuItem.Id"><a class="collapsible-header waves-effect" href="@Url.Content(menuItem.ValidUrl)">@menuItem.Name</a></li>
+            <li mid="@menuItem.Id" class="@(isActive ? " menu-active" : string.Empty)">
+                <a class="collapsible-header waves-effect" href="@Url.Content(menuItem.ValidUrl)">
+                    <span class="menu-icon icon-@(menuItem.Name.ToLower().Replace(" ", "_"))" aria-hidden="true"></span>
+                    <span class="menu-title">@menuItem.Name</span>
+                </a>
+            </li>
         }
     }
 </ul>

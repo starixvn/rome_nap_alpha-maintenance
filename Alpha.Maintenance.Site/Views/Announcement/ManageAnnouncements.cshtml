@@ -15,7 +15,7 @@
     <span class="active">@AnnouncementResources.ManageAnnouncements</span>
 }
 
-<form role="form" id="announcements-form" action="">
+<form class="filter-form" role="form" id="announcements-form" action="">
     <section id="filter-bar">
         <div class="filter-form row">
             <div class="input-field col s2">
@@ -58,13 +58,8 @@
                 </select>
                 <label>@AnnouncementResources.Systems</label>
             </div>
-            <div class="col button-block">
+            <div class="col s2 button-block">
                 <input class="waves-effect waves-light btn btn-primary" type="submit" value="@ViewResource.Submit" id="btn-submit" />
-                <input class="waves-effect waves-light btn btn-create" type="submit" value="Export" id="btn-exportAll" />
-                <a class="btn btn-create  waves-effect waves-light btn btn-primary btn-import">@AnnouncementResources.Import</a>
-                <a href="@Url.Action("ComposeMessage", "Announcement")">
-                    <input class="waves-effect waves-light btn btn-create" type="button" value="@AnnouncementResources.Add" id="add" />
-                </a>
             </div>
         </div>
     </section>
@@ -72,10 +67,24 @@
 <input id="manage-announcements-url" type="hidden" value="@Url.Action("ManageAnnouncements", "Announcement")">
 <input id="export-all-announcements-url" type="hidden" value="@Url.Action("ExportAllAnnouncements", "Announcement")">
 
-<div class="divider margin-bottom-10px"></div>
+
 <div class="card-panel lighten-4 text-darken-4 hiden"></div>
 
 <div class="table">
+    <div class="col button-block">
+        <span class="waves-effect waves-light btn btn-outline" id="btn-exportAll" >
+            <span class="icon-button icon-file-export"></span>
+            <input type="submit" value="Export" />
+        </span>       
+        <a class="btn btn-outline waves-effect waves-light btn-import">
+            <span class="icon-button icon-file-import"></span>
+            @AnnouncementResources.Import
+        </a>
+        <a class="waves-effect waves-light btn btn-outline"  href="@Url.Action("ComposeMessage", "Announcement")">
+            <span class="icon-button icon-plus-box"></span>
+            <input type="button" value="@AnnouncementResources.Add" id="add" />
+        </a>
+    </div>
     <table class="grid persist-area" id="messageContainer">
         <thead class="persist-header">
             <tr>
@@ -122,17 +131,18 @@
                     <tr>
                         <td>
                             <a href="@Url.Action("ComposeMessage", "Announcement", new { Id = announcement.Id })"
-                               class="tooltipped"
+                               class="tooltipped text-link"
                                data-tooltip="@AnnouncementResources.Edit">
                                 @announcement.Title
                             </a>
                         </td>
                         <td>
                             @announcement.Code
-                        </td>  
-                        <td>
-                            <input type="checkbox" id="@announcement.Id" checked="@announcement.IsActive" disabled />
-                            <label for="@announcement.Id"><!--c--></label>
+                        </td>
+                        <td class="checkbox">
+                            @*<input type="checkbox" id="@announcement.Id" checked="@announcement.IsActive" disabled />
+                                <label for="@announcement.Id"></label>*@
+                            <span id="@announcement.Id" class="icon-check" data-checked="@announcement.IsActive"></span>
                         </td>
                         <td>
                             @announcement.FromDate.ToString("MMM dd, yyyy")
@@ -166,7 +176,7 @@
             else
             {
                 <tr>
-                    <td colspan="10" class="no-data">@AnnouncementResources.NoInformation</td>
+                    <td colspan="11" class="no-data">@AnnouncementResources.NoInformation</td>
                 </tr>
             }
 

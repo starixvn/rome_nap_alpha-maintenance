@@ -577,6 +577,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Areas\DatabaseProfiler\Views\TracedLog\Logs.cshtml" />
+    <Content Include="Assets\styles\components\_form-inputs.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
