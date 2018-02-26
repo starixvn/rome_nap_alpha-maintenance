@@ -68,4 +68,8 @@
     <Ip>10.40.40.108</Ip>
     <Name>DBFRAUD02</Name>
   </Server>
+  <Server>
+    <Ip>10.40.40.224</Ip>
+    <Name>DBAFF</Name>
+  </Server>
 </Servers>

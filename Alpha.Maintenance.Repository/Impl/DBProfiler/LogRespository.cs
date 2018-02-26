@@ -13,7 +13,8 @@ namespace Alpha.Maintenance.Repository.Impl.DBProfiler
     {
         public List<DbProfilerViewModel> GetLog(ref DBProfilerModel model)
         {
-            var criteria = new GetLogCriteria {
+            var criteria = new GetLogCriteria
+            {
                 Site = model.Site,
                 Mode = model.Mode,
                 TextDataLike = model.TextDataLike,
@@ -32,7 +33,8 @@ namespace Alpha.Maintenance.Repository.Impl.DBProfiler
                 var dbSetting = db.DbSetting;
                 var sqlConnectionStringBuilder = new SqlConnectionStringBuilder(dbSetting.ConnectionString);
 
-                sqlConnectionStringBuilder.DataSource = model.Server ;
+                sqlConnectionStringBuilder.DataSource = model.Server;
+                sqlConnectionStringBuilder.ConnectTimeout = 125;
 
                 if (criteria.Site.Equals("FPS", StringComparison.CurrentCultureIgnoreCase))
                 {
@@ -46,7 +48,7 @@ namespace Alpha.Maintenance.Repository.Impl.DBProfiler
                     var result = objectDb.Query<DbProfilerViewModel>(param).ToList();
 
                     model.HasError = Convert.ToBoolean(param["haserror"]);
-                    model.ErrorMsg = param["errormsg"].ToString();                    
+                    model.ErrorMsg = param["errormsg"].ToString();
 
                     return result;
                 }
