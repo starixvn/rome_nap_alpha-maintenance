@@ -21,7 +21,7 @@ interface Window {
 
 class ComposedAnnouncement {
     $: JQueryStatic;
-   
+
     $divChooseSpecification: JQuery;
     $hiddenSpec: JQuery;
     $btnNext: JQuery;
@@ -36,8 +36,8 @@ class ComposedAnnouncement {
     $confirmMessage: JQuery;
 
     dllChooseSpecification: string;
-    dllConjunctionOperator: string; 
-    visibleSpecDivs: string;   
+    dllConjunctionOperator: string;
+    visibleSpecDivs: string;
     txtSpecificationValue: string;
     userLevelsSpecificationValue: string;
     warningTilteMessage: string;
@@ -190,8 +190,7 @@ class ComposedAnnouncement {
 
     validateTitle = () => {
         let title = this.$("#txttitle").val().trim();
-        if (title === "")
-        {
+        if (title === "") {
             this.showWarningMessage(this.warningTilteMessage);
             this.$specInformationTab.click();
             return false;
@@ -241,13 +240,13 @@ class ComposedAnnouncement {
 
     initSpecOptionsDll = () => {
         let self = this;
-        var options = this.$(this.dllChooseSpecification + " option"); 
+        var options = this.$(this.dllChooseSpecification + " option");
         options.detach().sort(function (a, b) {
             var at = self.$(a).text();
             var bt = self.$(b).text();
             return (at > bt) ? 1 : ((at < bt) ? -1 : 0);
         });
-        options.appendTo(this.dllChooseSpecification);         
+        options.appendTo(this.dllChooseSpecification);
 
         this.$(this.dllChooseSpecification).material_select('destroy');
         this.$(this.dllChooseSpecification).val("").material_select();
@@ -297,7 +296,7 @@ class ComposedAnnouncement {
             data: formdata,
             contentType: false,
             processData: false,
-            beforeSend: function () {},
+            beforeSend: function () { },
             complete: function () {
                 self.$nap.loadingBox.close();
             },
@@ -369,7 +368,7 @@ class ComposedAnnouncement {
                 LanguageKey: self.$(contentText).attr('id'),
                 Text: self.$(contentText).val(),
                 Url: self.$(this).find('#txtannouncement-url').val()
-                }); 
+            });
         });
 
         return contents;
@@ -394,8 +393,8 @@ class ComposedAnnouncement {
                 jsonObject.Value = self.$(domElement).find(self.userLevelsSpecificationValue).val();
             }
 
-            if (self.$(domElement).find(".checkbox").length > 0) {
-                jsonObject.Value = self.$(domElement).find(".checkbox").prop("checked");
+            if (self.$(domElement).find("input[type=checkbox]").length > 0) {
+                jsonObject.Value = self.$(domElement).find("input[type=checkbox]").prop("checked");
             }
 
             specs.push(jsonObject);
