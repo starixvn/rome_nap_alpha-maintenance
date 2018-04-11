@@ -89,7 +89,7 @@ var txtSpecsDictionary = new List<Type>()
                     var checkedStatus = (specification.Value == null || !specification.Value) ? string.Empty : "checked";                   
 
                     <div class="checkbox">
-                        <input type="checkbox" id="@specification.GetType()" @checkedStatus />
+                        <input type="checkbox" class="toogle" id="@specification.GetType()" @checkedStatus />
                         <label for="@specification.GetType()"><span></span>&nbsp;</label>
                     </div>
                 }

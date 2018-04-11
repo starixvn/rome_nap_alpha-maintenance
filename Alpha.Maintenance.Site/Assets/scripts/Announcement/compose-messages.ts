@@ -393,7 +393,7 @@ class ComposedAnnouncement {
                 jsonObject.Value = self.$(domElement).find(self.userLevelsSpecificationValue).val();
             }
 
-            if (self.$(domElement).find("input[type=checkbox]").length > 0) {
+            if (self.$(domElement).find(".toogle").length > 0) {
                 jsonObject.Value = self.$(domElement).find("input[type=checkbox]").prop("checked");
             }
 
