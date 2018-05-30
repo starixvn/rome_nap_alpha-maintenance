@@ -190,12 +190,14 @@
     <Compile Include="HomeController.cs" />
     <Compile Include="IPInformationController.cs" />
     <Compile Include="LogController.cs" />
+    <Compile Include="SuperLimitDateController.cs" />
     <Compile Include="MachineController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\SaveAnnouncementDemand.cs" />
     <Compile Include="ViewModels\ComposeAnnouncementViewModel.cs" />
     <Compile Include="ViewModels\IPInformationViewModel.cs" />
     <Compile Include="ViewModels\ManageAnnouncementsViewModel.cs" />
+    <Compile Include="ViewModels\SuperLimitDateViewModel.cs" />
     <Compile Include="Web\HmacAuthorizationFilter.cs" />
     <Compile Include="Web\JsonNetResult.cs" />
   </ItemGroup>

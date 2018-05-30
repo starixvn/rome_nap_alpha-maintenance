@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Add new Customer Limit Date";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model SuperLimitDate
+@using (Html.BeginForm())
+{
+    <div class="filter-form">
+        @Html.ActionLink("←  " + ViewResource.Back_To_List, "Index", "SuperLimitDate", null, new { @class = "waves-effect waves-light link-back" })
+        <div class="row summary">
+            <div class="lbl-field">
+            </div>
+            <div class="edit-field">
+                @Html.ValidationSummary()
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s4">
+                <label for="UserName">User Name <span class="red-text">*</span></label>
+                @Html.TextBoxFor(m => m.UserName)
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s1">
+                <input class="with-gap" type="radio" name="TypeDate" id="raLimitDays" value="LimitDays" checked onclick="Super.disableMinDate()" />
+                <label for="raLimitDays">Limit Days</label>
+            </div>
+            <div class="input-field col s1">
+                @Html.TextBoxFor(m => m.LimitDays)
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s1">
+                <input class="with-gap" type="radio" name="TypeDate" id="raMinDate" value="MinDate" onclick="Super.disableLimitDays()" />
+                <label for="raMinDate">Min Date</label>
+            </div>
+            <div class="input-field col s1">
+                <div class="calendar">
+                    <input readonly type="text" name="MinDate" id="MinDate" class="datepicker" value="@Model.MinDate.Value.ToString("MMM dd,yyyy")" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col">
+                <input class="waves-effect waves-light btn btn-primary" type="submit" value="@ViewResource.Save" />
+            </div>
+        </div>
+    </div>
+}
+@section Foot
+{
+    @Scripts.Render("~/Assets/bundles/SuperLimitDate/index.js")
+}

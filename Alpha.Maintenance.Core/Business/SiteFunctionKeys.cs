@@ -49,4 +49,6 @@ public static class SiteFunctionKeys
 
     public const string IPInformation = "IPInformation";
 
+    public const string SuperLimitDate = "SuperLimitDate";
+
 }
