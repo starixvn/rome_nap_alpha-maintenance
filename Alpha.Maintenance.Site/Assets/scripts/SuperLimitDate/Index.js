@@ -43,12 +43,11 @@ var Super = (function ($) {
                     },
                     success: function (data) {
                         if (data.IsSuccessful == true) {
-                            NAP.headlineMsgBox.showInfo("Delete unsuccessfull !", { closeBtn: false });
+                            NAP.headlineMsgBox.showInfo("Delete successfull !", { closeBtn: false });
+                            Super.getSuperLimitDate(50, 0);
                         }
                         else {
-                            NAP.headlineMsgBox.showInfo(data.Message, { closeBtn: false });
-
-                            Super.getSuperLimitDate(50, 0);
+                            NAP.headlineMsgBox.showErr(data.Message, { closeBtn: false });
                         }
 
                     },
