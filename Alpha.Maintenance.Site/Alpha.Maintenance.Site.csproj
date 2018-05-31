@@ -373,6 +373,10 @@
     <Content Include="Assets\bundles\manage-announcements.min.js">
       <DependentUpon>manage-announcements.js</DependentUpon>
     </Content>
+    <Content Include="Assets\bundles\SuperLimitDate\index.js" />
+    <Content Include="Assets\bundles\SuperLimitDate\index.min.js">
+      <DependentUpon>index.js</DependentUpon>
+    </Content>
     <Content Include="Assets\scripts\Announcement\compose-messages.js">
       <DependentUpon>compose-messages.ts</DependentUpon>
     </Content>
@@ -389,6 +393,7 @@
     <Content Include="Assets\scripts\lib\materialize\materialize.min.js" />
     <Content Include="Assets\scripts\Login\index.js" />
     <Content Include="Assets\scripts\Maintenance.js" />
+    <Content Include="Assets\scripts\SuperLimitDate\Index.js" />
     <Content Include="Assets\styles\main.css">
       <DependentUpon>main.scss</DependentUpon>
     </Content>
@@ -624,6 +629,9 @@
     <Content Include="Views\Announcement\SpecificationSettingPartialView.cshtml" />
     <None Include="Properties\PublishProfiles\sfgs.pubxml" />
     <Content Include="Views\IPInformation\Index.cshtml" />
+    <Content Include="Views\SuperLimitDate\Index.cshtml" />
+    <Content Include="Views\SuperLimitDate\Get.cshtml" />
+    <Content Include="Views\SuperLimitDate\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\scripts\Announcement\compose-messages.ts" />

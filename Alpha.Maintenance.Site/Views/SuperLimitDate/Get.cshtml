@@ -1,0 +1,32 @@
+﻿@model SuperLimitDateViewModel
+@{
+    ViewBag.Title = ViewResource.AppLogs_ViewLog;
+    Layout = null;
+    var index = (Model.PageIndex - 1) * Model.PageSize + 1;
+}
+
+@if (Model.Supers.Any())
+{
+    foreach (var super in Model.Supers)
+    {
+        <tr id="super_@super.CustId">
+            <td class="center">@index</td>
+            <td>@super.UserName</td>
+            <td class="center"> @(super.LimitDays.HasValue ? super.LimitDays.Value.ToString() : string.Empty)</td>
+            <td class="center">@(super.MinDate.HasValue ? super.MinDate.Value.ToString("MMM dd, yyyy") : string.Empty)</td>
+            <td class="center"><a class="waves-effect waves-light btn btn-primary"><input type="button" value="Delete" onclick="Super.deleteSuperLimitDate(@super.CustId,'@super.UserName')" /></a></td>
+        </tr>
+        index++;
+    }
+}
+else
+{
+    <tr>
+        <td class="center" colspan="4">
+            @ViewResource.NoInformationAvailable
+        </td>
+    </tr>
+}
+<script>
+    var totalRows = @Model.TotalRecords;
+</script>

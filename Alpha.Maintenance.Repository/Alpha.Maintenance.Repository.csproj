@@ -104,6 +104,9 @@
     <Compile Include="Criteria\Log\UpdateMachineCriteria.cs" />
     <Compile Include="Criteria\Misc\LogExecSpCriteria.cs" />
     <Compile Include="Criteria\Misc\ResultCriteria.cs" />
+    <Compile Include="Criteria\SuperLimitDate\AddSuperLimitDateCriteria.cs" />
+    <Compile Include="Criteria\SuperLimitDate\DeleteSuperLimitDateCriteria.cs" />
+    <Compile Include="Criteria\SuperLimitDate\GetAllSuperLimitDateCriteria.cs" />
     <Compile Include="Impl\BaseRepository.cs" />
     <Compile Include="Impl\AppLog\LogRepository.cs" />
     <Compile Include="Impl\AppLog\MachineRepository.cs" />
@@ -112,6 +115,7 @@
     <Compile Include="Impl\DBProfiler\LogRespository.cs" />
     <Compile Include="Impl\ObjectDbFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SuperLimitDateRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Alpha.Maintenance.Core\Alpha.Maintenance.Core.csproj">

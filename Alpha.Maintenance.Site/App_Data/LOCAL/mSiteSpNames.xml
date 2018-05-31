@@ -26,4 +26,10 @@
   <Function Name="IPInformation">
     <Setting Key="Acc_GetIPInfo_Full" SpName="Acc_GetIPInfo_Full" DbName="IPEntities" />
   </Function>
+
+  <Function Name="SuperLimitDate">
+    <Setting Key="Acc_CustomerDateLimitSel" SpName="Acc_CustomerDateLimitSel" DbName="DBAGE.bodb_AGE.BODBDownlineNet" />
+    <Setting Key="Acc_CustomerDateLimitDel" SpName="Acc_CustomerDateLimitDel" DbName="DBAGE.bodb_AGE.BODBDownlineNet" />
+    <Setting Key="Acc_CustomerDateLimitIns" SpName="Acc_CustomerDateLimitIns" DbName="DBAGE.bodb_AGE.BODBDownlineNet" />
+  </Function>
 </Functions>

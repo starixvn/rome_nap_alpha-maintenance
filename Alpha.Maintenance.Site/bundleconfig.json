@@ -20,5 +20,12 @@
     "inputFiles": [
       "Assets/scripts/IPInfo/index.js"
     ]
+  },
+  {
+    "outputFileName": "Assets/bundles/SuperLimitDate/index.js",
+    "inputFiles": [
+      "Assets/scripts/SuperLimitDate/index.js",
+      "Assets/scripts/lib/Fanex.Grid/Fanex.Pagination.js"
+    ]
   }
 ]

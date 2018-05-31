@@ -176,7 +176,7 @@ $(document).ready(function () {
 	$('.datepicker').pickadate({
 	    selectMonths: true,
 	    selectYears: 20,
-	    format: 'mmm dd,yyyy',
+	    format: 'mmm dd, yyyy',
 	    onSet: function (event) {
 	        if (event.hasOwnProperty("select")) {
 	            $(this).trigger('close');
