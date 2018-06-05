@@ -60,6 +60,9 @@ namespace Alpha.Maintenance.Site.App_Start
                "~/Assets/scripts/lib/Select2/select2.js",
                "~/Areas/DatabaseProfiler/scripts/Index.js"));
 
+            //// Home
+            bundles.Add(new ScriptBundle("~/scripts/home-index").Include(
+               "~/Assets/scripts/Home/Index.js"));
         }
     }
 }
