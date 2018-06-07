@@ -10,8 +10,10 @@
 
 namespace Alpha.Maintenance.Controller
 {
-    using System.Web.Mvc;
     using Fanex.NAP.Core.Web.Attribute;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web.Mvc;
 
     /// <summary>
     /// Home Controller.
@@ -25,7 +27,7 @@ namespace Alpha.Maintenance.Controller
         /// <returns>Action result.</returns>
         public ActionResult Index()
         {
-            return Redirect("~/Log");
+            return View();
         }
     }
 }

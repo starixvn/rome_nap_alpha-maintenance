@@ -59,7 +59,7 @@ namespace Alpha.Maintenance.Site.App_Start
                "~/Assets/scripts/lib/Momentjs/moment.min.js",
                "~/Assets/scripts/lib/Select2/select2.js",
                "~/Areas/DatabaseProfiler/scripts/Index.js"));
-
+          
         }
     }
 }
