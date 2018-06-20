@@ -74,15 +74,15 @@ namespace Alpha.Maintenance.Controller
             InitPageSize();
 
             ViewBag.ListLog = null;
-
+            var timeGMT7 = DateTime.Now.AddHours(11);
             var criteria = new GetLogCriteria
             {
                 CategoryId = _selectedCategoryId,
                 MachineId = 0,
                 IsProduction = null,
                 IsMonitored = null,
-                From = DateTime.Now.AddDays(-1).AddHours(11),   // to GMT+7 (default)
-                To = DateTime.Now.AddHours(11),     // to GMT+7 (default)
+                From = new DateTime(timeGMT7.Year, timeGMT7.Month, timeGMT7.Day),
+                To = new DateTime(timeGMT7.Year,timeGMT7.Month, timeGMT7.Day).AddDays(1).AddMilliseconds(-1),
                 Page = 0,
                 Size = 10,
                 Severity = "All",
@@ -109,7 +109,7 @@ namespace Alpha.Maintenance.Controller
             var totalRows = 0;
 
             DateTime from = criteria.From.AddHours(-1 * criteria.ToGMT);
-            DateTime to = criteria.To.AddDays(1).AddSeconds(-1).AddHours(-1 * criteria.ToGMT);
+            DateTime to = criteria.To.AddHours(-1 * criteria.ToGMT).AddMinutes(1).AddSeconds(-1);
 
             ////Get logs by date
             IEnumerable<Log> listLogs = _logService.With(
@@ -118,7 +118,8 @@ namespace Alpha.Maintenance.Controller
                 criteria.IsProduction,
                 criteria.IsMonitored,
                 criteria.Severity,
-                criteria.ToGMT)
+                criteria.ToGMT,
+                criteria.SearchText)
                 .From(from)
                 .To(to)
                 .WithPagination(criteria.Page, criteria.Size)

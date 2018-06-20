@@ -32,6 +32,8 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
 
         private string _severity;
 
+        private string _searchText;
+
         private DateTime _dateFrom;
 
         private DateTime _dateTo;
@@ -46,6 +48,7 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
         {
             _categoryId = 0;
             _severity = "All";
+            _searchText = string.Empty;
             _machineId = 0;
             _dateFrom = DateTime.Now;
             _dateTo = DateTime.Now.AddDays(-1);
@@ -99,7 +102,7 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
         /// <param name="isMonitored">Monitored or not.</param>
         /// <param name="severity">Severity level.</param>
         /// <returns>Log service object.</returns>
-        public LogService With(int? categoryId, int? machineId, bool? isProduction, bool? isMonitored, string severity, int timeZone)
+        public LogService With(int? categoryId, int? machineId, bool? isProduction, bool? isMonitored, string severity, int timeZone, string searchText)
         {
             this._categoryId = categoryId;
             this._machineId = machineId;
@@ -107,7 +110,7 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
             this._isProduction = isProduction;
             this._isMonitored = isMonitored;
             this._showLogTimeZone = timeZone;
-
+            this._searchText = searchText;
             return this;
         }
 
@@ -180,7 +183,8 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
                 MachineId = this._machineId,
                 IsProduction = this._isProduction,
                 IsMonitored = this._isMonitored,
-                ToGMT = _showLogTimeZone
+                ToGMT = _showLogTimeZone,
+                SearchText = _searchText
             };
 
             var list = _logRepository.GetLog(ref criteria);

@@ -28,6 +28,8 @@ namespace Alpha.Maintenance.Repository.Criteria.Log
 
         public bool? IsMonitored { get; set; }
 
+        public string SearchText { get; set; }
+
         [DataType(DataType.Date)]
         public DateTime From { get; set; }
 

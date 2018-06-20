@@ -10,7 +10,7 @@
 }
 
 @section Head {
-    @Styles.Render("~/css/select2")
+    @Styles.Render("~/css/log-index")
 }
 
 @section Headline {
@@ -46,7 +46,7 @@
                         @Html.LabelFor(m => m.From, ViewResource.From, new { @class = "active" })
                     </div>
                     <div class="calendar">
-                        <input type="text" name="From" id="From" class="datepicker" value="@Model.From.ToString("MMM dd,yyyy")" />
+                        <input type="text" name="From" id="FromDate" class="c-datepicker-btn" value="@Model.From.ToString("MMM dd,yyyy HH:mm")" />
                     </div>
                 </div>
                 <div class="input-field col l2 m3 s6">
@@ -54,13 +54,19 @@
                         @Html.LabelFor(m => m.To, ViewResource.To, new { @class = "active" })
                     </div>
                     <div class="calendar">
-                        <input type="text" name="To" id="To" class="datepicker" value="@Model.To.ToString("MMM dd,yyyy")" />
+                        <input type="text" name="To" id="ToDate" class="c-datepicker-btn" value="@Model.To.ToString("MMM dd,yyyy HH:mm")" />
                     </div>
                 </div>
                 <div class="input-field col l2 m3 s6">
                     @Html.DropDownListFor(m => m.ToGMT, (List<SelectListItem>)ViewBag.ListTimeZone, new { @class = "js-select" })
                     @Html.LabelFor(m => m.ToGMT, ViewResource.TimeZone)
                 </div>
+                <div class="input-field col l2 m3 s6">
+                    @Html.TextBoxFor(m=>m.SearchText)
+                    @Html.LabelFor(m => m.SearchText, "Search Text")
+                </div>
+            </div>
+            <div class="row">
                 <div class="col button-block">
                     <input class="waves-effect waves-light btn btn-primary" type="button" value="@ViewResource.Submit" id="submit" />
                     @if (Model.HasEdit)
@@ -114,4 +120,8 @@
 
 @section Foot {
     @Scripts.Render("~/scripts/log-index")
+    <script type="text/javascript">            
+        var fromDate = new Date('@Model.From');
+        var toDate = new Date('@Model.To');
+    </script>
 }
