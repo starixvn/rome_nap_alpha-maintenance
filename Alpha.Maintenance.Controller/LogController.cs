@@ -82,7 +82,7 @@ namespace Alpha.Maintenance.Controller
                 IsProduction = null,
                 IsMonitored = null,
                 From = new DateTime(timeGMT7.Year, timeGMT7.Month, timeGMT7.Day),
-                To = new DateTime(timeGMT7.Year,timeGMT7.Month, timeGMT7.Day).AddDays(1).AddMilliseconds(-1),
+                To = new DateTime(timeGMT7.Year, timeGMT7.Month, timeGMT7.Day).AddDays(1),
                 Page = 0,
                 Size = 10,
                 Severity = "All",

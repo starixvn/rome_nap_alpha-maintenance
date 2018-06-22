@@ -29,7 +29,9 @@ namespace Alpha.Maintenance.Site.App_Start
             // css
             bundles.AddAndInclude(
                 "~/css/common",
-                "~/Assets/styles/vendors/icon/style.css",
+                "~/Assets/styles/vendors/icon/style.css", 
+                "~/Assets/scripts/lib/Select2/select2.css",
+                "~/Assets/scripts/lib/material-datetime-picker/material-datetime-picker.css",
                 "~/Assets/styles/main.min.css");
 
             // js
@@ -41,17 +43,12 @@ namespace Alpha.Maintenance.Site.App_Start
 
             bundles.Add(new ScriptBundle("~/scripts/recheckin").Include(
              "~/Areas/UserLogin/scripts/ReCheckIn.js"));
-
-            //// Log
-            bundles.AddAndInclude(
-                    "~/css/select2",
-                    "~/Assets/scripts/lib/Select2/select2.css");
-
-            bundles.AddAndInclude(
-                "~/css/log-index",
+         
+	
+        	bundles.AddAndInclude(
+                "~/css/compose-announcement",
                 "~/Assets/scripts/lib/Select2/select2.css",
                 "~/Assets/scripts/lib/material-datetime-picker/material-datetime-picker.css");
-
 
             bundles.Add(new ScriptBundle("~/scripts/log-index").Include(
                "~/Assets/scripts/lib/Fanex.Grid/Fanex.Pagination.js",
@@ -67,7 +64,14 @@ namespace Alpha.Maintenance.Site.App_Start
                "~/Assets/scripts/lib/Momentjs/moment.js",
                "~/Assets/scripts/lib/Select2/select2.js",
                "~/Areas/DatabaseProfiler/scripts/Index.js"));
-          
+
+            bundles.Add(new ScriptBundle("~/scripts/compose-announcement").Include(               
+               "~/Assets/scripts/lib/Momentjs/moment.js",
+               "~/Assets/scripts/lib/material-datetime-picker/rome.js",
+               "~/Assets/scripts/lib/Select2/select2.js",               
+               "~/Assets/scripts/lib/material-datetime-picker/material-datetime-picker.js",
+               "~/Assets/scripts/Announcement/compose-messages.js"));
+            
         }
     }
 }

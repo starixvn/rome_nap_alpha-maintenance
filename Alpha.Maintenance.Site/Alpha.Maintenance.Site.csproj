@@ -56,8 +56,8 @@
     <Reference Include="Accessibility">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Alpha.Announcements, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Alpha.Announcements.1.0.0.1\lib\net40\Alpha.Announcements.dll</HintPath>
+    <Reference Include="Alpha.Announcements, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Alpha.Announcements.1.0.0.2-RenovateAnnouncement-02\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Alpha.Announcements.UnsynchronizedSetting, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
@@ -366,17 +366,13 @@
       <DependentUpon>compose-messages.js</DependentUpon>
     </Content>
     <Content Include="Assets\bundles\IPInfo\index.js" />
-    <Content Include="Assets\bundles\IPInfo\index.min.js">
-      <DependentUpon>index.js</DependentUpon>
-    </Content>
+    <Content Include="Assets\bundles\IPInfo\index.min.js" />
     <Content Include="Assets\bundles\manage-announcements.js" />
     <Content Include="Assets\bundles\manage-announcements.min.js">
       <DependentUpon>manage-announcements.js</DependentUpon>
     </Content>
     <Content Include="Assets\bundles\SuperLimitDate\index.js" />
-    <Content Include="Assets\bundles\SuperLimitDate\index.min.js">
-      <DependentUpon>index.js</DependentUpon>
-    </Content>
+    <Content Include="Assets\bundles\SuperLimitDate\index.min.js" />
     <Content Include="Assets\scripts\Announcement\compose-messages.js">
       <DependentUpon>compose-messages.ts</DependentUpon>
     </Content>
@@ -438,7 +434,6 @@
     <Content Include="Assets\scripts\lib\Fanex.Grid\moment.min.js" />
     <Content Include="Assets\scripts\lib\Fanex.Grid\numeral.min.js" />
     <Content Include="Assets\scripts\lib\Momentjs\moment.js" />
-    <Content Include="Assets\scripts\lib\Momentjs\moment.min.js" />
     <Content Include="Assets\scripts\lib\msgbox\images\alert.png" />
     <Content Include="Assets\scripts\lib\msgbox\images\btn-close.png" />
     <Content Include="Assets\scripts\lib\msgbox\images\confirm.png" />

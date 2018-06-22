@@ -124,10 +124,8 @@
 
             return new Announcement
             {
-                AnnouncementType = (AnnouncementType)reader.ToInt("AnnouncementType"),
                 Code = reader.ToString("Code"),
-                Contents = JsonConvert.DeserializeObject<IEnumerable<MessageContent>>(plainText),
-                Ordinal = reader.ToInt("Ordinal"),
+                Contents = JsonConvert.DeserializeObject<IEnumerable<MessageContent>>(plainText),                
                 Environments = reader.ToString("Environments").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
                                         .Select(environment => environment.Trim()),
                 Id = reader.ToInt("Id"),
@@ -138,8 +136,7 @@
                 Systems = reader.ToString("Systems").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
                                     .Select(system => system.Trim()),
                 Title = reader.ToString("Title"),
-                FromDate = reader.ToDateTime("FromDate"),
-                ToDate = reader.ToDateTime("ToDate"),
+                ReleasedDate = reader.ToDateTime("FromDate"),
                 CreatedDate = reader.ToDateTime("CreatedDate"),
                 CreatorId = reader.ToInt("CreatorId"),
                 CreatorName = reader.ToString("CreatorName"),

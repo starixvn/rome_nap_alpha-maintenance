@@ -155,11 +155,8 @@
 
         private Announcement BuildAnnouncementSample()
             => new Announcement
-            {
-                AnnouncementType = AnnouncementType.Popup,
-                FromDate = SystemTime.Today,
-                ToDate = SystemTime.Today,
-                Ordinal = 30,
+            {   
+                ReleasedDate = SystemTime.Today,                
                 Environments = Enumerable.Empty<string>(),
                 Systems = Enumerable.Empty<string>(),
                 Contents = languages.Select(language => new MessageContent

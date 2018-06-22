@@ -38,8 +38,8 @@
         {
             // Arrange
             var insertAnnouncementsCriteria = new InsertAnnouncementsCriteria();
-            insertAnnouncementsCriteria.FromDate = new DateTime(2017, 6, 18);
-            insertAnnouncementsCriteria.ToDate = new DateTime(2017, 6, 17);
+            insertAnnouncementsCriteria.ReleasedDate = new DateTime(2017, 6, 18);
+            
 
             // Act
             var actualIsValid = insertAnnouncementsCriteria.IsValid();
@@ -53,8 +53,7 @@
         {
             // Arrange
             var insertAnnouncementsCriteria = new InsertAnnouncementsCriteria();
-            insertAnnouncementsCriteria.ToDate = new DateTime(2017, 6, 18);
-            insertAnnouncementsCriteria.FromDate = new DateTime(2017, 6, 17);
+            insertAnnouncementsCriteria.ReleasedDate = new DateTime(2017, 6, 17);
 
             // Act
             var actualIsValid = insertAnnouncementsCriteria.IsValid();

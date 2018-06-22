@@ -424,7 +424,7 @@
   .u-hover-ball-effect:before, .c-datepicker__day-body:before, .c-datepicker__clock__num:before, .c-datepicker__clock__am-pm-toggle label:before {
     content: "";
     position: absolute;
-    left: 35%;
+    left: 45%;
     top: 50%;
     width: 0%;
     height: 0%;

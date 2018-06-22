@@ -255,4 +255,7 @@
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>
   </data>
+  <data name="ReleasedDate" xml:space="preserve">
+    <value>Released Date</value>
+  </data>
 </root>

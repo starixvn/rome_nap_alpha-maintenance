@@ -873,4 +873,7 @@
   <data name="City" xml:space="preserve">
     <value>City</value>
   </data>
+  <data name="ReleasedDate" xml:space="preserve">
+    <value>Released Date</value>
+  </data>
 </root>

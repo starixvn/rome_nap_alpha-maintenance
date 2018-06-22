@@ -42,14 +42,15 @@ var Logs = (function ($) {
             Logs.lblTimeZone = $('#timeZone');
             Logs.pagers = $('#pagination-1,#pagination-2');           
  
+            
             var pickerFrom = new MaterialDatetimePicker({
-                default: fromDate
+                default: new Date(Logs.dpkFrom.val())
             }).on('submit', function (d) {
                 Logs.dpkFrom.val(d.format("MMM DD,YYYY HH:mm"));
             }).on('close', function () { Logs.dpkFrom.focus() });
             
             var pickerTo = new MaterialDatetimePicker({
-                default: toDate
+                default: new Date(Logs.dpkTo.val())
             }).on('submit', function (d) {
                 Logs.dpkTo.val(d.format("MMM DD,YYYY HH:mm"));
             }).on('close', function () { Logs.dpkTo.focus() });

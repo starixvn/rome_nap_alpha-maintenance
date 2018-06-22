@@ -1600,6 +1600,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Released Date.
+        /// </summary>
+        public static string ReleasedDate {
+            get {
+                return ResourceManager.GetString("ReleasedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The {0} field is required..
         /// </summary>
         public static string RequiredMsg {
