@@ -57,7 +57,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Alpha.Announcements, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Alpha.Announcements.1.0.0.2-RenovateAnnouncement-02\lib\net40\Alpha.Announcements.dll</HintPath>
+      <HintPath>..\packages\Alpha.Announcements.1.0.0.2\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Alpha.Announcements.UnsynchronizedSetting, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
