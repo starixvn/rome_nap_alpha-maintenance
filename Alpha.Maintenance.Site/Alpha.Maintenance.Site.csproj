@@ -389,6 +389,9 @@
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te.min.css" />
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te-1.4.0.min.js" />
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te.png" />
+    <Content Include="Assets\scripts\lib\material-datetime-picker\rome.js" />
+    <Content Include="Assets\scripts\lib\material-datetime-picker\material-datetime-picker.css" />
+    <Content Include="Assets\scripts\lib\material-datetime-picker\material-datetime-picker.js" />
     <Content Include="Assets\scripts\lib\materialize\materialize.min.css" />
     <Content Include="Assets\scripts\lib\materialize\materialize.min.js" />
     <Content Include="Assets\scripts\Login\index.js" />
@@ -560,6 +563,10 @@
       <Project>{60BC3FA8-DF7C-4024-B469-4ED110420143}</Project>
       <Name>Alpha.Maintenance.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Alpha.Maintenance.Repository\Alpha.Maintenance.Repository.csproj">
+      <Project>{8858dc31-a292-4388-8e07-9b2e345a3fe6}</Project>
+      <Name>Alpha.Maintenance.Repository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Alpha.Maintenance.Service\Alpha.Maintenance.Service.csproj">
       <Project>{6f5c23b0-7eb0-4020-9664-5f904bb99bbc}</Project>
       <Name>Alpha.Maintenance.Service</Name>
@@ -653,6 +660,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\DatabaseProfiler\themes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

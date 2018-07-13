@@ -47,16 +47,24 @@ namespace Alpha.Maintenance.Site.App_Start
                     "~/css/select2",
                     "~/Assets/scripts/lib/Select2/select2.css");
 
+            bundles.AddAndInclude(
+                "~/css/log-index",
+                "~/Assets/scripts/lib/Select2/select2.css",
+                "~/Assets/scripts/lib/material-datetime-picker/material-datetime-picker.css");
+
+
             bundles.Add(new ScriptBundle("~/scripts/log-index").Include(
                "~/Assets/scripts/lib/Fanex.Grid/Fanex.Pagination.js",
-               "~/Assets/scripts/lib/Momentjs/moment.min.js",
+               "~/Assets/scripts/lib/Momentjs/moment.js",
+               "~/Assets/scripts/lib/material-datetime-picker/rome.js",
                "~/Assets/scripts/lib/Select2/select2.js",
-               "~/Assets/scripts/Logs/Index.js"));
+               "~/Assets/scripts/Logs/Index.js",
+               "~/Assets/scripts/lib/material-datetime-picker/material-datetime-picker.js"));
 
             //// Database Profiler
             bundles.Add(new ScriptBundle("~/scripts/databaseprofiler-index").Include(
                "~/Assets/scripts/lib/Fanex.Grid/Fanex.Pagination.js",
-               "~/Assets/scripts/lib/Momentjs/moment.min.js",
+               "~/Assets/scripts/lib/Momentjs/moment.js",
                "~/Assets/scripts/lib/Select2/select2.js",
                "~/Areas/DatabaseProfiler/scripts/Index.js"));
           

@@ -24,21 +24,44 @@ var Logs = (function ($) {
         btnSubmit: null,
         chbGroupMessage: null,
         hasEdit: null,
+        searchText: null,
 
         init: function () {
             Logs.ddlCategory = $('#CategoryId');
             Logs.ddlMachine = $('#MachineId');
             Logs.ddlSeverity = $('#Severity');
             Logs.ddlStatus = $('#IsMonitored');
-            Logs.dpkFrom = $('#From');
-            Logs.dpkTo = $('#To');
+            Logs.dpkFrom = $('#FromDate');
+            Logs.dpkTo = $('#ToDate');
+            Logs.searchText = $("#SearchText");
             Logs.btnRemoveLog = $("#btnRemoveLog");
             Logs.btnSubmit = $('#submit');
             Logs.chbGroupMessage = $('#GroupMessage');
             Logs.hasEditRight = $('#HasEdit').val() == 1;
             Logs.ddlTimeZone = $('#ToGMT');
             Logs.lblTimeZone = $('#timeZone');
-            Logs.pagers = $('#pagination-1,#pagination-2');
+            Logs.pagers = $('#pagination-1,#pagination-2');           
+ 
+            var pickerFrom = new MaterialDatetimePicker({
+                default: fromDate
+            }).on('submit', function (d) {
+                Logs.dpkFrom.val(d.format("MMM DD,YYYY HH:mm"));
+            }).on('close', function () { Logs.dpkFrom.focus() });
+            
+            var pickerTo = new MaterialDatetimePicker({
+                default: toDate
+            }).on('submit', function (d) {
+                Logs.dpkTo.val(d.format("MMM DD,YYYY HH:mm"));
+            }).on('close', function () { Logs.dpkTo.focus() });
+
+            Logs.dpkFrom.on('click', function () {
+                pickerFrom.open();
+            });
+
+            Logs.dpkTo.on('click', function () {
+                pickerTo.open();
+            });
+     
         },
         generateData: function (pageSize, index) {
             var categoryId = Logs.ddlCategory.val();
@@ -50,6 +73,7 @@ var Logs = (function ($) {
             var isMonitored = Logs.ddlStatus.val();
             var timezone = Logs.ddlTimeZone.val();
             var timeZoneValue = (timezone > 0 ? '+' : '') + timezone;
+            var searchText = Logs.searchText.val();
 
             if (machineId === 'UAT') {
                 isProduction = false;
@@ -75,6 +99,7 @@ var Logs = (function ($) {
                     Page: index,
                     Size: pageSize,
                     ToGMT: timezone,
+                    SearchText: searchText,
                     GroupMessage: true
                 },
                 type: 'POST',
@@ -152,8 +177,7 @@ var Logs = (function ($) {
                         });
 
                     }
-                    else
-                    {
+                    else {
                         Logs.pagers.hide();
                         $('#content').html('<tr><td colspan="7" class="no-data">There is no data</td></tr>');
                     }
@@ -418,7 +442,7 @@ var Logs = (function ($) {
         }
     };
 
-} (jQuery));
+}(jQuery));
 
 $(document).ready(function () {
     Logs.init();
