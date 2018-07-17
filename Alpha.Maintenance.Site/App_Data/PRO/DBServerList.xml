@@ -72,4 +72,8 @@
     <Ip>10.40.40.224</Ip>
     <Name>DBAFF</Name>
   </Server>
+	<Server>
+		<Ip>10.40.40.82</Ip>
+		<Name>DB042</Name>
+	</Server>
 </Servers>

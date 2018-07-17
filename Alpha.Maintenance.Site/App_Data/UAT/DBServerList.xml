@@ -52,4 +52,28 @@
     <Ip>10.40.40.17</Ip>
     <Name>DBTRANS</Name>
   </Server>
+  <Server>
+    <Ip>FPS_DB01\MSSQLSERVERWEB</Ip>
+    <Name>FPS_DB01</Name>
+  </Server>
+  <Server>
+    <Ip>10.40.40.119</Ip>
+    <Name>FPS_DB02</Name>
+  </Server>
+  <Server>
+    <Ip>10.40.40.66</Ip>
+    <Name>DBFRAUD</Name>
+  </Server>
+  <Server>
+    <Ip>10.40.40.108</Ip>
+    <Name>DBFRAUD02</Name>
+  </Server>
+  <Server>
+    <Ip>10.40.40.224</Ip>
+    <Name>DBAFF</Name>
+  </Server>
+	<Server>
+		<Ip>10.40.40.82</Ip>
+		<Name>DB042</Name>
+	</Server>
 </Servers>
