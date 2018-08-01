@@ -5,6 +5,7 @@
     using NUnit.Framework;
     using Repository.Criteria.Announcements;
     using Service.Interface.Announcement;
+    using System;
 
     [TestFixture]
     public class AnnouncementApiControllerTest
@@ -24,14 +25,22 @@
         public void ManageAnnouncements_CallGetAnnouncementsService()
         {
             // Arrange
-            string environment = "Local";
-            string system = "789";
+            var request = new AnnouncementHistoryRequest
+            {
+                Environment = "Local",
+                FromDate = DateTime.Now.AddDays(-1),
+                System = "IBCBET",
+                ToDate = DateTime.Now
+            };
 
             // Act
-            announcementApiController.GetAnnouncements(environment, system);
+            var act = announcementApiController.GetAnnouncementsHistory(request);
+                     
+            // Expected   
+            var expected = announcementService.Received().GetAnnouncements(Arg.Any<SelectAnnouncementsCriteria>());
 
             // Assert
-            announcementService.Received().GetAnnouncements(Arg.Any<SelectAnnouncementsCriteria>());
+            Assert.AreEqual(expected, act);
         }
     }
 }

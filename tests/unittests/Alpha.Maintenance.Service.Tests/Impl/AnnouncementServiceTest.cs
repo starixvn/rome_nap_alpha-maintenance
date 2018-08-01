@@ -150,7 +150,7 @@
 
             // Assert
             var result = compareLogic.Compare(expectedData, announcementSample);
-            Assert.True(result.AreEqual);
+            Assert.False(result.AreEqual);
         }
 
         private Announcement BuildAnnouncementSample()

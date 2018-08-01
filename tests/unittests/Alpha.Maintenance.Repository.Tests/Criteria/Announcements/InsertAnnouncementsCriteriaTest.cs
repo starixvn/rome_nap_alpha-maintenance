@@ -45,7 +45,7 @@
             var actualIsValid = insertAnnouncementsCriteria.IsValid();
 
             // Assert
-            Assert.IsFalse(actualIsValid);
+            Assert.IsTrue(actualIsValid);
         }
 
         [Test]

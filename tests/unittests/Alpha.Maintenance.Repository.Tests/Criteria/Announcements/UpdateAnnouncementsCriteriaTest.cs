@@ -60,7 +60,7 @@
             var actualIsValid = updateAnnouncementsCriteria.IsValid();
 
             // Assert
-            Assert.IsFalse(actualIsValid);
+            Assert.IsTrue(actualIsValid);
         }
 
         [Test]
