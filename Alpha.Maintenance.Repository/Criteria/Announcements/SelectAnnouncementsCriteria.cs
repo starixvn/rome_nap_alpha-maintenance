@@ -10,7 +10,7 @@
         [Description("Created Date")]
         CreatedDate = 1,
 
-        [Description("Expired Date")]
+        [Description("Released Date")]
         ExpiredDate = 2
     }
 

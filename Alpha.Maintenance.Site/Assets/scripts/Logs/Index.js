@@ -42,17 +42,32 @@ var Logs = (function ($) {
             Logs.lblTimeZone = $('#timeZone');
             Logs.pagers = $('#pagination-1,#pagination-2');           
  
+            
             var pickerFrom = new MaterialDatetimePicker({
-                default: fromDate
+                default: new Date(Logs.dpkFrom.val())
             }).on('submit', function (d) {
                 Logs.dpkFrom.val(d.format("MMM DD,YYYY HH:mm"));
-            }).on('close', function () { Logs.dpkFrom.focus() });
+            }).on('close', function () {
+                if (Logs.dpkTo.val() <= Logs.dpkFrom.val()) {
+                    var newFrom = moment((new Date(Logs.dpkTo.val())).toISOString());
+                    newFrom.add(-1, 'days');
+                    Logs.dpkFrom.val(newFrom.format("MMM DD,YYYY HH:mm"));
+                    pickerFrom.set((new Date(newFrom.format("MMM DD,YYYY HH:mm"))).toISOString());
+                }
+            });
             
             var pickerTo = new MaterialDatetimePicker({
-                default: toDate
+                default: new Date(Logs.dpkTo.val())
             }).on('submit', function (d) {
                 Logs.dpkTo.val(d.format("MMM DD,YYYY HH:mm"));
-            }).on('close', function () { Logs.dpkTo.focus() });
+            }).on('close', function () {
+                if (Logs.dpkTo.val() <= Logs.dpkFrom.val()) {                    
+                    var newTo = moment((new Date(Logs.dpkFrom.val())).toISOString());
+                    newTo.add(1, 'days');
+                    Logs.dpkTo.val(newTo.format("MMM DD,YYYY HH:mm"));
+                    pickerTo.set((new Date(newTo.format("MMM DD,YYYY HH:mm"))).toISOString());
+                }
+            });
 
             Logs.dpkFrom.on('click', function () {
                 pickerFrom.open();

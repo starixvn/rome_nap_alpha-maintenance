@@ -10,7 +10,7 @@
 }
 
 @section Head {
-    @Styles.Render("~/css/log-index")
+    
 }
 
 @section Headline {
@@ -46,7 +46,7 @@
                         @Html.LabelFor(m => m.From, ViewResource.From, new { @class = "active" })
                     </div>
                     <div class="calendar">
-                        <input type="text" name="From" id="FromDate" class="c-datepicker-btn" value="@Model.From.ToString("MMM dd,yyyy HH:mm")" />
+                        <input readonly type="text" name="FromDate" id="FromDate" class="c-datepicker-btn" value="@Model.From.ToString("MMM dd,yyyy HH:mm")" />
                     </div>
                 </div>
                 <div class="input-field col l2 m3 s6">
@@ -54,7 +54,7 @@
                         @Html.LabelFor(m => m.To, ViewResource.To, new { @class = "active" })
                     </div>
                     <div class="calendar">
-                        <input type="text" name="To" id="ToDate" class="c-datepicker-btn" value="@Model.To.ToString("MMM dd,yyyy HH:mm")" />
+                        <input type="text" name="ToDate" id="ToDate" class="c-datepicker-btn" value="@Model.To.ToString("MMM dd,yyyy HH:mm")" />
                     </div>
                 </div>
                 <div class="input-field col l2 m3 s6">
@@ -119,9 +119,5 @@
 @Html.Hidden("HasEdit", Model.HasEdit ? 1 : 0)
 
 @section Foot {
-    @Scripts.Render("~/scripts/log-index")
-    <script type="text/javascript">            
-        var fromDate = new Date('@Model.From');
-        var toDate = new Date('@Model.To');
-    </script>
+    @Scripts.Render("~/scripts/log-index")    
 }

@@ -23,7 +23,6 @@
         private readonly AnnouncementRepository announcementRepository;
 
         private readonly IDictionary<string, Func<dynamic>> getValueRangeFunction;
-        private readonly int DefaultAnnoucementOrdinal = 30;
         private readonly string JsonPath = "App_Data\\announcementData.json";
 
         private readonly IEnumerable<string> languages;
@@ -93,8 +92,7 @@
                 announcement.Specifications = baseAnnouncementService.FiterOfferedSpecs(announcement.Specifications, excludedSpecifications);
                 return announcement;
             })
-            .OrderBy(announcement => announcement.Ordinal)
-            .ThenBy(announcement => announcement.CreatedDate);
+            .OrderBy(announcement => announcement.ReleasedDate);
         }
 
         public Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria)
@@ -112,10 +110,7 @@
         public Announcement GetDefaultAnnouncement()
            => new Announcement
            {
-               AnnouncementType = AnnouncementType.Popup,
-               FromDate = SystemTime.Today,
-               ToDate = SystemTime.Today,
-               Ordinal = DefaultAnnoucementOrdinal,
+               ReleasedDate = SystemTime.Now,               
                Environments = Enumerable.Empty<string>(),
                Systems = Enumerable.Empty<string>(),
                Contents = languages.Select(language => new MessageContent

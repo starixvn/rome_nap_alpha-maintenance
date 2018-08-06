@@ -1,9 +1,5 @@
 ﻿@model ComposeAnnouncementViewModel
 
-@{
-    var maxOrder = 30;
-}
-
 <div id="display-information-settings" class="display-information-settings">
     <div class="row">
         <div class="col l5 input-field">
@@ -41,37 +37,13 @@
         </div>
         }
     </div>
-
-    <div class="row radio-group">
-        <div class="input-field col s6">
-            <p class="radio">
-                <input class="with-gap" type="radio" name="group-popup" id="Announcement-Popup" value="@((int)AnnouncementType.Popup)" @(Model.Announcement.AnnouncementType.Equals(AnnouncementType.Popup) ? "checked" : string.Empty) />
-                <label for="Announcement-Popup">@AnnouncementResources.AnnouncementPopup</label>
-            </p>
-            <p class="radio">
-                <input class="with-gap" type="radio" name="group-popup" id="Header-Popup" value="@((int)AnnouncementType.HeaderPopup)" @(Model.Announcement.AnnouncementType.Equals(AnnouncementType.HeaderPopup) ? "checked" : string.Empty) />
-                <label for="Header-Popup">@AnnouncementResources.HeaderPopup</label>
-            </p>
-        </div>
-    </div>
-    <div class="row">
+    
+    <div class="row systems">
         <div class="input-field col s4">
-            <label class="active">@ViewResource.From</label>
-            <input type="text" name="FromDate" id="FromDate" class="datepicker" value="@Model.Announcement.FromDate.ToString("MMM dd,yyyy")" />
-        </div>
-        <div class="input-field col s4">
-            <label class="active">@ViewResource.To</label>
-            <input type="text" name="ToDate" id="ToDate" class="datepicker" value="@Model.Announcement.ToDate.ToString("MMM dd,yyyy")" />
-        </div>
-        <div class="input-field col s4">
-            <select name="order" id="group-order">
-                @for (int value = 1; value <= maxOrder; value++)
-                {
-                    <option value="@value" @(value.Equals(Model.Announcement.Ordinal) ? "selected" : string.Empty)>@value</option>
-                }
-            </select>
-            <label>@AnnouncementResources.Priority</label>
-        </div>
+            <label class="active">@ViewResource.ReleasedDate</label>
+            <input type="text" name="ReleasedDate" id="ReleasedDate" class="c-datepicker-btn" value="@Model.Announcement.ReleasedDate.ToString("MMM dd,yyyy HH:mm")" />
+        </div>       
+        
     </div>
 
     <div class="row">

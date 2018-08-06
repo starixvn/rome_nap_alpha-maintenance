@@ -1,4 +1,6 @@
-﻿"use strict";
+﻿declare var MaterialDatetimePicker;
+
+"use strict";
 
 interface JQuery {
     material_select(): void;
@@ -25,6 +27,7 @@ class ComposedAnnouncement {
     $divChooseSpecification: JQuery;
     $hiddenSpec: JQuery;
     $btnNext: JQuery;
+    $dpkFrom: JQuery;
     $btnPrev: JQuery;
     $btnSave: JQuery;
     $btnCopy: JQuery;
@@ -77,6 +80,7 @@ class ComposedAnnouncement {
     };
 
     cacheDom = () => {
+        this.$dpkFrom = this.$("#ReleasedDate");
         this.$divChooseSpecification = this.$("#div-choose-specification");
         this.$hiddenSpec = this.$('.hidden-specification');
         this.$btnNext = this.$(".btnNext");
@@ -112,6 +116,16 @@ class ComposedAnnouncement {
 
     bindEvent = () => {
         let self = this;
+        var fromDate = new Date(self.$dpkFrom.val());
+        var pickerFrom = new MaterialDatetimePicker({
+            default: fromDate
+        }).on('submit', function (d) {
+            self.$dpkFrom.val(d.format("MMM DD,YYYY HH:mm"));
+            }).on('close', function () { self.$dpkFrom.focus() });
+
+        self.$dpkFrom.on('click', function () {
+            pickerFrom.open();
+        });
 
         this.$btnNext.on('click', function () {
             self.$specSettingTab.click();
@@ -331,12 +345,9 @@ class ComposedAnnouncement {
             code: self.$("#txtcode").val().trim(),
             title: self.$("#txttitle").val().trim(),
             isActive: self.$("#ChkActive").is(":checked"),
-            announcementType: self.$('input[name=group-popup]:checked').val(),
             contents: self.getContents(),
             environments: self.getEnvironments(),
-            fromdate: self.$('#FromDate').val(),
-            todate: self.$('#ToDate').val(),
-            ordinal: self.$('#group-order option:selected').val(),
+            releasedDate: self.$('#ReleasedDate').val(),
             systems: self.getSystems(),
             specifications: self.getSpecs()
         };

@@ -98,23 +98,16 @@
                     @AnnouncementResources.Active
                 </th>
                 <th>
-                    @AnnouncementResources.FromDate
-                </th>
-                <th>
-                    @AnnouncementResources.ToDate
-                </th>
-                <th>
-                    @AnnouncementResources.Priority
-                </th>
+                    @AnnouncementResources.ReleasedDate
+                </th>               
+              
                 <th>
                     @AnnouncementResources.Environments
                 </th>
                 <th>
                     @AnnouncementResources.Systems
                 </th>
-                <th>
-                    @AnnouncementResources.Type
-                </th>
+                
                 <th>
                     @AnnouncementResources.CreatedDate
                 </th>
@@ -145,23 +138,16 @@
                             <span id="@announcement.Id" class="icon-check" data-checked="@announcement.IsActive"></span>
                         </td>
                         <td>
-                            @announcement.FromDate.ToString("MMM dd, yyyy")
-                        </td>
-                        <td>
-                            @announcement.ToDate.ToString("MMM dd, yyyy")
-                        </td>
-                        <td>
-                            @announcement.Ordinal
-                        </td>
+                            @announcement.ReleasedDate.ToString("MMM dd, yyyy")
+                        </td>                        
+                      
                         <td>
                             @String.Join(", ", announcement.Environments.ToArray())
                         </td>
                         <td>
                             @String.Join(", ", announcement.Systems.ToArray())
                         </td>
-                        <td>
-                            @announcement.AnnouncementType
-                        </td>
+                        
                         <td>
                             @announcement.CreatedDate.ToString("MMM dd, yyyy")
                         </td>
@@ -176,7 +162,7 @@
             else
             {
                 <tr>
-                    <td colspan="11" class="no-data">@AnnouncementResources.NoInformation</td>
+                    <td colspan="8" class="no-data">@AnnouncementResources.NoInformation</td>
                 </tr>
             }
 

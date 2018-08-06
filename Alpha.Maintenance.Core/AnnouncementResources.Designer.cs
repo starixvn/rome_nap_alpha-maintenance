@@ -367,6 +367,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Released Date.
+        /// </summary>
+        public static string ReleasedDate {
+            get {
+                return ResourceManager.GetString("ReleasedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SAVE.
         /// </summary>
         public static string Save {

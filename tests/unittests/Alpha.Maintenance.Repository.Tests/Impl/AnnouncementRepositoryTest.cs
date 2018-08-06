@@ -141,10 +141,7 @@
                 Code = "07032017",
                 Title = "07032017 - Example",
                 IsActive = false,
-                AnnouncementType = AnnouncementType.HeaderPopup,
-                FromDate = new DateTime(2017, 6, 3),
-                ToDate = new DateTime(2017, 7, 20),
-                Ordinal = 4,
+                ReleasedDate = new DateTime(2017, 6, 3),                
                 Environments = environments.Split(",".ToCharArray(),
                                         StringSplitOptions.RemoveEmptyEntries)
                                         .Select(system => system.Trim()),
