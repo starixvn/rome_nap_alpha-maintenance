@@ -46,7 +46,7 @@
                         @Html.LabelFor(m => m.From, ViewResource.From, new { @class = "active" })
                     </div>
                     <div class="calendar">
-                        <input type="text" name="FromDate" id="FromDate" class="c-datepicker-btn" value="@Model.From.ToString("MMM dd,yyyy HH:mm")" />
+                        <input readonly type="text" name="FromDate" id="FromDate" class="c-datepicker-btn" value="@Model.From.ToString("MMM dd,yyyy HH:mm")" />
                     </div>
                 </div>
                 <div class="input-field col l2 m3 s6">
