@@ -30,12 +30,12 @@
         private readonly bool? getAnnouncementsByJson;
 
         public AnnouncementServiceImpl()
-            : this(null, null, null, null, null)
+            : this(null)
         {
         }
 
         public AnnouncementServiceImpl(
-            SpecificationFactory specificationFactory = null,
+            SpecificationFactory specificationFactory,
             AnnouncementRepository announcementRepository = null,
             BaseAnnouncementService baseAnnouncementService = null,
             IEnumerable<string> languages = null,

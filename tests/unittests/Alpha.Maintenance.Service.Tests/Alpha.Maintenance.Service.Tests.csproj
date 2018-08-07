@@ -34,10 +34,6 @@
       <HintPath>..\..\..\packages\Alpha.Announcements.1.0.0.2\lib\net40\Alpha.Announcements.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Alpha.Announcements.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Alpha.Maintenance.Controller\bin\Debug\Alpha.Announcements.Client.dll</HintPath>
-    </Reference>
     <Reference Include="Fanex.Caching, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Fanex.Caching.2.1.0\lib\net452\Fanex.Caching.dll</HintPath>
       <Private>True</Private>
