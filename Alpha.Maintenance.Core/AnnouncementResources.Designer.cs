@@ -106,6 +106,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Normal.
+        /// </summary>
+        public static string AnnouncementNormal {
+            get {
+                return ResourceManager.GetString("AnnouncementNormal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Popup.
         /// </summary>
         public static string AnnouncementPopup {
@@ -241,11 +250,29 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Emergency Popup.
+        /// </summary>
+        public static string EmergencyPopup {
+            get {
+                return ResourceManager.GetString("EmergencyPopup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Environments.
         /// </summary>
         public static string Environments {
             get {
                 return ResourceManager.GetString("Environments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expiration Date.
+        /// </summary>
+        public static string ExpiredDate {
+            get {
+                return ResourceManager.GetString("ExpiredDate", resourceCulture);
             }
         }
         
@@ -349,6 +376,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Popup.
+        /// </summary>
+        public static string Popup {
+            get {
+                return ResourceManager.GetString("Popup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Prev.
         /// </summary>
         public static string Prev {
@@ -367,7 +403,7 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Released Date.
+        ///   Looks up a localized string similar to Release Date.
         /// </summary>
         public static string ReleasedDate {
             get {

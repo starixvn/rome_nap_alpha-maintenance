@@ -63,14 +63,7 @@ namespace Alpha.Maintenance.Site.App_Start
                "~/Assets/scripts/lib/Fanex.Grid/Fanex.Pagination.js",
                "~/Assets/scripts/lib/Momentjs/moment.js",
                "~/Assets/scripts/lib/Select2/select2.js",
-               "~/Areas/DatabaseProfiler/scripts/Index.js"));
-
-            bundles.Add(new ScriptBundle("~/scripts/compose-announcement").Include(               
-               "~/Assets/scripts/lib/Momentjs/moment.js",
-               "~/Assets/scripts/lib/material-datetime-picker/rome.js",
-               "~/Assets/scripts/lib/Select2/select2.js",               
-               "~/Assets/scripts/lib/material-datetime-picker/material-datetime-picker.js",
-               "~/Assets/scripts/Announcement/compose-messages.js"));
+               "~/Areas/DatabaseProfiler/scripts/Index.js"));            
             
         }
     }

@@ -81,7 +81,7 @@
                     };
                 }
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return new Result
                 {
@@ -124,8 +124,9 @@
 
             return new Announcement
             {
+                AnnouncementType = reader.IsDBNull("AnnouncementType") ? AnnouncementType.Normal : (AnnouncementType)reader.ToInt("AnnouncementType"),
                 Code = reader.ToString("Code"),
-                Contents = JsonConvert.DeserializeObject<IEnumerable<MessageContent>>(plainText),                
+                Contents = JsonConvert.DeserializeObject<IEnumerable<MessageContent>>(plainText),
                 Environments = reader.ToString("Environments").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
                                         .Select(environment => environment.Trim()),
                 Id = reader.ToInt("Id"),
@@ -137,6 +138,7 @@
                                     .Select(system => system.Trim()),
                 Title = reader.ToString("Title"),
                 ReleasedDate = reader.ToDateTime("FromDate"),
+                ExpiredDate = reader.ToDateTime("ToDate"),
                 CreatedDate = reader.ToDateTime("CreatedDate"),
                 CreatorId = reader.ToInt("CreatorId"),
                 CreatorName = reader.ToString("CreatorName"),

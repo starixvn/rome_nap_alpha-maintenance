@@ -110,14 +110,16 @@
         public Announcement GetDefaultAnnouncement()
            => new Announcement
            {
-               ReleasedDate = SystemTime.Now,               
+               ReleasedDate = SystemTime.Today,
+               ExpiredDate = SystemTime.Today,
+               AnnouncementType = AnnouncementType.Normal,
                Environments = Enumerable.Empty<string>(),
                Systems = Enumerable.Empty<string>(),
                Contents = languages.Select(language => new MessageContent
-                           {
-                               LanguageKey = language,
-                               Text = string.Empty
-                           }),
+               {
+                   LanguageKey = language,
+                   Text = string.Empty
+               }),
                IsActive = false,
                Specifications = new List<ISpecification<IParam>>()
            };

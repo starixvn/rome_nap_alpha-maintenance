@@ -30,6 +30,8 @@
             new UserLevel(4, "Super")
         };
 
+        public bool IsPopup => Announcement != null && Announcement.AnnouncementType == AnnouncementType.EmergencyPopup;
+
         public ActionType ActionType { get; set; } = ActionType.Create;
 
         private IEnumerable<ISpecification<IParam>> FilterNotExistedSpecs(

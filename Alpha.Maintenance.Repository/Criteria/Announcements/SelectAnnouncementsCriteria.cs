@@ -10,8 +10,11 @@
         [Description("Created Date")]
         CreatedDate = 1,
 
-        [Description("Released Date")]
-        ExpiredDate = 2
+        [Description("Release Date")]
+        ReleasedDate = 2,
+
+        [Description("Expiration Date")]
+        ExpiredDate = 3
     }
 
     public class SelectAnnouncementsCriteria : CriteriaBase
@@ -29,9 +32,7 @@
         [SpParam(Ignored = true)]
         public FilterBy FilterBy { get; set; } = FilterBy.CreatedDate;
 
-        public override string GetSettingKey() 
-            => FilterBy.Equals(FilterBy.CreatedDate) 
-            ? "Age_Announcements_SelectByCreatedDate" : "Age_Announcements_Select";
+        public override string GetSettingKey() => "Age_Announcements_Select";
 
         public override bool IsValid() => FromDate <= ToDate;
     }

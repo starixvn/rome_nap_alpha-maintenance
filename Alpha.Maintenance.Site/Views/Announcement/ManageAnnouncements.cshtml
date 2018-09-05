@@ -19,7 +19,7 @@
     <section id="filter-bar">
         <div class="filter-form row">
             <div class="input-field col s2">
-                @Html.EnumDropDownList("FilterBy", Model.FilterBy)
+                @Html.EnumDropDownList("FilterBy", Model.SearchBy)
                 <label>@AnnouncementResources.FilterBy</label>
             </div>
             <div class="input-field col s2">
@@ -72,15 +72,15 @@
 
 <div class="table">
     <div class="col button-block">
-        <span class="waves-effect waves-light btn btn-outline" id="btn-exportAll" >
+        <span class="waves-effect waves-light btn btn-outline" id="btn-exportAll">
             <span class="icon-button icon-file-export"></span>
             <input type="submit" value="Export" />
-        </span>       
+        </span>
         <a class="btn btn-outline waves-effect waves-light btn-import">
             <span class="icon-button icon-file-import"></span>
             @AnnouncementResources.Import
         </a>
-        <a class="waves-effect waves-light btn btn-outline"  href="@Url.Action("ComposeMessage", "Announcement")">
+        <a class="waves-effect waves-light btn btn-outline" href="@Url.Action("ComposeMessage", "Announcement")">
             <span class="icon-button icon-plus-box"></span>
             <input type="button" value="@AnnouncementResources.Add" id="add" />
         </a>
@@ -99,15 +99,21 @@
                 </th>
                 <th>
                     @AnnouncementResources.ReleasedDate
-                </th>               
-              
+                </th>
+                <th>
+                    @AnnouncementResources.ExpiredDate
+                </th>
                 <th>
                     @AnnouncementResources.Environments
                 </th>
                 <th>
                     @AnnouncementResources.Systems
                 </th>
-                
+
+                <th>
+                    @AnnouncementResources.Popup
+                </th>
+
                 <th>
                     @AnnouncementResources.CreatedDate
                 </th>
@@ -132,24 +138,28 @@
                         <td>
                             @announcement.Code
                         </td>
-                        <td class="checkbox">
-                            @*<input type="checkbox" id="@announcement.Id" checked="@announcement.IsActive" disabled />
-                                <label for="@announcement.Id"></label>*@
+                        <td class="checkbox">                            
                             <span id="@announcement.Id" class="icon-check" data-checked="@announcement.IsActive"></span>
                         </td>
                         <td>
-                            @announcement.ReleasedDate.ToString("MMM dd, yyyy")
-                        </td>                        
-                      
+                            @announcement.ReleasedDate.ToShortDate()
+                        </td>
+                        <td>
+                            @Model.FormatExpireDate(announcement.AnnouncementType, announcement.ExpiredDate)
+                        </td>
                         <td>
                             @String.Join(", ", announcement.Environments.ToArray())
                         </td>
                         <td>
                             @String.Join(", ", announcement.Systems.ToArray())
                         </td>
-                        
+
                         <td>
-                            @announcement.CreatedDate.ToString("MMM dd, yyyy")
+                            @(announcement.AnnouncementType == AnnouncementType.EmergencyPopup ? "Yes" : "No")
+                        </td>
+
+                        <td>
+                            @announcement.CreatedDate.ToShortDate()
                         </td>
                         <td class="text-align-center">
                             <a href="@Url.Action("ExportAnAnnouncement", "Announcement", new { Id = announcement.Id })"
@@ -165,7 +175,6 @@
                     <td colspan="8" class="no-data">@AnnouncementResources.NoInformation</td>
                 </tr>
             }
-
         </tbody>
     </table>
 </div>
