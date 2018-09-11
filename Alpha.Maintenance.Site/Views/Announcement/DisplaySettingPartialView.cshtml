@@ -24,26 +24,38 @@
                     <li class="tab language-tab"><a href="#div-@content.LanguageKey">@content.LanguageKey</a></li>
                 }
             </ul>
-        </div>       
+        </div>
 
         @foreach (var content in Model.Announcement.Contents)
         {
-        <div id="div-@content.LanguageKey" class="language-content">
-            <textarea name="group-contents" id="@content.LanguageKey" class="jqte-test">@content.Text</textarea>
-            <div class="input-field col s12">                    
-                <input type="text" id="txtannouncement-url" value="@content.Url" />
-                <label for="txtannouncement-url">@AnnouncementResources.AnnouncementUrl</label>
+            <div id="div-@content.LanguageKey" class="language-content">
+                <textarea name="group-contents" id="@content.LanguageKey" class="jqte-test">@content.Text</textarea>
+                <div class="input-field col s12">
+                    <input type="text" id="txtannouncement-url" value="@content.Url" />
+                    <label for="txtannouncement-url">@AnnouncementResources.AnnouncementUrl</label>
+                </div>
             </div>
-        </div>
         }
     </div>
-    
+
+    <div class="row systems">
+        <div class="col s2 checkbox">
+            <input type="checkbox" id="IsPopup" @(Model.IsPopup ? "checked" : string.Empty) />
+            <label for="IsPopup">@ViewResource.IsPopup</label>
+        </div>
+        <input type="hidden" id="EmergencyPopupId" value="@((int)AnnouncementType.EmergencyPopup)" />
+        <input type="hidden" id="NormalAnnouncementId" value="@((int)AnnouncementType.Normal)" />
+    </div>
+
     <div class="row systems">
         <div class="input-field col s4">
             <label class="active">@ViewResource.ReleasedDate</label>
-            <input type="text" name="ReleasedDate" id="ReleasedDate" class="c-datepicker-btn" value="@Model.Announcement.ReleasedDate.ToString("MMM dd,yyyy HH:mm")" />
-        </div>       
-        
+            <input type="text" name="ReleasedDate" id="ReleasedDate" class="c-datepicker-btn" value="@Model.Announcement.ReleasedDate.ToLongDate()" />
+        </div>
+        <div class="input-field col s4 @(Model.IsPopup ? string.Empty: "hide") " id="expiredDateSection">
+            <label class="active">@AnnouncementResources.ExpiredDate</label>
+            <input type="text" name="ExpiredDate" id="ExpiredDate" class="c-datepicker-btn" value="@Model.Announcement.ExpiredDate.ToLongDate()" />
+        </div>
     </div>
 
     <div class="row">

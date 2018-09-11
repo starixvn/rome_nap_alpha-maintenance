@@ -34,7 +34,7 @@
                     System = request.System,
                     Environment = request.Environment,
                     IsActive = true,
-                    FilterBy = FilterBy.ExpiredDate
+                    FilterBy = FilterBy.ReleasedDate
                 });
     }
 

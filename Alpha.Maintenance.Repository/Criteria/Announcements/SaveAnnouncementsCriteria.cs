@@ -2,6 +2,7 @@
 {
     using System;
     using Fanex.Data.Repository;
+    using Alpha.Announcements.Models;
 
     public enum ActionType
     {
@@ -11,18 +12,26 @@
 
     public class SaveAnnouncementsCriteria : CriteriaBase
     {
+        [SpParam(SqlParamName = "AnnouncementType")]
+        public int Type => IsPopup ? (int)AnnouncementType.EmergencyPopup : (int)AnnouncementType.Normal;
+
+        [SpParam(Ignored = true)]
+        public bool IsPopup { get; set; }
+
+        public DateTime ExpiredDate { get; set; }
+
         public string Code { get; set; }
 
         public string Title { get; set; }
 
-        public bool IsActive { get; set; }        
+        public bool IsActive { get; set; }
 
-        public DateTime ReleasedDate { get; set; }        
+        public DateTime ReleasedDate { get; set; }
 
         public string Environments { get; set; }
 
         public string Systems { get; set; }
-        
+
         public string Contents { get; set; }
 
         public string Specifications { get; set; }

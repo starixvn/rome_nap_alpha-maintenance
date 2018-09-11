@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using Announcements.Models;
     using Core;
+    using Core.Extension;
     using Repository.Criteria.Announcements;
 
     public class ManageAnnouncementsViewModel
@@ -16,8 +17,11 @@
 
         public string System { get; set; }
 
-        public FilterBy FilterBy { get; set; } = FilterBy.CreatedDate;
+        public FilterBy SearchBy { get; set; } = FilterBy.CreatedDate;
 
-        public IEnumerable<Announcement> Announcements { get; set; }
+        public IEnumerable<Announcement> Announcements { get; set; }       
+
+        public string FormatExpireDate(AnnouncementType? announcementType, DateTime expiredDate)
+            => announcementType == AnnouncementType.EmergencyPopup ? expiredDate.ToShortDate() : string.Empty;
     }
 }

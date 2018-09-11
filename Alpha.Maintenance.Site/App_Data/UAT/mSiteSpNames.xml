@@ -13,7 +13,10 @@
   </Function>
 
   <Function Name="Announcements">
-    <Setting Key="Age_Announcements_Select" SpName="Age_Announcements_Select" DbName="DBMSG.bodb_Message.bodbAdminNet" />
+    <Setting Key="Age_Announcements_Select" SpName="Age_Announcements_Select" DbName="DBMSG.bodb_Message.bodbAdminNet" >
+      <Mapping DataField="FromDate" ObjectProperty="ReleasedDate" />
+      <Mapping DataField="ToDate" ObjectProperty="ExpiredDate" />
+    </Setting>
     <Setting Key="Age_Announcements_Insert" SpName="Age_Announcements_Insert" DbName="DBMSG.bodb_Message.bodbAdminNet" />
     <Setting Key="Age_Announcements_SelectById" SpName="Age_Announcements_SelectById" DbName="DBMSG.bodb_Message.bodbAdminNet" />
     <Setting Key="Age_Announcements_SelectByCreatedDate" SpName="Age_Announcements_SelectByCreatedDate" DbName="DBMSG.bodb_Message.bodbAdminNet" />

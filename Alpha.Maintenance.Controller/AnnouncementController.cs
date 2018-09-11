@@ -64,6 +64,7 @@
                     ToDate = criteria.ToDate,
                     Environment = criteria.Environment,
                     System = criteria.System,
+                    SearchBy = criteria.FilterBy,
                     Announcements = announcementService.GetAnnouncements(criteria)
                 });
 
@@ -94,10 +95,12 @@
                     Title = demand.IsCopy ? $"Copy of {demand.DeserializeAnnouncement.Title}"
                                             : demand.DeserializeAnnouncement.Title,
                     IsActive = demand.IsCopy ? preventedActive : demand.DeserializeAnnouncement.IsActive,
+                    IsPopup = demand.IsPopup,
                     CreatedDate = SystemTime.Today,
                     ReleasedDate = demand.DeserializeAnnouncement.ReleasedDate,
+                    ExpiredDate = demand.IsPopup ? demand.DeserializeAnnouncement.ExpiredDate : demand.DeserializeAnnouncement.ReleasedDate,
                     Environments = demand.IsCopy ? emptyEnvironments : demand.Environments,
-                    Systems = demand.Systems,                    
+                    Systems = demand.Systems,
                     Contents = demand.EncodedContents,
                     Specifications = JsonConvert.SerializeObject(demand.DeserializeAnnouncement.Specifications),
                     CreatorId = CurrentSession.UserId,
@@ -117,9 +120,11 @@
                       Code = demand.DeserializeAnnouncement.Code,
                       Title = demand.DeserializeAnnouncement.Title,
                       IsActive = demand.DeserializeAnnouncement.IsActive,
+                      IsPopup = demand.IsPopup,
                       ReleasedDate = demand.DeserializeAnnouncement.ReleasedDate,
+                      ExpiredDate = demand.IsPopup ? demand.DeserializeAnnouncement.ExpiredDate : demand.DeserializeAnnouncement.ReleasedDate,
                       Environments = demand.Environments,
-                      Systems = demand.Systems,                      
+                      Systems = demand.Systems,
                       Contents = demand.EncodedContents,
                       Specifications = JsonConvert.SerializeObject(demand.DeserializeAnnouncement.Specifications),
                       LastEditDate = SystemTime.Today,
@@ -157,17 +162,19 @@
 
             var resuts = new List<Result>();
 
-            foreach(var announcement in announcements)
+            foreach (var announcement in announcements)
             {
                 resuts.Add(announcementService.SaveAnnouncement(new InsertAnnouncementsCriteria
                 {
                     Code = announcement.Code,
                     Title = $"Import of {announcement.Title}",
                     IsActive = preventedActive,
+                    IsPopup = announcement.AnnouncementType == AnnouncementType.EmergencyPopup,
                     CreatedDate = SystemTime.Today,
                     ReleasedDate = announcement.ReleasedDate,
+                    ExpiredDate = announcement.ExpiredDate,
                     Environments = emptyEnvironments,
-                    Systems = String.Join(", ", announcement.Systems.ToArray()),                    
+                    Systems = String.Join(", ", announcement.Systems.ToArray()),
                     Contents = Convert.ToBase64String(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(announcement.Contents))),
                     Specifications = JsonConvert.SerializeObject(announcement.Specifications),
                     CreatorId = CurrentSession.UserId,
@@ -175,7 +182,7 @@
                 }));
 
             }
-           
+
             return new JsonNetResult
             {
                 Data = resuts,

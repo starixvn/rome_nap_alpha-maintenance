@@ -256,6 +256,18 @@
     <value>Submit</value>
   </data>
   <data name="ReleasedDate" xml:space="preserve">
-    <value>Released Date</value>
+    <value>Release Date</value>
+  </data>
+  <data name="ExpiredDate" xml:space="preserve">
+    <value>Expiration Date</value>
+  </data>
+  <data name="EmergencyPopup" xml:space="preserve">
+    <value>Emergency Popup</value>
+  </data>
+  <data name="AnnouncementNormal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Popup" xml:space="preserve">
+    <value>Popup</value>
   </data>
 </root>

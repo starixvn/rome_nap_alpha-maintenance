@@ -1015,6 +1015,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show Popup.
+        /// </summary>
+        public static string IsPopup {
+            get {
+                return ResourceManager.GetString("IsPopup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Is Production.
         /// </summary>
         public static string IsProduction {

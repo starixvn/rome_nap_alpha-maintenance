@@ -27,7 +27,8 @@ class ComposedAnnouncement {
     $divChooseSpecification: JQuery;
     $hiddenSpec: JQuery;
     $btnNext: JQuery;
-    $dpkFrom: JQuery;
+    $dpkReleasedDate: JQuery;
+    $dpkExpiredDate: JQuery;
     $btnPrev: JQuery;
     $btnSave: JQuery;
     $btnCopy: JQuery;
@@ -80,7 +81,8 @@ class ComposedAnnouncement {
     };
 
     cacheDom = () => {
-        this.$dpkFrom = this.$("#ReleasedDate");
+        this.$dpkReleasedDate = this.$("#ReleasedDate");
+        this.$dpkExpiredDate = this.$("#ExpiredDate");
         this.$divChooseSpecification = this.$("#div-choose-specification");
         this.$hiddenSpec = this.$('.hidden-specification');
         this.$btnNext = this.$(".btnNext");
@@ -116,15 +118,26 @@ class ComposedAnnouncement {
 
     bindEvent = () => {
         let self = this;
-        var fromDate = new Date(self.$dpkFrom.val());
-        var pickerFrom = new MaterialDatetimePicker({
-            default: fromDate
+        var releasedDate = new Date(self.$dpkReleasedDate.val());
+        var pickerReleasedDate = new MaterialDatetimePicker({
+            default: releasedDate
         }).on('submit', function (d) {
-            self.$dpkFrom.val(d.format("MMM DD,YYYY HH:mm"));
-            }).on('close', function () { self.$dpkFrom.focus() });
+            self.$dpkReleasedDate.val(d.format("MMM DD,YYYY HH:mm"));
+        }).on('close', function () { self.$dpkReleasedDate.focus() });
 
-        self.$dpkFrom.on('click', function () {
-            pickerFrom.open();
+        self.$dpkReleasedDate.on('click', function () {
+            pickerReleasedDate.open();
+        });
+
+        var expiredDate = new Date(self.$dpkExpiredDate.val());
+        var pickerExpiredDate = new MaterialDatetimePicker({
+            default: expiredDate
+        }).on('submit', function (d) {
+            self.$dpkExpiredDate.val(d.format("MMM DD,YYYY HH:mm"));
+        }).on('close', function () { self.$dpkExpiredDate.focus() });
+
+        self.$dpkExpiredDate.on('click', function () {
+            pickerExpiredDate.open();
         });
 
         this.$btnNext.on('click', function () {
@@ -172,6 +185,14 @@ class ComposedAnnouncement {
 
         this.$("select[name='dll-specification-value']").on('change', function () {
             self.validateSpecificationInput();
+        });
+
+        this.$("#IsPopup").on('change', function () {
+            if (this.checked) {
+                self.$("#expiredDateSection").removeClass("hide");
+            } else {
+                self.$("#expiredDateSection").addClass("hide");
+            }
         });
     };
 
@@ -344,10 +365,12 @@ class ComposedAnnouncement {
             id: self.$('#announcementId').val(),
             code: self.$("#txtcode").val().trim(),
             title: self.$("#txttitle").val().trim(),
+            announcementType: self.$("#IsPopup").is(":checked") ? self.$("#EmergencyPopupId").val() : self.$("#NormalAnnouncementId").val(),
             isActive: self.$("#ChkActive").is(":checked"),
             contents: self.getContents(),
             environments: self.getEnvironments(),
             releasedDate: self.$('#ReleasedDate').val(),
+            expiredDate: self.$('#ExpiredDate').val(),
             systems: self.getSystems(),
             specifications: self.getSpecs()
         };

@@ -876,4 +876,7 @@
   <data name="ReleasedDate" xml:space="preserve">
     <value>Released Date</value>
   </data>
+  <data name="IsPopup" xml:space="preserve">
+    <value>Show Popup</value>
+  </data>
 </root>
