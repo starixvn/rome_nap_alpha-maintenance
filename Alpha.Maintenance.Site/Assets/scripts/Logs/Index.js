@@ -40,7 +40,7 @@ var Logs = (function ($) {
             Logs.hasEditRight = $('#HasEdit').val() == 1;
             Logs.ddlTimeZone = $('#ToGMT');
             Logs.lblTimeZone = $('#timeZone');
-            Logs.pagers = $('#pagination-1,#pagination-2');           
+            Logs.pagers = $('#pagination-1,#pagination-2');
  
             
             var pickerFrom = new MaterialDatetimePicker({
@@ -48,7 +48,9 @@ var Logs = (function ($) {
             }).on('submit', function (d) {
                 Logs.dpkFrom.val(d.format("MMM DD,YYYY HH:mm"));
             }).on('close', function () {
-                if (Logs.dpkTo.val() <= Logs.dpkFrom.val()) {
+                var toDate = new Date(Logs.dpkTo.val());
+                var fromDate = new Date(Logs.dpkFrom.val());
+                if (toDate <= fromDate) {
                     var newFrom = moment((new Date(Logs.dpkTo.val())).toISOString());
                     newFrom.add(-1, 'days');
                     Logs.dpkFrom.val(newFrom.format("MMM DD,YYYY HH:mm"));
@@ -61,7 +63,9 @@ var Logs = (function ($) {
             }).on('submit', function (d) {
                 Logs.dpkTo.val(d.format("MMM DD,YYYY HH:mm"));
             }).on('close', function () {
-                if (Logs.dpkTo.val() <= Logs.dpkFrom.val()) {                    
+                var toDate = new Date(Logs.dpkTo.val());
+                var fromDate = new Date(Logs.dpkFrom.val());
+                if (toDate <= fromDate) {
                     var newTo = moment((new Date(Logs.dpkFrom.val())).toISOString());
                     newTo.add(1, 'days');
                     Logs.dpkTo.val(newTo.format("MMM DD,YYYY HH:mm"));
