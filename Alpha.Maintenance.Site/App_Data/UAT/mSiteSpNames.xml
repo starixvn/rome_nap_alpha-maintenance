@@ -31,8 +31,8 @@
   </Function>
 
   <Function Name="SuperLimitDate">
-    <Setting Key="Acc_CustomerDateLimitSel" SpName="Acc_CustomerDateLimitSel" DbName="DBAGE.bodb_AGE.BODBDownlineNet" />
-    <Setting Key="Acc_CustomerDateLimitDel" SpName="Acc_CustomerDateLimitDel" DbName="DBAGE.bodb_AGE.BODBDownlineNet" />
-    <Setting Key="Acc_CustomerDateLimitIns" SpName="Acc_CustomerDateLimitIns" DbName="DBAGE.bodb_AGE.BODBDownlineNet" />
+    <Setting Key="Acc_CustomerDateLimitSel" SpName="Acc_CustomerDateLimitSel" DbName="DBCust.CustDB.BODBDownlineNet" />
+    <Setting Key="Acc_CustomerDateLimitDel" SpName="Acc_CustomerDateLimitDel" DbName="DBCust.CustDB.BODBDownlineNet" />
+    <Setting Key="Acc_CustomerDateLimitIns" SpName="Acc_CustomerDateLimitIns" DbName="DBCust.CustDB.BODBDownlineNet" />
   </Function>
 </Functions>
