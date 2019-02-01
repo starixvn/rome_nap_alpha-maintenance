@@ -50,6 +50,7 @@
                                                             "vi-VN",
                                                             "zh-CN",
                                                             "zh-TW",
+                                                            "zh-Hans",
                                                             "th-TH",
                                                             "ko-KR",
                                                             "ja-JP"
