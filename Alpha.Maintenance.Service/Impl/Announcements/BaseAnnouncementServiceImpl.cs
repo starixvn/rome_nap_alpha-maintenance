@@ -26,7 +26,7 @@
                 => languages.Select(
                         language =>
                         {
-                            var existedContent = contents.Single(content => content.LanguageKey.Equals(language, StringComparison.OrdinalIgnoreCase));
+                            var existedContent = contents.SingleOrDefault(content => content.LanguageKey.Equals(language, StringComparison.OrdinalIgnoreCase));
 
                             return existedContent ?? new MessageContent
                             {
@@ -36,7 +36,6 @@
                                 IsDisplayingByUrl = false
                             };
                         });
-
 
         public IEnumerable<ISpecification<IParam>> FiterOfferedSpecs(
             IEnumerable<ISpecification<IParam>> factorySpecs,
@@ -49,6 +48,5 @@
                     SpecificationsCacheKey,
                     () => specificationFactory.LoadSpecifications(),
                     new CacheItemOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(SpecificationFactoryCacheTime)));
-
     }
 }

@@ -27,7 +27,8 @@
         {
             new UserLevel(2, "Agent"),
             new UserLevel(3, "Master"),
-            new UserLevel(4, "Super")
+            new UserLevel(4, "Super"),
+            new UserLevel(0, "Headline")
         };
 
         public bool IsPopup => Announcement != null && Announcement.AnnouncementType == AnnouncementType.EmergencyPopup;

@@ -301,6 +301,9 @@
     <Content Include="App_Data\announcementConfig.pro.json">
       <DependentUpon>announcementConfig.json</DependentUpon>
     </Content>
+    <Content Include="App_Data\announcementConfig.sit.json">
+      <DependentUpon>announcementConfig.json</DependentUpon>
+    </Content>
     <Content Include="App_Data\announcementConfig.uat.json">
       <DependentUpon>announcementConfig.json</DependentUpon>
     </Content>
