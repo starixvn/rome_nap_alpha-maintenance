@@ -76,4 +76,12 @@
 		<Ip>10.40.40.82</Ip>
 		<Name>DB042</Name>
 	</Server>
+  <Server>
+    <Ip>10.40.40.93</Ip>
+    <Name>DB05BK1</Name>
+  </Server>
+  <Server>
+    <Ip>10.40.40.91</Ip>
+    <Name>DB061</Name>
+  </Server>
 </Servers>
