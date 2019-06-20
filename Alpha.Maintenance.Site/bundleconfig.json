@@ -29,5 +29,11 @@
       "Assets/scripts/SuperLimitDate/index.js",
       "Assets/scripts/lib/Fanex.Grid/Fanex.Pagination.js"
     ]
+  },
+  {
+    "outputFileName": "Assets/bundles/Couchbase/CouchbaseManagement.js",
+    "inputFiles": [
+      "Assets/scripts/AdminTools/Couchbase/CouchbaseManagement.js"
+    ]
   }
 ]

@@ -51,4 +51,6 @@ public static class SiteFunctionKeys
 
     public const string SuperLimitDate = "SuperLimitDate";
 
+    public const string Couchbase = "Couchbase";
+
 }
