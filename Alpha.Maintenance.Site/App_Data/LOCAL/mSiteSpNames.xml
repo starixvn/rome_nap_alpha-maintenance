@@ -5,7 +5,7 @@
     <Setting Key="Logging_Sel_Padding" SpName="IS_SelLogPadding_All" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
     <Setting Key="Logging_Del" SpName="IS_DeleteLog" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
     <Setting Key="Logging_Monitor" SpName="Acc_AppLog_MonitorLogUpd" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
-    <Setting Key="Logging_Machine_SelectAll" SpName="IS_SelLogMachine_ALL" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet"  />
+    <Setting Key="Logging_Machine_SelectAll" SpName="IS_SelLogMachine_ALL" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
     <Setting Key="Logging_Machine_ByType" SpName="IS_SelLogMachine_ByType" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
     <Setting Key="Logging_Machine_ById" SpName="IS_SelLogMachine_ById" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
     <Setting Key="Logging_InsertMachine" SpName="Acc_AppLog_MachineIns" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
@@ -13,7 +13,7 @@
   </Function>
 
   <Function Name="Announcements">
-    <Setting Key="Age_Announcements_Select" SpName="Age_Announcements_Select" DbName="DBMSG.bodb_Message.bodbAdminNet" >
+    <Setting Key="Age_Announcements_Select" SpName="Age_Announcements_Select" DbName="DBMSG.bodb_Message.bodbAdminNet">
       <Mapping DataField="FromDate" ObjectProperty="ReleasedDate" />
       <Mapping DataField="ToDate" ObjectProperty="ExpiredDate" />
     </Setting>
@@ -28,6 +28,7 @@
   </Function>
   <Function Name="IPInformation">
     <Setting Key="Acc_GetIPInfo_Full" SpName="Acc_GetIPInfo_Full" DbName="IPEntities" />
+    <Setting Key="Acc_GetIPInfo_TableMini" SpName="Acc_GetIPInfo_TableMini" DbName="IPEntities" />
   </Function>
 
   <Function Name="SuperLimitDate">
