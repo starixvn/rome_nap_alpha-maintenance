@@ -879,4 +879,13 @@
   <data name="IsPopup" xml:space="preserve">
     <value>Show Popup</value>
   </data>
+  <data name="Admin_Tools" xml:space="preserve">
+    <value>Admin Tools</value>
+  </data>
+  <data name="Couchbase_Management" xml:space="preserve">
+    <value>Couchbase Management</value>
+  </data>
+  <data name="Get" xml:space="preserve">
+    <value>Get</value>
+  </data>
 </root>

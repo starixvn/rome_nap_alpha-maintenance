@@ -19,7 +19,7 @@ namespace Alpha.Maintenance.Core {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class ViewResource {
@@ -111,6 +111,15 @@ namespace Alpha.Maintenance.Core {
         public static string AddSuccessMsg {
             get {
                 return ResourceManager.GetString("AddSuccessMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Admin Tools.
+        /// </summary>
+        public static string Admin_Tools {
+            get {
+                return ResourceManager.GetString("Admin_Tools", resourceCulture);
             }
         }
         
@@ -372,6 +381,15 @@ namespace Alpha.Maintenance.Core {
         public static string ConnectionString {
             get {
                 return ResourceManager.GetString("ConnectionString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Couchbase Management.
+        /// </summary>
+        public static string Couchbase_Management {
+            get {
+                return ResourceManager.GetString("Couchbase_Management", resourceCulture);
             }
         }
         
@@ -876,6 +894,15 @@ namespace Alpha.Maintenance.Core {
         public static string Function_Name {
             get {
                 return ResourceManager.GetString("Function_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get.
+        /// </summary>
+        public static string Get {
+            get {
+                return ResourceManager.GetString("Get", resourceCulture);
             }
         }
         

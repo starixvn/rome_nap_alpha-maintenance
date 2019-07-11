@@ -32,6 +32,7 @@
     <UseGlobalApplicationHostFile />
     <TypeScriptToolsVersion>2.7</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -77,12 +78,18 @@
     <Reference Include="Common.Logging">
       <HintPath>..\_Dependencies\MailStation\Common.Logging.dll</HintPath>
     </Reference>
+    <Reference Include="Couchbase, Version=1.2.6.0, Culture=neutral, PublicKeyToken=05e9c6b5a9ec94c2, processorArchitecture=MSIL">
+      <HintPath>..\packages\CouchbaseNetClient.1.2.6.3\lib\net40\Couchbase.dll</HintPath>
+    </Reference>
     <Reference Include="dotless.Core">
       <HintPath>..\packages\dotless.1.3.0.5\lib\dotless.Core.dll</HintPath>
     </Reference>
     <Reference Include="EasyNetQ, Version=0.47.10.380, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\_Dependencies\MailStation\EasyNetQ.dll</HintPath>
+    </Reference>
+    <Reference Include="Enyim.Caching, Version=2.12.0.0, Culture=neutral, PublicKeyToken=05e9c6b5a9ec94c2, processorArchitecture=MSIL">
+      <HintPath>..\packages\CouchbaseNetClient.1.2.6.3\lib\net40\Enyim.Caching.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.Caching, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Caching.2.1.0\lib\net40\Fanex.Caching.dll</HintPath>
@@ -368,6 +375,10 @@
     <Content Include="Assets\bundles\compose-messages.min.js">
       <DependentUpon>compose-messages.js</DependentUpon>
     </Content>
+    <Content Include="Assets\bundles\Couchbase\CouchbaseManagement.js" />
+    <Content Include="Assets\bundles\Couchbase\CouchbaseManagement.min.js">
+      <DependentUpon>CouchbaseManagement.js</DependentUpon>
+    </Content>
     <Content Include="Assets\bundles\IPInfo\index.js" />
     <Content Include="Assets\bundles\IPInfo\index.min.js" />
     <Content Include="Assets\bundles\manage-announcements.js" />
@@ -376,6 +387,7 @@
     </Content>
     <Content Include="Assets\bundles\SuperLimitDate\index.js" />
     <Content Include="Assets\bundles\SuperLimitDate\index.min.js" />
+    <Content Include="Assets\scripts\AdminTools\Couchbase\CouchbaseManagement.js" />
     <Content Include="Assets\scripts\Announcement\compose-messages.js">
       <DependentUpon>compose-messages.ts</DependentUpon>
     </Content>
@@ -637,6 +649,7 @@
     <Content Include="Views\SuperLimitDate\Index.cshtml" />
     <Content Include="Views\SuperLimitDate\Get.cshtml" />
     <Content Include="Views\SuperLimitDate\Add.cshtml" />
+    <Content Include="Views\AdminTools\CouchbaseManagement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\scripts\Announcement\compose-messages.ts" />
