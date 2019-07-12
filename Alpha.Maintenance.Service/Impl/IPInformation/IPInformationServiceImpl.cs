@@ -61,7 +61,7 @@
             return BitConverter.ToUInt32(addressBytes, 0);
         }
 
-        private static ulong ConvertIPV6ToNumber(string ipAddress)
+        private static long ConvertIPV6ToNumber(string ipAddress)
         {
             var addrBytes = IPAddress.Parse(ipAddress).GetAddressBytes();
             if (IsLittleEndian)
@@ -71,9 +71,9 @@
                 addrBytes = byteList.ToArray();
             }
 
-            var ipNum = BitConverter.ToUInt64(addrBytes, 8);
+            var ipNum = BitConverter.ToInt64(addrBytes, 8);
             ipNum <<= 64;
-            ipNum += BitConverter.ToUInt64(addrBytes, 0);
+            ipNum += BitConverter.ToInt64(addrBytes, 0);
 
             return ipNum;
         }

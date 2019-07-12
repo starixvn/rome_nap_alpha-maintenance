@@ -45,24 +45,19 @@
             {
                 using (var reader = db.ExecuteReader(criteria))
                 {
-                    while (reader != null)
+                    if (reader.Read())
                     {
-                        if (reader.Read())
-                        {
-                            return new IPInfo(
-                                dataSource: "IPDB (Table Mini)",
-                                countryCode: Converter.ToString2(reader["countrySHORT"]),
-                                countryName: Converter.ToString2(reader["countryLONG"]),
-                                region: string.Empty,
-                                city: string.Empty);
-                        }
-
-                        reader.NextResult();
+                        return new IPInfo(
+                            dataSource: "IPDB (Table Mini)",
+                            countryCode: Converter.ToString2(reader["countrySHORT"]),
+                            countryName: Converter.ToString2(reader["countryLONG"]),
+                            region: string.Empty,
+                            city: string.Empty);
                     }
                 }
             }
 
-            return null;
+            return new IPInfo("IPDB (Table Mini)", "-", "-", "-", "-");
         }
     }
 }
