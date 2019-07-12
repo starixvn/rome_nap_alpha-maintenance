@@ -7,6 +7,8 @@
     public interface IPInformationRepository
     {
         IPInfo GetIPInfo(GetIPInformationCriteria criteria);
+
+        IPInfo GetIPInfoFromTableMini(GetIPInfoFromTableMiniCriteria criteria);
     }
 
     public class IPInformationRepositoryImpl : IPInformationRepository
@@ -35,6 +37,27 @@
             }
 
             return null;
+        }
+
+        public IPInfo GetIPInfoFromTableMini(GetIPInfoFromTableMiniCriteria criteria)
+        {
+            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
+            {
+                using (var reader = db.ExecuteReader(criteria))
+                {
+                    if (reader.Read())
+                    {
+                        return new IPInfo(
+                            dataSource: "IPDB (Table Mini)",
+                            countryCode: Converter.ToString2(reader["countrySHORT"]),
+                            countryName: Converter.ToString2(reader["countryLONG"]),
+                            region: string.Empty,
+                            city: string.Empty);
+                    }
+                }
+            }
+
+            return new IPInfo("IPDB (Table Mini)", "-", "-", "-", "-");
         }
     }
 }

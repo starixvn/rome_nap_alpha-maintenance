@@ -49,11 +49,13 @@ class IPInformation {
         this.initWaitingView(apis);
 
         this.getIPInfoFromDb();
+        this.getIPInfoFromTableMini();
         this.getIPInfoFromAPIs(apis);
     };
 
     initWaitingView = (apis: any) => {
         let content = this.renderWaitingRow('IPDB');
+        content += this.renderWaitingRow('IPDB-mini');
 
         this.$.each(apis, (key, apiInfo) => {
             if (apiInfo) {
@@ -91,6 +93,37 @@ class IPInformation {
             },
             error: (xhr: JQueryXHR, status: string, err: string) => {
                 this.handleAjaxError(xhr, status, err, 'IPDB');
+            }
+        });
+    };
+
+    getIPInfoFromTableMini = () => {
+        let ip = this.$txtIP.val();
+        this.$.ajax({
+            url: this.$NAP.resolveClientUrl("IPInformation/GetIPInfoFromTableMini"),
+            data: { ip: ip },
+            type: 'GET',
+            dataType: 'json',
+            cache: false,
+            success: (result: any) => {
+                var data = result.IPInfo;
+
+                if (!data) {
+                    return;
+                }
+
+                var row = '<tr>\
+                                    <td>' + data.DataSource + '</td>\
+                                    <td>' + data.CountryCode + '</td>\
+                                    <td>' + data.CountryName + '</td>\
+                                    <td>-</td>\
+                                    <td>-</td>\
+                                </tr>';
+
+                this.$('[class="IPDB-mini"]').replaceWith(row);
+            },
+            error: (xhr: JQueryXHR, status: string, err: string) => {
+                this.handleAjaxError(xhr, status, err, 'IPDB-mini');
             }
         });
     };
