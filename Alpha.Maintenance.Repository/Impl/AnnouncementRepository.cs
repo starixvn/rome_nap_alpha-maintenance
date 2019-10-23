@@ -124,7 +124,6 @@
 
             return new Announcement
             {
-                AnnouncementType = reader.IsDBNull("AnnouncementType") ? AnnouncementType.Normal : (AnnouncementType)reader.ToInt("AnnouncementType"),
                 Code = reader.ToString("Code"),
                 Contents = JsonConvert.DeserializeObject<IEnumerable<MessageContent>>(plainText),
                 Environments = reader.ToString("Environments").Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)

@@ -169,7 +169,7 @@
                     Code = announcement.Code,
                     Title = $"Import of {announcement.Title}",
                     IsActive = preventedActive,
-                    IsPopup = announcement.AnnouncementType == AnnouncementType.EmergencyPopup,
+                    IsPopup = announcement.IsPopup,
                     CreatedDate = SystemTime.Today,
                     ReleasedDate = announcement.ReleasedDate,
                     ExpiredDate = announcement.ExpiredDate,

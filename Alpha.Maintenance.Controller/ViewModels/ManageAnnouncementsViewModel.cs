@@ -21,7 +21,7 @@
 
         public IEnumerable<Announcement> Announcements { get; set; }       
 
-        public string FormatExpireDate(AnnouncementType? announcementType, DateTime expiredDate)
-            => announcementType == AnnouncementType.EmergencyPopup ? expiredDate.ToShortDate() : string.Empty;
+        public string FormatExpireDate(bool isPopup, DateTime expiredDate)
+            =>isPopup ? expiredDate.ToShortDate() : string.Empty;
     }
 }

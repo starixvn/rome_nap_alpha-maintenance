@@ -145,7 +145,7 @@
                             @announcement.ReleasedDate.ToShortDate()
                         </td>
                         <td>
-                            @Model.FormatExpireDate(announcement.AnnouncementType, announcement.ExpiredDate)
+                            @Model.FormatExpireDate(announcement.IsPopup, announcement.ExpiredDate)
                         </td>
                         <td>
                             @String.Join(", ", announcement.Environments.ToArray())
@@ -155,7 +155,7 @@
                         </td>
 
                         <td>
-                            @(announcement.AnnouncementType == AnnouncementType.EmergencyPopup ? "Yes" : "No")
+                            @(announcement.IsPopup ? "Yes" : "No")
                         </td>
 
                         <td>
