@@ -32,8 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Alpha.Announcements, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Alpha.Announcements.1.0.0.4-removeInactiveProducts01\lib\net40\Alpha.Announcements.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\packages\Alpha.Announcements.1.0.0.4\lib\net40\Alpha.Announcements.dll</HintPath>
     </Reference>
     <Reference Include="Couchbase, Version=1.0.0.0, Culture=neutral, PublicKeyToken=81137140da4e57ef, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Fanex.Caching.1.0.404.95\lib\net40\Couchbase.dll</HintPath>
