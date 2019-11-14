@@ -365,6 +365,7 @@ class ComposedAnnouncement {
             id: self.$('#announcementId').val(),
             code: self.$("#txtcode").val().trim(),
             title: self.$("#txttitle").val().trim(),
+            announcementType: self.$("#IsPopup").is(":checked") ? self.$("#EmergencyPopupId").val() : self.$("#NormalAnnouncementId").val(),
             isPopup: self.$("#IsPopup").is(":checked"),
             isActive: self.$("#ChkActive").is(":checked"),
             contents: self.getContents(),

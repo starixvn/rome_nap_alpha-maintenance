@@ -143,7 +143,8 @@
                 CreatorName = reader.ToString("CreatorName"),
                 LastEditDate = reader.IsDBNull("LastEditDate") ? (DateTime?)null : reader.ToDateTime("LastEditDate"),
                 LastEditorId = reader.IsDBNull("LastEditorId") ? (int?)null : reader.ToInt("LastEditorId"),
-                LastEditorName = reader.ToString("LastEditorName")
+                LastEditorName = reader.ToString("LastEditorName"),
+                IsPopup = reader["announcementType"].ToString() == "3"
             };
         }
     }
