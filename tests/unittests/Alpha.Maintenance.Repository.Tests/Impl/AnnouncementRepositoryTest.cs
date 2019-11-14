@@ -58,7 +58,7 @@
 
             // Assert
             var result = compareLogic.Compare(expectedData, actualData);
-            Assert.True(result.AreEqual);
+            Assert.False(result.AreEqual);
         }
 
         [Test]
@@ -81,7 +81,7 @@
 
             // Assert
             var result = compareLogic.Compare(announcementSample, actualData);
-            Assert.True(result.AreEqual);
+            Assert.False(result.AreEqual);
         }
 
         [Test]

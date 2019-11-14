@@ -31,7 +31,7 @@
             new UserLevel(0, "Headline")
         };
 
-        public bool IsPopup => Announcement != null && Announcement.AnnouncementType == AnnouncementType.EmergencyPopup;
+        public bool IsPopup => Announcement != null && Announcement.IsPopup;
 
         public ActionType ActionType { get; set; } = ActionType.Create;
 

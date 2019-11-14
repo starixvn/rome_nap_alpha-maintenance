@@ -113,7 +113,6 @@
            {
                ReleasedDate = SystemTime.Today,
                ExpiredDate = SystemTime.Today,
-               AnnouncementType = AnnouncementType.Normal,
                Environments = Enumerable.Empty<string>(),
                Systems = Enumerable.Empty<string>(),
                Contents = languages.Select(language => new MessageContent

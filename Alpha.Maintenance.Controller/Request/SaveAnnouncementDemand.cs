@@ -35,6 +35,6 @@
         public string EncodedContents
             => Convert.ToBase64String(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(DeserializeAnnouncement.Contents)));
 
-        public bool IsPopup => DeserializeAnnouncement.AnnouncementType == AnnouncementType.EmergencyPopup;
+        public bool IsPopup => DeserializeAnnouncement.IsPopup;
     }
 }

@@ -8,7 +8,6 @@
     public class SelectAnnouncementsCriteriaTest
     {
         [TestCase(FilterBy.ExpiredDate, "Age_Announcements_Select")]
-        [TestCase(FilterBy.CreatedDate, "Age_Announcements_SelectByCreatedDate")]
         public void GetSettingKey_ManageTypeIsValid_ReturnsCorrectSettingKey(
             FilterBy manageType,
             string expectedSettingKey)
