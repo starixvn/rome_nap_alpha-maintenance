@@ -21,7 +21,7 @@
         {
         }
 
-        public IPInformationController(IPInformationService ipInformationService = null)
+        public IPInformationController(IPInformationService ipInformationService)
         {
             this.ipInformationService = ipInformationService ?? new IPInformationServiceImpl();
         }
