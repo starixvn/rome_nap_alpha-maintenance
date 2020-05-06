@@ -108,6 +108,10 @@ button {
     }
 }
 
+.c-datepicker--open {
+    z-index: 10;
+}
+
 @media (min-height: 28.875em) {
     .picker__box {
         border: none;

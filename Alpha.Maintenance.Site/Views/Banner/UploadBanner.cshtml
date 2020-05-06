@@ -1,0 +1,146 @@
+﻿@model UploadBannerViewModel
+
+@{
+    ViewBag.Title = Model.PageTitle;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var environments = Model.SelectedEnvironments;
+    var sites = Model.SelectedSites;
+}
+
+@section Head {
+    @Styles.Render("~/Assets/scripts/lib/dropify/dropify.min.css")
+}
+@section Headline {
+    <span>@ViewResource.Banners / </span>
+    <span class="active">@Model.PageTitle</span>
+}
+@section Foot {
+    @Scripts.Render("~/Assets/scripts/lib/dropify/dropify.min.js")
+    @Scripts.Render("~/Assets/bundles/Banner/upload-banner.js")
+}
+
+<input type="hidden" value="@Model.Id" id="txt-bannerid" />
+<div class="filter-form display-information-settings">
+    <div id="div-message" class="card-panel lighten-4 text-darken-4 hiden"></div>
+    <div class="row systems">
+        <div class="input-field col s4">
+            <input type="text" id="txt-title" class="validate" value="@Model.Title" />
+            <label for="txt-title">@ViewResource.Title <span class="red-text">*</span></label>
+        </div>
+        <div class="toggle-switch col s4">
+            <input class="sw" type="checkbox" id="chk-active" @(Model.IsActive ? "checked=checked" : string.Empty) />
+            <label class="input-field" for="chk-active"><span>@ViewResource.Active</span></label>
+        </div>
+    </div>
+    <div class="row systems">
+        <div class="input-field col s4">
+            <label class="active">@ViewResource.ReleasedDate <span class="red-text">*</span></label>
+            <input type="text" class="c-datepicker-btn" value="@Model.ReleasedDate.ToLongDate()" id="dtp-releasedDate" />
+        </div>
+        <div class="input-field col s4">
+            <label class="active">@ViewResource.ExpirationDate <span class="red-text">*</span></label>
+            <input type="text" class="c-datepicker-btn" value="@Model.ExpirationDate.ToLongDate()" id="dtp-expirationDate" />
+        </div>
+    </div>
+    <div class="row systems">
+        <div class="col s12">
+            <label class="label-title">@ViewResource.Environments</label>
+        </div>
+        @foreach (var env in BannerConfig.Environments)
+        {
+            <div class="col s2 checkbox">
+                <input type="checkbox" class="banner-environment" id="chk-@env" value="@env" @(environments.ContainsKey(env) ? "checked=checked" : string.Empty) />
+                <label for="chk-@env">@env</label>
+            </div>
+        }
+    </div>
+    <div class="row systems">
+        <div class="col s12">
+            <label class="label-title">@ViewResource.Sites</label>
+        </div>
+        @foreach (var site in BannerConfig.Sites)
+        {
+            <div class="col s2 checkbox">
+                <input type="checkbox" class="banner-site" id="chk-@site" value="@site" @(sites.ContainsKey(site) ? "checked=checked" : string.Empty) />
+                <label for="chk-@site">@site</label>
+            </div>
+        }
+    </div>
+    <div class="content-group row systems">
+        <div class="col s12">
+            <div class="txt-bold">@ViewResource.DesktopBanner</div>
+            <ul class="tabs">
+                @foreach (var language in BannerConfig.LanguageCodes)
+                {
+                    <li class="tab language-tab"><a href="#desktop-@language">@language</a></li>
+                }
+            </ul>
+        </div>
+        @foreach (var language in BannerConfig.LanguageCodes)
+        {
+            <div class="col s12" id="desktop-@language">
+                @if (Model.DesktopBanners.ContainsKey(language))
+                {
+                    <img style="display:block;width:100%;margin-bottom:12px;" src="data:image/png;base64,@Model.DesktopBanners[language]" />
+                }
+
+                <input type="file"
+                       name="@Model.GetDesktopKey(language)"
+                       multiple
+                       class="dropify desktop-banner"
+                       data-height="90"
+                       data-max-file-size="@BannerConfig.MaxFileSize"
+                       data-min-width="@(BannerConfig.DesktopBannerWidth - 1)"
+                       data-max-width="@(BannerConfig.DesktopBannerWidth + 1)"
+                       data-min-height="@(BannerConfig.DesktopBannerHeight - 1)"
+                       data-max-height="@(BannerConfig.DesktopBannerHeight + 1)"
+                       data-allowed-file-extensions="@BannerConfig.AllowedFileExtensions" />
+            </div>
+        }
+    </div>
+    <div class="content-group row systems">
+        <div class="col s12">
+            <div class="txt-bold">@ViewResource.MobileBanner</div>
+            <ul class="tabs">
+                @foreach (var language in BannerConfig.LanguageCodes)
+                {
+                    <li class="tab language-tab"><a href="#mobile-@language">@language</a></li>
+                }
+            </ul>
+        </div>
+        @foreach (var language in BannerConfig.LanguageCodes)
+        {
+            <div class="col s12" id="mobile-@language">
+                @if (Model.MobileBanners.ContainsKey(language))
+                {
+                    <img style="display:block;margin:0 auto 12px;" src="data:image/png;base64,@Model.MobileBanners[language]" />
+                }
+
+                <input type="file"
+                       name="@Model.GetMobileKey(language)"
+                       class="dropify mobile-banner"
+                       data-height="90"
+                       data-max-file-size="@BannerConfig.MaxFileSize"
+                       data-min-width="@(BannerConfig.MobileBannerWidth - 1)"
+                       data-max-width="@(BannerConfig.MobileBannerWidth + 1)"
+                       data-min-height="@(BannerConfig.MobileBannerHeight - 1)"
+                       data-max-height="@(BannerConfig.MobileBannerHeight + 1)"
+                       data-allowed-file-extensions="@BannerConfig.AllowedFileExtensions" />
+            </div>
+        }
+    </div>
+    <div class="row systems">
+        <div class="input-field col s4">
+            <input type="text" id="txt-mobileBgColor" class="validate" maxlength="7" placeholder="#000000" value="@Model.MobileBgColor" />
+            <label for="txt-mobileBgColor">@ViewResource.MobileBackgroundHexCode</label>
+        </div>
+    </div>
+    @if (Model.HasHostPermission)
+    {
+        <div class="row">
+            <div class="col s12 button-group">
+                <a href="javascript:;" class="btn btn-info waves-effect waves-light btn btn-primary" id="btn-upload">@ViewResource.Upload</a>
+            </div>
+        </div>
+    }
+</div>

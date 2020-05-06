@@ -95,6 +95,11 @@
     <Compile Include="Criteria\Announcements\SaveAnnouncementsCriteria.cs" />
     <Compile Include="Criteria\Announcements\UpdateAnnouncementsCriteria.cs" />
     <Compile Include="Criteria\Announcements\SelectAnnouncementsCriteria.cs" />
+    <Compile Include="Criteria\Banners\AddBannerCriteria.cs" />
+    <Compile Include="Criteria\Banners\EditBannerCriteria.cs" />
+    <Compile Include="Criteria\Banners\GetBannerByIdCriteria.cs" />
+    <Compile Include="Criteria\Banners\SaveBannerCriteria.cs" />
+    <Compile Include="Criteria\Banners\GetBannerCriteria.cs" />
     <Compile Include="Criteria\IPInformation\GetIPInformationCriteria.cs" />
     <Compile Include="Criteria\DBProfiler\GetLogCriteria.cs" />
     <Compile Include="Criteria\IPInformation\GetIPInfoFromTableMiniCriteria.cs" />
@@ -110,6 +115,7 @@
     <Compile Include="Criteria\SuperLimitDate\AddSuperLimitDateCriteria.cs" />
     <Compile Include="Criteria\SuperLimitDate\DeleteSuperLimitDateCriteria.cs" />
     <Compile Include="Criteria\SuperLimitDate\GetAllSuperLimitDateCriteria.cs" />
+    <Compile Include="Impl\BannerRepository.cs" />
     <Compile Include="Impl\BaseRepository.cs" />
     <Compile Include="Impl\AppLog\LogRepository.cs" />
     <Compile Include="Impl\AppLog\MachineRepository.cs" />

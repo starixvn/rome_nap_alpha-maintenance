@@ -207,6 +207,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.dll</HintPath>
       <Private>True</Private>
@@ -230,10 +231,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.Net.Http">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
@@ -370,6 +367,14 @@
     <Content Include="Areas\UserLogin\themes\loginNew.min.css">
       <DependentUpon>loginNew.scss</DependentUpon>
     </Content>
+    <Content Include="Assets\bundles\Banner\manage-banner.js" />
+    <Content Include="Assets\bundles\Banner\manage-banner.min.js">
+      <DependentUpon>manage-banner.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\bundles\Banner\upload-banner.js" />
+    <Content Include="Assets\bundles\Banner\upload-banner.min.js">
+      <DependentUpon>upload-banner.js</DependentUpon>
+    </Content>
     <Content Include="Assets\bundles\compose-messages.js" />
     <Content Include="Assets\bundles\compose-messages.min.js">
       <DependentUpon>compose-messages.js</DependentUpon>
@@ -385,7 +390,9 @@
       <DependentUpon>manage-announcements.js</DependentUpon>
     </Content>
     <Content Include="Assets\bundles\SuperLimitDate\index.js" />
-    <Content Include="Assets\bundles\SuperLimitDate\index.min.js" />
+    <Content Include="Assets\bundles\SuperLimitDate\index.min.js">
+      <DependentUpon>index.js</DependentUpon>
+    </Content>
     <Content Include="Assets\scripts\AdminTools\Couchbase\CouchbaseManagement.js" />
     <Content Include="Assets\scripts\Announcement\compose-messages.js">
       <DependentUpon>compose-messages.ts</DependentUpon>
@@ -395,6 +402,7 @@
     </Content>
     <Content Include="Assets\scripts\lib\dropify\dropify.min.css" />
     <Content Include="Assets\scripts\lib\dropify\dropify.min.js" />
+    <Content Include="Assets\scripts\lib\fonts\dropify.svg" />
     <Content Include="Assets\scripts\lib\jquery\jquery-2.2.3.min.js" />
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te.min.css" />
     <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te-1.4.0.min.js" />
@@ -412,6 +420,12 @@
     </Content>
     <Content Include="Assets\styles\main.min.css">
       <DependentUpon>main.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\styles\pages\manage.css">
+      <DependentUpon>manage.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\styles\pages\manage.min.css">
+      <DependentUpon>manage.css</DependentUpon>
     </Content>
     <Content Include="Assets\styles\vendors\icon\demo-files\demo.css" />
     <Content Include="Assets\styles\vendors\icon\demo-files\demo.js" />
@@ -599,6 +613,9 @@
     </Content>
     <Content Include="Areas\DatabaseProfiler\Views\TracedLog\Logs.cshtml" />
     <Content Include="Assets\styles\components\_form-inputs.scss" />
+    <Content Include="Assets\scripts\lib\fonts\dropify.eot" />
+    <Content Include="Assets\scripts\lib\fonts\dropify.ttf" />
+    <Content Include="Assets\scripts\lib\fonts\dropify.woff" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -649,10 +666,15 @@
     <Content Include="Views\SuperLimitDate\Get.cshtml" />
     <Content Include="Views\SuperLimitDate\Add.cshtml" />
     <Content Include="Views\AdminTools\CouchbaseManagement.cshtml" />
+    <Content Include="Views\Banner\Index.cshtml" />
+    <Content Include="tsconfig.json" />
+    <Content Include="Views\Banner\UploadBanner.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\scripts\Announcement\compose-messages.ts" />
     <TypeScriptCompile Include="Assets\scripts\Announcement\manage-announcements.ts" />
+    <TypeScriptCompile Include="Assets\scripts\Banner\upload-banner.ts" />
+    <TypeScriptCompile Include="Assets\scripts\Banner\manage-banner.ts" />
     <TypeScriptCompile Include="Assets\scripts\IPInfo\index.ts" />
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\jasmine-jquery\index.d.ts" />

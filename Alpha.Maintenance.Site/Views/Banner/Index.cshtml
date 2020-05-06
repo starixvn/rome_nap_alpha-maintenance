@@ -1,0 +1,147 @@
+﻿@{
+    ViewBag.Title = ViewResource.ManageBanner;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model ViewBannerViewModel
+
+@section Headline {
+    <span>@ViewResource.Banners / </span>
+    <span class="active">@ViewResource.ManageBanner</span>
+}
+@section Foot {
+    @Scripts.Render("~/Assets/bundles/Banner/manage-banner.js")
+}
+
+@using (Html.BeginForm("Index", "Banner", FormMethod.Get, new { @class = "filter-form", role = "form", id = "form-manage-banner" }))
+{
+    <div class="filter-form row">
+        <div class="input-field col s2">
+            @Html.EnumDropDownList("FilterBy", Model.FilterBy)
+            <label>@ViewResource.FilterBy</label>
+        </div>
+        <div class="input-field col s2">
+            <div class="lbl-field">
+                @Html.LabelFor(m => m.FromDate, ViewResource.From, new { @class = "active" })
+            </div>
+            <div class="calendar">
+                <input type="text" name="FromDate" id="FromDate" class="datepicker" value="@Model.FromDate.ToString("MMM dd,yyyy")" />
+            </div>
+        </div>
+        <div class="input-field col s2">
+            <div class="lbl-field">
+                @Html.LabelFor(m => m.ToDate, ViewResource.To, new { @class = "active" })
+            </div>
+            <div class="calendar">
+                <input type="text" name="ToDate" id="ToDate" class="datepicker" value="@Model.ToDate.ToString("MMM dd,yyyy")" />
+            </div>
+        </div>
+        <div class="col s2 input-field">
+            <select name="Environment" id="Environment">
+                <option value="">@ViewResource.All</option>
+                @foreach (var environment in BannerConfig.Environments)
+                {
+                    <option value="@environment" @(environment.Equals(Model.Environment, StringComparison.OrdinalIgnoreCase) ? "selected" : string.Empty)>@environment</option>
+                }
+            </select>
+            <label>@ViewResource.Environments</label>
+        </div>
+        <div class="col s2 input-field">
+            <select name="Site" id="Site">
+                <option value="">@ViewResource.All</option>
+                @foreach (var site in BannerConfig.Sites)
+                {
+                    <option value="@site" @(site.Equals(Model.Site, StringComparison.OrdinalIgnoreCase) ? "selected" : string.Empty)>@site</option>
+                }
+            </select>
+            <label>@ViewResource.Sites</label>
+        </div>
+        <div class="col s2 button-block">
+            <input type="submit" class="waves-effect waves-light btn btn-primary" value="@ViewResource.Submit" />
+        </div>
+    </div>
+}
+<div class="table">
+    @if (Model.HasHostPermission)
+    {
+        <div class="col button-block">
+            <a class="waves-effect waves-light btn btn-outline" href="@Url.Action("Add", "Banner")">
+                <span class="icon-button icon-plus-box"></span>
+                <input type="button" value="@ViewResource.Add" id="btn-add" />
+            </a>
+        </div>
+    }
+    <table class="grid persist-area" id="messageContainer">
+        <thead class="persist-header">
+            <tr>
+                <th>
+                    @ViewResource.Title
+                </th>
+                <th>
+                    @ViewResource.Active
+                </th>
+                <th>
+                    @ViewResource.ReleasedDate
+                </th>
+                <th>
+                    @ViewResource.ExpirationDate
+                </th>
+                <th>
+                    @ViewResource.Environments
+                </th>
+                <th>
+                    @ViewResource.Sites
+                </th>
+                <th>
+                    @ViewResource.Language
+                </th>
+                <th>
+                    @ViewResource.Created_Date
+                </th>
+            </tr>
+        </thead>
+        <tbody id="content">
+            @if (Model.Banners.Any())
+            {
+                foreach (var banner in Model.Banners)
+                {
+                    <tr>
+                        <td>
+                            <a href="@Url.Action("Edit", "Banner", new { Id = banner.Id })"
+                               class="tooltipped text-link"
+                               data-tooltip="@ViewResource.Edit">@banner.Title</a>
+                        </td>
+                        <td class="checkbox">                            
+                            <span id="@banner.Id" class="icon-check" data-checked="@banner.IsActive"></span>
+                        </td>
+                        <td>
+                            @banner.ReleasedDate.ToShortDate()
+                        </td>
+                        <td>
+                            @banner.ExpirationDate.ToShortDate()
+                        </td>
+                        <td>
+                            @banner.Environments
+                        </td>
+                        <td>
+                            @banner.Sites
+                        </td>
+                        <td>
+                            <p>@ViewResource.Desktop: @banner.Desktop<p>
+                            <p>@ViewResource.Mobile: @banner.Mobile<p>
+                        </td>
+                        <td>
+                            @banner.CreatedDate.ToShortDate()
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="8" class="no-data">@ViewResource.NoInformationAvailable</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

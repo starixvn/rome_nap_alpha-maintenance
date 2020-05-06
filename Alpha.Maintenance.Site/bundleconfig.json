@@ -35,5 +35,20 @@
     "inputFiles": [
       "Assets/scripts/AdminTools/Couchbase/CouchbaseManagement.js"
     ]
+  },
+  {
+    "outputFileName": "Assets/bundles/Banner/upload-banner.js",
+    "inputFiles": [
+      "Assets/scripts/lib/Momentjs/moment.js",
+      "Assets/scripts/lib/material-datetime-picker/rome.js",
+      "Assets/scripts/lib/material-datetime-picker/material-datetime-picker.js",
+      "Assets/scripts/Banner/upload-banner.js"
+    ]
+  },
+  {
+    "outputFileName": "Assets/bundles/Banner/manage-banner.js",
+    "inputFiles": [
+      "Assets/scripts/Banner/manage-banner.js"
+    ]
   }
 ]
