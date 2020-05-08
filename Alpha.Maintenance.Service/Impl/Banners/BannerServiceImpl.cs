@@ -10,6 +10,7 @@
     using Alpha.Maintenance.Repository.Impl;
     using Alpha.Maintenance.Service.Interface.Banners;
     using Fanex.Data.Repository;
+    using Fanex.Logging;
 
     public class BannerServiceImpl : BannerService
     {
@@ -107,9 +108,22 @@
             if (result.IsSuccessful)
             {
                 result.Message = ViewResource.UploadedBannerSuccessfully;
+                SaveBannerOnDBStandby(criteria);
             }
 
             return result;
+        }
+
+        private void SaveBannerOnDBStandby(ICriteria criteria)
+        {
+            try
+            {
+                bannerRepository.ExecuteNonQuery($"{criteria.GetSettingKey()}_Standby", criteria.GetSpParams());
+            }
+            catch (Exception ex)
+            {
+                LogService.Error(ex.Message, ex);
+            }
         }
     }
 }

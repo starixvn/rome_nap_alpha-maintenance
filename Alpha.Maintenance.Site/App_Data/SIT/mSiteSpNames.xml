@@ -42,5 +42,8 @@
     <Setting Key="Age_Banner_Update" SpName="Age_Banner_Update" DbName="DBAGE.bodb_AGE.bodbAdminNet" />
     <Setting Key="Age_Banner_Select" SpName="Age_Banner_Select" DbName="DBAGE.bodb_AGE.bodbAdminNet" />
     <Setting Key="Age_Banner_SelectById" SpName="Age_Banner_SelectById" DbName="DBAGE.bodb_AGE.bodbAdminNet" />
+    <!--Setup DB Standby-->
+    <Setting Key="Age_Banner_Insert_Standby" SpName="Age_Banner_Insert" DbName="DBAGE_STANDBY.bodb_AGE.bodbAdminNet" />
+    <Setting Key="Age_Banner_Update_Standby" SpName="Age_Banner_Update" DbName="DBAGE_STANDBY.bodb_AGE.bodbAdminNet" />
   </Function>
 </Functions>

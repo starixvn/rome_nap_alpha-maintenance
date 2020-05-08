@@ -1,6 +1,7 @@
 ﻿namespace Alpha.Maintenance.Repository.Impl
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Data;
     using Alpha.Maintenance.Core.Model;
@@ -13,6 +14,8 @@
         Tuple<Banner, IEnumerable<BannerDetail>> GetBanner(ICriteria criteria);
 
         Result ExecuteNonQuery(ICriteria criteria);
+
+        void ExecuteNonQuery(string settingKey, Hashtable spParams);
     }
 
     public class BannerRepositoryImpl : BannerRepository
@@ -106,6 +109,14 @@
                     Code = Convert.ToInt32(outputParams["errcode"]),
                     Message = outputParams["errmsg"].ToString()
                 };
+            }
+        }
+
+        public void ExecuteNonQuery(string settingKey, Hashtable spParams)
+        {
+            using (var db = ObjectDbFactory.CreateInstance(settingKey))
+            {
+                db.ExecuteNonQuery(spParams);
             }
         }
     }
