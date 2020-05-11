@@ -139,8 +139,24 @@
     {
         <div class="row">
             <div class="col s12 button-group">
-                <a href="javascript:;" class="btn btn-info waves-effect waves-light btn btn-primary" id="btn-upload">@ViewResource.Upload</a>
+                <a href="javascript:;" class="btn btn-info waves-effect waves-light btn btn-primary" id="btn-upload">@ViewResource.Save</a>
             </div>
         </div>
     }
 </div>
+@if (Model.HasHostPermission)
+{
+    <div id="cofirmMessages" class="modal">
+        <div class="modal-content">
+            <h4 id="cofirmMessages-content">Are you sure you want to save the change for these banners?</h4>
+        </div>
+        <div class="modal-footer row">
+            <div class="col s10">
+                <a id="btn-no" class="waves-effect waves-light btn btn-info btn-create modal-action modal-close">@AnnouncementResources.NO</a>
+            </div>
+            <div class="col s2">
+                <a id="btn-yes" class="waves-effect waves-light btn btn-info btn-primary modal-action modal-close">@AnnouncementResources.YES</a>
+            </div>
+        </div>
+    </div>
+}

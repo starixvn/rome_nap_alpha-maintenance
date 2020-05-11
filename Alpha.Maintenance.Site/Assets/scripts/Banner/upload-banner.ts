@@ -39,6 +39,8 @@ class UploadBanner {
         requiredUploadedBannerError: "Please select image to upload.",
         invalidMobileBgColor: "Mobile Background (Hex Code) is invalid. Please input Hex code value."
     };
+    confirmSaveBannerModal: JQuery;
+    globalFormData: FormData = null;
 
     constructor($: JQueryStatic, nap: any) {
         this.$ = $;
@@ -74,6 +76,7 @@ class UploadBanner {
         this.txtMobileBgColor = this.$("#txt-mobileBgColor");
         this.hiddenBannerId = parseInt(this.$("#txt-bannerid").val());
         this.uploadBannerURL = this.nap.resolveClientUrl(this.hiddenBannerId ? "Banner/Edit" : "Banner/Add");
+        this.confirmSaveBannerModal = this.$("#cofirmMessages");
     }
 
     private initDateTimePicker(dateTimePicker: JQuery) {
@@ -91,11 +94,22 @@ class UploadBanner {
         });
     }
 
+    private showConfirmUploadBannerDialog() {
+        this.nap.loadingBox.show();
+        this.globalFormData = this.getFormData();
+
+        if (this.globalFormData && this.confirmSaveBannerModal.length) {
+            this.$(this.confirmSaveBannerModal).openModal();
+        }
+
+        this.nap.loadingBox.close();
+    }
+
     private uploadBannerFormPost() {
         this.nap.loadingBox.show();
-        const formData = this.getFormData();
+        this.globalFormData = this.globalFormData || this.getFormData();
 
-        if (!formData) {
+        if (!this.globalFormData) {
             this.nap.loadingBox.close();
             return;
         }
@@ -107,7 +121,7 @@ class UploadBanner {
             dataType: "json",
             contentType: false,
             processData: false,
-            data: formData,
+            data: this.globalFormData,
             success: function (result) {
                 if (result.IsOk) {
                     self.showSuccessMsg(result.Message);
@@ -254,6 +268,10 @@ class UploadBanner {
 
         const self = this;
         this.$("#btn-upload").click(function () {
+            self.showConfirmUploadBannerDialog();
+        });
+
+        this.$("#btn-yes").click(function () {
             self.uploadBannerFormPost();
         });
     }
