@@ -106,6 +106,24 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Banner.
+        /// </summary>
+        public static string AddBanner {
+            get {
+                return ResourceManager.GetString("AddBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} has been added successfully. You will be redirected in &lt;span class=&apos;msec&apos;&gt;{1}&lt;/span&gt; seconds..
         /// </summary>
         public static string AddSuccessMsg {
@@ -273,6 +291,15 @@ namespace Alpha.Maintenance.Core {
         public static string Backup_Connection_String {
             get {
                 return ResourceManager.GetString("Backup_Connection_String", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Banners.
+        /// </summary>
+        public static string Banners {
+            get {
+                return ResourceManager.GetString("Banners", resourceCulture);
             }
         }
         
@@ -619,6 +646,24 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Desktop.
+        /// </summary>
+        public static string Desktop {
+            get {
+                return ResourceManager.GetString("Desktop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desktop Banner.
+        /// </summary>
+        public static string DesktopBanner {
+            get {
+                return ResourceManager.GetString("DesktopBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string Details {
@@ -673,6 +718,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Banner.
+        /// </summary>
+        public static string EditBanner {
+            get {
+                return ResourceManager.GetString("EditBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Connection.
         /// </summary>
         public static string EditConnection {
@@ -696,6 +750,15 @@ namespace Alpha.Maintenance.Core {
         public static string Enabled {
             get {
                 return ResourceManager.GetString("Enabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Environments.
+        /// </summary>
+        public static string Environments {
+            get {
+                return ResourceManager.GetString("Environments", resourceCulture);
             }
         }
         
@@ -745,6 +808,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expiration Date.
+        /// </summary>
+        public static string ExpirationDate {
+            get {
+                return ResourceManager.GetString("ExpirationDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Export Connection.
         /// </summary>
         public static string Export_Connection {
@@ -786,6 +858,15 @@ namespace Alpha.Maintenance.Core {
         public static string Filter {
             get {
                 return ResourceManager.GetString("Filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filter By.
+        /// </summary>
+        public static string FilterBy {
+            get {
+                return ResourceManager.GetString("FilterBy", resourceCulture);
             }
         }
         
@@ -1105,6 +1186,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string Language {
+            get {
+                return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last Run.
         /// </summary>
         public static string Last_Run_Date {
@@ -1384,6 +1474,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manage Banner.
+        /// </summary>
+        public static string ManageBanner {
+            get {
+                return ResourceManager.GetString("ManageBanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Master.
         /// </summary>
         public static string Master {
@@ -1407,6 +1506,33 @@ namespace Alpha.Maintenance.Core {
         public static string Minutes {
             get {
                 return ResourceManager.GetString("Minutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile.
+        /// </summary>
+        public static string Mobile {
+            get {
+                return ResourceManager.GetString("Mobile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile Background (Hex code).
+        /// </summary>
+        public static string MobileBackgroundHexCode {
+            get {
+                return ResourceManager.GetString("MobileBackgroundHexCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile Banner.
+        /// </summary>
+        public static string MobileBanner {
+            get {
+                return ResourceManager.GetString("MobileBanner", resourceCulture);
             }
         }
         
@@ -2253,6 +2379,24 @@ namespace Alpha.Maintenance.Core {
         public static string Update_Alias {
             get {
                 return ResourceManager.GetString("Update_Alias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload.
+        /// </summary>
+        public static string Upload {
+            get {
+                return ResourceManager.GetString("Upload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uploaded banner successfully.
+        /// </summary>
+        public static string UploadedBannerSuccessfully {
+            get {
+                return ResourceManager.GetString("UploadedBannerSuccessfully", resourceCulture);
             }
         }
         

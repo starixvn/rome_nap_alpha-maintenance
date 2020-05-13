@@ -36,4 +36,14 @@
     <Setting Key="Acc_CustomerDateLimitDel" SpName="Acc_CustomerDateLimitDel" DbName="DBCust.CustDB.BODBDownlineNet" />
     <Setting Key="Acc_CustomerDateLimitIns" SpName="Acc_CustomerDateLimitIns" DbName="DBCust.CustDB.BODBDownlineNet" />
   </Function>
+
+  <Function Name="Banner Management">
+    <Setting Key="Age_Banner_Insert" SpName="Age_Banner_Insert" DbName="DBAGE.bodb_AGE.bodbAdminNet" />
+    <Setting Key="Age_Banner_Update" SpName="Age_Banner_Update" DbName="DBAGE.bodb_AGE.bodbAdminNet" />
+    <Setting Key="Age_Banner_Select" SpName="Age_Banner_Select" DbName="DBAGE.bodb_AGE.bodbAdminNet" />
+    <Setting Key="Age_Banner_SelectById" SpName="Age_Banner_SelectById" DbName="DBAGE.bodb_AGE.bodbAdminNet" />
+    <!--Setup DB Standby-->
+    <Setting Key="Age_Banner_Insert_Standby" SpName="Age_Banner_Insert" DbName="DBAGE_STANDBY.bodb_AGE.bodbAdminNet" />
+    <Setting Key="Age_Banner_Update_Standby" SpName="Age_Banner_Update" DbName="DBAGE_STANDBY.bodb_AGE.bodbAdminNet" />
+  </Function>
 </Functions>

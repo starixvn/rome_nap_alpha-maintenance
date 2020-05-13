@@ -888,4 +888,52 @@
   <data name="Get" xml:space="preserve">
     <value>Get</value>
   </data>
+  <data name="AddBanner" xml:space="preserve">
+    <value>Add Banner</value>
+  </data>
+  <data name="Banners" xml:space="preserve">
+    <value>Banners</value>
+  </data>
+  <data name="DesktopBanner" xml:space="preserve">
+    <value>Desktop Banner</value>
+  </data>
+  <data name="MobileBanner" xml:space="preserve">
+    <value>Mobile Banner</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="MobileBackgroundHexCode" xml:space="preserve">
+    <value>Mobile Background (Hex code)</value>
+  </data>
+  <data name="UploadedBannerSuccessfully" xml:space="preserve">
+    <value>Uploaded banner successfully</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Environments" xml:space="preserve">
+    <value>Environments</value>
+  </data>
+  <data name="ExpirationDate" xml:space="preserve">
+    <value>Expiration Date</value>
+  </data>
+  <data name="FilterBy" xml:space="preserve">
+    <value>Filter By</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="ManageBanner" xml:space="preserve">
+    <value>Manage Banner</value>
+  </data>
+  <data name="Desktop" xml:space="preserve">
+    <value>Desktop</value>
+  </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+  <data name="EditBanner" xml:space="preserve">
+    <value>Edit Banner</value>
+  </data>
 </root>
