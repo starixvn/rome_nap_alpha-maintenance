@@ -136,7 +136,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Impl\AdminTools\CouchbaseServiceImpl.cs" />
+    <Compile Include="Impl\AdminTools\CouchbaseFactory.cs" />
     <Compile Include="Impl\Announcements\BaseAnnouncementServiceImpl.cs" />
     <Compile Include="Impl\Announcements\AnnouncementServiceImpl.cs" />
     <Compile Include="Impl\AppLog\LogCategoryService.cs" />
@@ -145,7 +145,7 @@
     <Compile Include="Impl\Banners\BannerServiceImpl.cs" />
     <Compile Include="Impl\IPInformation\IPInformationServiceImpl.cs" />
     <Compile Include="Impl\DbProfiler\LogService.cs" />
-    <Compile Include="Interface\AdminTools\CouchbaseService.cs" />
+    <Compile Include="Interface\AdminTools\CouchbaseFactory.cs" />
     <Compile Include="Interface\Announcements\BaseAnnouncementService.cs" />
     <Compile Include="Interface\AppLog\ILogCategoryService.cs" />
     <Compile Include="Interface\AppLog\ILogService.cs" />

@@ -194,6 +194,8 @@
     <Compile Include="AdminToolsController.cs" />
     <Compile Include="IPInformationController.cs" />
     <Compile Include="LogController.cs" />
+    <Compile Include="Models\AdminTools\CacheKeyPattern.cs" />
+    <Compile Include="Models\AdminTools\CouchbaseManagementModel.cs" />
     <Compile Include="SuperLimitDateController.cs" />
     <Compile Include="MachineController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
