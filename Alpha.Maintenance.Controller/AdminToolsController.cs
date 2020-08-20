@@ -27,9 +27,9 @@
         [NapAuth(FunctionKey = SiteFunctionKeys.Couchbase, Policy = Constant.Policy.Read)]
         public ActionResult CouchbaseManagement() => View();
 
-        [HttpPost, ActionName("CouchbaseManagement")]
+        [HttpPost]
         [NapAuth(FunctionKey = SiteFunctionKeys.Couchbase, Policy = Constant.Policy.Read)]
-        public JsonResult GetCaches(CouchbaseManagementModel model)
+        public JsonResult CouchbaseSel(CouchbaseManagementModel model)
         {
             var couchbaseClient = CreateClient(model.Bucket);
             var caches = model.Keys.Select(key =>
@@ -45,9 +45,9 @@
             return Json(caches);
         }
 
-        [HttpDelete, ActionName("CouchbaseManagement")]
+        [HttpPost]
         [NapAuth(FunctionKey = SiteFunctionKeys.Couchbase, Policy = Constant.Policy.Host)]
-        public JsonResult RemoveCaches(CouchbaseManagementModel model)
+        public JsonResult CouchbaseDel(CouchbaseManagementModel model)
         {
             var result = true;
             var couchbaseClient = CreateClient(model.Bucket);

@@ -30,6 +30,7 @@
         if (!model) return;
 
         $.ajax({
+            url: NAP.resolveClientUrl("AdminTools/CouchbaseSel"),
             data: JSON.stringify(model),
             type: 'POST',
             contentType: "application/json",
@@ -64,8 +65,9 @@
         if (!model) return;
 
         $.ajax({
+            url: NAP.resolveClientUrl("AdminTools/CouchbaseDel"),
             data: JSON.stringify(model),
-            type: 'DELETE',
+            type: 'POST',
             contentType: "application/json",
             dataType: "json",
             cache: false,
