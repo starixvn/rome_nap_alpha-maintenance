@@ -27,10 +27,10 @@ var NAP = (function ($) {
 		},
 		// Handles common error when making ajax request
 		handleAjaxError: function (xhr, status, err) {
-			if (xhr.status === 403) { // unauthorize
-				console.warn(err);
+            if (xhr.status === 403) { // unauthorize
+                console.warn(err);
 			} else {
-				console.warn(err);
+                alert(err);
 			}
 		},
 		/* jshint ignore:start */
