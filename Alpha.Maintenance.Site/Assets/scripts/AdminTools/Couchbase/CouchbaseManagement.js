@@ -1,18 +1,40 @@
 ﻿$(document).ready(function () {
-    $('#submit').click(function () {
-        $('#error-message').hide();
-        if ($('#custIds').val() == undefined || $('#custIds').val() == '') {
-            $('#error-message').html("CustIds cannot be empty.").show();
+    $('select').material_select();
+
+    function generateModel() {
+        if ($('#keys').val() == undefined || $('#keys').val() == '') {
+            $('#error-message').html("Keys cannot be empty.").show();
             return;
         }
 
+        var keys = $('#keys').val().split(',');
+        var filterKeys = [];
+        for (var key of keys) {
+            var trimKey = $.trim(key);
+            if (trimKey) {
+                filterKeys.push(trimKey);
+            }
+        }
+
+        var bucket = $('#bucket').val();
+        return {
+            keys: filterKeys,
+            pattern: $('#pattern').val(),
+            bucket: bucket
+        };
+    }
+
+    $('#submit').click(function () {
+        $('#error-message').hide();
+        var model = generateModel();
+        if (!model) return;
+
         $.ajax({
-            url: "CouchbaseSelTransferDocument",
-            data: {
-                custIds: $('#custIds').val()
-            },
+            url: NAP.resolveClientUrl("AdminTools/CouchbaseSel"),
+            data: JSON.stringify(model),
             type: 'POST',
-            dataType: 'json',
+            contentType: "application/json",
+            dataType: "json",
             cache: false,
             beforeSend: function () {
                 NAP.loadingBox.show();
@@ -23,13 +45,11 @@
             success: function (result) {
                 var $resultTableBody = $("#result-table>tbody");
                 $resultTableBody.empty();
-                var custIds = $('#custIds').val().split(',');
-
                 for (var i = 0; i < result.length; i++) {
                     $resultTableBody.append(
                         '<tr>' +
-                        '<td>' + custIds[i] + '</td>' +
-                        '<td>' + result[i] + '</td>' +
+                        '<td>' + result[i].cacheKey + '</td>' +
+                        '<td>' + result[i].cacheValue + '</td>' +
                         '</tr>');
                 }
             },
@@ -41,18 +61,15 @@
 
     $('#del-document').click(function () {
         $('#error-message').hide();
-        if ($('#custIds').val() == undefined || $('#custIds').val() == '') {
-            $('#error-message').html("CustIds cannot be empty.").show();
-            return;
-        }
+        var model = generateModel();
+        if (!model) return;
 
         $.ajax({
-            url: "CouchbaseDelTransferDocument",
-            data: {
-                custIds: $('#custIds').val()
-            },
+            url: NAP.resolveClientUrl("AdminTools/CouchbaseDel"),
+            data: JSON.stringify(model),
             type: 'POST',
-            dataType: 'json',
+            contentType: "application/json",
+            dataType: "json",
             cache: false,
             beforeSend: function () {
                 NAP.loadingBox.show();
