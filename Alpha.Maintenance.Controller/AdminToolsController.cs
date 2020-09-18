@@ -6,6 +6,7 @@
     using Couchbase;
     using Fanex.NAP.Core.Business;
     using Fanex.NAP.Core.Web.Attribute;
+    using System;
     using System.Linq;
     using System.Web.Mvc;
 
@@ -31,7 +32,7 @@
         [NapAuth(FunctionKey = SiteFunctionKeys.Couchbase, Policy = Constant.Policy.Read)]
         public JsonResult CouchbaseSel(CouchbaseManagementModel model)
         {
-            var couchbaseClient = CreateClient(model.Bucket);
+            var couchbaseClient = couchbaseFactory.CreateClient("Alpha");
             var caches = model.Keys.Select(key =>
             {
                 var cacheKey = GenerateCacheKey(model.Pattern, key);
@@ -50,7 +51,7 @@
         public JsonResult CouchbaseDel(CouchbaseManagementModel model)
         {
             var result = true;
-            var couchbaseClient = CreateClient(model.Bucket);
+            var couchbaseClient = couchbaseFactory.CreateClient("Alpha");
             model.Keys.ForEach(key =>
             {
                 var cacheKey = GenerateCacheKey(model.Pattern, key);
@@ -60,21 +61,15 @@
             return Json(result);
         }
 
-        private ICouchbaseClient CreateClient(string bucket)
-        {
-            return couchbaseFactory.CreateClient(bucket);
-        }
-
         private static string GenerateCacheKey(CacheKeyPattern pattern, string key)
         {
             switch (pattern)
             {
                 case CacheKeyPattern.AgentMultipleTransfer:
                     return "AgentMultipleTransfer_" + key;
-                case CacheKeyPattern.LoginBlockedIP:
-                    return "Fanex.Alpha.Before.Common.Constants.SessionConstants.totalloginfailedcount." + key;
+
                 default:
-                    return key;
+                    throw new NotImplementedException();
             }
         }
     }

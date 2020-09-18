@@ -7,7 +7,5 @@
         public CacheKeyPattern Pattern { get; set; }
 
         public List<string> Keys { get; set; }
-
-        public string Bucket { get; set; }
     }
 }
