@@ -105,7 +105,8 @@ class CacheManagement {
 
         return {
             keys: filterKeys,
-            pattern: this.$('#pattern').val()
+            pattern: this.$('#pattern').val(),
+            siteGroup: this.$('#siteGroup').val()
         };
     }
 

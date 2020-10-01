@@ -38,7 +38,7 @@
             var cacheService = GetCacheService(model.Pattern);
             foreach (var key in model.Keys)
             {
-                var cacheKey = GenerateCacheKey(model.Pattern, key);
+                var cacheKey = GenerateCacheKey(model, key);
                 var cacheValue = await cacheService.GetAsync<object>(cacheKey);
                 result.Add(new
                 {
@@ -57,7 +57,7 @@
             var cacheService = GetCacheService(model.Pattern);
             foreach (var key in model.Keys)
             {
-                var cacheKey = GenerateCacheKey(model.Pattern, key);
+                var cacheKey = GenerateCacheKey(model, key);
                 await cacheService.RemoveAsync(cacheKey);
             }
         }
@@ -74,12 +74,12 @@
             }
         }
 
-        private static string GenerateCacheKey(CacheKeyPattern pattern, string key)
+        private static string GenerateCacheKey(CacheManagementModel model, string key)
         {
-            switch (pattern)
+            switch (model.Pattern)
             {
                 case CacheKeyPattern.LoginBlockedIP:
-                    return "Fanex.Alpha.Before.Common.Constants.SessionConstants.totalloginfailedcount." + key;
+                    return $"totalloginfailedcount.{model.SiteGroup}.{key}";
 
                 default:
                     throw new NotImplementedException();
