@@ -1,5 +1,9 @@
 ﻿namespace Alpha.Maintenance.Administration
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using System.Web.Mvc;
     using Alpha.Maintenance.Administration.Models;
     using Alpha.Maintenance.Administration.Services;
     using Alpha.Maintenance.Controller;
@@ -7,11 +11,7 @@
     using Fanex.Caching;
     using Fanex.NAP.Core.Business;
     using Fanex.NAP.Core.Web.Attribute;
-    using System;
-    using System.Collections.Generic;
     using System.Configuration;
-    using System.Threading.Tasks;
-    using System.Web.Mvc;
 
     public class CacheManagementController : BaseController
     {
@@ -93,6 +93,9 @@
         {
             switch (pattern)
             {
+                case CacheKeyPattern.AgentMultipleTransfer:
+                    return cacheFactory.Create("RedisConfigurationOptions:Alpha.Transfer");
+
                 case CacheKeyPattern.LoginBlockedIP:
                     return "RedisConfigurationOptions:Alpha.Before";
 
@@ -105,6 +108,9 @@
         {
             switch (model.Pattern)
             {
+                case CacheKeyPattern.AgentMultipleTransfer:
+                    return $"AgentMultipleTransfer.{model.SiteGroup}.{key}";
+
                 case CacheKeyPattern.LoginBlockedIP:
                     return $"totalloginfailedcount.{model.SiteGroup}.{key}";
 

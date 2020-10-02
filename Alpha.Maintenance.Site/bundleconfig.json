@@ -31,12 +31,6 @@
     ]
   },
   {
-    "outputFileName": "Assets/bundles/Couchbase/CouchbaseManagement.js",
-    "inputFiles": [
-      "Assets/scripts/AdminTools/Couchbase/CouchbaseManagement.js"
-    ]
-  },
-  {
     "outputFileName": "Assets/bundles/Banner/upload-banner.js",
     "inputFiles": [
       "Assets/scripts/lib/Momentjs/moment.js",
