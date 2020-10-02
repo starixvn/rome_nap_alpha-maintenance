@@ -1,0 +1,25 @@
+﻿@using Alpha.Maintenance.Repository.Criteria.Log
+
+@model Alpha.Maintenance.Administration.Models.HealthCheckModel
+
+@{
+    ViewBag.Title = "HealthCheck";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin: 0 15px">
+    <h4>Redis Health Check</h4>
+    <div style="margin-bottom: 10px">
+        <div style="font-weight: bold">Server Connection String:</div>
+        <div>@Model.RedisConnection</div>
+    </div>
+    <div>
+        <div style="font-weight: bold">Status:</div>
+        <div class="@(!Model.IsOk ? "red-text" : "")">@Model.Message</div>
+    </div>
+</div>
+
+@section Headline {
+    <span>Admin Tools / </span>
+    <span class="active">@ViewBag.Title</span>
+}

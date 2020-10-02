@@ -223,6 +223,7 @@
     <Compile Include="AdministrationAreaRegistration.cs" />
     <Compile Include="Models\CacheManagementModel.cs" />
     <Compile Include="CacheManagementController.cs" />
+    <Compile Include="Models\HealthCheckModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\RedisCacheFactory.cs" />
   </ItemGroup>

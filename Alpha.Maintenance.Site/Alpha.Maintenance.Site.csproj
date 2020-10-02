@@ -618,6 +618,7 @@
     <Content Include="Assets\scripts\lib\fonts\dropify.woff" />
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\CacheManagement\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\CacheManagement\HealthCheck.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

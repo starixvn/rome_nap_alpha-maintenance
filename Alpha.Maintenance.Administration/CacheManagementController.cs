@@ -9,6 +9,7 @@
     using Fanex.NAP.Core.Web.Attribute;
     using System;
     using System.Collections.Generic;
+    using System.Configuration;
     using System.Threading.Tasks;
     using System.Web.Mvc;
 
@@ -30,8 +31,29 @@
         [NapAuth(FunctionKey = SiteFunctionKeys.Couchbase, Policy = Constant.Policy.Read)]
         public ActionResult Index() => View();
 
+        [HttpGet]
+        [NapAuth(FunctionKey = SiteFunctionKeys.Couchbase, Policy = Constant.Policy.Read)]
+        public ActionResult HealthCheck()
+        {
+            var cacheKeyPattern = CacheKeyPattern.LoginBlockedIP;
+            var redisSettingKey = GetRedisSettingKey(cacheKeyPattern);
+            var redisConnection = ConfigurationManager.AppSettings[redisSettingKey];
+            var cacheService = GetCacheService(cacheKeyPattern);
+            var model = new HealthCheckModel(redisConnection);
+            try
+            {
+                cacheService.Contain("TestKey");
+            }
+            catch (Exception ex)
+            {
+                model = new HealthCheckModel(redisConnection, ex.Message);
+            }
+
+            return View(model);
+        }
+
         [HttpPost]
-        [NapAuth(FunctionKey = SiteFunctionKeys.Couchbase, Policy = Constant.Policy.Host)]
+        [NapAuth(FunctionKey = SiteFunctionKeys.Couchbase, Policy = Constant.Policy.Read)]
         public async Task<JsonResult> Get(CacheManagementModel model)
         {
             var result = new List<object>();
@@ -64,10 +86,15 @@
 
         private ICacheService GetCacheService(CacheKeyPattern pattern)
         {
+            return cacheFactory.Create(GetRedisSettingKey(pattern));
+        }
+
+        private string GetRedisSettingKey(CacheKeyPattern pattern)
+        {
             switch (pattern)
             {
                 case CacheKeyPattern.LoginBlockedIP:
-                    return cacheFactory.Create("RedisConfigurationOptions:Alpha.Before");
+                    return "RedisConfigurationOptions:Alpha.Before";
 
                 default:
                     throw new NotImplementedException();
