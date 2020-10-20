@@ -32,7 +32,7 @@ namespace Alpha.Maintenance.Site.App_Start
                 "~/Assets/styles/vendors/icon/style.css", 
                 "~/Assets/scripts/lib/Select2/select2.css",
                 "~/Assets/scripts/lib/material-datetime-picker/material-datetime-picker.css",
-                "~/Assets/styles/main.min.css");
+                "~/Assets/styles/main.css");
 
             // js
             bundles.Add(new ScriptBundle("~/scripts/common").Include(

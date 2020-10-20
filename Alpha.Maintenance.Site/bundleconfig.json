@@ -50,5 +50,11 @@
     "inputFiles": [
       "Assets/scripts/Banner/manage-banner.js"
     ]
+  },
+  {
+    "outputFileName": "Assets/bundles/Administration/CacheManagement.js",
+    "inputFiles": [
+      "Assets/scripts/Administration/CacheManagement.js"
+    ]
   }
 ]
