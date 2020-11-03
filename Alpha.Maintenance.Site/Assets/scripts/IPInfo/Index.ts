@@ -132,7 +132,8 @@ class IPInformation {
         let ip = this.$txtIP.val();
 
         this.$.each(apis, (key, apiInfo) => {
-            let url = apiInfo.APILink + ip;
+            let apiParts = apiInfo.APILink.split('?');
+            let url = apiParts[0] + ip + (apiParts.length > 1 ? '?' + apiParts[1] : '');
 
             var ajax = this.$.ajax({
                 url: url,
@@ -144,7 +145,8 @@ class IPInformation {
                         return;
                     }
 
-                    let webLink = apiInfo.WebLink + ip;
+                    let webLinkParts = apiInfo.WebLink.split('?');
+                    let webLink = webLinkParts[0] + ip + (webLinkParts.length > 1 ? '?' + webLinkParts[1] : '');
                     let content = '<tr>\
                                     <td>' + apiInfo.Name + '<a href="' + webLink + '" target="_blank" class="icon-link icon-link-variant"></a></td>\
                                     <td>' + this.formatValue(result[apiInfo.CountryCodeKey]) + '</td>\
