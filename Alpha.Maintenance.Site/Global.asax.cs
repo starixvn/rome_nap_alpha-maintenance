@@ -18,9 +18,16 @@ namespace Alpha.Maintenance.Site
     using System.Web.Optimization;
     using System.Web.Routing;
     using App_Start;
+    using Fanex.Caching;
     using Fanex.Data.Configuration;
     using Fanex.Logging;
-    using ONEbook.UM.Filters;
+    using ONEbook.UM;
+    using ONEbook.UM.AspNetMVC.Filters;
+    using ONEbook.UM.Configurations;
+    using ONEbook.UM.Helpers;
+    using ONEbook.UM.NETFramework;
+    using ONEbook.UM.Services;
+    using ONEbook.UM.Transport;
 
     /// <summary>
     /// Note: For instructions on enabling IIS6 or IIS7 classic mode, visit http://go.microsoft.com/?LinkId=9394801 .
@@ -40,7 +47,14 @@ namespace Alpha.Maintenance.Site
 
             DbSettingProviderManager.Current.Start();
 
-            GlobalFilters.Filters.Add(new CheckUMFilter());
+            var umConfig = new UMClientConfiguration().Initialize();
+            UMClientManager
+                .UseConfig(umConfig)
+                .UseCacheService(new UMCacheService(new CacheService()))
+                .UseRestClient(new UMRestClient(umConfig))
+                .UseHttpContext(new HttpContextHelper());
+            GlobalFilters.Filters.Add(new CheckUMFilterAttribute(
+                new MaintenanceService(UMClientManager.RestClient, UMClientManager.CacheService, UMClientManager.UMClientConfigs, UMClientManager.HttpContext), null));
         }
 
         /// <summary>

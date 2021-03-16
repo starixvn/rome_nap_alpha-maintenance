@@ -26,8 +26,8 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
     using Fanex.NAP.Core.Web;
     using Fanex.NAP.Core.Web.Auth;
     using Fanex.NAP.Core.Web.Session;
+    using ONEbook.UM;
     using ONEbook.UM.Services;
-    using ONEbook.UM.Services.Impl;
 
     /// <summary>
     /// Login controller.
@@ -38,9 +38,8 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
 
         private readonly IUserService _userService;
         private readonly IGroupService _groupService;
-        private readonly ISiteService _siteService;
         private readonly ICurrentSession _currentSession;
-        private readonly ONEbook.UM.Services.IMaintenanceService _maintenanceService;
+        private readonly IMaintenanceService _maintenanceService;
         private readonly ISecurityService _securityService;
 
         #endregion members
@@ -48,23 +47,25 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
         #region ctors
 
         public LoginController()
-            : this(null, null, null, null, null, null)
+            : this(null, null, null, null, null)
         {
         }
 
         public LoginController(
             IUserService userService,
             IGroupService groupService,
-            ISiteService siteService,
             ICurrentSession currentSession,
             IMaintenanceService maintenanceService,
             ISecurityService securityService)
         {
             _userService = userService ?? new UserService();
             _groupService = groupService ?? new GroupService();
-            _siteService = siteService ?? new SiteService();
             _currentSession = currentSession ?? new CurrentSession();
-            _maintenanceService = maintenanceService ?? new ONEbook.UM.Services.Impl.MaintenanceService();
+            _maintenanceService = maintenanceService ?? new MaintenanceService(
+                UMClientManager.RestClient,
+                UMClientManager.CacheService,
+                UMClientManager.UMClientConfigs,
+                UMClientManager.HttpContext);
             _securityService = securityService ?? new SecurityService();
         }
 
@@ -110,7 +111,7 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
             {
                 if (!username.IsNullOrTrimEmpty() && !password.IsNullOrTrimEmpty())
                 {
-                    var user = _userService.Get(username.Trim()) as User;
+                    var user = _userService.Get(username.Trim());
 
                     if (user != null)
                     {
@@ -120,12 +121,12 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
                         {
                             var siteLevelList = _userService.GetSiteLevel(user.Id, Environment);
 
-                            if (siteLevelList.Where(x => x.Site.Id == this.SiteId).Any())
+                            if (siteLevelList.Any(x => x.Site.Id == this.SiteId))
                             {
                                 var group = user.Group == null ? null : _groupService.Get(user.Group.Id);
 
                                 if ((group == null || group.IsActive)
-                                    && siteLevelList.Where(x => x.Site.Id == this.SiteId && x.IsActive).Any())
+                                    && siteLevelList.Any(x => x.Site.Id == this.SiteId && x.IsActive))
                                 {
                                     // check-in user
                                     var criteria = new LoginParameter
@@ -143,7 +144,7 @@ namespace Fanex.NAP.Hub.Areas.UserLogin.Controllers
 
                                     var onlineUserId = _securityService.Login(criteria);
 
-                                    int level = siteLevelList.Where(x => x.Site.Id == this.SiteId).FirstOrDefault().Level;
+                                    int level = siteLevelList.FirstOrDefault(x => x.Site.Id == this.SiteId).Level;
 
                                     // saves user session
                                     _currentSession.Level = level;
