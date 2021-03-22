@@ -1,0 +1,19 @@
+{
+  "environments": [
+    "UAT",
+    "Staging",
+    "PRO"
+  ],
+  "systems": [
+    "IBCBet",
+    "B-IBCBet",
+    "789Y",
+    "B-789Y",
+    "CN88",
+    "IBCIndo",
+    "B-IBCIndo"
+  ],
+  "ExcludedSpecifications": [
+  ],
+  "GetAnnouncementsByJson": 0
+}
