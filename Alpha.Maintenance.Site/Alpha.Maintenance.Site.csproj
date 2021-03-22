@@ -326,6 +326,9 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="App_Data\announcementConfig.aws.json">
+      <DependentUpon>announcementConfig.json</DependentUpon>
+    </Content>
     <Content Include="App_Data\announcementConfig.pro.json">
       <DependentUpon>announcementConfig.json</DependentUpon>
     </Content>
@@ -565,6 +568,9 @@
       <DependentUpon>Web.local.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="WebConnectionString.aws.config">
+      <DependentUpon>WebConnectionString.config</DependentUpon>
+    </Content>
     <Content Include="WebConnectionString.pro.config">
       <DependentUpon>WebConnectionString.config</DependentUpon>
     </Content>
@@ -700,6 +706,9 @@
     <Content Include="Views\Banner\Index.cshtml" />
     <Content Include="tsconfig.json" />
     <Content Include="Views\Banner\UploadBanner.cshtml" />
+    <None Include="Web.aws.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\scripts\Administration\CacheManagement.ts" />
