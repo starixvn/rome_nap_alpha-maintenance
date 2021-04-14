@@ -89,10 +89,13 @@
             return cacheFactory.Create(GetRedisSettingKey(pattern));
         }
 
-        private string GetRedisSettingKey(CacheKeyPattern pattern)
+        private static string GetRedisSettingKey(CacheKeyPattern pattern)
         {
             switch (pattern)
             {
+                case CacheKeyPattern.AgentMultipleTransfer:
+                    return "RedisConfigurationOptions:Alpha.Transfer";
+
                 case CacheKeyPattern.LoginBlockedIP:
                     return "RedisConfigurationOptions:Alpha.Before";
 
@@ -105,6 +108,9 @@
         {
             switch (model.Pattern)
             {
+                case CacheKeyPattern.AgentMultipleTransfer:
+                    return $"AgentMultipleTransfer.{model.SiteGroup}.{key}";
+
                 case CacheKeyPattern.LoginBlockedIP:
                     return $"totalloginfailedcount.{model.SiteGroup}.{key}";
 

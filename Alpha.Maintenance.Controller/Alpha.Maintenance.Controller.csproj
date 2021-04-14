@@ -37,12 +37,6 @@
     <Reference Include="Alpha.Announcements, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Alpha.Announcements.1.0.0.4\lib\net40\Alpha.Announcements.dll</HintPath>
     </Reference>
-    <Reference Include="Couchbase, Version=1.2.6.0, Culture=neutral, PublicKeyToken=05e9c6b5a9ec94c2, processorArchitecture=MSIL">
-      <HintPath>..\packages\CouchbaseNetClient.1.2.6.3\lib\net40\Couchbase.dll</HintPath>
-    </Reference>
-    <Reference Include="Enyim.Caching, Version=2.12.0.0, Culture=neutral, PublicKeyToken=05e9c6b5a9ec94c2, processorArchitecture=MSIL">
-      <HintPath>..\packages\CouchbaseNetClient.1.2.6.3\lib\net40\Enyim.Caching.dll</HintPath>
-    </Reference>
     <Reference Include="Fanex.Caching, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Caching.2.2.1\lib\net461\Fanex.Caching.dll</HintPath>
     </Reference>
@@ -187,7 +181,6 @@
     <Compile Include="AnnouncementController.cs" />
     <Compile Include="BaseController.cs" />
     <Compile Include="HomeController.cs" />
-    <Compile Include="AdminToolsController.cs" />
     <Compile Include="IPInformationController.cs" />
     <Compile Include="LogController.cs" />
     <Compile Include="Models\AdminTools\CacheKeyPattern.cs" />
