@@ -10,6 +10,7 @@
 namespace Alpha.Maintenance.Site
 {
     using System;
+    using System.Configuration;
     using System.Data.SqlClient;
     using System.Diagnostics.CodeAnalysis;
     using System.Web;
@@ -21,6 +22,7 @@ namespace Alpha.Maintenance.Site
     using Fanex.Caching;
     using Fanex.Data.Configuration;
     using Fanex.Logging;
+    using Fanex.Logging.RabbitMQ;
     using ONEbook.UM;
     using ONEbook.UM.AspNetMVC.Filters;
     using ONEbook.UM.Configurations;
@@ -44,6 +46,11 @@ namespace Alpha.Maintenance.Site
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            var appSettings = ConfigurationManager.AppSettings;
+            LogManager
+                .SetDefaultLogCategory(appSettings["Fanex.Logging:DefaultCategory"])
+                .Use(new RabbitMQLogging(appSettings["Fanex.Logging:RabbitMQConnectionStrings"]));
 
             DbSettingProviderManager.Current.Start();
 
