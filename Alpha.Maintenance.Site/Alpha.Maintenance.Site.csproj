@@ -710,9 +710,9 @@
     <Content Include="Views\Banner\Index.cshtml" />
     <Content Include="tsconfig.json" />
     <Content Include="Views\Banner\UploadBanner.cshtml" />
-    <None Include="Web.aws.config">
+    <Content Include="Web.aws.config">
       <DependentUpon>Web.local.config</DependentUpon>
-    </None>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\scripts\Administration\CacheManagement.ts" />
