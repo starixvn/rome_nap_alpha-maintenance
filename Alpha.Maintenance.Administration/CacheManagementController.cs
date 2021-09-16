@@ -112,7 +112,7 @@
                     return $"AgentMultipleTransfer.{model.SiteGroup}.{key}";
 
                 case CacheKeyPattern.LoginBlockedIP:
-                    return $"totalloginfailedcount.{model.SiteGroup}.{key}";
+                    return $"loginipblocked.{model.SiteGroup}.{key}";
 
                 default:
                     throw new NotImplementedException();
