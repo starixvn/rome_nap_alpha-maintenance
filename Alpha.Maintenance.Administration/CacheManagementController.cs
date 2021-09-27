@@ -100,7 +100,7 @@
                     return "RedisConfigurationOptions:Alpha.Before";
 
                 default:
-                    throw new NotImplementedException();
+                    return "RedisConfigurationOptions:Alpha.NetThrottling";
             }
         }
 
@@ -115,7 +115,7 @@
                     return $"loginipblocked.{model.SiteGroup}.{key}";
 
                 default:
-                    throw new NotImplementedException();
+                    return key;
             }
         }
     }
