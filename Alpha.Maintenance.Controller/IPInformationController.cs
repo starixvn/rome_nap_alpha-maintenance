@@ -35,11 +35,6 @@
         public ActionResult GetIPInfo(string ip)
             => Json(new { IPInfo = ipInformationService.GetIPInfo(ip) }, JsonRequestBehavior.AllowGet);
 
-        [HttpGet]
-        [NapAuth(FunctionKey = SiteFunctionKeys.IPInformation, Policy = Constant.Policy.Read)]
-        public ActionResult GetIPInfoFromTableMini(string ip)
-            => Json(new { IPInfo = ipInformationService.GetIPInfoFromTableMini(ip) }, JsonRequestBehavior.AllowGet);
-
         private static IEnumerable<APIInfo> CreateGeolocationAPIs()
             => AppSettings.APINames.Select(name => new APIInfo(name));
     }

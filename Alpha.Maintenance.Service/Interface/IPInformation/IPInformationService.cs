@@ -5,7 +5,5 @@
     public interface IPInformationService
     {
         IPInfo GetIPInfo(string ip);
-
-        IPInfo GetIPInfoFromTableMini(string ip);
     }
 }
