@@ -25,7 +25,7 @@
     <Name>DB054</Name>
   </Server>
   <Server>
-    <Ip>10.40.40.100</Ip>
+    <Ip>10.40.40.91</Ip>
     <Name>DB06</Name>
   </Server>
   <Server>
@@ -72,10 +72,18 @@
     <Ip>10.40.40.224</Ip>
     <Name>DBAFF</Name>
   </Server>
-	<Server>
-		<Ip>10.40.40.82</Ip>
-		<Name>DB042</Name>
-	</Server>
+  <Server>
+    <Ip>10.40.40.82</Ip>
+    <Name>DB042</Name>
+  </Server>
+  <Server>
+    <Ip>10.40.40.93</Ip>
+    <Name>DB05BK1</Name>
+  </Server>
+  <Server>
+    <Ip>10.40.40.100</Ip>
+    <Name>DB061</Name>
+  </Server>
   <Server>
     <Ip>10.40.40.50</Ip>
     <Name>DBBAK2</Name>

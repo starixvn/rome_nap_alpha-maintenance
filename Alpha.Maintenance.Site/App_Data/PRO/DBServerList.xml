@@ -25,7 +25,7 @@
     <Name>DB054</Name>
   </Server>
   <Server>
-    <Ip>10.40.40.100</Ip>
+    <Ip>10.40.40.91</Ip>
     <Name>DB06</Name>
   </Server>
   <Server>
@@ -81,7 +81,7 @@
     <Name>DB05BK1</Name>
   </Server>
   <Server>
-    <Ip>10.40.40.91</Ip>
+    <Ip>10.40.40.100</Ip>
     <Name>DB061</Name>
   </Server>
   <Server>
