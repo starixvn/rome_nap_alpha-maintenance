@@ -100,7 +100,6 @@
     <Compile Include="Criteria\Banners\GetBannerCriteria.cs" />
     <Compile Include="Criteria\IPInformation\GetIPInformationCriteria.cs" />
     <Compile Include="Criteria\DBProfiler\GetLogCriteria.cs" />
-    <Compile Include="Criteria\IPInformation\GetIPInfoFromTableMiniCriteria.cs" />
     <Compile Include="Criteria\Log\GetAllCategoryCriteria.cs" />
     <Compile Include="Criteria\Log\GetAllMachinesCriteria.cs" />
     <Compile Include="Criteria\Log\GetLogCriteria.cs" />
