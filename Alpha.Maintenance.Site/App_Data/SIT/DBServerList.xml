@@ -14,7 +14,11 @@
   </Server>
   <Server>
     <Ip>172.16.40.7</Ip>
-    <Name>DB053</Name>
+    <Name>DB055</Name>
+  </Server>
+  <Server>
+    <Ip>172.16.40.8</Ip>
+    <Name>DB05BK1</Name>
   </Server>
   <Server>
     <Ip>172.16.40.13</Ip>
@@ -23,6 +27,10 @@
   <Server>
     <Ip>172.16.40.21</Ip>
     <Name>DBCUST</Name>
+  </Server>
+  <Server>
+    <Ip>172.16.40.16</Ip>
+    <Name>DBDW</Name>
   </Server>
   <Server>
     <Ip>172.16.40.17</Ip>
