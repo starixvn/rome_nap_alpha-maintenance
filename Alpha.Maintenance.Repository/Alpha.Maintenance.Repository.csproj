@@ -98,6 +98,9 @@
     <Compile Include="Criteria\Banners\GetBannerByIdCriteria.cs" />
     <Compile Include="Criteria\Banners\SaveBannerCriteria.cs" />
     <Compile Include="Criteria\Banners\GetBannerCriteria.cs" />
+    <Compile Include="Criteria\Chatbot\CreateBotCriteria.cs" />
+    <Compile Include="Criteria\Chatbot\GetAllBotCriteria.cs" />
+    <Compile Include="Criteria\Chatbot\GetBotCriteria.cs" />
     <Compile Include="Criteria\IPInformation\GetIPInformationCriteria.cs" />
     <Compile Include="Criteria\DBProfiler\GetLogCriteria.cs" />
     <Compile Include="Criteria\Log\GetAllCategoryCriteria.cs" />
@@ -117,6 +120,7 @@
     <Compile Include="Impl\AppLog\LogRepository.cs" />
     <Compile Include="Impl\AppLog\MachineRepository.cs" />
     <Compile Include="Impl\AnnouncementRepository.cs" />
+    <Compile Include="Impl\ChatbotRepository.cs" />
     <Compile Include="Impl\IPInformationRepository.cs" />
     <Compile Include="Impl\DBProfiler\LogRespository.cs" />
     <Compile Include="Impl\ObjectDbFactory.cs" />

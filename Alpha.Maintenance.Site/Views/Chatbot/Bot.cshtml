@@ -1,0 +1,54 @@
+﻿@model ChatBotDetailViewModel
+@{
+    ViewBag.Title = "Chatbot";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Headline {
+    <span>Chatbot / </span>
+    <span class="active">@(Model.IsCreate ? "Create Bot" : "Edit Bot")</span>
+}
+
+@using (Html.BeginForm(Model.IsCreate ? "Create" : "Edit", "Chatbot", FormMethod.Post, new { @class = "filter-form display-information-settings" }))
+{
+    <div id="div-message" class="card-panel lighten-4 text-darken-4 hiden"></div>
+    <div class="row systems">
+        <div class="input-field col s4">
+            <input type="text" name="Name" class="validate" value="@Model.Username" />
+            <label for="txt-title">@ViewResource.Username <span class="red-text">*</span></label>
+        </div>
+       
+        <div class="toggle-switch col s4">
+            <input class="sw" type="checkbox" id="chk-active" @(Model.Active ? "checked=checked" : string.Empty)/>
+            <label class="input-field" for="chk-active"><span>@ViewResource.Active</span></label>
+        </div>
+        <div class="toggle-switch col s4">
+            <input class="sw" type="checkbox" id="chk-active" @(Model.IsTest ? "checked=checked" : string.Empty)/>
+            <label class="input-field" for="chk-active"><span>Is Test</span></label>
+        </div>
+    </div>
+    <div class="row systems">
+        <div class="input-field col s4">
+            <input type="text" name="Name" class="validate" value="@Model.DisplayName"/>
+            <label for="txt-title">@ViewResource.Name <span class="red-text">*</span></label>
+        </div>
+    </div>
+    <div class="row systems">
+        <div class="col s12">
+            <label class="label-title">@ViewResource.System</label>
+        </div>
+        @foreach (var site in BannerConfig.Sites)
+        {
+            <div class="col s2 checkbox">
+                <input class="with-gap" type="radio" name="System" id="chk-@site" value="@site" checked />
+                <label for="chk-@site">@site</label>
+            </div>
+        }
+    </div>
+    <div class="row systems">
+        <div class="input-field col s4">
+            <input type="text" name="AccessToken" class="validate" value="@Model.AccessToken" />
+            <label for="txt-title">@ViewResource.Token <span class="red-text">*</span></label>
+        </div>
+    </div>
+}

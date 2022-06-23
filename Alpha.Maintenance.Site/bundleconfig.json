@@ -50,5 +50,11 @@
     "inputFiles": [
       "Assets/scripts/Administration/CacheManagement.js"
     ]
+  },
+  {
+    "outputFileName": "Assets/bundles/Chatbot/index.js",
+    "inputFiles": [
+      "Assets/scripts/Chatbot/index.js"
+    ]
   }
 ]

@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Chatbot";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model ChatbotFilterViewModel
+
+@section Headline {
+    <span>Chatbot / </span>
+    <span class="active">Manage Chatbot</span>
+}
+
+
+<form role="form" class="filter-form row">
+    <div class="col s2 input-field">
+        <input class="filled-in checkbox" id="Enabled" name="Enabled" type="checkbox" value="@Model.Enabled" @(Model.Enabled ? "checked=\"checked\"" : string.Empty)>
+        <label for="Enabled">Enabled</label>
+        <input name="Enabled" type="hidden" value="false">
+    </div>
+    <div class="col s2 input-field">
+        <input class="filled-in checkbox" id="IsTest" name="IsTest" type="checkbox" value="@Model.IsTest" @(Model.IsTest ? "checked=\"checked\"" : string.Empty)>
+        <label for="IsTest">Is Test</label>
+        <input name="IsTest" type="hidden" value="false">
+    </div>
+    <div class="col s2 button-block">
+        <input type="button" class="waves-effect waves-light btn btn-primary" value="@ViewResource.Submit" id="btnSubmit"/>
+    </div>
+</form>
+
+<div class="table">
+    <div class="col button-block">
+        <a class="waves-effect waves-light btn btn-outline" href="@Url.Action("Create", "Chatbot")">
+            <span class="icon-button icon-plus-box"></span>
+            <input type="button" value="@AnnouncementResources.Add" id="add" />
+        </a>
+    </div>
+    <table class="grid persist-area" id="messageContainer">
+        <thead class="persist-header">
+            <tr>
+                <th>@ViewResource.ID</th>
+                <th>@ViewResource.Name</th>
+                <th>@ViewResource.System</th>
+                <th>@ViewResource.Token</th>
+                <th>@ViewResource.Enabled</th>
+                <th>@ViewResource.IsTest</th>
+            </tr>
+        </thead>
+        <tbody id="content">
+        </tbody>
+    </table>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Assets/bundles/Chatbot/index.js")
+}

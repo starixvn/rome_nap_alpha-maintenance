@@ -936,4 +936,13 @@
   <data name="EditBanner" xml:space="preserve">
     <value>Edit Banner</value>
   </data>
+  <data name="IsTest" xml:space="preserve">
+    <value>Is Test</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>Token</value>
+  </data>
 </root>

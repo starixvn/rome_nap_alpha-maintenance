@@ -1,0 +1,33 @@
+﻿
+@model IEnumerable<Bot>
+
+@if (Model.Any())
+{
+    foreach (var bot in Model)
+    {
+        <tr>
+            <td>@bot.BotId</td>
+            <td>
+                <a href="@Url.Action("Edit", "Chatbot", new { BotId = bot.BotId })"
+                   class="text-link">
+                    @bot.Username
+                </a>
+            </td>
+            <td>@bot.DisplayName</td>
+            <td>@bot.System</td>
+            <td>@bot.AccessToken</td>
+            <td class="checkbox">
+                <span id="@bot.BotId" class="icon-check" data-checked="@bot.Status"></span>
+            </td>
+            <td class="checkbox">
+                <span id="@bot.BotId" class="icon-check" data-checked="@bot.IsTest"></span>
+            </td>
+        </tr>
+    }
+}
+else
+{
+    <tr>
+        <td colspan="7" class="no-data">No Information Available</td>
+    </tr>
+}
