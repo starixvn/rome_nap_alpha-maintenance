@@ -2,7 +2,17 @@
 {
     public class ChatBotDetailViewModel
     {
-        public bool IsCreate { get; set; }
+        public ChatBotDetailViewModel()
+        {
+        }
+
+        public ChatBotDetailViewModel(bool isCreate, bool hasHostPermission)
+        {
+            IsCreate = isCreate;
+            HasHostPermission = hasHostPermission;
+        }
+
+        public bool IsCreate { get; }
 
         public int BotId { get; set; }
 
@@ -17,5 +27,9 @@
         public bool Active { get; set; }
 
         public bool IsTest { get; set; }
+
+        public string ErrorMessage { get; set; }
+
+        public bool HasHostPermission { get; }
     }
 }

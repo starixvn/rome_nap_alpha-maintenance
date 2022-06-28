@@ -56,5 +56,11 @@
     "inputFiles": [
       "Assets/scripts/Chatbot/index.js"
     ]
+  },
+  {
+    "outputFileName": "Assets/bundles/Chatbot/bot-detail.js",
+    "inputFiles": [
+      "Assets/scripts/Chatbot/bot-detail.js"
+    ]
   }
 ]

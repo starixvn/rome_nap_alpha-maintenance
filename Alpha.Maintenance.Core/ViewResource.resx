@@ -945,4 +945,7 @@
   <data name="Token" xml:space="preserve">
     <value>Token</value>
   </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Display Name</value>
+  </data>
 </root>

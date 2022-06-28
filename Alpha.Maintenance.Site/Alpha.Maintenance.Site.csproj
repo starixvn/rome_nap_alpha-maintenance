@@ -406,6 +406,14 @@
     <Content Include="Assets\bundles\Banner\upload-banner.min.js">
       <DependentUpon>upload-banner.js</DependentUpon>
     </Content>
+    <Content Include="Assets\bundles\Chatbot\bot-detail.js" />
+    <Content Include="Assets\bundles\Chatbot\bot-detail.min.js">
+      <DependentUpon>bot-detail.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\bundles\Chatbot\index.js" />
+    <Content Include="Assets\bundles\Chatbot\index.min.js">
+      <DependentUpon>index.js</DependentUpon>
+    </Content>
     <Content Include="Assets\bundles\compose-messages.js" />
     <Content Include="Assets\bundles\compose-messages.min.js">
       <DependentUpon>compose-messages.js</DependentUpon>
@@ -426,7 +434,6 @@
     <Content Include="Assets\scripts\Announcement\manage-announcements.js">
       <DependentUpon>manage-announcements.ts</DependentUpon>
     </Content>
-    <Content Include="Assets\scripts\Chatbot\index.js" />
     <Content Include="Assets\scripts\lib\dropify\dropify.min.css" />
     <Content Include="Assets\scripts\lib\dropify\dropify.min.js" />
     <Content Include="Assets\scripts\lib\fonts\dropify.svg" />
@@ -654,7 +661,6 @@
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\CacheManagement\Index.cshtml" />
     <Content Include="Areas\Administration\Views\CacheManagement\HealthCheck.cshtml" />
-    <Content Include="Assets\scripts\Chatbot\index.js.map" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -720,6 +726,7 @@
     <TypeScriptCompile Include="Assets\scripts\Announcement\manage-announcements.ts" />
     <TypeScriptCompile Include="Assets\scripts\Banner\upload-banner.ts" />
     <TypeScriptCompile Include="Assets\scripts\Banner\manage-banner.ts" />
+    <TypeScriptCompile Include="Assets\scripts\Chatbot\bot-detail.ts" />
     <TypeScriptCompile Include="Assets\scripts\Chatbot\index.ts" />
     <TypeScriptCompile Include="Assets\scripts\IPInfo\index.ts" />
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />

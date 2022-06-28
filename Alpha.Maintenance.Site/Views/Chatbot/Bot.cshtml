@@ -11,26 +11,31 @@
 
 @using (Html.BeginForm(Model.IsCreate ? "Create" : "Edit", "Chatbot", FormMethod.Post, new { @class = "filter-form display-information-settings" }))
 {
-    <div id="div-message" class="card-panel lighten-4 text-darken-4 hiden"></div>
+    if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div id="div-message" class="card-panel lighten-4 text-darken-4">@Model.ErrorMessage</div>
+    }
+    <input name="BotId" type="hidden" value="@Model.BotId">
     <div class="row systems">
         <div class="input-field col s4">
-            <input type="text" name="Name" class="validate" value="@Model.Username" />
+            <input type="text" name="Username" class="validate" value="@Model.Username" />
             <label for="txt-title">@ViewResource.Username <span class="red-text">*</span></label>
         </div>
-       
         <div class="toggle-switch col s4">
-            <input class="sw" type="checkbox" id="chk-active" @(Model.Active ? "checked=checked" : string.Empty)/>
-            <label class="input-field" for="chk-active"><span>@ViewResource.Active</span></label>
-        </div>
-        <div class="toggle-switch col s4">
-            <input class="sw" type="checkbox" id="chk-active" @(Model.IsTest ? "checked=checked" : string.Empty)/>
-            <label class="input-field" for="chk-active"><span>Is Test</span></label>
+            <input type="checkbox" data-val="@Model.Active" id="Active" name="Active" @(Model.Active ? "checked=checked" : string.Empty) value="@Model.Active" />
+            <label for="Active"><span>@ViewResource.Active</span></label>
+            <input name="Active" type="hidden" value="false" />
         </div>
     </div>
     <div class="row systems">
         <div class="input-field col s4">
-            <input type="text" name="Name" class="validate" value="@Model.DisplayName"/>
-            <label for="txt-title">@ViewResource.Name <span class="red-text">*</span></label>
+            <input type="text" name="DisplayName" class="validate" value="@Model.DisplayName" />
+            <label for="txt-title">@ViewResource.DisplayName <span class="red-text">*</span></label>
+        </div>
+        <div class="toggle-switch col s4">
+            <input type="checkbox" data-val="@Model.IsTest" id="IsTest" name="IsTest" @(Model.IsTest ? "checked=checked" : string.Empty) value="@Model.IsTest" />
+            <label for="IsTest"><span>Is Test</span></label>
+            <input name="IsTest" type="hidden" value="false" />
         </div>
     </div>
     <div class="row systems">
@@ -39,8 +44,8 @@
         </div>
         @foreach (var site in BannerConfig.Sites)
         {
-            <div class="col s2 checkbox">
-                <input class="with-gap" type="radio" name="System" id="chk-@site" value="@site" checked />
+            <div class="col s2 input-field">
+                <input class="with-gap" type="radio" name="System" id="chk-@site" value="@site" @(Model.System == site ? "checked=checked" : string.Empty) />
                 <label for="chk-@site">@site</label>
             </div>
         }
@@ -51,4 +56,15 @@
             <label for="txt-title">@ViewResource.Token <span class="red-text">*</span></label>
         </div>
     </div>
+    if (Model.HasHostPermission) {
+        <div class="row systems">
+            <div class="col s12 button-group">
+                <input type="submit" class="btn btn-info waves-effect waves-light btn btn-primary" id="btn-upload" value="@ViewResource.Save" />
+            </div>
+        </div>
+    }
+}
+
+@section scripts {
+    @Scripts.Render("~/Assets/bundles/Chatbot/bot-detail.js")
 }

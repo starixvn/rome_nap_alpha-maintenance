@@ -70,8 +70,8 @@ namespace Alpha.Maintenance.Repository.Impl
 
                 return new Result
                 {
-                    Code = Convert.ToInt32(outputParams["ErrCode"]),
-                    Message = outputParams["ErrMsg"].ToString()
+                    Code = Convert.ToInt32(outputParams["errcode"]),
+                    Message = outputParams["errmsg"].ToString()
                 };
             }
         }

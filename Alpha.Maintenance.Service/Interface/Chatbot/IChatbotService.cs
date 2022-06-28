@@ -8,5 +8,9 @@ namespace Alpha.Maintenance.Service.Interface.Chatbot
         IEnumerable<Bot> GetBots(bool isTest, bool enabled);
 
         Bot GetBot(int botId);
+
+        Result CreateBot(string username, string displayName, string system, string accessToken, bool status, bool isTest, int creator, string ip);
+
+        Result UpdateBot(int botId, string username, string displayName, string system, string accessToken, bool status, bool isTest, int creator, string ip);
     }
 }

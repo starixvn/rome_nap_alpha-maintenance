@@ -46,8 +46,10 @@
     <Setting Key="Age_Banner_Insert_Standby" SpName="Age_Banner_Insert" DbName="DBAGE_STANDBY.bodb_AGE.bodbAdminNet" />
     <Setting Key="Age_Banner_Update_Standby" SpName="Age_Banner_Update" DbName="DBAGE_STANDBY.bodb_AGE.bodbAdminNet" />
   </Function>
-	
+
 	<Function Name="Chatbot">
 		<Setting Key="Age_Chatbot_BotSelAll" SpName="Age_Chatbot_BotSelAll" DbName="DBBOT.bodb_Chatbot.bodbAdminNet" />
+		<Setting Key="NAP_Chatbot_BotIns" SpName="NAP_Chatbot_BotIns" DbName="DBBOT.bodb_Chatbot.bodbAdminNet" />
+		<Setting Key="NAP_Chatbot_BotUpd" SpName="NAP_Chatbot_BotUpd" DbName="DBBOT.bodb_Chatbot.bodbAdminNet" />
 	</Function>
 </Functions>

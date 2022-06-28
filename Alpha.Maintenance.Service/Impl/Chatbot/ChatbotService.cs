@@ -25,5 +25,11 @@ namespace Alpha.Maintenance.Service.Impl.Chatbot
 
         public Bot GetBot(int botId)
             => chatbotRepository.GetBot(new GetBotCriteria(botId));
+
+        public Result CreateBot(string username, string displayName,  string system, string accessToken, bool status, bool isTest, int creator, string ip)
+            => chatbotRepository.ExecuteNonQuery(new CreateBotCriteria(username, displayName, system, accessToken, status, isTest, creator, ip));
+
+        public Result UpdateBot(int botId, string username, string displayName, string system, string accessToken, bool status, bool isTest, int creator, string ip)
+            => chatbotRepository.ExecuteNonQuery(new UpdateBotCriteria(botId, username, displayName, system, accessToken, status, isTest, creator, ip));
     }
 }

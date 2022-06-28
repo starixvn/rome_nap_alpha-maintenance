@@ -28,17 +28,20 @@
 </form>
 
 <div class="table">
-    <div class="col button-block">
-        <a class="waves-effect waves-light btn btn-outline" href="@Url.Action("Create", "Chatbot")">
-            <span class="icon-button icon-plus-box"></span>
-            <input type="button" value="@AnnouncementResources.Add" id="add" />
-        </a>
-    </div>
+    @if(Model.HasHostPermission){
+        <div class="col button-block">
+            <a class="waves-effect waves-light btn btn-outline" href="@Url.Action("Create", "Chatbot")">
+                <span class="icon-button icon-plus-box"></span>
+                <input type="button" value="@AnnouncementResources.Add" id="add" />
+            </a>
+        </div>
+    }
     <table class="grid persist-area" id="messageContainer">
         <thead class="persist-header">
             <tr>
                 <th>@ViewResource.ID</th>
-                <th>@ViewResource.Name</th>
+                <th>@ViewResource.Username</th>
+                <th>@ViewResource.DisplayName</th>
                 <th>@ViewResource.System</th>
                 <th>@ViewResource.Token</th>
                 <th>@ViewResource.Enabled</th>

@@ -23,7 +23,7 @@ namespace Alpha.Maintenance.Controller
 
         [HttpGet]
         [NapAuth(FunctionKey = SiteFunctionKeys.ChatbotManagement, Policy = Constant.Policy.Read)]
-        public ActionResult Index() => View(new ChatbotFilterViewModel());
+        public ActionResult Index() => View(new ChatbotFilterViewModel(HasRight(SiteFunctionKeys.ChatbotManagement, Constant.Policy.Host)));
 
         [HttpGet]
         [NapAuth(FunctionKey = SiteFunctionKeys.ChatbotManagement, Policy = Constant.Policy.Read)]
@@ -31,14 +31,31 @@ namespace Alpha.Maintenance.Controller
 
         [HttpGet]
         [NapAuth(FunctionKey = SiteFunctionKeys.ChatbotManagement, Policy = Constant.Policy.Host)]
-        public ActionResult Create() => View("Bot", new ChatBotDetailViewModel { IsCreate = true });
+        public ActionResult Create() => View("Bot", new ChatBotDetailViewModel(true, HasRight(SiteFunctionKeys.ChatbotManagement, Constant.Policy.Host)));
 
         [HttpPost]
         [NapAuth(FunctionKey = SiteFunctionKeys.ChatbotManagement, Policy = Constant.Policy.Host)]
         public ActionResult Create(ChatBotDetailViewModel viewModel)
         {
+            var result = chatbotService.CreateBot(
+                viewModel.Username,
+                viewModel.DisplayName,
+                viewModel.System,
+                viewModel.AccessToken,
+                viewModel.Active,
+                viewModel.IsTest,
+                CurrentSession.UserId,
+                CurrentContext.IP);
 
-            return RedirectToAction("Index");
+            if (result.IsOk)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                viewModel.ErrorMessage = result.Message;
+                return View(viewModel);
+            }
         }
 
         [HttpGet]
@@ -47,9 +64,8 @@ namespace Alpha.Maintenance.Controller
         {
             var bot = chatbotService.GetBot(botId);
 
-            return View("Bot", new ChatBotDetailViewModel
+            return View("Bot", new ChatBotDetailViewModel(false, HasRight(SiteFunctionKeys.ChatbotManagement, Constant.Policy.Host))
             {
-                IsCreate = false,
                 BotId = bot.BotId,
                 DisplayName = bot.DisplayName,
                 Username = bot.Username,
@@ -58,6 +74,32 @@ namespace Alpha.Maintenance.Controller
                 IsTest = bot.IsTest,
                 System = bot.System
             });
+        }
+
+        [HttpPost]
+        [NapAuth(FunctionKey = SiteFunctionKeys.ChatbotManagement, Policy = Constant.Policy.Host)]
+        public ActionResult Edit(ChatBotDetailViewModel viewModel)
+        {
+            var result = chatbotService.UpdateBot(
+               viewModel.BotId,
+               viewModel.Username,
+               viewModel.DisplayName,
+               viewModel.System,
+               viewModel.AccessToken,
+               viewModel.Active,
+               viewModel.IsTest,
+               CurrentSession.UserId,
+               CurrentContext.IP);
+
+            if (result.IsOk)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                viewModel.ErrorMessage = result.Message;
+                return View(viewModel);
+            }
         }
     }
 }
