@@ -1,9 +1,16 @@
 ﻿using Alpha.Maintenance.Controller.ViewModels;
+using Alpha.Maintenance.Core.Model;
 using Alpha.Maintenance.Service.Impl.Chatbot;
 using Alpha.Maintenance.Service.Interface.Chatbot;
 using Fanex.NAP.Core.Business;
 using Fanex.NAP.Core.Web.Attribute;
+using System;
+using System.Configuration;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Mvc;
+using Telegram.Bot;
 
 namespace Alpha.Maintenance.Controller
 {
@@ -100,6 +107,63 @@ namespace Alpha.Maintenance.Controller
                 viewModel.ErrorMessage = result.Message;
                 return View(viewModel);
             }
+        }
+
+        [HttpGet]
+        [NapAuth(FunctionKey = SiteFunctionKeys.ChatbotManagement, Policy = Constant.Policy.Host)]
+        public ActionResult SetWebhook(string token)
+        {
+            return View(new SetChatbotWebhookViewModel { Token = token });
+        }
+
+        [HttpPost]
+        [NapAuth(FunctionKey = SiteFunctionKeys.ChatbotManagement, Policy = Constant.Policy.Host)]
+        public async Task<ActionResult> SetWebhook(SetChatbotWebhookViewModel viewModel)
+        {
+            try
+            {
+                var botClient = CreateBotClient(viewModel.Token);
+                await botClient.SetWebhookAsync($"{viewModel.WebhookUri}/bot/{viewModel.Token}");
+
+                return RedirectToAction("Index");
+            }
+            catch(Exception ex)
+            {
+                viewModel.Message = ex.Message;
+                return View(viewModel);
+            }
+            
+        }
+
+        [HttpPost]
+        [NapAuth(FunctionKey = SiteFunctionKeys.ChatbotManagement, Policy = Constant.Policy.Host)]
+        public async Task<ActionResult> DeleteWebhook(string token)
+        {
+            try
+            {
+                var botClient = CreateBotClient(token);
+                await botClient.DeleteWebhookAsync();
+                return Json(new Result { Code = 0 });
+            }
+            catch(Exception ex)
+            {
+                return Json(Result.CreateErrorResult(ex.Message));
+            }
+        }
+
+        private ITelegramBotClient CreateBotClient(string token)
+        {
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            var proxyUri = ConfigurationManager.AppSettings["Proxy"];
+            if (string.IsNullOrEmpty(proxyUri))
+            {
+                return new TelegramBotClient(token);
+            }
+
+            var webProxy = new WebProxy(proxyUri);
+            var httpClient = new HttpClient(new HttpClientHandler { Proxy = webProxy, UseProxy = true });
+            return new TelegramBotClient(token, httpClient);
         }
     }
 }

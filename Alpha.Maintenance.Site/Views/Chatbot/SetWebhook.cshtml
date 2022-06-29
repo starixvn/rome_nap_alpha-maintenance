@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Chatbot";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model SetChatbotWebhookViewModel
+
+@section Headline {
+    <span>Chatbot / </span>
+    <span class="active">@ViewResource.SetWebhook</span>
+}
+
+@using (Html.BeginForm("SetWebhook", "Chatbot", FormMethod.Post, new { @class = "filter-form display-information-settings" }))
+{
+    if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <div id="div-message" class="card-panel lighten-4 text-darken-4 red red-text">@Model.Message</div>
+    }
+    @Html.HiddenFor(m => m.Token)
+    <div class="row systems">
+        <div class="input-field col s4">
+            <input type="text" name="WebhookUri" class="validate" value="@Model.WebhookUri" />
+            <label for="txt-title">@ViewResource.Url<span class="red-text">*</span></label>
+        </div>
+    </div>
+    <div class="row systems">
+        <div class="col s12 button-group">
+            <input type="submit" class="btn btn-info waves-effect waves-light btn btn-primary" value="@ViewResource.Save" />
+        </div>
+    </div>
+}

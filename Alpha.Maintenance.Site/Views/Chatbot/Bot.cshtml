@@ -13,7 +13,7 @@
 {
     if (!string.IsNullOrEmpty(Model.ErrorMessage))
     {
-        <div id="div-message" class="card-panel lighten-4 text-darken-4">@Model.ErrorMessage</div>
+        <div id="div-message" class="card-panel lighten-4 text-darken-4 red red-text">@Model.ErrorMessage</div>
     }
     <input name="BotId" type="hidden" value="@Model.BotId">
     <div class="row systems">
@@ -52,14 +52,19 @@
     </div>
     <div class="row systems">
         <div class="input-field col s4">
-            <input type="text" name="AccessToken" class="validate" value="@Model.AccessToken" />
+            <input type="text" name="AccessToken" id="txtAccessToken" class="validate" value="@Model.AccessToken" />
             <label for="txt-title">@ViewResource.Token <span class="red-text">*</span></label>
         </div>
     </div>
     if (Model.HasHostPermission) {
         <div class="row systems">
             <div class="col s12 button-group">
-                <input type="submit" class="btn btn-info waves-effect waves-light btn btn-primary" id="btn-upload" value="@ViewResource.Save" />
+                @if (!Model.IsCreate)
+                {
+                    <a class="btn btn-info  waves-effect waves-light btn btn-primary" href="@Url.Action("SetWebhook",new { token = Model.AccessToken })">@ViewResource.SetWebhook</a>
+                    <input type="button" class="btn btn-info waves-effect waves-light btn btn-primary" id="btnDeleteWebhook" value="@ViewResource.DeleteWebhook" />
+                }
+                <input type="submit" class="btn btn-info waves-effect waves-light btn btn-primary" value="@ViewResource.Save" />
             </div>
         </div>
     }

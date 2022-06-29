@@ -628,6 +628,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete Webhook.
+        /// </summary>
+        public static string DeleteWebhook {
+            get {
+                return ResourceManager.GetString("DeleteWebhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DEPOSIT SITES.
         /// </summary>
         public static string DEPOSIT_SITES {
@@ -2068,6 +2077,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set Webhook.
+        /// </summary>
+        public static string SetWebhook {
+            get {
+                return ResourceManager.GetString("SetWebhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Severity.
         /// </summary>
         public static string Severity {
@@ -2442,6 +2460,15 @@ namespace Alpha.Maintenance.Core {
         public static string UpSuccessMsg {
             get {
                 return ResourceManager.GetString("UpSuccessMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Url.
+        /// </summary>
+        public static string Url {
+            get {
+                return ResourceManager.GetString("Url", resourceCulture);
             }
         }
         

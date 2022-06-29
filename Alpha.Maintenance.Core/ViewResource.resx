@@ -948,4 +948,13 @@
   <data name="DisplayName" xml:space="preserve">
     <value>Display Name</value>
   </data>
+  <data name="SetWebhook" xml:space="preserve">
+    <value>Set Webhook</value>
+  </data>
+  <data name="DeleteWebhook" xml:space="preserve">
+    <value>Delete Webhook</value>
+  </data>
+  <data name="Url" xml:space="preserve">
+    <value>Url</value>
+  </data>
 </root>
