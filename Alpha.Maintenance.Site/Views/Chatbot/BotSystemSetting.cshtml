@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Chatbot";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model BotSystemSettingDetailViewModel
+
+@using (Html.BeginForm("UpdateBotSystemSetting", "Chatbot", FormMethod.Post, new { @class = "filter-form", role = "form", id = "" }))
+{
+    if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div id="div-message" class="card-panel lighten-4 text-darken-4 red red-text">@Model.ErrorMessage</div>
+    }
+    <div class="filter-form row">
+        <div class="row systems">
+            <div class="input-field col s4">
+                <input type="text" name="Id" class="validate" value="@Model.BotSystemSetting.Id" readonly disabled="disabled" />
+                <label>@ViewResource.ID</label>
+            </div>
+        </div>
+        <div class="row systems">
+            <div class="input-field col s4">
+                <input type="text" name="ServiceName" class="validate" value="@Model.BotSystemSetting.ServiceName" readonly disabled />
+                <input type="text" name="ServiceName" class="validate" value="@Model.BotSystemSetting.ServiceName" readonly hidden="hidden" />
+                <label>@ViewResource.ServiceName</label>
+            </div>
+        </div>
+        <div class="row systems">
+            <div class="input-field col s4">
+                <input type="text" name="SettingName" class="validate" value="@Model.BotSystemSetting.SettingName" readonly disabled="disabled" />
+                <label>@ViewResource.SettingName</label>
+            </div>
+        </div>
+        <div class="row systems">
+            <div class="input-field col s4">
+                <input type="text" name="Value" class="validate" value="@Model.BotSystemSetting.Value" />
+                <label>@ViewResource.Value<span class="red-text"> *</span></label>
+            </div>
+        </div>
+        <div class="row systems">
+            <div class="col s2 button-block">
+                <input type="submit" class="waves-effect waves-light btn btn-primary" value="@ViewResource.Submit" />
+            </div>
+        </div>
+    </div>
+}

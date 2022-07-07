@@ -101,7 +101,9 @@
     <Compile Include="Criteria\Chatbot\CreateBotCriteria.cs" />
     <Compile Include="Criteria\Chatbot\GetAllBotCriteria.cs" />
     <Compile Include="Criteria\Chatbot\GetBotCriteria.cs" />
+    <Compile Include="Criteria\Chatbot\GetBotSystemSettingCriteria.cs" />
     <Compile Include="Criteria\Chatbot\UpdateBotCriteria.cs" />
+    <Compile Include="Criteria\Chatbot\UpdateBotSystemSettingCriteria.cs" />
     <Compile Include="Criteria\IPInformation\GetIPInformationCriteria.cs" />
     <Compile Include="Criteria\DBProfiler\GetLogCriteria.cs" />
     <Compile Include="Criteria\Log\GetAllCategoryCriteria.cs" />

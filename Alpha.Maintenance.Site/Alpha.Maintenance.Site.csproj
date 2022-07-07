@@ -410,6 +410,10 @@
     <Content Include="Assets\bundles\Chatbot\bot-detail.min.js">
       <DependentUpon>bot-detail.js</DependentUpon>
     </Content>
+    <Content Include="Assets\bundles\Chatbot\bot-system-setting.js" />
+    <Content Include="Assets\bundles\Chatbot\bot-system-setting.min.js">
+      <DependentUpon>bot-system-setting.js</DependentUpon>
+    </Content>
     <Content Include="Assets\bundles\Chatbot\index.js" />
     <Content Include="Assets\bundles\Chatbot\index.min.js">
       <DependentUpon>index.js</DependentUpon>
@@ -720,6 +724,9 @@
     <Content Include="Views\Chatbot\Bot.cshtml" />
     <Content Include="Views\Chatbot\BotList.cshtml" />
     <Content Include="Views\Chatbot\SetWebhook.cshtml" />
+    <Content Include="Views\Chatbot\BotSystemSettingList.cshtml" />
+    <Content Include="Views\Chatbot\BotSystemSetting.cshtml" />
+    <Content Include="Views\Chatbot\BotSystem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\scripts\Administration\CacheManagement.ts" />
@@ -728,6 +735,7 @@
     <TypeScriptCompile Include="Assets\scripts\Banner\upload-banner.ts" />
     <TypeScriptCompile Include="Assets\scripts\Banner\manage-banner.ts" />
     <TypeScriptCompile Include="Assets\scripts\Chatbot\bot-detail.ts" />
+    <TypeScriptCompile Include="Assets\scripts\Chatbot\bot-system-setting.ts" />
     <TypeScriptCompile Include="Assets\scripts\Chatbot\index.ts" />
     <TypeScriptCompile Include="Assets\scripts\IPInfo\index.ts" />
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />

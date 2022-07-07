@@ -8,16 +8,18 @@ using Fanex.Data.Repository;
 
 namespace Alpha.Maintenance.Repository.Impl
 {
-    public interface ChatbotRepository
+    public interface IChatbotRepository
     {
         IEnumerable<Bot> GetBots(GetAllBotCriteria criteria);
 
         Bot GetBot(GetBotCriteria criteria);
 
         Result ExecuteNonQuery(ICriteria criteria);
+
+        IEnumerable<BotSystemSetting> GetBotSystemSetting(GetBotSystemSettingCriteria criteria);
     }
 
-    public class ChatbotRepositoryImpl : ChatbotRepository
+    public class ChatbotRepositoryImpl : IChatbotRepository
     {
         public IEnumerable<Bot> GetBots(GetAllBotCriteria criteria)
         {
@@ -85,5 +87,30 @@ namespace Alpha.Maintenance.Repository.Impl
                 Converter.ToString2(reader["Accesstoken"]),
                 Converter.ToBool(reader["Status"]),
                 Converter.ToBool(reader["IsTest"]));
+
+        public IEnumerable<BotSystemSetting> GetBotSystemSetting(GetBotSystemSettingCriteria criteria)
+        {
+            var data = new List<BotSystemSetting>();
+
+            using (var db = ObjectDbFactory.CreateInstance(criteria.GetSettingKey()))
+            {
+                using (var reader = db.ExecuteReader(criteria))
+                {
+                    if (reader != null)
+                    {
+                        while (reader.Read())
+                        {
+                            data.Add(new BotSystemSetting(
+                                     Converter.ToInt(reader["ID"]),
+                                     Converter.ToString2(reader["ServiceName"]),
+                                     Converter.ToString2(reader["SettingName"]),
+                                     Converter.ToString2(reader["Value"])));
+                        }
+                    }
+                }
+            }
+
+            return data;
+        }
     }
 }

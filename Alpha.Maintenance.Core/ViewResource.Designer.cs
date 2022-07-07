@@ -2077,6 +2077,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Setting Name.
+        /// </summary>
+        public static string SettingName {
+            get {
+                return ResourceManager.GetString("SettingName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set Webhook.
         /// </summary>
         public static string SetWebhook {

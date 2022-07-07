@@ -1,11 +1,13 @@
 ﻿using Alpha.Maintenance.Controller.ViewModels;
 using Alpha.Maintenance.Core.Model;
+using Alpha.Maintenance.Core.Web;
 using Alpha.Maintenance.Service.Impl.Chatbot;
 using Alpha.Maintenance.Service.Interface.Chatbot;
 using Fanex.NAP.Core.Business;
 using Fanex.NAP.Core.Web.Attribute;
 using System;
 using System.Configuration;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -164,6 +166,54 @@ namespace Alpha.Maintenance.Controller
             var webProxy = new WebProxy(proxyUri);
             var httpClient = new HttpClient(new HttpClientHandler { Proxy = webProxy, UseProxy = true });
             return new TelegramBotClient(token, httpClient);
+        }
+
+        [HttpGet]
+        [NapAuth(FunctionKey = SiteFunctionKeys.ChatbotManagement, Policy = Constant.Policy.Host)]
+        public ActionResult Settings()
+        {
+            var serviceNames = chatbotService.GetBotSystemSetting("").DistinctBy(bot => new { bot.ServiceName});
+            var viewModel = new BotSystemSettingViewModel()
+            {
+                ServiceNames = serviceNames,
+                SelectedService = (string)(TempData["serviceName"] ?? serviceNames.First().ServiceName)
+            };
+           
+            return View("BotSystem", viewModel);
+        }
+
+        [HttpGet]
+        [NapAuth(FunctionKey = SiteFunctionKeys.ChatbotManagement, Policy = Constant.Policy.Read)]
+        public ActionResult GetBotSystemSettings(string serviceName) => PartialView("BotSystemSettingList", chatbotService.GetBotSystemSetting(serviceName));
+
+        [HttpGet]
+        [NapAuth(FunctionKey = SiteFunctionKeys.ChatbotManagement, Policy = Constant.Policy.Host)]
+        public ActionResult UpdateBotSystemSetting(int id)
+        {
+            var result = chatbotService.GetBotSystemSetting("").FirstOrDefault(botSystemSetting => botSystemSetting.Id == id);
+            var viewModel = new BotSystemSettingDetailViewModel
+            {
+                BotSystemSetting = result,
+                ErrorMessage = (string)(TempData["errorMessage"])
+            };
+            return View("BotSystemSetting", viewModel);
+        }
+
+        [HttpPost]
+        [NapAuth(FunctionKey = SiteFunctionKeys.ChatbotManagement, Policy = Constant.Policy.Host)]
+        public ActionResult UpdateBotSystemSetting(int id, string value, string serviceName)
+        {
+            var result = chatbotService.UpdateBotSystemSetting(id, value, CurrentSession.UserId, CurrentContext.IP);
+            if(result.IsOk)
+            {
+                TempData["serviceName"] = serviceName;
+                return RedirectToAction("Settings");
+            }
+            else
+            {
+                TempData["errorMessage"] = result.Message;
+                return RedirectToAction("UpdateBotSystemSetting", new { Id = id });
+            }
         }
     }
 }

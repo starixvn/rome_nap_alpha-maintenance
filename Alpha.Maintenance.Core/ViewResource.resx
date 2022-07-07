@@ -957,4 +957,7 @@
   <data name="Url" xml:space="preserve">
     <value>Url</value>
   </data>
+  <data name="SettingName" xml:space="preserve">
+    <value>Setting Name</value>
+  </data>
 </root>
