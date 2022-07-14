@@ -1,0 +1,107 @@
+﻿@model WinLossMonitorViewModel
+<div id="divMessage@(Model.Environment)" class="card-panel lighten-4 text-darken-4 hiden"></div>
+@if (Model.IsCreditJob)
+{
+    <div class="row">
+        <div class="col s12 toggle-switch">
+            <input class="sw"
+                   type="checkbox"
+                   id="chkAccumulateWinLossJob@(Model.Environment)"
+                   @(Model.AccumulateWinLossJob ? "checked" : string.Empty)
+                   data-oldvalue="@(Model.AccumulateWinLossJob ? 1 : 0)"
+                   data-settingname="AccumulateWinLossJob" />
+            <label class="input-field" for="chkAccumulateWinLossJob@(Model.Environment)"><span>Accumulate Win Loss Job</span></label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 input-field">
+            <input type="text"
+                   id="txtLastId@(Model.Environment)"
+                   value="@Model.LastId"
+                   maxlength="20"
+                   data-oldvalue="@Model.LastId"
+                   data-settingname="LastId" />
+            <label for="txtLastId@(Model.Environment)">Last ID</label>
+        </div>
+    </div>
+}
+<div class="row">
+    <div class="col s12 toggle-switch">
+        <input class="sw"
+               type="checkbox"
+               id="chkChangeAccumulatedWinLossJob@(Model.Environment)"
+               @(Model.ChangeAccumulatedWinLossJob ? "checked" : string.Empty)
+               data-oldvalue="@(Model.ChangeAccumulatedWinLossJob ? 1 : 0)"
+               data-settingname="ChangeAccumulatedWinLossJob" />
+        <label class="input-field" for="chkChangeAccumulatedWinLossJob@(Model.Environment)"><span>Change Accumulated Win Loss Job</span></label>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m4 input-field">
+        <input type="text"
+               id="txtLastCheckTime@(Model.Environment)"
+               value="@Model.LastCheckTime"
+               maxlength="30"
+               data-oldvalue="@Model.LastCheckTime"
+               data-settingname="LastCheckTime" />
+        <label for="txtLastCheckTime@(Model.Environment)">Last Check Time (yyyy-MM-dd hh:mm:ss.ttt)</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 toggle-switch">
+        <input class="sw"
+               type="checkbox"
+               id="chkChangeThresholdWinLossJob@(Model.Environment)"
+               @(Model.ChangeThresholdWinLossJob ? "checked" : string.Empty)
+               data-oldvalue="@(Model.ChangeThresholdWinLossJob ? 1 : 0)"
+               data-settingname="ChangeThresholdWinLossJob" />
+        <label class="input-field" for="chkChangeThresholdWinLossJob@(Model.Environment)"><span>Change Threshold Win Loss Job</span></label>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m4 input-field">
+        <input type="text"
+               id="txtLastScanSettingDate@(Model.Environment)"
+               value="@Model.LastScanSettingDate"
+               maxlength="30"
+               data-oldvalue="@Model.LastScanSettingDate"
+               data-settingname="LastScanSettingDate" />
+        <label for="txtLastScanSettingDate@(Model.Environment)">Last Scan Setting Time (yyyy-MM-dd hh:mm:ss.ttt)</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 input-field">
+        <input type="text"
+               id="txtSuperIds@(Model.Environment)"
+               value="@Model.SuperUUS"
+               data-oldvalue="@Model.SuperUUS"
+               data-settingname="SuperUUS"
+               @(string.IsNullOrWhiteSpace(Model.Environment) ? string.Empty : string.Format("data-servicename={0}", Model.ServiceName.Replace(Model.Environment + "-", string.Empty))) />
+        <label for="txtSuperIds@(Model.Environment)">Super ID(s) - UUS Currency For Testing (Input multiple Super ID(s) separated by comma ',')</label>
+    </div>
+</div>
+@if (Model.HasHostPermission)
+{
+    <div class="row">
+        <div class="col s12 button-group">
+            <a href="javascript:;" class="btn btn-info waves-effect waves-light btn btn-primary btn-save" data-environment="@Model.Environment">@ViewResource.Save</a>
+        </div>
+    </div>
+
+    <div id="cofirmMessages@(Model.Environment)" class="modal">
+        <div class="modal-content">
+            <h4 id="cofirmMessages-content">Are you sure you want to save the change on @(string.IsNullOrWhiteSpace(Model.Environment) ? "PROD" : Model.Environment)?</h4>
+        </div>
+        <div class="modal-footer row">
+            <div class="col s10">
+                <a class="waves-effect waves-light btn btn-info btn-create modal-action modal-close">@AnnouncementResources.NO</a>
+            </div>
+            <div class="col s2">
+                <a class="waves-effect waves-light btn btn-info btn-primary modal-action modal-close btn-yes" data-environment="@Model.Environment">@AnnouncementResources.YES</a>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" value="@(Model.IsCreditJob ? 1 : 0)" id="hiddenIsCreditJob@(Model.Environment)" />
+    <input type="hidden" value="@Model.ServiceName" id="hiddenServiceName@(Model.Environment)" />
+}

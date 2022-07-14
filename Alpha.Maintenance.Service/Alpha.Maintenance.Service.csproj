@@ -134,6 +134,7 @@
     <Compile Include="Impl\Chatbot\ChatbotService.cs" />
     <Compile Include="Impl\IPInformation\IPInformationServiceImpl.cs" />
     <Compile Include="Impl\DbProfiler\LogService.cs" />
+    <Compile Include="Impl\WinLossMonitor\WinLossMonitorService.cs" />
     <Compile Include="Impl\UMTokenService.cs" />
     <Compile Include="Interface\Announcements\BaseAnnouncementService.cs" />
     <Compile Include="Interface\AppLog\ILogCategoryService.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="Interface\Banners\BannerService.cs" />
     <Compile Include="Interface\Chatbot\IChatbotService.cs" />
     <Compile Include="Interface\IPInformation\IPInformationService.cs" />
+    <Compile Include="Interface\WinLossMonitor\IWinLossMonitorService.cs" />
     <Compile Include="Interface\IUMTokenService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SuperLimitDateService.cs" />

@@ -118,6 +118,8 @@
     <Compile Include="Criteria\SuperLimitDate\AddSuperLimitDateCriteria.cs" />
     <Compile Include="Criteria\SuperLimitDate\DeleteSuperLimitDateCriteria.cs" />
     <Compile Include="Criteria\SuperLimitDate\GetAllSuperLimitDateCriteria.cs" />
+    <Compile Include="Criteria\WinLossMonitor\GetGlobalSettingCriteria.cs" />
+    <Compile Include="Criteria\WinLossMonitor\UpdateGlobalSettingCriteria.cs" />
     <Compile Include="Impl\BannerRepository.cs" />
     <Compile Include="Impl\BaseRepository.cs" />
     <Compile Include="Impl\AppLog\LogRepository.cs" />
@@ -127,6 +129,7 @@
     <Compile Include="Impl\IPInformationRepository.cs" />
     <Compile Include="Impl\DBProfiler\LogRespository.cs" />
     <Compile Include="Impl\ObjectDbFactory.cs" />
+    <Compile Include="Impl\WinLossMonitorRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SuperLimitDateRepository.cs" />
   </ItemGroup>
@@ -140,5 +143,6 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

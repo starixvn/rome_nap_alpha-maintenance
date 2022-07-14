@@ -209,8 +209,10 @@
     <Compile Include="ViewModels\UploadBannerViewModel.cs" />
     <Compile Include="ViewModels\ViewBannerViewModel.cs" />
     <Compile Include="ViewModels\ChatbotFilterViewModel.cs" />
+    <Compile Include="ViewModels\WinLossMonitorViewModel.cs" />
     <Compile Include="Web\HmacAuthorizationFilter.cs" />
     <Compile Include="Web\JsonNetResult.cs" />
+    <Compile Include="WinLossMonitorController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Alpha.Maintenance.Core\Alpha.Maintenance.Core.csproj">

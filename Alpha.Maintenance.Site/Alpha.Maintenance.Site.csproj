@@ -412,6 +412,10 @@
     <Content Include="Assets\bundles\SuperLimitDate\index.min.js">
       <DependentUpon>index.js</DependentUpon>
     </Content>
+    <Content Include="Assets\bundles\WinLossMonitor\winloss-monitor.js" />
+    <Content Include="Assets\bundles\WinLossMonitor\winloss-monitor.min.js">
+      <DependentUpon>winloss-monitor.js</DependentUpon>
+    </Content>
     <Content Include="Assets\scripts\Announcement\compose-messages.js">
       <DependentUpon>compose-messages.ts</DependentUpon>
     </Content>
@@ -686,6 +690,9 @@
     <Content Include="Web.aws.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
+    <Content Include="Views\WinLossMonitor\Index.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\WinLossMonitor\_GlobalSettingTab.cshtml" />
     <Content Include="Views\Chatbot\Index.cshtml" />
     <Content Include="Views\Chatbot\Bot.cshtml" />
     <Content Include="Views\Chatbot\BotList.cshtml" />
@@ -714,6 +721,7 @@
     <TypeScriptCompile Include="Assets\scripts\Chatbot\bot-system-setting.ts" />
     <TypeScriptCompile Include="Assets\scripts\Chatbot\index.ts" />
     <TypeScriptCompile Include="Assets\scripts\IPInfo\index.ts" />
+    <TypeScriptCompile Include="Assets\scripts\WinLossMonitor\winloss-monitor.ts" />
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\jasmine-jquery\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\jasmine\index.d.ts" />
