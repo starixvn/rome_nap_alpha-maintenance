@@ -936,4 +936,28 @@
   <data name="EditBanner" xml:space="preserve">
     <value>Edit Banner</value>
   </data>
+  <data name="IsTest" xml:space="preserve">
+    <value>Is Test</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>Token</value>
+  </data>
+  <data name="DisplayName" xml:space="preserve">
+    <value>Display Name</value>
+  </data>
+  <data name="SetWebhook" xml:space="preserve">
+    <value>Set Webhook</value>
+  </data>
+  <data name="DeleteWebhook" xml:space="preserve">
+    <value>Delete Webhook</value>
+  </data>
+  <data name="Url" xml:space="preserve">
+    <value>Url</value>
+  </data>
+  <data name="SettingName" xml:space="preserve">
+    <value>Setting Name</value>
+  </data>
 </root>

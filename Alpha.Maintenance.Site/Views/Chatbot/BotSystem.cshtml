@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Chatbot";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model BotSystemSettingViewModel
+
+@section Headline {
+    <span>Chatbot / </span>
+    <span class="active">Bot System Setting</span>
+}
+
+<form role="form" class="filter-form row">
+    <div class="filter-form row">
+        <div class="col s2 input-field">
+            <select name="ServiceName" id="ServiceName">
+                @foreach (var name in Model.ServiceNames)
+                {
+                    var selected = name.ServiceName == Model.SelectedService ? "selected" : "";
+                    <option value="@name.ServiceName" @selected>@name.ServiceName</option>
+                }
+            </select>
+            <label>Service Name</label>
+        </div>
+            <div class="col s2 button-block">
+                <input type="button" class="waves-effect waves-light btn btn-primary" value="@ViewResource.Submit" id="btnSubmit" />
+            </div>
+        </div>
+</form>
+
+<div class="table">
+    <table class="grid persist-area" id="messageContainer">
+        <thead class="persist-header">
+            <tr>
+                <th>@ViewResource.ID</th>
+                <th>@ViewResource.ServiceName</th>
+                <th>@ViewResource.SettingName</th>
+                <th>@ViewResource.Value</th>
+                <th>@ViewResource.Edit</th>
+            </tr>
+        </thead>
+        <tbody id="content">
+        </tbody>
+    </table>
+</div>
+
+@section Foot {
+    @Scripts.Render("~/Assets/bundles/Chatbot/bot-system-setting.js")
+}

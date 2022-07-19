@@ -136,10 +136,6 @@
       <HintPath>..\packages\EnterpriseLibrary.Data.5.0.414.0\lib\net40\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\EnterpriseLibrary.Logging.5.0.414.0\lib\net40\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\EnterpriseLibrary.Unity.5.0.414.0\lib\net40\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
@@ -167,12 +163,11 @@
       <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\_Dependencies\SignalR 1.0RC\Microsoft.Web.Infrastructure.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="ONEbook.UM, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ONEbook.UM.3.1.0\lib\net461\ONEbook.UM.dll</HintPath>
@@ -410,6 +405,18 @@
     <Content Include="Assets\bundles\Banner\upload-banner.js" />
     <Content Include="Assets\bundles\Banner\upload-banner.min.js">
       <DependentUpon>upload-banner.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\bundles\Chatbot\bot-detail.js" />
+    <Content Include="Assets\bundles\Chatbot\bot-detail.min.js">
+      <DependentUpon>bot-detail.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\bundles\Chatbot\bot-system-setting.js" />
+    <Content Include="Assets\bundles\Chatbot\bot-system-setting.min.js">
+      <DependentUpon>bot-system-setting.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\bundles\Chatbot\index.js" />
+    <Content Include="Assets\bundles\Chatbot\index.min.js">
+      <DependentUpon>index.js</DependentUpon>
     </Content>
     <Content Include="Assets\bundles\compose-messages.js" />
     <Content Include="Assets\bundles\compose-messages.min.js">
@@ -713,6 +720,13 @@
     <Content Include="Web.aws.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
+    <Content Include="Views\Chatbot\Index.cshtml" />
+    <Content Include="Views\Chatbot\Bot.cshtml" />
+    <Content Include="Views\Chatbot\BotList.cshtml" />
+    <Content Include="Views\Chatbot\SetWebhook.cshtml" />
+    <Content Include="Views\Chatbot\BotSystemSettingList.cshtml" />
+    <Content Include="Views\Chatbot\BotSystemSetting.cshtml" />
+    <Content Include="Views\Chatbot\BotSystem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\scripts\Administration\CacheManagement.ts" />
@@ -720,6 +734,9 @@
     <TypeScriptCompile Include="Assets\scripts\Announcement\manage-announcements.ts" />
     <TypeScriptCompile Include="Assets\scripts\Banner\upload-banner.ts" />
     <TypeScriptCompile Include="Assets\scripts\Banner\manage-banner.ts" />
+    <TypeScriptCompile Include="Assets\scripts\Chatbot\bot-detail.ts" />
+    <TypeScriptCompile Include="Assets\scripts\Chatbot\bot-system-setting.ts" />
+    <TypeScriptCompile Include="Assets\scripts\Chatbot\index.ts" />
     <TypeScriptCompile Include="Assets\scripts\IPInfo\index.ts" />
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\jasmine-jquery\index.d.ts" />

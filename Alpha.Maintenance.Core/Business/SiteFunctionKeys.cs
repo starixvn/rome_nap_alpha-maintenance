@@ -54,4 +54,6 @@ public static class SiteFunctionKeys
     public const string Couchbase = "Couchbase";
 
     public const string BannerManagement = "BannerManagement";
+
+    public const string ChatbotManagement = "ChatbotManagement";
 }

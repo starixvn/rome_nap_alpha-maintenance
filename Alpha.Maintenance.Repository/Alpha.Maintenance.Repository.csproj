@@ -75,8 +75,8 @@
       <HintPath>..\packages\EnterpriseLibrary.Unity.5.0.414.0\lib\net40\Microsoft.Practices.Unity.Interception.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -98,6 +98,12 @@
     <Compile Include="Criteria\Banners\GetBannerByIdCriteria.cs" />
     <Compile Include="Criteria\Banners\SaveBannerCriteria.cs" />
     <Compile Include="Criteria\Banners\GetBannerCriteria.cs" />
+    <Compile Include="Criteria\Chatbot\CreateBotCriteria.cs" />
+    <Compile Include="Criteria\Chatbot\GetAllBotCriteria.cs" />
+    <Compile Include="Criteria\Chatbot\GetBotCriteria.cs" />
+    <Compile Include="Criteria\Chatbot\GetBotSystemSettingCriteria.cs" />
+    <Compile Include="Criteria\Chatbot\UpdateBotCriteria.cs" />
+    <Compile Include="Criteria\Chatbot\UpdateBotSystemSettingCriteria.cs" />
     <Compile Include="Criteria\IPInformation\GetIPInformationCriteria.cs" />
     <Compile Include="Criteria\DBProfiler\GetLogCriteria.cs" />
     <Compile Include="Criteria\Log\GetAllCategoryCriteria.cs" />
@@ -117,6 +123,7 @@
     <Compile Include="Impl\AppLog\LogRepository.cs" />
     <Compile Include="Impl\AppLog\MachineRepository.cs" />
     <Compile Include="Impl\AnnouncementRepository.cs" />
+    <Compile Include="Impl\ChatbotRepository.cs" />
     <Compile Include="Impl\IPInformationRepository.cs" />
     <Compile Include="Impl\DBProfiler\LogRespository.cs" />
     <Compile Include="Impl\ObjectDbFactory.cs" />
