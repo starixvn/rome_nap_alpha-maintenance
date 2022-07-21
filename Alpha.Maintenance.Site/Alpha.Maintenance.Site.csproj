@@ -724,7 +724,6 @@
     <Content Include="Views\Chatbot\Bot.cshtml" />
     <Content Include="Views\Chatbot\BotList.cshtml" />
     <Content Include="Views\Chatbot\SetWebhook.cshtml" />
-    <Content Include="Views\Chatbot\BotSystemSettingList.cshtml" />
     <Content Include="Views\Chatbot\BotSystemSetting.cshtml" />
     <Content Include="Views\Chatbot\BotSystem.cshtml" />
   </ItemGroup>

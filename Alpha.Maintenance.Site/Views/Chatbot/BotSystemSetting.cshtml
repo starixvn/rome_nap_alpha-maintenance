@@ -14,26 +14,27 @@
     <div class="filter-form row">
         <div class="row systems">
             <div class="input-field col s4">
-                <input type="text" name="Id" class="validate" value="@Model.BotSystemSetting.Id" readonly disabled="disabled" />
+                <input type="text" name="Id" class="validate" value="@Model.Id" readonly disabled="disabled" />
                 <label>@ViewResource.ID</label>
             </div>
         </div>
         <div class="row systems">
             <div class="input-field col s4">
-                <input type="text" name="ServiceName" class="validate" value="@Model.BotSystemSetting.ServiceName" readonly disabled />
-                <input type="text" name="ServiceName" class="validate" value="@Model.BotSystemSetting.ServiceName" readonly hidden="hidden" />
+                <input type="text" name="ServiceName" class="validate" value="@Model.ServiceName" readonly disabled />
+                <input type="text" name="ServiceName" class="validate" value="@Model.ServiceName" readonly hidden="hidden" />
                 <label>@ViewResource.ServiceName</label>
             </div>
         </div>
         <div class="row systems">
             <div class="input-field col s4">
-                <input type="text" name="SettingName" class="validate" value="@Model.BotSystemSetting.SettingName" readonly disabled="disabled" />
+                <input type="text" name="SettingName" class="validate" value="@Model.SettingName" readonly disabled="disabled" />
+                <input type="text" name="SettingName" class="validate" value="@Model.SettingName" readonly hidden="hidden" />
                 <label>@ViewResource.SettingName</label>
             </div>
         </div>
         <div class="row systems">
             <div class="input-field col s4">
-                <input type="text" name="Value" class="validate" value="@Model.BotSystemSetting.Value" />
+                <input type="text" name="Value" class="validate" value="@Model.Value" />
                 <label>@ViewResource.Value<span class="red-text"> *</span></label>
             </div>
         </div>

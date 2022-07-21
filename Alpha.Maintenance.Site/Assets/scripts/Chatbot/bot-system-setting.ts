@@ -25,31 +25,13 @@ class BotSystemSetting {
         this.$btnSubmit = this.$('#btnSubmit');
         this.$contentTable = this.$('#content');
         this.$serviceName = this.$("#ServiceName");
-        this.$btnSubmit.click(() => { this.getBotSystemSettings(""); })
-        this.getBotSystemSettings(this.$serviceName.val());
+        this.$btnSubmit.click(() => { this.getBotSystemSettings(); })
     };
 
-    getBotSystemSettings = (settingName) => {
-        const serviceName = settingName || this.$serviceName.val();
-        this.$.ajax({
-            url: this.$NAP.resolveClientUrl("Chatbot/GetBotSystemSettings"),
-            data: { serviceName: serviceName },
-            type: 'GET',
-            dataType: 'HTML',
-            cache: false,
-            beforeSend: () => {
-                this.$NAP.loadingBox.show();
-            },
-            complete: () => {
-                this.$NAP.loadingBox.close();
-            },
-            success: (result) => {
-                this.$contentTable.html(result);
-            },
-            error: (xhr, status, err) => {
-                this.$NAP.handleAjaxError(xhr, status, err);
-            }
-        })
+    getBotSystemSettings = () => {
+        const serviceName = this.$serviceName.val();
+        const url = this.$NAP.resolveClientUrl("Chatbot/Settings?serviceName=");
+        window.location.href = url + serviceName;
     }
 }
 

@@ -170,15 +170,17 @@ namespace Alpha.Maintenance.Controller
 
         [HttpGet]
         [NapAuth(FunctionKey = SiteFunctionKeys.ChatbotManagement, Policy = Constant.Policy.Host)]
-        public ActionResult Settings()
+        public ActionResult Settings(string serviceName)
         {
-            var serviceNames = chatbotService.GetBotSystemSetting("").DistinctBy(bot => new { bot.ServiceName});
+            var serviceNames = chatbotService.GetBotSystemSetting();
+            var selectedServiceName = serviceName ?? serviceNames.First().ServiceName;
             var viewModel = new BotSystemSettingViewModel()
             {
-                ServiceNames = serviceNames,
-                SelectedService = (string)(TempData["serviceName"] ?? serviceNames.First().ServiceName)
+                ServiceNames = serviceNames.DistinctBy(bot => new { bot.ServiceName }),
+                BotSystemSettings = serviceNames.Where(bot => bot.ServiceName == serviceName || bot.ServiceName == selectedServiceName),
+                SelectedService = selectedServiceName
             };
-           
+
             return View("BotSystem", viewModel);
         }
 
@@ -190,29 +192,30 @@ namespace Alpha.Maintenance.Controller
         [NapAuth(FunctionKey = SiteFunctionKeys.ChatbotManagement, Policy = Constant.Policy.Host)]
         public ActionResult UpdateBotSystemSetting(int id)
         {
-            var result = chatbotService.GetBotSystemSetting("").FirstOrDefault(botSystemSetting => botSystemSetting.Id == id);
+            var result = chatbotService.GetBotSystemSetting().FirstOrDefault(botSystemSetting => botSystemSetting.Id == id);
             var viewModel = new BotSystemSettingDetailViewModel
             {
-                BotSystemSetting = result,
-                ErrorMessage = (string)(TempData["errorMessage"])
+                Id = result.Id,
+                ServiceName = result.ServiceName,
+                SettingName = result.SettingName,
+                Value = result.Value
             };
             return View("BotSystemSetting", viewModel);
         }
 
         [HttpPost]
         [NapAuth(FunctionKey = SiteFunctionKeys.ChatbotManagement, Policy = Constant.Policy.Host)]
-        public ActionResult UpdateBotSystemSetting(int id, string value, string serviceName)
+        public ActionResult UpdateBotSystemSetting(BotSystemSettingDetailViewModel viewModel)
         {
-            var result = chatbotService.UpdateBotSystemSetting(id, value, CurrentSession.UserId, CurrentContext.IP);
-            if(result.IsOk)
+            var result = chatbotService.UpdateBotSystemSetting(viewModel.Id, viewModel.Value, CurrentSession.UserId, CurrentContext.IP);
+            if (result.IsOk)
             {
-                TempData["serviceName"] = serviceName;
-                return RedirectToAction("Settings");
+                return RedirectToAction("Settings", new { serviceName = viewModel.ServiceName });
             }
             else
             {
-                TempData["errorMessage"] = result.Message;
-                return RedirectToAction("UpdateBotSystemSetting", new { Id = id });
+                viewModel.ErrorMessage = result.Message;
+                return View("BotSystemSetting", viewModel);
             }
         }
     }

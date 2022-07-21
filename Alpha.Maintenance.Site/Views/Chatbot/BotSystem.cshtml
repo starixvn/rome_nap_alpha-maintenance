@@ -22,10 +22,10 @@
             </select>
             <label>Service Name</label>
         </div>
-            <div class="col s2 button-block">
-                <input type="button" class="waves-effect waves-light btn btn-primary" value="@ViewResource.Submit" id="btnSubmit" />
-            </div>
+        <div class="col s2 button-block">
+            <input type="button" class="waves-effect waves-light btn btn-primary" value="@ViewResource.Submit" id="btnSubmit" />
         </div>
+    </div>
 </form>
 
 <div class="table">
@@ -40,6 +40,30 @@
             </tr>
         </thead>
         <tbody id="content">
+            @if (Model.BotSystemSettings.Any())
+            {
+                foreach (var botSystemSetting in Model.BotSystemSettings)
+                {
+                    <tr>
+                        <td>@botSystemSetting.Id</td>
+                        <td>@botSystemSetting.ServiceName</td>
+                        <td>@botSystemSetting.SettingName</td>
+                        <td>@botSystemSetting.Value</td>
+                        <td>
+                            <a href="@Url.Action("UpdateBotSystemSetting", "Chatbot", new { Id = botSystemSetting.Id})"
+                               class="text-link">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="8" class="no-data">@ViewResource.NoInformationAvailable</td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
