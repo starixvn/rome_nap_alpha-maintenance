@@ -726,6 +726,7 @@
     <Content Include="Views\Chatbot\SetWebhook.cshtml" />
     <Content Include="Views\Chatbot\BotSystemSetting.cshtml" />
     <Content Include="Views\Chatbot\BotSystem.cshtml" />
+    <Content Include="Views\UMToken\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\scripts\Administration\CacheManagement.ts" />

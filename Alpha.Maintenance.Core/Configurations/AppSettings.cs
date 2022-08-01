@@ -14,6 +14,14 @@
             LoadAnnouncementConfig();
         }
 
+        public static string ONEBookUMUri
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["ONEBookUMUri"];
+            }
+        }
+
         public static AnnouncementConfig AnnouncementConfig { get; internal set; }
 
         public static string AnnouncementConfigFilePath

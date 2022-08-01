@@ -1,0 +1,42 @@
+﻿@model IDictionary<string, SiteToken>
+@{
+    ViewBag.Title = "UM Token";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Headline{
+    <span class="active">UM Token</span>
+}
+
+<div class="table">
+    <table class="grid persist-area" id="messageContainer">
+        <thead class="persist-header">
+            <tr>
+                <th>@ViewResource.Site</th>
+                <th>@ViewResource.ID</th>
+                <th>@ViewResource.Token</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model == null || !Model.Keys.Any())
+            {
+                <tr>
+                    <td colspan="2" class="no-data">@AnnouncementResources.NoInformation</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var site in Model.Keys)
+                {
+                    var siteToken = Model[site];
+                    <tr>
+                        <td>@site</td>
+                        <td>@siteToken.SiteId</td>
+                        <td>@siteToken.Token</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
