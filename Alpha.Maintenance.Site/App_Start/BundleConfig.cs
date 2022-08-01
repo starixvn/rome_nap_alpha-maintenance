@@ -40,9 +40,6 @@ namespace Alpha.Maintenance.Site.App_Start
                 "~/Assets/scripts/lib/materialize/materialize.min.js",
                 "~/Assets/scripts/lib/msgbox/msgbox-0.0.1.js",
                 "~/Assets/scripts/Maintenance.js"));
-
-            bundles.Add(new ScriptBundle("~/scripts/recheckin").Include(
-             "~/Areas/UserLogin/scripts/ReCheckIn.js"));
          
 	
         	bundles.AddAndInclude(

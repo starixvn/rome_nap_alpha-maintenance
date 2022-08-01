@@ -108,6 +108,7 @@
     <Compile Include="Model\BannerDetail.cs" />
     <Compile Include="Model\Bot.cs" />
     <Compile Include="Model\BotSystemSetting.cs" />
+    <Compile Include="Model\CommandResult.cs" />
     <Compile Include="Model\IPInfo.cs" />
     <Compile Include="Model\DBProfilerModel.cs" />
     <Compile Include="Model\DbProfilerViewModel.cs" />
