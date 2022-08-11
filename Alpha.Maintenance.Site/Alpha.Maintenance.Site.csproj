@@ -319,6 +319,12 @@
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="App_Data\announcementConfig.staging.json">
+      <DependentUpon>announcementConfig.json</DependentUpon>
+    </Content>
+    <Content Include="WebConnectionString.staging.config">
+      <DependentUpon>WebConnectionString.config</DependentUpon>
+    </Content>
     <Content Include="wwwroot\nap-auth\auth-sample.css" />
     <Content Include="wwwroot\nap-auth\auth.css" />
     <Content Include="wwwroot\nap-auth\otp.css" />
@@ -692,6 +698,9 @@
     <Content Include="Views\Auth\NotFound.cshtml" />
     <Content Include="Views\Auth\Offline.cshtml" />
     <Content Include="Views\Auth\OtpLoginFlow.cshtml" />
+    <Content Include="Web.staging.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\scripts\Administration\CacheManagement.ts" />
