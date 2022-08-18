@@ -28,9 +28,11 @@ namespace Alpha.Maintenance.Repository.Impl.DBProfiler
 
             using (var db = new ObjectDb(criteria.GetSettingKey()))
             {
-                var param = criteria.GetSpParams();              
-                db.DbSetting.ConnectionString = BuildConnectionString(model.Server, criteria.Site, db.DbSetting.ConnectionString);                
+                var param = criteria.GetSpParams();
+                string oldConn = db.DbSetting.ConnectionString;
+                db.DbSetting.ConnectionString = BuildConnectionString(model.Server, criteria.Site, oldConn);                
                 var result = db.Query<DbProfilerViewModel>(param).ToList();
+                db.DbSetting.ConnectionString = oldConn;
                 model.HasError = Convert.ToBoolean(param["haserror"]);
                 model.ErrorMsg = param["errormsg"].ToString();
                 return result;
