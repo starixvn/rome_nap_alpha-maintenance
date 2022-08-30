@@ -13,7 +13,7 @@ namespace Alpha.Maintenance.Service.Interface.Chatbot
 
         Result UpdateBot(int botId, string username, string displayName, string system, string accessToken, bool status, bool isTest, int creator, string ip);
 
-        IEnumerable<BotSystemSetting> GetBotSystemSetting(string serviceName);
+        IEnumerable<BotSystemSetting> GetBotSystemSetting(string serviceName = "");
 
         Result UpdateBotSystemSetting(int id, string value, int creator, string ip);
     }

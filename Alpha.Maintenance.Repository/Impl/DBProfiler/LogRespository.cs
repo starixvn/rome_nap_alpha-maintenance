@@ -28,28 +28,31 @@ namespace Alpha.Maintenance.Repository.Impl.DBProfiler
 
             using (var db = new ObjectDb(criteria.GetSettingKey()))
             {
-                var param = criteria.GetSpParams();              
-                db.DbSetting.ConnectionString = BuildConnectionString(model.Server, criteria.Site, db.DbSetting.ConnectionString);                
-                var result = db.Query<DbProfilerViewModel>(param).ToList();
-                model.HasError = Convert.ToBoolean(param["haserror"]);
-                model.ErrorMsg = param["errormsg"].ToString();
-                return result;
-               
+                var param = criteria.GetSpParams();
+
+                var dbSetting = db.DbSetting;
+                var sqlConnectionStringBuilder = new SqlConnectionStringBuilder(dbSetting.ConnectionString);
+
+                sqlConnectionStringBuilder.DataSource = model.Server;
+                sqlConnectionStringBuilder.ConnectTimeout = 125;
+
+                if (criteria.Site.Equals("FPS", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    sqlConnectionStringBuilder.InitialCatalog = "perfmonDB";
+                }
+
+                dbSetting.ConnectionString = sqlConnectionStringBuilder.ToString();
+
+                using (var objectDb = new ObjectDb(dbSetting))
+                {
+                    var result = objectDb.Query<DbProfilerViewModel>(param).ToList();
+
+                    model.HasError = Convert.ToBoolean(param["haserror"]);
+                    model.ErrorMsg = param["errormsg"].ToString();
+
+                    return result;
+                }
             }
-        }
-
-        private static string BuildConnectionString(string serverIP, string siteName, string connectionString)
-        {
-            var sqlConnectionStringBuilder = new SqlConnectionStringBuilder(connectionString);
-            sqlConnectionStringBuilder.DataSource = serverIP;
-            sqlConnectionStringBuilder.ConnectTimeout = 125;
-
-            if (siteName.Equals("FPS", StringComparison.CurrentCultureIgnoreCase))
-            {
-                sqlConnectionStringBuilder.InitialCatalog = "perfmonDB";
-            }
-
-            return  sqlConnectionStringBuilder.ToString();           
         }
     }
 }

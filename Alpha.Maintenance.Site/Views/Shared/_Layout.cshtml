@@ -39,7 +39,7 @@
                 </div>
                 <div class="right profile">
                     <span>Howdy, @HttpContext.Current.User.Identity.Name</span>                 
-                    <a class="icon-login" href="~/UserLogin/Login/LogOut"></a>
+                    <a class="icon-login" href="~/Auth/LogOut"></a>
                 </div>
             </nav>
         </div>
@@ -86,8 +86,8 @@
 @RenderSection("Foot", false)
 @RenderSection("scripts", false)
 
-
+<script type="text/javascript">window.rootUrl = '@Url.Content("~")';</script>
 @if (ViewBag.ViewFlags != null && ViewBag.ViewFlags.IsReCheckin)
 {
-    @Scripts.Render("~/scripts/recheckin")
+    <script src="@Url.Content("~/auth/recheckinscript")" type="text/javascript"></script>
 }

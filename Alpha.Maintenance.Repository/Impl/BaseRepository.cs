@@ -14,9 +14,9 @@ namespace Alpha.Maintenance.Repository.Impl
     using System.Collections;
     using System.Collections.Generic;
     using System.Data;
+    using Alpha.Maintenance.Core.Model;
     using Fanex.Data;
     using Fanex.Data.Repository;
-    using Fanex.NAP.Core.Command;
 
     /// <summary>
     /// Base repository.

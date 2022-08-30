@@ -118,7 +118,10 @@
       <HintPath>..\_Dependencies\MailStation\Fanex.MailDelivery.Client.dll</HintPath>
     </Reference>
     <Reference Include="Fanex.NAP.Core.Client, Version=1.2.1.6, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.NAP.Core.Client.1.2.1.12\lib\net40\Fanex.NAP.Core.Client.dll</HintPath>
+      <HintPath>..\packages\Fanex.NAP.Core.Client.2.0.0.1\lib\net40\Fanex.NAP.Core.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Fanex.NAP.Core.SignIn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fanex.NAP.Core.SignIn.2.0.0.1\lib\net461\Fanex.NAP.Core.SignIn.dll</HintPath>
     </Reference>
     <Reference Include="IBCFile, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.File.1.0.0\lib\net40\IBCFile.dll</HintPath>
@@ -311,16 +314,20 @@
     <Compile Include="Areas\DatabaseProfiler\DatabaseProfilerAreaRegistration.cs" />
     <Compile Include="Areas\DatabaseProfiler\Models\Server.cs" />
     <Compile Include="Areas\DatabaseProfiler\Models\Site.cs" />
-    <Compile Include="Areas\UserLogin\Controllers\BaseController.cs" />
-    <Compile Include="Areas\UserLogin\Controllers\CommonController.cs" />
-    <Compile Include="Areas\UserLogin\Controllers\LoginController.cs" />
-    <Compile Include="Areas\UserLogin\Controllers\SSOController.cs" />
-    <Compile Include="Areas\UserLogin\UserLogInAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="App_Data\announcementConfig.staging.json">
+      <DependentUpon>announcementConfig.json</DependentUpon>
+    </Content>
+    <Content Include="WebConnectionString.staging.config">
+      <DependentUpon>WebConnectionString.config</DependentUpon>
+    </Content>
+    <Content Include="wwwroot\nap-auth\auth-sample.css" />
+    <Content Include="wwwroot\nap-auth\auth.css" />
+    <Content Include="wwwroot\nap-auth\otp.css" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -365,35 +372,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Areas\DatabaseProfiler\scripts\Index.js" />
-    <Content Include="Areas\UserLogin\scripts\lib\jquery-1.8.0.min.js" />
-    <Content Include="Areas\UserLogin\scripts\lib\msgbox\images\alert.png" />
-    <Content Include="Areas\UserLogin\scripts\lib\msgbox\images\btn-close.png" />
-    <Content Include="Areas\UserLogin\scripts\lib\msgbox\images\confirm.png" />
-    <Content Include="Areas\UserLogin\scripts\lib\msgbox\images\error.png" />
-    <Content Include="Areas\UserLogin\scripts\lib\msgbox\images\info.png" />
-    <Content Include="Areas\UserLogin\scripts\lib\msgbox\images\question.png" />
-    <Content Include="Areas\UserLogin\scripts\lib\msgbox\msgbox-0.0.1.css" />
-    <Content Include="Areas\UserLogin\scripts\lib\msgbox\msgbox-0.0.1.js" />
-    <Content Include="Areas\UserLogin\scripts\lib\msgbox\msgbox-0.0.1.min.css" />
-    <Content Include="Areas\UserLogin\scripts\lib\msgbox\msgbox-0.0.1.min.js" />
-    <Content Include="Areas\UserLogin\scripts\Plugin\jquery-1.6.2.js" />
-    <Content Include="Areas\UserLogin\scripts\ReCheckIn.js" />
-    <Content Include="Areas\UserLogin\themes\img\auth-bg.png" />
-    <Content Include="Areas\UserLogin\themes\img\bg.png" />
-    <Content Include="Areas\UserLogin\themes\img\lock.png" />
-    <Content Include="Areas\UserLogin\themes\img\m7_logo.png" />
-    <Content Include="Areas\UserLogin\themes\img\password.png" />
-    <Content Include="Areas\UserLogin\themes\img\title-bg.jpg" />
-    <Content Include="Areas\UserLogin\themes\img\username.png" />
-    <Content Include="Areas\UserLogin\themes\img\warn.png" />
-    <Content Include="Areas\UserLogin\themes\img\welcome.png" />
-    <Content Include="Areas\UserLogin\themes\login.css" />
-    <Content Include="Areas\UserLogin\themes\loginNew.css">
-      <DependentUpon>loginNew.scss</DependentUpon>
-    </Content>
-    <Content Include="Areas\UserLogin\themes\loginNew.min.css">
-      <DependentUpon>loginNew.scss</DependentUpon>
-    </Content>
     <Content Include="Assets\bundles\Administration\CacheManagement.js" />
     <Content Include="Assets\bundles\Administration\CacheManagement.min.js">
       <DependentUpon>CacheManagement.js</DependentUpon>
@@ -595,24 +573,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\UserLogin\Views\Common\Error.cshtml" />
-    <Content Include="Areas\UserLogin\Views\Common\NotFound.cshtml" />
-    <Content Include="Areas\UserLogin\Views\Common\Unauthorize.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\UserLogin\themes\fonts\Abel.woff" />
-    <Content Include="Areas\UserLogin\themes\select-site.less" />
-    <Content Include="Areas\UserLogin\Views\Login\Index.cshtml" />
-    <Content Include="Areas\UserLogin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\UserLogin\Views\UserSite\Site.cshtml" />
-    <Content Include="Areas\UserLogin\Views\Web.config" />
-    <Content Include="Areas\UserLogin\Views\SSO\SSOIndex.cshtml" />
-    <Content Include="Areas\UserLogin\Views\Common\Offline.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Log\Index.cshtml" />
     <Content Include="Views\Machine\Index.cshtml" />
@@ -645,7 +610,6 @@
     <Content Include="Views\Shared\_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\UserLogin\themes\loginNew.scss" />
     <Content Include="App_Data\announcementConfig.json" />
     <Content Include="bundleconfig.json" />
     <Content Include="Assets\styles\vendors\icon\fonts\mSite.eot" />
@@ -724,9 +688,19 @@
     <Content Include="Views\Chatbot\Bot.cshtml" />
     <Content Include="Views\Chatbot\BotList.cshtml" />
     <Content Include="Views\Chatbot\SetWebhook.cshtml" />
-    <Content Include="Views\Chatbot\BotSystemSettingList.cshtml" />
     <Content Include="Views\Chatbot\BotSystemSetting.cshtml" />
     <Content Include="Views\Chatbot\BotSystem.cshtml" />
+    <Content Include="Views\UMToken\Index.cshtml" />
+    <Content Include="Views\Auth\AccessDenied.cshtml" />
+    <Content Include="Views\Auth\ChangePassword.cshtml" />
+    <Content Include="Views\Auth\Error.cshtml" />
+    <Content Include="Views\Auth\Index.cshtml" />
+    <Content Include="Views\Auth\NotFound.cshtml" />
+    <Content Include="Views\Auth\Offline.cshtml" />
+    <Content Include="Views\Auth\OtpLoginFlow.cshtml" />
+    <Content Include="Web.staging.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\scripts\Administration\CacheManagement.ts" />

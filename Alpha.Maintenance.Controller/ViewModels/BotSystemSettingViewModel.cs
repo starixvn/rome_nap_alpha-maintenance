@@ -6,6 +6,8 @@ namespace Alpha.Maintenance.Controller.ViewModels
     {
         public IEnumerable<BotSystemSetting> ServiceNames { get; set; }
 
+        public IEnumerable<BotSystemSetting> BotSystemSettings { get; set; }
+
         public string SelectedService { get; set; }
     }
 }

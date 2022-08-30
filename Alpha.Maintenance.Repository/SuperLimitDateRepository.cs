@@ -7,7 +7,6 @@
     using Alpha.Maintenance.Repository.Criteria.SuperLimitDate;
     using Fanex.Data;
     using Fanex.Data.Repository;
-    using Fanex.NAP.Core.Command;
 
     public interface ISuperLimitDateRepository
     {

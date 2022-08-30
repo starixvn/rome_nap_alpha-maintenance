@@ -32,7 +32,7 @@ namespace Alpha.Maintenance.Service.Impl.Chatbot
         public Result UpdateBot(int botId, string username, string displayName, string system, string accessToken, bool status, bool isTest, int creator, string ip)
             => chatbotRepository.ExecuteNonQuery(new UpdateBotCriteria(botId, username, displayName, system, accessToken, status, isTest, creator, ip));
 
-        public IEnumerable<BotSystemSetting> GetBotSystemSetting(string serviceName)
+        public IEnumerable<BotSystemSetting> GetBotSystemSetting(string serviceName = "")
            => chatbotRepository.GetBotSystemSetting(new GetBotSystemSettingCriteria(serviceName));
 
         public Result UpdateBotSystemSetting(int id, string value, int creator, string ip)

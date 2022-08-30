@@ -13,7 +13,6 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
     using Alpha.Maintenance.Core.Model;
     using Alpha.Maintenance.Repository.Criteria.Log;
     using Alpha.Maintenance.Repository.Impl.AppLog;
-    using Fanex.NAP.Core.Command;
 
     /// <summary>
     /// Machine Service.

@@ -108,6 +108,7 @@
     <Compile Include="Model\BannerDetail.cs" />
     <Compile Include="Model\Bot.cs" />
     <Compile Include="Model\BotSystemSetting.cs" />
+    <Compile Include="Model\CommandResult.cs" />
     <Compile Include="Model\IPInfo.cs" />
     <Compile Include="Model\DBProfilerModel.cs" />
     <Compile Include="Model\DbProfilerViewModel.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Model\LogCategory.cs" />
     <Compile Include="Model\Machine.cs" />
     <Compile Include="Model\Result.cs" />
+    <Compile Include="Model\SiteToken.cs" />
     <Compile Include="Model\SuperLimitDate.cs" />
     <Compile Include="Model\UserLevel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

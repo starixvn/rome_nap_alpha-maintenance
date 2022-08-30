@@ -22,8 +22,6 @@
                 AreaName + "_DefaultAreas",
                 "DBProfiler/{controller}/{action}/{id}",
                 new { controller = "Login", action = "Index", id = UrlParameter.Optional });
-
-            context.MapRoute(AreaName + "_Themes", "UserLogin/Themes/{resourceName}");
         }
     }
 }
