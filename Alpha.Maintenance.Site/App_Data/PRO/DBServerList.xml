@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Servers>
   <Server>
+    <Ip>10.40.40.108</Ip>
+    <Name>DBGRP01L</Name>
+  </Server>
+  <Server>
     <Ip>10.40.40.40</Ip>
     <Name>DB02</Name>
   </Server>
@@ -63,10 +67,6 @@
   <Server>
     <Ip>10.40.40.66</Ip>
     <Name>DBFRAUD</Name>
-  </Server>
-  <Server>
-    <Ip>10.40.40.108</Ip>
-    <Name>DBFRAUD02</Name>
   </Server>
   <Server>
     <Ip>10.40.40.224</Ip>
