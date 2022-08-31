@@ -46,6 +46,7 @@ namespace Alpha.Maintenance.Service.Impl.IPInformation
             {
                 var apiParts = api.APILink.Split('?');
                 var url = apiParts[0] + ip + (apiParts.Length > 1 ? "?" + apiParts[1] : "");
+                Logger.Log.Info(url);
                 var response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
                 var responseBody = await response.Content.ReadAsStringAsync();
