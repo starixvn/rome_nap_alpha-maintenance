@@ -45,26 +45,6 @@ class IPInformation {
     };
 
     getIPInfo = () => {
-        var apis = this.$JSON.parse(this.$APIInfoJson);
-        this.initWaitingView(apis);
-
-        this.getIPInfoFromDb();
-        this.getIPInfoFromAPIs(apis);
-    };
-
-    initWaitingView = (apis: any) => {
-        let content = this.renderWaitingRow('IPDB');
-
-        this.$.each(apis, (key, apiInfo) => {
-            if (apiInfo) {
-                content += this.renderWaitingRow(apiInfo.Name);
-            }
-        });
-
-        this.$contentTable.empty().append(content);
-    };
-
-    getIPInfoFromDb = () => {
         let ip = this.$txtIP.val();
         this.$.ajax({
             url: this.$NAP.resolveClientUrl("IPInformation/GetIPInfo"),
@@ -72,93 +52,38 @@ class IPInformation {
             type: 'GET',
             dataType: 'json',
             cache: false,
+            beforeSend: () => {
+                this.$NAP.loadingBox.show();
+            },
             success: (result: any) => {
-                var data = result.IPInfo;
-
-                if (!data) {
+                if (!result.IPInfos) {
                     return;
                 }
 
-                var row = '<tr>\
-                                    <td>' + data.DataSource + '</td>\
+                let content = "";
+                this.$.each(result.IPInfos, (index,data) => {
+                    var row = '<tr>\
+                                    <td>' + data.DataSource + '<a href="' + data.Url + '" target="_blank" class="icon-link icon-link-variant"></a></td>\
                                     <td>' + data.CountryCode + '</td>\
                                     <td>' + data.CountryName + '</td>\
                                     <td>' + data.Region + '</td>\
                                     <td>' + data.City + '</td>\
                                 </tr>';
+                    content += row;
+                });
 
-                this.$('[class="IPDB"]').replaceWith(row);
+                this.$contentTable.empty().append(content);
+            },
+            complete: () => {
+                this.$NAP.loadingBox.close();
             },
             error: (xhr: JQueryXHR, status: string, err: string) => {
-                this.handleAjaxError(xhr, status, err, 'IPDB');
+                this.$NAP.handleAjaxError(xhr, status, err);
             }
         });
     };
 
-    getIPInfoFromAPIs = (apis: any) => {
-        let ip = this.$txtIP.val();
-
-        this.$.each(apis, (key, apiInfo) => {
-            let apiParts = apiInfo.APILink.split('?');
-            let url = apiParts[0] + ip + (apiParts.length > 1 ? '?' + apiParts[1] : '');
-
-            var ajax = this.$.ajax({
-                url: url,
-                type: 'GET',
-                dataType: 'jsonp',
-                cache: false,
-                success: (result) => {
-                    if (!result) {
-                        return;
-                    }
-
-                    let webLinkParts = apiInfo.WebLink.split('?');
-                    let webLink = webLinkParts[0] + ip + (webLinkParts.length > 1 ? '?' + webLinkParts[1] : '');
-                    let content = '<tr>\
-                                    <td>' + apiInfo.Name + '<a href="' + webLink + '" target="_blank" class="icon-link icon-link-variant"></a></td>\
-                                    <td>' + this.formatValue(result[apiInfo.CountryCodeKey]) + '</td>\
-                                    <td>' + this.formatValue(result[apiInfo.CountryNameKey]) + '</td>\
-                                    <td>' + this.formatValue(result[apiInfo.RegionKey]) + '</td>\
-                                    <td>' + this.formatValue(result[apiInfo.CityKey]) + '</td>\
-                                </tr>';
-
-                    this.$('[class="' + apiInfo.Name + '"]').replaceWith(content);
-                },
-                error: (xhr: JQueryXHR, status: string, err: string) => {
-                    this.handleAjaxError(xhr, status, err, apiInfo.Name);
-                }
-            });
-        });
-    };
-
-    renderWaitingRow = (name: string) => {
-        let row = '<tr class="' + name + '">\
-                            <td>'+ name + '<div class="loading"></div></td>\
-                            <td></td>\
-                            <td></td>\
-                            <td></td>\
-                            <td></td>\
-                        </tr>';
-        return row;
-    };
-
     validateIPAddress = () => this.$txtIP.val().trim() !== "";
-
-    formatValue = (value: string) => (value && value.trim()) ? value : "-";
-
-    handleAjaxError = (xhr: JQueryXHR, status: string, err: string, dataSource: string) => {
-        this.$NAP.handleAjaxError(xhr, status, err);
-
-        let row = '<tr>\
-                        <td>' + dataSource + '</td>\
-                        <td>-</td>\
-                        <td>-</td>\
-                        <td>-</td>\
-                        <td>-</td>\
-                    </tr>';
-
-        this.$('[class="' + dataSource + '"]').replaceWith(row);
-    };
 }
 
 const ipInformation = new IPInformation($, window.NAP, window.JSON);

@@ -7,13 +7,15 @@
             string countryCode,
             string countryName,
             string region,
-            string city)
+            string city, 
+            string url)
         {
             DataSource = dataSource;
             CountryCode = countryCode;
             CountryName = countryName;
             Region = region;
             City = city;
+            Url = url;
         }
 
         public string DataSource { get; }
@@ -25,5 +27,7 @@
         public string Region { get; }
 
         public string City { get; }
+
+        public string Url { get; }
     }
 }

@@ -26,7 +26,8 @@
                                 countryCode: Converter.ToString2(reader["countrySHORT"]),
                                 countryName: Converter.ToString2(reader["countryLONG"]),
                                 region: Converter.ToString2(reader["ipRegion"]),
-                                city: Converter.ToString2(reader["ipCity"]));
+                                city: Converter.ToString2(reader["ipCity"]),
+                                "#");
                         }
 
                         reader.NextResult();

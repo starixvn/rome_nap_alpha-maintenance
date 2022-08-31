@@ -18,20 +18,5 @@
             ipInformationRepository = Substitute.For<IPInformationRepository>();
             ipInformationService = new IPInformationServiceImpl(ipInformationRepository);
         }
-
-        [Test]
-        public void GetIPInfoFromDB_Always_CallsGetIPInfo()
-        {
-            // Arrange
-            var ip = "127.0.0.1";
-            var criteria = new GetIPInformationCriteria(ip);
-
-            // Act
-            ipInformationService.GetIPInfo(ip);
-
-            // Assert
-            ipInformationRepository.Received().GetIPInfo(
-                Arg.Is<GetIPInformationCriteria>(param => param.IP.Equals(criteria.IP)));
-        }
     }
 }
