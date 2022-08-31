@@ -1,13 +1,10 @@
-﻿@using Alpha.Maintenance.Controller.ViewModels
-@model IPInformationViewModel
-@{
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "IP Information";
 }
 @section Headline{
     <span class="active">IP information</span>
 }
-@Html.Hidden("APIInfoJson", Model.APIInfoJson)
 <section class="filter-form" id="filter-bar">
     <div class="row">
         <div class="input-field col l2">
@@ -34,5 +31,5 @@
     </table>
 </div>
 @section scripts {
-    @Scripts.Render("~/Assets/bundles/IPInfo/index.js")
+    @Scripts.Render("~/Assets/bundles/IPInfo/index.js?v=1661927330135")
 }

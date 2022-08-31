@@ -203,7 +203,6 @@
     <Compile Include="ViewModels\ChatBotDetailViewModel.cs" />
     <Compile Include="ViewModels\ComposeAnnouncementViewModel.cs" />
     <Compile Include="ViewModels\ImageBannerViewModel.cs" />
-    <Compile Include="ViewModels\IPInformationViewModel.cs" />
     <Compile Include="ViewModels\ManageAnnouncementsViewModel.cs" />
     <Compile Include="ViewModels\SetChatbotWebhookViewModel.cs" />
     <Compile Include="ViewModels\SuperLimitDateViewModel.cs" />

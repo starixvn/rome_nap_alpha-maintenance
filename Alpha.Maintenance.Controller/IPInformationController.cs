@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using System.Web.Mvc;
     using Core.Configurations;
     using Core.Model;
@@ -28,14 +29,11 @@
 
         [HttpGet]
         [NapAuth(FunctionKey = SiteFunctionKeys.IPInformation, Policy = Constant.Policy.Read)]
-        public ActionResult Index() => View(new IPInformationViewModel(CreateGeolocationAPIs()));
+        public ActionResult Index() => View();
 
         [HttpGet]
         [NapAuth(FunctionKey = SiteFunctionKeys.IPInformation, Policy = Constant.Policy.Read)]
-        public ActionResult GetIPInfo(string ip)
-            => Json(new { IPInfo = ipInformationService.GetIPInfo(ip) }, JsonRequestBehavior.AllowGet);
-
-        private static IEnumerable<APIInfo> CreateGeolocationAPIs()
-            => AppSettings.APINames.Select(name => new APIInfo(name));
+        public async Task<ActionResult> GetIPInfo(string ip)
+            => Json(new { IPInfos = await ipInformationService.GetIPInfos(ip) }, JsonRequestBehavior.AllowGet);
     }
 }

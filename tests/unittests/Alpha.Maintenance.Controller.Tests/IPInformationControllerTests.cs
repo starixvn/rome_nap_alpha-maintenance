@@ -27,15 +27,5 @@
             // Assert
             Assert.IsTrue(result is ViewResult);
         }
-
-        [Test]
-        public void GetIPInfoFromDB_Always_CallsGetIPInfo()
-        {
-            // Act
-            ipInformationController.GetIPInfo("127.0.0.1");
-
-            // Assert
-            ipInformationService.Received().GetIPInfo(Arg.Is("127.0.0.1"));
-        }
     }
 }
