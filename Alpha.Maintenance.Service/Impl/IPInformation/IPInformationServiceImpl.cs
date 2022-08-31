@@ -22,7 +22,9 @@ namespace Alpha.Maintenance.Service.Impl.IPInformation
             : this(null)
         {
             var proxyUri = ConfigurationManager.AppSettings["Proxy"];
-            client = string.IsNullOrEmpty(proxyUri)? new HttpClient(new HttpClientHandler { Proxy = new WebProxy(proxyUri), UseProxy = true }): new HttpClient();
+            client = string.IsNullOrEmpty(proxyUri)
+                ? new HttpClient()
+                : new HttpClient(new HttpClientHandler { Proxy = new WebProxy(proxyUri), UseProxy = true });
         }
 
         public IPInformationServiceImpl(IPInformationRepository ipInformationRepository = null)
@@ -51,7 +53,8 @@ namespace Alpha.Maintenance.Service.Impl.IPInformation
                     data[api.CountryCodeKey].ToString(), 
                     data[api.CountryNameKey].ToString(),
                     data[api.RegionKey].ToString(),
-                    data[api.CityKey].ToString(), url));
+                    data[api.CityKey].ToString(), 
+                    url));
             }
 
             return result;

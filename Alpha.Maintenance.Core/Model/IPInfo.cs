@@ -8,7 +8,7 @@
             string countryName,
             string region,
             string city, 
-            string url)
+            string url="#")
         {
             DataSource = dataSource;
             CountryCode = countryCode;
