@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using System.Configuration;
 using System.Net;
+using Fanex.Logging;
 
 namespace Alpha.Maintenance.Service.Impl.IPInformation
 {
@@ -22,9 +23,10 @@ namespace Alpha.Maintenance.Service.Impl.IPInformation
             : this(null)
         {
             var proxyUri = ConfigurationManager.AppSettings["Proxy"];
+            Logger.Log.Info(proxyUri);
             client = string.IsNullOrEmpty(proxyUri)
                 ? new HttpClient()
-                : new HttpClient(new HttpClientHandler { Proxy = new WebProxy(proxyUri), UseProxy = true });
+                : new HttpClient(new HttpClientHandler { Proxy = new WebProxy(proxyUri), UseProxy = true }, true);
         }
 
         public IPInformationServiceImpl(IPInformationRepository ipInformationRepository = null)
