@@ -15,9 +15,9 @@
         public WinLossMonitorService(IWinLossMonitorRepository repository = null)
             => this.repository = repository ?? new WinLossMonitorRepository();
 
-        public GlobalSetting GetGlobalSetting()
+        public GlobalSetting GetGlobalSetting(string dbAlias)
         {
-            var settings = repository.GetGlobalSettings(new GetGlobalSettingCriteria());
+            var settings = repository.GetGlobalSettings(new GetGlobalSettingCriteria(dbAlias));
 
             return new GlobalSetting(ToDictionary(settings));
         }
@@ -34,7 +34,7 @@
             return settingsDict;
         }
 
-        public IEnumerable<Result> UpdateGlobalSettings(GlobalSettingEntity[] entities)
+        public IEnumerable<Result> UpdateGlobalSettings(GlobalSettingEntity[] entities, string dbAlias)
         {
             var resultList = new List<Result>();
 
@@ -44,8 +44,11 @@
 
                 try
                 {
-                    repository.UpdateGlobalSetting(
-                        new UpdateGlobalSettingCriteria(entity.ServiceName, entity.SettingName, entity.SettingValue ?? string.Empty));
+                    repository.UpdateGlobalSetting(new UpdateGlobalSettingCriteria(
+                        entity.ServiceName,
+                        entity.SettingName,
+                        entity.SettingValue ?? string.Empty,
+                        dbAlias));
                 }
                 catch (Exception ex)
                 {

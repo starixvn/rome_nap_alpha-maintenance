@@ -157,9 +157,12 @@ class WinLossMonitor {
     private updateGlobalSettings(env: string, formData) {
         this.nap.loadingBox.show();
         const self = this;
-        this.$.post(this.nap.resolveClientUrl("WinLossMonitor/Update"), { globalSettings: formData }, function (results) {
-            self.buildAndShowResultsMessage(env, results);
-        })
+        this.$.post(
+            this.nap.resolveClientUrl("WinLossMonitor/Update"),
+            { globalSettings: formData, dbAlias: self.$("#hiddenDBAlias" + env).val() },
+            function (results) {
+                self.buildAndShowResultsMessage(env, results);
+            })
             .fail(function (xhr) {
                 if (xhr.status === 403) {
                     self.showErrorMessage(env, xhr.responseText);

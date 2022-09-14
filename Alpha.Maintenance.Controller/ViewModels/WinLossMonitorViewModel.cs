@@ -23,5 +23,7 @@
         public string ServiceName { get; set; }
 
         public bool HasHostPermission { get; set; }
+
+        public string DBAlias { get; set; }
     }
 }

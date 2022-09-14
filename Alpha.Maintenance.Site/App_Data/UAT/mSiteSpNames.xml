@@ -56,7 +56,9 @@
   </Function>
 
   <Function Name="Win Loss Monitor">
-    <Setting Key="Acc_WLMonitored_Service_GlobalSettingSel" SpName="Acc_WLMonitored_Service_GlobalSettingSel" DbName="DBAGE.bodb02.bodbAdminNet" />
-    <Setting Key="Acc_WLMonitored_Service_GlobalSettingUpd" SpName="Acc_WLMonitored_Service_GlobalSettingUpd" DbName="DBAGE.bodb02.bodbAdminNet" />
+    <Setting Key="db052_Acc_WLMonitored_Service_GlobalSettingSel" SpName="Acc_WLMonitored_Service_GlobalSettingSel" DbName="db052.DBAGE.bodb02.bodbAdminNet" />
+    <Setting Key="db052_Acc_WLMonitored_Service_GlobalSettingUpd" SpName="Acc_WLMonitored_Service_GlobalSettingUpd" DbName="db052.DBAGE.bodb02.bodbAdminNet" />
+    <Setting Key="db053_Acc_WLMonitored_Service_GlobalSettingSel" SpName="Acc_WLMonitored_Service_GlobalSettingSel" DbName="db053.DBAGE.bodb02.bodbAdminNet" />
+    <Setting Key="db053_Acc_WLMonitored_Service_GlobalSettingUpd" SpName="Acc_WLMonitored_Service_GlobalSettingUpd" DbName="db053.DBAGE.bodb02.bodbAdminNet" />
   </Function>
 </Functions>

@@ -4,7 +4,15 @@
 
     public class GetGlobalSettingCriteria : CriteriaBase
     {
+        public GetGlobalSettingCriteria(string dbAlias)
+            => DBAlias = dbAlias;
+
+        [SpParam(Ignored = true)]
+        public string DBAlias { get; }
+
         public override string GetSettingKey()
-            => "Acc_WLMonitored_Service_GlobalSettingSel";
+            => string.IsNullOrWhiteSpace(DBAlias)
+            ? "Acc_WLMonitored_Service_GlobalSettingSel"
+            : $"{DBAlias}_Acc_WLMonitored_Service_GlobalSettingSel";
     }
 }

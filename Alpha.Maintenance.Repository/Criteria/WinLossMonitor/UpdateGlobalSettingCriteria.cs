@@ -7,11 +7,13 @@
         public UpdateGlobalSettingCriteria(
             string serviceName,
             string settingName,
-            string settingValue)
+            string settingValue,
+            string dbAlias)
         {
             ServiceName = serviceName;
             SettingName = settingName;
             SettingValue = settingValue;
+            DBAlias = dbAlias;
         }
 
         public string ServiceName { get; }
@@ -20,7 +22,12 @@
 
         public string SettingValue { get; }
 
+        [SpParam(Ignored = true)]
+        public string DBAlias { get; }
+
         public override string GetSettingKey()
-            => "Acc_WLMonitored_Service_GlobalSettingUpd";
+            => string.IsNullOrWhiteSpace(DBAlias)
+            ? "Acc_WLMonitored_Service_GlobalSettingUpd"
+            : $"{DBAlias}_Acc_WLMonitored_Service_GlobalSettingUpd";
     }
 }

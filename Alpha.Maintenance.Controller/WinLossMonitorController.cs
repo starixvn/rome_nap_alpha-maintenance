@@ -26,24 +26,24 @@
             => this.winLossMonitorService = winLossMonitorService ?? new WinLossMonitorService();
 
         [NapAuth(FunctionKey = SiteFunctionKeys.WinLossMonitor, Policy = Constant.Policy.Read)]
-        public ActionResult Credit() => GetSettings(WLMonitoredAccount);
+        public ActionResult Credit(string dbAlias) => GetSettings(WLMonitoredAccount, dbAlias);
 
         [NapAuth(FunctionKey = SiteFunctionKeys.WinLossMonitor, Policy = Constant.Policy.Read)]
-        public ActionResult Deposit() => GetSettings(Dep_WLMonitoredAccount);
+        public ActionResult Deposit(string dbAlias) => GetSettings(Dep_WLMonitoredAccount, dbAlias);
 
         [HttpPost]
         [NapAuth(FunctionKey = SiteFunctionKeys.WinLossMonitor, Policy = Constant.Policy.Host)]
-        public ActionResult Update(GlobalSettingEntity[] globalSettings)
-            => Json(winLossMonitorService.UpdateGlobalSettings(globalSettings), JsonRequestBehavior.DenyGet);
+        public ActionResult Update(GlobalSettingEntity[] globalSettings, string dbAlias)
+            => Json(winLossMonitorService.UpdateGlobalSettings(globalSettings, dbAlias), JsonRequestBehavior.DenyGet);
 
-        private ActionResult GetSettings(string serviceName)
+        private ActionResult GetSettings(string serviceName, string dbAlias)
         {
             var hasHostPermission = HasRight(SiteFunctionKeys.WinLossMonitor, Constant.Policy.Host);
-            var globalSetting = winLossMonitorService.GetGlobalSetting();
+            var globalSetting = winLossMonitorService.GetGlobalSetting(dbAlias);
 
             return View("~/Views/WinLossMonitor/Index.cshtml", new Tuple<WinLossMonitorViewModel, WinLossMonitorViewModel>(
-                GetWinLossMonitorViewModel(globalSetting, serviceName, string.Empty, hasHostPermission),
-                GetWinLossMonitorViewModel(globalSetting, serviceName, UAT, hasHostPermission)
+                GetWinLossMonitorViewModel(globalSetting, serviceName, string.Empty, hasHostPermission, dbAlias),
+                GetWinLossMonitorViewModel(globalSetting, serviceName, UAT, hasHostPermission, dbAlias)
             ));
         }
 
@@ -51,7 +51,8 @@
             GlobalSetting globalSetting,
             string serviceName,
             string env,
-            bool hasHostPermission)
+            bool hasHostPermission,
+            string dbAlias)
         {
             var isCreditJob = WLMonitoredAccount == serviceName;
             var viewModel = new WinLossMonitorViewModel
@@ -64,7 +65,8 @@
                 Environment = env,
                 IsCreditJob = isCreditJob,
                 ServiceName = string.IsNullOrWhiteSpace(env) ? serviceName : $"{env}-{serviceName}",
-                HasHostPermission = hasHostPermission
+                HasHostPermission = hasHostPermission,
+                DBAlias = dbAlias
             };
 
             if (isCreditJob)
@@ -74,6 +76,6 @@
             }
 
             return viewModel;
-        }  
+        }
     }
 }

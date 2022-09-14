@@ -5,8 +5,8 @@
 
     public interface IWinLossMonitorService
     {
-        GlobalSetting GetGlobalSetting();
+        GlobalSetting GetGlobalSetting(string dbAlias);
 
-        IEnumerable<Result> UpdateGlobalSettings(GlobalSettingEntity[] entities);
+        IEnumerable<Result> UpdateGlobalSettings(GlobalSettingEntity[] entities, string dbAlias);
     }
 }
