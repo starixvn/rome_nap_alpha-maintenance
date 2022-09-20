@@ -21,7 +21,6 @@ class UploadBanner {
     chkActive: JQuery;
     dtpReleasedDate: JQuery;
     dtpExpirationDate: JQuery;
-    txtMobileBgColor: JQuery;
     hiddenBannerId: number;
     uploadBannerURL: string;
     viewResources: any = {
@@ -30,14 +29,13 @@ class UploadBanner {
         bannerMsgError: "Ooops, something wrong happended.",
         bannerErrorFileSize: "The file size is too big ({{ value }} max).",
         bannerErrorImageFormat: "Sorry, you choose invalid image extension ({{ value }} only).",
-        desktopBannerErrorWidth: "The image width must be 1920px.",
-        desktopBannerErrorHeight: "The image height must be 48px.",
-        mobileBannerErrorWidth: "The image width must be 750px.",
-        mobileBannerErrorHeight: "The image height must be 96px.",
+        desktopBannerErrorWidth: "The image width must be 280px.",
+        desktopBannerErrorHeight: "The image height must be 70px.",
+        mobileBannerErrorWidth: "The image width must be 600px.",
+        mobileBannerErrorHeight: "The image height must be 140px.",
         requiredTitleError: "Please input banner title.",
         invalidDateRangeError: "Expiration Date must be greater than Released Date.",
-        requiredUploadedBannerError: "Please select image to upload.",
-        invalidMobileBgColor: "Mobile Background (Hex Code) is invalid. Please input Hex code value."
+        requiredUploadedBannerError: "Please select image to upload."
     };
     confirmSaveBannerModal: JQuery;
     globalFormData: FormData = null;
@@ -73,7 +71,6 @@ class UploadBanner {
         this.chkActive = this.$("#chk-active");
         this.dtpReleasedDate = this.$("#dtp-releasedDate");
         this.dtpExpirationDate = this.$("#dtp-expirationDate");
-        this.txtMobileBgColor = this.$("#txt-mobileBgColor");
         this.hiddenBannerId = parseInt(this.$("#txt-bannerid").val());
         this.uploadBannerURL = this.nap.resolveClientUrl(this.hiddenBannerId ? "Banner/Edit" : "Banner/Add");
         this.confirmSaveBannerModal = this.$("#cofirmMessages");
@@ -167,13 +164,6 @@ class UploadBanner {
             return null;
         }
 
-        const mobileBgColor = this.$.trim(this.txtMobileBgColor.val());
-
-        if (mobileBgColor.length > 0 && !/^#([0-9A-F]{3}){1,2}$/i.test(mobileBgColor)) {
-            this.showErrorMessage(this.viewResources.invalidMobileBgColor);
-            return null;
-        }
-
         this.hideMessage();
 
         let formData = new FormData();
@@ -198,8 +188,6 @@ class UploadBanner {
         Object.keys(mobileBanners).forEach(function (key) {
             formData.append(key, mobileBanners[key]);
         });
-
-        formData.append("mobileBgColor", mobileBgColor);
 
         if (this.hiddenBannerId) {
             formData.append("id", this.hiddenBannerId.toString());

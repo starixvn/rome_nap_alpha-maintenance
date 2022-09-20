@@ -84,8 +84,7 @@
                 Convert.ToDateTime(reader["releaseddate"]),
                 Convert.ToDateTime(reader["expirationdate"]),
                 reader["environments"].ToString(),
-                reader["systems"].ToString(),
-                reader["mobilebackgroundcolor"].ToString());
+                reader["systems"].ToString());
 
         private static BannerDetail GetBannerDetail(IDataReader reader)
         {

@@ -25,8 +25,7 @@
             string environments,
             string sites,
             int userId,
-            Hashtable banners,
-            string mobileBgColor);
+            Hashtable banners);
 
         Result EditBanner(
             int id,
@@ -37,7 +36,6 @@
             string environments,
             string sites,
             int userId,
-            Hashtable banners,
-            string mobileBgColor);
+            Hashtable banners);
     }
 }

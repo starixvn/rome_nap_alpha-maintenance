@@ -22,10 +22,8 @@
         {
         }
 
-        public BannerController(BannerService bannerService)
-        {
-            this.bannerService = bannerService ?? new BannerServiceImpl();
-        }
+        internal BannerController(BannerService bannerService)
+            => this.bannerService = bannerService ?? new BannerServiceImpl();
 
         [NapAuth(FunctionKey = SiteFunctionKeys.BannerManagement, Policy = Constant.Policy.Read)]
         public ActionResult Index(ViewBannerViewModel viewModel)
@@ -69,8 +67,7 @@
                     viewModel.Environments,
                     viewModel.Sites,
                     CurrentSession.UserId,
-                    ToHashtable(Request.Files),
-                    viewModel.MobileBgColor),
+                    ToHashtable(Request.Files)),
                 JsonRequestBehavior.DenyGet);
 
         [NapAuth(FunctionKey = SiteFunctionKeys.BannerManagement, Policy = Constant.Policy.Read)]
@@ -103,8 +100,7 @@
                         ReleasedDate = banner.ReleasedDate,
                         ExpirationDate = banner.ExpirationDate,
                         Environments = banner.Environments,
-                        Sites = banner.Sites,
-                        MobileBgColor = banner.MobileBackgroundColor
+                        Sites = banner.Sites
                     });
         }
 
@@ -121,8 +117,7 @@
                     viewModel.Environments,
                     viewModel.Sites,
                     CurrentSession.UserId,
-                    ToHashtable(Request.Files),
-                    viewModel.MobileBgColor),
+                    ToHashtable(Request.Files)),
                 JsonRequestBehavior.DenyGet);
 
         private static Hashtable ToHashtable(HttpFileCollectionBase files)

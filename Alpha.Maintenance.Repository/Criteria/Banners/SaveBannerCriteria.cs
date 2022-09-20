@@ -16,8 +16,7 @@
             string environments,
             string systems,
             int creator,
-            Hashtable banners,
-            string mobileBackgroundColor)
+            Hashtable banners)
         {
             inputParams = new Hashtable
             {
@@ -28,7 +27,6 @@
                 [nameof(environments)] = environments,
                 [nameof(systems)] = systems,
                 [nameof(creator)] = creator,
-                [nameof(mobileBackgroundColor)] = mobileBackgroundColor,
                 ["ErrCode"] = 0,
                 ["ErrMsg"] = string.Empty
             };
