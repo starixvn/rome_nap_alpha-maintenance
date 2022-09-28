@@ -47,11 +47,18 @@
     <Setting Key="Age_Banner_Update_Standby" SpName="Age_Banner_Update" DbName="DBAGE_STANDBY.bodb_AGE.bodbAdminNet" />
   </Function>
 
-	<Function Name="Chatbot">
-		<Setting Key="Age_Chatbot_BotSelAll" SpName="Age_Chatbot_BotSelAll" DbName="DBBOT.bodb_Chatbot.bodbAdminNet" />
-		<Setting Key="NAP_Chatbot_BotIns" SpName="NAP_Chatbot_BotIns" DbName="DBBOT.bodb_Chatbot.bodbAdminNet" />
-		<Setting Key="NAP_Chatbot_BotUpd" SpName="NAP_Chatbot_BotUpd" DbName="DBBOT.bodb_Chatbot.bodbAdminNet" />
-		<Setting Key="NAP_Chatbot_BotSystemSettingSel" SpName="NAP_Chatbot_BotSystemSettingSel" DbName="DBBOT.bodb_Chatbot.bodbAdminNet" />
-		<Setting Key="NAP_Chatbot_BotSystemSettingUpd" SpName="NAP_Chatbot_BotSystemSettingUpd" DbName="DBBOT.bodb_Chatbot.bodbAdminNet" />
-	</Function>
+  <Function Name="Chatbot">
+    <Setting Key="Age_Chatbot_BotSelAll" SpName="Age_Chatbot_BotSelAll" DbName="DBBOT.bodb_Chatbot.bodbAdminNet" />
+    <Setting Key="NAP_Chatbot_BotIns" SpName="NAP_Chatbot_BotIns" DbName="DBBOT.bodb_Chatbot.bodbAdminNet" />
+    <Setting Key="NAP_Chatbot_BotUpd" SpName="NAP_Chatbot_BotUpd" DbName="DBBOT.bodb_Chatbot.bodbAdminNet" />
+    <Setting Key="NAP_Chatbot_BotSystemSettingSel" SpName="NAP_Chatbot_BotSystemSettingSel" DbName="DBBOT.bodb_Chatbot.bodbAdminNet" />
+    <Setting Key="NAP_Chatbot_BotSystemSettingUpd" SpName="NAP_Chatbot_BotSystemSettingUpd" DbName="DBBOT.bodb_Chatbot.bodbAdminNet" />
+  </Function>
+
+  <Function Name="Win Loss Monitor">
+    <Setting Key="db052_Acc_WLMonitored_Service_GlobalSettingSel" SpName="Acc_WLMonitored_Service_GlobalSettingSel" DbName="db052.DBAGE.bodb02.bodbAdminNet" />
+    <Setting Key="db052_Acc_WLMonitored_Service_GlobalSettingUpd" SpName="Acc_WLMonitored_Service_GlobalSettingUpd" DbName="db052.DBAGE.bodb02.bodbAdminNet" />
+    <Setting Key="db053_Acc_WLMonitored_Service_GlobalSettingSel" SpName="Acc_WLMonitored_Service_GlobalSettingSel" DbName="db053.DBAGE.bodb02.bodbAdminNet" />
+    <Setting Key="db053_Acc_WLMonitored_Service_GlobalSettingUpd" SpName="Acc_WLMonitored_Service_GlobalSettingUpd" DbName="db053.DBAGE.bodb02.bodbAdminNet" />
+  </Function>
 </Functions>

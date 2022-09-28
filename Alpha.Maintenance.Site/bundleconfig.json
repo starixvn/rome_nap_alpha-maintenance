@@ -68,5 +68,11 @@
     "inputFiles": [
       "Assets/scripts/Chatbot/bot-system-setting.js"
     ]
+  },
+  {
+    "outputFileName": "Assets/bundles/WinLossMonitor/winloss-monitor.js",
+    "inputFiles": [
+      "Assets/scripts/WinLossMonitor/winloss-monitor.js"
+    ]
   }
 ]
