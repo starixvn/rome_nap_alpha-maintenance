@@ -57,7 +57,7 @@ public static class SiteFunctionKeys
 
     public const string ChatbotManagement = "ChatbotManagement";
     
-    public const string WinLossMonitor = "WinLossMonitor";
+    public const string MyWatchlistMonitor = "MyWatchlistMonitor";
 
     public const string UMToken = "UMToken";
 }
