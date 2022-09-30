@@ -1,12 +1,12 @@
 ﻿@{
-    ViewBag.Title = "Win Loss Monitor";
+    ViewBag.Title = "My Watchlist Monitor";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @model Tuple<WinLossMonitorViewModel, WinLossMonitorViewModel>
 
 @section Headline {
-    <span>Win Loss Monitor / </span>
+    <span>My Watchlist Monitor / </span>
     <span class="active">@(Model.Item1.IsCreditJob ? "Credit" : "Deposit") Jobs</span>
 }
 @section Foot {

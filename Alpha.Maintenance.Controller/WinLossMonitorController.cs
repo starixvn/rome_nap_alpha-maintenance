@@ -25,20 +25,20 @@
         private WinLossMonitorController(IWinLossMonitorService winLossMonitorService)
             => this.winLossMonitorService = winLossMonitorService ?? new WinLossMonitorService();
 
-        [NapAuth(FunctionKey = SiteFunctionKeys.WinLossMonitor, Policy = Constant.Policy.Read)]
+        [NapAuth(FunctionKey = SiteFunctionKeys.MyWatchlistMonitor, Policy = Constant.Policy.Read)]
         public ActionResult Credit(string dbAlias) => GetSettings(WLMonitoredAccount, dbAlias);
 
-        [NapAuth(FunctionKey = SiteFunctionKeys.WinLossMonitor, Policy = Constant.Policy.Read)]
+        [NapAuth(FunctionKey = SiteFunctionKeys.MyWatchlistMonitor, Policy = Constant.Policy.Read)]
         public ActionResult Deposit(string dbAlias) => GetSettings(Dep_WLMonitoredAccount, dbAlias);
 
         [HttpPost]
-        [NapAuth(FunctionKey = SiteFunctionKeys.WinLossMonitor, Policy = Constant.Policy.Host)]
+        [NapAuth(FunctionKey = SiteFunctionKeys.MyWatchlistMonitor, Policy = Constant.Policy.Host)]
         public ActionResult Update(GlobalSettingEntity[] globalSettings, string dbAlias)
             => Json(winLossMonitorService.UpdateGlobalSettings(globalSettings, dbAlias), JsonRequestBehavior.DenyGet);
 
         private ActionResult GetSettings(string serviceName, string dbAlias)
         {
-            var hasHostPermission = HasRight(SiteFunctionKeys.WinLossMonitor, Constant.Policy.Host);
+            var hasHostPermission = HasRight(SiteFunctionKeys.MyWatchlistMonitor, Constant.Policy.Host);
             var globalSetting = winLossMonitorService.GetGlobalSetting(dbAlias);
 
             return View("~/Views/WinLossMonitor/Index.cshtml", new Tuple<WinLossMonitorViewModel, WinLossMonitorViewModel>(

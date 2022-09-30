@@ -20,7 +20,7 @@ header {
 }
 
 .nav-wrapper {
-    padding-left: 252px;
+    padding-left: 290px;
     will-change: padding-left;
     transition: padding-left .3s ease;
 
@@ -34,7 +34,7 @@ header {
             color: $yellow;
         }
 
-        @media only screen and (min-width: 993px) {            
+        @media only screen and (min-width: 993px) {
             padding-left: 1.5rem;
         }
     }
