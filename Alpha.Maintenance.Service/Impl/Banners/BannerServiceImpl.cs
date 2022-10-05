@@ -3,6 +3,7 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Linq;
     using Alpha.Maintenance.Core;
     using Alpha.Maintenance.Core.Enums;
     using Alpha.Maintenance.Core.Model;
@@ -28,7 +29,7 @@
             string environment,
             string site)
             => bannerRepository.GetBanners(
-                new GetBannerCriteria(filterBy, fromDate, toDate, environment, site));
+                new GetBannerCriteria(filterBy, fromDate, toDate, environment, site)).ToList();
 
         public Tuple<Banner, IDictionary<string, string>, IDictionary<string, string>> GetBanner(int id)
         {
@@ -65,8 +66,7 @@
             string environments,
             string sites,
             int userId,
-            Hashtable banners,
-            string mobileBgColor)
+            Hashtable banners)
             => SaveBanner(new AddBannerCriteria(
                 title,
                 isActive,
@@ -75,8 +75,7 @@
                 environments,
                 sites,
                 userId,
-                banners,
-                mobileBgColor));
+                banners));
 
         public Result EditBanner(
             int id,
@@ -87,8 +86,7 @@
             string environments,
             string sites,
             int userId,
-            Hashtable banners,
-            string mobileBgColor)
+            Hashtable banners)
             => SaveBanner(new EditBannerCriteria(
                 id,
                 title,
@@ -98,8 +96,7 @@
                 environments,
                 sites,
                 userId,
-                banners,
-                mobileBgColor));
+                banners));
 
         private Result SaveBanner(ICriteria criteria)
         {

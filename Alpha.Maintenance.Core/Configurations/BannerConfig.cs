@@ -8,11 +8,11 @@
     {
         public const string MaxFileSize = "100KB";
 
-        public const int DesktopBannerWidth = 1920;
-        public const int DesktopBannerHeight = 48;
+        public const int DesktopBannerWidth = 280;
+        public const int DesktopBannerHeight = 70;
 
-        public const int MobileBannerWidth = 750;
-        public const int MobileBannerHeight = 96;
+        public const int MobileBannerWidth = 600;
+        public const int MobileBannerHeight = 140;
 
         public const string AllowedFileExtensions = "jpeg jpg png";
 

@@ -13,8 +13,7 @@
             string environments,
             string sites,
             int userId,
-            Hashtable banners,
-            string mobileBgColor) : base(
+            Hashtable banners) : base(
               title,
               isActive,
               releasedDate,
@@ -22,8 +21,7 @@
               environments,
               sites,
               userId,
-              banners,
-              mobileBgColor)
+              banners)
         {
         }
 

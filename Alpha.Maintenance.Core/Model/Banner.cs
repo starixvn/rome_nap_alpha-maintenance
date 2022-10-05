@@ -35,8 +35,7 @@
             DateTime releasedDate,
             DateTime expirationDate,
             string environments,
-            string sites,
-            string mobileBgColor)
+            string sites)
         {
             Id = id;
             Title = title;
@@ -45,7 +44,6 @@
             ExpirationDate = expirationDate;
             Environments = environments;
             Sites = sites;
-            MobileBackgroundColor = mobileBgColor;
         }
 
         public int Id { get; }
@@ -67,7 +65,5 @@
         public string Mobile { get; }
 
         public DateTime CreatedDate { get; }
-
-        public string MobileBackgroundColor { get; }
     }
 }

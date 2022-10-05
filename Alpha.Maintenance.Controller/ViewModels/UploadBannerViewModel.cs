@@ -40,8 +40,6 @@
 
         public string Sites { get; set; }
 
-        public string MobileBgColor { get; set; }
-
         public string GetDesktopKey(string language)
             => $"desk{language.Replace("-", string.Empty)}Image";
 

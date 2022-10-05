@@ -68,7 +68,7 @@
     </div>
     <div class="content-group row systems">
         <div class="col s12">
-            <div class="txt-bold">@ViewResource.DesktopBanner</div>
+            <div class="txt-bold">@ViewResource.DesktopBanner (Size: 280x70)</div>
             <ul class="tabs">
                 @foreach (var language in BannerConfig.LanguageCodes)
                 {
@@ -81,7 +81,7 @@
             <div class="col s12" id="desktop-@language">
                 @if (Model.DesktopBanners.ContainsKey(language))
                 {
-                    <img style="display:block;width:100%;margin-bottom:12px;" src="data:image/png;base64,@Model.DesktopBanners[language]" />
+                    <img style="display:block;margin:0 auto 12px;" src="data:image/png;base64,@Model.DesktopBanners[language]" />
                 }
 
                 <input type="file"
@@ -100,7 +100,7 @@
     </div>
     <div class="content-group row systems">
         <div class="col s12">
-            <div class="txt-bold">@ViewResource.MobileBanner</div>
+            <div class="txt-bold">@ViewResource.MobileBanner (Size: 600x140)</div>
             <ul class="tabs">
                 @foreach (var language in BannerConfig.LanguageCodes)
                 {
@@ -128,12 +128,6 @@
                        data-allowed-file-extensions="@BannerConfig.AllowedFileExtensions" />
             </div>
         }
-    </div>
-    <div class="row systems">
-        <div class="input-field col s4">
-            <input type="text" id="txt-mobileBgColor" class="validate" maxlength="7" placeholder="#000000" value="@Model.MobileBgColor" />
-            <label for="txt-mobileBgColor">@ViewResource.MobileBackgroundHexCode</label>
-        </div>
     </div>
     @if (Model.HasHostPermission)
     {
