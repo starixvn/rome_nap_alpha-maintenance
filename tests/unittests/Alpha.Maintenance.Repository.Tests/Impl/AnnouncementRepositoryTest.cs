@@ -133,7 +133,7 @@
             var plainText = Encoding.UTF8.GetString(encodedContents);
 
             var environments = "Local, UAT, Staging";
-            var systems = "IBCBet, 789";
+            var systems = "Nova88, 789y";
 
             var announcement = new Announcement
             {
