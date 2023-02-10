@@ -61,4 +61,11 @@
     <Setting Key="db053_Acc_WLMonitored_Service_GlobalSettingSel" SpName="Acc_WLMonitored_Service_GlobalSettingSel" DbName="db053.DBAGE.bodb02.bodbAdminNet" />
     <Setting Key="db053_Acc_WLMonitored_Service_GlobalSettingUpd" SpName="Acc_WLMonitored_Service_GlobalSettingUpd" DbName="db053.DBAGE.bodb02.bodbAdminNet" />
   </Function>
+
+  <Function Name="Balance Record Sync Service">
+    <Setting Key="DB05_SystemSettings_Select" SpName="SystemSettings_Select" DbName="DB05.DBBAH.bodb02.bodbAdminNet" />
+    <Setting Key="DB05_SystemSettings_Update" SpName="SystemSettings_Update" DbName="DB05.DBBAH.bodb02.bodbAdminNet" />
+    <Setting Key="DB05BK1_SystemSettings_Select" SpName="SystemSettings_Select" DbName="DB05BK1.DBBAH.bodb02.bodbAdminNet" />
+    <Setting Key="DB05BK1_SystemSettings_Update" SpName="SystemSettings_Update" DbName="DB05BK1.DBBAH.bodb02.bodbAdminNet" />
+  </Function>
 </Functions>

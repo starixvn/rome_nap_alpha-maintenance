@@ -1,5 +1,6 @@
 ﻿namespace Alpha.Maintenance.Core.Configurations
 {
+    using System;
     using System.Collections.Generic;
     using System.Configuration;
     using System.IO;
@@ -75,5 +76,10 @@
                 }
             }
         }
+
+        public static IEnumerable<string> BalanceRecordJobNames
+            => GetConfigValue("BalanceRecord:JobNames")
+            .Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries)
+            .Select(j => j.Trim());
     }
 }
