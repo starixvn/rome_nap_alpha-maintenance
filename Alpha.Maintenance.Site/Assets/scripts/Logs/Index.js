@@ -384,7 +384,8 @@ var Logs = (function ($) {
         },
 
         bindEventHandlers: function () {
-            Logs.getMachines(0);
+            //Logs.getMachines(0);
+            Logs.ddlMachine.select2();
             Logs.ddlCategory.select2();
             Logs.btnRemoveLog.bind("click", Logs.removeLog);
             Logs.btnSubmit.on('click', function () {

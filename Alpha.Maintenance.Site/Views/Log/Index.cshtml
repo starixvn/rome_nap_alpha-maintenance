@@ -28,7 +28,9 @@
                     @Html.DropDownListFor(m => m.CategoryId, (List<SelectListItem>)ViewBag.ListCategory, new { @class = "width-large" })
                 </div>
                 <div class="input-field col l2 m3 s6">
-                    <select id="MachineId" name="MachineId" class="width-large"></select>
+                    <select id="MachineId" name="MachineId" class="width-large">
+                        <option value="0">All</option>
+                    </select>
                     @Html.LabelFor(m => m.MachineId, ViewResource.Machine, new { @class = "active" })
                 </div>
                 <div class="input-field col l2 m3 s6">
