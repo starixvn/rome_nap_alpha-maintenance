@@ -29,7 +29,7 @@
             {
                 Environment = "Local",
                 FromDate = DateTime.Now.AddDays(-1),
-                System = "IBCBET",
+                System = "Nova88",
                 ToDate = DateTime.Now
             };
 

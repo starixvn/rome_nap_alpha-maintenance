@@ -466,7 +466,7 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Systems.
+        ///   Looks up a localized string similar to Site Label.
         /// </summary>
         public static string Systems {
             get {
