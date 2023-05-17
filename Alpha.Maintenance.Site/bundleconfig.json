@@ -74,5 +74,11 @@
     "inputFiles": [
       "Assets/scripts/WinLossMonitor/winloss-monitor.js"
     ]
+  },
+  {
+    "outputFileName": "Assets/bundles/BalanceRecord/balance-record.js",
+    "inputFiles": [
+      "Assets/scripts/BalanceRecord/balance-record.js"
+    ]
   }
 ]

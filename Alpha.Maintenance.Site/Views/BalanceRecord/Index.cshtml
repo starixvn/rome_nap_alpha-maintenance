@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Balance Record Sync";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Tuple<BalanceRecordViewModel, BalanceRecordViewModel>
+
+@section Headline {
+    <span>@ViewBag.Title / </span>
+    <span class="active">@Model.Item1.DBAlias</span>
+}
+@section Foot {
+    @Scripts.Render("~/Assets/bundles/BalanceRecord/balance-record.js")
+}
+<div class="filter-form">
+    <form class="compose-announcement">
+        <div class="row">
+            <div class="col s12 m6 l4">
+                <ul class="tabs">
+                    <li class="tab">
+                        <a href="#tab-pro">Production</a>
+                    </li>
+                    <li class="tab">
+                        <a href="#tab-uat">UAT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="tab-pro">
+            @{ Html.RenderPartial("~/Views/BalanceRecord/_SettingTab.cshtml", Model.Item1); }
+        </div>
+        <div id="tab-uat">
+            @{ Html.RenderPartial("~/Views/BalanceRecord/_SettingTab.cshtml", Model.Item2); }
+        </div>
+    </form>
+</div>

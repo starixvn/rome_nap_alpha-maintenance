@@ -130,6 +130,7 @@
     <Compile Include="Impl\AppLog\LogCategoryService.cs" />
     <Compile Include="Impl\AppLog\LogService.cs" />
     <Compile Include="Impl\AppLog\MachineService.cs" />
+    <Compile Include="Impl\BalanceRecord\BalanceRecordService.cs" />
     <Compile Include="Impl\Banners\BannerServiceImpl.cs" />
     <Compile Include="Impl\Chatbot\ChatbotService.cs" />
     <Compile Include="Impl\IPInformation\IPInformationServiceImpl.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Interface\AppLog\ILogCategoryService.cs" />
     <Compile Include="Interface\AppLog\ILogService.cs" />
     <Compile Include="Interface\Announcements\AnnouncementService.cs" />
+    <Compile Include="Interface\BalanceRecord\IBalanceRecordService.cs" />
     <Compile Include="Interface\Banners\BannerService.cs" />
     <Compile Include="Interface\Chatbot\IChatbotService.cs" />
     <Compile Include="Interface\IPInformation\IPInformationService.cs" />

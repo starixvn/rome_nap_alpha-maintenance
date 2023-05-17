@@ -185,6 +185,7 @@
   <ItemGroup>
     <Compile Include="AnnouncementApiController.cs" />
     <Compile Include="AnnouncementController.cs" />
+    <Compile Include="BalanceRecordController.cs" />
     <Compile Include="BaseController.cs" />
     <Compile Include="ChatbotController.cs" />
     <Compile Include="HomeController.cs" />
@@ -198,6 +199,7 @@
     <Compile Include="Request\SaveAnnouncementDemand.cs" />
     <Compile Include="BannerController.cs" />
     <Compile Include="UMTokenController.cs" />
+    <Compile Include="ViewModels\BalanceRecordViewModel.cs" />
     <Compile Include="ViewModels\BotSystemSettingDetailViewModel.cs" />
     <Compile Include="ViewModels\BotSystemSettingViewModel.cs" />
     <Compile Include="ViewModels\ChatBotDetailViewModel.cs" />

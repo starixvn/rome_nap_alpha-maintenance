@@ -322,6 +322,11 @@
     <Content Include="App_Data\announcementConfig.staging.json">
       <DependentUpon>announcementConfig.json</DependentUpon>
     </Content>
+    <Content Include="Assets\bundles\BalanceRecord\balance-record.js" />
+    <TypeScriptCompile Include="Assets\scripts\BalanceRecord\balance-record.ts" />
+    <Content Include="Assets\bundles\BalanceRecord\balance-record.min.js">
+      <DependentUpon>balance-record.js</DependentUpon>
+    </Content>
     <Content Include="WebConnectionString.staging.config">
       <DependentUpon>WebConnectionString.config</DependentUpon>
     </Content>
@@ -710,6 +715,8 @@
     <Content Include="Web.staging.config">
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
+    <Content Include="Views\BalanceRecord\Index.cshtml" />
+    <Content Include="Views\BalanceRecord\_SettingTab.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\scripts\Administration\CacheManagement.ts" />

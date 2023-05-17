@@ -59,5 +59,7 @@ public static class SiteFunctionKeys
     
     public const string MyWatchlistMonitor = "MyWatchlistMonitor";
 
+    public const string DataSyncServices = "DataSyncServices";
+
     public const string UMToken = "UMToken";
 }
