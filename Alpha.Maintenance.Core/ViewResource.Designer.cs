@@ -19,7 +19,7 @@ namespace Alpha.Maintenance.Core {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class ViewResource {
@@ -624,6 +624,15 @@ namespace Alpha.Maintenance.Core {
         public static string Default {
             get {
                 return ResourceManager.GetString("Default", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Time.
+        /// </summary>
+        public static string DefaultTime {
+            get {
+                return ResourceManager.GetString("DefaultTime", resourceCulture);
             }
         }
         
@@ -1510,6 +1519,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manual Time (GMT-4).
+        /// </summary>
+        public static string ManualTime {
+            get {
+                return ResourceManager.GetString("ManualTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Master.
         /// </summary>
         public static string Master {
@@ -1848,6 +1866,15 @@ namespace Alpha.Maintenance.Core {
         public static string Run_Time {
             get {
                 return ResourceManager.GetString("Run_Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Running Mode.
+        /// </summary>
+        public static string RunningMode {
+            get {
+                return ResourceManager.GetString("RunningMode", resourceCulture);
             }
         }
         

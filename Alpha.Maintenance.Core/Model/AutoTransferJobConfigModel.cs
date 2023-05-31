@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using Alpha.Maintenance.Core.Extension;
+
+namespace Alpha.Maintenance.Core.Model
+{
+    public class AutoTransferJobConfigModel
+    {
+        public string Site { get; set; }
+
+        public string DefaultTime { get; set; }
+
+        public DateTime? ManualTime { get; set; }
+
+        public string RunningMode { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public string DisplayedManualTime
+        {
+            get
+            {
+                var d = DateTime.Now;
+                if (HasManualTime)
+                {
+                    var mt = ManualTime.Value;
+
+                    return new DateTime(mt.Year, mt.Month, mt.Day, mt.Hour, mt.Minute, 0).ToLongDate();
+                }
+
+                return string.Empty;
+            }
+        }
+
+        public static List<string> RunningModes = new List<string> { "Normal", "Resume" };
+
+        public string DefaultManualTime => DateTime.Now.Date.ToLongDate();
+
+        public bool HasManualTime => ManualTime.HasValue && ManualTime.Value >= DateTime.Now;
+    }
+}

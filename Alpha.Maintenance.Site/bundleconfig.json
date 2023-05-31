@@ -1,84 +1,93 @@
 ﻿[
-  {
-    "outputFileName": "Assets/bundles/manage-announcements.js",
-    "inputFiles": [
-      "Assets/scripts/lib/Momentjs/moment.min.js",
-      "Assets/scripts/lib/Select2/select2.js",
-      "Assets/scripts/Announcement/manage-announcements.js"
-    ]
-  },
-  {
-    "outputFileName": "Assets/bundles/compose-messages.js",
-    "inputFiles": [
-      "Assets/scripts/lib/Momentjs/moment.js",
-      "Assets/scripts/lib/Select2/select2.js",
-      "Assets/scripts/lib/material-datetime-picker/rome.js",
-      "Assets/scripts/lib/material-datetime-picker/material-datetime-picker.js",
-      "Assets/scripts/Announcement/compose-messages.js"
-    ]
-  },
-  {
-    "outputFileName": "Assets/bundles/IPInfo/index.js",
-    "inputFiles": [
-      "Assets/scripts/IPInfo/index.js"
-    ]
-  },
-  {
-    "outputFileName": "Assets/bundles/SuperLimitDate/index.js",
-    "inputFiles": [
-      "Assets/scripts/SuperLimitDate/index.js",
-      "Assets/scripts/lib/Fanex.Grid/Fanex.Pagination.js"
-    ]
-  },
-  {
-    "outputFileName": "Assets/bundles/Banner/upload-banner.js",
-    "inputFiles": [
-      "Assets/scripts/lib/Momentjs/moment.js",
-      "Assets/scripts/lib/material-datetime-picker/rome.js",
-      "Assets/scripts/lib/material-datetime-picker/material-datetime-picker.js",
-      "Assets/scripts/Banner/upload-banner.js"
-    ]
-  },
-  {
-    "outputFileName": "Assets/bundles/Banner/manage-banner.js",
-    "inputFiles": [
-      "Assets/scripts/Banner/manage-banner.js"
-    ]
-  },
-  {
-    "outputFileName": "Assets/bundles/Administration/CacheManagement.js",
-    "inputFiles": [
-      "Assets/scripts/Administration/CacheManagement.js"
-    ]
-  },
-  {
-    "outputFileName": "Assets/bundles/Chatbot/index.js",
-    "inputFiles": [
-      "Assets/scripts/Chatbot/index.js"
-    ]
-  },
-  {
-    "outputFileName": "Assets/bundles/Chatbot/bot-detail.js",
-    "inputFiles": [
-      "Assets/scripts/Chatbot/bot-detail.js"
-    ]
-  },
-  {
-    "outputFileName": "Assets/bundles/Chatbot/bot-system-setting.js",
-    "inputFiles": [
-      "Assets/scripts/Chatbot/bot-system-setting.js"
-    ]
-  },
-  {
-    "outputFileName": "Assets/bundles/WinLossMonitor/winloss-monitor.js",
-    "inputFiles": [
-      "Assets/scripts/WinLossMonitor/winloss-monitor.js"
-    ]
-  },
-  {
-    "outputFileName": "Assets/bundles/BalanceRecord/balance-record.js",
-    "inputFiles": [
-      "Assets/scripts/BalanceRecord/balance-record.js"
-    ]
-  }
+    {
+        "outputFileName": "Assets/bundles/manage-announcements.js",
+        "inputFiles": [
+            "Assets/scripts/lib/Momentjs/moment.min.js",
+            "Assets/scripts/lib/Select2/select2.js",
+            "Assets/scripts/Announcement/manage-announcements.js"
+        ]
+    },
+    {
+        "outputFileName": "Assets/bundles/compose-messages.js",
+        "inputFiles": [
+            "Assets/scripts/lib/Momentjs/moment.js",
+            "Assets/scripts/lib/Select2/select2.js",
+            "Assets/scripts/lib/material-datetime-picker/rome.js",
+            "Assets/scripts/lib/material-datetime-picker/material-datetime-picker.js",
+            "Assets/scripts/Announcement/compose-messages.js"
+        ]
+    },
+    {
+        "outputFileName": "Assets/bundles/IPInfo/index.js",
+        "inputFiles": [
+            "Assets/scripts/IPInfo/index.js"
+        ]
+    },
+    {
+        "outputFileName": "Assets/bundles/SuperLimitDate/index.js",
+        "inputFiles": [
+            "Assets/scripts/SuperLimitDate/index.js",
+            "Assets/scripts/lib/Fanex.Grid/Fanex.Pagination.js"
+        ]
+    },
+    {
+        "outputFileName": "Assets/bundles/Banner/upload-banner.js",
+        "inputFiles": [
+            "Assets/scripts/lib/Momentjs/moment.js",
+            "Assets/scripts/lib/material-datetime-picker/rome.js",
+            "Assets/scripts/lib/material-datetime-picker/material-datetime-picker.js",
+            "Assets/scripts/Banner/upload-banner.js"
+        ]
+    },
+    {
+        "outputFileName": "Assets/bundles/Banner/manage-banner.js",
+        "inputFiles": [
+            "Assets/scripts/Banner/manage-banner.js"
+        ]
+    },
+    {
+        "outputFileName": "Assets/bundles/Administration/CacheManagement.js",
+        "inputFiles": [
+            "Assets/scripts/Administration/CacheManagement.js"
+        ]
+    },
+    {
+        "outputFileName": "Assets/bundles/Chatbot/index.js",
+        "inputFiles": [
+            "Assets/scripts/Chatbot/index.js"
+        ]
+    },
+    {
+        "outputFileName": "Assets/bundles/Chatbot/bot-detail.js",
+        "inputFiles": [
+            "Assets/scripts/Chatbot/bot-detail.js"
+        ]
+    },
+    {
+        "outputFileName": "Assets/bundles/Chatbot/bot-system-setting.js",
+        "inputFiles": [
+            "Assets/scripts/Chatbot/bot-system-setting.js"
+        ]
+    },
+    {
+        "outputFileName": "Assets/bundles/WinLossMonitor/winloss-monitor.js",
+        "inputFiles": [
+            "Assets/scripts/WinLossMonitor/winloss-monitor.js"
+        ]
+    },
+    {
+        "outputFileName": "Assets/bundles/BalanceRecord/balance-record.js",
+        "inputFiles": [
+            "Assets/scripts/BalanceRecord/balance-record.js"
+        ]
+    },
+    {
+        "outputFileName": "Assets/bundles/AutoTransferJobConfig/index.js",
+        "inputFiles": [
+            "Assets/scripts/lib/Momentjs/moment.js",
+            "Assets/scripts/lib/material-datetime-picker/rome.js",
+            "Assets/scripts/lib/material-datetime-picker/material-datetime-picker.js",
+            "Assets/scripts/AutoTransferJobConfig/index.js"
+        ]
+    }
 ]
