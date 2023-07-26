@@ -2491,6 +2491,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Files supported (&lt;b&gt;JPG, JPEG, PNG&lt;/b&gt;) | Maximum file size: &lt;b&gt;10MB&lt;/b&gt;.
+        /// </summary>
+        public static string UploadImagesNote {
+            get {
+                return ResourceManager.GetString("UploadImagesNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} has been updated successfully. You will be redirected in &lt;span class=&apos;msec&apos;&gt;{1}&lt;/span&gt; seconds..
         /// </summary>
         public static string UpSuccessMsg {

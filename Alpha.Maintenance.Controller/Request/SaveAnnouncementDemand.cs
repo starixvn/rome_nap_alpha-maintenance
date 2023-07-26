@@ -25,6 +25,8 @@
 
         public bool IsCopy { get; set; }
 
+        public string PrevImages { get; set; }
+
         public Announcement DeserializeAnnouncement
             => JsonConvert.DeserializeObject<Announcement>(Announcement, new SpecificationConverter());
 

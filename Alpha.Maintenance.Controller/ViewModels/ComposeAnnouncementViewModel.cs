@@ -40,5 +40,10 @@
             IEnumerable<ISpecification<IParam>> existedSpecifications)
             => existedSpecifications == null ? allSpecifications :
                 allSpecifications.Where(spec => !existedSpecifications.Any(existedSpec => existedSpec.Id.Equals(spec.Id)));
+
+        public string GetDemoImage()
+        {
+            return "Hello";
+        }
     }
 }

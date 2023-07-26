@@ -89,5 +89,11 @@
             "Assets/scripts/lib/material-datetime-picker/material-datetime-picker.js",
             "Assets/scripts/AutoTransferJobConfig/index.js"
         ]
+    },
+    {
+        "outputFileName": "Assets/bundles/compose-messages.css",
+        "inputFiles": [
+            "assets/styles/pages/announcement-add.css"
+        ]
     }
 ]

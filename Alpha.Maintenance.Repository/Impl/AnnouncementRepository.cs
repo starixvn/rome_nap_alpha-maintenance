@@ -144,7 +144,8 @@
                 LastEditDate = reader.IsDBNull("LastEditDate") ? (DateTime?)null : reader.ToDateTime("LastEditDate"),
                 LastEditorId = reader.IsDBNull("LastEditorId") ? (int?)null : reader.ToInt("LastEditorId"),
                 LastEditorName = reader.ToString("LastEditorName"),
-                IsPopup = reader["announcementType"].ToString() == "3"
+                IsPopup = reader["announcementType"].ToString() == "3",
+                // Images = reader.ToString("Images"),
             };
         }
     }

@@ -1,10 +1,14 @@
 ﻿[
-  {
-    "outputFile": "assets/styles/main.css",
-    "inputFile": "assets/styles/main.scss"
-  },
-  {
-    "outputFile": "assets/styles/pages/manage.css",
-    "inputFile": "assets/styles/pages/manage.scss"
-  }
+    {
+        "outputFile": "assets/styles/main.css",
+        "inputFile": "assets/styles/main.scss"
+    },
+    {
+        "outputFile": "assets/styles/pages/manage.css",
+        "inputFile": "assets/styles/pages/manage.scss"
+    },
+    {
+        "outputFile": "assets/styles/pages/announcement-add.css",
+        "inputFile": "assets/styles/pages/announcement-add.scss"
+    }
 ]

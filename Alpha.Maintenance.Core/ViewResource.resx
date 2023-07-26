@@ -969,4 +969,8 @@
   <data name="ManualTime" xml:space="preserve">
     <value>Manual Time (GMT-4)</value>
   </data>
+  
+  <data name="UploadImagesNote" xml:space="preserve">
+    <value>Files supported (&lt;b&gt;JPG, JPEG, PNG&lt;/b&gt;) | Maximum file size: &lt;b&gt;10MB&lt;/b&gt;</value>
+  </data>
 </root>

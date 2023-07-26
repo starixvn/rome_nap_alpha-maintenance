@@ -332,6 +332,21 @@
     <Content Include="Assets\bundles\BalanceRecord\balance-record.min.js">
       <DependentUpon>balance-record.js</DependentUpon>
     </Content>
+    <Content Include="Assets\bundles\compose-messages.css" />
+    <Content Include="Assets\bundles\compose-messages.min.css">
+      <DependentUpon>compose-messages.css</DependentUpon>
+    </Content>
+    <Content Include="Assets\images\delete.png" />
+    <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jqte_tool_22.svg" />
+    <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te-ext.js" />
+    <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te-1.4.0.js" />
+    <Content Include="Assets\scripts\lib\jQuery-TE.1.4.0\jquery-te-ext.css" />
+    <Content Include="Assets\styles\pages\announcement-add.css">
+      <DependentUpon>announcement-add.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\styles\pages\announcement-add.min.css">
+      <DependentUpon>announcement-add.css</DependentUpon>
+    </Content>
     <Content Include="WebConnectionString.staging.config">
       <DependentUpon>WebConnectionString.config</DependentUpon>
     </Content>
@@ -645,6 +660,7 @@
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\CacheManagement\Index.cshtml" />
     <Content Include="Areas\Administration\Views\CacheManagement\HealthCheck.cshtml" />
+    <Content Include="Assets\styles\pages\announcement-add.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

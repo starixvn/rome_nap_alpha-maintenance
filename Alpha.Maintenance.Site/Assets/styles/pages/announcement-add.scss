@@ -1,0 +1,54 @@
+﻿@import "../abstracts/variables";
+
+.language-content {
+    .dropify-wrapper {
+        width: 300px;
+        height: 100px;
+        display: inline-block;
+
+        .dropify-message {
+            p {
+                text-align: center;
+            }
+        }
+    }
+
+    .div-upload-images {
+        height: 130px;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 5px;
+    }
+
+    .upload-notes {
+        display: inline-block;
+        vertical-align: middle;
+        height: 100px;
+    }
+
+    .div-image {
+        height: 40px;
+        margin-bottom: 5px;
+
+        .div-image-name {
+            color: blue;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .div-image-remove {
+            display: inline-block;
+            background: url("../../images/delete.png") 0px 0px no-repeat;
+            width: 24px;
+            height: 24px;
+            background-size: 24px;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+
+        .div-image-preview {
+            display: inline-block;
+            width: 40px;
+            vertical-align: middle;
+        }
+    }
+}

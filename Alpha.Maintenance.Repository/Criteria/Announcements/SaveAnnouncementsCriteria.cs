@@ -3,6 +3,8 @@
     using System;
     using Fanex.Data.Repository;
     using Alpha.Announcements.Models;
+    using System.Collections.Generic;
+    using Alpha.Maintenance.Core.Model;
 
     public enum ActionType
     {
@@ -35,6 +37,9 @@
         public string Contents { get; set; }
 
         public string Specifications { get; set; }
+
+        [SpParam(Ignored = true)]
+        public List<UploadFileModel> Images { get; set; }
 
         public int ErrCode { get; set; }
 

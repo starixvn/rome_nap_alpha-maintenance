@@ -1,0 +1,31 @@
+.jqte_tool.jqte_tool_22 .jqte_tool_icon {
+    background: url(jqte_tool_22.svg) no-repeat;
+    background-position: 0 0;
+    background-size: 20px 20px;
+}
+
+.div-icons {
+    position: absolute;
+    width: 180px;
+    overflow-y: auto;
+    background: #FFF;
+    border: #AAA 1px solid;
+    box-shadow: 0 0 5px #AAA;
+    z-index: 100;
+    text-align: center;
+    top: 290px;
+    left: 880px;
+}
+
+.div-icon {
+    display: inline-block;
+    cursor: pointer;
+    width: 22px;
+    height: 27px;
+    font-size: 16px;
+    text-align: center;
+}
+
+    .div-icon:hover, .div-icon:active, .div-icon:focus {
+        background-color: #ccc;
+    }

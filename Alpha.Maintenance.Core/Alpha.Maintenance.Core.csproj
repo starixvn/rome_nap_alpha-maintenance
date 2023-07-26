@@ -93,10 +93,12 @@
     </Compile>
     <Compile Include="Configurations\AnnouncementConfig.cs" />
     <Compile Include="Configurations\AppSettings.cs" />
+    <Compile Include="Configurations\PictureConfig.cs" />
     <Compile Include="Configurations\BannerConfig.cs" />
     <Compile Include="Enums\BannerFilterBy.cs" />
     <Compile Include="Enums\BannerType.cs" />
     <Compile Include="Extension\ConvertExtensions.cs" />
+    <Compile Include="Extension\FileExtensions.cs" />
     <Compile Include="Extension\DateTimeExtensions.cs" />
     <Compile Include="Extension\Extension.cs" />
     <Compile Include="Helpers\JsonCreationConverter.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="Model\APIInfo.cs" />
     <Compile Include="Model\AutoTransferJobConfigModel.cs" />
     <Compile Include="Model\BalanceRecordJob.cs" />
+    <Compile Include="Model\UploadFileModel.cs" />
     <Compile Include="Model\Banner.cs" />
     <Compile Include="Model\BannerDetail.cs" />
     <Compile Include="Model\Bot.cs" />

@@ -7,6 +7,7 @@
     using System.Text;
     using System.Web;
     using System.Web.Mvc;
+    using Alpha.Maintenance.Core.Extension;
     using Announcements.Models;
     using Core;
     using Core.Helpers;
@@ -104,7 +105,8 @@
                     Contents = demand.EncodedContents,
                     Specifications = JsonConvert.SerializeObject(demand.DeserializeAnnouncement.Specifications),
                     CreatorId = CurrentSession.UserId,
-                    CreatorName = CurrentSession.Username
+                    CreatorName = CurrentSession.Username,
+                    Images = JsonConvert.DeserializeObject<List<UploadFileModel>>(demand.PrevImages).Concat(Request.Files.GetInfo()).ToList()
                 }),
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
@@ -129,7 +131,8 @@
                       Specifications = JsonConvert.SerializeObject(demand.DeserializeAnnouncement.Specifications),
                       LastEditDate = SystemTime.Today,
                       LastEditorId = CurrentSession.UserId,
-                      LastEditorName = CurrentSession.Username
+                      LastEditorName = CurrentSession.Username,
+                      Images = JsonConvert.DeserializeObject<List<UploadFileModel>>(demand.PrevImages)
                   }),
                   JsonRequestBehavior = JsonRequestBehavior.AllowGet
               };
@@ -178,9 +181,9 @@
                     Contents = Convert.ToBase64String(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(announcement.Contents))),
                     Specifications = JsonConvert.SerializeObject(announcement.Specifications),
                     CreatorId = CurrentSession.UserId,
-                    CreatorName = CurrentSession.Username
+                    CreatorName = CurrentSession.Username,
+                    // Images = announcement.Images
                 }));
-
             }
 
             return new JsonNetResult

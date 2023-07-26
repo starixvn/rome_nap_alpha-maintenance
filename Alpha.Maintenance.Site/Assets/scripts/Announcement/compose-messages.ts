@@ -1,4 +1,4 @@
-﻿declare var MaterialDatetimePicker;
+﻿declare var MaterialDatetimePicker, jqTextEditor;
 
 "use strict";
 
@@ -19,6 +19,10 @@ interface JQuery {
 interface Window {
     NAP: any;
     JSON: any;
+}
+
+interface Document {
+    selection;
 }
 
 class ComposedAnnouncement {
@@ -61,10 +65,21 @@ class ComposedAnnouncement {
     $nap: any;
     $JSON: any;
 
-    constructor($: JQueryStatic, NAP: any, JSON: any) {
+    jqTextEditor: any;
+    carretPos: number;
+
+    viewResources: any = {
+        uploadImages: "Upload Images",
+        uploadImages_Error: "Image upload failed. Please check!",
+        uploadImages_ErrorFileSize: "The total file size is over 10 MB. Please check!",
+        uploadImages_ErrorImageFormat: "File is not supported. Please check!",
+    };
+
+    constructor($: JQueryStatic, NAP: any, JSON: any, jqTextEditor: any) {
         this.$ = $;
         this.$nap = NAP;
         this.$JSON = JSON;
+        this.jqTextEditor = jqTextEditor;
     }
 
     init = () => {
@@ -77,7 +92,9 @@ class ComposedAnnouncement {
         this.bindEvent();
         this.correctFirstSpec();
         this.initSpecOptionsDll();
-        this.$('.jqte-test').jqte();
+
+        this.initTextEditor();
+        this.initUploadPictures();
     };
 
     cacheDom = () => {
@@ -322,6 +339,13 @@ class ComposedAnnouncement {
         var formdata = new FormData();
         formdata.append("announcement", self.$JSON.stringify(announcement));
         formdata.append("isCopy", self.$("#isCopy").val());
+        formdata.append("prevImages", self.$JSON.stringify(self.getPrevImages()));
+
+        var images = this.getUploadImages();
+        Object.keys(images).forEach(function (key) {
+            formdata.append(key, images[key]);
+        });
+
         let url = self.$("#announcementUrl").val();
 
         this.$.ajax({
@@ -446,9 +470,120 @@ class ComposedAnnouncement {
         let operator = this.$(domElement).find(id);
         return this.$(operator).find('option:selected').val();
     };
+
+    initTextEditor = () => {
+        this.$('.jqte-test').jqte();
+
+        var editors = this.$('.jqte');
+
+        var btn = '<div class="jqte_tool jqte_tool_22 unselectable" role="button" data-tool="21" unselectable="on" style="user-select: none;" title="Icons">\
+                        <a class="jqte_tool_icon unselectable" unselectable="on" style="user-select: none;"></a>\
+                    </div>';
+        editors.find('.jqte_toolbar').append(btn);
+
+        var self = this;
+        editors.find('.jqte_tool_22').click(function (e) {
+            self.showIcons(self.$(this));
+
+            e.stopPropagation();
+            return false;
+        });
+
+        this.$('body:not(.jqte_tool_22):not(.div-icons)').click(function () {
+            self.$('.div-icons').addClass('hide');
+        });
+
+
+        this.$('.div-icon').mousedown(function (e) {
+            self.getCaretPosition(self.$(this));
+        });
+
+        this.$('.div-icon').click(function (e) {
+            self.pasteIcon(self.$(this));
+            e.stopPropagation();
+            return false;
+        });
+    };
+
+    showIcons = (elm) => {
+        var prt = elm.closest('.language-content');
+        var divIcons = prt.find('.div-icons');
+        var isHide = divIcons.hasClass('hide');
+        if (isHide) {
+            divIcons.removeClass('hide');
+        } else {
+            divIcons.addClass('hide');
+        }
+    };
+
+    getCaretPosition = (elm) => {
+        var prt = elm.closest('.language-content');
+        const editor = prt.find('.jqte_editor');
+        var pos = this.jqTextEditor.getCaretPosition(editor);
+        this.carretPos = pos;
+    };
+
+    pasteIcon = (elm) => {
+        var prt = elm.closest('.language-content');
+        const editor = prt.find('.jqte_editor');
+        var val = elm.html();
+        var editorVal = editor.html();
+        editor.html(editorVal.substring(0, this.carretPos) + val + editorVal.substring(this.carretPos));
+
+        this.carretPos += val.length;
+
+        this.jqTextEditor.restoreCarretPos(editor, this.carretPos);
+    };
+
+    initUploadPictures = () => {
+        this.$(".upload-pictures").dropify({
+            messages: {
+                default: this.viewResources.uploadImages,
+                error: this.viewResources.uploadImages_Error
+            },
+            error: {
+                fileSize: this.viewResources.uploadImages_ErrorFileSize,
+                imageFormat: this.viewResources.uploadImages_ErrorImageFormat,
+                fileExtension: this.viewResources.uploadImages_ErrorImageFormat,
+            }
+        });
+
+        var self = this;
+        this.$('.div-image-remove').click(function () {
+            var p = self.$(this).parent();
+            p.addClass('hide');
+        });
+    };
+
+    getPrevImages = () => {
+        let images = [];
+        const inputFiles = this.$('.div-image:not(.hide)');
+
+        inputFiles.each((i, e) => {
+            var $e = this.$(e);
+            var name = $e.find('.div-image-name').html();
+            images.push({ name });
+        });
+
+        return images;
+    };
+    getUploadImages = () => {
+        let images = {};
+        const inputFiles = document.getElementsByClassName('upload-pictures');
+
+        for (let i = 0, max = inputFiles.length; i < max; i++) {
+            let inputFile = <HTMLElement>inputFiles[i];
+            var name = this.$(inputFile).attr("name");
+            for (var j = 0; j < inputFile.files.length; j++) {
+                images[name + "_" + j] = inputFile.files[j];
+            }
+        }
+
+        return images;
+    };
 }
 
-const composedAnnouncement = new ComposedAnnouncement($, window.NAP, window.JSON);
+const composedAnnouncement = new ComposedAnnouncement($, window.NAP, window.JSON, jqTextEditor);
 
 $(() => {
     composedAnnouncement.init();

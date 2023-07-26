@@ -30,10 +30,66 @@
         {
             <div id="div-@content.LanguageKey" class="language-content">
                 <textarea name="group-contents" id="@content.LanguageKey" class="jqte-test">@content.Text</textarea>
+
+                <div class="div-icons hide">
+                    <div class="div-icon">👍</div>
+                    <div class="div-icon">👌</div>
+                    <div class="div-icon">👉</div>
+                    <div class="div-icon">✍️</div>
+                    <div class="div-icon">🙏</div>
+                    <div class="div-icon">❤️</div>
+                    <div class="div-icon">💯</div>
+
+                    <div class="div-icon">🎉</div>
+                    <div class="div-icon">🎯</div>
+                    <div class="div-icon">🏆</div>
+                    <div class="div-icon">🏈</div>
+                    <div class="div-icon">🏀</div>
+                    <div class="div-icon">⚽</div>
+                    <div class="div-icon">☀️</div>
+
+                    <div class="div-icon">📢</div>
+                    <div class="div-icon">🔕</div>
+                    <div class="div-icon">🔔</div>
+                    <div class="div-icon">🆘</div>
+                    <div class="div-icon">❗</div>
+                    <div class="div-icon">‼️</div>
+                    <div class="div-icon">🎊</div>
+                </div>
+                <div class="col s12">
+                    <div class="div-upload-images">
+                        <input type="file"
+                               name="@("UploadImages_"+content.LanguageKey)"
+                               multiple
+                               class="dropify upload-pictures"
+                               data-max-file-size="@PictureConfig.MaxFileSize"
+                               data-allowed-file-extensions="@PictureConfig.AllowedFileExtensions"
+                               data-language="@content.LanguageKey" />
+                        <div class="upload-notes">@Html.Raw(ViewResource.UploadImagesNote)</div>
+                    </div>
+                </div>
+
+                <div class="input-field col s12">
+                    <div class="div-image" data-name="images_01.png">
+                        <div class="div-image-name">images_01.png</div>
+                        <div class="div-image-remove" title="Delete"></div>
+                        <img class="div-image-preview" alt="images_01.png" src="data:image/png;base64,@Model.GetDemoImage()" />
+                    </div>
+                </div>
+
+                <div class="input-field col s12">
+                    <div class="div-image" data-name="images_02.png">
+                        <div class="div-image-name">images_02.png</div>
+                        <div class="div-image-remove" title="Delete"></div>
+                        <img class="div-image-preview" alt="images_02.png" src="data:image/png;base64,@Model.GetDemoImage()" />
+                    </div>
+                </div>
+
                 <div class="input-field col s12">
                     <input type="text" id="txtannouncement-url" value="@content.Url" />
                     <label for="txtannouncement-url">@AnnouncementResources.AnnouncementUrl</label>
                 </div>
+
             </div>
         }
     </div>
@@ -63,7 +119,7 @@
             <label class="label-title">@AnnouncementResources.Environments</label>
         </div>
         @foreach (var environment in AppSettings.AnnouncementConfig.Environments)
-            {
+        {
             <div class="col s2 checkbox">
                 <input name="group-environments" type="checkbox" id="@environment"
                        @(Model.Announcement.Environments.Contains(environment) ? "checked" : string.Empty) />
@@ -76,7 +132,7 @@
         <div class="col s12"><label class="label-title">@AnnouncementResources.Systems</label></div>
 
         @foreach (var system in AppSettings.AnnouncementConfig.Systems)
-            {
+        {
             <div class="col s2 checkbox">
                 <input name="group-systems" type="checkbox" id="@system"
                        @(Model.Announcement.Systems.Contains(system) ? "checked" : string.Empty) />
