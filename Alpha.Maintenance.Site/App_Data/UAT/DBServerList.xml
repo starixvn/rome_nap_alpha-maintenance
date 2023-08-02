@@ -5,6 +5,14 @@
     <Name>DBGRP01L</Name>
   </Server>
   <Server>
+    <Ip>10.40.40.143</Ip>
+    <Name>DBGRP02L</Name>
+  </Server>
+  <Server>
+    <Ip>10.40.40.140</Ip>
+    <Name>DBGRP03L</Name>
+  </Server>
+  <Server>
     <Ip>10.40.40.40</Ip>
     <Name>DB02</Name>
   </Server>
