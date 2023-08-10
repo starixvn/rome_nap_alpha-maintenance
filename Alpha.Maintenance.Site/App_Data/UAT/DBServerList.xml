@@ -96,4 +96,8 @@
     <Ip>10.40.40.50</Ip>
     <Name>DBBAK2</Name>
   </Server>
+  <Server>
+    <Ip>10.40.40.227</Ip>
+    <Name>DB_Chatbot</Name>
+  </Server>
 </Servers>
