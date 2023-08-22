@@ -960,4 +960,13 @@
   <data name="SettingName" xml:space="preserve">
     <value>Setting Name</value>
   </data>
+  <data name="DefaultTime" xml:space="preserve">
+    <value>Default Time</value>
+  </data>
+  <data name="RunningMode" xml:space="preserve">
+    <value>Running Mode</value>
+  </data>
+  <data name="ManualTime" xml:space="preserve">
+    <value>Manual Time (GMT-4)</value>
+  </data>
 </root>

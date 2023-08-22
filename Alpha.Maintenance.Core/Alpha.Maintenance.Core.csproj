@@ -104,6 +104,7 @@
     <Compile Include="Helpers\SpecificationConverter.cs" />
     <Compile Include="Helpers\SystemTime.cs" />
     <Compile Include="Model\APIInfo.cs" />
+    <Compile Include="Model\AutoTransferJobConfigModel.cs" />
     <Compile Include="Model\BalanceRecordJob.cs" />
     <Compile Include="Model\Banner.cs" />
     <Compile Include="Model\BannerDetail.cs" />

@@ -93,6 +93,8 @@
     <Compile Include="Criteria\Announcements\SaveAnnouncementsCriteria.cs" />
     <Compile Include="Criteria\Announcements\UpdateAnnouncementsCriteria.cs" />
     <Compile Include="Criteria\Announcements\SelectAnnouncementsCriteria.cs" />
+    <Compile Include="Criteria\AutoTransferJobConfig\UpdateAutoTransferJobConfigCriteria.cs" />
+    <Compile Include="Criteria\AutoTransferJobConfig\GetAutoTransferJobConfigCriteria.cs" />
     <Compile Include="Criteria\BalanceRecord\GetBalanceRecordJobStatusCriteria.cs" />
     <Compile Include="Criteria\BalanceRecord\UpdateBalanceRecordJobStatusCriteria.cs" />
     <Compile Include="Criteria\Banners\AddBannerCriteria.cs" />
@@ -123,6 +125,7 @@
     <Compile Include="Criteria\WinLossMonitor\GetGlobalSettingCriteria.cs" />
     <Compile Include="Criteria\WinLossMonitor\UpdateGlobalSettingCriteria.cs" />
     <Compile Include="Impl\BalanceRecordRepository.cs" />
+    <Compile Include="Impl\AutoTransferJobConfigRepository.cs" />
     <Compile Include="Impl\BannerRepository.cs" />
     <Compile Include="Impl\BaseRepository.cs" />
     <Compile Include="Impl\AppLog\LogRepository.cs" />

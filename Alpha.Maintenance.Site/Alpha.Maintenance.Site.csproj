@@ -322,7 +322,12 @@
     <Content Include="App_Data\announcementConfig.staging.json">
       <DependentUpon>announcementConfig.json</DependentUpon>
     </Content>
+    <Content Include="Assets\bundles\AutoTransferJobConfig\index.js" />
+    <Content Include="Assets\bundles\AutoTransferJobConfig\index.min.js">
+      <DependentUpon>index.js</DependentUpon>
+    </Content>
     <Content Include="Assets\bundles\BalanceRecord\balance-record.js" />
+    <TypeScriptCompile Include="Assets\scripts\AutoTransferJobConfig\index.ts" />
     <TypeScriptCompile Include="Assets\scripts\BalanceRecord\balance-record.ts" />
     <Content Include="Assets\bundles\BalanceRecord\balance-record.min.js">
       <DependentUpon>balance-record.js</DependentUpon>
@@ -717,6 +722,7 @@
     </Content>
     <Content Include="Views\BalanceRecord\Index.cshtml" />
     <Content Include="Views\BalanceRecord\_SettingTab.cshtml" />
+    <Content Include="Views\AutoTransferJobConfig\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\scripts\Administration\CacheManagement.ts" />

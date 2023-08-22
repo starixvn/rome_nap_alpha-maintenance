@@ -1,0 +1,48 @@
+﻿@model AutoTransferJobConfigModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Auto Transfer Job Config " + Model.Site;
+}
+@section Headline{
+    <span class="active">Auto Transfer Job Config @Model.Site</span>
+}
+<section class="filter-form" id="filter-bar">
+    <div id="div-message" class="card-panel lighten-4 text-darken-4 hiden"></div>
+    <div class="row">
+        <div class="input-field col l2">
+            <label class="active">@ViewResource.DefaultTime <span class="red-text">*</span></label>
+            <input type="text" id="txt-default-time" class="validate" required="" aria-required="true" value="@Model.DefaultTime" />
+        </div>
+        <div class="input-field col l2 m3 s6">
+            <input name="group-systems" type="checkbox" id="chk-isactive"
+                   class="filled-in checkbox"
+                   @(Model.IsActive ? "checked" : string.Empty) />
+            <label for="chk-isactive">@ViewResource.IsActive</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col l2">
+            <label class="active">@ViewResource.ManualTime</label>
+            <input type="text" id="txt-manual-time" class="c-datepicker-btn" value="@(Model.HasManualTime ? Model.DisplayedManualTime: Model.DefaultManualTime)" data-hasvalue="@(Model.HasManualTime ? 1 : 0)" />
+        </div>
+        <div class="input-field col l2">
+            <label class="active">@ViewResource.RunningMode <span class="red-text">*</span></label>
+            <select name="running-mode" id="sel-running-mode">
+                @foreach (var mode in AutoTransferJobConfigModel.RunningModes)
+                {
+                    <option value="@mode" @(mode.Equals(Model.RunningMode, StringComparison.OrdinalIgnoreCase) ? "selected" : string.Empty)>@mode</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col button-block">
+            <input class="waves-effect waves-light btn btn-primary" type="button" value="@ViewResource.Save" id="btnSubmit" />
+        </div>
+    </div>
+</section>
+@Html.Hidden("Site", Model.Site)
+@section scripts {
+    @Scripts.Render("~/Assets/bundles/AutoTransferJobConfig/index.js")
+}

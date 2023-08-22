@@ -185,6 +185,7 @@
   <ItemGroup>
     <Compile Include="AnnouncementApiController.cs" />
     <Compile Include="AnnouncementController.cs" />
+    <Compile Include="AutoTransferJobConfigController.cs" />
     <Compile Include="BalanceRecordController.cs" />
     <Compile Include="BaseController.cs" />
     <Compile Include="ChatbotController.cs" />
