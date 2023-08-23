@@ -969,4 +969,10 @@
   <data name="ManualTime" xml:space="preserve">
     <value>Manual Time (GMT-4)</value>
   </data>
+  <data name="AutoTransferRunningModeNote" xml:space="preserve">
+    <value>Normal: Take snapshot New then run transfer&lt;br /&gt;Resume: Reset [Waiting, Processing] to New then run transfer</value>
+  </data>
+  <data name="SiteDB" xml:space="preserve">
+    <value>Site DB</value>
+  </data>
 </root>

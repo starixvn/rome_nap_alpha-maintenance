@@ -81,5 +81,10 @@
             => GetConfigValue("BalanceRecord:JobNames")
             .Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries)
             .Select(j => j.Trim());
+
+        public static IEnumerable<string> SiteDBs
+            => GetConfigValue("SiteDBs")
+            .Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries)
+            .Select(j => j.Trim());
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Alpha.Maintenance.Core.Configurations;
 using Alpha.Maintenance.Core.Extension;
 
 namespace Alpha.Maintenance.Core.Model
@@ -33,6 +34,8 @@ namespace Alpha.Maintenance.Core.Model
         }
 
         public static List<string> RunningModes = new List<string> { "Normal", "Resume" };
+
+        public static IEnumerable<string> SiteDBs = AppSettings.SiteDBs;
 
         public string DefaultManualTime => DateTime.Now.Date.ToLongDate();
 
