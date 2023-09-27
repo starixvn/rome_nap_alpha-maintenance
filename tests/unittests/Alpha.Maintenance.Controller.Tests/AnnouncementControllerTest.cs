@@ -81,7 +81,7 @@
                                    'todate':'Jul 17,2017',
                                    'order':'1',
                                    'systems':[  
-                                      'Nova88'
+                                      'MBC'
                                    ],
                                    'specifications':[  
 

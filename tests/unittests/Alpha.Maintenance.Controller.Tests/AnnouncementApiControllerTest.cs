@@ -29,7 +29,7 @@
             {
                 Environment = "Local",
                 FromDate = DateTime.Now.AddDays(-1),
-                System = "Nova88",
+                System = "MBC",
                 ToDate = DateTime.Now
             };
 
