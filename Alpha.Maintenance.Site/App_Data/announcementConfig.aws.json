@@ -8,10 +8,12 @@
     "MBC",
     "Bot-MBC",
     "789Y",
+    "PHP",
     "Bot-789Y",
     "CN88",
     "IBC",
-    "Bot-IBC"
+    "Bot-IBC",
+    "Bot-PHP"
   ],
   "ExcludedSpecifications": [
   ],
