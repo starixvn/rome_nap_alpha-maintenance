@@ -42,6 +42,18 @@ class AutoTransferJobConfig {
         this.$("#btnSubmit").click(function () {
             self.upddateConfig();
         });
+
+        this.$("#site-dbs option").click(function () {
+            var db = self.$(this).val();
+            alert(db);
+        });
+        this.$("#site-dbs").change(function () {
+            var db = self.$(this).val();
+
+            if (db !== self.site) {
+                location.href = "./Index?site=" + db;
+            }
+        });
     }
 
     private initDateTimePicker(dateTimePicker: JQuery) {

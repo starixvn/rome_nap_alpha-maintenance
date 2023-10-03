@@ -268,6 +268,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Normal: Take snapshot New then run transfer&lt;br /&gt;Resume: Reset [Waiting, Processing] to New then run transfer.
+        /// </summary>
+        public static string AutoTransferRunningModeNote {
+            get {
+                return ResourceManager.GetString("AutoTransferRunningModeNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back To List.
         /// </summary>
         public static string Back_To_List {
@@ -2190,6 +2199,15 @@ namespace Alpha.Maintenance.Core {
         public static string Site {
             get {
                 return ResourceManager.GetString("Site", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Site DB.
+        /// </summary>
+        public static string SiteDB {
+            get {
+                return ResourceManager.GetString("SiteDB", resourceCulture);
             }
         }
         

@@ -10,6 +10,17 @@
 <section class="filter-form" id="filter-bar">
     <div id="div-message" class="card-panel lighten-4 text-darken-4 hiden"></div>
     <div class="row">
+        <div class="input-field col l4">
+            <label class="active">@ViewResource.SiteDB</label>
+            <select name="site-dbs" id="site-dbs">
+                @foreach (var d in AutoTransferJobConfigModel.SiteDBs)
+                {
+                    <option value="@d" @(d.Equals(Model.Site, StringComparison.OrdinalIgnoreCase) ? "selected" : string.Empty)>@d</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row">
         <div class="input-field col l2">
             <label class="active">@ViewResource.DefaultTime <span class="red-text">*</span></label>
             <input type="text" id="txt-default-time" class="validate" required="" aria-required="true" value="@Model.DefaultTime" />
@@ -34,6 +45,11 @@
                     <option value="@mode" @(mode.Equals(Model.RunningMode, StringComparison.OrdinalIgnoreCase) ? "selected" : string.Empty)>@mode</option>
                 }
             </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col l4 m6 s12" style="color: #2c2c2c;">
+            @Html.Raw(ViewResource.AutoTransferRunningModeNote)
         </div>
     </div>
     <div class="row">
