@@ -1,52 +1,80 @@
-﻿@model AutoTransferJobConfigModel
+﻿@model IEnumerable<AutoTransferJobConfigModel>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Auto Transfer Job Config " + Model.Site;
+
+    var site = Model.First().Site;
+    ViewBag.Title = "Auto Transfer Job Config " + site;
+
+}
+@section Head {
+    @Styles.Render("~/Assets/styles/pages/auto-transfer-config.css")
 }
 @section Headline{
-    <span class="active">Auto Transfer Job Config @Model.Site</span>
+    <span class="active">Auto Transfer Job Config @site</span>
 }
-<section class="filter-form" id="filter-bar">
-    <div id="div-message" class="card-panel lighten-4 text-darken-4 hiden"></div>
+
+<section class="filter-bar filter-form filter-bar-common">
     <div class="row">
         <div class="input-field col l4">
             <label class="active">@ViewResource.SiteDB</label>
-            <select name="site-dbs" id="site-dbs">
+            <select name="site-dbs" class="site-dbs">
                 @foreach (var d in AutoTransferJobConfigModel.SiteDBs)
                 {
-                    <option value="@d" @(d.Equals(Model.Site, StringComparison.OrdinalIgnoreCase) ? "selected" : string.Empty)>@d</option>
+                    <option value="@d" @(d.Equals(site, StringComparison.OrdinalIgnoreCase) ? "selected" : string.Empty)>@d</option>
                 }
             </select>
+        </div>
+    </div>
+    <div class="div-message card-panel lighten-4 text-darken-4 hiden"></div>
+</section>
+
+@foreach (var m in Model)
+{
+<section class="filter-bar filter-form filter-bar-@m.Environment">
+    <div class="row">
+        <div class="input-field col l4 m6 s12 div-env">
+            @ViewResource.Environment: @m.Environment
         </div>
     </div>
     <div class="row">
         <div class="input-field col l2">
             <label class="active">@ViewResource.DefaultTime <span class="red-text">*</span></label>
-            <input type="text" id="txt-default-time" class="validate" required="" aria-required="true" value="@Model.DefaultTime" />
+            <input type="text" class="txt-default-time validate" required="" aria-required="true" value="@m.DefaultTime" />
         </div>
         <div class="input-field col l2 m3 s6">
-            <input name="group-systems" type="checkbox" id="chk-isactive"
-                   class="filled-in checkbox"
-                   @(Model.IsActive ? "checked" : string.Empty) />
-            <label for="chk-isactive">@ViewResource.IsActive</label>
+            <input name="group-systems" type="checkbox" id="chk-isactive-@m.Environment"
+                   class="chk-isactive filled-in checkbox"
+                   @(m.IsActive ? "checked" : string.Empty) />
+            <label for="chk-isactive-@m.Environment">@ViewResource.IsActive</label>
         </div>
     </div>
     <div class="row">
         <div class="input-field col l2">
             <label class="active">@ViewResource.ManualTime</label>
-            <input type="text" id="txt-manual-time" class="c-datepicker-btn" value="@(Model.HasManualTime ? Model.DisplayedManualTime: Model.DefaultManualTime)" data-hasvalue="@(Model.HasManualTime ? 1 : 0)" />
+            <input type="text" class="txt-manual-time c-datepicker-btn" value="@(m.HasManualTime ? m.DisplayedManualTime: m.DefaultManualTime)" data-hasvalue="@(m.HasManualTime ? 1 : 0)" />
         </div>
         <div class="input-field col l2">
             <label class="active">@ViewResource.RunningMode <span class="red-text">*</span></label>
-            <select name="running-mode" id="sel-running-mode">
+            <select name="running-mode" class="sel-running-mode">
                 @foreach (var mode in AutoTransferJobConfigModel.RunningModes)
                 {
-                    <option value="@mode" @(mode.Equals(Model.RunningMode, StringComparison.OrdinalIgnoreCase) ? "selected" : string.Empty)>@mode</option>
+                    <option value="@mode" @(mode.Equals(m.RunningMode, StringComparison.OrdinalIgnoreCase) ? "selected" : string.Empty)>@mode</option>
                 }
             </select>
         </div>
     </div>
+
+    @if (m.Environment == "UAT")
+    {
+        <div class="row">
+            <div class="input-field col l2">
+                <label class="active">@ViewResource.TestSuperIds <span class="red-text">*</span></label>
+                <input type="text" class="txt-test-super-ids validate" required="" aria-required="true" value="@m.TestSuperIds" />
+            </div>
+        </div>
+
+    }
     <div class="row">
         <div class="input-field col l4 m6 s12" style="color: #2c2c2c;">
             @Html.Raw(ViewResource.AutoTransferRunningModeNote)
@@ -54,11 +82,13 @@
     </div>
     <div class="row">
         <div class="col button-block">
-            <input class="waves-effect waves-light btn btn-primary" type="button" value="@ViewResource.Save" id="btnSubmit" />
+            <input class="btnSubmit waves-effect waves-light btn btn-primary" type="button" value="@ViewResource.Save" />
         </div>
     </div>
 </section>
-@Html.Hidden("Site", Model.Site)
+}
+
+@Html.Hidden("Site", site)
 @section scripts {
     @Scripts.Render("~/Assets/bundles/AutoTransferJobConfig/index.js")
 }

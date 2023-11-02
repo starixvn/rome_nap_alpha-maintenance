@@ -17,6 +17,10 @@ namespace Alpha.Maintenance.Core.Model
 
         public bool IsActive { get; set; }
 
+        public string Environment { get; set; }
+
+        public string TestSuperIds { get; set; }
+
         public string DisplayedManualTime
         {
             get
