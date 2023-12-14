@@ -322,6 +322,12 @@
     <Content Include="App_Data\announcementConfig.staging.json">
       <DependentUpon>announcementConfig.json</DependentUpon>
     </Content>
+    <Content Include="App_Data\DR\DBServerList.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\DR\mSiteSpNames.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Assets\bundles\AutoTransferJobConfig\index.js" />
     <Content Include="Assets\bundles\AutoTransferJobConfig\index.min.js">
       <DependentUpon>index.js</DependentUpon>
