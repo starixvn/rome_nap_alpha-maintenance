@@ -733,9 +733,9 @@
     <Content Include="Views\BalanceRecord\Index.cshtml" />
     <Content Include="Views\BalanceRecord\_SettingTab.cshtml" />
     <Content Include="Views\AutoTransferJobConfig\Index.cshtml" />
-    <None Include="Web.dr.config">
+    <Content Include="Web.dr.config">
       <DependentUpon>Web.local.config</DependentUpon>
-    </None>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\scripts\Administration\CacheManagement.ts" />
