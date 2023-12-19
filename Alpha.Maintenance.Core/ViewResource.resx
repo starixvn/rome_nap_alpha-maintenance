@@ -975,4 +975,10 @@
   <data name="SiteDB" xml:space="preserve">
     <value>Site DB</value>
   </data>
+  <data name="Environment" xml:space="preserve">
+    <value>Environment</value>
+  </data>
+  <data name="TestSuperIds" xml:space="preserve">
+    <value>Test Super Ids</value>
+  </data>
 </root>

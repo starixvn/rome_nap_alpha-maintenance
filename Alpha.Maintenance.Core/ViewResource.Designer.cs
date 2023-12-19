@@ -790,6 +790,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Environment.
+        /// </summary>
+        public static string Environment {
+            get {
+                return ResourceManager.GetString("Environment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Environments.
         /// </summary>
         public static string Environments {
@@ -2370,6 +2379,15 @@ namespace Alpha.Maintenance.Core {
         public static string System {
             get {
                 return ResourceManager.GetString("System", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test Super Ids.
+        /// </summary>
+        public static string TestSuperIds {
+            get {
+                return ResourceManager.GetString("TestSuperIds", resourceCulture);
             }
         }
         

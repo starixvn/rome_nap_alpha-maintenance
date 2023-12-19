@@ -1,9 +1,11 @@
 ﻿using System.Web.Mvc;
+using Alpha.Maintenance.Core.Constants;
 using Alpha.Maintenance.Core.Model;
 using Alpha.Maintenance.Service.Impl.AutoTransferJobConfig;
 using Alpha.Maintenance.Service.Interface.AutoTransferJobConfig;
 using Fanex.NAP.Core.Business;
 using Fanex.NAP.Core.Web.Attribute;
+using System.Linq;
 
 namespace Alpha.Maintenance.Controller
 {
@@ -23,9 +25,9 @@ namespace Alpha.Maintenance.Controller
 
         [HttpGet]
         [NapAuth(FunctionKey = SiteFunctionKeys.AdminTools, Policy = Constant.Policy.Read)]
-        public ActionResult Index(string site)
+        public ActionResult Index(string site, string env)
         {
-            var model = service.GetAutoTransferJobConfig(site);
+            var model = AutoTransferEnvironmentConstants.AllEnvironments.Select(e => service.GetAutoTransferJobConfig(site, e));
 
             return View("~/Views/AutoTransferJobConfig/Index.cshtml", model);
         }

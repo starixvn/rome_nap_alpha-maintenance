@@ -64,9 +64,11 @@
         <Setting Key="DB05BK1_SystemSettings_Update" SpName="SystemSettings_Update" DbName="DB05BK1.DBBAH.bodb02.bodbAdminNet" />
     </Function>
     <Function Name="Auto Transfer Job">
-        <Setting Key="DBTXN_Age_ClearBalanceCust_Job_ConfigSel" SpName="Age_ClearBalanceCust_Job_ConfigSel_xtest" DbName="DBTXN.bodb02.bodbAdminNet" />
-        <Setting Key="DBTXN_Age_ClearBalanceCust_Job_ConfigUpd" SpName="Age_ClearBalanceCust_Job_ConfigUpd_xtest" DbName="DBTXN.bodb02.bodbAdminNet" />
-        <Setting Key="DBSite03_Age_ClearBalanceCust_Job_ConfigSel" SpName="Age_ClearBalanceCust_Job_ConfigSel_xtest" DbName="DBSite03.bodb02.bodbAdminNet" />
-        <Setting Key="DBSite03_Age_ClearBalanceCust_Job_ConfigUpd" SpName="Age_ClearBalanceCust_Job_ConfigUpd_xtest" DbName="DBSite03.bodb02.bodbAdminNet" />
+        <Setting Key="DBTXN_Age_ClearBalanceCust_Job_ConfigSel" SpName="Age_ClearBalanceCust_Job_ConfigSel" DbName="DBTXN.bodb02.bodbAdminNet" />
+        <Setting Key="DBTXN_Age_ClearBalanceCust_Job_ConfigUpd" SpName="Age_ClearBalanceCust_Job_ConfigUpd" DbName="DBTXN.bodb02.bodbAdminNet" />
+        <Setting Key="DBTXN_Age_ClearBalanceCust_Job_ConfigUpd" SpName="Age_ClearBalanceCust_Job_ConfigUpd" DbName="DBTXN.bodb02.bodbAdminNet" />
+        <Setting Key="DBSite03_Age_ClearBalanceCust_Job_ConfigSel" SpName="Age_ClearBalanceCust_Job_ConfigSel" DbName="DBSite03.bodb02.bodbAdminNet" />
+        <Setting Key="DBSite03_Age_ClearBalanceCust_Job_ConfigUpd" SpName="Age_ClearBalanceCust_Job_ConfigUpd" DbName="DBSite03.bodb02.bodbAdminNet" />
+        <Setting Key="DBSite03_Age_ClearBalanceCust_Job_ConfigUpd" SpName="Age_ClearBalanceCust_Job_ConfigUpd" DbName="DBSite03.bodb02.bodbAdminNet" />
     </Function>
 </Functions>

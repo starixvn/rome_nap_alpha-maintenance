@@ -17,11 +17,13 @@ namespace Alpha.Maintenance.Service.Impl.AutoTransferJobConfig
             this.autoTransferJobConfigRepository = autoTransferJobConfigRepository ?? new AutoTransferJobConfigRepositoryImpl();
         }
 
-        public AutoTransferJobConfigModel GetAutoTransferJobConfig(string site)
+        public AutoTransferJobConfigModel GetAutoTransferJobConfig(string site, string env)
         {
-            var criteria = new GetAutoTransferJobConfigCriteria(site);
+            var criteria = new GetAutoTransferJobConfigCriteria(site, env);
             var data = repository.Get<AutoTransferJobConfigModel>(criteria);
+
             data.Site = site;
+            data.Environment = env;
 
             return data;
         }
@@ -36,7 +38,7 @@ namespace Alpha.Maintenance.Service.Impl.AutoTransferJobConfig
             }
 
             var criteria = new UpdateAutoTransferJobConfigCriteria(
-                config.Site, defaultTime, config.ManualTime, config.RunningMode, config.IsActive);
+                config.Site, defaultTime, config.ManualTime, config.RunningMode, config.IsActive, config.Environment, config.TestSuperIds);
 
             return autoTransferJobConfigRepository.ExecuteNonQuery(criteria);
         }

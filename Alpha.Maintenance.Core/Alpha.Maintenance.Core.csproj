@@ -94,6 +94,7 @@
     <Compile Include="Configurations\AnnouncementConfig.cs" />
     <Compile Include="Configurations\AppSettings.cs" />
     <Compile Include="Configurations\BannerConfig.cs" />
+    <Compile Include="Constants\AutoTransferEnvironmentConstants.cs" />
     <Compile Include="Enums\BannerFilterBy.cs" />
     <Compile Include="Enums\BannerType.cs" />
     <Compile Include="Extension\ConvertExtensions.cs" />

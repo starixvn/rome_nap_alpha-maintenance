@@ -332,6 +332,12 @@
     <Content Include="Assets\bundles\BalanceRecord\balance-record.min.js">
       <DependentUpon>balance-record.js</DependentUpon>
     </Content>
+    <Content Include="Assets\styles\pages\auto-transfer-config.css">
+      <DependentUpon>auto-transfer-config.scss</DependentUpon>
+    </Content>
+    <Content Include="Assets\styles\pages\auto-transfer-config.min.css">
+      <DependentUpon>auto-transfer-config.css</DependentUpon>
+    </Content>
     <Content Include="WebConnectionString.staging.config">
       <DependentUpon>WebConnectionString.config</DependentUpon>
     </Content>
@@ -645,6 +651,7 @@
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\CacheManagement\Index.cshtml" />
     <Content Include="Areas\Administration\Views\CacheManagement\HealthCheck.cshtml" />
+    <Content Include="Assets\styles\pages\auto-transfer-config.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

@@ -6,5 +6,9 @@
   {
     "outputFile": "assets/styles/pages/manage.css",
     "inputFile": "assets/styles/pages/manage.scss"
+  },
+  {
+    "outputFile": "assets/styles/pages/auto-transfer-config.css",
+    "inputFile": "assets/styles/pages/auto-transfer-config.scss"
   }
 ]

@@ -12,10 +12,7 @@ interface HTMLElement {
 class AutoTransferJobConfig {
     $: JQueryStatic;
     nap: any;
-
-    txtManualTime: JQuery;
     divMessage: JQuery;
-    hasManualTime: boolean;
     site: string;
 
     viewResources: any = {
@@ -30,24 +27,23 @@ class AutoTransferJobConfig {
 
     init(): void {
         const self = this;
+        this.initEnv("UAT");
+        this.initEnv("PRO");
+        this.initCommon();
+    }
 
-        this.txtManualTime = this.$("#txt-manual-time");
-        this.divMessage = this.$("#div-message");
+    initCommon(): void {
+        const self = this;
+        this.divMessage = $(".div-message");
         this.site = this.$("#Site").val();
-
         this.$("select").material_select();
 
-        this.hasManualTime = this.txtManualTime.attr("data-hasvalue") === "1";
-        this.initDateTimePicker(this.txtManualTime);
-        this.$("#btnSubmit").click(function () {
-            self.upddateConfig();
-        });
-
-        this.$("#site-dbs option").click(function () {
+        this.$("select.site-dbs option").click(function () {
             var db = self.$(this).val();
             alert(db);
         });
-        this.$("#site-dbs").change(function () {
+
+        this.$("select.site-dbs").change(function () {
             var db = self.$(this).val();
 
             if (db !== self.site) {
@@ -55,8 +51,20 @@ class AutoTransferJobConfig {
             }
         });
     }
+    initEnv(env): void {
+        const self = this;
+        var form = $('.filter-bar-' + env);
 
-    private initDateTimePicker(dateTimePicker: JQuery) {
+        var txtManualTime = form.find(".txt-manual-time");
+        var divMessage = form.find(".div-message");
+        var hasManualTime = txtManualTime.attr("data-hasvalue") === "1";
+        this.initDateTimePicker(txtManualTime, hasManualTime);
+        form.find(".btnSubmit").click(function () {
+            self.updateConfig(env, form);
+        });
+    }
+
+    private initDateTimePicker(dateTimePicker: JQuery, hasManualTime: boolean) {
         const self = this;
         const dateTimeValue = new Date(dateTimePicker.val());
 
@@ -72,20 +80,21 @@ class AutoTransferJobConfig {
             materialDateTimePicker.open();
         });
 
-        if (!this.hasManualTime) {
-            this.txtManualTime.val("");
+        if (!hasManualTime) {
+            dateTimePicker.val("");
         }
     }
 
-    private upddateConfig() {
+    private updateConfig(env: string, form: JQuery) {
         const self = this;
-
         var param = {
             Site: this.site,
-            DefaultTime: this.$("#txt-default-time").val(),
-            RunningMode: this.$("#sel-running-mode").val(),
-            ManualTime: this.$("#txt-manual-time").val(),
-            IsActive: this.$("#chk-isactive").is(':checked')
+            DefaultTime: form.find(".txt-default-time").val(),
+            RunningMode: form.find("select.sel-running-mode").val(),
+            ManualTime: form.find(".txt-manual-time").val(),
+            IsActive: form.find(".chk-isactive").is(':checked'),
+            Environment: env,
+            TestSuperIds: form.find(".txt-test-super-ids").val(),
         };
 
         if (param.DefaultTime.length === 0) {
