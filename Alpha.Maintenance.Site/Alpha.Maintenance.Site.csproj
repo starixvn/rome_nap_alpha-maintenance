@@ -319,6 +319,9 @@
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="App_Data\announcementConfig.dr.json">
+      <DependentUpon>announcementConfig.json</DependentUpon>
+    </Content>
     <Content Include="App_Data\announcementConfig.staging.json">
       <DependentUpon>announcementConfig.json</DependentUpon>
     </Content>
