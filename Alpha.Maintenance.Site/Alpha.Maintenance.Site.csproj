@@ -319,8 +319,17 @@
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="App_Data\announcementConfig.dr.json">
+      <DependentUpon>announcementConfig.json</DependentUpon>
+    </Content>
     <Content Include="App_Data\announcementConfig.staging.json">
       <DependentUpon>announcementConfig.json</DependentUpon>
+    </Content>
+    <Content Include="App_Data\DR\DBServerList.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\DR\mSiteSpNames.xml">
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Assets\bundles\AutoTransferJobConfig\index.js" />
     <Content Include="Assets\bundles\AutoTransferJobConfig\index.min.js">
@@ -337,6 +346,10 @@
     </Content>
     <Content Include="Assets\styles\pages\auto-transfer-config.min.css">
       <DependentUpon>auto-transfer-config.css</DependentUpon>
+    </Content>
+     <Content Include="WebConnectionString.dr.config">
+      <DependentUpon>WebConnectionString.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="WebConnectionString.staging.config">
       <DependentUpon>WebConnectionString.config</DependentUpon>
@@ -553,9 +566,6 @@
     <Content Include="Assets\scripts\lib\Select2\select2.png" />
     <Content Include="Assets\styles\vendors\icon\style.css" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Web.backupMNL.config">
-      <DependentUpon>Web.local.config</DependentUpon>
-    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -670,10 +680,6 @@
     <Content Include="Assets\styles\components\_calendar.scss" />
     <Content Include="Assets\styles\pages\manage.scss" />
     <Content Include="Assets\styles\components\_animation.scss" />
-    <Content Include="WebConnectionString.backupMNL.config">
-      <DependentUpon>WebConnectionString.config</DependentUpon>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="WebConnectionString.config">
       <SubType>Designer</SubType>
     </Content>
@@ -730,6 +736,9 @@
     <Content Include="Views\BalanceRecord\Index.cshtml" />
     <Content Include="Views\BalanceRecord\_SettingTab.cshtml" />
     <Content Include="Views\AutoTransferJobConfig\Index.cshtml" />
+    <Content Include="Web.dr.config">
+      <DependentUpon>Web.local.config</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\scripts\Administration\CacheManagement.ts" />
