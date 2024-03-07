@@ -19,7 +19,7 @@ namespace Alpha.Maintenance.Core {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class ViewResource {
@@ -1731,6 +1731,15 @@ namespace Alpha.Maintenance.Core {
         public static string Old_Value {
             get {
                 return ResourceManager.GetString("Old_Value", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old Token.
+        /// </summary>
+        public static string OldToken {
+            get {
+                return ResourceManager.GetString("OldToken", resourceCulture);
             }
         }
         

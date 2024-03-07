@@ -1,4 +1,4 @@
-﻿@model IDictionary<string, SiteToken>
+﻿@model TokenViewModel
 @{
     ViewBag.Title = "UM Token";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,11 +14,12 @@
             <tr>
                 <th>@ViewResource.Site</th>
                 <th>@ViewResource.ID</th>
+                <th>@ViewResource.OldToken</th>
                 <th>@ViewResource.Token</th>
             </tr>
         </thead>
         <tbody>
-            @if (Model == null || !Model.Keys.Any())
+            @if (Model == null || !Model.OldTokens.Keys.Any())
             {
                 <tr>
                     <td colspan="2" class="no-data">@AnnouncementResources.NoInformation</td>
@@ -26,17 +27,18 @@
             }
             else
             {
-                foreach (var site in Model.Keys)
+                foreach (var site in Model.OldTokens.Keys)
                 {
-                    var siteToken = Model[site];
+                    var oldToken = Model.OldTokens[site];
+                    var newToken = Model.NewTokens.ContainsKey(site) ? Model.NewTokens[site] : null;
                     <tr>
                         <td>@site</td>
-                        <td>@siteToken.SiteId</td>
-                        <td>@siteToken.Token</td>
+                        <td>@oldToken.SiteId</td>
+                        <td>@oldToken.Token</td>
+                        <td>@(newToken!=null ? newToken.Token : "")</td>
                     </tr>
                 }
             }
         </tbody>
     </table>
 </div>
-

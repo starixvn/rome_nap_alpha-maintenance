@@ -981,4 +981,7 @@
   <data name="TestSuperIds" xml:space="preserve">
     <value>Test Super Ids</value>
   </data>
+  <data name="OldToken" xml:space="preserve">
+    <value>Old Token</value>
+  </data>
 </root>

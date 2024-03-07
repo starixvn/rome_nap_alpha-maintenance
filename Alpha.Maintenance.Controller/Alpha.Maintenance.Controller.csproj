@@ -209,6 +209,7 @@
     <Compile Include="ViewModels\ManageAnnouncementsViewModel.cs" />
     <Compile Include="ViewModels\SetChatbotWebhookViewModel.cs" />
     <Compile Include="ViewModels\SuperLimitDateViewModel.cs" />
+    <Compile Include="ViewModels\TokenViewModel.cs" />
     <Compile Include="ViewModels\UploadBannerViewModel.cs" />
     <Compile Include="ViewModels\ViewBannerViewModel.cs" />
     <Compile Include="ViewModels\ChatbotFilterViewModel.cs" />
