@@ -1,26 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Functions>
     <Function Name="Log">
-        <Setting Key="Logging_Category_SelAll" SpName="IS_SelLogCategory_ALL" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
-        <Setting Key="Logging_Sel_Padding" SpName="IS_SelLogPadding_All" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
-        <Setting Key="Logging_Del" SpName="IS_DeleteLog" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
-        <Setting Key="Logging_Monitor" SpName="Acc_AppLog_MonitorLogUpd" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
-        <Setting Key="Logging_Machine_SelectAll" SpName="IS_SelLogMachine_ALL" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
-        <Setting Key="Logging_Machine_ByType" SpName="IS_SelLogMachine_ByType" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
-        <Setting Key="Logging_Machine_ById" SpName="IS_SelLogMachine_ById" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
-        <Setting Key="Logging_InsertMachine" SpName="Acc_AppLog_MachineIns" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
-        <Setting Key="Logging_UpdateMachine" SpName="Acc_AppLog_MachineUpd" DbName="DBLOG.bodb_CustomerLog.bodbAdminNet" />
+        <Setting Key="Logging_Category_SelAll" SpName="IS_SelLogCategory_ALL" DbName="DBLOG.bodb_CustomerLog.wsv_nap" />
+        <Setting Key="Logging_Sel_Padding" SpName="IS_SelLogPadding_All" DbName="DBLOG.bodb_CustomerLog.wsv_nap" />
+        <Setting Key="Logging_Del" SpName="IS_DeleteLog" DbName="DBLOG.bodb_CustomerLog.wsv_nap" />
+        <Setting Key="Logging_Monitor" SpName="Acc_AppLog_MonitorLogUpd" DbName="DBLOG.bodb_CustomerLog.wsv_nap" />
+        <Setting Key="Logging_Machine_SelectAll" SpName="IS_SelLogMachine_ALL" DbName="DBLOG.bodb_CustomerLog.wsv_nap" />
+        <Setting Key="Logging_Machine_ByType" SpName="IS_SelLogMachine_ByType" DbName="DBLOG.bodb_CustomerLog.wsv_nap" />
+        <Setting Key="Logging_Machine_ById" SpName="IS_SelLogMachine_ById" DbName="DBLOG.bodb_CustomerLog.wsv_nap" />
+        <Setting Key="Logging_InsertMachine" SpName="Acc_AppLog_MachineIns" DbName="DBLOG.bodb_CustomerLog.wsv_nap" />
+        <Setting Key="Logging_UpdateMachine" SpName="Acc_AppLog_MachineUpd" DbName="DBLOG.bodb_CustomerLog.wsv_nap" />
     </Function>
 
     <Function Name="Announcements">
-        <Setting Key="Age_Announcements_Select" SpName="Age_Announcements_Select" DbName="DBMSG.bodb_Message.bodbAdminNet">
+        <Setting Key="Age_Announcements_Select" SpName="Age_Announcements_Select" DbName="DBMSG.bodb_Message.wsv_nap">
             <Mapping DataField="FromDate" ObjectProperty="ReleasedDate" />
             <Mapping DataField="ToDate" ObjectProperty="ExpiredDate" />
         </Setting>
-        <Setting Key="Age_Announcements_Insert" SpName="Age_Announcements_Insert" DbName="DBMSG.bodb_Message.bodbAdminNet" />
-        <Setting Key="Age_Announcements_SelectById" SpName="Age_Announcements_SelectById" DbName="DBMSG.bodb_Message.bodbAdminNet" />
-        <Setting Key="Age_Announcements_SelectByCreatedDate" SpName="Age_Announcements_SelectByCreatedDate" DbName="DBMSG.bodb_Message.bodbAdminNet" />
-        <Setting Key="Age_Announcements_Update" SpName="Age_Announcements_Update" DbName="DBMSG.bodb_Message.bodbAdminNet" />
+        <Setting Key="Age_Announcements_Insert" SpName="Age_Announcements_Insert" DbName="DBMSG.bodb_Message.wsv_nap" />
+        <Setting Key="Age_Announcements_SelectById" SpName="Age_Announcements_SelectById" DbName="DBMSG.bodb_Message.wsv_nap" />
+        <Setting Key="Age_Announcements_SelectByCreatedDate" SpName="Age_Announcements_SelectByCreatedDate" DbName="DBMSG.bodb_Message.wsv_nap" />
+        <Setting Key="Age_Announcements_Update" SpName="Age_Announcements_Update" DbName="DBMSG.bodb_Message.wsv_nap" />
     </Function>
 
     <Function Name="IPInformation">
@@ -28,50 +28,50 @@
         <Setting Key="Acc_GetIPInfo_TableMini" SpName="Acc_GetIPInfo_TableMini" DbName="IPEntities" />
     </Function>
     <Function Name="DBProfiler">
-        <Setting Key="vndba_sp_trace_WebApp" SpName="vndba_sp_trace_WebApp" DbName="DBMON.MonDB.bodbAdminNet" />
+        <Setting Key="vndba_sp_trace_WebApp" SpName="vndba_sp_trace_WebApp" DbName="DBMON.MonDB.wsv_nap" />
     </Function>
 
     <Function Name="SuperLimitDate">
-        <Setting Key="Acc_CustomerDateLimitSel" SpName="Acc_CustomerDateLimitSel" DbName="DBCust.CustDB.BODBDownlineNet" />
-        <Setting Key="Acc_CustomerDateLimitDel" SpName="Acc_CustomerDateLimitDel" DbName="DBCust.CustDB.BODBDownlineNet" />
-        <Setting Key="Acc_CustomerDateLimitIns" SpName="Acc_CustomerDateLimitIns" DbName="DBCust.CustDB.BODBDownlineNet" />
+        <Setting Key="Acc_CustomerDateLimitSel" SpName="Acc_CustomerDateLimitSel" DbName="DBCust.CustDB.wsv_alp" />
+        <Setting Key="Acc_CustomerDateLimitDel" SpName="Acc_CustomerDateLimitDel" DbName="DBCust.CustDB.wsv_alp" />
+        <Setting Key="Acc_CustomerDateLimitIns" SpName="Acc_CustomerDateLimitIns" DbName="DBCust.CustDB.wsv_alp" />
     </Function>
 
     <Function Name="Banner Management">
-        <Setting Key="Age_Banner_Insert" SpName="Age_Banner_Insert" DbName="DBAGE.bodb_AGE.bodbAdminNet" />
-        <Setting Key="Age_Banner_Update" SpName="Age_Banner_Update" DbName="DBAGE.bodb_AGE.bodbAdminNet" />
-        <Setting Key="Age_Banner_Select" SpName="Age_Banner_Select" DbName="DBAGE.bodb_AGE.bodbAdminNet" />
-        <Setting Key="Age_Banner_SelectById" SpName="Age_Banner_SelectById" DbName="DBAGE.bodb_AGE.bodbAdminNet" />
+        <Setting Key="Age_Banner_Insert" SpName="Age_Banner_Insert" DbName="DBAGE.bodb_AGE.wsv_nap" />
+        <Setting Key="Age_Banner_Update" SpName="Age_Banner_Update" DbName="DBAGE.bodb_AGE.wsv_nap" />
+        <Setting Key="Age_Banner_Select" SpName="Age_Banner_Select" DbName="DBAGE.bodb_AGE.wsv_nap" />
+        <Setting Key="Age_Banner_SelectById" SpName="Age_Banner_SelectById" DbName="DBAGE.bodb_AGE.wsv_nap" />
         <!--Setup DB Standby-->
-        <Setting Key="Age_Banner_Insert_Standby" SpName="Age_Banner_Insert" DbName="DBAGE_STANDBY.bodb_AGE.bodbAdminNet" />
-        <Setting Key="Age_Banner_Update_Standby" SpName="Age_Banner_Update" DbName="DBAGE_STANDBY.bodb_AGE.bodbAdminNet" />
+        <Setting Key="Age_Banner_Insert_Standby" SpName="Age_Banner_Insert" DbName="DBAGE_STANDBY.bodb_AGE.wsv_nap" />
+        <Setting Key="Age_Banner_Update_Standby" SpName="Age_Banner_Update" DbName="DBAGE_STANDBY.bodb_AGE.wsv_nap" />
     </Function>
 
     <Function Name="Chatbot">
-        <Setting Key="Age_Chatbot_BotSelAll" SpName="Age_Chatbot_BotSelAll" DbName="DBBOT.bodb_Chatbot.bodbAdminNet" />
-        <Setting Key="NAP_Chatbot_BotIns" SpName="NAP_Chatbot_BotIns" DbName="DBBOT.bodb_Chatbot.bodbAdminNet" />
-        <Setting Key="NAP_Chatbot_BotUpd" SpName="NAP_Chatbot_BotUpd" DbName="DBBOT.bodb_Chatbot.bodbAdminNet" />
-        <Setting Key="NAP_Chatbot_BotSystemSettingSel" SpName="NAP_Chatbot_BotSystemSettingSel" DbName="DBBOT.bodb_Chatbot.bodbAdminNet" />
-        <Setting Key="NAP_Chatbot_BotSystemSettingUpd" SpName="NAP_Chatbot_BotSystemSettingUpd" DbName="DBBOT.bodb_Chatbot.bodbAdminNet" />
+        <Setting Key="Age_Chatbot_BotSelAll" SpName="Age_Chatbot_BotSelAll" DbName="DBBOT.bodb_Chatbot.wsv_nap" />
+        <Setting Key="NAP_Chatbot_BotIns" SpName="NAP_Chatbot_BotIns" DbName="DBBOT.bodb_Chatbot.wsv_nap" />
+        <Setting Key="NAP_Chatbot_BotUpd" SpName="NAP_Chatbot_BotUpd" DbName="DBBOT.bodb_Chatbot.wsv_nap" />
+        <Setting Key="NAP_Chatbot_BotSystemSettingSel" SpName="NAP_Chatbot_BotSystemSettingSel" DbName="DBBOT.bodb_Chatbot.wsv_nap" />
+        <Setting Key="NAP_Chatbot_BotSystemSettingUpd" SpName="NAP_Chatbot_BotSystemSettingUpd" DbName="DBBOT.bodb_Chatbot.wsv_nap" />
     </Function>
 
     <Function Name="Win Loss Monitor">
-        <Setting Key="db052_Acc_WLMonitored_Service_GlobalSettingSel" SpName="Acc_WLMonitored_Service_GlobalSettingSel" DbName="db052.DBAGE.bodb02.bodbAdminNet" />
-        <Setting Key="db052_Acc_WLMonitored_Service_GlobalSettingUpd" SpName="Acc_WLMonitored_Service_GlobalSettingUpd" DbName="db052.DBAGE.bodb02.bodbAdminNet" />
-        <Setting Key="db053_Acc_WLMonitored_Service_GlobalSettingSel" SpName="Acc_WLMonitored_Service_GlobalSettingSel" DbName="db053.DBAGE.bodb02.bodbAdminNet" />
-        <Setting Key="db053_Acc_WLMonitored_Service_GlobalSettingUpd" SpName="Acc_WLMonitored_Service_GlobalSettingUpd" DbName="db053.DBAGE.bodb02.bodbAdminNet" />
+        <Setting Key="db052_Acc_WLMonitored_Service_GlobalSettingSel" SpName="Acc_WLMonitored_Service_GlobalSettingSel" DbName="db052.DBAGE.bodb02.wsv_nap" />
+        <Setting Key="db052_Acc_WLMonitored_Service_GlobalSettingUpd" SpName="Acc_WLMonitored_Service_GlobalSettingUpd" DbName="db052.DBAGE.bodb02.wsv_nap" />
+        <Setting Key="db053_Acc_WLMonitored_Service_GlobalSettingSel" SpName="Acc_WLMonitored_Service_GlobalSettingSel" DbName="db053.DBAGE.bodb02.wsv_nap" />
+        <Setting Key="db053_Acc_WLMonitored_Service_GlobalSettingUpd" SpName="Acc_WLMonitored_Service_GlobalSettingUpd" DbName="db053.DBAGE.bodb02.wsv_nap" />
     </Function>
 
     <Function Name="Balance Record Sync Service">
-        <Setting Key="DB05_SystemSettings_Select" SpName="SystemSettings_Select" DbName="DB05.DBBAH.bodb02.bodbAdminNet" />
-        <Setting Key="DB05_SystemSettings_Update" SpName="SystemSettings_Update" DbName="DB05.DBBAH.bodb02.bodbAdminNet" />
-        <Setting Key="DB05BK1_SystemSettings_Select" SpName="SystemSettings_Select" DbName="DB05BK1.DBBAH.bodb02.bodbAdminNet" />
-        <Setting Key="DB05BK1_SystemSettings_Update" SpName="SystemSettings_Update" DbName="DB05BK1.DBBAH.bodb02.bodbAdminNet" />
+        <Setting Key="DB05_SystemSettings_Select" SpName="SystemSettings_Select" DbName="DB05.DBBAH.bodb02.wsv_nap" />
+        <Setting Key="DB05_SystemSettings_Update" SpName="SystemSettings_Update" DbName="DB05.DBBAH.bodb02.wsv_nap" />
+        <Setting Key="DB05BK1_SystemSettings_Select" SpName="SystemSettings_Select" DbName="DB05BK1.DBBAH.bodb02.wsv_nap" />
+        <Setting Key="DB05BK1_SystemSettings_Update" SpName="SystemSettings_Update" DbName="DB05BK1.DBBAH.bodb02.wsv_nap" />
     </Function>
     <Function Name="Auto Transfer Job">
-        <Setting Key="DBTXN_Age_ClearBalanceCust_Job_ConfigSel" SpName="Age_ClearBalanceCust_Job_ConfigSel" DbName="DBTXN.bodb02.bodbAdminNet" />
-        <Setting Key="DBTXN_Age_ClearBalanceCust_Job_ConfigUpd" SpName="Age_ClearBalanceCust_Job_ConfigUpd" DbName="DBTXN.bodb02.bodbAdminNet" />
-        <Setting Key="DBSite03_Age_ClearBalanceCust_Job_ConfigSel" SpName="Age_ClearBalanceCust_Job_ConfigSel" DbName="DBSite03.bodb02.bodbAdminNet" />
-        <Setting Key="DBSite03_Age_ClearBalanceCust_Job_ConfigUpd" SpName="Age_ClearBalanceCust_Job_ConfigUpd" DbName="DBSite03.bodb02.bodbAdminNet" />
+        <Setting Key="DBTXN_Age_ClearBalanceCust_Job_ConfigSel" SpName="Age_ClearBalanceCust_Job_ConfigSel" DbName="DBTXN.bodb02.wsv_nap" />
+        <Setting Key="DBTXN_Age_ClearBalanceCust_Job_ConfigUpd" SpName="Age_ClearBalanceCust_Job_ConfigUpd" DbName="DBTXN.bodb02.wsv_nap" />
+        <Setting Key="DBSite03_Age_ClearBalanceCust_Job_ConfigSel" SpName="Age_ClearBalanceCust_Job_ConfigSel" DbName="DBSite03.bodb02.wsv_nap" />
+        <Setting Key="DBSite03_Age_ClearBalanceCust_Job_ConfigUpd" SpName="Age_ClearBalanceCust_Job_ConfigUpd" DbName="DBSite03.bodb02.wsv_nap" />
     </Function>
 </Functions>
