@@ -23,6 +23,14 @@
             }
         }
 
+        public static string OldONEBookUMUri
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["OldONEBookUMUri"];
+            }
+        }
+
         public static AnnouncementConfig AnnouncementConfig { get; internal set; }
 
         public static string AnnouncementConfigFilePath

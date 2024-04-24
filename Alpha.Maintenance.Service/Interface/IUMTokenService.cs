@@ -8,6 +8,6 @@ namespace Alpha.Maintenance.Service.Interface
     {
         Task<IDictionary<string, SiteToken>> GetTokens();
 
-        IDictionary<string, SiteToken> GetOldTokens();
+        Task<IDictionary<string, SiteToken>> GetOldTokens();
     }
 }
