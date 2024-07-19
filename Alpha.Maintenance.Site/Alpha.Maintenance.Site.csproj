@@ -347,7 +347,7 @@
     <Content Include="Assets\styles\pages\auto-transfer-config.min.css">
       <DependentUpon>auto-transfer-config.css</DependentUpon>
     </Content>
-     <Content Include="WebConnectionString.dr.config">
+    <Content Include="WebConnectionString.dr.config">
       <DependentUpon>WebConnectionString.config</DependentUpon>
       <SubType>Designer</SubType>
     </Content>
@@ -710,9 +710,6 @@
     <Content Include="Views\Banner\Index.cshtml" />
     <Content Include="tsconfig.json" />
     <Content Include="Views\Banner\UploadBanner.cshtml" />
-    <Content Include="Web.aws.config">
-      <DependentUpon>Web.local.config</DependentUpon>
-    </Content>
     <Content Include="Views\WinLossMonitor\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\WinLossMonitor\_GlobalSettingTab.cshtml" />
