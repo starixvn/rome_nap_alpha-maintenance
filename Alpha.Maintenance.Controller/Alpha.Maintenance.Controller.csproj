@@ -323,6 +323,7 @@
     <Compile Include="ChatbotController.cs" />
     <Compile Include="HomeController.cs" />
     <Compile Include="IPInformationController.cs" />
+    <Compile Include="LicenseeAdministrationController.cs" />
     <Compile Include="LogController.cs" />
     <Compile Include="Models\AdminTools\CacheKeyPattern.cs" />
     <Compile Include="Models\AdminTools\CouchbaseManagementModel.cs" />
@@ -339,7 +340,9 @@
     <Compile Include="ViewModels\ChatBotDetailViewModel.cs" />
     <Compile Include="ViewModels\ComposeAnnouncementViewModel.cs" />
     <Compile Include="ViewModels\ImageBannerViewModel.cs" />
+    <Compile Include="ViewModels\LicenseeAdministrationViewModel.cs" />
     <Compile Include="ViewModels\ManageAnnouncementsViewModel.cs" />
+    <Compile Include="ViewModels\ReactiveDormantPlayerViewModel.cs" />
     <Compile Include="ViewModels\SetChatbotWebhookViewModel.cs" />
     <Compile Include="ViewModels\SuperLimitDateViewModel.cs" />
     <Compile Include="ViewModels\TokenViewModel.cs" />

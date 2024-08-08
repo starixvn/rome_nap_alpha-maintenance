@@ -14,6 +14,7 @@ namespace Alpha.Maintenance.Site
     using System.Data.SqlClient;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
+    using System.Net;
     using System.Web;
     using System.Web.Http;
     using System.Web.Mvc;
@@ -55,6 +56,9 @@ namespace Alpha.Maintenance.Site
             LogManager
                 .SetDefaultLogCategory(appSettings["Fanex.Logging:DefaultCategory"])
                 .Use(new RabbitMQLogging(appSettings["Fanex.Logging:RabbitMQConnectionStrings"]));
+
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             DbSettingProviderManager.Current.Start();
 
