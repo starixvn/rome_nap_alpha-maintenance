@@ -32,26 +32,5 @@ namespace Alpha.Maintenance.Service.Impl
 
             return tokens;
         }
-
-        public async Task<IDictionary<string, SiteToken>> GetOldTokens()
-        {
-            IDictionary<string, SiteToken> tokens = null;
-
-            using (var client = new HttpClient())
-            {
-                ServicePointManager.Expect100Continue = true;
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                client.BaseAddress = new Uri(AppSettings.OldONEBookUMUri);
-                var response = await client.GetAsync("Token/GetAll");
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var content = await response.Content.ReadAsStringAsync();
-                    tokens = JsonConvert.DeserializeObject<IDictionary<string, SiteToken>>(content);
-                }
-            }
-
-            return tokens;
-        }
     }
 }

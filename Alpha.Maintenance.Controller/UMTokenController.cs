@@ -47,8 +47,7 @@ namespace Alpha.Maintenance.Controller
         {
             var viewModel = new TokenViewModel
             {
-                NewTokens = await umTokenService.GetTokens(),
-                OldTokens = await umTokenService.GetOldTokens()
+                NewTokens = await umTokenService.GetTokens()
             };
             return View(viewModel);
         }

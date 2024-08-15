@@ -14,28 +14,25 @@
             <tr>
                 <th>@ViewResource.Site</th>
                 <th>@ViewResource.ID</th>
-                <th>@ViewResource.OldToken</th>
                 <th>@ViewResource.Token</th>
             </tr>
         </thead>
         <tbody>
-            @if (Model == null || !Model.OldTokens.Keys.Any())
+            @if (Model == null || !Model.NewTokens.Keys.Any())
             {
                 <tr>
-                    <td colspan="2" class="no-data">@AnnouncementResources.NoInformation</td>
+                    <td colspan="3" class="no-data">@AnnouncementResources.NoInformation</td>
                 </tr>
             }
             else
             {
-                foreach (var site in Model.OldTokens.Keys)
+                foreach (var site in Model.NewTokens.Keys)
                 {
-                    var oldToken = Model.OldTokens[site];
-                    var newToken = Model.NewTokens.ContainsKey(site) ? Model.NewTokens[site] : null;
+                    var token = Model.NewTokens[site];
                     <tr>
                         <td>@site</td>
-                        <td>@oldToken.SiteId</td>
-                        <td>@oldToken.Token</td>
-                        <td>@(newToken!=null ? newToken.Token : "")</td>
+                        <td>@token.SiteId</td>
+                        <td>@token.Token</td>
                     </tr>
                 }
             }
