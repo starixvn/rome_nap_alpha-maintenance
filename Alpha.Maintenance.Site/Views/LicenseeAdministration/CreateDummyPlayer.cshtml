@@ -1,0 +1,79 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model LicenseeAdministrationViewModel
+@section head{
+    <style type="text/css" media="screen">
+        .wrapper {
+            position: relative;
+            height: 30vh;
+        }
+
+        .editor {
+            position: absolute !important;
+            top: 0;
+            right: 1.5rem;
+            bottom: 0;
+            left: 1.5rem;
+        }
+
+        .divider {
+            margin-top: 0;
+            margin-bottom: 20px;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+    </style>
+}
+
+@section Headline {
+    <span>Licensee Administration / </span>
+    <span class="active">Create Dummy Player</span>
+
+}
+
+<form id="form" class="filter-form">
+    <div class="row">
+        <div class="col 15 input-field">
+            <input type="text" id="txtAgentId" class="validate" required="" aria-required="true" />
+            <label for="txtAgentId">Agent ID <span class="red-text">*</span></label>
+        </div>
+    </div>
+    <div class="content-group row">
+        <div class="col s6">
+            <div class="txt-bold">Request Body</div>
+        </div>
+        <div class="col s6">
+            <div class="right-align button-block">
+                <input class="waves-effect btn btn-outline" id="btn-beautify" type="button" value="Beautify" />
+            </div>
+        </div>
+        <div class="col s12 wrapper">
+            <div id="body" class="editor"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="" class="col button-block">
+            <a id="submit" class="waves-effect waves-light btn btn-primary"><input type="button" value="Send" /></a>
+        </div>
+    </div>
+    <div class="content-group row">
+        <div class="col s6">
+            <div class="txt-bold">Responses</div>
+        </div>
+        <div class="col s6">
+            <div class="right-align">
+                <div>Status Code: <span id="statusCode"></span></div>
+            </div>
+        </div>
+        <div class="col s12 wrapper">
+            <div id="response" class="editor"></div>
+        </div>
+    </div>
+</form>
+@Html.Hidden("url", Model.Url);
+@Html.Hidden("payload", Model.Payload)
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js"></script>
+    @Scripts.Render("~/Assets/bundles/LicenseeAdministration/create-dummy-player.js")
+}

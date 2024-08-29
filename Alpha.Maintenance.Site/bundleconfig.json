@@ -93,7 +93,28 @@
   {
     "outputFileName": "Assets/bundles/LicenseeAdministration/index.js",
     "inputFiles": [
+      "Assets/scripts/LicenseeAdministrator/base.js",
       "Assets/scripts/LicenseeAdministrator/index.js"
+    ]
+  },
+  {
+    "outputFileName": "Assets/bundles/LicenseeAdministration/reactive.js",
+    "inputFiles": [
+      "Assets/scripts/LicenseeAdministrator/reactive.js"
+    ]
+  },
+  {
+    "outputFileName": "Assets/bundles/LicenseeAdministration/create-currency.js",
+    "inputFiles": [
+      "Assets/scripts/LicenseeAdministrator/base.js",
+      "Assets/scripts/LicenseeAdministrator/create-currency.js"
+    ]
+  },
+  {
+    "outputFileName": "Assets/bundles/LicenseeAdministration/create-dummy-player.js",
+    "inputFiles": [
+      "Assets/scripts/LicenseeAdministrator/base.js",
+      "Assets/scripts/LicenseeAdministrator/create-dummy-player.js"
     ]
   }
 ]
