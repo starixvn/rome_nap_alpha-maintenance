@@ -456,21 +456,9 @@
     <Content Include="Assets\bundles\BalanceRecord\balance-record.min.js">
       <DependentUpon>balance-record.js</DependentUpon>
     </Content>
-    <Content Include="Assets\bundles\LicenseeAdministration\create-currency.js" />
-    <Content Include="Assets\bundles\LicenseeAdministration\create-currency.min.js">
-      <DependentUpon>create-currency.js</DependentUpon>
-    </Content>
-    <Content Include="Assets\bundles\LicenseeAdministration\create-dummy-player.js" />
-    <Content Include="Assets\bundles\LicenseeAdministration\create-dummy-player.min.js">
-      <DependentUpon>create-dummy-player.js</DependentUpon>
-    </Content>
     <Content Include="Assets\bundles\LicenseeAdministration\index.js" />
     <Content Include="Assets\bundles\LicenseeAdministration\index.min.js">
       <DependentUpon>index.js</DependentUpon>
-    </Content>
-    <Content Include="Assets\bundles\LicenseeAdministration\reactive.js" />
-    <Content Include="Assets\bundles\LicenseeAdministration\reactive.min.js">
-      <DependentUpon>reactive.js</DependentUpon>
     </Content>
     <Content Include="Assets\styles\pages\auto-transfer-config.css">
       <DependentUpon>auto-transfer-config.scss</DependentUpon>
@@ -868,11 +856,6 @@
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
     <Content Include="Views\LicenseeAdministration\Index.cshtml" />
-    <Content Include="Views\LicenseeAdministration\CreateLicensee.cshtml" />
-    <Content Include="Views\LicenseeAdministration\Reactive.cshtml" />
-    <Content Include="Views\LicenseeAdministration\CreateShadowAccount.cshtml" />
-    <Content Include="Views\LicenseeAdministration\CreateCurrency.cshtml" />
-    <Content Include="Views\LicenseeAdministration\CreateDummyPlayer.cshtml" />
     <Content Include="Views\RemotingRefDemo\ResourceData.cshtml" />
     <Content Include="Views\RemotingRefDemo\GetTeamName3rd.cshtml" />
     <Content Include="Views\RemotingRefDemo\GetLeagueName3rd.cshtml" />
@@ -890,11 +873,7 @@
     <TypeScriptCompile Include="Assets\scripts\Chatbot\bot-system-setting.ts" />
     <TypeScriptCompile Include="Assets\scripts\Chatbot\index.ts" />
     <TypeScriptCompile Include="Assets\scripts\IPInfo\index.ts" />
-    <TypeScriptCompile Include="Assets\scripts\LicenseeAdministrator\base.ts" />
-    <TypeScriptCompile Include="Assets\scripts\LicenseeAdministrator\create-currency.ts" />
-    <TypeScriptCompile Include="Assets\scripts\LicenseeAdministrator\create-dummy-player.ts" />
     <TypeScriptCompile Include="Assets\scripts\LicenseeAdministrator\index.ts" />
-    <TypeScriptCompile Include="Assets\scripts\LicenseeAdministrator\reactive.ts" />
     <TypeScriptCompile Include="Assets\scripts\WinLossMonitor\winloss-monitor.ts" />
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\jasmine-jquery\index.d.ts" />

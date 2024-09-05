@@ -21,52 +21,57 @@ namespace Alpha.Maintenance.Controller
         public ActionResult Index()
         {
             string payload = "{\"userName\": \"string\",\"userID\": 2147483647,\"password\": \"string\",\"oddsType\": \"string\",\"agentId\": 2147483647,\"affiliateID\": 2147483647,\"country\": \"string\",\"subsidiaryID\": 2147483647,\"isDebug\": true}";
-            return View(new LicenseeAdministrationViewModel() { Url = "LicenseeAdministration/Index", Payload = payload });
+            return View(new LicenseeAdministrationViewModel() { Url = "api/deposit/players", Payload = payload });
         }
 
         [HttpPost]
         [NapAuth(FunctionKey = SiteFunctionKeys.LicenseeAdministration, Policy = Constant.Policy.Host)]
         public async Task<ActionResult> Index(LicenseeAdministrationViewModel viewModel)
         {
-            var response = await SendPostRequest("api/deposit/players", viewModel.Payload);
+            var response = await SendPostRequest(viewModel.Url, viewModel.Payload);
             return Json(new { statusCode = response.Item1, result = response.Item2 }, JsonRequestBehavior.DenyGet);
         }
 
         [HttpGet]
         [NapAuth(FunctionKey = SiteFunctionKeys.LicenseeAdministration, Policy = Constant.Policy.Host)]
-        public ActionResult CreateShadowAccount()
+        public ActionResult GetSamplePageLoad(int apiId)
         {
-            string payload = "{\"realCustID\": 2147483647,\"agentID\": 2147483647,\"isDebug\": true}";
-            return View(new LicenseeAdministrationViewModel() { Url = "LicenseeAdministration/CreateShadowAccount", Payload = payload });
+            LicenseeAdministrationViewModel viewModel = null;
+            switch (apiId)
+            {
+                case 1:
+                    viewModel = new LicenseeAdministrationViewModel() { Url = "api/deposit/players", Payload = CreatePlayerPayload() };
+                    break;
+
+                case 2:
+                    viewModel = new LicenseeAdministrationViewModel() { Url = "api/deposit/shadowaccounts", Payload = CreateShadowAccountPayload() };
+                    break;
+
+                case 3:
+                    viewModel = new LicenseeAdministrationViewModel { Url = "api/site-builder/licensees", Payload = CreateLicenseePayload() };
+                    break;
+
+                case 4:
+                    viewModel = new LicenseeAdministrationViewModel { Url = "api/site-builder/currencies", Payload = CreateCurrencyPayload() };
+                    break;
+
+                case 5:
+                    viewModel = new LicenseeAdministrationViewModel { Url = "api/site-builder/dummy-members", Payload = "{\"agentId\": 0,\"creator\": 0,\"ip\": \"127.0.1\"}" };
+                    break;
+            }
+
+            return Json(viewModel, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
-        [NapAuth(FunctionKey = SiteFunctionKeys.LicenseeAdministration, Policy = Constant.Policy.Host)]
-        public async Task<ActionResult> CreateShadowAccount(LicenseeAdministrationViewModel viewModel)
+        private string CreatePlayerPayload()
+            => "{\"userName\": \"string\",\"userID\": 2147483647,\"password\": \"string\",\"oddsType\": \"string\",\"agentId\": 2147483647,\"affiliateID\": 2147483647,\"country\": \"string\",\"subsidiaryID\": 2147483647,\"isDebug\": true}";
+
+        private string CreateShadowAccountPayload()
         {
-            var response = await SendPostRequest("api/deposit/shadowaccounts", viewModel.Payload);
-            return Json(new { statusCode = response.Item1, result = response.Item2 }, JsonRequestBehavior.DenyGet);
+            return "{\"realCustID\": 2147483647,\"agentID\": 2147483647,\"isDebug\": true}";
         }
 
-        [HttpGet]
-        [NapAuth(FunctionKey = SiteFunctionKeys.LicenseeAdministration, Policy = Constant.Policy.Host)]
-        public ActionResult CreateDummyPlayer()
-        {
-            string payload = "{\"agentId\": 0,\"creator\": 0,\"ip\": \"127.0.1\"}";
-            return View(new LicenseeAdministrationViewModel() { Url = "LicenseeAdministration/CreateDummyPlayer", Payload = payload });
-        }
-
-        [HttpPost]
-        [NapAuth(FunctionKey = SiteFunctionKeys.LicenseeAdministration, Policy = Constant.Policy.Host)]
-        public async Task<ActionResult> CreateDummyPlayer(LicenseeAdministrationViewModel viewModel)
-        {
-            var response = await SendPostRequest($"api/site-builder/dummy-members", viewModel.Payload);
-            return Json(new { statusCode = response.Item1, result = response.Item2 }, JsonRequestBehavior.DenyGet);
-        }
-
-        [HttpGet]
-        [NapAuth(FunctionKey = SiteFunctionKeys.LicenseeAdministration, Policy = Constant.Policy.Host)]
-        public ActionResult CreateLicensee()
+        private string CreateLicenseePayload()
         {
             string payload = "{";
             payload += "\"ProductBetSetting:\": [{\"ProductID\":0,\"Sporttype\":0,\"Bettype\":0,\"Currency\":0,\"MinBet\":0,\"MaxBet\":0,\"MPM\":0,\"MPB\":0,\"MPPM\":0}],";
@@ -74,20 +79,11 @@ namespace Alpha.Maintenance.Controller
             payload += "\"ProductComm\": [{ \"ProductID\": 0,\"Comm\": 0}],";
             payload += "\"Creator\":\"string\",\"ip\":\"string\",\"isCreateSub\":true,\"licenseeType\":\"string\",\"siteName\":\"string\",\"isChinaView\":true,\"siteDBGroupId\":0,\"specialPlatform\":0";
             payload += "}";
-            return View(new LicenseeAdministrationViewModel { Url = "LicenseeAdministration/CreateLicensee", Payload = payload });
+
+            return payload;
         }
 
-        [HttpPost]
-        [NapAuth(FunctionKey = SiteFunctionKeys.LicenseeAdministration, Policy = Constant.Policy.Host)]
-        public async Task<ActionResult> CreateLicensee(LicenseeAdministrationViewModel viewModel)
-        {
-            var response = await SendPostRequest("api/site-builder/licensees", viewModel.Payload);
-            return Json(new { statusCode = response.Item1, result = response.Item2 }, JsonRequestBehavior.DenyGet);
-        }
-
-        [HttpGet]
-        [NapAuth(FunctionKey = SiteFunctionKeys.LicenseeAdministration, Policy = Constant.Policy.Host)]
-        public ActionResult CreateCurrency()
+        private string CreateCurrencyPayload()
         {
             string payload = "{";
             payload += "\"SiteName:\": \"string\",";
@@ -96,15 +92,7 @@ namespace Alpha.Maintenance.Controller
             payload += "\"ProductComm\": [{ \"ProductID\": 0,\"Comm\": 0}],";
             payload += "\"Creator\":\"string\",\"ip\":\"string\",\"isCreateSub\":true,\"licenseeType\":\"string\",\"siteName\":\"string\"";
             payload += "}";
-            return View(new LicenseeAdministrationViewModel { Url = "LicenseeAdministration/CreateCurrency", Payload = payload });
-        }
-
-        [HttpPost]
-        [NapAuth(FunctionKey = SiteFunctionKeys.LicenseeAdministration, Policy = Constant.Policy.Host)]
-        public async Task<ActionResult> CreateCurrency(LicenseeAdministrationViewModel viewModel)
-        {
-            var response = await SendPostRequest($"api/site-builder/currencies", viewModel.Payload);
-            return Json(new { statusCode = response.Item1, result = response.Item2 }, JsonRequestBehavior.DenyGet);
+            return payload;
         }
 
         private async Task<(HttpStatusCode, string)> SendPostRequest(string url, string payload)
@@ -122,10 +110,6 @@ namespace Alpha.Maintenance.Controller
                 }
             }
         }
-
-        [HttpGet]
-        [NapAuth(FunctionKey = SiteFunctionKeys.LicenseeAdministration, Policy = Constant.Policy.Host)]
-        public ActionResult Reactive() => View();
 
         [HttpPost]
         [NapAuth(FunctionKey = SiteFunctionKeys.LicenseeAdministration, Policy = Constant.Policy.Host)]
