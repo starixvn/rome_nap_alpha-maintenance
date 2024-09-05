@@ -52,15 +52,15 @@ namespace Alpha.Maintenance.Controller
         [NapAuth(FunctionKey = SiteFunctionKeys.LicenseeAdministration, Policy = Constant.Policy.Host)]
         public ActionResult CreateDummyPlayer()
         {
-            string payload = "{\"creator\": 0,\"ip\": \"127.0.1\"}";
+            string payload = "{\"agentId\": 0,\"creator\": 0,\"ip\": \"127.0.1\"}";
             return View(new LicenseeAdministrationViewModel() { Url = "LicenseeAdministration/CreateDummyPlayer", Payload = payload });
         }
 
         [HttpPost]
         [NapAuth(FunctionKey = SiteFunctionKeys.LicenseeAdministration, Policy = Constant.Policy.Host)]
-        public async Task<ActionResult> CreateDummyPlayer(CreateDummyPlayerViewModel viewModel)
+        public async Task<ActionResult> CreateDummyPlayer(LicenseeAdministrationViewModel viewModel)
         {
-            var response = await SendPostRequest($"api/accounts/{viewModel.AgentId}/dummy-members", viewModel.Payload);
+            var response = await SendPostRequest($"api/site-builder/dummy-members", viewModel.Payload);
             return Json(new { statusCode = response.Item1, result = response.Item2 }, JsonRequestBehavior.DenyGet);
         }
 
@@ -81,7 +81,7 @@ namespace Alpha.Maintenance.Controller
         [NapAuth(FunctionKey = SiteFunctionKeys.LicenseeAdministration, Policy = Constant.Policy.Host)]
         public async Task<ActionResult> CreateLicensee(LicenseeAdministrationViewModel viewModel)
         {
-            var response = await SendPostRequest("api/licensees", viewModel.Payload);
+            var response = await SendPostRequest("api/site-builder/licensees", viewModel.Payload);
             return Json(new { statusCode = response.Item1, result = response.Item2 }, JsonRequestBehavior.DenyGet);
         }
 
@@ -90,6 +90,7 @@ namespace Alpha.Maintenance.Controller
         public ActionResult CreateCurrency()
         {
             string payload = "{";
+            payload += "\"SiteName:\": \"string\",";
             payload += "\"ProductBetSetting:\": [{\"ProductID\":0,\"Sporttype\":0,\"Bettype\":0,\"Currency\":0,\"MinBet\":0,\"MaxBet\":0,\"MPM\":0,\"MPB\":0,\"MPPM\":0}],";
             payload += "\"ProductStakeLevel\": [{ \"Currency\": 0,\"GameTypeID\": 0,\"MinStake\": 0,\"MaxStake\": 0}],";
             payload += "\"ProductComm\": [{ \"ProductID\": 0,\"Comm\": 0}],";
@@ -100,9 +101,9 @@ namespace Alpha.Maintenance.Controller
 
         [HttpPost]
         [NapAuth(FunctionKey = SiteFunctionKeys.LicenseeAdministration, Policy = Constant.Policy.Host)]
-        public async Task<ActionResult> CreateCurrency(CreateCurrencyViewModel viewModel)
+        public async Task<ActionResult> CreateCurrency(LicenseeAdministrationViewModel viewModel)
         {
-            var response = await SendPostRequest($"api/licensees/{viewModel.SiteName}/currencies", viewModel.Payload);
+            var response = await SendPostRequest($"api/site-builder/currencies", viewModel.Payload);
             return Json(new { statusCode = response.Item1, result = response.Item2 }, JsonRequestBehavior.DenyGet);
         }
 
