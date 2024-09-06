@@ -13,6 +13,7 @@ namespace Alpha.Maintenance.Site
     using System.Configuration;
     using System.Data.SqlClient;
     using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
     using System.Web;
     using System.Web.Http;
     using System.Web.Mvc;
@@ -23,6 +24,7 @@ namespace Alpha.Maintenance.Site
     using Fanex.Data.Configuration;
     using Fanex.Logging;
     using Fanex.Logging.RabbitMQ;
+    using Fanex.RemotingRef;
     using ONEbook.UM;
     using ONEbook.UM.AspNetMVC.Filters;
     using ONEbook.UM.Configurations;
@@ -30,6 +32,8 @@ namespace Alpha.Maintenance.Site
     using ONEbook.UM.NETFramework;
     using ONEbook.UM.Services;
     using ONEbook.UM.Transport;
+    using RefClient.Factory;
+    using RefDataModelStandard.Models;
 
     /// <summary>
     /// Note: For instructions on enabling IIS6 or IIS7 classic mode, visit http://go.microsoft.com/?LinkId=9394801 .
@@ -60,6 +64,24 @@ namespace Alpha.Maintenance.Site
                 .UseCacheService(new UMCacheService(new CacheService()))
                 .UseRestClient(new UMRestClient(umConfig))
                 .UseHttpContext(new HttpContextHelper());
+
+            RefDataTypeContainer
+                .ConnectTo(new Uri(appSettings["RemoteRefURL"]))
+                .FromApplication("M7 site");
+
+            RefClientFactory.InitializeConfig(new ClientConfigModel
+            {
+                RefDataWebApiUrl = new RefDataWebApiUrl
+                {
+                    Url = appSettings["TW.RemotingRef.API"]
+                },
+                RefDataLocalRedisConfiguration = new RedisConfiguration
+                {
+                    Host = appSettings["TW.RemotingRef.Redis"].Split(',').ToList(),
+                    DatabaseId = int.Parse(appSettings["TW.RemotingRef.DatabaseId"]),
+                }
+            });
+
             GlobalFilters.Filters.Add(new CheckUMFilterAttribute(
                 new MaintenanceService(UMClientManager.RestClient, UMClientManager.CacheService, UMClientManager.UMClientConfigs, UMClientManager.HttpContext), null));
         }
