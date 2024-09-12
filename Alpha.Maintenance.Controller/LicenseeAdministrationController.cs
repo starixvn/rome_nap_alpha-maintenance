@@ -56,7 +56,7 @@ namespace Alpha.Maintenance.Controller
                     break;
 
                 case 5:
-                    viewModel = new LicenseeAdministrationViewModel { Url = "api/site-builder/dummy-members", Payload = "{\"agentId\": 0,\"creator\": 0,\"ip\": \"127.0.1\"}" };
+                    viewModel = new LicenseeAdministrationViewModel { Url = "api/site-builder/dummy-players", Payload = "{\"agentId\": 0,\"creator\": 0,\"ip\": \"127.0.1\"}" };
                     break;
             }
 

@@ -99,7 +99,7 @@ class LicenseeAdministration {
             success: (result, textStatus, xhr) => {
                 result.result && this.$response.setValue(JSON.stringify(JSON.parse(result.result), null, 4));
                 this.$response.focus();
-                this.$("#statusCode").html(`${xhr.status}`);
+                this.$("#statusCode").html(`${result.statusCode}`);
             },
             error: (xhr, status, err) => {
                 this.$NAP.handleAjaxError(xhr, status, err);
