@@ -1,47 +1,44 @@
-﻿@using Alpha.Maintenance.Controller;
-
-@{
+﻿@{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;// "~/Views/Shared/_Layout.cshtml";
 }
 @{
     ViewBag.Title = "Ref Resource Data";
 }
-@model RemotingRefViewModel;
-
+@model RemotingRefViewModel
 @section HeadLine
 {
     <h4 class="title">@ViewBag.Title</h4>
 }
 
-    <div class="row">
+<div class="row">
 
-        @using (Html.BeginForm("GetTeamName", "RemotingRefDemo", FormMethod.Post))
-        {
-            <section id="filter-bar">
-                <div class="filter-form">
-                    <div class="filter-row">
-                        <div class="form-group">
-                            <div class="lbl-field width-50">
-                                @Html.Label("Team Id")
-                            </div>
-                            <div class="edit-field width-120">
-                                @Html.TextBox("teamId")
-                            </div>
-                            <div class="lbl-field width-60">
-                                @Html.Label("Language Code")
-                            </div>
-                            <div class="edit-field width-120">
-                                @Html.TextBox("LanguageCode", "en-US")
-                            </div>
-                            <div class="lbl-field width-60 submit">
-                                <input id="submit" type="submit" name="resourceId" value="Submit" />
-                            </div>
+    @using (Html.BeginForm("GetTeamName", "RemotingRefDemo", FormMethod.Post))
+    {
+        <section id="filter-bar">
+            <div class="filter-form">
+                <div class="filter-row">
+                    <div class="form-group">
+                        <div class="lbl-field width-50">
+                            @Html.Label("Team Id")
+                        </div>
+                        <div class="edit-field width-120">
+                            @Html.TextBox("teamId")
+                        </div>
+                        <div class="lbl-field width-60">
+                            @Html.Label("Language Code")
+                        </div>
+                        <div class="edit-field width-120">
+                            @Html.TextBox("LanguageCode", "en-US")
+                        </div>
+                        <div class="lbl-field width-60 submit">
+                            <input id="submit" type="submit" name="resourceId" value="Submit" />
                         </div>
                     </div>
-            </section>
-        }
+                </div>
+        </section>
+    }
 
-        <div class="col"><h4>VN side: @JsonConvert.SerializeObject(Model.vnSide)</h4></div>
-        <div class="col"><h4>TW side: @JsonConvert.SerializeObject(Model.twSide)</h4></div>
-    </div>
+    <div class="col"><h4>VN side: @JsonConvert.SerializeObject(Model.vnSide)</h4></div>
+    <div class="col"><h4>TW side: @JsonConvert.SerializeObject(Model.twSide)</h4></div>
+</div>

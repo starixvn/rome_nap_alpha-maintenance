@@ -74,6 +74,9 @@
     <Reference Include="BundleTransformer.Core">
       <HintPath>..\packages\BundleTransformer.Core.1.7.27\lib\net40\BundleTransformer.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Castle.DynamicProxy.CacheInterceptor, Version=1.1.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TW.Castle.DynamicProxy.CacheInterceptor.1.1.5\lib\netstandard2.0\Castle.DynamicProxy.CacheInterceptor.dll</HintPath>
+    </Reference>
     <Reference Include="Common.Logging">
       <HintPath>..\_Dependencies\MailStation\Common.Logging.dll</HintPath>
     </Reference>
@@ -130,8 +133,8 @@
       <HintPath>..\packages\Fanex.File.1.0.0\lib\net40\IBCFile.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="LanguageEnum, Version=1.4.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TW.LanguageEnum.1.4.7\lib\netstandard2.0\LanguageEnum.dll</HintPath>
+    <Reference Include="LanguageEnum, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TW.LanguageEnum.1.6.0\lib\netstandard2.0\LanguageEnum.dll</HintPath>
     </Reference>
     <Reference Include="LazyCache, Version=2.4.0.174, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\LazyCache.2.4.0\lib\netstandard2.0\LazyCache.dll</HintPath>
@@ -253,11 +256,11 @@
     <Reference Include="RabbitMQ.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
       <HintPath>..\packages\RabbitMQ.Client.5.1.2\lib\net451\RabbitMQ.Client.dll</HintPath>
     </Reference>
-    <Reference Include="RefClient, Version=4.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TW.RefClient.4.10.0\lib\netstandard2.0\RefClient.dll</HintPath>
+    <Reference Include="RefClient, Version=4.16.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TW.RefClient.4.16.1\lib\netstandard2.0\RefClient.dll</HintPath>
     </Reference>
-    <Reference Include="RefData.Common, Version=4.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TW.RefClient.4.10.0\lib\netstandard2.0\RefData.Common.dll</HintPath>
+    <Reference Include="RefData.Common, Version=4.16.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TW.RefClient.4.16.1\lib\netstandard2.0\RefData.Common.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.105.2.3\lib\net4\RestSharp.dll</HintPath>
