@@ -95,7 +95,7 @@ namespace Alpha.Maintenance.Controller
             }).ConfigureAwait(false).GetAwaiter().GetResult();
             var name = remotingRefService.GetTeamName(teamId, languageCode);
 
-            return View("GetTeamName", new RemotingRefViewModel("rong", twName));
+            return View("GetTeamName", new RemotingRefViewModel(name, twName));
         }
 
         [HttpGet]
