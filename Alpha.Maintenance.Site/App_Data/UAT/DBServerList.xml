@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Servers>
   <Server>
-    <Ip>10.40.40.108</Ip>
+    <Ip>10.40.40.242</Ip>
     <Name>DBGRP01L</Name>
   </Server>
   <Server>
-    <Ip>10.40.40.143</Ip>
+    <Ip>10.40.40.243</Ip>
     <Name>DBGRP02L</Name>
   </Server>
   <Server>
-    <Ip>10.40.40.140</Ip>
+    <Ip>10.40.40.244</Ip>
     <Name>DBGRP03L</Name>
   </Server>
   <Server>
