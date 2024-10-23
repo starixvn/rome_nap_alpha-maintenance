@@ -64,4 +64,6 @@ public static class SiteFunctionKeys
     public const string UMToken = "UMToken";
 
     public const string AdminTools = "AdminTools";
+
+    public const string LicenseeAdministration = "LicenseeAdministration";
 }

@@ -15,6 +15,10 @@
             LoadAnnouncementConfig();
         }
 
+        public static string LicenseeAPIUrl => ConfigurationManager.AppSettings["LicenseeAPI:Url"];
+
+        public static string LicenseeAPISecretKey => ConfigurationManager.AppSettings["LicenseeAPI:SecretKey"];
+
         public static string ONEBookUMUri
         {
             get

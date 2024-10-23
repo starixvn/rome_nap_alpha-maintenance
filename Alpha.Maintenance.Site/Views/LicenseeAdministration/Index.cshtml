@@ -1,0 +1,113 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model LicenseeAdministrationViewModel
+@section head{
+    <style type="text/css" media="screen">
+        .wrapper {
+            position: relative;
+            height: 30vh;
+        }
+
+        .editor {
+            position: absolute !important;
+            top: 0;
+            right: 1.5rem;
+            bottom: 0;
+            left: 1.5rem;
+        }
+
+        .divider {
+            margin-top: 0;
+            margin-bottom: 20px;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+    </style>
+}
+
+@section Headline {
+    <span class="active">Licensee Administration</span>
+}
+
+<form id="form" class="filter-form">
+    <div class="row">
+        <div class="col s10 l4">
+            <ul class="tabs">
+                <li class="tab"><a id="tab-createnew" href="#createnew">Create New</a></li>
+                <li class="tab"><a id="tab-reactive" href="#reactive">Reactive Dormant Player</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="card-panel lighten-4 text-darken-4 hiden"></div>
+    <div id="createnew">
+        <div class="row">
+            <div class="input-field col sl2 m3 s6">
+                <select name="api" id="api">
+                    <option value="1">Create new licensee player</option>
+                    <option value="2">Create new shadow account</option>
+                    <option value="3">Create new licensee</option>
+                    <option value="4">Create new currency</option>
+                    <option value="5">Create dummy account for spread Adjustment</option>
+                </select>
+                <label class="active">API</label>
+            </div>
+            <div id="" class="col button-block">
+                <a id="submit" class="waves-effect waves-light btn btn-primary"><input type="button" value="Send" /></a>
+            </div>
+        </div>
+        <div class="content-group row">
+            <div class="col s6">
+                <div class="txt-bold">Request Body</div>
+            </div>
+            <div class="col s6">
+                <div class="right-align button-block">
+                    <input class="waves-effect btn btn-outline" id="btn-beautify" type="button" value="Beautify" />
+                </div>
+            </div>
+            <div class="col s12 wrapper">
+                <div id="body" class="editor"></div>
+            </div>
+        </div>
+    </div>
+    <div id="reactive">
+        <div class="row">
+            <div class="input-field col l2 m3 s6">
+                <input type="text" id="txtCustId" class="validate" required="" aria-required="true" value="" />
+                <label class="active">Cust Id</label>
+            </div>
+            <div class="input-field col l2 m3 s6">
+                <input type="text" id="txtSubsidiaryID" class="validate" required="" aria-required="true" value="" />
+                <label class="active">Subsidiary ID</label>
+            </div>
+            <div class="col l2  m3 s6 toggle-switch">
+                <input class="sw" type="checkbox" id="ChkBalance" checked />
+                <label class="input-field" for="ChkActive"><span>Re-Init Old Balance</span></label>
+            </div>
+            <div class="input-field col l2 m3 s6">
+                <input class="waves-effect waves-light btn btn-primary" type="button" value="Reactive" id="btnReactive" />
+            </div>
+        </div>
+    </div>
+    <div class="content-group row">
+        <div class="col s6">
+            <div class="txt-bold">Responses</div>
+        </div>
+        <div class="col s6">
+            <div class="right-align">
+                <div>Status Code: <span id="statusCode"></span></div>
+            </div>
+        </div>
+        <div class="col s12 wrapper">
+            <div id="response" class="editor"></div>
+        </div>
+    </div>
+</form>
+@Html.Hidden("url", Model.Url)
+@Html.Hidden("payload", Model.Payload)
+
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js"></script>
+    @Scripts.Render("~/Assets/bundles/LicenseeAdministration/index.js")
+}
