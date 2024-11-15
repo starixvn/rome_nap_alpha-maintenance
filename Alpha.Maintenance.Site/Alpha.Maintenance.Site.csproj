@@ -74,9 +74,6 @@
     <Reference Include="BundleTransformer.Core">
       <HintPath>..\packages\BundleTransformer.Core.1.7.27\lib\net40\BundleTransformer.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Castle.DynamicProxy.CacheInterceptor, Version=1.1.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TW.Castle.DynamicProxy.CacheInterceptor.1.1.5\lib\netstandard2.0\Castle.DynamicProxy.CacheInterceptor.dll</HintPath>
-    </Reference>
     <Reference Include="Common.Logging">
       <HintPath>..\_Dependencies\MailStation\Common.Logging.dll</HintPath>
     </Reference>
@@ -256,11 +253,11 @@
     <Reference Include="RabbitMQ.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
       <HintPath>..\packages\RabbitMQ.Client.5.1.2\lib\net451\RabbitMQ.Client.dll</HintPath>
     </Reference>
-    <Reference Include="RefClient, Version=4.16.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TW.RefClient.4.16.1\lib\netstandard2.0\RefClient.dll</HintPath>
+    <Reference Include="RefClient, Version=4.17.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tw.RefClient.4.17.0\lib\netstandard2.0\RefClient.dll</HintPath>
     </Reference>
-    <Reference Include="RefData.Common, Version=4.16.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TW.RefClient.4.16.1\lib\netstandard2.0\RefData.Common.dll</HintPath>
+    <Reference Include="RefData.Common, Version=4.17.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tw.RefClient.4.17.0\lib\netstandard2.0\RefData.Common.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.105.2.3\lib\net4\RestSharp.dll</HintPath>

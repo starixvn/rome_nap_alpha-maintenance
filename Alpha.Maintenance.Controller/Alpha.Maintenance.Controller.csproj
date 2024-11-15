@@ -37,9 +37,6 @@
     <Reference Include="Alpha.Announcements, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Alpha.Announcements.1.0.0.4\lib\net40\Alpha.Announcements.dll</HintPath>
     </Reference>
-    <Reference Include="Castle.DynamicProxy.CacheInterceptor, Version=1.1.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TW.Castle.DynamicProxy.CacheInterceptor.1.1.5\lib\netstandard2.0\Castle.DynamicProxy.CacheInterceptor.dll</HintPath>
-    </Reference>
     <Reference Include="Fanex.Caching, Version=2.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.Caching.2.2.1\lib\net461\Fanex.Caching.dll</HintPath>
     </Reference>
@@ -171,11 +168,11 @@
     <Reference Include="Pipelines.Sockets.Unofficial, Version=1.0.0.0, Culture=neutral, PublicKeyToken=42ea0a778e13fbe2, processorArchitecture=MSIL">
       <HintPath>..\packages\Pipelines.Sockets.Unofficial.2.2.0\lib\net461\Pipelines.Sockets.Unofficial.dll</HintPath>
     </Reference>
-    <Reference Include="RefClient, Version=4.16.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TW.RefClient.4.16.1\lib\netstandard2.0\RefClient.dll</HintPath>
+    <Reference Include="RefClient, Version=4.17.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tw.RefClient.4.17.0\lib\netstandard2.0\RefClient.dll</HintPath>
     </Reference>
-    <Reference Include="RefData.Common, Version=4.16.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TW.RefClient.4.16.1\lib\netstandard2.0\RefData.Common.dll</HintPath>
+    <Reference Include="RefData.Common, Version=4.17.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\tw.RefClient.4.17.0\lib\netstandard2.0\RefData.Common.dll</HintPath>
     </Reference>
     <Reference Include="StackExchange.Redis, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c219ff1ca8c2ce46, processorArchitecture=MSIL">
       <HintPath>..\packages\StackExchange.Redis.2.2.4\lib\net461\StackExchange.Redis.dll</HintPath>
