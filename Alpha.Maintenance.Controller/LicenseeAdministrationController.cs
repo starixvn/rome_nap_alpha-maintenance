@@ -77,7 +77,7 @@ namespace Alpha.Maintenance.Controller
             payload += "\"ProductBetSetting:\": [{\"ProductID\":0,\"Sporttype\":0,\"Bettype\":0,\"Currency\":0,\"MinBet\":0,\"MaxBet\":0,\"MPM\":0,\"MPB\":0,\"MPPM\":0}],";
             payload += "\"ProductStakeLevel\": [{ \"Currency\": 0,\"GameTypeID\": 0,\"MinStake\": 0,\"MaxStake\": 0}],";
             payload += "\"ProductComm\": [{ \"ProductID\": 0,\"Comm\": 0}],";
-            payload += "\"Creator\":\"string\",\"ip\":\"string\",\"isCreateSub\":true,\"licenseeType\":\"string\",\"siteName\":\"string\",\"isChinaView\":true,\"siteDBGroupId\":0,\"specialPlatform\":0";
+            payload += "\"Creator\":\"string\",\"ip\":\"string\",\"isCreateSub\":true,\"licenseeType\":\"string\",\"siteName\":\"string\",\"isChinaView\":true,\"siteDBGroupId\":0,\"specialPlatform\":0,\"siteType\":0";
             payload += "}";
 
             return payload;
