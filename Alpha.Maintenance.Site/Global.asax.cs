@@ -71,23 +71,27 @@ namespace Alpha.Maintenance.Site
 
             RefDataTypeContainer
                 .ConnectTo(new Uri(appSettings["RemoteRefURL"]))
-                .FromApplication("M7 site");
-
-            RefClientFactory.InitializeConfig(new ClientConfigModel
-            {
-                RefDataWebApiUrl = new RefDataWebApiUrl
-                {
-                    Url = appSettings["TW.RemotingRef.API"]
-                },
-                RefDataLocalRedisConfiguration = new RedisConfiguration
-                {
-                    Host = appSettings["TW.RemotingRef.Redis"].Split(',').ToList(),
-                    DatabaseId = int.Parse(appSettings["TW.RemotingRef.DatabaseId"]),
-                }
-            });
+                .FromApplication("M7 site");           
 
             GlobalFilters.Filters.Add(new CheckUMFilterAttribute(
                 new MaintenanceService(UMClientManager.RestClient, UMClientManager.CacheService, UMClientManager.UMClientConfigs, UMClientManager.HttpContext), null));
+
+            try
+            {
+                RefClientFactory.InitializeConfig(new ClientConfigModel
+                {
+                    RefDataWebApiUrl = new RefDataWebApiUrl
+                    {
+                        Url = appSettings["TW.RemotingRef.API"]
+                    },
+                    RefDataLocalRedisConfiguration = new RedisConfiguration
+                    {
+                        Host = appSettings["TW.RemotingRef.Redis"].Split(',').ToList(),
+                        DatabaseId = int.Parse(appSettings["TW.RemotingRef.DatabaseId"]),
+                    }
+                });
+            }
+            catch { }
         }
 
         /// <summary>
