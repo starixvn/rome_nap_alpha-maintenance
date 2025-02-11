@@ -20,6 +20,7 @@ namespace Alpha.Maintenance.Controller
 
         private readonly IRemotingRefService remotingRefService;
         private readonly IBetRefClientService twRemotingRefService = RefClientFactory.GetBetRefClientService();
+        private readonly IRefDataClient _refDataClient = RefClientFactory.GetRefDataClient();
         private readonly IRefDataClient _twRefDataClient = RefClientFactory.GetRefDataClient();
 
         public RemotingRefDemoController() : this(null)
@@ -33,24 +34,48 @@ namespace Alpha.Maintenance.Controller
 
         [HttpGet]
         public ActionResult ResourceData()
-            => View();
+            => View(new RemotingRefViewModel());
 
         [HttpPost]
         public ActionResult ResourceData(string refId, string resourceId, string languageCode = "en-US")
         {
+            var name = remotingRefService.GetResourceDataByRefIdAndResourceId(refId, resourceId, languageCode, string.Empty);
+            var twName = string.Empty;
+            var data = _refDataClient.GetResourceDictionary(new GetResourceDictionaryModel { RefId = refId })
+            .ConfigureAwait(false)
+            .GetAwaiter()
+            .GetResult();
+            if (data != null && data.ContainsKey(resourceId))
+            {
+                twName = data[resourceId].ResourceEn;
+            }
 
-            return View("ResourceData", (object)remotingRefService.GetResourceDataByRefIdAndResourceId(refId, resourceId, languageCode, string.Empty));
+            return View("ResourceData", new RemotingRefViewModel(name, twName));
         }
 
         [HttpGet]
         public ActionResult GetTeamName3rd()
-            => View();
+            => View(new RemotingRefViewModel());
 
         [HttpPost]
         public ActionResult GetTeamName3rd(string team3rdId, string languageCode = "en-US")
         {
+            var name = remotingRefService.GetTeamName3rd(team3rdId, languageCode);
+            var twName = GetTeamName3rd();
 
-            return View("GetTeamName3rd", (object)remotingRefService.GetTeamName3rd(team3rdId, languageCode));
+            return View("GetTeamName3rd", new RemotingRefViewModel(name, twName));
+
+            string GetTeamName3rd()
+       => int.TryParse(team3rdId, out int id) ?
+            _refDataClient.GetThirdPartyTeamName(new GetThirdPartyTeamNameModel
+            {
+                ThirdPartyTeamId = id,
+                Language = languageCode.ConvertCultureToEnum()
+            })
+               .ConfigureAwait(false)
+               .GetAwaiter()
+               .GetResult()
+           : "";
         }
 
         [HttpGet]

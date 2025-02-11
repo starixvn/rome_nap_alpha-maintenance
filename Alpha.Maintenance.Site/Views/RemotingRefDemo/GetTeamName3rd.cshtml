@@ -5,7 +5,7 @@
 @{
     ViewBag.Title = "Ref Resource Data";
 }
-
+@model RemotingRefViewModel
 @section HeadLine
 {
     <h4 class="title">@ViewBag.Title</h4>
@@ -24,7 +24,7 @@
                             </div>
                             <div class="edit-field width-120">
                                 @Html.TextBox("team3rdId")
-                            </div>                            
+                            </div>
                             <div class="lbl-field width-60">
                                 @Html.Label("Language Code")
                             </div>
@@ -39,5 +39,6 @@
             </section>
         }
 
-        <div class="col"><h4>@JsonConvert.SerializeObject(Model)</h4></div>
+        <div class="col"><h4>VN side: @JsonConvert.SerializeObject(Model.vnSide)</h4></div>
+        <div class="col"><h4>TW side: @JsonConvert.SerializeObject(Model.twSide)</h4></div>
     </div>
