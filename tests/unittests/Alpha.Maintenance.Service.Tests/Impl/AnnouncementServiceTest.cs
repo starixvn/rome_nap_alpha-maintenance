@@ -1,171 +1,205 @@
-﻿namespace Alpha.Maintenance.Service.Tests.Impl
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Alpha.Announcements.Models;
+using Alpha.Announcements.Services;
+using Alpha.Announcements.Specs;
+using Alpha.Maintenance.Core;
+using Alpha.Maintenance.Repository.Criteria.Announcements;
+using Alpha.Maintenance.Repository.DTOs;
+using Alpha.Maintenance.Service.Impl.Announcement;
+using Alpha.Maintenance.Service.Interface.Announcement;
+using Fanex.Data.Repository;
+using NSubstitute;
+using NUnit.Framework;
+
+[TestFixture]
+public class AnnouncementServiceImplTests
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using Announcements.Models;
-    using Announcements.Services;
-    using Announcements.Specs;
-    using Constants;
-    using Core;
-    using Fanex.Data.Repository;
-    using Interface.Announcement;
-    using KellermanSoftware.CompareNetObjects;
-    using NSubstitute;
-    using NUnit.Framework;
-    using Repository.Criteria.Announcements;
-    using Repository.Impl;
-    using Service.Impl.Announcement;
+    private AnnouncementServiceImpl _sut;
+    private SpecificationFactory _specificationFactory;
+    private IDynamicRepository _dynamicRepository;
+    private BaseAnnouncementService _baseAnnouncementService;
+    private IEnumerable<string> _languages;
+    private IEnumerable<string> _excludedSpecifications;
+    private bool _getAnnouncementsByJson;
 
-    [TestFixture]
-    public class AnnouncementServiceTest
+    [SetUp]
+    public void Setup()
     {
-        private SpecificationFactory specificationFactory;
-        private AnnouncementRepository announcementRepository;
+        // Initialize mocks
+        _specificationFactory = Substitute.For<SpecificationFactory>();
+        _dynamicRepository = Substitute.For<IDynamicRepository>();
+        _baseAnnouncementService = Substitute.For<BaseAnnouncementService>();
 
-        private AnnouncementServiceImpl announcementServiceImpl;
-        private BaseAnnouncementService baseAnnouncementService;
-        private CompareLogic compareLogic;
+        // Setup test data
+        _languages = new[] { "en-US", "vi-VN" };
+        _excludedSpecifications = new List<string>();
+        _getAnnouncementsByJson = false;
 
-        private Announcement announcementSample;
-        private IEnumerable<string> languages;
-        private bool getAnnouncementsByJson;
+        // Create system under test
+        _sut = new AnnouncementServiceImpl(
+            _specificationFactory,
+            _dynamicRepository,
+            _baseAnnouncementService,
+            _languages,
+            _excludedSpecifications,
+            _getAnnouncementsByJson
+        );
+    }
 
-        [SetUp]
-        public void SetUp()
+    [Test]
+    public void GetOfferedSpecifications_ShouldReturnFilteredSpecs()
+    {
+        // Arrange
+        var factorySpecs = new List<ISpecification<IParam>>();
+        _baseAnnouncementService.GetFactorySpecifications().Returns(factorySpecs);
+
+        // Act
+        var result = _sut.GetOfferedSpecifications();
+
+        // Assert
+        _baseAnnouncementService.Received(1).GetFactorySpecifications();
+        _baseAnnouncementService.Received(1).FiterOfferedSpecs(factorySpecs, _excludedSpecifications);
+    }
+
+    [Test]
+    public void GetAnnouncements_WhenUsingDatabase_ShouldFetchAndMapAnnouncements()
+    {
+        // Arrange
+        var criteria = new SelectAnnouncementsCriteria();
+        var dtoList = new List<AnnouncementDTO> { CreateSampleAnnouncementDTO() };
+        _dynamicRepository.Fetch<AnnouncementDTO>(criteria).Returns(dtoList);
+
+        // Act
+        var result = _sut.GetAnnouncements(criteria).ToList();
+
+        // Assert
+        Assert.That(result, Has.Count.EqualTo(1));
+        _dynamicRepository.Received(1).Fetch<AnnouncementDTO>(criteria);
+        _baseAnnouncementService.Received(1).FiterOfferedSpecs(
+            Arg.Any<IEnumerable<ISpecification<IParam>>>(),
+            _excludedSpecifications
+        );
+    }
+
+    [Test]
+    public void GetAnnouncementById_ShouldReturnMappedAnnouncement()
+    {
+        // Arrange
+        var criteria = new SelectAnnouncementByIdCriteria { Id = 1 };
+        var dto = CreateSampleAnnouncementDTO();
+        _dynamicRepository.Get<AnnouncementDTO>(criteria).Returns(dto);
+
+        // Act
+        var result = _sut.GetAnnouncementById(criteria);
+
+        // Assert
+        Assert.That(result, Is.Not.Null);
+        Assert.That(result.Id, Is.EqualTo(dto.Id));
+        _dynamicRepository.Received(1).Get<AnnouncementDTO>(criteria);
+        _baseAnnouncementService.Received(1).CorrectContent(
+            Arg.Any<IEnumerable<MessageContent>>(),
+            _languages
+        );
+    }
+
+    [Test]
+    public void SaveAnnouncement_ShouldReturnSuccessResult()
+    {
+        // Arrange
+        var criteria = new SaveAnnouncementsCriteria();
+        criteria.ErrCode = 0;
+
+        // Act
+        var result = _sut.SaveAnnouncement(criteria);
+
+        // Assert
+        Assert.That(result.Code, Is.EqualTo(0));
+        Assert.That(result.Message, Is.EqualTo(AnnouncementResources.SaveSuccessfully));
+        _dynamicRepository.Received(1).Execute(criteria);
+    }
+
+    [Test]
+    public void SaveAnnouncement_WhenError_ShouldReturnErrorResult()
+    {
+        // Arrange
+        var criteria = new SaveAnnouncementsCriteria();
+        criteria.ErrCode = 1;
+        criteria.ErrMsg = "Test error";
+
+        // Act
+        var result = _sut.SaveAnnouncement(criteria);
+
+        // Assert
+        Assert.That(result.Code, Is.EqualTo(1));
+        Assert.That(result.Message, Is.EqualTo("Test error"));
+        _dynamicRepository.Received(1).Execute(criteria);
+    }
+
+    [Test]
+    public void GetDefaultAnnouncement_ShouldReturnCorrectDefaultValues()
+    {
+        // Act
+        var result = _sut.GetDefaultAnnouncement();
+
+        // Assert
+        Assert.That(result, Is.Not.Null);
+        Assert.That(result.ReleasedDate, Is.EqualTo(SystemTime.Today));
+        Assert.That(result.ExpiredDate, Is.EqualTo(SystemTime.Today));
+        Assert.That(result.IsActive, Is.False);
+        Assert.That(result.Contents.Count(), Is.EqualTo(_languages.Count()));
+        Assert.That(result.Specifications, Is.Empty);
+    }
+
+    private AnnouncementDTO CreateSampleAnnouncementDTO()
+    {
+        return new AnnouncementDTO
         {
-            specificationFactory = Substitute.For<SpecificationFactory>();
-            announcementRepository = Substitute.For<AnnouncementRepository>();
-            announcementRepository = Substitute.For<AnnouncementRepository>();
-            baseAnnouncementService = Substitute.For<BaseAnnouncementService>();
-            compareLogic = new CompareLogic();
-            SystemTime.Today = DefaultVariables.CurrentDate;
+            Id = 1,
+            Code = "TEST001",
+            Title = "Test Announcement",
+            AnnouncementType = "1",
+            FromDate = DateTime.Today,
+            ToDate = DateTime.Today.AddDays(7),
+            IsActive = true,
+            Contents = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes("[]")),
+            Specifications = "[]",
+            Environments = "Dev,Prod",
+            Systems = "System1,System2",
+            CreatedDate = DateTime.Today,
+            CreatorId = 1,
+            CreatorName = "TestUser"
+        };
+    }
 
-            languages = new List<string> {
-                                            "en-US",
-                                            "vi-VN",
-                                            "th-TH",
-                                            "zh-CN",
-                                            "zh-TW",
-                                            "ko-KR",
-                                            "ja-JP"
-                                        };
+    [Test]
+    public void Constructor_WithDefaultParameters_ShouldCreateInstance()
+    {
+        // Act
+        var service = new AnnouncementServiceImpl();
 
-            getAnnouncementsByJson = false;
+        // Assert
+        Assert.That(service, Is.Not.Null);
+    }
 
-            announcementSample = BuildAnnouncementSample();
+    [Test]
+    public void GetAnnouncements_WithJsonEnabled_ShouldReadFromJsonFile()
+    {
+        // Arrange
+        _getAnnouncementsByJson = true;
+        _sut = new AnnouncementServiceImpl(
+            _specificationFactory,
+            _dynamicRepository,
+            _baseAnnouncementService,
+            _languages,
+            _excludedSpecifications,
+            _getAnnouncementsByJson
+        );
 
-            announcementServiceImpl = new AnnouncementServiceImpl(
-                                                specificationFactory,
-                                                announcementRepository,
-                                                baseAnnouncementService,
-                                                languages,
-                                                new List<string>(),
-                                                getAnnouncementsByJson);
-        }
-
-        [Test]
-        public void GetAnnouncements_CallGetAnnouncementsRepository()
-        {
-            // Arrange
-            var selectAnnouncementsCriteria = new SelectAnnouncementsCriteria();
-
-            // Act
-            announcementServiceImpl.GetAnnouncements(selectAnnouncementsCriteria);
-
-            // Assert
-            announcementRepository.Received().GetAnnouncements(Arg.Any<SelectAnnouncementsCriteria>());
-        }
-
-        [Test]
-        public void GetAnnouncements_CallGetFactorySpecificationsFunction()
-        {
-            // Arrange && Act
-            announcementServiceImpl.GetOfferedSpecifications();
-
-            // Assert
-            baseAnnouncementService.Received().GetFactorySpecifications();
-        }
-
-        [Test]
-        public void GetAnnouncements_CallGetFiterOfferedSpecsFunction()
-        {
-            // Arrange 
-            var factorySpecs = new List<ISpecification<IParam>>();
-            baseAnnouncementService.GetFactorySpecifications().Returns(factorySpecs);
-
-            // Act
-            announcementServiceImpl.GetOfferedSpecifications();
-
-            // Assert
-            baseAnnouncementService.Received().FiterOfferedSpecs(Arg.Any<IEnumerable<ISpecification<IParam>>>(), Arg.Any<List<string>>());
-        }
-
-        [Test]
-        public void GetAnnouncementById_CallGetAnnouncementByIdRepository()
-        {
-            // Arrange
-            var selectAnnouncementByIdCriteria = new SelectAnnouncementByIdCriteria();
-            announcementRepository.GetAnnouncementById(Arg.Any<SelectAnnouncementByIdCriteria>()).Returns(announcementSample);
-
-            // Act
-            announcementServiceImpl.GetAnnouncementById(selectAnnouncementByIdCriteria);
-
-            // Assert
-            announcementRepository.Received().GetAnnouncementById(Arg.Any<SelectAnnouncementByIdCriteria>());
-        }
-
-        [Test]
-        public void GetAnnouncementById_CallCorrectContentFunction()
-        {
-            // Arrange
-            var selectAnnouncementByIdCriteria = new SelectAnnouncementByIdCriteria();
-            announcementRepository.GetAnnouncementById(Arg.Any<SelectAnnouncementByIdCriteria>())
-                                   .Returns(announcementSample);
-
-            // Act
-            announcementServiceImpl.GetAnnouncementById(selectAnnouncementByIdCriteria);
-
-            // Assert
-            baseAnnouncementService.Received().CorrectContent(
-                Arg.Any<IEnumerable<MessageContent>>(),
-                Arg.Any<IEnumerable<string>>());
-        }
-
-        [Test]
-        public void SaveAnnouncement_CallSaveAnnouncementRepository()
-        {
-            // Arrange && Act
-            var criteria = new InsertAnnouncementsCriteria();
-            announcementServiceImpl.SaveAnnouncement(criteria);
-
-            // Assert
-            announcementRepository.Received().SaveAnnouncement(Arg.Any<ICriteria>());
-        }
-
-        [Test]
-        public void GetDefaultAnnouncement_ReturnCorrectAnnoucement()
-        {
-            // Arrange && Act
-            var expectedData = announcementServiceImpl.GetDefaultAnnouncement();
-
-            // Assert
-            var result = compareLogic.Compare(expectedData, announcementSample);
-            Assert.False(result.AreEqual);
-        }
-
-        private Announcement BuildAnnouncementSample()
-            => new Announcement
-            {   
-                ReleasedDate = SystemTime.Today,                
-                Environments = Enumerable.Empty<string>(),
-                Systems = Enumerable.Empty<string>(),
-                Contents = languages.Select(language => new MessageContent
-                {
-                    LanguageKey = language,
-                    Text = string.Empty
-                }),
-                IsActive = false,
-                Specifications = new List<ISpecification<IParam>>()
-            };
+        // Act & Assert
+        Assert.Throws<System.IO.FileNotFoundException>(() =>
+            _sut.GetAnnouncements(new SelectAnnouncementsCriteria())
+        );
     }
 }

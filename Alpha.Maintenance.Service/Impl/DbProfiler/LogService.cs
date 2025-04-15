@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Alpha.Maintenance.Core.Model;
-using Alpha.Maintenance.Repository.Criteria.DBProfiler;
-using Alpha.Maintenance.Repository.Impl.DBProfiler;
+using Fanex.Data.Repository;
 
 namespace Alpha.Maintenance.Service.Impl.DbProfiler
 {
     public class LogService
     {
-        private readonly LogRespository _logRepository;
+        private readonly IDynamicRepository _dynamicRepository;
 
         private int _page;
 
@@ -34,7 +30,7 @@ namespace Alpha.Maintenance.Service.Impl.DbProfiler
 
         public LogService()
         {
-            _logRepository = new LogRespository();
+            _dynamicRepository = new DynamicRepository();
             _page = 0;
             _size = 100;
         }
@@ -60,7 +56,7 @@ namespace Alpha.Maintenance.Service.Impl.DbProfiler
             return this;
         }
 
-        public List<DbProfilerViewModel> GetLogs(ref bool hasError, ref string errorMsg)
+        public IEnumerable<DbProfilerViewModel> GetLogs(ref bool hasError, ref string errorMsg)
         {
             var criteria = new DBProfilerModel
             {
@@ -76,7 +72,7 @@ namespace Alpha.Maintenance.Service.Impl.DbProfiler
                 ErrorMsg = string.Empty
             };
 
-            var list = _logRepository.GetLog(ref criteria);
+            var list = _dynamicRepository.Fetch<DbProfilerViewModel>(criteria, criteria.Server);
 
             hasError = criteria.HasError;
             errorMsg = criteria.ErrorMsg;

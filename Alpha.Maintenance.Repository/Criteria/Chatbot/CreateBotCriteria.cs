@@ -2,43 +2,23 @@
 
 namespace Alpha.Maintenance.Repository.Criteria.Chatbot
 {
-    public class CreateBotCriteria : CriteriaBase
+    public class CreateBotCriteria : NonQueryCommand
     {
-        public CreateBotCriteria(
-            string username,
-            string displayName,
-            string system,
-            string accessToken,
-            bool status,
-            bool isTest,
-            int creator,
-            string ip)
-        {
-            Username = username;
-            DisplayName = displayName;
-            System = system;
-            AccessToken = accessToken;
-            Status = status;
-            IsTest = isTest;
-            Creator = creator;
-            IP = ip;
-        }
+        public string Username { get; set; }
 
-        public string Username { get; }
+        public string DisplayName { get; set; }
 
-        public string DisplayName { get; }
+        public string System { get; set; }
 
-        public string System { get; }
+        public string AccessToken { get; set; }
 
-        public string AccessToken { get; }
+        public bool Status { get; set; }
 
-        public bool Status { get; }
+        public bool IsTest { get; set; }
 
-        public bool IsTest { get; }
+        public int Creator { get; set; }
 
-        public int Creator { get; }
-
-        public string IP { get; }
+        public string IP { get; set; }
 
         public int ErrCode { get; set; }
 

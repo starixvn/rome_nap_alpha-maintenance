@@ -3,6 +3,7 @@
     using System;
     using Fanex.Data.Repository;
     using Alpha.Announcements.Models;
+    using Fanex.Data;
 
     public enum ActionType
     {
@@ -10,7 +11,7 @@
         Update = 2
     }
 
-    public class SaveAnnouncementsCriteria : CriteriaBase
+    public class SaveAnnouncementsCriteria : NonQueryCommand
     {
         [SpParam(SqlParamName = "AnnouncementType")]
         public int Type => IsPopup ? (int)AnnouncementType.EmergencyPopup : (int)AnnouncementType.Normal;
@@ -39,6 +40,11 @@
         public int ErrCode { get; set; }
 
         public string ErrMsg { get; set; }
+
+        public override string GetSettingKey()
+        {
+            throw new NotImplementedException();
+        }
 
         public override bool IsValid() => true;
     }

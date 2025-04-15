@@ -2,29 +2,18 @@
 {
     public class Bot
     {
-        public Bot(int botId, string displayName, string username, string system, string accessToken, bool status, bool isTest)
-        {
-            BotId = botId;
-            DisplayName = displayName;
-            Username = username;
-            System = system;
-            AccessToken = accessToken;
-            Status = status;
-            IsTest = isTest;
-        }
+        public int BotId { get; set; }
 
-        public int BotId { get; }
+        public string DisplayName { get; set; }
 
-        public string DisplayName { get; }
+        public string Username { get; set; }
 
-        public string Username { get; }
+        public string System { get; set; }
 
-        public string System { get; }
+        public string AccessToken { get; set; }
 
-        public string AccessToken { get; }
+        public bool Status { get; set; }
 
-        public bool Status { get; }
-
-        public bool IsTest { get; }
+        public bool IsTest { get; set; }
     }
 }

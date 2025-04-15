@@ -12,5 +12,8 @@ namespace Alpha.Maintenance.Repository.Criteria.Chatbot
         public string ServiceName { get; }
 
         public override string GetSettingKey() => "NAP_Chatbot_BotSystemSettingSel";
+
+        public override bool IsValid()
+            => true;
     }
 }

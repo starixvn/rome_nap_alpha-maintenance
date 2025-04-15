@@ -24,8 +24,13 @@
     </Function>
 
     <Function Name="IPInformation">
-        <Setting Key="Acc_GetIPInfo_Full" SpName="Acc_GetIPInfo_Full" DbName="IPEntities" />
-        <Setting Key="Acc_GetIPInfo_TableMini" SpName="Acc_GetIPInfo_TableMini" DbName="IPEntities" />
+			  <Setting Key="Acc_GetIPInfo_Full" SpName="Acc_GetIPInfo_Full" DbName="DBCust.IPDB.wsv_nap">
+					<Mapping DataField="countrySHORT" ObjectProperty="CountryCode" />
+					<Mapping DataField="countryLONG" ObjectProperty="CountryName" />
+					<Mapping DataField="ipRegion" ObjectProperty="Region" />
+					<Mapping DataField="ipCity" ObjectProperty="City" />
+			  </Setting>
+        <Setting Key="Acc_GetIPInfo_TableMini" SpName="Acc_GetIPInfo_TableMini" DbName="DBCust.IPDB.wsv_nap" />
     </Function>
     <Function Name="DBProfiler">
         <Setting Key="vndba_sp_trace_WebApp" SpName="vndba_sp_trace_WebApp" DbName="DBMON.MonDB.wsv_nap" />
@@ -40,8 +45,16 @@
     <Function Name="Banner Management">
         <Setting Key="Age_Banner_Insert" SpName="Age_Banner_Insert" DbName="DBAGE.bodb_AGE.wsv_nap" />
         <Setting Key="Age_Banner_Update" SpName="Age_Banner_Update" DbName="DBAGE.bodb_AGE.wsv_nap" />
-        <Setting Key="Age_Banner_Select" SpName="Age_Banner_Select" DbName="DBAGE.bodb_AGE.wsv_nap" />
-        <Setting Key="Age_Banner_SelectById" SpName="Age_Banner_SelectById" DbName="DBAGE.bodb_AGE.wsv_nap" />
+        <Setting Key="Age_Banner_Select" SpName="Age_Banner_Select" DbName="DBAGE.bodb_AGE.wsv_nap">
+            <Mapping DataField="bannerid" ObjectProperty="Id" />
+            <Mapping DataField="bannername" ObjectProperty="Title" />
+            <Mapping DataField="systems" ObjectProperty="Sites" />
+        </Setting>
+        <Setting Key="Age_Banner_SelectById" SpName="Age_Banner_SelectById" DbName="DBAGE.bodb_AGE.wsv_nap">
+            <Mapping DataField="bannerid" ObjectProperty="Id" />
+            <Mapping DataField="bannername" ObjectProperty="Title" />
+            <Mapping DataField="systems" ObjectProperty="Sites" />
+        </Setting>
         <!--Setup DB Standby-->
         <Setting Key="Age_Banner_Insert_Standby" SpName="Age_Banner_Insert" DbName="DBAGE_STANDBY.bodb_AGE.wsv_nap" />
         <Setting Key="Age_Banner_Update_Standby" SpName="Age_Banner_Update" DbName="DBAGE_STANDBY.bodb_AGE.wsv_nap" />
@@ -63,10 +76,10 @@
     </Function>
 
     <Function Name="Balance Record Sync Service">
-        <Setting Key="DB05_SystemSettings_Select" SpName="SystemSettings_Select" DbName="DB05.DBBAH.bodb02.wsv_nap" />
-        <Setting Key="DB05_SystemSettings_Update" SpName="SystemSettings_Update" DbName="DB05.DBBAH.bodb02.wsv_nap" />
-        <Setting Key="DB05BK1_SystemSettings_Select" SpName="SystemSettings_Select" DbName="DB05BK1.DBBAH.bodb02.wsv_nap" />
-        <Setting Key="DB05BK1_SystemSettings_Update" SpName="SystemSettings_Update" DbName="DB05BK1.DBBAH.bodb02.wsv_nap" />
+        <Setting Key="DB05_SystemSettings_Select" SpName="SystemSettings_Select" DbName="DB05.bodb02.wsv_nap" />
+        <Setting Key="DB05_SystemSettings_Update" SpName="SystemSettings_Update" DbName="DB05.bodb02.wsv_nap" />
+        <Setting Key="DB05BK1_SystemSettings_Select" SpName="SystemSettings_Select" DbName="DB05BK1.bodb02.wsv_nap" />
+        <Setting Key="DB05BK1_SystemSettings_Update" SpName="SystemSettings_Update" DbName="DB05BK1.bodb02.wsv_nap" />
     </Function>
     <Function Name="Auto Transfer Job">
         <Setting Key="DBTXN_Age_ClearBalanceCust_Job_ConfigSel" SpName="Age_ClearBalanceCust_Job_ConfigSel" DbName="DBTXN.bodb02.wsv_nap" />

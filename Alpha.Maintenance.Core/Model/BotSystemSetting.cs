@@ -2,20 +2,12 @@
 {
     public class BotSystemSetting
     {
-        public BotSystemSetting(int id, string serviceName, string settingName, string value)
-        {
-            Id = id;
-            ServiceName = serviceName;
-            SettingName = settingName;
-            Value = value;
-        }
+        public int Id { get; set; }
 
-        public int Id { get; }
+        public string ServiceName { get; set; }
 
-        public string ServiceName { get; }
+        public string SettingName { get; set; }
 
-        public string SettingName { get; }
-
-        public string Value { get; }
+        public string Value { get; set; }
     }
 }

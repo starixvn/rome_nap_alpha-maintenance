@@ -2,9 +2,10 @@
 {
     using System;
     using Alpha.Maintenance.Core.Constants;
+    using Fanex.Data;
     using Fanex.Data.Repository;
 
-    public class UpdateAutoTransferJobConfigCriteria : CriteriaBase
+    public class UpdateAutoTransferJobConfigCriteria : NonQueryCommand
     {
         public UpdateAutoTransferJobConfigCriteria(
             string site,
@@ -26,19 +27,19 @@
         }
 
         [SpParam(Ignored = true)]
-        public string Site { get; }
+        public string Site { get; set; }
 
-        public string DefaultTime { get; }
+        public string DefaultTime { get; set; }
 
-        public DateTime? ManualTime { get; }
+        public DateTime? ManualTime { get; set; }
 
-        public string RunningMode { get; }
+        public string RunningMode { get; set; }
 
-        public bool IsActive { get; }
+        public bool IsActive { get; set; }
 
-        public string Environment { get; }
+        public string Environment { get; set; }
 
-        public string TestSuperIds { get; }
+        public string TestSuperIds { get; set; }
 
         public int ErrCode { get; set; }
 

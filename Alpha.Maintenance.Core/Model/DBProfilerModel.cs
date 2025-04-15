@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Fanex.Data.Repository;
 
 namespace Alpha.Maintenance.Core.Model
 {
-    public class DBProfilerModel
+    public class DBProfilerModel : CriteriaBase
     {
+        private const string StoredProcedure = "vndba_sp_trace_WebApp";
+
         public string Site { get; set; }
 
         public int TraceTimer { get; set; }
@@ -30,5 +29,10 @@ namespace Alpha.Maintenance.Core.Model
         public int TotalPage { get; set; }
 
         public int Page { get; set; }
+
+        public override string GetSettingKey() => StoredProcedure;
+
+        public override bool IsValid()
+            => true;
     }
 }

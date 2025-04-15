@@ -2,32 +2,16 @@
 {
     public class IPInfo
     {
-        public IPInfo(
-            string dataSource,
-            string countryCode,
-            string countryName,
-            string region,
-            string city, 
-            string url="#")
-        {
-            DataSource = dataSource;
-            CountryCode = countryCode;
-            CountryName = countryName;
-            Region = region;
-            City = city;
-            Url = url;
-        }
+        public string DataSource { get; set; }
 
-        public string DataSource { get; }
+        public string CountryCode { get; set; }
 
-        public string CountryCode { get; }
+        public string CountryName { get; set; }
 
-        public string CountryName { get; }
+        public string Region { get; set; }
 
-        public string Region { get; }
+        public string City { get; set; }
 
-        public string City { get; }
-
-        public string Url { get; }
+        public string Url { get; set; }
     }
 }

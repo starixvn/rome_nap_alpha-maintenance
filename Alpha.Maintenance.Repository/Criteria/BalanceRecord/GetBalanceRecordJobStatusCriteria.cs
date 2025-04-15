@@ -1,8 +1,9 @@
 ﻿namespace Alpha.Maintenance.Repository.Criteria.BalanceRecord
 {
+    using Fanex.Data;
     using Fanex.Data.Repository;
 
-    public class GetBalanceRecordJobStatusCriteria : CriteriaBase
+    public class GetBalanceRecordJobStatusCriteria : NonQueryCommand
     {
         public GetBalanceRecordJobStatusCriteria(
             string jobName,
@@ -15,14 +16,17 @@
             DBAlias = dbAlias;
         }
 
-        public string VName { get; }
+        public string VName { get; set; }
 
-        public string VValue { get; }
+        public string VValue { get; set; }
 
         [SpParam(Ignored = true)]
-        public string DBAlias { get; }
+        public string DBAlias { get; set; }
 
         public override string GetSettingKey()
             => $"{DBAlias}_SystemSettings_Select";
+
+        public override bool IsValid()
+            => true;
     }
 }

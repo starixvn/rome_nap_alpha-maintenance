@@ -1,5 +1,6 @@
 ﻿namespace Alpha.Maintenance.Repository.Criteria.WinLossMonitor
 {
+    using Fanex.Data;
     using Fanex.Data.Repository;
 
     public class GetGlobalSettingCriteria : CriteriaBase
@@ -14,5 +15,8 @@
             => string.IsNullOrWhiteSpace(DBAlias)
             ? "Acc_WLMonitored_Service_GlobalSettingSel"
             : $"{DBAlias}_Acc_WLMonitored_Service_GlobalSettingSel";
+
+        public override bool IsValid()
+         => true;
     }
 }

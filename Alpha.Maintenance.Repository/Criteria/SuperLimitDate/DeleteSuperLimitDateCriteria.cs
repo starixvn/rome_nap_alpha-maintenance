@@ -2,7 +2,7 @@
 {
     using Fanex.Data.Repository;
 
-    public class DeleteSuperLimitDateCriteria : CriteriaBase
+    public class DeleteSuperLimitDateCriteria : NonQueryCommand
     {
         public int UserId { get; set; }
 

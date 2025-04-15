@@ -4,6 +4,7 @@
     using Alpha.Maintenance.Core.Model;
     using Alpha.Maintenance.Repository;
     using Alpha.Maintenance.Repository.Criteria.SuperLimitDate;
+    using Fanex.Data.Repository;
 
     public interface ISuperLimitDateService
     {
@@ -14,24 +15,40 @@
 
     public class SuperLimitDateService : ISuperLimitDateService
     {
-        private readonly ISuperLimitDateRepository repository;
+        private readonly IDynamicRepository repository;
         public SuperLimitDateService() : this(null)
         {
 
         }
 
-        public SuperLimitDateService(ISuperLimitDateRepository repository)
+        public SuperLimitDateService(IDynamicRepository repository)
         {
-            this.repository = repository ?? new SuperLimitDateRepository();
+            this.repository = repository ?? new DynamicRepository();
         }
 
         public IEnumerable<SuperLimitDate> Get(GetAllSuperLimitDateCriteria criteria)
-            => repository.Get(criteria);
+            => repository.Fetch<SuperLimitDate>(criteria);
 
         public CommandResult Delete(DeleteSuperLimitDateCriteria criteria)
-            => repository.ExecuteNonQuery(criteria);
+        {
+            repository.Execute(criteria);
+
+            return new CommandResult
+            {
+                Code = criteria.ErrCode,
+                Message = criteria.ErrMsg
+            };
+        }
 
         public CommandResult Add(AddSuperLimitDateCriteria criteria)
-            => repository.ExecuteNonQuery(criteria);
+        {
+            repository.Execute(criteria);
+
+            return new CommandResult
+            {
+                Code = criteria.ErrCode,
+                Message = criteria.ErrMsg
+            };
+        }
     }
 }

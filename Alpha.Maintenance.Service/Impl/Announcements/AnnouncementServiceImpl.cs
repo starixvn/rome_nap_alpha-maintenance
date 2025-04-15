@@ -4,6 +4,8 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Text;
+    using Alpha.Maintenance.Repository.DTOs;
     using Announcements.Models;
     using Announcements.Services;
     using Announcements.Specs;
@@ -15,12 +17,11 @@
     using Interface.Announcement;
     using Newtonsoft.Json;
     using Repository.Criteria.Announcements;
-    using Repository.Impl;
 
     public class AnnouncementServiceImpl : AnnouncementService
     {
         private readonly BaseAnnouncementService baseAnnouncementService;
-        private readonly AnnouncementRepository announcementRepository;
+        private readonly IDynamicRepository dynamicRepository;
 
         private readonly IDictionary<string, Func<dynamic>> getValueRangeFunction;
         private readonly string JsonPath = "App_Data\\announcementData.json";
@@ -36,13 +37,12 @@
 
         public AnnouncementServiceImpl(
             SpecificationFactory specificationFactory,
-            AnnouncementRepository announcementRepository = null,
+            IDynamicRepository dynamicRepository = null,
             BaseAnnouncementService baseAnnouncementService = null,
             IEnumerable<string> languages = null,
             IEnumerable<string> excludedSpecifications = null,
             bool? getAnnouncementsByJson = null)
         {
-            this.announcementRepository = announcementRepository ?? new AnnouncementRepositoryImpl();
             this.baseAnnouncementService = baseAnnouncementService ?? new BaseAnnouncementServiceImpl(specificationFactory);
 
             this.languages = languages ?? new List<string>{
@@ -64,6 +64,8 @@
             {
                 // Add more initial data function here
             };
+
+            this.dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 
         public IEnumerable<ISpecification<IParam>> GetOfferedSpecifications()
@@ -83,10 +85,10 @@
             return offeredSpecs;
         }
 
-        public IEnumerable<Announcement> GetAnnouncements(ICriteria criteria)
+        public IEnumerable<Announcement> GetAnnouncements(CriteriaBase criteria)
         {
             var announcements = getAnnouncementsByJson == true ?
-                GetAnnouncementsByJsonFile() : announcementRepository.GetAnnouncements(criteria);
+                GetAnnouncementsByJsonFile() : FetchAnnouncements(criteria);
 
             return announcements.Select(announcement =>
             {
@@ -98,15 +100,26 @@
 
         public Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria)
         {
-            var announcement = announcementRepository.GetAnnouncementById(criteria);
+            var announcementDto = dynamicRepository.Get<AnnouncementDTO>(criteria);
+            var announcement = MapToAnnouncement(announcementDto);
             announcement.Contents = baseAnnouncementService.CorrectContent(announcement.Contents, languages);
             announcement.Specifications = baseAnnouncementService.FiterOfferedSpecs(announcement.Specifications, excludedSpecifications);
 
             return announcement;
         }
 
-        public Result SaveAnnouncement(ICriteria criteria)
-            => announcementRepository.SaveAnnouncement(criteria);
+        public Result SaveAnnouncement(SaveAnnouncementsCriteria criteria)
+        {
+            dynamicRepository.Execute(criteria);
+
+            return new Result
+            {
+                Code = criteria.ErrCode,
+                Message = criteria.ErrCode == 0
+                            ? AnnouncementResources.SaveSuccessfully
+                            : criteria.ErrMsg
+            };
+        }
 
         public Announcement GetDefaultAnnouncement()
            => new Announcement
@@ -130,6 +143,39 @@
             {
                 return JsonConvert.DeserializeObject<List<Announcement>>(reader.ReadToEnd(), new SpecificationConverter());
             }
+        }
+
+        private IEnumerable<Announcement> FetchAnnouncements(CriteriaBase criteria)
+        {
+            return dynamicRepository.Fetch<AnnouncementDTO>(criteria).Select(dto => MapToAnnouncement(dto));
+        }
+
+        private Announcement MapToAnnouncement(AnnouncementDTO announcementDTO)
+        {
+            return new Announcement
+            {
+                Id = announcementDTO.Id,
+                ReleasedDate = announcementDTO.FromDate,
+                ExpiredDate = announcementDTO.ToDate,
+                Environments = announcementDTO.Environments.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
+                                        .Select(environment => environment.Trim()),
+                Systems = announcementDTO.Systems.Split(",".ToCharArray(), StringSplitOptions.RemoveEmptyEntries)
+                                    .Select(system => system.Trim()),
+                Contents = JsonConvert.DeserializeObject<IEnumerable<MessageContent>>(Encoding.UTF8.GetString(Convert.FromBase64String(announcementDTO.Contents))),
+                Specifications = JsonConvert.DeserializeObject<IEnumerable<ISpecification<IParam>>>(
+                            announcementDTO.Specifications,
+                            new SpecificationConverter()),
+                IsPopup = announcementDTO.AnnouncementType == "3",
+                Code = announcementDTO.Code,
+                Title = announcementDTO.Title,
+                CreatedDate = announcementDTO.CreatedDate,
+                CreatorId = announcementDTO.CreatorId,
+                CreatorName = announcementDTO.CreatorName,
+                LastEditDate = announcementDTO.LastEditDate,
+                LastEditorId = announcementDTO.LastEditorId,
+                LastEditorName = announcementDTO.LastEditorName,
+                IsActive = announcementDTO.IsActive
+            };
         }
     }
 }

@@ -11,9 +11,9 @@
     {
         IEnumerable<ISpecification<IParam>> GetOfferedSpecifications();
 
-        IEnumerable<Announcement> GetAnnouncements(ICriteria criteria);
+        IEnumerable<Announcement> GetAnnouncements(CriteriaBase criteria);
         
-        Result SaveAnnouncement(ICriteria criteria);
+        Result SaveAnnouncement(SaveAnnouncementsCriteria criteria);
 
         Announcement GetAnnouncementById(SelectAnnouncementByIdCriteria criteria);
 
