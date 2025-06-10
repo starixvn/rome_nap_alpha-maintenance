@@ -2,7 +2,6 @@
 using Alpha.Maintenance.Core.Model;
 using Alpha.Maintenance.Service.Interface.IPInformation;
 using Alpha.Maintenance.Repository.Criteria.IPInformation;
-using Alpha.Maintenance.Repository.Impl;
 using Alpha.Maintenance.Core.Configurations;
 using System.Linq;
 using System.Net.Http;
@@ -11,12 +10,15 @@ using Newtonsoft.Json.Linq;
 using System.Configuration;
 using System.Net;
 using Fanex.Logging;
+using Fanex.Data.Repository;
+using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace Alpha.Maintenance.Service.Impl.IPInformation
 {
     public class IPInformationServiceImpl : IPInformationService
     {
-        private readonly IPInformationRepository ipInformationRepository;
+        private readonly IDynamicRepository dynamicRepository;
         private readonly HttpClient client;
 
         public IPInformationServiceImpl()
@@ -29,17 +31,14 @@ namespace Alpha.Maintenance.Service.Impl.IPInformation
                 : new HttpClient(new HttpClientHandler { Proxy = new WebProxy(proxyUri), UseProxy = true }, true);
         }
 
-        public IPInformationServiceImpl(IPInformationRepository ipInformationRepository = null)
+        public IPInformationServiceImpl(IDynamicRepository dynamicRepository = null)
         {
-            this.ipInformationRepository = ipInformationRepository ?? new IPInformationRepositoryImpl();
+            this.dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 
         public async Task<IEnumerable<IPInfo>> GetIPInfos(string ip)
         {
-            var result = new List<IPInfo>
-            {
-                ipInformationRepository.GetIPInfo(new GetIPInformationCriteria(ip))
-            };
+            var result = dynamicRepository.Fetch<IPInfo>(new GetIPInformationCriteria(ip)).Select(info => { info.DataSource = "IPDB"; return info; }).ToList();
 
             var apis = GetGeolocationAPIs();
             foreach(var api in apis)
@@ -51,13 +50,19 @@ namespace Alpha.Maintenance.Service.Impl.IPInformation
                 response.EnsureSuccessStatusCode();
                 var responseBody = await response.Content.ReadAsStringAsync();
                 var data = JObject.Parse(responseBody);
-                result.Add(new IPInfo(
-                    api.Name, 
-                    data[api.CountryCodeKey].ToString(), 
-                    data[api.CountryNameKey].ToString(),
-                    data[api.RegionKey].ToString(),
-                    data[api.CityKey].ToString(), 
-                    url));
+                if(data[api.CountryCodeKey] != null && data[api.CountryNameKey] != null && data[api.RegionKey] != null && data[api.CityKey] != null)
+                {
+                    result.Add(new IPInfo
+                    {
+                        DataSource = api.Name,
+                        Url = url,
+                        CountryCode = data[api.CountryCodeKey].ToString(),
+                        CountryName = data[api.CountryNameKey].ToString(),
+                        Region = data[api.RegionKey].ToString(),
+                        City = data[api.CityKey].ToString()
+                    });
+                }
+                
             }
 
             return result;

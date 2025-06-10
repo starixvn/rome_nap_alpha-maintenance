@@ -20,10 +20,11 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
     /// </summary>
     public class LogCategoryService
     {
-        private readonly ReadonlyRepository<LogCategory> _categoryRepository = new ReadonlyRepository<LogCategory>();
+        private readonly IDynamicRepository dynamicRepository;
 
         private LogCategoryService()
         {
+            dynamicRepository = new DynamicRepository();
         }
 
         /// <summary>
@@ -42,7 +43,7 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
         public IEnumerable<LogCategory> GetAll()
         {
             var criteria = new GetAllCategoryCriteria();
-            var categories = _categoryRepository.Fetch(criteria);
+            var categories = dynamicRepository.Fetch<LogCategory>(criteria);
 
             return categories.OrderBy(logCategory =>
             {

@@ -3,23 +3,24 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Dynamic;
     using System.Linq;
+    using System.Reflection;
     using Alpha.Maintenance.Core;
     using Alpha.Maintenance.Core.Enums;
     using Alpha.Maintenance.Core.Model;
     using Alpha.Maintenance.Repository.Criteria.Banners;
-    using Alpha.Maintenance.Repository.Impl;
     using Alpha.Maintenance.Service.Interface.Banners;
     using Fanex.Data.Repository;
     using Fanex.Logging;
 
     public class BannerServiceImpl : BannerService
     {
-        private readonly BannerRepository bannerRepository;
+        private readonly IDynamicRepository dynamicRepository;
 
-        public BannerServiceImpl(BannerRepository bannerRepository = null)
+        public BannerServiceImpl(IDynamicRepository dynamicRepository = null)
         {
-            this.bannerRepository = bannerRepository ?? new BannerRepositoryImpl();
+            this.dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 
         public IEnumerable<Banner> GetBanners(
@@ -28,7 +29,7 @@
             DateTime toDate,
             string environment,
             string site)
-            => bannerRepository.GetBanners(
+            => dynamicRepository.Fetch<Banner>(
                 new GetBannerCriteria(filterBy, fromDate, toDate, environment, site)).ToList();
 
         public Tuple<Banner, IDictionary<string, string>, IDictionary<string, string>> GetBanner(int id)
@@ -36,9 +37,8 @@
             var desktopBanners = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             var mobileBanners = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
-            var bannerForEdit = bannerRepository.GetBanner(new GetBannerByIdCriteria(id));
-            var banner = bannerForEdit.Item1;
-            var bannerDetails = bannerForEdit.Item2;
+            var (banners, bannerDetails) = dynamicRepository.FetchMultiple<Banner, BannerDetail>(new GetBannerByIdCriteria(id));
+            var banner = banners.FirstOrDefault();
 
             if (bannerDetails != null)
             {
@@ -46,7 +46,7 @@
                 {
                     if (detail.ImageContent != null)
                     {
-                        var bannerHash = detail.Type == BannerType.Desktop ? desktopBanners : mobileBanners;
+                        var bannerHash =  (BannerType)detail.Type == BannerType.Desktop ? desktopBanners : mobileBanners;
                         bannerHash[detail.LanguageCode] = Convert.ToBase64String(detail.ImageContent);
                     }
                 }
@@ -67,15 +67,22 @@
             string sites,
             int userId,
             Hashtable banners)
-            => SaveBanner(new AddBannerCriteria(
-                title,
-                isActive,
-                releasedDate,
-                expirationDate,
-                environments,
-                sites,
-                userId,
-                banners));
+        {
+            var criteria = new AddBannerCriteria
+            {
+                BannerName = title,
+                IsActive = isActive,
+                ReleasedDate = releasedDate,
+                ExpirationDate = expirationDate,
+                Environments = environments,
+                Systems = sites,
+                Creator = userId
+            };
+
+            MapHashToType(banners, ref criteria);
+
+            return SaveBanner(criteria);
+        }
 
         public Result EditBanner(
             int id,
@@ -87,23 +94,37 @@
             string sites,
             int userId,
             Hashtable banners)
-            => SaveBanner(new EditBannerCriteria(
-                id,
-                title,
-                isActive,
-                releasedDate,
-                expirationDate,
-                environments,
-                sites,
-                userId,
-                banners));
-
-        private Result SaveBanner(ICriteria criteria)
         {
-            var result = bannerRepository.ExecuteNonQuery(criteria);
+            var criteria = new EditBannerCriteria
+            {
+                BannerId = id,
+                BannerName = title,
+                IsActive = isActive,
+                ReleasedDate = releasedDate,
+                ExpirationDate = expirationDate,
+                Environments = environments,
+                Systems = sites,
+                Creator = userId
+            };
+
+            MapHashToType(banners, ref criteria);
+
+            return SaveBanner(criteria);
+        }
+
+        private Result SaveBanner(SaveBannerCriteria criteria)
+        {
+            dynamicRepository.Execute(criteria);
+
+            var result = new Result
+            {
+                Code = criteria.ErrCode,
+                Message = criteria.ErrMsg
+            };
 
             if (result.IsSuccessful)
             {
+                criteria.IsDBStandby = true;
                 result.Message = ViewResource.UploadedBannerSuccessfully;
                 SaveBannerOnDBStandby(criteria);
             }
@@ -111,16 +132,41 @@
             return result;
         }
 
-        private void SaveBannerOnDBStandby(ICriteria criteria)
+        private void SaveBannerOnDBStandby(SaveBannerCriteria criteria)
         {
             try
             {
-                bannerRepository.ExecuteNonQuery($"{criteria.GetSettingKey()}_Standby", criteria.GetSpParams());
+                dynamicRepository.Execute(criteria);
             }
             catch (Exception ex)
             {
                 LogService.Error(ex.Message, ex);
             }
         }
+
+
+        private static T MapHashToType<T>(Hashtable hashtable, ref T type)
+        {
+            PropertyInfo[] properties = typeof(T).GetProperties();
+            var caseInsensitiveHash = new Dictionary<string, object>(
+            hashtable.Cast<DictionaryEntry>()
+                    .ToDictionary(x => x.Key.ToString(), x => x.Value),
+            StringComparer.OrdinalIgnoreCase);
+
+            foreach (PropertyInfo property in properties)
+            {
+                if(caseInsensitiveHash.TryGetValue(property.Name, out object value) && value != null)
+                {
+                    if (property.PropertyType != value.GetType())
+                    {
+                        value = Convert.ChangeType(value, property.PropertyType);
+                    }
+                    property.SetValue(type, value);
+                } 
+            }
+
+            return type;
+        }
+
     }
 }

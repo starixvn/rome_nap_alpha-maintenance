@@ -4,20 +4,20 @@
     using System.Collections.Generic;
     using Alpha.Maintenance.Core.Model;
     using Alpha.Maintenance.Repository.Criteria.WinLossMonitor;
-    using Alpha.Maintenance.Repository.Impl;
     using Alpha.Maintenance.Service.Interface.WinLossMonitor;
+    using Fanex.Data.Repository;
     using Fanex.Logging;
 
     public class WinLossMonitorService : IWinLossMonitorService
     {
-        private readonly IWinLossMonitorRepository repository;
+        private readonly IDynamicRepository dynamicRepository;
 
-        public WinLossMonitorService(IWinLossMonitorRepository repository = null)
-            => this.repository = repository ?? new WinLossMonitorRepository();
+        public WinLossMonitorService(IDynamicRepository dynamicRepository = null)
+            => this.dynamicRepository = dynamicRepository ?? new DynamicRepository();
 
         public GlobalSetting GetGlobalSetting(string dbAlias)
         {
-            var settings = repository.GetGlobalSettings(new GetGlobalSettingCriteria(dbAlias));
+            var settings = dynamicRepository.Fetch<GlobalSettingEntity>(new GetGlobalSettingCriteria(dbAlias));
 
             return new GlobalSetting(ToDictionary(settings));
         }
@@ -44,7 +44,7 @@
 
                 try
                 {
-                    repository.UpdateGlobalSetting(new UpdateGlobalSettingCriteria(
+                    dynamicRepository.Execute(new UpdateGlobalSettingCriteria(
                         entity.ServiceName,
                         entity.SettingName,
                         entity.SettingValue ?? string.Empty,

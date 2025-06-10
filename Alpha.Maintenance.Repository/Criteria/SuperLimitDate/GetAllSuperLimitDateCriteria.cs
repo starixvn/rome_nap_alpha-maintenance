@@ -15,5 +15,8 @@
         public int TotalRecords { get; set; }
 
         public override string GetSettingKey() => "Acc_CustomerDateLimitSel";
+        
+        public override bool IsValid()
+            => true;
     }
 }

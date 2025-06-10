@@ -22,7 +22,7 @@ namespace Alpha.Maintenance.Site
     using System.Web.Routing;
     using App_Start;
     using Fanex.Caching;
-    using Fanex.Data.Configuration;
+    using Fanex.Data;
     using Fanex.Logging;
     using Fanex.Logging.RabbitMQ;
     using Fanex.RemotingRef;
@@ -47,7 +47,6 @@ namespace Alpha.Maintenance.Site
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
@@ -60,7 +59,10 @@ namespace Alpha.Maintenance.Site
             ServicePointManager.Expect100Continue = true;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-            DbSettingProviderManager.Current.Start();
+            DbSettingProviderManager
+                .StartNewSession()
+                .Register(true)
+                .Run();
 
             var umConfig = new UMClientConfiguration().Initialize();
             UMClientManager

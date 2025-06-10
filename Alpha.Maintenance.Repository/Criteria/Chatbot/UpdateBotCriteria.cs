@@ -2,22 +2,7 @@
 {
     public class UpdateBotCriteria : CreateBotCriteria
     {
-        public UpdateBotCriteria(
-            int botId,
-            string username,
-            string displayName,
-            string system,
-            string accessToken,
-            bool status,
-            bool isTest,
-            int creator,
-            string ip)
-            : base(username, displayName, system, accessToken, status, isTest, creator, ip)
-        {
-            BotId = botId;
-        }
-
-        public int BotId { get; }
+        public int BotId { get; set; }
 
         public override string GetSettingKey() => "NAP_Chatbot_BotUpd";
 

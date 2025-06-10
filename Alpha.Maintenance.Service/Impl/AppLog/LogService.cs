@@ -11,16 +11,17 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Alpha.Maintenance.Core.Model;
     using Alpha.Maintenance.Repository.Criteria.Log;
-    using Alpha.Maintenance.Repository.Impl.AppLog;
+    using Fanex.Data.Repository;
 
     /// <summary>
     /// Log service.
     /// </summary>
     public class LogService
     {
-        private readonly LogRepository _logRepository = new LogRepository();
+        private readonly IDynamicRepository _dynamicRepository = new DynamicRepository();
 
         private int? _categoryId;
 
@@ -159,10 +160,12 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
         /// <returns>Message string.</returns>
         public string GetMessage(long logId)
         {
-            string message = string.Empty;
-            message = _logRepository.GetLogMessage(logId);
+            var criteria = new GetLogMessageCriteria
+            {
+                LogId = logId
+            };
 
-            return message;
+            return _dynamicRepository.Get<string>(criteria);
         }
 
         /// <summary>
@@ -186,12 +189,17 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
                 ToGMT = _showLogTimeZone,
                 SearchText = _searchText
             };
-
-            var list = _logRepository.GetLog(ref criteria);
+            var list = _dynamicRepository.Fetch<LogDTO>(criteria);
 
             totalRows = criteria.TotalRows;
 
-            return list;
+            return list.Select(log =>
+            {
+                log.Category = ToLogCategory(log);
+                log.Machine = ToMachine(log);
+
+                return log;
+            });
         }
 
         /// <summary>
@@ -200,7 +208,12 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
         /// <returns>Command result.</returns>
         public int RemoveLogs()
         {
-            return _logRepository.DeleteLogs(this._dateFrom);
+            var criteria = new DeleteLogCriteria
+            {
+                From = this._dateFrom
+            };
+
+            return _dynamicRepository.Execute(criteria);
         }
 
         /// <summary>
@@ -212,7 +225,34 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
         /// <returns>Command result.</returns>
         public int MonitorLog(string logIds, int? monitoringUserId, bool isMonitored)
         {
-            return _logRepository.MonitorLog(logIds, monitoringUserId, isMonitored);
+            var criteria = new MonitorLogCriteria
+            {
+                IsMonitored = isMonitored,
+                LogIds = logIds,
+                MonitoringUserId = monitoringUserId
+            };
+            return _dynamicRepository.Execute(criteria);
+        }
+
+        private static LogCategory ToLogCategory(LogDTO log)
+        {
+            return new LogCategory
+            {
+                CategoryID = log.CategoryID,
+                CategoryName = log.CategoryName
+            };
+        }
+
+        private static Machine ToMachine(LogDTO log)
+        {
+            return new Machine
+            {
+                MachineId = log.MachineId,
+                MachineName = log.MachineName,
+                IsProduction = log.IsProduction,
+                MachineIP = log.MachineIP,
+                TimeZone = log.TimeZone
+            };
         }
     }
 }

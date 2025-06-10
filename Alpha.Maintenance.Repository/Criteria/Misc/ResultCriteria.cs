@@ -25,5 +25,13 @@ namespace Alpha.Maintenance.Repository.Criteria.Misc
         public int ErrCode { get; set; }
 
         public string ErrMsg { get; set; }
+
+        public override string GetSettingKey()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override bool IsValid()
+            => true;
     }
 }

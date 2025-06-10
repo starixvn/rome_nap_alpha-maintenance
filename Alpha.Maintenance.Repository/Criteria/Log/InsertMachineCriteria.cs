@@ -9,13 +9,12 @@
 
 namespace Alpha.Maintenance.Repository.Criteria.Log
 {
-    using System;
     using Fanex.Data.Repository;
 
     /// <summary>
     /// Insert criteria.
     /// </summary>
-    public class InsertMachineCriteria : CriteriaBase
+    public class InsertMachineCriteria : NonQueryCommand
     {
         public string MachineName { get; set; }
 
@@ -24,6 +23,10 @@ namespace Alpha.Maintenance.Repository.Criteria.Log
         public short Timezone { get; set; }
 
         public string MachineIP { get; set; }
+
+        public int ErrCode { get; set; }
+
+        public string ErrMsg { get; set; }
 
         public override string GetSettingKey()
         {

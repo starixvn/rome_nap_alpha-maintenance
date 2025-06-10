@@ -23,6 +23,11 @@ namespace Alpha.Maintenance.Repository.Criteria.Misc
 
         public string LoginIp { get; set; }
 
+        public override string GetSettingKey()
+        {
+            throw new NotImplementedException();
+        }
+
         public override bool IsValid()
         {
             return true;

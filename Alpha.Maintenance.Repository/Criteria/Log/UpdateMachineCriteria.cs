@@ -15,7 +15,7 @@ namespace Alpha.Maintenance.Repository.Criteria.Log
     /// <summary>
     /// Update machine criteria.
     /// </summary>
-    public class UpdateMachineCriteria : CriteriaBase
+    public class UpdateMachineCriteria : NonQueryCommand
     {
         public int MachineId { get; set; }
 
@@ -25,14 +25,16 @@ namespace Alpha.Maintenance.Repository.Criteria.Log
 
         public string MachineIP { get; set; }
 
+        public int ErrCode { get; set; }
+
+        public string ErrMsg { get; set; }
+
         public override string GetSettingKey()
         {
             return "Logging_UpdateMachine";
         }
 
         public override bool IsValid()
-        {
-            throw new NotImplementedException();
-        }
+            => true;
     }
 }

@@ -5,16 +5,16 @@
     using Alpha.Maintenance.Core.Configurations;
     using Alpha.Maintenance.Core.Model;
     using Alpha.Maintenance.Repository.Criteria.BalanceRecord;
-    using Alpha.Maintenance.Repository.Impl;
     using Alpha.Maintenance.Service.Interface.BalanceRecord;
+    using Fanex.Data.Repository;
     using Fanex.Logging;
 
     public class BalanceRecordService : IBalanceRecordService
     {
-        private readonly IBalanceRecordRepository repository;
+        private readonly IDynamicRepository dynamicRepository;
 
-        public BalanceRecordService(IBalanceRecordRepository repository = null)
-            => this.repository = repository ?? new BalanceRecordRepository();
+        public BalanceRecordService(IDynamicRepository dynamicRepository = null)
+            => this.dynamicRepository = dynamicRepository ?? new DynamicRepository();
 
         public IEnumerable<BalanceRecordJob> GetJobStatus(string enviroment, string dbAlias)
         {
@@ -24,10 +24,17 @@
             {
                 yield return new BalanceRecordJob(
                     item,
-                    "1" == repository.GetJobStatus(new GetBalanceRecordJobStatusCriteria(item, enviroment, dbAlias: dbAlias)),
+                    "1" == GetJobStatus(new GetBalanceRecordJobStatusCriteria(item, enviroment, dbAlias: dbAlias)),
                     enviroment,
                     dbAlias);
             }
+        }
+
+        private string GetJobStatus(GetBalanceRecordJobStatusCriteria criteria)
+        {
+            dynamicRepository.Execute(criteria);
+
+            return criteria.VValue;
         }
 
         public IEnumerable<Result> UpdateJobStatus(IEnumerable<BalanceRecordJob> jobs)
@@ -40,11 +47,13 @@
 
                 try
                 {
-                    repository.UpdateJobStatus(new UpdateBalanceRecordJobStatusCriteria(
+                    var criteria = new UpdateBalanceRecordJobStatusCriteria(
                         item.Name,
                         item.Environment,
                         item.Status ? "1" : "0",
-                        item.DBAlias));
+                        item.DBAlias);
+
+                    dynamicRepository.Execute(criteria);
                 }
                 catch (Exception ex)
                 {

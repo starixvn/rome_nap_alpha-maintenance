@@ -1,41 +1,95 @@
 ﻿using Alpha.Maintenance.Core.Model;
 using Alpha.Maintenance.Repository.Criteria.Chatbot;
-using Alpha.Maintenance.Repository.Impl;
 using Alpha.Maintenance.Service.Interface.Chatbot;
+using Fanex.Data.Repository;
 using System.Collections.Generic;
 
 namespace Alpha.Maintenance.Service.Impl.Chatbot
 {
     public class ChatbotService : IChatbotService
     {
-        private readonly IChatbotRepository chatbotRepository;
+        private readonly IDynamicRepository dynamicRepository;
 
         public ChatbotService()
             : this(null)
         {
         }
 
-        public ChatbotService(IChatbotRepository chatbotRepository)
+        public ChatbotService(IDynamicRepository dynamicRepository)
         {
-            this.chatbotRepository = chatbotRepository ?? new ChatbotRepositoryImpl();
+            this.dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 
         public IEnumerable<Bot> GetBots(bool isTest, bool enabled)
-            => chatbotRepository.GetBots(new GetAllBotCriteria(isTest, enabled));
+            => dynamicRepository.Fetch<Bot>(new GetAllBotCriteria(isTest, enabled));
 
         public Bot GetBot(int botId)
-            => chatbotRepository.GetBot(new GetBotCriteria(botId));
+            => dynamicRepository.Get<Bot>(new GetBotCriteria(botId));
 
         public Result CreateBot(string username, string displayName,  string system, string accessToken, bool status, bool isTest, int creator, string ip)
-            => chatbotRepository.ExecuteNonQuery(new CreateBotCriteria(username, displayName, system, accessToken, status, isTest, creator, ip));
+        {
+            var criteria = new CreateBotCriteria
+            {
+                Username = username,
+                DisplayName = displayName,
+                System = system,
+                AccessToken = accessToken,
+                Status = status,
+                IsTest = isTest,
+                Creator = creator,
+                IP = ip
+            };
+            dynamicRepository.Execute(criteria);
+
+            return new Result
+            {
+                Code = criteria.ErrCode,
+                Message = criteria.ErrMsg
+            };
+        }
 
         public Result UpdateBot(int botId, string username, string displayName, string system, string accessToken, bool status, bool isTest, int creator, string ip)
-            => chatbotRepository.ExecuteNonQuery(new UpdateBotCriteria(botId, username, displayName, system, accessToken, status, isTest, creator, ip));
+        {
+            var criteria = new UpdateBotCriteria
+            {
+                BotId = botId,
+                Username = username,
+                DisplayName = displayName,
+                System = system,
+                AccessToken = accessToken,
+                Status = status,
+                IsTest = isTest,
+                Creator = creator,
+                IP = ip
+            };
+            dynamicRepository.Execute(criteria);
+
+            return new Result
+            {
+                Code = criteria.ErrCode,
+                Message = criteria.ErrMsg
+            };
+        }
 
         public IEnumerable<BotSystemSetting> GetBotSystemSetting(string serviceName = "")
-           => chatbotRepository.GetBotSystemSetting(new GetBotSystemSettingCriteria(serviceName));
+           => dynamicRepository.Fetch<BotSystemSetting>(new GetBotSystemSettingCriteria(serviceName));
 
         public Result UpdateBotSystemSetting(int id, string value, int creator, string ip)
-            => chatbotRepository.ExecuteNonQuery(new UpdateBotSystemSettingCriteria(id, value, creator, ip));
+        {
+            var criteria = new UpdateBotSystemSettingCriteria
+            {
+                Id = id,
+                Value = value,
+                Creator = creator,
+                Ip = ip
+            };
+            dynamicRepository.Execute(criteria);
+
+            return new Result
+            {
+                Code = criteria.ErrCode,
+                Message = criteria.ErrMsg
+            };
+        }
     }
 }

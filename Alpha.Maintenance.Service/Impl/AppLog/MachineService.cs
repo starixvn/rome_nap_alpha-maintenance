@@ -1,25 +1,16 @@
-﻿// --------------------------------------------------------------------------
-// <copyright file="MachineService.cs" company="Nexcel Solutions Vietnam">
-// Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------
-// <history>
-//   <change who="Jason.Ly" date="2013.8.7">Created</change>
-// </history>
-
-namespace Alpha.Maintenance.Service.Impl.AppLog
+﻿namespace Alpha.Maintenance.Service.Impl.AppLog
 {
     using System.Collections.Generic;
     using Alpha.Maintenance.Core.Model;
     using Alpha.Maintenance.Repository.Criteria.Log;
-    using Alpha.Maintenance.Repository.Impl.AppLog;
+    using Fanex.Data.Repository;
 
     /// <summary>
     /// Machine Service.
     /// </summary>
     public class MachineService
     {
-        private readonly MachineRepository _machineRepository = new MachineRepository();
+        private readonly IDynamicRepository _dynamicRepository = new DynamicRepository();
 
         private MachineService()
         {
@@ -42,7 +33,7 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
         {
             GetAllMachinesCriteria criteria = new GetAllMachinesCriteria();
 
-            return _machineRepository.Fetch(criteria);
+            return _dynamicRepository.Fetch<Machine>(criteria);
         }
 
         /// <summary>
@@ -57,7 +48,7 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
                 MachineType = machineType
             };
 
-            return _machineRepository.Fetch(criteria);
+            return _dynamicRepository.Fetch<Machine>(criteria);
         }
 
         /// <summary>
@@ -72,7 +63,7 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
                 MachineId = id
             };
 
-            return _machineRepository.Get<Machine>(criteria);
+            return _dynamicRepository.Get<Machine>(criteria);
         }
 
         /// <summary>
@@ -92,7 +83,13 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
                 MachineIP = machineIP ?? string.Empty
             };
 
-            return _machineRepository.InsertMachine(criteria);
+            _dynamicRepository.Execute(criteria);
+
+            return new CommandResult
+            {
+                Code = criteria.ErrCode,
+                Message = criteria.ErrMsg
+            };
         }
 
         /// <summary>
@@ -112,7 +109,13 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
                 MachineIP = machineIP ?? string.Empty
             };
 
-            return _machineRepository.UpdateMachine(criteria);
+            _dynamicRepository.Execute(criteria);
+
+            return new CommandResult
+            {
+                Code = criteria.ErrCode,
+                Message = criteria.ErrMsg
+            };
         }
     }
 }

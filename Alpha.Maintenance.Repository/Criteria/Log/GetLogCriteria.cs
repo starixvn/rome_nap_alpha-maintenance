@@ -11,6 +11,7 @@ namespace Alpha.Maintenance.Repository.Criteria.Log
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using Fanex.Data;
     using Fanex.Data.Repository;
 
     /// <summary>

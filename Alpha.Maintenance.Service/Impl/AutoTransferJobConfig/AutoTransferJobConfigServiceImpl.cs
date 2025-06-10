@@ -1,6 +1,5 @@
 ﻿using Alpha.Maintenance.Core.Model;
 using Alpha.Maintenance.Repository.Criteria.AutoTransferJobConfig;
-using Alpha.Maintenance.Repository.Impl;
 using Alpha.Maintenance.Service.Interface.AutoTransferJobConfig;
 using Fanex.Data.Repository;
 
@@ -9,12 +8,10 @@ namespace Alpha.Maintenance.Service.Impl.AutoTransferJobConfig
     public class AutoTransferJobConfigServiceImpl : AutoTransferJobConfigService
     {
         private readonly IDynamicRepository repository;
-        private readonly AutoTransferJobConfigRepository autoTransferJobConfigRepository;
 
-        public AutoTransferJobConfigServiceImpl(DynamicRepository repository = null, AutoTransferJobConfigRepository autoTransferJobConfigRepository = null)
+        public AutoTransferJobConfigServiceImpl(DynamicRepository repository = null)
         {
             this.repository = repository ?? new DynamicRepository();
-            this.autoTransferJobConfigRepository = autoTransferJobConfigRepository ?? new AutoTransferJobConfigRepositoryImpl();
         }
 
         public AutoTransferJobConfigModel GetAutoTransferJobConfig(string site, string env)
@@ -39,8 +36,13 @@ namespace Alpha.Maintenance.Service.Impl.AutoTransferJobConfig
 
             var criteria = new UpdateAutoTransferJobConfigCriteria(
                 config.Site, defaultTime, config.ManualTime, config.RunningMode, config.IsActive, config.Environment, config.TestSuperIds);
+            repository.Execute(criteria);
 
-            return autoTransferJobConfigRepository.ExecuteNonQuery(criteria);
+            return new Result
+            {
+                Code = criteria.ErrCode,
+                Message = criteria.ErrMsg
+            };
         }
 
         private string GetDefaultTime(string defaultTime)

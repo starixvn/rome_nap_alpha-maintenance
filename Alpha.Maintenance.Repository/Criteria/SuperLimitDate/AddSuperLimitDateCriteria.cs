@@ -3,7 +3,7 @@
     using System;
     using Fanex.Data.Repository;
 
-    public class AddSuperLimitDateCriteria : CriteriaBase
+    public class AddSuperLimitDateCriteria : NonQueryCommand
     {
         public int UserId { get; set; }
 
@@ -20,6 +20,6 @@
         public override string GetSettingKey() => "Acc_CustomerDateLimitIns";
 
         public override bool IsValid()
-            => UserId > 0 && !string.IsNullOrEmpty(CustName) && !MinDate.HasValue && !LimitDays.HasValue;
+            => UserId > 0 && !string.IsNullOrEmpty(CustName) && (!MinDate.HasValue || !LimitDays.HasValue);
     }
 }

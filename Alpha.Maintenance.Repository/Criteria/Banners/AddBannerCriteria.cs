@@ -1,31 +1,11 @@
 ﻿namespace Alpha.Maintenance.Repository.Criteria.Banners
 {
-    using System;
-    using System.Collections;
-
     public class AddBannerCriteria : SaveBannerCriteria
     {
-        public AddBannerCriteria(
-            string title,
-            bool isActive,
-            DateTime releasedDate,
-            DateTime expirationDate,
-            string environments,
-            string sites,
-            int userId,
-            Hashtable banners) : base(
-              title,
-              isActive,
-              releasedDate,
-              expirationDate,
-              environments,
-              sites,
-              userId,
-              banners)
-        {
-        }
-
         public override string GetSettingKey()
-            => "Age_Banner_Insert";
+            => IsDBStandby ? "Age_Banner_Insert_Standby" : "Age_Banner_Insert";
+
+        public override bool IsValid()
+            => true;
     }
 }

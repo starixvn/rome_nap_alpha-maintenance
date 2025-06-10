@@ -1,5 +1,6 @@
 ﻿namespace Alpha.Maintenance.Repository.Criteria.AutoTransferJobConfig
 {
+    using Fanex.Data;
     using Fanex.Data.Repository;
 
     public class GetAutoTransferJobConfigCriteria : CriteriaBase

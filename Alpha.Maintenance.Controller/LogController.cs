@@ -86,10 +86,9 @@ namespace Alpha.Maintenance.Controller
                 Page = 0,
                 Size = 10,
                 Severity = "All",
-                ToGMT = ShowLogTimeZone
+                ToGMT = ShowLogTimeZone,
+                HasEdit = HasRight(SiteFunctionKeys.ViewLog, Constant.Policy.Host)
             };
-
-            criteria.HasEdit = HasRight(SiteFunctionKeys.ViewLog, Constant.Policy.Host);
 
             return View(criteria);
         }

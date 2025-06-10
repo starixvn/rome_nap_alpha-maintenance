@@ -3,6 +3,7 @@
     using System;
     using System.ComponentModel;
     using Core;
+    using Fanex.Data;
     using Fanex.Data.Repository;
 
     public enum FilterBy
@@ -29,7 +30,6 @@
 
         public bool? IsActive { get; set; } = null;
 
-        [SpParam(Ignored = true)]
         public FilterBy FilterBy { get; set; } = FilterBy.CreatedDate;
 
         public override string GetSettingKey() => "Age_Announcements_Select";
