@@ -784,6 +784,7 @@
     <Content Include="Areas\Administration\Views\CacheManagement\Index.cshtml" />
     <Content Include="Areas\Administration\Views\CacheManagement\HealthCheck.cshtml" />
     <Content Include="Assets\styles\pages\auto-transfer-config.scss" />
+    <Content Include="App_Data\announcementConfig.kl.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -865,6 +866,10 @@
     <Content Include="Views\RemotingRefDemo\GetLeagueName.cshtml" />
     <Content Include="Views\RemotingRefDemo\GetTeamName.cshtml" />
     <Content Include="Views\RemotingRefDemo\GetBetTypeName.cshtml" />
+    <None Include="Web.KLPROD.config" />
+    <None Include="Web.KLSIMPLE.config" />
+    <Content Include="WebConnectionString.KLPROD.config" />
+    <Content Include="WebConnectionString.KLSIMPLE.config" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\scripts\Administration\CacheManagement.ts" />
