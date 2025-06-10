@@ -68,12 +68,12 @@
         <Setting Key="NAP_Chatbot_BotSystemSettingUpd" SpName="NAP_Chatbot_BotSystemSettingUpd" DbName="DBBOT.bodb_Chatbot.wsv_nap" />
     </Function>
 
-    <Function Name="Win Loss Monitor">
-        <Setting Key="db052_Acc_WLMonitored_Service_GlobalSettingSel" SpName="Acc_WLMonitored_Service_GlobalSettingSel" DbName="db052.DBAGE.bodb02.wsv_nap" />
-        <Setting Key="db052_Acc_WLMonitored_Service_GlobalSettingUpd" SpName="Acc_WLMonitored_Service_GlobalSettingUpd" DbName="db052.DBAGE.bodb02.wsv_nap" />
-        <Setting Key="db053_Acc_WLMonitored_Service_GlobalSettingSel" SpName="Acc_WLMonitored_Service_GlobalSettingSel" DbName="db053.DBAGE.bodb02.wsv_nap" />
-        <Setting Key="db053_Acc_WLMonitored_Service_GlobalSettingUpd" SpName="Acc_WLMonitored_Service_GlobalSettingUpd" DbName="db053.DBAGE.bodb02.wsv_nap" />
-    </Function>
+	<Function Name="Win Loss Monitor">
+		<Setting Key="db052_Acc_WLMonitored_Service_GlobalSettingSel" SpName="Acc_WLMonitored_Service_GlobalSettingSel" DbName="DBAGE_STANDBY.bodb02.wsv_nap" />
+		<Setting Key="db052_Acc_WLMonitored_Service_GlobalSettingUpd" SpName="Acc_WLMonitored_Service_GlobalSettingUpd" DbName="DBAGE_STANDBY.bodb02.wsv_nap" />
+		<Setting Key="db053_Acc_WLMonitored_Service_GlobalSettingSel" SpName="Acc_WLMonitored_Service_GlobalSettingSel" DbName="DB053_ONLY.bodb02.wsv_nap" />
+		<Setting Key="db053_Acc_WLMonitored_Service_GlobalSettingUpd" SpName="Acc_WLMonitored_Service_GlobalSettingUpd" DbName="DB053_ONLY.bodb02.wsv_nap" />
+	</Function>
 
     <Function Name="Balance Record Sync Service">
         <Setting Key="DB05_SystemSettings_Select" SpName="SystemSettings_Select" DbName="DB05.bodb02.wsv_nap" />
