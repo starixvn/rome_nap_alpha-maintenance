@@ -449,6 +449,8 @@
     <Content Include="App_Data\DR\mSiteSpNames.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="App_Data\KLSimple\DBServerList.xml" />
+    <Content Include="App_Data\KLSimple\mSiteSpNames.xml" />
     <Content Include="Assets\bundles\AutoTransferJobConfig\index.js" />
     <Content Include="Assets\bundles\AutoTransferJobConfig\index.min.js">
       <DependentUpon>index.js</DependentUpon>
