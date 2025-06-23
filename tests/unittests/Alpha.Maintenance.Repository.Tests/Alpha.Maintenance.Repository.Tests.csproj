@@ -88,12 +88,11 @@
     <Compile Include="Criteria\Announcements\SelectAnnouncementByIdCriteriaTest.cs" />
     <Compile Include="Criteria\Announcements\UpdateAnnouncementsCriteriaTest.cs" />
     <Compile Include="Criteria\IPInformation\GetIPInformationCriteriaTests.cs" />
+    <Compile Include="Criteria\ResetPotentialWinLimitJob\GetResetPotentialWinLimitJobSettingCriteriaTests.cs" />
+    <Compile Include="Criteria\ResetPotentialWinLimitJob\UpdateResetPotentialWinLimitJobConfigCriteriaTests.cs" />
     <Compile Include="Database\Announcements\AnnouncementsDatabase.cs" />
     <Compile Include="Database\IPInformation\IPInformationDatabase.cs" />
-    <Compile Include="Fixtures\ObjectDbFixture.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
-    <Compile Include="Impl\AnnouncementRepositoryTest.cs" />
-    <Compile Include="Impl\IPInformationRepositoryImplTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

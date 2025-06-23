@@ -191,6 +191,8 @@
     <Compile Include="Criteria\Log\UpdateMachineCriteria.cs" />
     <Compile Include="Criteria\Misc\LogExecSpCriteria.cs" />
     <Compile Include="Criteria\Misc\ResultCriteria.cs" />
+    <Compile Include="Criteria\ResetPotentialWinLimitJob\GetResetPotentialWinLimitJobSettingCriteria.cs" />
+    <Compile Include="Criteria\ResetPotentialWinLimitJob\UpdateResetPotentialWinLimitJobConfigCriteria.cs" />
     <Compile Include="Criteria\SuperLimitDate\AddSuperLimitDateCriteria.cs" />
     <Compile Include="Criteria\SuperLimitDate\DeleteSuperLimitDateCriteria.cs" />
     <Compile Include="Criteria\SuperLimitDate\GetAllSuperLimitDateCriteria.cs" />

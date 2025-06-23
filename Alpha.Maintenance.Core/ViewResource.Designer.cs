@@ -385,6 +385,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Completed Time.
+        /// </summary>
+        public static string CompletedTime {
+            get {
+                return ResourceManager.GetString("CompletedTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Computer is idle.
         /// </summary>
         public static string ComputerIdle {
@@ -1267,6 +1276,15 @@ namespace Alpha.Maintenance.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Last Max Cust ID.
+        /// </summary>
+        public static string LastMaxCustID {
+            get {
+                return ResourceManager.GetString("LastMaxCustID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Latest Send Date.
         /// </summary>
         public static string Latest_Send_Date {
@@ -1893,6 +1911,15 @@ namespace Alpha.Maintenance.Core {
         public static string Run_Time {
             get {
                 return ResourceManager.GetString("Run_Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Running Date.
+        /// </summary>
+        public static string RunningDate {
+            get {
+                return ResourceManager.GetString("RunningDate", resourceCulture);
             }
         }
         

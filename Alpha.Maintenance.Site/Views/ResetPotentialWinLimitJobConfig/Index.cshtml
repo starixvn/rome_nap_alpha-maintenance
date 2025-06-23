@@ -1,0 +1,62 @@
+﻿@using Alpha.Maintenance.Core.Model.ResetPotentialWinLimitJobConfig
+@model ResetPotentialWinLimitJobSettingModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Reset Potential Win Limit Job Config";
+}
+
+@section Head {
+    @Styles.Render("~/Assets/styles/pages/reset-potential-win-limit-config.css")
+}
+@section Headline{
+    <span class="active">Reset Potential Win Limit Job Config</span>
+}
+
+<section class="filter-bar filter-form">
+    <div class="row">
+        <div class="input-field col l2">
+            <label class="active">@ViewResource.DefaultTime <span class="red-text">*</span></label>
+            <input type="text" class="txt-default-time validate" required="" aria-required="true" value="@Model.Config.DefaultTime" />
+        </div>
+        <div class="input-field col l2">
+            <label class="active">@ViewResource.ManualTime</label>
+            <input id="txt-manual-time" type="text" class="txt-manual-time c-datepicker-btn" 
+                value="@(Model.Config.HasManualTime ? Model.Config.DisplayedManualTime: Model.Config.DefaultManualTime)" 
+                data-hasvalue="@(Model.Config.HasManualTime ? 1 : 0)" />
+        </div>
+        <div class="input-field col l2 m3 s6">
+            <input name="group-systems" type="checkbox" id="chk-isactive"
+                class="chk-isactive filled-in checkbox"
+                @(Model.Config.IsActive ? "checked" : string.Empty) />
+            <label for="chk-isactive">@ViewResource.IsActive</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col l2">
+            <label class="active">@ViewResource.RunningDate</label>
+            <input id="txt-running-date" type="text" class="txt-running-date c-datepicker-btn" 
+                value="@(Model.Status.RunningDate.HasValue ? Model.Status.DisplayedRunningDate : Model.Status.DefaultSelectedDate)" 
+                data-hasvalue="@(Model.Status.RunningDate.HasValue ? 1 : 0)" />
+        </div>
+        <div class="input-field col l2">
+            <label class="active">@ViewResource.CompletedTime</label>
+            <input id="txt-completed-time" type="text" class="txt-completed-time c-datepicker-btn" 
+                value="@(Model.Status.CompletedTime.HasValue ? Model.Status.DisplayedCompletedTime : Model.Status.DefaultSelectedDate)" 
+                data-hasvalue="@(Model.Status.CompletedTime.HasValue ? 1 : 0)" />
+        </div>
+        <div class="input-field col l2">
+            <label class="active">@ViewResource.LastMaxCustID</label>
+            <input id="txt-last-max-cust-id" type="text" class="txt-last-max-cust-id" required="" value="@Model.Status.LastMaxCustID" />
+        </div>
+    </div>
+    <div class="div-message card-panel lighten-4 text-darken-4 hiden"></div>
+    <div class="row">
+        <div class="col button-block">
+            <input class="btnSubmit waves-effect waves-light btn btn-primary" type="button" value="@ViewResource.Save" />
+        </div>
+    </div>
+</section>
+@section scripts {
+    @Scripts.Render("~/Assets/bundles/ResetPotentialWinLimitJobConfig/index.js")
+}
