@@ -9,7 +9,6 @@
     using Service.Interface.Announcement;
     using Web;
 
-    [HmacAuthorizationFilter]
     public class AnnouncementApiController : ApiController
     {
         private readonly AnnouncementService announcementService;
