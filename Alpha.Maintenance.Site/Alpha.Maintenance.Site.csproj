@@ -449,6 +449,8 @@
     <Content Include="App_Data\DR\mSiteSpNames.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="App_Data\KLSimple\DBServerList.xml" />
+    <Content Include="App_Data\KLSimple\mSiteSpNames.xml" />
     <Content Include="Assets\bundles\AutoTransferJobConfig\index.js" />
     <Content Include="Assets\bundles\AutoTransferJobConfig\index.min.js">
       <DependentUpon>index.js</DependentUpon>
@@ -784,6 +786,7 @@
     <Content Include="Areas\Administration\Views\CacheManagement\Index.cshtml" />
     <Content Include="Areas\Administration\Views\CacheManagement\HealthCheck.cshtml" />
     <Content Include="Assets\styles\pages\auto-transfer-config.scss" />
+    <Content Include="App_Data\announcementConfig.kl.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -865,6 +868,10 @@
     <Content Include="Views\RemotingRefDemo\GetLeagueName.cshtml" />
     <Content Include="Views\RemotingRefDemo\GetTeamName.cshtml" />
     <Content Include="Views\RemotingRefDemo\GetBetTypeName.cshtml" />
+    <Content Include="Web.KLPROD.config" />
+    <Content Include="Web.KLSIMPLE.config" />
+    <Content Include="WebConnectionString.KLPROD.config" />
+    <Content Include="WebConnectionString.KLSIMPLE.config" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Assets\scripts\Administration\CacheManagement.ts" />
