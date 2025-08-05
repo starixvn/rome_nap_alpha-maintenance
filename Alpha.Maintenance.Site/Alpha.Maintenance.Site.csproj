@@ -465,6 +465,11 @@
     <Content Include="Assets\bundles\LicenseeAdministration\index.min.js">
       <DependentUpon>index.js</DependentUpon>
     </Content>
+    <Content Include="Assets\bundles\ResetPotentialWinLimitJobConfig\index.js" />
+    <Content Include="Assets\bundles\ResetPotentialWinLimitJobConfig\index.min.js">
+      <DependentUpon>index.js</DependentUpon>
+    </Content>
+    <Content Include="Assets\scripts\ResetPotentialWinLimitJobConfig\index.js" />
     <Content Include="Assets\styles\pages\auto-transfer-config.css">
       <DependentUpon>auto-transfer-config.scss</DependentUpon>
     </Content>
@@ -786,6 +791,7 @@
     <Content Include="Areas\Administration\Views\CacheManagement\Index.cshtml" />
     <Content Include="Areas\Administration\Views\CacheManagement\HealthCheck.cshtml" />
     <Content Include="Assets\styles\pages\auto-transfer-config.scss" />
+    <Content Include="Assets\scripts\ResetPotentialWinLimitJobConfig\index.js.map" />
     <Content Include="App_Data\announcementConfig.kl.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
@@ -868,6 +874,7 @@
     <Content Include="Views\RemotingRefDemo\GetLeagueName.cshtml" />
     <Content Include="Views\RemotingRefDemo\GetTeamName.cshtml" />
     <Content Include="Views\RemotingRefDemo\GetBetTypeName.cshtml" />
+    <Content Include="Views\ResetPotentialWinLimitJobConfig\Index.cshtml" />
     <Content Include="Web.KLPROD.config" />
     <Content Include="Web.KLSIMPLE.config" />
     <Content Include="WebConnectionString.KLPROD.config" />
@@ -884,6 +891,7 @@
     <TypeScriptCompile Include="Assets\scripts\Chatbot\index.ts" />
     <TypeScriptCompile Include="Assets\scripts\IPInfo\index.ts" />
     <TypeScriptCompile Include="Assets\scripts\LicenseeAdministrator\index.ts" />
+    <TypeScriptCompile Include="Assets\scripts\ResetPotentialWinLimitJobConfig\index.ts" />
     <TypeScriptCompile Include="Assets\scripts\WinLossMonitor\winloss-monitor.ts" />
     <TypeScriptCompile Include="typings\globals\bootstrap\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\jasmine-jquery\index.d.ts" />

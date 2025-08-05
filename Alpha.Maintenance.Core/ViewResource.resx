@@ -984,4 +984,13 @@
   <data name="OldToken" xml:space="preserve">
     <value>Old Token</value>
   </data>
+  <data name="LastMaxCustID" xml:space="preserve">
+    <value>Last Max Cust ID</value>
+  </data>
+  <data name="RunningDate" xml:space="preserve">
+    <value>Running Date</value>
+  </data>
+  <data name="CompletedTime" xml:space="preserve">
+    <value>Completed Time</value>
+  </data>
 </root>

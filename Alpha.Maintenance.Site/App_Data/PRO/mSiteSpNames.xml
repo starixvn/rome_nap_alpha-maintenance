@@ -89,4 +89,8 @@
         <Setting Key="DBSite03_Age_ClearBalanceCust_Job_ConfigUpd" SpName="Age_ClearBalanceCust_Job_ConfigUpd" DbName="DBSite03.bodb02.wsv_nap" />
         <Setting Key="DBSite03_Age_ClearBalanceCust_Job_ConfigUpd" SpName="Age_ClearBalanceCust_Job_ConfigUpd" DbName="DBSite03.bodb02.wsv_nap" />
     </Function>
+    <Function Name="Reset Potential Win Limit Job">
+        <Setting Key="SystemSettings_Select" SpName="SystemSettings_Select" DbName="DB05.bodb02.wsv_nap" />
+        <Setting Key="SystemSettings_Update" SpName="SystemSettings_Update" DbName="DB05.bodb02.wsv_nap" />
+    </Function>
 </Functions>

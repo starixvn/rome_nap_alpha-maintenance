@@ -209,6 +209,7 @@
     <Compile Include="AnnouncementControllerTest.cs" />
     <Compile Include="IPInformationControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResetPotentialWinLimitJobConfigControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

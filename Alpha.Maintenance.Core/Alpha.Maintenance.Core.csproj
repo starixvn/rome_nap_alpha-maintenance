@@ -194,6 +194,9 @@
     <Compile Include="Model\LogCategory.cs" />
     <Compile Include="Model\LogDTO.cs" />
     <Compile Include="Model\Machine.cs" />
+    <Compile Include="Model\ResetPotentialWinLimitJobConfig\ResetPotentialWinLimitJobConfigModel.cs" />
+    <Compile Include="Model\ResetPotentialWinLimitJobConfig\ResetPotentialWinLimitJobSettingModel.cs" />
+    <Compile Include="Model\ResetPotentialWinLimitJobConfig\ResetPotentialWinLimitJobStatusModel.cs" />
     <Compile Include="Model\Result.cs" />
     <Compile Include="Model\SiteToken.cs" />
     <Compile Include="Model\SuperLimitDate.cs" />

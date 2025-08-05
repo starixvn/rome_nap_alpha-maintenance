@@ -95,5 +95,14 @@
     "inputFiles": [
       "Assets/scripts/LicenseeAdministrator/index.js"
     ]
+  },
+  {
+    "outputFileName": "Assets/bundles/ResetPotentialWinLimitJobConfig/index.js",
+    "inputFiles": [
+      "Assets/scripts/lib/Momentjs/moment.js",
+      "Assets/scripts/lib/material-datetime-picker/rome.js",
+      "Assets/scripts/lib/material-datetime-picker/material-datetime-picker.js",
+      "Assets/scripts/ResetPotentialWinLimitJobConfig/index.js"
+    ]
   }
 ]
