@@ -16,7 +16,7 @@
     /// http://bitoftech.net/2014/12/15/secure-asp-net-web-api-using-api-key-authentication-hmac-authentication/
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = true)]
-    public sealed class HmacAuthorizationFilter : AuthorizationFilterAttribute
+    public sealed class HmacAuthorizationFilterAttribute : AuthorizationFilterAttribute
     {
         private const long RequestMaxAgeInSeconds = 300;
         private const string TokenAuthenticationScheme = "amx";
@@ -74,22 +74,15 @@
         {
             var credArray = rawAuthzHeader.Split(':');
 
-            if (credArray.Length == 4)
-            {
-                return credArray;
-            }
-            else
-            {
-                return null;
-            }
+            return credArray.Length == 4 ? credArray : new string[0];
         }
 
         private bool IsValidRequest(HttpRequestMessage req, string siteId, string incomingBase64Signature, string nonce, string requestTimeStamp)
         {
-            string requestUri = HttpUtility.UrlEncode(req.RequestUri.AbsoluteUri.ToLower());
+            string requestUri = HttpUtility.UrlEncode(req.RequestUri.AbsoluteUri.ToLowerInvariant());
             string requestHttpMethod = req.Method.Method;
 
-            var sharedKey = "ZDlhMWFmMDgtZGQ0ZC00NWY0LTg1ODItNzVkNTdhOTNjOTEx";
+            const string sharedKey = "ZDlhMWFmMDgtZGQ0ZC00NWY0LTg1ODItNzVkNTdhOTNjOTEx";
 
             if (IsReplayRequest(nonce, requestTimeStamp))
             {

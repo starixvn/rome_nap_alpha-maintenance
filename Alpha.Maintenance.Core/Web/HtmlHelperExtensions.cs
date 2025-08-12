@@ -1,4 +1,5 @@
-﻿// --------------------------------------------------------------------------
+﻿using System.Linq;
+// --------------------------------------------------------------------------
 // <copyright file="HtmlHelperExtensions.cs" company="Nexcel Solutions Vietnam">
 // Copyright (c) Nexcel Solutions Vietnam. All rights reserved.
 // </copyright>
@@ -28,6 +29,18 @@ namespace Alpha.Maintenance.Core.Web
         /// </summary>
         /// <param name="value">DateTime value.</param>
         /// <param name="dateFormat">Date format.</param>
+        /// <returns>HTML string.</returns>
+        public static IHtmlString ToDateString(this DateTime value, string dateFormat = "MMM dd, yyyy")
+        {
+            return new HtmlString(value.ToString(dateFormat));
+        }
+
+        /// <summary>
+        /// Converts the value of the current System.DateTime object to its equivalent string
+        /// representation using the specified format.
+        /// </summary>
+        /// <param name="value">DateTime value.</param>
+        /// <param name="dateFormat">Date format.</param>
         /// <param name="timeFormat">Time format.</param>
         /// <returns>HTML string.</returns>
         public static IHtmlString ToFullDateString(
@@ -42,18 +55,6 @@ namespace Alpha.Maintenance.Core.Web
         /// Converts the value of the current System.DateTime object to its equivalent string
         /// representation using the specified format.
         /// </summary>
-        /// <param name="value">DateTime value.</param>
-        /// <param name="dateFormat">Date format.</param>
-        /// <returns>HTML string.</returns>
-        public static IHtmlString ToDateString(this DateTime value, string dateFormat = "MMM dd, yyyy")
-        {
-            return new HtmlString(value.ToString(dateFormat));
-        }
-
-        /// <summary>
-        /// Converts the value of the current System.DateTime object to its equivalent string
-        /// representation using the specified format.
-        /// </summary>
         /// <param name="value">Date value.</param>
         /// <param name="time">Time value.</param>
         /// <param name="dateFormat">Date format.</param>
@@ -62,8 +63,7 @@ namespace Alpha.Maintenance.Core.Web
         public static IHtmlString ToFullDateString(
             this int value,
             int time,
-            string dateFormat = "MMM dd, yyyy",
-            string timeFormat = "HH:mm")
+            string dateFormat = "MMM dd, yyyy")
         {
             try
             {
@@ -97,13 +97,8 @@ namespace Alpha.Maintenance.Core.Web
         public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
         {
             HashSet<TKey> seenKeys = new HashSet<TKey>();
-            foreach (TSource element in source)
-            {
-                if (seenKeys.Add(keySelector(element)))
-                {
-                    yield return element;
-                }
-            }
+
+            return source.Where(element => seenKeys.Add(keySelector(element)));
         }
     }
 }

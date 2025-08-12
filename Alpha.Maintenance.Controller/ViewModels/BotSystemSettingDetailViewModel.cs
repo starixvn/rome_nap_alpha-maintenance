@@ -1,6 +1,4 @@
-﻿using Alpha.Maintenance.Core.Model;
-
-namespace Alpha.Maintenance.Controller.ViewModels
+﻿namespace Alpha.Maintenance.Controller.ViewModels
 {
     public class BotSystemSettingDetailViewModel
     {

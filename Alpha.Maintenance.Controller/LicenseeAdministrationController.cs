@@ -16,12 +16,23 @@ namespace Alpha.Maintenance.Controller
     [NapSuperAuth]
     public class LicenseeAdministrationController : BaseController
     {
-        [HttpGet]
+        private const int ApiIdPlayerAccounts = 1;
+        private const int ApiIdShadowAccounts = 2;
+        private const int ApiIdLicenseeAccounts = 3;
+        private const int ApiIdCurrencyAccounts = 4;
+        private const int ApiIdDummyAccounts = 5;
+
+        private const string ShadowAccountPayloadValue = "{\"realCustID\": 2147483647,\"agentID\": 2147483647,\"isDebug\": true}";
+        private const string PlayerPayloadValue
+            = "{\"userName\": \"string\",\"userID\": 2147483647,\"password\": \"string\"" +
+            ",\"oddsType\": \"string\",\"agentId\": 2147483647,\"affiliateID\": 2147483647,\"country\": \"string\",\"subsidiaryID\": 2147483647,\"isDebug\": true}";
+        private const string DummyPayloadValue = "{\"agentId\": 0,\"creator\": 0,\"ip\": \"127.0.1\"}";
+
+    [HttpGet]
         [NapAuth(FunctionKey = SiteFunctionKeys.LicenseeAdministration, Policy = Constant.Policy.Host)]
         public ActionResult Index()
         {
-            string payload = "{\"userName\": \"string\",\"userID\": 2147483647,\"password\": \"string\",\"oddsType\": \"string\",\"agentId\": 2147483647,\"affiliateID\": 2147483647,\"country\": \"string\",\"subsidiaryID\": 2147483647,\"isDebug\": true}";
-            return View(new LicenseeAdministrationViewModel() { Url = "api/deposit/players", Payload = payload });
+            return View(new LicenseeAdministrationViewModel { Url = "api/deposit/players", Payload = PlayerPayloadValue });
         }
 
         [HttpPost]
@@ -36,40 +47,39 @@ namespace Alpha.Maintenance.Controller
         [NapAuth(FunctionKey = SiteFunctionKeys.LicenseeAdministration, Policy = Constant.Policy.Host)]
         public ActionResult GetSamplePageLoad(int apiId)
         {
-            LicenseeAdministrationViewModel viewModel = null;
+            LicenseeAdministrationViewModel viewModel;
             switch (apiId)
             {
-                case 1:
-                    viewModel = new LicenseeAdministrationViewModel() { Url = "api/deposit/players", Payload = CreatePlayerPayload() };
+                case ApiIdPlayerAccounts:
+                    viewModel = new LicenseeAdministrationViewModel { Url = "api/deposit/players", Payload = PlayerPayloadValue };
                     break;
 
-                case 2:
-                    viewModel = new LicenseeAdministrationViewModel() { Url = "api/deposit/shadowaccounts", Payload = CreateShadowAccountPayload() };
+                case ApiIdShadowAccounts:
+                    viewModel = new LicenseeAdministrationViewModel { Url = "api/deposit/shadowaccounts", Payload = ShadowAccountPayloadValue };
                     break;
 
-                case 3:
+                case ApiIdLicenseeAccounts:
                     viewModel = new LicenseeAdministrationViewModel { Url = "api/site-builder/licensees", Payload = CreateLicenseePayload() };
                     break;
 
-                case 4:
+                case ApiIdCurrencyAccounts:
                     viewModel = new LicenseeAdministrationViewModel { Url = "api/site-builder/currencies", Payload = CreateCurrencyPayload() };
                     break;
 
-                case 5:
-                    viewModel = new LicenseeAdministrationViewModel { Url = "api/site-builder/dummy-players", Payload = "{\"agentId\": 0,\"creator\": 0,\"ip\": \"127.0.1\"}" };
+                case ApiIdDummyAccounts:
+                    viewModel = new LicenseeAdministrationViewModel { Url = "api/site-builder/dummy-players", Payload = DummyPayloadValue };
+                    break;
+
+                default:
+                    viewModel = null;
                     break;
             }
 
             return Json(viewModel, JsonRequestBehavior.AllowGet);
         }
 
-        private string CreatePlayerPayload()
-            => "{\"userName\": \"string\",\"userID\": 2147483647,\"password\": \"string\",\"oddsType\": \"string\",\"agentId\": 2147483647,\"affiliateID\": 2147483647,\"country\": \"string\",\"subsidiaryID\": 2147483647,\"isDebug\": true}";
 
-        private string CreateShadowAccountPayload()
-        {
-            return "{\"realCustID\": 2147483647,\"agentID\": 2147483647,\"isDebug\": true}";
-        }
+
 
         private string CreateLicenseePayload()
         {
@@ -77,7 +87,8 @@ namespace Alpha.Maintenance.Controller
             payload += "\"ProductBetSetting:\": [{\"ProductID\":0,\"Sporttype\":0,\"Bettype\":0,\"Currency\":0,\"MinBet\":0,\"MaxBet\":0,\"MPM\":0,\"MPB\":0,\"MPPM\":0}],";
             payload += "\"ProductStakeLevel\": [{ \"Currency\": 0,\"GameTypeID\": 0,\"MinStake\": 0,\"MaxStake\": 0}],";
             payload += "\"ProductComm\": [{ \"ProductID\": 0,\"Comm\": 0}],";
-            payload += "\"Creator\":\"string\",\"ip\":\"string\",\"isCreateSub\":true,\"licenseeType\":\"string\",\"siteName\":\"string\",\"isChinaView\":true,\"siteDBGroupId\":0,\"specialPlatform\":0,\"siteType\":0";
+            payload += "\"Creator\":\"string\",\"ip\":\"string\",\"isCreateSub\":true,\"licenseeType\":\"string\",";
+            payload += "\"siteName\":\"string\",\"isChinaView\":true,\"siteDBGroupId\":0,\"specialPlatform\":0,\"siteType\":0";
             payload += "}";
 
             return payload;

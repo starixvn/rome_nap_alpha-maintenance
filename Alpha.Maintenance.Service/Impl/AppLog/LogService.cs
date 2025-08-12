@@ -45,6 +45,8 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
 
         private int _showLogTimeZone;
 
+        private const int DefaultPageSize = 100;
+
         private LogService(int showLogTimeZone = 0)
         {
             _categoryId = 0;
@@ -54,7 +56,7 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
             _dateFrom = DateTime.Now;
             _dateTo = DateTime.Now.AddDays(-1);
             _page = 0;
-            _size = 100;
+            _size = DefaultPageSize;
             _showLogTimeZone = showLogTimeZone;
         }
 
@@ -171,13 +173,12 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
         /// <summary>
         /// Get list logs.
         /// </summary>
-        /// <param name="totalRows">Number of rows.</param>
-        /// <returns>List of log.</returns>
-        public IEnumerable<Log> GetLogs(ref int totalRows)
+        /// <returns>Tuple containing list of logs and total rows.</returns>
+        public (IEnumerable<Log> Logs, int TotalRows) GetLogs()
         {
             var criteria = new GetLogCriteria
             {
-                CategoryId = this._categoryId != null ? this._categoryId : 0,
+                CategoryId = this._categoryId ?? 0,
                 From = this._dateFrom,
                 To = this._dateTo,
                 Page = this._page,
@@ -191,15 +192,17 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
             };
             var list = _dynamicRepository.Fetch<LogDTO>(criteria);
 
-            totalRows = criteria.TotalRows;
+            int totalRows = criteria.TotalRows;
 
-            return list.Select(log =>
+            var logs = list.Select(log =>
             {
                 log.Category = ToLogCategory(log);
                 log.Machine = ToMachine(log);
 
                 return log;
             });
+
+            return (logs, totalRows);
         }
 
         /// <summary>

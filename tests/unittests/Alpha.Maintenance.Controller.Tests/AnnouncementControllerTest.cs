@@ -92,11 +92,7 @@
                 announcementService,
                 currentContext,
                 currentSession,
-                userService,
-                true,
-                7,
-                true,
-                7);
+                userService);
         }
 
         [Test]

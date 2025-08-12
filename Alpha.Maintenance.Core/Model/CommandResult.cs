@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Alpha.Maintenance.Core.Model
+﻿namespace Alpha.Maintenance.Core.Model
 {
     public class CommandResult
     {

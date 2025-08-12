@@ -3,7 +3,6 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
-    using System.Dynamic;
     using System.Linq;
     using System.Reflection;
     using Alpha.Maintenance.Core;
@@ -59,54 +58,18 @@
         }
 
         public Result AddBanner(
-            string title,
-            bool isActive,
-            DateTime releasedDate,
-            DateTime expirationDate,
-            string environments,
-            string sites,
-            int userId,
+            AddBannerCriteria criteria,
             Hashtable banners)
         {
-            var criteria = new AddBannerCriteria
-            {
-                BannerName = title,
-                IsActive = isActive,
-                ReleasedDate = releasedDate,
-                ExpirationDate = expirationDate,
-                Environments = environments,
-                Systems = sites,
-                Creator = userId
-            };
-
             MapHashToType(banners, ref criteria);
 
             return SaveBanner(criteria);
         }
 
         public Result EditBanner(
-            int id,
-            string title,
-            bool isActive,
-            DateTime releasedDate,
-            DateTime expirationDate,
-            string environments,
-            string sites,
-            int userId,
+            EditBannerCriteria criteria,
             Hashtable banners)
         {
-            var criteria = new EditBannerCriteria
-            {
-                BannerId = id,
-                BannerName = title,
-                IsActive = isActive,
-                ReleasedDate = releasedDate,
-                ExpirationDate = expirationDate,
-                Environments = environments,
-                Systems = sites,
-                Creator = userId
-            };
-
             MapHashToType(banners, ref criteria);
 
             return SaveBanner(criteria);
@@ -145,7 +108,7 @@
         }
 
 
-        private static T MapHashToType<T>(Hashtable hashtable, ref T type)
+        private static void MapHashToType<T>(Hashtable hashtable, ref T type)
         {
             PropertyInfo[] properties = typeof(T).GetProperties();
             var caseInsensitiveHash = new Dictionary<string, object>(
@@ -164,8 +127,6 @@
                     property.SetValue(type, value);
                 } 
             }
-
-            return type;
         }
 
     }

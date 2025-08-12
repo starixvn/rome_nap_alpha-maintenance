@@ -2,9 +2,9 @@
 
 namespace Alpha.Maintenance.Core.Model
 {
-    public class APIInfo
+    public class ApiInfo
     {
-        public APIInfo(string name)
+        public ApiInfo(string name)
         {
             Name = name;
         }

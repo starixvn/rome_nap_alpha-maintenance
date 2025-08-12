@@ -3,7 +3,6 @@
     using System;
     using System.ComponentModel;
     using Core;
-    using Fanex.Data;
     using Fanex.Data.Repository;
 
     public enum FilterBy

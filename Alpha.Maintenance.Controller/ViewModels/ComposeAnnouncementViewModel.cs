@@ -33,7 +33,7 @@
 
         public bool IsPopup => Announcement != null && Announcement.IsPopup;
 
-        public ActionType ActionType { get; set; } = ActionType.Create;
+        public ActionType ActionType { get; set; }
 
         private IEnumerable<ISpecification<IParam>> FilterNotExistedSpecs(
             IEnumerable<ISpecification<IParam>> allSpecifications,

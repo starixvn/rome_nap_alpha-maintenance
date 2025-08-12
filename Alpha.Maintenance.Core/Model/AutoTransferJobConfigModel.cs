@@ -25,7 +25,6 @@ namespace Alpha.Maintenance.Core.Model
         {
             get
             {
-                var d = DateTime.Now;
                 if (HasManualTime)
                 {
                     var mt = ManualTime.Value;
@@ -37,12 +36,12 @@ namespace Alpha.Maintenance.Core.Model
             }
         }
 
-        public static List<string> RunningModes = new List<string> { "Normal", "Resume" };
+        public static readonly IEnumerable<string> RunningModes = new List<string> { "Normal", "Resume" };
 
-        public static IEnumerable<string> SiteDBs = AppSettings.SiteDBs;
+        public static readonly IEnumerable<string> SiteDBs = AppSettings.SiteDBs;
 
-        public string DefaultManualTime => DateTime.Now.Date.ToLongDate();
+        public string DefaultManualTime => SystemTime.Today.ToLongDate();
 
-        public bool HasManualTime => ManualTime.HasValue && ManualTime.Value >= DateTime.Now;
+        public bool HasManualTime => ManualTime.HasValue && ManualTime.Value >= SystemTime.Now;
     }
 }

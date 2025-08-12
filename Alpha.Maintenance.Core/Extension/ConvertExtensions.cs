@@ -68,7 +68,7 @@ namespace Alpha.Maintenance.Core.Extension
 
             if (value == null || value == DBNull.Value || value.ToString() == string.Empty)
             {
-                return 0.0m;
+                return val;
             }
 
             decimal.TryParse(value.ToString(), out val);
@@ -82,7 +82,7 @@ namespace Alpha.Maintenance.Core.Extension
 
             if (obj[fieldName] == null || obj[fieldName] == DBNull.Value || obj[fieldName].ToString() == string.Empty)
             {
-                return 0.0m;
+                return val;
             }
 
             decimal.TryParse(obj[fieldName].ToString(), out val);
@@ -96,7 +96,7 @@ namespace Alpha.Maintenance.Core.Extension
 
             if (value == null || value == DBNull.Value || value.ToString() == string.Empty)
             {
-                return false;
+                return val;
             }
 
             if (value.ToString() == "1")
@@ -115,7 +115,7 @@ namespace Alpha.Maintenance.Core.Extension
 
             if (obj[fieldName] == null || obj[fieldName] == DBNull.Value || obj[fieldName].ToString() == string.Empty)
             {
-                return false;
+                return val;
             }
 
             bool.TryParse(obj[fieldName].ToString(), out val);
@@ -149,7 +149,7 @@ namespace Alpha.Maintenance.Core.Extension
 
             if (value == null || value == DBNull.Value || value.ToString() == string.Empty)
             {
-                return 0.0d;
+                return val;
             }
 
             double.TryParse(value.ToString(), out val);
@@ -163,7 +163,7 @@ namespace Alpha.Maintenance.Core.Extension
 
             if (obj[fieldName] == null || obj[fieldName] == DBNull.Value || obj[fieldName].ToString() == string.Empty)
             {
-                return 0.0d;
+                return val;
             }
 
             double.TryParse(obj[fieldName].ToString(), out val);
@@ -177,10 +177,10 @@ namespace Alpha.Maintenance.Core.Extension
 
             if (value == null || value == DBNull.Value || value.ToString() == string.Empty)
             {
-                return DateTime.MinValue;
+                return val;
             }
 
-            DateTime.TryParse(value.ToString(), out val);
+            DateTime.TryParse(value.ToString(), System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out val);
 
             return val;
         }
@@ -191,10 +191,10 @@ namespace Alpha.Maintenance.Core.Extension
 
             if (obj[fieldName] == null || obj[fieldName] == DBNull.Value || obj[fieldName].ToString() == string.Empty)
             {
-                return DateTime.MinValue;
+                return val;
             }
 
-            DateTime.TryParse(obj[fieldName].ToString(), out val);
+            DateTime.TryParse(obj[fieldName].ToString(), System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out val);
 
             return val;
         }
@@ -205,7 +205,7 @@ namespace Alpha.Maintenance.Core.Extension
 
             if (value == null || value == DBNull.Value || value.ToString() == string.Empty)
             {
-                return 0;
+                return val;
             }
 
             if (value is decimal || value is double)
@@ -226,7 +226,7 @@ namespace Alpha.Maintenance.Core.Extension
 
             if (obj[fieldName] == null || obj[fieldName] == DBNull.Value || obj[fieldName].ToString() == string.Empty)
             {
-                return 0;
+                return val;
             }
 
             if (obj[fieldName] is decimal || obj[fieldName] is double)
@@ -247,7 +247,7 @@ namespace Alpha.Maintenance.Core.Extension
 
             if (value == null || value == DBNull.Value || value.ToString() == string.Empty)
             {
-                return 0L;
+                return val;
             }
 
             if (value is decimal || value is double)
@@ -268,7 +268,7 @@ namespace Alpha.Maintenance.Core.Extension
 
             if (obj[fieldName] == null || obj[fieldName] == DBNull.Value || obj[fieldName].ToString() == string.Empty)
             {
-                return 0L;
+                return val;
             }
 
             if (obj[fieldName] is decimal || obj[fieldName] is double)

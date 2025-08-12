@@ -11,8 +11,6 @@
 namespace Alpha.Maintenance.Controller
 {
     using Fanex.NAP.Core.Web.Attribute;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Web.Mvc;
 
     /// <summary>

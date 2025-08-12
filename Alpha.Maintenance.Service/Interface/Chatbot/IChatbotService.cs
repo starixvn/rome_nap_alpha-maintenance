@@ -1,4 +1,5 @@
 ﻿using Alpha.Maintenance.Core.Model;
+using Alpha.Maintenance.Repository.Criteria.Chatbot;
 using System.Collections.Generic;
 
 namespace Alpha.Maintenance.Service.Interface.Chatbot
@@ -9,9 +10,9 @@ namespace Alpha.Maintenance.Service.Interface.Chatbot
 
         Bot GetBot(int botId);
 
-        Result CreateBot(string username, string displayName, string system, string accessToken, bool status, bool isTest, int creator, string ip);
+        Result CreateBot(CreateBotCriteria criteria);
 
-        Result UpdateBot(int botId, string username, string displayName, string system, string accessToken, bool status, bool isTest, int creator, string ip);
+        Result UpdateBot(UpdateBotCriteria criteria);
 
         IEnumerable<BotSystemSetting> GetBotSystemSetting(string serviceName = "");
 

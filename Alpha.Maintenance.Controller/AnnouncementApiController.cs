@@ -7,7 +7,6 @@
     using Repository.Criteria.Announcements;
     using Service.Impl.Announcement;
     using Service.Interface.Announcement;
-    using Web;
 
     public class AnnouncementApiController : ApiController
     {

@@ -176,22 +176,24 @@ namespace Alpha.Maintenance.Controller
         /// </summary>
         private void InitMachineTypes()
         {
-            List<SelectListItem> machineTypes = new List<SelectListItem>();
-            machineTypes.Add(new SelectListItem
+            List<SelectListItem> machineTypes = new List<SelectListItem>
             {
-                Text = ViewResource.All,
-                Value = "null"
-            });
-            machineTypes.Add(new SelectListItem
-            {
-                Text = ViewResource.MachineType_Production,
-                Value = "true"
-            });
-            machineTypes.Add(new SelectListItem
-            {
-                Text = ViewResource.MachineType_UAT,
-                Value = "false"
-            });
+                new SelectListItem
+                {
+                    Text = ViewResource.All,
+                    Value = "null"
+                },
+                new SelectListItem
+                {
+                    Text = ViewResource.MachineType_Production,
+                    Value = "true"
+                },
+                new SelectListItem
+                {
+                    Text = ViewResource.MachineType_UAT,
+                    Value = "false"
+                }
+            };
 
             ViewBag.MachineTypes = machineTypes;
         }

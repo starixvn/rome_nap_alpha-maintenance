@@ -7,6 +7,7 @@
     using System.Web.Mvc;
     using Alpha.Maintenance.Controller.ViewModels;
     using Alpha.Maintenance.Core;
+    using Alpha.Maintenance.Repository.Criteria.Banners;
     using Alpha.Maintenance.Service.Impl.Banners;
     using Alpha.Maintenance.Service.Interface.Banners;
     using Fanex.NAP.Core.Business;
@@ -16,6 +17,7 @@
     public class BannerController : BaseController
     {
         private readonly BannerService bannerService;
+        private const int DaysOfWeek = 7;
 
         public BannerController()
             : this(null)
@@ -51,24 +53,27 @@
                     ViewResource.AddBanner)
                     {
                         ReleasedDate = today,
-                        ExpirationDate = today.AddDays(7)
+                        ExpirationDate = today.AddDays(DaysOfWeek)
                     });
         }
 
         [HttpPost]
         [NapAuth(FunctionKey = SiteFunctionKeys.BannerManagement, Policy = Constant.Policy.Host)]
         public ActionResult Add(UploadBannerViewModel viewModel)
-            => Json(
-                bannerService.AddBanner(
-                    viewModel.Title,
-                    viewModel.IsActive,
-                    viewModel.ReleasedDate,
-                    viewModel.ExpirationDate,
-                    viewModel.Environments,
-                    viewModel.Sites,
-                    CurrentSession.UserId,
-                    ToHashtable(Request.Files)),
-                JsonRequestBehavior.DenyGet);
+        {
+            var request = new AddBannerCriteria
+            {
+                BannerName = viewModel.Title,
+                IsActive = viewModel.IsActive,
+                ReleasedDate = viewModel.ReleasedDate,
+                ExpirationDate = viewModel.ExpirationDate,
+                Environments = viewModel.Environments,
+                Systems = viewModel.Sites,
+                Creator = CurrentSession.UserId
+            };
+
+            return Json(bannerService.AddBanner(request,ToHashtable(Request.Files)),JsonRequestBehavior.DenyGet);
+        }
 
         [NapAuth(FunctionKey = SiteFunctionKeys.BannerManagement, Policy = Constant.Policy.Read)]
         public ActionResult Edit(int? id)
@@ -107,18 +112,24 @@
         [HttpPost]
         [NapAuth(FunctionKey = SiteFunctionKeys.BannerManagement, Policy = Constant.Policy.Host)]
         public ActionResult Edit(UploadBannerViewModel viewModel)
-            => Json(
+        {
+            var request = new EditBannerCriteria
+            {
+                BannerId = viewModel.Id,
+                BannerName = viewModel.Title,
+                IsActive = viewModel.IsActive,
+                ReleasedDate = viewModel.ReleasedDate,
+                ExpirationDate = viewModel.ExpirationDate,
+                Environments = viewModel.Environments,
+                Systems = viewModel.Sites,
+                Creator = CurrentSession.UserId
+            };
+            return Json(
                 bannerService.EditBanner(
-                    viewModel.Id,
-                    viewModel.Title,
-                    viewModel.IsActive,
-                    viewModel.ReleasedDate,
-                    viewModel.ExpirationDate,
-                    viewModel.Environments,
-                    viewModel.Sites,
-                    CurrentSession.UserId,
+                    request,
                     ToHashtable(Request.Files)),
                 JsonRequestBehavior.DenyGet);
+        }
 
         private static Hashtable ToHashtable(HttpFileCollectionBase files)
         {

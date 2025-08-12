@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Xml.Serialization;
@@ -43,15 +41,14 @@ namespace Alpha.Maintenance.Site.Areas.DatabaseProfiler.Controllers
         [NapAuth(FunctionKey = SiteFunctionKeys.DBProfiler, Policy = Constant.Policy.Read)]
         public ActionResult Logs(DBProfilerModel model)
         {
-            var hasError = false;
-            var errorMsg = string.Empty;
-
-            var list = _logService
+            var (list, hasError, errorMsg) = _logService
                  .With(model)
-                 .GetLogs(ref hasError, ref errorMsg);
+                 .GetLogs();
 
             if (hasError)
+            {
                 ViewBag.ErrorMsg = errorMsg;
+            }    
 
             return View(list);
         }

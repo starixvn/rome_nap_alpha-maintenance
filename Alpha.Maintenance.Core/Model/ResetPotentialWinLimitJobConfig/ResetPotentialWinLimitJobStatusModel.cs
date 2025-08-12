@@ -13,7 +13,6 @@ namespace Alpha.Maintenance.Core.Model.ResetPotentialWinLimitJobConfig
         {
             get
             {
-                var d = DateTime.Now;
                 if (RunningDate.HasValue)
                 {
                     var mt = RunningDate.Value;
@@ -29,7 +28,6 @@ namespace Alpha.Maintenance.Core.Model.ResetPotentialWinLimitJobConfig
         {
             get
             {
-                var d = DateTime.Now;
                 if (CompletedTime.HasValue)
                 {
                     var mt = CompletedTime.Value;

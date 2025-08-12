@@ -57,8 +57,7 @@
                                                         };
 
             this.excludedSpecifications = excludedSpecifications ?? AppSettings.AnnouncementConfig.ExcludedSpecifications;
-            this.getAnnouncementsByJson = getAnnouncementsByJson == null ?
-                AppSettings.AnnouncementConfig.GetAnnouncementsByJson : getAnnouncementsByJson;
+            this.getAnnouncementsByJson = getAnnouncementsByJson ?? AppSettings.AnnouncementConfig.GetAnnouncementsByJson;
 
             getValueRangeFunction = new Dictionary<string, Func<dynamic>>
             {
@@ -72,15 +71,13 @@
         {
             var factorySpecs = baseAnnouncementService.GetFactorySpecifications();
 
-            var offeredSpecs = baseAnnouncementService.FiterOfferedSpecs(factorySpecs, excludedSpecifications);
-
-            foreach (var spec in offeredSpecs)
-            {
-                if (getValueRangeFunction.ContainsKey(spec.Id))
+            var offeredSpecs = baseAnnouncementService.FiterOfferedSpecs(factorySpecs, excludedSpecifications)
+                .Where(spec => getValueRangeFunction.ContainsKey(spec.Id))
+                .Select(spec =>
                 {
                     spec.ValueRange = getValueRangeFunction[spec.Id]();
-                }
-            }
+                    return spec;
+                });
 
             return offeredSpecs;
         }
@@ -139,7 +136,7 @@
 
         private IEnumerable<Announcement> GetAnnouncementsByJsonFile()
         {
-            using (StreamReader reader = new StreamReader(Path.Combine(AppDomain.CurrentDomain.BaseDirectory.ToString(), JsonPath)))
+            using (StreamReader reader = new StreamReader(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, JsonPath)))
             {
                 return JsonConvert.DeserializeObject<List<Announcement>>(reader.ReadToEnd(), new SpecificationConverter());
             }

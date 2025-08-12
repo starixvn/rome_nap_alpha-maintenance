@@ -16,7 +16,6 @@ namespace Alpha.Maintenance.Core.Model.ResetPotentialWinLimitJobConfig
         {
             get
             {
-                var d = DateTime.Now;
                 if (HasManualTime)
                 {
                     var mt = ManualTime.Value;

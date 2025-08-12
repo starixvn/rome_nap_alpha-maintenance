@@ -13,7 +13,7 @@
 
         public bool Enabled { get; set; } = true;
 
-        public bool IsTest { get; set; } = false;
+        public bool IsTest { get; set; }
 
         public bool HasHostPermission { get; }
     }

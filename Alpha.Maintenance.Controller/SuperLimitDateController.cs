@@ -13,6 +13,9 @@
     public class SuperLimitDateController : BaseController
     {
         private readonly ISuperLimitDateService service;
+        private const int MinDateSuport = 33;
+        private const int LimitDateRequiredErrorCode = 201;
+        private const int MinDateRequiredErrorCode = 202;
 
         public SuperLimitDateController() : this(null)
         {
@@ -39,7 +42,7 @@
 
         [HttpGet]
         [NapAuth(FunctionKey = SiteFunctionKeys.SuperLimitDate, Policy = Constant.Policy.Host)]
-        public ActionResult Add() => View(new SuperLimitDate { MinDate = DateTime.Now.AddDays(-33), LimitDays = 33 });
+        public ActionResult Add() => View(new SuperLimitDate { MinDate = DateTime.Now.AddDays(-MinDateSuport), LimitDays = MinDateSuport });
 
         [HttpPost]
         [NapAuth(FunctionKey = SiteFunctionKeys.SuperLimitDate, Policy = Constant.Policy.Host)]
@@ -47,11 +50,11 @@
         {
             if (model.TypeDate.Equals("LimitDays", StringComparison.InvariantCultureIgnoreCase) && !model.LimitDays.HasValue)
             {
-                ModelState.AddModelError(Convert.ToString(201), "Limit Days is required");
+                ModelState.AddModelError(Convert.ToString(LimitDateRequiredErrorCode), "Limit Days is required");
             }
             if (model.TypeDate.Equals("MinDate", StringComparison.InvariantCultureIgnoreCase) && !model.MinDate.HasValue)
             {
-                ModelState.AddModelError(Convert.ToString(202), "Min Date is required");
+                ModelState.AddModelError(Convert.ToString(MinDateRequiredErrorCode), "Min Date is required");
             }
 
             if (ModelState.IsValid)

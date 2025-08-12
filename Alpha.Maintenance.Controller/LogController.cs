@@ -13,6 +13,7 @@ namespace Alpha.Maintenance.Controller
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
@@ -105,13 +106,11 @@ namespace Alpha.Maintenance.Controller
             InitDataView();
             InitPageSize();
 
-            var totalRows = 0;
-
             DateTime from = criteria.From.AddHours(-1 * criteria.ToGMT);
             DateTime to = criteria.To.AddHours(-1 * criteria.ToGMT).AddMinutes(1).AddSeconds(-1);
 
             ////Get logs by date
-            IEnumerable<Log> listLogs = _logService.With(
+            (IEnumerable<Log> listLogs, int totalRows) = _logService.With(
                 criteria.CategoryId,
                 criteria.MachineId,
                 criteria.IsProduction,
@@ -122,7 +121,7 @@ namespace Alpha.Maintenance.Controller
                 .From(from)
                 .To(to)
                 .WithPagination(criteria.Page, criteria.Size)
-                .GetLogs(ref totalRows);
+                .GetLogs();
 
             if (listLogs.Any())
             {
@@ -174,7 +173,8 @@ namespace Alpha.Maintenance.Controller
         {
             if (Request.IsAjaxRequest())
             {
-                return Json(_logService.From(DateTime.Now.AddDays(-5)).RemoveLogs());
+                var daysLimit = 5;
+                return Json(_logService.From(DateTime.Now.AddDays(-daysLimit)).RemoveLogs());
             }
 
             return Json(0);
@@ -212,57 +212,31 @@ namespace Alpha.Maintenance.Controller
         /// </summary>
         private void InitPageSize()
         {
-            List<SelectListItem> listPageSize = new List<SelectListItem>();
-            listPageSize.Add(new SelectListItem
+            List<SelectListItem> listPageSize = new List<SelectListItem>
             {
-                Text = "10",
-                Value = "10"
-            });
-
-            listPageSize.Add(new SelectListItem
-            {
-                Text = "30",
-                Value = "30"
-            });
-
-            listPageSize.Add(new SelectListItem
-            {
-                Text = "50",
-                Value = "50"
-            });
-
-            listPageSize.Add(new SelectListItem
-            {
-                Text = "100",
-                Value = "100"
-            });
+                new SelectListItem
+                {
+                    Text = "10",
+                    Value = "10"
+                },
+                new SelectListItem
+                {
+                    Text = "30",
+                    Value = "30"
+                },
+                new SelectListItem
+                {
+                    Text = "50",
+                    Value = "50"
+                },
+                new SelectListItem
+                {
+                    Text = "100",
+                    Value = "100"
+                }
+            };
 
             ViewBag.PageSize = listPageSize;
-        }
-
-        /// <summary>
-        /// Initialize Machine Types data.
-        /// </summary>
-        private void InitMachineTypes()
-        {
-            List<SelectListItem> machineTypes = new List<SelectListItem>();
-            machineTypes.Add(new SelectListItem
-            {
-                Text = ViewResource.All,
-                Value = "null"
-            });
-            machineTypes.Add(new SelectListItem
-            {
-                Text = ViewResource.MachineType_Production,
-                Value = "true"
-            });
-            machineTypes.Add(new SelectListItem
-            {
-                Text = ViewResource.MachineType_UAT,
-                Value = "false"
-            });
-
-            ViewBag.MachineTypes = machineTypes;
         }
 
         /// <summary>
@@ -270,22 +244,24 @@ namespace Alpha.Maintenance.Controller
         /// </summary>
         private void InitLogStatus()
         {
-            List<SelectListItem> logStatus = new List<SelectListItem>();
-            logStatus.Add(new SelectListItem
+            List<SelectListItem> logStatus = new List<SelectListItem>
             {
-                Text = ViewResource.All,
-                Value = "null"
-            });
-            logStatus.Add(new SelectListItem
-            {
-                Text = ViewResource.LogStatus_Monitored,
-                Value = "true"
-            });
-            logStatus.Add(new SelectListItem
-            {
-                Text = ViewResource.LogStatus_Unmonitored,
-                Value = "false"
-            });
+                new SelectListItem
+                {
+                    Text = ViewResource.All,
+                    Value = "null"
+                },
+                new SelectListItem
+                {
+                    Text = ViewResource.LogStatus_Monitored,
+                    Value = "true"
+                },
+                new SelectListItem
+                {
+                    Text = ViewResource.LogStatus_Unmonitored,
+                    Value = "false"
+                }
+            };
 
             ViewBag.LogStatus = logStatus;
         }
@@ -296,38 +272,39 @@ namespace Alpha.Maintenance.Controller
         private void InitSeverities()
         {
             ////Init Serverity
-            List<SelectListItem> list = new List<SelectListItem>();
-
-            list.Add(new SelectListItem
+            List<SelectListItem> list = new List<SelectListItem>
             {
-                Text = ViewResource.All,
-                Value = "All"
-            });
-            list.Add(new SelectListItem
-            {
-                Text = ViewResource.Severity_Critical,
-                Value = "Critical"
-            });
-            list.Add(new SelectListItem
-            {
-                Text = ViewResource.Severity_Error,
-                Value = "Error"
-            });
-            list.Add(new SelectListItem
-            {
-                Text = ViewResource.Severity_Information,
-                Value = "Information"
-            });
-            list.Add(new SelectListItem
-            {
-                Text = ViewResource.Severity_Verbose,
-                Value = "Verbose"
-            });
-            list.Add(new SelectListItem
-            {
-                Text = ViewResource.Severity_Warning,
-                Value = "Warning"
-            });
+                new SelectListItem
+                {
+                    Text = ViewResource.All,
+                    Value = "All"
+                },
+                new SelectListItem
+                {
+                    Text = ViewResource.Severity_Critical,
+                    Value = "Critical"
+                },
+                new SelectListItem
+                {
+                    Text = ViewResource.Severity_Error,
+                    Value = "Error"
+                },
+                new SelectListItem
+                {
+                    Text = ViewResource.Severity_Information,
+                    Value = "Information"
+                },
+                new SelectListItem
+                {
+                    Text = ViewResource.Severity_Verbose,
+                    Value = "Verbose"
+                },
+                new SelectListItem
+                {
+                    Text = ViewResource.Severity_Warning,
+                    Value = "Warning"
+                }
+            };
             ViewBag.ListSeverity = list;
         }
 
@@ -336,23 +313,24 @@ namespace Alpha.Maintenance.Controller
         /// </summary>
         private void InitTimeZone()
         {
-            List<SelectListItem> list = new List<SelectListItem>();
-
-            list.Add(new SelectListItem
+            List<SelectListItem> list = new List<SelectListItem>
             {
-                Text = "GMT-4 (Canada)",
-                Value = "-4"
-            });
-            list.Add(new SelectListItem
-            {
-                Text = "GMT+7 (Bangkok)",
-                Value = "7"
-            });
-            list.Add(new SelectListItem
-            {
-                Text = "GMT+8 (Taipei)",
-                Value = "8"
-            });
+                new SelectListItem
+                {
+                    Text = "GMT-4 (Canada)",
+                    Value = "-4"
+                },
+                new SelectListItem
+                {
+                    Text = "GMT+7 (Bangkok)",
+                    Value = "7"
+                },
+                new SelectListItem
+                {
+                    Text = "GMT+8 (Taipei)",
+                    Value = "8"
+                }
+            };
 
             ViewBag.ListTimeZone = list;
         }
@@ -383,7 +361,7 @@ namespace Alpha.Maintenance.Controller
             listCategory.Insert(0, defaultSelection);
             ViewBag.ListCategory = listCategory;
 
-            var specialCategory = listCategory.FirstOrDefault(category => category.Text.ToLower().Contains("alpha-789y-af"));
+            var specialCategory = listCategory.Find(category => category.Text.ToLowerInvariant().Contains("alpha-789y-af"));
             if (specialCategory != null)
             {
                 _selectedCategoryId = int.Parse(specialCategory.Value);
@@ -397,7 +375,7 @@ namespace Alpha.Maintenance.Controller
             var timestamp = message.Substring(10, timestampLength);
             var offsetSign = GMT > 0 ? "+" : string.Empty;
 
-            message = message.Replace(timestamp, $" {Convert.ToDateTime(timestamp).AddHours(GMT).ToString()} (GMT{offsetSign}{GMT})");
+            message = message.Replace(timestamp, $" {Convert.ToDateTime(timestamp).AddHours(GMT).ToString(CultureInfo.InvariantCulture)} (GMT{offsetSign}{GMT})");
 
             return message;
         }

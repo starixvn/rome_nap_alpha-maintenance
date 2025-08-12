@@ -7,11 +7,12 @@
 
     public class ViewBannerViewModel
     {
+        private const int NumberDaysOfWeek = 7;
         public ViewBannerViewModel()
         {
             var today = DateTime.Today;
             FromDate = today;
-            ToDate = today.AddDays(7);
+            ToDate = today.AddDays(NumberDaysOfWeek);
         }
 
         public BannerFilterBy FilterBy { get; set; } = BannerFilterBy.ReleasedDate;

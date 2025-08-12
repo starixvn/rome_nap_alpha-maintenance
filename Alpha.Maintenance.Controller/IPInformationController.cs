@@ -1,16 +1,11 @@
 ﻿namespace Alpha.Maintenance.Controller
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
     using System.Web.Mvc;
-    using Core.Configurations;
-    using Core.Model;
     using Fanex.NAP.Core.Business;
     using Fanex.NAP.Core.Web.Attribute;
     using Service.Impl.IPInformation;
     using Service.Interface.IPInformation;
-    using ViewModels;
 
     [NapSuperAuth]
     public class IPInformationController : BaseController

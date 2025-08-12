@@ -11,8 +11,6 @@ using System.Configuration;
 using System.Net;
 using Fanex.Logging;
 using Fanex.Data.Repository;
-using System.Text.Json.Serialization;
-using Newtonsoft.Json;
 
 namespace Alpha.Maintenance.Service.Impl.IPInformation
 {
@@ -31,14 +29,20 @@ namespace Alpha.Maintenance.Service.Impl.IPInformation
                 : new HttpClient(new HttpClientHandler { Proxy = new WebProxy(proxyUri), UseProxy = true }, true);
         }
 
-        public IPInformationServiceImpl(IDynamicRepository dynamicRepository = null)
+        public IPInformationServiceImpl(IDynamicRepository dynamicRepository)
         {
             this.dynamicRepository = dynamicRepository ?? new DynamicRepository();
         }
 
         public async Task<IEnumerable<IPInfo>> GetIPInfos(string ip)
         {
-            var result = dynamicRepository.Fetch<IPInfo>(new GetIPInformationCriteria(ip)).Select(info => { info.DataSource = "IPDB"; return info; }).ToList();
+            var result = (await dynamicRepository.FetchAsync<IPInfo>(new GetIPInformationCriteria(ip)))
+                .Select(info =>
+                {
+                    info.DataSource = "IPDB";
+                    return info;
+                })
+                .ToList();
 
             var apis = GetGeolocationAPIs();
             foreach(var api in apis)
@@ -68,7 +72,7 @@ namespace Alpha.Maintenance.Service.Impl.IPInformation
             return result;
         }
 
-        private static IEnumerable<APIInfo> GetGeolocationAPIs()
-            => AppSettings.APINames.Select(name => new APIInfo(name));
+        private static IEnumerable<ApiInfo> GetGeolocationAPIs()
+            => AppSettings.APINames.Select(name => new ApiInfo(name));
     }
 }

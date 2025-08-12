@@ -1,6 +1,5 @@
 ﻿namespace Alpha.Maintenance.Repository.Criteria.ResetPotentialWinLimitJob
 {
-    using Fanex.Data;
     using Fanex.Data.Repository;
 
     public class GetResetPotentialWinLimitJobSettingCriteria : NonQueryCommand

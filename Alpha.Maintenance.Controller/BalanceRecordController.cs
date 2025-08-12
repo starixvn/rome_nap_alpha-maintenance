@@ -1,11 +1,8 @@
 ﻿namespace Alpha.Maintenance.Controller
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Web.Mvc;
     using Alpha.Maintenance.Controller.ViewModels;
-    using Alpha.Maintenance.Core.Configurations;
     using Alpha.Maintenance.Core.Model;
     using Alpha.Maintenance.Service.Impl.BalanceRecord;
     using Alpha.Maintenance.Service.Interface.BalanceRecord;
@@ -20,7 +17,6 @@
         private const string UAT = "UAT";
 
         private readonly IBalanceRecordService balanceRecordService;
-        private readonly IEnumerable<string> jobNames;
 
         public BalanceRecordController() : this(null)
         {
@@ -29,7 +25,6 @@
         private BalanceRecordController(IBalanceRecordService balanceRecordService)
         {
             this.balanceRecordService = balanceRecordService ?? new BalanceRecordService();
-            jobNames = AppSettings.BalanceRecordJobNames.ToList();
         }
 
         [NapAuth(FunctionKey = SiteFunctionKeys.DataSyncServices, Policy = Constant.Policy.Read)]

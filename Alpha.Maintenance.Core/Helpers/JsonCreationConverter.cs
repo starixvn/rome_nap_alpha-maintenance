@@ -60,7 +60,7 @@
             return JObject.Load(reader);
         }
 
-        protected void ValidateInputParams(JsonReader reader, Type type, JsonSerializer serializer)
+        protected static  void ValidateInputParams(JsonReader reader, Type type, JsonSerializer serializer)
         {
             if (reader == null)
             {

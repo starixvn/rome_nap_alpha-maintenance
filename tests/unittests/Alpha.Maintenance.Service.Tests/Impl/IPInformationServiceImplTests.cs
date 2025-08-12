@@ -109,7 +109,7 @@ namespace Alpha.Maintenance.Service.Tests.Impl
                 .Returns(dbResults);
 
             // Mock AppSettings for API configuration
-            var mockApiInfo = new APIInfo("test-api")
+            var mockApiInfo = new ApiInfo("test-api")
             {
                 // Note: Since APIInfo properties are read-only, you might need to modify the test approach
                 // or create a test-specific implementation

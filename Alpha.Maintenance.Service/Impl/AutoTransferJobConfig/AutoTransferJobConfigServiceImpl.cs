@@ -45,7 +45,7 @@ namespace Alpha.Maintenance.Service.Impl.AutoTransferJobConfig
             };
         }
 
-        private string GetDefaultTime(string defaultTime)
+        private static string GetDefaultTime(string defaultTime)
         {
             var parts = defaultTime.Split(':');
             if (parts.Length < 2 || !int.TryParse(parts[0], out int h) || !int.TryParse(parts[1], out int m))

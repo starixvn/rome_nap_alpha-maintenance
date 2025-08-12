@@ -8,10 +8,6 @@ namespace Alpha.Maintenance.Service.Impl.DbProfiler
     {
         private readonly IDynamicRepository _dynamicRepository;
 
-        private int _page;
-
-        private int _size;
-
         private string _site;
 
         private int _traceTimer;
@@ -31,8 +27,6 @@ namespace Alpha.Maintenance.Service.Impl.DbProfiler
         public LogService()
         {
             _dynamicRepository = new DynamicRepository();
-            _page = 0;
-            _size = 100;
         }
 
         public LogService With(DBProfilerModel model)
@@ -48,15 +42,8 @@ namespace Alpha.Maintenance.Service.Impl.DbProfiler
 
             return this;
         }
-        public LogService WithPagination(int page, int size)
-        {
-            this._page = page;
-            this._size = size;
 
-            return this;
-        }
-
-        public IEnumerable<DbProfilerViewModel> GetLogs(ref bool hasError, ref string errorMsg)
+        public (IEnumerable<DbProfilerViewModel>, bool, string) GetLogs()
         {
             var criteria = new DBProfilerModel
             {
@@ -74,10 +61,7 @@ namespace Alpha.Maintenance.Service.Impl.DbProfiler
 
             var list = _dynamicRepository.Fetch<DbProfilerViewModel>(criteria, criteria.Server);
 
-            hasError = criteria.HasError;
-            errorMsg = criteria.ErrorMsg;
-
-            return list;
+            return (list, criteria.HasError, criteria.ErrorMsg);
         }
     }
 }

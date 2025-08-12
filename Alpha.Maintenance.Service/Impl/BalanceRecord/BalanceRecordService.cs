@@ -13,6 +13,8 @@
     {
         private readonly IDynamicRepository dynamicRepository;
 
+        private const int UpdateFailStatus = 500;
+
         public BalanceRecordService(IDynamicRepository dynamicRepository = null)
             => this.dynamicRepository = dynamicRepository ?? new DynamicRepository();
 
@@ -59,7 +61,7 @@
                 {
                     result = new Result
                     {
-                        Code = 500,
+                        Code = UpdateFailStatus,
                         Message = $"{item.Name}_{item.Environment}: Updated status to {item.Status} fail."
                     };
 

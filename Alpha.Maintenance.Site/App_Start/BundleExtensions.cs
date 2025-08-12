@@ -19,7 +19,7 @@ namespace Alpha.Maintenance.Site.App_Start
     /// </summary>
     internal static class BundleExtensions
     {
-        public static void AddAndInclude(this BundleCollection bundles, string bundleVirtualPath, params string[] virtualPaths)
+        internal static void AddAndInclude(this BundleCollection bundles, string bundleVirtualPath, params string[] virtualPaths)
         {
             bundles.Add(new Bundle(bundleVirtualPath)
             {
@@ -28,7 +28,7 @@ namespace Alpha.Maintenance.Site.App_Start
             }.Include(virtualPaths));
         }
 
-        public static string RelativeFromAbsolutePath(this HttpContextBase context, string path)
+        internal static string RelativeFromAbsolutePath(this HttpContextBase context, string path)
         {
             var request = context.Request;
             var applicationPath = request.PhysicalApplicationPath;

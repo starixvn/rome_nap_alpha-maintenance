@@ -25,7 +25,7 @@ namespace Alpha.Maintenance.Controller
 
         [HttpGet]
         [NapAuth(FunctionKey = SiteFunctionKeys.AdminTools, Policy = Constant.Policy.Read)]
-        public ActionResult Index(string site, string env)
+        public ActionResult Index(string site)
         {
             var model = AutoTransferEnvironmentConstants.AllEnvironments.Select(e => service.GetAutoTransferJobConfig(site, e));
 

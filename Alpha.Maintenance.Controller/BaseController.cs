@@ -31,39 +31,34 @@ namespace Alpha.Maintenance.Controller
         protected readonly ICurrentContext CurrentContext;
         protected readonly ICurrentSession CurrentSession;
         private readonly IUserService _userService;
-        private bool _issiteLogin;
-        private int _showLogTimeZone = 7;
+        private readonly bool _issiteLogin;
+        private readonly int _showLogTimeZone;
 
         public BaseController()
-            : this(null, null, null, null, null, null, null)
+            : this(null, null, null)
         {
         }
 
         public BaseController(
             ICurrentContext currentContext,
             ICurrentSession currentSession,
-            IUserService userService,
-            bool? enableReCheckIn,
-            int? showLogTimeZone,
-            bool?  issiteLogin,
-            int? siteId,
-            string environment = "")
+            IUserService userService)
         {
             CurrentContext = currentContext?? new CurrentContext();
             CurrentSession = currentSession?? new CurrentSession();
 
             ViewFlags = new ViewFlags
             {
-                IsReCheckin = enableReCheckIn?? NapSettings.Settings.EnableReCheckIn
+                IsReCheckin = NapSettings.Settings.EnableReCheckIn
             };
 
             _userService = userService?? new UserService();
 
-            _showLogTimeZone = showLogTimeZone?? Convert.ToInt32(ConfigurationManager.AppSettings["GMTShowLog"]);
+            _showLogTimeZone = Convert.ToInt32(ConfigurationManager.AppSettings["GMTShowLog"]);
 
-            _issiteLogin = issiteLogin?? NapSettings.Settings.EnableDirectLogin;
-            SiteId = siteId?? NapSettings.Settings.SiteId;
-            Environment = string.IsNullOrEmpty(environment) ? NapSettings.Settings.Environment : environment;
+            _issiteLogin = NapSettings.Settings.EnableDirectLogin;
+            SiteId = NapSettings.Settings.SiteId;
+            Environment = NapSettings.Settings.Environment;
         }
 
         /// <summary>
@@ -99,7 +94,7 @@ namespace Alpha.Maintenance.Controller
             }
         }
 
-        public PartialViewResult _Menu()
+        public PartialViewResult Menu()
         {
             ViewBag.Menu = CurrentSession.MenuItemList;
             return PartialView("~/Views/Shared/_Menu.cshtml");
@@ -114,7 +109,7 @@ namespace Alpha.Maintenance.Controller
 
         protected override JsonResult Json(object data, string contentType, System.Text.Encoding contentEncoding, JsonRequestBehavior behavior)
         {
-            return new JsonResult()
+            return new JsonResult
             {
                 Data = data,
                 ContentType = contentType,

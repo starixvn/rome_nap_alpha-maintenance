@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using Alpha.Maintenance.Core.Model;
-    using Alpha.Maintenance.Repository;
     using Alpha.Maintenance.Repository.Criteria.SuperLimitDate;
     using Fanex.Data.Repository;
 

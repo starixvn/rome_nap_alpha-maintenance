@@ -47,7 +47,7 @@ namespace Alpha.Maintenance.Service.Impl.AppLog
 
             return categories.OrderBy(logCategory =>
             {
-                if (logCategory.CategoryName.ToLower().StartsWith("alpha-"))
+                if (logCategory.CategoryName.ToLowerInvariant().StartsWith("alpha-"))
                 {
                     return 0;
                 }

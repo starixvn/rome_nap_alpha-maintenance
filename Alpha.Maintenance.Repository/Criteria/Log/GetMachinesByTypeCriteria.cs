@@ -9,7 +9,6 @@
 
 namespace Alpha.Maintenance.Repository.Criteria.Log
 {
-    using System;
     using Fanex.Data.Repository;
 
     /// <summary>

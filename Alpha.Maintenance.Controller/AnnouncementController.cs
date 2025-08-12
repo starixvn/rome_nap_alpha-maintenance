@@ -27,11 +27,11 @@
     public class AnnouncementController : BaseController
     {
         private readonly AnnouncementService announcementService;
-        private readonly bool preventedActive = false;
+        private readonly bool preventedActive;
         private readonly string emptyEnvironments = string.Empty;
 
         public AnnouncementController()
-            : this(null, null, null, null, null, null, null, null)
+            : this(null, null, null, null)
         {
         }
 
@@ -39,20 +39,13 @@
             AnnouncementService announcementService,
             ICurrentContext currentContext,
             ICurrentSession currentSession,
-            IUserService userService,
-            bool? enableReCheckIn,
-            int? showLogTimeZone,
-            bool? isSiteLogin,
-            int? siteId)
+            IUserService userService)
             : base(currentContext,
                   currentSession,
-                  userService,
-                  enableReCheckIn,
-                  showLogTimeZone,
-                  isSiteLogin,
-                  siteId)
+                  userService)
         {
             this.announcementService = announcementService ?? new AnnouncementServiceImpl();
+            preventedActive = false;
         }
 
         [HttpGet]

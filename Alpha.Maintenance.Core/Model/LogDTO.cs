@@ -4,6 +4,9 @@ namespace Alpha.Maintenance.Core.Model
 {
     public class LogDTO : Log
     {
+        private const int MaxTimeZone = 12;
+        private const int MinTimeZone = -12;
+
         public int CategoryID { get; set; }
 
         public string CategoryName { get; set; }
@@ -15,7 +18,7 @@ namespace Alpha.Maintenance.Core.Model
 
         public bool IsProduction { get; set; }
 
-        [Range(-12, 12)]
+        [Range(MinTimeZone, MaxTimeZone)]
         public short TimeZone { get; set; }
 
         public string MachineIP { get; set; }

@@ -1,17 +1,18 @@
-﻿using Alpha.Maintenance.Controller.ViewModels;
-using Alpha.Maintenance.Core.Model;
-using Alpha.Maintenance.Core.Web;
-using Alpha.Maintenance.Service.Impl.Chatbot;
-using Alpha.Maintenance.Service.Interface.Chatbot;
-using Fanex.NAP.Core.Business;
-using Fanex.NAP.Core.Web.Attribute;
-using System;
+﻿using System;
 using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Alpha.Maintenance.Controller.ViewModels;
+using Alpha.Maintenance.Core.Model;
+using Alpha.Maintenance.Core.Web;
+using Alpha.Maintenance.Repository.Criteria.Chatbot;
+using Alpha.Maintenance.Service.Impl.Chatbot;
+using Alpha.Maintenance.Service.Interface.Chatbot;
+using Fanex.NAP.Core.Business;
+using Fanex.NAP.Core.Web.Attribute;
 using Telegram.Bot;
 
 namespace Alpha.Maintenance.Controller
@@ -46,15 +47,18 @@ namespace Alpha.Maintenance.Controller
         [NapAuth(FunctionKey = SiteFunctionKeys.ChatbotManagement, Policy = Constant.Policy.Host)]
         public ActionResult Create(ChatBotDetailViewModel viewModel)
         {
-            var result = chatbotService.CreateBot(
-                viewModel.Username,
-                viewModel.DisplayName,
-                viewModel.System,
-                viewModel.AccessToken,
-                viewModel.Active,
-                viewModel.IsTest,
-                CurrentSession.UserId,
-                CurrentContext.IP);
+            var request = new CreateBotCriteria
+            {
+                Username = viewModel.Username,
+                DisplayName = viewModel.DisplayName,
+                System = viewModel.System,
+                AccessToken = viewModel.AccessToken,
+                Status = viewModel.Active,
+                IsTest = viewModel.IsTest,
+                Creator = CurrentSession.UserId,
+                IP = CurrentContext.IP
+            };
+            var result = chatbotService.CreateBot(request);
 
             if (result.IsOk)
             {
@@ -89,16 +93,19 @@ namespace Alpha.Maintenance.Controller
         [NapAuth(FunctionKey = SiteFunctionKeys.ChatbotManagement, Policy = Constant.Policy.Host)]
         public ActionResult Edit(ChatBotDetailViewModel viewModel)
         {
-            var result = chatbotService.UpdateBot(
-               viewModel.BotId,
-               viewModel.Username,
-               viewModel.DisplayName,
-               viewModel.System,
-               viewModel.AccessToken,
-               viewModel.Active,
-               viewModel.IsTest,
-               CurrentSession.UserId,
-               CurrentContext.IP);
+            var request = new UpdateBotCriteria
+            {
+                BotId = viewModel.BotId,
+                Username = viewModel.Username,
+                DisplayName = viewModel.DisplayName,
+                System = viewModel.System,
+                AccessToken = viewModel.AccessToken,
+                Status = viewModel.Active,
+                IsTest = viewModel.IsTest,
+                Creator = CurrentSession.UserId,
+                IP = CurrentContext.IP
+            };
+            var result = chatbotService.UpdateBot(request);
 
             if (result.IsOk)
             {
@@ -174,7 +181,7 @@ namespace Alpha.Maintenance.Controller
         {
             var serviceNames = chatbotService.GetBotSystemSetting();
             var selectedServiceName = serviceName ?? serviceNames.First().ServiceName;
-            var viewModel = new BotSystemSettingViewModel()
+            var viewModel = new BotSystemSettingViewModel
             {
                 ServiceNames = serviceNames.DistinctBy(bot => new { bot.ServiceName }),
                 BotSystemSettings = serviceNames.Where(bot => bot.ServiceName == serviceName || bot.ServiceName == selectedServiceName),

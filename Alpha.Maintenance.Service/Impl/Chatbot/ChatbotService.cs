@@ -26,19 +26,8 @@ namespace Alpha.Maintenance.Service.Impl.Chatbot
         public Bot GetBot(int botId)
             => dynamicRepository.Get<Bot>(new GetBotCriteria(botId));
 
-        public Result CreateBot(string username, string displayName,  string system, string accessToken, bool status, bool isTest, int creator, string ip)
+        public Result CreateBot(CreateBotCriteria criteria)
         {
-            var criteria = new CreateBotCriteria
-            {
-                Username = username,
-                DisplayName = displayName,
-                System = system,
-                AccessToken = accessToken,
-                Status = status,
-                IsTest = isTest,
-                Creator = creator,
-                IP = ip
-            };
             dynamicRepository.Execute(criteria);
 
             return new Result
@@ -48,20 +37,8 @@ namespace Alpha.Maintenance.Service.Impl.Chatbot
             };
         }
 
-        public Result UpdateBot(int botId, string username, string displayName, string system, string accessToken, bool status, bool isTest, int creator, string ip)
+        public Result UpdateBot(UpdateBotCriteria criteria)
         {
-            var criteria = new UpdateBotCriteria
-            {
-                BotId = botId,
-                Username = username,
-                DisplayName = displayName,
-                System = system,
-                AccessToken = accessToken,
-                Status = status,
-                IsTest = isTest,
-                Creator = creator,
-                IP = ip
-            };
             dynamicRepository.Execute(criteria);
 
             return new Result

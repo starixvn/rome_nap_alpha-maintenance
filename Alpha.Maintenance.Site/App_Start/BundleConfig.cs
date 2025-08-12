@@ -9,7 +9,6 @@
 
 namespace Alpha.Maintenance.Site.App_Start
 {
-    using System.Diagnostics.CodeAnalysis;
     using System.Web.Optimization;
 
     /// <summary>
@@ -23,7 +22,6 @@ namespace Alpha.Maintenance.Site.App_Start
         /// <see cref="http://go.microsoft.com/fwlink/?LinkId=254725"/>
         /// </summary>
         /// <param name="bundles">Bundle collection.</param>
-        [SuppressMessage("StyleCop.CSharp.Nexcel.NexcelCustomRules", "SP2101:MethodMustNotContainMoreLinesThan", Justification = "Reviewed. Suppression is OK here.")]
         public static void RegisterBundles(BundleCollection bundles)
         {
             // css
@@ -41,11 +39,10 @@ namespace Alpha.Maintenance.Site.App_Start
                 "~/Assets/scripts/lib/msgbox/msgbox-0.0.1.js",
                 "~/Assets/scripts/Maintenance.js"));
          
-	
-        	bundles.AddAndInclude(
-                "~/css/compose-announcement",
-                "~/Assets/scripts/lib/Select2/select2.css",
-                "~/Assets/scripts/lib/material-datetime-picker/material-datetime-picker.css");
+            bundles.AddAndInclude(
+                    "~/css/compose-announcement",
+                    "~/Assets/scripts/lib/Select2/select2.css",
+                    "~/Assets/scripts/lib/material-datetime-picker/material-datetime-picker.css");
 
             bundles.Add(new ScriptBundle("~/scripts/log-index").Include(
                "~/Assets/scripts/lib/Fanex.Grid/Fanex.Pagination.js",

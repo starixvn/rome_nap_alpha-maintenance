@@ -12,6 +12,8 @@
     {
         private readonly IDynamicRepository dynamicRepository;
 
+        private const int UpdateFailStatus = 500;
+
         public WinLossMonitorService(IDynamicRepository dynamicRepository = null)
             => this.dynamicRepository = dynamicRepository ?? new DynamicRepository();
 
@@ -54,7 +56,7 @@
                 {
                     result = new Result
                     {
-                        Code = 500,
+                        Code = UpdateFailStatus,
                         Message = $"{entity.ServiceName} - {entity.SettingName} - {entity.SettingValue}: Updated fail."
                     };
 

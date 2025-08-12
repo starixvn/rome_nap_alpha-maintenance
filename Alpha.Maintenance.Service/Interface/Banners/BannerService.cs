@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using Alpha.Maintenance.Core.Enums;
     using Alpha.Maintenance.Core.Model;
+    using Alpha.Maintenance.Repository.Criteria.Banners;
 
     public interface BannerService
     {
@@ -18,24 +19,11 @@
         Tuple<Banner, IDictionary<string, string>, IDictionary<string, string>> GetBanner(int id);
 
         Result AddBanner(
-            string title,
-            bool isActive,
-            DateTime releasedDate,
-            DateTime expirationDate,
-            string environments,
-            string sites,
-            int userId,
+            AddBannerCriteria criteria,
             Hashtable banners);
 
         Result EditBanner(
-            int id,
-            string title,
-            bool isActive,
-            DateTime releasedDate,
-            DateTime expirationDate,
-            string environments,
-            string sites,
-            int userId,
+            EditBannerCriteria criteria,
             Hashtable banners);
     }
 }
