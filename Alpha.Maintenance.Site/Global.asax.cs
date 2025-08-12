@@ -9,6 +9,18 @@
 
 namespace Alpha.Maintenance.Site
 {
+    using App_Start;
+    using Fanex.Caching;
+    using Fanex.Data;
+    using Fanex.Logging;
+    using Fanex.Logging.RabbitMQ;
+    using ONEbook.UM;
+    using ONEbook.UM.AspNetMVC.Filters;
+    using ONEbook.UM.Configurations;
+    using ONEbook.UM.Helpers;
+    using ONEbook.UM.NETFramework;
+    using ONEbook.UM.Services;
+    using ONEbook.UM.Transport;
     using System;
     using System.Configuration;
     using System.Data.SqlClient;
@@ -20,21 +32,6 @@ namespace Alpha.Maintenance.Site
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
-    using App_Start;
-    using Fanex.Caching;
-    using Fanex.Data;
-    using Fanex.Logging;
-    using Fanex.Logging.RabbitMQ;
-    using Fanex.RemotingRef;
-    using ONEbook.UM;
-    using ONEbook.UM.AspNetMVC.Filters;
-    using ONEbook.UM.Configurations;
-    using ONEbook.UM.Helpers;
-    using ONEbook.UM.NETFramework;
-    using ONEbook.UM.Services;
-    using ONEbook.UM.Transport;
-    using RefClient.Factory;
-    using RefDataModelStandard.Models;
 
     /// <summary>
     /// Note: For instructions on enabling IIS6 or IIS7 classic mode, visit http://go.microsoft.com/?LinkId=9394801 .
@@ -71,29 +68,8 @@ namespace Alpha.Maintenance.Site
                 .UseRestClient(new UMRestClient(umConfig))
                 .UseHttpContext(new HttpContextHelper());
 
-            RefDataTypeContainer
-                .ConnectTo(new Uri(appSettings["RemoteRefURL"]))
-                .FromApplication("M7 site");           
-
             GlobalFilters.Filters.Add(new CheckUMFilterAttribute(
                 new MaintenanceService(UMClientManager.RestClient, UMClientManager.CacheService, UMClientManager.UMClientConfigs, UMClientManager.HttpContext), null));
-
-            try
-            {
-                RefClientFactory.InitializeConfig(new ClientConfigModel
-                {
-                    RefDataWebApiUrl = new RefDataWebApiUrl
-                    {
-                        Url = appSettings["TW.RemotingRef.API"]
-                    },
-                    RefDataLocalRedisConfiguration = new RedisConfiguration
-                    {
-                        Host = appSettings["TW.RemotingRef.Redis"].Split(',').ToList(),
-                        DatabaseId = int.Parse(appSettings["TW.RemotingRef.DatabaseId"]),
-                    }
-                });
-            }
-            catch { }
         }
 
         /// <summary>
