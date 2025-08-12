@@ -122,15 +122,9 @@
     <Reference Include="Fanex.NAP.Core.SignIn, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.NAP.Core.SignIn.2.0.0.1\lib\net461\Fanex.NAP.Core.SignIn.dll</HintPath>
     </Reference>
-    <Reference Include="Fanex.RemotingRef, Version=1.5.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Fanex.RemotingRef.1.5.4\lib\net461\Fanex.RemotingRef.dll</HintPath>
-    </Reference>
     <Reference Include="IBCFile, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fanex.File.1.0.0\lib\net40\IBCFile.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="LanguageEnum, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TW.LanguageEnum.1.6.0\lib\netstandard2.0\LanguageEnum.dll</HintPath>
     </Reference>
     <Reference Include="LazyCache, Version=2.4.0.174, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\LazyCache.2.4.0\lib\netstandard2.0\LazyCache.dll</HintPath>
@@ -228,9 +222,6 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.5.2.3\lib\net46\NLog.dll</HintPath>
-    </Reference>
     <Reference Include="ONEbook.UM, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ONEbook.UM.3.1.0\lib\net461\ONEbook.UM.dll</HintPath>
     </Reference>
@@ -251,12 +242,6 @@
     </Reference>
     <Reference Include="RabbitMQ.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
       <HintPath>..\packages\RabbitMQ.Client.5.1.2\lib\net451\RabbitMQ.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="RefClient, Version=4.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TW.RefClient.4.10.0\lib\netstandard2.0\RefClient.dll</HintPath>
-    </Reference>
-    <Reference Include="RefData.Common, Version=4.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\TW.RefClient.4.10.0\lib\netstandard2.0\RefData.Common.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.105.2.3\lib\net4\RestSharp.dll</HintPath>
@@ -868,12 +853,6 @@
       <DependentUpon>Web.local.config</DependentUpon>
     </Content>
     <Content Include="Views\LicenseeAdministration\Index.cshtml" />
-    <Content Include="Views\RemotingRefDemo\ResourceData.cshtml" />
-    <Content Include="Views\RemotingRefDemo\GetTeamName3rd.cshtml" />
-    <Content Include="Views\RemotingRefDemo\GetLeagueName3rd.cshtml" />
-    <Content Include="Views\RemotingRefDemo\GetLeagueName.cshtml" />
-    <Content Include="Views\RemotingRefDemo\GetTeamName.cshtml" />
-    <Content Include="Views\RemotingRefDemo\GetBetTypeName.cshtml" />
     <Content Include="Views\ResetPotentialWinLimitJobConfig\Index.cshtml" />
     <Content Include="Web.KLPROD.config" />
     <Content Include="Web.KLSIMPLE.config" />
