@@ -304,6 +304,7 @@
   <ItemGroup>
     <Compile Include="AnnouncementApiController.cs" />
     <Compile Include="AnnouncementController.cs" />
+    <Compile Include="HealthCheckController.cs" />
     <Compile Include="ResetPotentialWinLimitJobConfigController.cs" />
     <Compile Include="AutoTransferJobConfigController.cs" />
     <Compile Include="BalanceRecordController.cs" />

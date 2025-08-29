@@ -461,6 +461,8 @@
     <Content Include="Assets\styles\pages\auto-transfer-config.min.css">
       <DependentUpon>auto-transfer-config.css</DependentUpon>
     </Content>
+    <Content Include="healthcheck.html" />
+    <Content Include="healthcheckaf.html" />
     <Content Include="WebConnectionString.dr.config">
       <DependentUpon>WebConnectionString.config</DependentUpon>
       <SubType>Designer</SubType>

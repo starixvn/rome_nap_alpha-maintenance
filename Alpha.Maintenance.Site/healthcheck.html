@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Health Check</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .result {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .success {
+            background: #e0ffe0;
+        }
+
+        .error {
+            background: #ffe0e0;
+        }
+
+        .missing-klprod {
+            color: red;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        #summary {
+            margin-bottom: 30px;
+            padding: 10px;
+            border: 2px solid #888;
+            background: #f8f8f8;
+        }
+
+        #missing-klprod-list {
+            margin-top: 20px;
+            padding: 10px;
+            border: 2px solid #ff6666;
+            background: #ffe6e6;
+            display: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px 5px;
+            background: #007cba;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #005a87;
+        }
+
+        .domain-list {
+            margin-top: 10px;
+        }
+
+        .domain-item {
+            padding: 5px;
+            margin: 2px 0;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Health Check</h1>
+    <div id="summary"></div>
+    <button id="show-missing-klprod" onclick="toggleMissingKLPRODList()">Show Domains Missing KLPROD</button>
+    <div id="missing-klprod-list">
+        <h3>Domains Missing KLPROD:</h3>
+        <div id="missing-domains" class="domain-list"></div>
+    </div>
+    <div id="results"></div>
+    <script>
+        // List of URLs to check
+        const urls = [
+            'https://www.logifun.com'           
+        ];
+
+        const healthcheck = '/liveness';
+
+        const resultsDiv = document.getElementById('results');
+        const summaryDiv = document.getElementById('summary');
+
+        let total = urls.length;
+        let successCount = 0;
+        let errorCount = 0;
+        let missingKLPRODCount = 0;
+        let finishedCount = 0;
+        let missingKLPRODDomains = [];
+
+        function createResultElement(url, status, data, isError, missingKLPROD) {
+            const div = document.createElement('div');
+            div.className = 'result ' + (isError ? 'error' : 'success');
+            div.innerHTML = `<strong>URL:</strong> ${url}<br>
+                                     <strong>Status:</strong> ${status}<br>
+                                     <strong>Response:</strong>
+                                     <pre${missingKLPROD ? ' class="missing-klprod"' : ''}>${data}</pre>`;
+            return div;
+        }
+
+        function updateSummary() {
+            summaryDiv.innerHTML = `<strong>Summary:</strong><br>
+                    Total Domains: ${total}<br>
+                    Success: ${successCount}<br>
+                    Error: ${errorCount}<br>
+                    Missing KLPROD: ${missingKLPRODCount}`;
+        }
+
+        function toggleMissingKLPRODList() {
+            const listDiv = document.getElementById('missing-klprod-list');
+            const button = document.getElementById('show-missing-klprod');
+            const domainsDiv = document.getElementById('missing-domains');
+            
+            if (listDiv.style.display === 'none' || listDiv.style.display === '') {
+                // Show the list
+                listDiv.style.display = 'block';
+                button.textContent = 'Hide Domains Missing KLPROD';
+                
+                // Populate the list
+                domainsDiv.innerHTML = '';
+                if (missingKLPRODDomains.length === 0) {
+                    domainsDiv.innerHTML = '<div class="domain-item">No domains missing KLPROD</div>';
+                } else {
+                    missingKLPRODDomains.forEach(domain => {
+                        const domainDiv = document.createElement('div');
+                        domainDiv.className = 'domain-item';
+                        domainDiv.textContent = domain;
+                        domainsDiv.appendChild(domainDiv);
+                    });
+                }
+            } else {
+                // Hide the list
+                listDiv.style.display = 'none';
+                button.textContent = 'Show Domains Missing KLPROD';
+            }
+        }
+
+        urls.forEach(url => {
+            fetch(`HealthCheck/Proxy?url=${encodeURIComponent(url + healthcheck)}`)
+                .then(response => response.text().then(data => {
+                    const status = `${response.status} ${response.statusText}`;
+                    if (response.status !== 200) {
+                        errorCount++;
+                        resultsDiv.appendChild(createResultElement(url, status, '', true, false));
+                    } else {
+                        successCount++;
+                        const missingKLPROD = !data.includes("KLPROD");
+                        if (missingKLPROD) {
+                            missingKLPRODCount++;
+                            missingKLPRODDomains.push(url);
+                        }
+                        resultsDiv.appendChild(createResultElement(url, status, data, false, missingKLPROD));
+                    }
+                    finishedCount++;
+                    if (finishedCount === total) updateSummary();
+                }))
+                .catch(error => {
+                    errorCount++;
+                    finishedCount++;
+                    resultsDiv.appendChild(createResultElement(url, 'Error', error, true, false));
+                    if (finishedCount === total) updateSummary();
+                });
+        });
+    </script>
+</body>
+</html>
