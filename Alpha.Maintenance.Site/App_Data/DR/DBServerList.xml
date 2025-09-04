@@ -48,4 +48,12 @@
 		<Ip>dbtrans.dp.gamora.prod,7104</Ip>
 		<Name>DBTRANS</Name>
 	</Server>
+  <Server>
+		<Ip>dbdw.dp.gamora.prod,7119</Ip>
+		<Name>DBDW</Name>
+	</Server>
+	<Server>
+		<Ip>dbdw2.dp.gamora.prod,7120</Ip>
+		<Name>DBDW2</Name>
+	</Server>
 </Servers>

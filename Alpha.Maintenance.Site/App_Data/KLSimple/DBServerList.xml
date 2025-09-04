@@ -100,4 +100,12 @@
     <Ip>10.40.40.227</Ip>
     <Name>DB_Chatbot</Name>
   </Server>
+  <Server>
+		<Ip>10.146.11.23</Ip>
+		<Name>DBDW</Name>
+	</Server>
+  <Server>
+		<Ip>10.146.11.24</Ip>
+		<Name>DBDW2</Name>
+	</Server>
 </Servers>
